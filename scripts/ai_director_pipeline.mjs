@@ -80,7 +80,10 @@ FORMAT JSON WAJIB:
     "narration": "Kalian bayangin... dari [hal sepele], [dampak masif] terjadi dalam satu malam?",
     "leftTitle": "Hal Sepele",
     "rightTitle": "Dampak Global",
-    "leftImage": "butterfly/media/memo_document.jpg",
+    "leftBadge": "AWAL MULA SEPELE",
+    "rightBadge": "BENCANA GLOBAL",
+    "leftPrimaryText": "Teks judul dokumen awal",
+    "leftStampText": "BUKTI AWAL",
     "rightImage": "butterfly/media/wall_demolition.jpg"
   },
   "nodes": [
@@ -93,6 +96,12 @@ FORMAT JSON WAJIB:
       "mediaType": "photo atau graphic",
       "directorType": "pilih salah satu dari 11 opsi jika graphic",
       "zoomDirection": "zoomIn / zoomOut / panRight / panLeft",
+      "primaryText": "Teks judul spesifik di dalam elemen grafis",
+      "secondaryText": "Teks subjudul / keterangan grafis",
+      "stampText": "Teks stempel resmi (misal: TOP SECRET, SINKING, CRITICAL, OVERLOAD)",
+      "quoteText": "Teks kutipan ucapan / pertanyaan jika ada",
+      "metricLabel": "Label indikator (misal: KORBAN JIWA, TEKANAN, RADIASI)",
+      "metricValue": "Nilai indikator (misal: 1,517 JIWA, 99.4%, SOS CQD)",
       "mediaUrl": "nama file foto atau nama directorType",
       "caption": "Keterangan forensik singkat..."
     }

@@ -1,9 +1,14 @@
 import React from 'react';
 import { Img, useCurrentFrame, staticFile, interpolate } from 'remotion';
 
-interface HookSceneProps {
+export interface HookSceneProps {
   leftTitle: string;
   rightTitle: string;
+  leftBadge?: string;
+  rightBadge?: string;
+  leftPrimaryText?: string;
+  leftSecondaryText?: string;
+  leftStampText?: string;
   leftImage?: string;
   rightImage?: string;
   durationFrames?: number;
@@ -12,6 +17,11 @@ interface HookSceneProps {
 export const HookScene: React.FC<HookSceneProps> = ({
   leftTitle,
   rightTitle,
+  leftBadge = '⚡ AWAL MULA SEPELE',
+  rightBadge = '🚨 BENCANA GLOBAL',
+  leftPrimaryText,
+  leftSecondaryText,
+  leftStampText = 'BUKTI SEPELE',
   leftImage = 'butterfly/media/memo_document.jpg',
   rightImage = 'butterfly/media/wall_demolition.jpg',
   durationFrames = 257,
@@ -28,7 +38,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
   const switchPoint = Math.round(durationFrames * 0.48);
   const isSecondHalf = frame >= switchPoint;
 
-  // Camera pan: gently drifts from left bias (-15px) to right bias (+15px)
+  // Camera pan: gently drifts from left bias (-20px) to right bias (+20px)
   const panX = interpolate(frame, [0, durationFrames], [-20, 20], {
     extrapolateRight: 'clamp',
   });
@@ -55,6 +65,9 @@ export const HookScene: React.FC<HookSceneProps> = ({
     [0, 1, 0],
     { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
   );
+
+  const docPrimaryText = leftPrimaryText || leftTitle;
+  const docSecondaryText = leftSecondaryText || 'KASUS PENYELIDIKAN // BUKTI AWAL';
 
   return (
     <div
@@ -126,12 +139,12 @@ export const HookScene: React.FC<HookSceneProps> = ({
                 {/* Paperclip */}
                 <rect x="80" y="25" width="22" height="75" fill="none" stroke="#94a3b8" strokeWidth="5" rx="8" />
 
-                {/* Document text */}
+                {/* Dynamic Document text driven by AI Director */}
                 <text x="130" y="110" fill="#0f172a" fontSize="24" fontWeight="900" fontFamily="'Montserrat', sans-serif">
-                  SOZIALISTISCHE EINHEITSPARTEI
+                  {docPrimaryText.length > 30 ? docPrimaryText.slice(0, 30) + '...' : docPrimaryText}
                 </text>
                 <text x="130" y="145" fill="#64748b" fontSize="16" fontWeight="700" fontFamily="monospace">
-                  DRAF RESMI: ATURAN PERJALANAN (MEMO RAHASIA)
+                  {docSecondaryText}
                 </text>
                 <line x1="80" y1="175" x2="580" y2="175" stroke="#cbd5e1" strokeWidth="3" />
 
@@ -149,11 +162,11 @@ export const HookScene: React.FC<HookSceneProps> = ({
                   />
                 ))}
 
-                {/* Confidential Red Stamp */}
+                {/* Dynamic Confidential Stamp */}
                 <g transform="translate(380, 500) rotate(-14)">
-                  <rect x="-10" y="-8" width="220" height="52" fill="none" stroke="#ef4444" strokeWidth="4" rx="4" />
-                  <text x="100" y="27" fill="#ef4444" fontSize="20" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="3">
-                    TOP SECRET
+                  <rect x="-10" y="-8" width="230" height="52" fill="none" stroke="#ef4444" strokeWidth="4" rx="4" />
+                  <text x="105" y="27" fill="#ef4444" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="3">
+                    {leftStampText.toUpperCase()}
                   </text>
                 </g>
               </g>
@@ -263,7 +276,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
             boxShadow: '0 4px 15px rgba(0, 0, 0, 0.6)',
           }}
         >
-          <span>{isSecondHalf ? '🚨 AKIBAT GLOBAL TERBESAR' : '⚡ AWAL MULA SEPELE'}</span>
+          <span>{isSecondHalf ? rightBadge : leftBadge}</span>
         </div>
 
         <h1

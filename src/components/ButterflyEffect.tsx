@@ -28,6 +28,10 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         <HookScene
           leftTitle={data.hook.leftTitle}
           rightTitle={data.hook.rightTitle}
+          leftBadge={data.hook.leftBadge}
+          rightBadge={data.hook.rightBadge}
+          leftPrimaryText={data.hook.leftPrimaryText}
+          leftStampText={data.hook.leftStampText}
           leftImage={data.hook.leftImage}
           rightImage={data.hook.rightImage}
           durationFrames={data.hook.durationFrames}
@@ -45,6 +49,13 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
                 subtitle={node.caption}
                 locationTag={node.timeOrYear}
                 durationFrames={node.durationFrames}
+                primaryText={node.primaryText}
+                secondaryText={node.secondaryText}
+                stampText={node.stampText}
+                quoteText={node.quoteText}
+                metricLabel={node.metricLabel}
+                metricValue={node.metricValue}
+                accentColor={node.accentColor}
               />
             </Sequence>
           );

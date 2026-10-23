@@ -21,6 +21,13 @@ export interface ButterflyNode {
   mediaUrl: string;
   directorType?: DirectorSceneType | string;
   zoomDirection?: 'in' | 'out' | 'panRight' | 'panLeft';
+  primaryText?: string;
+  secondaryText?: string;
+  stampText?: string;
+  quoteText?: string;
+  metricLabel?: string;
+  metricValue?: string;
+  accentColor?: string;
   caption: string;
   sfxTrigger?: string;
   startFrame: number;
@@ -42,8 +49,12 @@ export interface ButterflyStoryData {
     narration: string;
     leftTitle: string;
     rightTitle: string;
-    leftImage: string;
-    rightImage: string;
+    leftBadge?: string;
+    rightBadge?: string;
+    leftPrimaryText?: string;
+    leftStampText?: string;
+    leftImage?: string;
+    rightImage?: string;
     durationFrames: number;
   };
   nodes: ButterflyNode[];
