@@ -30,6 +30,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
           rightTitle={data.hook.rightTitle}
           leftImage={data.hook.leftImage}
           rightImage={data.hook.rightImage}
+          durationFrames={data.hook.durationFrames}
         />
       </Sequence>
 
@@ -55,7 +56,10 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
               mediaUrl={node.mediaUrl}
               locationTag={node.timeOrYear}
               headline={node.headline}
-              zoomDirection={node.step % 2 === 0 ? 'in' : 'panRight'}
+              zoomDirection={
+                node.zoomDirection ||
+                (node.step % 3 === 0 ? 'out' : node.step % 2 === 0 ? 'in' : 'panRight')
+              }
               durationFrames={node.durationFrames}
             />
           </Sequence>

@@ -20,6 +20,7 @@ export interface ButterflyNode {
   mediaType: 'photo' | 'broll' | 'graphic';
   mediaUrl: string;
   directorType?: DirectorSceneType | string;
+  zoomDirection?: 'in' | 'out' | 'panRight' | 'panLeft';
   caption: string;
   sfxTrigger?: string;
   startFrame: number;

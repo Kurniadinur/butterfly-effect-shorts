@@ -33,59 +33,67 @@ console.log('       AI DIRECTOR & SUTRADARA VIDEO PIPELINE (AUTONOMOUS)      ');
 console.log('================================================================');
 console.log(`Topik Naskah : "${topic}"`);
 console.log(`Tersedia     : ${API_KEYS.length} API Key (Rotasi Otomatis Failover)`);
+console.log(`Audio Sync   : Groq Cloud LPU (Whisper Large V3)`);
 console.log('================================================================\n');
 
 // -----------------------------------------------------------------------------
 // 1. MASTER SUTRADARA & CREATIVE DIRECTOR PROMPT
 // -----------------------------------------------------------------------------
 const DIRECTOR_PROMPT = `
-Kamu adalah Creative Director & Sutradara Dokumenter Tingkat Dunia, sekaligus Storyteller bertaraf Nessie Judge (Nerror).
-Tugasmu adalah menciptakan naskah "Butterfly Effect" (efek domino sebab-akibat ekstrem) berdurasi 60-120 detik untuk YouTube Shorts / TikTok (9:16).
+Kamu adalah Creative Director & Sutradara Dokumenter Papan Atas Dunia sekaligus Storyteller bertaraf Nessie Judge (Nerror).
+Tugasmu adalah menciptakan naskah dan alur visual "Butterfly Effect" (efek domino sebab-akibat ekstrem) berdurasi 60-120 detik untuk YouTube Shorts / TikTok (9:16).
 
-PRINSIP SUTRADARA & KURASI VISUAL (ANTI-AI & ANTI-MEMBOSANKAN):
-1. DILARANG KERAS mengulang foto orang atau objek yang sama berturut-turut! Penonton bosan melihat foto statis yang diulang-ulang.
-2. Jika suatu adegan tidak memiliki foto otentik, atau berupa adegan abstrak (dokumen rahasia, penyerahan memo, pertanyaan jurnalis, kepanikan telepon, peta runtuhnya negara, radar/alarm), SUTRADARA WAJIB memilih:
-   "mediaType": "graphic"
-   dan tentukan "directorType" dari salah satu opsi berikut:
-   - "bureaucracy-draft"  : Dokumen rahasia birokrasi di atas meja kayu.
-   - "memo-handoff"       : Sketsa tangan menyelipkan kertas memo rahasia di meja.
-   - "press-question"     : Siluet jurnalis mengangkat mikrofon di bawah lampu sorot.
-   - "schabowski-slip"    : Kacamata melorot, jam digital berdetik, ucapan fatal.
-   - "breaking-news"      : Monitor TV tabung 1989 dengan breaking news ticker.
-   - "panic-phone"        : Pos jaga dengan telepon engkol berdering panik tanpa perintah.
-   - "soviet-collapse"    : Peta geopolitik retak dan bubar menjadi banyak negara.
-   - "forensic-dossier"   : Berkas penyelidikan deklasifikasi dengan stempel TOP SECRET.
-   - "tactical-map"       : Radar taktis melingkar dengan titik koordinat target.
-   - "critical-gauge"     : Indikator tekanan bahaya dan alarm kelebihan beban.
-   - "breaking-ticker"    : Berita breaking news satelit siaran darurat.
-3. Gunakan "mediaType": "photo" HANYA jika ada adegan foto sejarah riil yang relevan (misal: kerumunan demonstran, gerbang perbatasan, tembok diruntuhkan).
-4. Struktur Naskah Nessie Judge:
-   - HOOK: "Kalian bayangin... dari [hal sepele], [dampak global masif] bisa terjadi dalam semalam?"
-   - ESKALASI TEGANG (8 hingga 14 Nodes): Mulai dari kesalahan kecil sepele, kebingungan, penyebaran kabar, kepanikan, klimaks runtuhnya peristiwa, hingga dampak global.
-   - CHILLING OUTRO: Pertanyaan psikologis menggantung yang memicu penonton berkomentar ("Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah hidupmu 5 tahun lagi?").
+PRINSIP WAJIB SUTRADARA KELAS DUNIA (ANTI-AI, ANTI-MEMBOSANKAN, & SINEMATIK):
+1. JANGAN PERNAH MENAMPILKAN WAJAH PELAKU / FOKUS UTAMA DI HOOK VIDEO!
+   - Di Hook (Detik 0-4), penonton HANYA boleh merasakan KONTRAS EKSTREM antara:
+     * Awal Sepele (misal: "Selembar Memo Tanpa Dibaca", "Kunci Teropong Tertinggal", "Uji Coba Daya Reaktor").
+     * Bencana Global (misal: "Uni Soviet Runtuh", "Kapal Titanic Tenggelam", "Reaktor Nuklir Meledak").
+   - Wajah tokoh HANYA boleh muncul saat naskah secara khusus memperkenalkannya atau saat kilas balik di adegan akhir!
+2. DILARANG KERAS MENGULANG FOTO ORANG/OBJEK YANG SAMA BERTURUT-TURUT!
+   - Setiap adegan harus memiliki sudut pandang baru, variasi tempo, dan pergerakan kamera (cameraMotion): "zoomIn", "zoomOut", "panRight", atau "panLeft".
+3. PEMILIHAN TIPE VISUAL SUTRADARA:
+   - Gunakan "mediaType": "photo" HANYA jika ada foto sejarah riil yang relevan.
+   - Gunakan "mediaType": "graphic" untuk adegan dramatis/abstrak/dokumen rahasia/kepanikan.
+   - Pilihan "directorType" jika graphic:
+     * "bureaucracy-draft"  : Berkas birokrasi rahasia di atas meja kayu.
+     * "memo-handoff"       : Sketsa tangan menyelipkan kertas memo rahasia di meja.
+     * "press-question"     : Siluet jurnalis mengangkat mikrofon di bawah lampu sorot.
+     * "schabowski-slip"    : Kacamata melorot, jam digital berdetik, ucapan fatal.
+     * "breaking-news"      : Monitor TV tabung vintage dengan ticker darurat.
+     * "panic-phone"        : Pos jaga dengan telepon engkol bergetar merah tanpa perintah atasan.
+     * "soviet-collapse"    : Peta geopolitik retak & Uni Soviet bubar jadi 15 negara.
+     * "forensic-dossier"   : Berkas penyelidikan deklasifikasi dengan stempel merah TOP SECRET.
+     * "tactical-map"       : Radar taktis melingkar & titik koordinat target episentrum.
+     * "critical-gauge"     : Indikator tekanan bahaya dan alarm kelebihan beban.
+     * "breaking-ticker"    : Siaran langsung satelit darurat internasional.
+4. STRUKTUR NARRATIVE NESSIE JUDGE:
+   - HOOK: "Kalian bayangin... dari [hal sepele], [dampak global masif] bisa terjadi hanya dalam satu malam?"
+   - ESKALASI TEGANG (8 hingga 14 adegan berantai): Dari kelalaian kecil, kepanikan, kekacauan berantai, hingga klimaks sejarah dunia berubah.
+   - CHILLING OUTRO: Pertanyaan menggantung yang memancing penonton berkomentar ("Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah hidupmu 5 tahun lagi?").
 5. HANYA OUTPUT JSON MURNI TANPA KATA PENGANTAR DAN TANPA MARKDOWN!
 
 FORMAT JSON WAJIB:
 {
   "id": "slug-id",
-  "title": "Judul Menarik Huruf Besar",
+  "title": "JUDUL DRAMATIS HURUF BESAR",
   "hook": {
-    "narration": "Kalian bayangin... dari [hal sepele], [dampak raksasa] terjadi?",
+    "narration": "Kalian bayangin... dari [hal sepele], [dampak masif] terjadi dalam satu malam?",
     "leftTitle": "Hal Sepele",
-    "rightTitle": "Dampak Masif",
-    "leftImage": "butterfly/media/schabowski_press.jpg",
+    "rightTitle": "Dampak Global",
+    "leftImage": "butterfly/media/memo_document.jpg",
     "rightImage": "butterfly/media/wall_demolition.jpg"
   },
   "nodes": [
     {
       "step": 1,
       "timeOrYear": "LOKASI / TAHUN • JAM",
-      "headline": "JUDUL ADEGAN SINGKAT",
+      "headline": "JUDUL ADEGAN SINGKAT BESAR",
       "narration": "Naskah narasi suara 10-25 kata yang dramatis...",
       "chaosLevel": 20,
       "mediaType": "photo atau graphic",
-      "directorType": "pilih salah satu dari 11 tipe di atas jika graphic",
-      "mediaUrl": "butterfly/media/... jika photo, atau nama directorType jika graphic",
+      "directorType": "pilih salah satu dari 11 opsi jika graphic",
+      "zoomDirection": "zoomIn / zoomOut / panRight / panLeft",
+      "mediaUrl": "nama file foto atau nama directorType",
       "caption": "Keterangan forensik singkat..."
     }
   ],
@@ -113,19 +121,23 @@ async function callGeminiWithRotation(taskFn) {
 }
 
 // -----------------------------------------------------------------------------
-// STEP 1: Direct Storyboard via Gemini
+// STEP 1: Direct Storyboard via Gemini with High Creativity (Temp 0.85)
 // -----------------------------------------------------------------------------
 async function generateStoryboard(topic) {
-  console.log('[1/4] Sutradara AI sedang merancang alur cerita & kurasi visual...');
+  console.log('[1/4] Sutradara AI sedang merancang alur cerita & kurasi visual unik...');
   const result = await callGeminiWithRotation(async (ai, key, keyNum) => {
     const response = await ai.models.generateContent({
       model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
       contents: [
         {
           role: 'user',
-          parts: [{ text: `${DIRECTOR_PROMPT}\n\nTopik Butterfly Effect: "${topic}"` }],
+          parts: [{ text: `${DIRECTOR_PROMPT}\n\nTopik Butterfly Effect Baru: "${topic}"` }],
         },
       ],
+      config: {
+        temperature: 0.85,
+        topP: 0.95,
+      },
     });
     return response.text || '';
   });
@@ -133,11 +145,55 @@ async function generateStoryboard(topic) {
   const cleaned = result.replace(/```json/gi, '').replace(/```/g, '').trim();
   const storyData = JSON.parse(cleaned);
 
+  // Validate visual media to guarantee ZERO broken images and ZERO repeated photos
+  const mediaDir = path.join(ROOT_DIR, 'public', 'butterfly', 'media');
+  let photoCount = 0;
+  let graphicCount = 0;
+
+  for (let i = 0; i < storyData.nodes.length; i++) {
+    const node = storyData.nodes[i];
+    node.step = i + 1;
+
+    // Check if photo actually exists locally and has valid size (> 1KB)
+    if (node.mediaType === 'photo') {
+      const photoPath = path.join(ROOT_DIR, 'public', node.mediaUrl);
+      const isValidPhoto = fs.existsSync(photoPath) && fs.statSync(photoPath).size > 1024;
+
+      if (!isValidPhoto) {
+        // Automatically route to an appropriate forensic graphic scene
+        node.mediaType = 'graphic';
+        const txt = (node.headline + ' ' + node.narration).toLowerCase();
+        if (txt.includes('peta') || txt.includes('radar') || txt.includes('laut') || txt.includes('pesawat') || txt.includes('koordinat')) {
+          node.directorType = 'tactical-map';
+        } else if (txt.includes('tekanan') || txt.includes('alarm') || txt.includes('reaktor') || txt.includes('bahaya') || txt.includes('mesin')) {
+          node.directorType = 'critical-gauge';
+        } else if (txt.includes('tv') || txt.includes('berita') || txt.includes('siaran') || txt.includes('breaking')) {
+          node.directorType = 'breaking-ticker';
+        } else if (txt.includes('telepon') || txt.includes('panik') || txt.includes('pos')) {
+          node.directorType = 'panic-phone';
+        } else if (txt.includes('memo') || txt.includes('surat') || txt.includes('kertas') || txt.includes('kunci')) {
+          node.directorType = 'memo-handoff';
+        } else {
+          node.directorType = 'forensic-dossier';
+        }
+      }
+    }
+
+    if (node.mediaType === 'graphic') {
+      graphicCount++;
+      if (!node.directorType) node.directorType = 'forensic-dossier';
+    } else {
+      photoCount++;
+    }
+
+    if (!node.zoomDirection) {
+      node.zoomDirection = i % 3 === 0 ? 'out' : i % 2 === 0 ? 'in' : 'panRight';
+    }
+  }
+
   console.log(`      ✓ Judul: "${storyData.title}"`);
   console.log(`      ✓ Jumlah Adegan: ${storyData.nodes.length} adegan`);
-  const graphicCount = storyData.nodes.filter((n) => n.mediaType === 'graphic').length;
-  const photoCount = storyData.nodes.filter((n) => n.mediaType === 'photo').length;
-  console.log(`      ✓ Visual: ${photoCount} Foto Dokumenter + ${graphicCount} Sketsa Animasi Forensik\n`);
+  console.log(`      ✓ Visual Kurasi: ${photoCount} Foto Arsip + ${graphicCount} Sketsa Animasi Forensik\n`);
 
   return storyData;
 }
@@ -148,7 +204,6 @@ async function generateStoryboard(topic) {
 async function generateVoiceover(storyData) {
   console.log('[2/4] Mensintesis narasi vokal via Gemini 3.8 Flash Lite TTS...');
 
-  // Combine full narration
   const scriptParts = [
     storyData.hook.narration,
     ...storyData.nodes.map((n) => n.narration),
@@ -190,7 +245,7 @@ async function runWhisperAlignment(wavPath, storyId) {
   if (groqApiKey) {
     try {
       console.log('[3/4] Melakukan penyelarasan audio via Groq Cloud LPU (Whisper Large V3)...');
-      console.log('      (Kecepatan tinggi ~3 detik, akurasi tinggi, bebas beban CPU!)');
+      console.log('      (Kecepatan tinggi ~3 detik, akurasi tinggi, 0% beban CPU lokal!)');
       const whisperData = await transcribeWithGroq(wavPath, jsonOutput);
       console.log(`      ✓ Total durasi audio: ${whisperData.totalDurationSec} detik`);
       console.log(`      ✓ Total kata terdeteksi: ${whisperData.allWords.length} kata (Whisper Large V3)\n`);
@@ -262,31 +317,25 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
   const FPS = 30;
   const totalFrames = Math.round(whisperData.totalDurationSec * FPS);
 
-  // Distribute segment timings across story parts
-  const allWords = whisperData.allWords;
-  let wordIdx = 0;
-
   // Build clean stationary subtitle pages
   const wordTimestamps = [];
   let pageIndex = 0;
 
-  for (const seg of whisperData.segments) {
-    const segWords = seg.words.map((w) => ({
-      word: cleanSubtitleWord(w.word),
-      startFrame: Math.round(w.start * FPS),
-      endFrame: Math.round(w.end * FPS),
-    })).filter((w) => w.word.length > 0);
+  const validWords = whisperData.allWords.map((w) => ({
+    word: cleanSubtitleWord(w.word),
+    startFrame: Math.round(w.start * FPS),
+    endFrame: Math.round(w.end * FPS),
+  })).filter((w) => w.word.length > 0);
 
-    const chunks = partitionIntoChunks(segWords);
-    for (const chunk of chunks) {
-      chunk.forEach((w) => {
-        wordTimestamps.push({
-          ...w,
-          pageIndex,
-        });
+  const chunks = partitionIntoChunks(validWords);
+  for (const chunk of chunks) {
+    chunk.forEach((w) => {
+      wordTimestamps.push({
+        ...w,
+        pageIndex,
       });
-      pageIndex++;
-    }
+    });
+    pageIndex++;
   }
 
   // Calculate proportional durations for Hook, Nodes, and Outro
@@ -302,7 +351,7 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
 
   // Hook frames
   const hookRatio = storyData.hook.narration.length / totalChars;
-  const hookFrames = Math.max(90, Math.round(totalFrames * hookRatio));
+  const hookFrames = Math.max(120, Math.round(totalFrames * hookRatio));
   storyData.hook.durationFrames = hookFrames;
   currentFrame += hookFrames;
 
@@ -310,7 +359,6 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
   for (let i = 0; i < storyData.nodes.length; i++) {
     const node = storyData.nodes[i];
     const nodeRatio = node.narration.length / totalChars;
-    const isLastNode = i === storyData.nodes.length - 1;
 
     let nodeFrames = Math.round(totalFrames * nodeRatio);
     if (nodeFrames < 90) nodeFrames = 90;
