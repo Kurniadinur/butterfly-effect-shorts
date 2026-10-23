@@ -167,6 +167,15 @@ async function generateStoryboard(topic) {
 
   // Validate visual media to guarantee ZERO broken images and ZERO repeated photos
   const mediaDir = path.join(ROOT_DIR, 'public', 'butterfly', 'media');
+
+  // Validate Hook images
+  if (!storyData.hook.rightImage || !fs.existsSync(path.join(ROOT_DIR, 'public', storyData.hook.rightImage))) {
+    storyData.hook.rightImage = 'butterfly/media/wall_demolition.jpg';
+  }
+  if (!storyData.hook.leftImage || !fs.existsSync(path.join(ROOT_DIR, 'public', storyData.hook.leftImage))) {
+    storyData.hook.leftImage = 'butterfly/media/memo_document.jpg';
+  }
+
   let photoCount = 0;
   let graphicCount = 0;
 
