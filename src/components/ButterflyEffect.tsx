@@ -1,5 +1,5 @@
-import React from 'react';
-import { Sequence, Audio, staticFile } from 'remotion';
+import React, { useMemo } from 'react';
+import { Sequence, Audio, staticFile, useCurrentFrame } from 'remotion';
 import { ButterflyStoryData } from '../data/types';
 import { CURRENT_STORY } from '../data/currentStory';
 import { HookScene } from './HookScene';
@@ -12,7 +12,48 @@ export interface ButterflyEffectProps {
   data?: ButterflyStoryData;
 }
 
+/**
+ * Editorial shutter transition flash:
+ * Produces a subtle, crisp 3-frame film-gate flash when a new scene cuts,
+ * synchronized perfectly with the mechanical camera shutter click.
+ */
+const TransitionShutterFlash: React.FC<{ cutFrames: number[] }> = ({ cutFrames }) => {
+  const frame = useCurrentFrame();
+  const activeCut = cutFrames.find((f) => frame >= f && frame < f + 3);
+  if (activeCut === undefined) return null;
+  const elapsed = frame - activeCut;
+  const opacity = elapsed === 0 ? 0.32 : elapsed === 1 ? 0.12 : 0.03;
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundColor: '#ffffff',
+        opacity,
+        mixBlendMode: 'screen',
+        pointerEvents: 'none',
+        zIndex: 48,
+      }}
+    />
+  );
+};
+
 export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT_STORY }) => {
+  // Collect all cut frames for click SFX and shutter flashes
+  const cutFrames = useMemo(() => {
+    const cuts = [data.hook.durationFrames];
+    data.nodes.forEach((n) => {
+      if (n.startFrame > 0 && !cuts.includes(n.startFrame)) {
+        cuts.push(n.startFrame);
+      }
+    });
+    const outroStart = data.totalDurationFrames - data.outro.durationFrames;
+    if (!cuts.includes(outroStart)) {
+      cuts.push(outroStart);
+    }
+    return cuts;
+  }, [data]);
+
   return (
     <div
       style={{
@@ -85,10 +126,20 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         <OutroScene question={data.outro.question} />
       </Sequence>
 
-      {/* 4. Synchronized Floating Kinetic Subtitle (Stationary Phrase Paging) */}
+      {/* 4. Creator Transition Click Sound Effects (Crisp Camera Shutter Snap on Every Cut) */}
+      {cutFrames.map((cutF) => (
+        <Sequence key={`sfx-cut-${cutF}`} from={cutF} durationInFrames={8}>
+          <Audio src={staticFile('butterfly/sfx/camera_click.wav')} volume={0.65} />
+        </Sequence>
+      ))}
+
+      {/* 5. Editorial Shutter Transition Flash Overlay */}
+      <TransitionShutterFlash cutFrames={cutFrames} />
+
+      {/* 6. Synchronized Floating Kinetic Subtitle (Stationary Phrase Paging) */}
       <KineticSubtitle wordTimestamps={data.wordTimestamps} />
 
-      {/* 5. Voice Over Audio Track (127.96s) */}
+      {/* 7. Voice Over Audio Track (127.96s) */}
       {data.audioUrl && (
         <Audio src={staticFile(data.audioUrl)} volume={1.0} />
       )}

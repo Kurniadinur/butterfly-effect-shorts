@@ -47,13 +47,9 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Slow, cinematic camera movement
-  const scale = interpolate(frame, [0, durationFrames], [1.0, 1.12], { extrapolateRight: 'clamp' });
-  const panY = interpolate(frame, [0, durationFrames], [0, -20], { extrapolateRight: 'clamp' });
-
-  // Subtle hand-drawn boiling line jitter
-  const jitterX = Math.sin(Math.floor(frame / 2) * 4.3) * 1.5;
-  const jitterY = Math.cos(Math.floor(frame / 2) * 5.1) * 1.5;
+  // Rock-steady, smooth cinematic camera movement (Zero annoying jitter/shaking)
+  const scale = interpolate(frame, [0, durationFrames], [1.0, 1.08], { extrapolateRight: 'clamp' });
+  const panY = interpolate(frame, [0, durationFrames], [0, -12], { extrapolateRight: 'clamp' });
 
   // Stamp spring entrance
   const stampSpring = spring({
@@ -119,7 +115,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
         style={{
           position: 'absolute',
           inset: 0,
-          transform: `scale(${scale}) translateY(${panY}px) translate(${jitterX}px, ${jitterY}px)`,
+          transform: `scale(${scale}) translateY(${panY}px)`,
           transformOrigin: 'center center',
           display: 'flex',
           justifyContent: 'center',
@@ -285,7 +281,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           {type === 'schabowski-slip' && (
             <g>
               <rect x="140" y="900" width="800" height="600" fill="#0f172a" stroke="#475569" strokeWidth="5" rx="14" />
-              <g transform={`translate(${540 + jitterX * 2}, ${1040 + jitterY * 2}) rotate(18)`}>
+              <g transform="translate(540, 1040) rotate(18)">
                 <circle cx="-65" cy="0" r="48" fill="rgba(255,255,255,0.2)" stroke="#111827" strokeWidth="10" />
                 <circle cx="65" cy="0" r="48" fill="rgba(255,255,255,0.2)" stroke="#111827" strokeWidth="10" />
                 <path d="M -18 0 Q 0 -15 18 0" fill="none" stroke="#111827" strokeWidth="8" />
@@ -356,7 +352,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 {primaryText || locationTag || 'ALARM'}
               </text>
 
-              <g transform={`translate(${540 + jitterX * 2}, ${1080 + jitterY * 2})`}>
+              <g transform="translate(540, 1080)">
                 <rect x="-180" y="-120" width="360" height="240" fill="#1e293b" stroke="#dc2626" strokeWidth="5" rx="14" />
                 <circle cx="0" cy="0" r={45 + pulse * 15} fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="8 6" />
                 <circle cx="0" cy="0" r="30" fill="#dc2626" />
