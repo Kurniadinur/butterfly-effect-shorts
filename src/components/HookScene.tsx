@@ -4,28 +4,33 @@ import { Img, useCurrentFrame, staticFile, interpolate } from 'remotion';
 export interface HookSceneProps {
   leftTitle: string;
   rightTitle: string;
-  leftBadge?: string;
-  rightBadge?: string;
-  leftPrimaryText?: string;
-  leftSecondaryText?: string;
-  leftStampText?: string;
-  leftImage?: string;
-  rightImage?: string;
+  leftBadge?: string | null;
+  rightBadge?: string | null;
+  leftPrimaryText?: string | null;
+  leftSecondaryText?: string | null;
+  leftStampText?: string | null;
+  leftImage?: string | null;
+  rightImage?: string | null;
   durationFrames?: number;
 }
 
 export const HookScene: React.FC<HookSceneProps> = ({
   leftTitle,
   rightTitle,
-  leftBadge = '⚡ AWAL MULA SEPELE',
-  rightBadge = '🚨 BENCANA GLOBAL',
+  leftBadge: rawLeftBadge,
+  rightBadge: rawRightBadge,
   leftPrimaryText,
   leftSecondaryText,
-  leftStampText = 'BUKTI SEPELE',
-  leftImage = 'butterfly/media/memo_document.jpg',
-  rightImage = 'butterfly/media/wall_demolition.jpg',
+  leftStampText: rawLeftStampText,
+  leftImage: rawLeftImage,
+  rightImage: rawRightImage,
   durationFrames = 257,
 }) => {
+  const leftBadge = rawLeftBadge || '⚡ AWAL MULA SEPELE';
+  const rightBadge = rawRightBadge || '🚨 BENCANA GLOBAL';
+  const leftStampText = rawLeftStampText || 'BUKTI SEPELE';
+  const leftImage = rawLeftImage || 'butterfly/media/memo_document.jpg';
+  const rightImage = rawRightImage || 'butterfly/media/wall_demolition.jpg';
   const frame = useCurrentFrame();
 
   // 1. Rock-steady, continuous cinematic camera drift across the ENTIRE duration

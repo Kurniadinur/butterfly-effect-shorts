@@ -21,13 +21,13 @@ export interface DirectorGraphicSceneProps {
   subtitle: string;
   locationTag: string;
   durationFrames: number;
-  primaryText?: string;
-  secondaryText?: string;
-  stampText?: string;
-  quoteText?: string;
-  metricLabel?: string;
-  metricValue?: string;
-  accentColor?: string;
+  primaryText?: string | null;
+  secondaryText?: string | null;
+  stampText?: string | null;
+  quoteText?: string | null;
+  metricLabel?: string | null;
+  metricValue?: string | null;
+  accentColor?: string | null;
 }
 
 export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
@@ -42,14 +42,15 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
   quoteText,
   metricLabel,
   metricValue,
-  accentColor = '#ef4444',
+  accentColor: rawAccentColor = '#ef4444',
 }) => {
+  const accentColor = rawAccentColor || '#ef4444';
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   // Rock-steady, smooth cinematic camera movement (Zero annoying jitter/shaking)
-  const scale = interpolate(frame, [0, durationFrames], [1.0, 1.08], { extrapolateRight: 'clamp' });
-  const panY = interpolate(frame, [0, durationFrames], [0, -12], { extrapolateRight: 'clamp' });
+  const scale = interpolate(frame, [0, durationFrames], [1.0, 1.06], { extrapolateRight: 'clamp' });
+  const panY = interpolate(frame, [0, durationFrames], [0, -10], { extrapolateRight: 'clamp' });
 
   // Stamp spring entrance
   const stampSpring = spring({
@@ -76,7 +77,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
         overflow: 'hidden',
       }}
     >
-      {/* 1. Forensic Blueprint & Grid Background */}
+      {/* 1. Forensic Technical Grid Background */}
       <div
         style={{
           position: 'absolute',
@@ -110,7 +111,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
         <div>AI DIRECTOR ENGINE v3.0</div>
       </div>
 
-      {/* 2. Main Animated Graphics Canvas */}
+      {/* 2. Main Animated Graphics Canvas (Confined to upper-middle zone: y: 380 to 1180) */}
       <div
         style={{
           position: 'absolute',
@@ -147,27 +148,27 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           {/* SCENE A: BUREAUCRACY DRAFT (Dokumen Resmi di Meja)      */}
           {/* ======================================================== */}
           {type === 'bureaucracy-draft' && (
-            <g>
-              <rect x="100" y="680" width="880" height="920" fill="#0f172a" stroke="#334155" strokeWidth="4" rx="12" />
-              <g transform="translate(240, 780)">
-                <rect x="0" y="0" width="600" height="740" fill="#1e293b" stroke="#64748b" strokeWidth="4" rx="10" />
-                <path d="M 0 0 L 220 0 L 260 40 L 600 40 L 600 740 L 0 740 Z" fill="#334155" opacity="0.4" />
-                <rect x="40" y="70" width="520" height="620" fill="#f8fafc" stroke="#94a3b8" strokeWidth="2" rx="6" />
+            <g transform="translate(140, 420)">
+              <rect x="0" y="0" width="800" height="740" fill="#0f172a" stroke="#334155" strokeWidth="4" rx="14" />
+              <g transform="translate(100, 40)">
+                <rect x="0" y="0" width="600" height="660" fill="#1e293b" stroke="#64748b" strokeWidth="4" rx="10" />
+                <path d="M 0 0 L 220 0 L 260 40 L 600 40 L 600 660 L 0 660 Z" fill="#334155" opacity="0.4" />
+                <rect x="35" y="60" width="530" height="560" fill="#f8fafc" stroke="#94a3b8" strokeWidth="2" rx="6" />
 
-                <text x="70" y="130" fill="#0f172a" fontSize="22" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                <text x="60" y="115" fill="#0f172a" fontSize="22" fontWeight="900" fontFamily="'Montserrat', sans-serif">
                   {(primaryText || title || 'DOKUMEN RESMI').slice(0, 32)}
                 </text>
-                <text x="70" y="165" fill="#475569" fontSize="15" fontWeight="700" fontFamily="monospace">
+                <text x="60" y="145" fill="#475569" fontSize="14" fontWeight="700" fontFamily="monospace">
                   {secondaryText || subtitle || 'DRAF BIROKRASI FORMAL'}
                 </text>
-                <line x1="70" y1="185" x2="490" y2="185" stroke="#cbd5e1" strokeWidth="3" />
+                <line x1="60" y1="165" x2="500" y2="165" stroke="#cbd5e1" strokeWidth="3" />
 
-                {[220, 250, 280, 310, 340, 370, 420, 450, 480].map((y, idx) => (
+                {[200, 230, 260, 290, 320, 350, 390, 420, 450].map((y, idx) => (
                   <line
                     key={idx}
-                    x1="70"
+                    x1="60"
                     y1={y}
-                    x2={idx % 2 === 0 ? 490 : 430}
+                    x2={idx % 2 === 0 ? 500 : 440}
                     y2={y}
                     stroke="#94a3b8"
                     strokeWidth="4"
@@ -175,22 +176,15 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                   />
                 ))}
 
-                <g transform="translate(180, 480) rotate(-8)">
-                  <rect x="0" y="0" width="320" height="85" fill="rgba(220, 38, 38, 0.15)" stroke="#dc2626" strokeWidth="4" strokeDasharray="8 4" rx="6" />
-                  <text x="160" y="40" fill="#dc2626" fontSize="18" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                <g transform="translate(160, 460) rotate(-8)">
+                  <rect x="0" y="0" width="300" height="75" fill="rgba(220, 38, 38, 0.15)" stroke="#dc2626" strokeWidth="4" strokeDasharray="8 4" rx="6" />
+                  <text x="150" y="36" fill="#dc2626" fontSize="18" fontWeight="900" fontFamily="monospace" textAnchor="middle">
                     {stampText || 'CONFIDENTIAL'}
                   </text>
-                  <text x="160" y="66" fill="#dc2626" fontSize="13" fontWeight="700" fontFamily="monospace" textAnchor="middle">
+                  <text x="150" y="60" fill="#dc2626" fontSize="12" fontWeight="700" fontFamily="monospace" textAnchor="middle">
                     BIROKRASI KETAT
                   </text>
                 </g>
-              </g>
-
-              <g transform="translate(260, 1600)">
-                <rect x="0" y="0" width="560" height="70" fill="rgba(15, 23, 42, 0.95)" stroke="#64748b" strokeWidth="2" rx="8" />
-                <text x="280" y="42" fill="#cbd5e1" fontSize="16" fontWeight="800" fontFamily="'Montserrat', sans-serif" textAnchor="middle">
-                  {subtitle || 'DRAF KEPUTUSAN FORMAL'}
-                </text>
               </g>
             </g>
           )}
@@ -199,10 +193,10 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           {/* SCENE B: MEMO HANDOFF (Tangan Menyelipkan Kertas/Kunci)   */}
           {/* ======================================================== */}
           {type === 'memo-handoff' && (
-            <g>
-              <line x1="120" y1="1240" x2="960" y2="1240" stroke="#475569" strokeWidth="4" strokeDasharray="12 8" />
+            <g transform="translate(0, -320)">
+              <line x1="120" y1="1100" x2="960" y2="1100" stroke="#475569" strokeWidth="4" strokeDasharray="12 8" />
               <path
-                d="M 100 1350 Q 250 1280 400 1220 L 450 1210 L 480 1230 L 430 1260 Q 280 1340 120 1420 Z"
+                d="M 100 1200 Q 250 1130 400 1070 L 450 1060 L 480 1080 L 430 1110 Q 280 1190 120 1270 Z"
                 fill="rgba(30, 41, 59, 0.9)"
                 stroke="#94a3b8"
                 strokeWidth="5"
@@ -210,7 +204,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 strokeDashoffset={strokeProgress}
               />
               <path
-                d="M 980 1360 Q 820 1290 680 1230 L 630 1220 L 610 1240 L 650 1270 Q 790 1350 960 1430 Z"
+                d="M 980 1210 Q 820 1140 680 1080 L 630 1070 L 610 1090 L 650 1120 Q 790 1200 960 1280 Z"
                 fill="rgba(30, 41, 59, 0.9)"
                 stroke="#94a3b8"
                 strokeWidth="5"
@@ -218,29 +212,29 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 strokeDashoffset={strokeProgress}
               />
 
-              <g transform="translate(430, 1020) rotate(-6)">
-                <rect x="15" y="15" width="220" height="290" fill="rgba(0,0,0,0.6)" rx="6" />
-                <rect x="0" y="0" width="220" height="290" fill="#f8fafc" stroke="#ef4444" strokeWidth="4" rx="6" />
-                <rect x="25" y="30" width="170" height="42" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" strokeWidth="2" rx="4" />
-                <text x="110" y="58" fill="#ef4444" fontSize="18" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+              <g transform="translate(430, 880) rotate(-6)">
+                <rect x="15" y="15" width="220" height="280" fill="rgba(0,0,0,0.6)" rx="6" />
+                <rect x="0" y="0" width="220" height="280" fill="#f8fafc" stroke="#ef4444" strokeWidth="4" rx="6" />
+                <rect x="25" y="25" width="170" height="40" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" strokeWidth="2" rx="4" />
+                <text x="110" y="52" fill="#ef4444" fontSize="18" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
                   {stampText || 'TOP SECRET'}
                 </text>
-                <line x1="25" y1="100" x2="195" y2="100" stroke="#334155" strokeWidth="5" strokeLinecap="round" />
-                <line x1="25" y1="125" x2="185" y2="125" stroke="#334155" strokeWidth="4" strokeLinecap="round" />
-                <line x1="25" y1="150" x2="190" y2="150" stroke="#334155" strokeWidth="4" strokeLinecap="round" />
-                <line x1="25" y1="175" x2="140" y2="175" stroke="#334155" strokeWidth="4" strokeLinecap="round" />
+                <line x1="25" y1="90" x2="195" y2="90" stroke="#334155" strokeWidth="5" strokeLinecap="round" />
+                <line x1="25" y1="115" x2="185" y2="115" stroke="#334155" strokeWidth="4" strokeLinecap="round" />
+                <line x1="25" y1="140" x2="190" y2="140" stroke="#334155" strokeWidth="4" strokeLinecap="round" />
+                <line x1="25" y1="165" x2="140" y2="165" stroke="#334155" strokeWidth="4" strokeLinecap="round" />
               </g>
 
-              <path d="M 330 1140 C 400 1080 470 1060 550 1050" fill="none" stroke="#ef4444" strokeWidth="5" strokeDasharray="8 6" markerEnd="url(#dirArrow)" />
-              <circle cx="540" cy="1160" r={160 + pulse * 12} fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="14 10" />
+              <path d="M 330 1000 C 400 940 470 920 550 910" fill="none" stroke="#ef4444" strokeWidth="5" strokeDasharray="8 6" markerEnd="url(#dirArrow)" />
+              <circle cx="540" cy="1020" r={150 + pulse * 12} fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="14 10" />
 
-              <g transform="translate(480, 860)">
-                <rect x="0" y="0" width="510" height="85" fill="rgba(15, 23, 42, 0.96)" stroke="#ef4444" strokeWidth="3" rx="10" />
-                <text x="24" y="34" fill="#ef4444" fontSize="14" fontWeight="900" fontFamily="monospace" letterSpacing="1.5">
+              <g transform="translate(480, 750)">
+                <rect x="0" y="0" width="480" height="75" fill="rgba(15, 23, 42, 0.96)" stroke="#ef4444" strokeWidth="3" rx="10" />
+                <text x="24" y="30" fill="#ef4444" fontSize="14" fontWeight="900" fontFamily="monospace" letterSpacing="1.5">
                   [!] {primaryText || 'BUKTI FORENSIK UTAMA'}
                 </text>
-                <text x="24" y="64" fill="#f8fafc" fontSize="19" fontWeight="900" fontFamily="'Montserrat', sans-serif">
-                  {title.length > 30 ? title.slice(0, 30) + '...' : title}
+                <text x="24" y="58" fill="#f8fafc" fontSize="18" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                  {title.length > 28 ? title.slice(0, 28) + '...' : title}
                 </text>
               </g>
             </g>
@@ -250,11 +244,11 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           {/* SCENE C: PRESS QUESTION (Interogasi Mikrofon)            */}
           {/* ======================================================== */}
           {type === 'press-question' && (
-            <g>
-              <polygon points="540,650 320,1580 760,1580" fill="url(#spotlightDir)" opacity="0.25" />
-              <g transform="translate(460, 920)">
+            <g transform="translate(0, -280)">
+              <polygon points="540,650 320,1350 760,1350" fill="url(#spotlightDir)" opacity="0.25" />
+              <g transform="translate(460, 850)">
                 <circle cx="80" cy="50" r="42" fill="#1e293b" stroke="#e2e8f0" strokeWidth="4" />
-                <path d="M 30 110 L 130 110 L 160 380 L 0 380 Z" fill="#0f172a" stroke="#94a3b8" strokeWidth="4" />
+                <path d="M 30 110 L 130 110 L 160 320 L 0 320 Z" fill="#0f172a" stroke="#94a3b8" strokeWidth="4" />
                 <path d="M 120 150 Q 180 130 210 70 L 230 80 Q 190 170 140 190 Z" fill="#1e293b" stroke="#e2e8f0" strokeWidth="4" />
                 <rect x="215" y="45" width="22" height="40" fill="#f59e0b" rx="5" stroke="#ffffff" strokeWidth="2" />
                 <line x1="226" y1="85" x2="226" y2="120" stroke="#94a3b8" strokeWidth="4" />
@@ -262,13 +256,13 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 <circle cx="226" cy="65" r={50 + pulse * 30} fill="none" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6 6" opacity={0.8 - pulse * 0.7} />
               </g>
 
-              <g transform="translate(140, 820)">
-                <rect x="0" y="0" width="540" height="95" fill="rgba(15, 23, 42, 0.96)" stroke="#f59e0b" strokeWidth="3" rx="10" />
-                <polygon points="370,95 400,95 415,130" fill="#f59e0b" />
-                <text x="24" y="34" fill="#f59e0b" fontSize="13" fontWeight="bold" fontFamily="monospace" letterSpacing="1">
+              <g transform="translate(140, 760)">
+                <rect x="0" y="0" width="540" height="90" fill="rgba(15, 23, 42, 0.96)" stroke="#f59e0b" strokeWidth="3" rx="10" />
+                <polygon points="370,90 400,90 415,120" fill="#f59e0b" />
+                <text x="24" y="32" fill="#f59e0b" fontSize="13" fontWeight="bold" fontFamily="monospace" letterSpacing="1">
                   {locationTag || 'PERTANYAAN KRUSIAL'}
                 </text>
-                <text x="24" y="68" fill="#ffffff" fontSize="21" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                <text x="24" y="65" fill="#ffffff" fontSize="20" fontWeight="900" fontFamily="'Montserrat', sans-serif">
                   "{quoteText || title}"
                 </text>
               </g>
@@ -276,33 +270,79 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           )}
 
           {/* ======================================================== */}
-          {/* SCENE D: SCHABOWSKI SLIP (Kepanikan & Ucapan Fatal)      */}
+          {/* SCENE D: SCHABOWSKI SLIP (Audio Waveform & Transkrip)   */}
+          {/* Replaced weird cartoon circles with sleek forensic card */}
           {/* ======================================================== */}
           {type === 'schabowski-slip' && (
-            <g>
-              <rect x="140" y="900" width="800" height="600" fill="#0f172a" stroke="#475569" strokeWidth="5" rx="14" />
-              <g transform="translate(540, 1040) rotate(18)">
-                <circle cx="-65" cy="0" r="48" fill="rgba(255,255,255,0.2)" stroke="#111827" strokeWidth="10" />
-                <circle cx="65" cy="0" r="48" fill="rgba(255,255,255,0.2)" stroke="#111827" strokeWidth="10" />
-                <path d="M -18 0 Q 0 -15 18 0" fill="none" stroke="#111827" strokeWidth="8" />
-                <line x1="-113" y1="0" x2="-160" y2="-40" stroke="#111827" strokeWidth="7" />
-                <line x1="113" y1="0" x2="160" y2="-40" stroke="#111827" strokeWidth="7" />
+            <g transform="translate(120, 420)">
+              {/* Outer Dossier Container */}
+              <rect x="0" y="0" width="840" height="720" fill="#0b1120" stroke="#dc2626" strokeWidth="4" rx="16" />
+
+              {/* Red Alert Header Strip */}
+              <rect x="0" y="0" width="840" height="60" fill="#dc2626" rx="16" />
+              <rect x="0" y="44" width="840" height="16" fill="#dc2626" />
+              <text x="420" y="40" fill="#ffffff" fontSize="20" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="3">
+                🚨 TRANSKRIP FATAL SIARAN PERS LANGSUNG (18:57)
+              </text>
+
+              {/* Real Audio Waveform Oscilloscope Display */}
+              <g transform="translate(40, 90)">
+                <rect x="0" y="0" width="760" height="180" fill="#020617" stroke="#334155" strokeWidth="2" rx="10" />
+                <text x="20" y="30" fill="#64748b" fontSize="12" fontWeight="bold" fontFamily="monospace">
+                  AUDIO FREQUENCY SPECTROGRAM • EAST BERLIN TV FEED
+                </text>
+
+                {/* 24 Dynamic Audio Bars */}
+                {Array.from({ length: 24 }).map((_, i) => {
+                  const h = Math.abs(Math.sin(frame * 0.2 + i * 0.45)) * 95 + 18;
+                  const barX = 40 + i * 29;
+                  const isPeak = h > 85;
+                  return (
+                    <rect
+                      key={i}
+                      x={barX}
+                      y={150 - h}
+                      width="18"
+                      height={h}
+                      fill={isPeak ? '#ef4444' : '#38bdf8'}
+                      rx="3"
+                      opacity={0.85 + Math.sin(frame * 0.3 + i) * 0.15}
+                    />
+                  );
+                })}
               </g>
 
-              <g transform="translate(180, 1340)">
-                <rect x="0" y="0" width="720" height="110" fill="#dc2626" stroke="#ffffff" strokeWidth="4" rx="10" />
-                <text x="360" y="44" fill="#ffffff" fontSize="18" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
-                  "{secondaryText || 'UCAPAN FATAL PENENTU SEJARAH'}"
+              {/* Official Quote Paper Container */}
+              <g transform="translate(40, 300)">
+                <rect x="0" y="0" width="760" height="260" fill="#1e293b" stroke="#475569" strokeWidth="3" rx="10" />
+
+                <rect x="30" y="25" width="260" height="34" fill="#dc2626" rx="4" />
+                <text x="160" y="48" fill="#ffffff" fontSize="13" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="1.5">
+                  UCAPAN ASLI GÜNTER SCHABOWSKI
                 </text>
-                <text x="360" y="85" fill="#FFE600" fontSize="28" fontWeight="900" fontFamily="'Montserrat', sans-serif" textAnchor="middle">
-                  {quoteText || title}
+
+                <text x="30" y="105" fill="#FFE600" fontSize="26" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                  "Das tritt nach meiner Kenntnis..."
+                </text>
+                <text x="30" y="145" fill="#f8fafc" fontSize="28" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                  "...ist das sofort, unverzüglich!"
+                </text>
+
+                <line x1="30" y1="175" x2="730" y2="175" stroke="#334155" strokeWidth="2" strokeDasharray="6 4" />
+
+                <text x="30" y="215" fill="#38bdf8" fontSize="20" fontWeight="900" fontFamily="monospace">
+                  ARTI: "SEGERA, TANPA PENUNDAAN!"
                 </text>
               </g>
 
-              <g transform="translate(700, 920)">
-                <rect x="0" y="0" width="220" height="46" fill="#0f172a" stroke="#f59e0b" strokeWidth="2" rx="6" />
-                <text x="110" y="30" fill="#f59e0b" fontSize="15" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
-                  {primaryText || locationTag || 'DETIK PALING FATAL'}
+              {/* Stamp of Doom */}
+              <g transform="translate(560, 560) rotate(-8)">
+                <rect x="0" y="0" width="240" height="65" fill="rgba(220, 38, 38, 0.2)" stroke="#ef4444" strokeWidth="4" strokeDasharray="8 4" rx="6" />
+                <text x="120" y="32" fill="#ef4444" fontSize="18" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="3">
+                  SEKETIKA FATAL
+                </text>
+                <text x="120" y="52" fill="#ef4444" fontSize="12" fontWeight="700" fontFamily="monospace" textAnchor="middle">
+                  GERBANG BUKA 4 JAM
                 </text>
               </g>
             </g>
@@ -312,27 +352,27 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           {/* SCENE E: BREAKING NEWS (TV Siaran Darurat)               */}
           {/* ======================================================== */}
           {type === 'breaking-news' && (
-            <g>
-              <rect x="80" y="680" width="920" height="880" fill="#0f172a" stroke="#475569" strokeWidth="8" rx="28" />
-              <rect x="120" y="720" width="840" height="800" fill="#020617" stroke="#1e293b" strokeWidth="4" rx="20" />
+            <g transform="translate(100, 420)">
+              <rect x="0" y="0" width="880" height="740" fill="#0f172a" stroke="#475569" strokeWidth="8" rx="28" />
+              <rect x="30" y="30" width="820" height="680" fill="#020617" stroke="#1e293b" strokeWidth="4" rx="20" />
 
-              <g transform="translate(540, 980)">
-                <path d="M 0 -120 L -60 140 L 60 140 Z" fill="none" stroke="#38bdf8" strokeWidth="4" />
-                <circle cx="0" cy="-120" r="16" fill="#ef4444" />
-                <circle cx="0" cy="-120" r={40 + pulse * 60} fill="none" stroke="#ef4444" strokeWidth="4" opacity={1 - pulse * 0.8} />
-                <circle cx="0" cy="-120" r={80 + pulse * 90} fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="8 6" opacity={0.8 - pulse * 0.8} />
+              <g transform="translate(440, 260)">
+                <path d="M 0 -100 L -50 120 L 50 120 Z" fill="none" stroke="#38bdf8" strokeWidth="4" />
+                <circle cx="0" cy="-100" r="14" fill="#ef4444" />
+                <circle cx="0" cy="-100" r={35 + pulse * 50} fill="none" stroke="#ef4444" strokeWidth="4" opacity={1 - pulse * 0.8} />
+                <circle cx="0" cy="-100" r={70 + pulse * 80} fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="8 6" opacity={0.8 - pulse * 0.8} />
               </g>
 
-              <g transform="translate(120, 1260)">
-                <rect x="0" y="0" width="840" height="70" fill="#dc2626" />
-                <text x="30" y="44" fill="#ffffff" fontSize="24" fontWeight="900" fontFamily="monospace" letterSpacing="3">
+              <g transform="translate(30, 520)">
+                <rect x="0" y="0" width="820" height="60" fill="#dc2626" />
+                <text x="30" y="38" fill="#ffffff" fontSize="22" fontWeight="900" fontFamily="monospace" letterSpacing="3">
                   🔴 {primaryText || 'BREAKING NEWS // SIARAN DARURAT'}
                 </text>
-                <rect x="0" y="70" width="840" height="110" fill="rgba(15, 23, 42, 0.96)" />
-                <text x="30" y="118" fill="#FFE600" fontSize="28" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                <rect x="0" y="60" width="820" height="130" fill="rgba(15, 23, 42, 0.96)" />
+                <text x="30" y="105" fill="#FFE600" fontSize="26" fontWeight="900" fontFamily="'Montserrat', sans-serif">
                   {title}
                 </text>
-                <text x="30" y="155" fill="#f8fafc" fontSize="17" fontWeight="700" fontFamily="monospace">
+                <text x="30" y="145" fill="#f8fafc" fontSize="16" fontWeight="700" fontFamily="monospace">
                   {subtitle}
                 </text>
               </g>
@@ -343,16 +383,16 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           {/* SCENE F: PANIC PHONE (Telepon Darurat Pos Penjagaan)      */}
           {/* ======================================================== */}
           {type === 'panic-phone' && (
-            <g>
-              <rect x="180" y="720" width="720" height="680" fill="rgba(10, 15, 25, 0.9)" stroke="#475569" strokeWidth="6" rx="12" />
-              <circle cx="780" cy="850" r="50" fill="#0f172a" stroke="#ef4444" strokeWidth="4" />
-              <line x1="780" y1="850" x2="780" y2="815" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" />
-              <line x1="780" y1="850" x2="805" y2="865" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" />
-              <text x="780" y="925" fill="#ef4444" fontSize="14" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
+            <g transform="translate(140, 430)">
+              <rect x="0" y="0" width="800" height="720" fill="rgba(10, 15, 25, 0.95)" stroke="#475569" strokeWidth="6" rx="14" />
+              <circle cx="680" cy="120" r="45" fill="#0f172a" stroke="#ef4444" strokeWidth="4" />
+              <line x1="680" y1="120" x2="680" y2="90" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" />
+              <line x1="680" y1="120" x2="705" y2="135" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" />
+              <text x="680" y="185" fill="#ef4444" fontSize="13" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
                 {primaryText || locationTag || 'ALARM'}
               </text>
 
-              <g transform="translate(540, 1080)">
+              <g transform="translate(400, 360)">
                 <rect x="-180" y="-120" width="360" height="240" fill="#1e293b" stroke="#dc2626" strokeWidth="5" rx="14" />
                 <circle cx="0" cy="0" r={45 + pulse * 15} fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="8 6" />
                 <circle cx="0" cy="0" r="30" fill="#dc2626" />
@@ -361,12 +401,12 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 </text>
               </g>
 
-              <g transform="translate(180, 1340)">
-                <rect x="0" y="0" width="720" height="90" fill="#dc2626" stroke="#ffffff" strokeWidth="3" rx="8" />
-                <text x="360" y="38" fill="#ffffff" fontSize="16" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+              <g transform="translate(40, 560)">
+                <rect x="0" y="0" width="720" height="110" fill="#dc2626" stroke="#ffffff" strokeWidth="3" rx="8" />
+                <text x="360" y="44" fill="#ffffff" fontSize="16" fontWeight="900" fontFamily="monospace" textAnchor="middle">
                   {secondaryText || 'DARURAT // TENTARA TANPA PERINTAH'}
                 </text>
-                <text x="360" y="70" fill="#ffffff" fontSize="22" fontWeight="900" fontFamily="'Montserrat', sans-serif" textAnchor="middle">
+                <text x="360" y="85" fill="#ffffff" fontSize="22" fontWeight="900" fontFamily="'Montserrat', sans-serif" textAnchor="middle">
                   {title}
                 </text>
               </g>
@@ -377,32 +417,32 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           {/* SCENE G: SOVIET COLLAPSE (Peta Geopolitik Pecah)         */}
           {/* ======================================================== */}
           {type === 'soviet-collapse' && (
-            <g>
-              <g transform="translate(200, 780)">
-                <rect x="0" y="0" width="680" height="540" fill="rgba(15, 23, 42, 0.9)" stroke="#ef4444" strokeWidth="3" strokeDasharray="10 8" rx="12" />
+            <g transform="translate(140, 420)">
+              <rect x="0" y="0" width="800" height="720" fill="rgba(15, 23, 42, 0.95)" stroke="#ef4444" strokeWidth="3" strokeDasharray="10 8" rx="14" />
+              <g transform="translate(80, 50)">
                 {[
-                  [120, 180, 'ZONE A'],
-                  [150, 220, 'ZONE B'],
-                  [180, 370, 'ZONE C'],
-                  [300, 390, 'ZONE D'],
-                  [420, 350, 'ZONE E'],
-                  [480, 220, 'CENTER'],
+                  [120, 160, 'ZONE A'],
+                  [160, 210, 'ZONE B'],
+                  [190, 340, 'ZONE C'],
+                  [320, 370, 'ZONE D'],
+                  [440, 330, 'ZONE E'],
+                  [500, 200, 'MOSCOW'],
                 ].map(([cx, cy, label], idx) => (
                   <g key={idx} transform={`translate(${cx}, ${cy})`}>
-                    <circle cx="0" cy="0" r="10" fill="#FFE600" stroke="#000" strokeWidth="2" />
-                    <text x="14" y="5" fill="#f8fafc" fontSize="12" fontWeight="bold" fontFamily="monospace">
+                    <circle cx="0" cy="0" r="12" fill="#FFE600" stroke="#000" strokeWidth="2" />
+                    <text x="18" y="6" fill="#f8fafc" fontSize="13" fontWeight="bold" fontFamily="monospace">
                       {label}
                     </text>
                   </g>
                 ))}
               </g>
 
-              <g transform="translate(180, 1380)">
-                <rect x="0" y="0" width="720" height="95" fill="rgba(15, 23, 42, 0.96)" stroke="#ef4444" strokeWidth="3" rx="10" />
-                <text x="360" y="38" fill="#ef4444" fontSize="16" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+              <g transform="translate(40, 560)">
+                <rect x="0" y="0" width="720" height="110" fill="rgba(15, 23, 42, 0.98)" stroke="#ef4444" strokeWidth="3" rx="10" />
+                <text x="360" y="44" fill="#ef4444" fontSize="16" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
                   {primaryText || 'DOMINO EFFECT // RUNTUHNYA KEKUATAN'}
                 </text>
-                <text x="360" y="72" fill="#ffffff" fontSize="24" fontWeight="900" fontFamily="'Montserrat', sans-serif" textAnchor="middle">
+                <text x="360" y="85" fill="#ffffff" fontSize="22" fontWeight="900" fontFamily="'Montserrat', sans-serif" textAnchor="middle">
                   {title}
                 </text>
               </g>
@@ -413,40 +453,30 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           {/* SCENE H: TACTICAL MAP / RADAR INCIDENT                   */}
           {/* ======================================================== */}
           {type === 'tactical-map' && (
-            <g transform="translate(140, 720)">
-              <circle cx="400" cy="400" r="360" fill="#09131f" stroke="#38bdf8" strokeWidth="4" />
-              <circle cx="400" cy="400" r="260" fill="none" stroke="rgba(56, 189, 248, 0.4)" strokeWidth="2" strokeDasharray="6 6" />
-              <circle cx="400" cy="400" r="150" fill="none" stroke="rgba(56, 189, 248, 0.5)" strokeWidth="2" />
-              <circle cx="400" cy="400" r="50" fill="none" stroke="rgba(56, 189, 248, 0.7)" strokeWidth="2" />
+            <g transform="translate(180, 430)">
+              <circle cx="360" cy="360" r="340" fill="#09131f" stroke="#38bdf8" strokeWidth="4" />
+              <circle cx="360" cy="360" r="240" fill="none" stroke="rgba(56, 189, 248, 0.4)" strokeWidth="2" strokeDasharray="6 6" />
+              <circle cx="360" cy="360" r="140" fill="none" stroke="rgba(56, 189, 248, 0.5)" strokeWidth="2" />
+              <circle cx="360" cy="360" r="45" fill="none" stroke="rgba(56, 189, 248, 0.7)" strokeWidth="2" />
 
-              <line x1="40" y1="400" x2="760" y2="400" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="2" />
-              <line x1="400" y1="40" x2="400" y2="760" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="2" />
+              <line x1="20" y1="360" x2="700" y2="360" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="2" />
+              <line x1="360" y1="20" x2="360" y2="700" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="2" />
 
               <line
-                x1="400"
-                y1="400"
-                x2={400 + Math.cos(frame * 0.08) * 350}
-                y2={400 + Math.sin(frame * 0.08) * 350}
+                x1="360"
+                y1="360"
+                x2={360 + Math.cos(frame * 0.08) * 330}
+                y2={360 + Math.sin(frame * 0.08) * 330}
                 stroke="#38bdf8"
                 strokeWidth="4"
                 opacity="0.9"
               />
 
-              <circle cx="480" cy="320" r={20 + pulse * 25} fill="none" stroke="#ef4444" strokeWidth="3" opacity={1 - pulse * 0.8} />
-              <circle cx="480" cy="320" r="10" fill="#ef4444" />
-              <text x="505" y="325" fill="#ef4444" fontSize="16" fontWeight="bold" fontFamily="monospace">
+              <circle cx="440" cy="280" r={20 + pulse * 25} fill="none" stroke="#ef4444" strokeWidth="3" opacity={1 - pulse * 0.8} />
+              <circle cx="440" cy="280" r="10" fill="#ef4444" />
+              <text x="465" y="285" fill="#ef4444" fontSize="16" fontWeight="bold" fontFamily="monospace">
                 {secondaryText || 'TARGET EPICENTER'}
               </text>
-
-              <g transform="translate(40, 800)">
-                <rect x="0" y="0" width="720" height="90" fill="rgba(15, 23, 42, 0.95)" stroke="#38bdf8" strokeWidth="2" rx="8" />
-                <text x="360" y="36" fill="#38bdf8" fontSize="15" fontWeight="bold" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
-                  {primaryText || 'TACTICAL SURVEILLANCE • LIVE VECTOR'}
-                </text>
-                <text x="360" y="68" fill="#ffffff" fontSize="20" fontWeight="900" fontFamily="'Montserrat', sans-serif" textAnchor="middle">
-                  {title}
-                </text>
-              </g>
             </g>
           )}
 
@@ -454,18 +484,18 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           {/* SCENE I: CRITICAL GAUGE / OVERLOAD HAZARD                */}
           {/* ======================================================== */}
           {type === 'critical-gauge' && (
-            <g transform="translate(140, 720)">
-              <rect x="0" y="0" width="800" height="800" fill="#0b0f19" stroke="#ef4444" strokeWidth="4" rx="16" />
+            <g transform="translate(140, 420)">
+              <rect x="0" y="0" width="800" height="740" fill="#0b0f19" stroke="#ef4444" strokeWidth="4" rx="16" />
 
               <rect x="10" y="10" width="780" height="40" fill="#f59e0b" />
               <text x="400" y="36" fill="#000000" fontSize="17" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="3">
                 ⚠ {primaryText || 'HAZARD LEVEL CRITICAL // SYSTEM OVERLOAD'} ⚠
               </text>
 
-              <g transform="translate(400, 420)">
-                <circle cx="0" cy="0" r="220" fill="#1e293b" stroke="#64748b" strokeWidth="6" />
-                <path d="M 0 -220 A 220 220 0 0 1 220 0" fill="none" stroke="#ef4444" strokeWidth="24" strokeLinecap="round" />
-                <path d="M -220 0 A 220 220 0 0 1 0 -220" fill="none" stroke="#f59e0b" strokeWidth="16" />
+              <g transform="translate(400, 390)">
+                <circle cx="0" cy="0" r="200" fill="#1e293b" stroke="#64748b" strokeWidth="6" />
+                <path d="M 0 -200 A 200 200 0 0 1 200 0" fill="none" stroke="#ef4444" strokeWidth="22" strokeLinecap="round" />
+                <path d="M -200 0 A 200 200 0 0 1 0 -200" fill="none" stroke="#f59e0b" strokeWidth="16" />
 
                 {(() => {
                   const needleAngle = 30 + Math.sin(frame * 0.9) * 12;
@@ -474,27 +504,20 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                     <line
                       x1="0"
                       y1="0"
-                      x2={Math.cos(rad) * 190}
-                      y2={Math.sin(rad) * 190}
+                      x2={Math.cos(rad) * 170}
+                      y2={Math.sin(rad) * 170}
                       stroke="#ef4444"
                       strokeWidth="8"
                       strokeLinecap="round"
                     />
                   );
                 })()}
-                <circle cx="0" cy="0" r="18" fill="#ffffff" stroke="#000" strokeWidth="4" />
-                <text x="0" y="80" fill="#ef4444" fontSize="32" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                <circle cx="0" cy="0" r="16" fill="#ffffff" stroke="#000" strokeWidth="4" />
+                <text x="0" y="70" fill="#ef4444" fontSize="30" fontWeight="900" fontFamily="monospace" textAnchor="middle">
                   {metricValue || '98.7%'}
                 </text>
-                <text x="0" y="115" fill="#94a3b8" fontSize="15" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
+                <text x="0" y="105" fill="#94a3b8" fontSize="14" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
                   {metricLabel || 'MAX THRESHOLD EXCEEDED'}
-                </text>
-              </g>
-
-              <g transform="translate(40, 710)">
-                <rect x="0" y="0" width="720" height="70" fill="#dc2626" rx="8" opacity={0.85 + pulse * 0.15} />
-                <text x="360" y="44" fill="#ffffff" fontSize="21" fontWeight="900" fontFamily="'Montserrat', sans-serif" textAnchor="middle">
-                  {title}
                 </text>
               </g>
             </g>
@@ -504,9 +527,9 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           {/* SCENE J: BREAKING TICKER / GLOBAL BROADCAST               */}
           {/* ======================================================== */}
           {type === 'breaking-ticker' && (
-            <g transform="translate(140, 720)">
-              <rect x="0" y="0" width="800" height="780" fill="#0a0e17" stroke="#334155" strokeWidth="6" rx="18" />
-              <rect x="30" y="30" width="740" height="580" fill="#0f172a" stroke="#1e293b" strokeWidth="3" rx="10" />
+            <g transform="translate(140, 420)">
+              <rect x="0" y="0" width="800" height="740" fill="#0a0e17" stroke="#334155" strokeWidth="6" rx="18" />
+              <rect x="30" y="30" width="740" height="540" fill="#0f172a" stroke="#1e293b" strokeWidth="3" rx="10" />
 
               <g transform="translate(60, 70)">
                 <circle cx="12" cy="12" r="10" fill="#ef4444" />
@@ -516,19 +539,19 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               </g>
 
               <path
-                d={`M 60 320 Q 200 ${320 + Math.sin(frame * 0.3) * 60}, 400 320 T 740 320`}
+                d={`M 60 280 Q 200 ${280 + Math.sin(frame * 0.3) * 60}, 400 280 T 740 280`}
                 fill="none"
                 stroke="#38bdf8"
                 strokeWidth="4"
               />
 
-              <g transform="translate(30, 630)">
-                <rect x="0" y="0" width="740" height="110" fill="#dc2626" rx="8" />
-                <rect x="0" y="0" width="220" height="110" fill="#991b1b" rx="8" />
-                <text x="110" y="65" fill="#ffffff" fontSize="20" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+              <g transform="translate(30, 590)">
+                <rect x="0" y="0" width="740" height="100" fill="#dc2626" rx="8" />
+                <rect x="0" y="0" width="220" height="100" fill="#991b1b" rx="8" />
+                <text x="110" y="60" fill="#ffffff" fontSize="20" fontWeight="900" fontFamily="monospace" textAnchor="middle">
                   {secondaryText || 'URGENT'}
                 </text>
-                <text x="240" y="65" fill="#ffffff" fontSize="22" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                <text x="240" y="60" fill="#ffffff" fontSize="22" fontWeight="900" fontFamily="'Montserrat', sans-serif">
                   {title}
                 </text>
               </g>
@@ -551,45 +574,43 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               'critical-gauge',
               'breaking-ticker',
             ].includes(type))) && (
-            <g transform="translate(140, 720)">
-              <rect x="0" y="0" width="800" height="820" fill="#1e293b" stroke="#475569" strokeWidth="4" rx="14" />
-              <path d="M 0 0 L 260 0 L 300 45 L 800 45 L 800 820 L 0 820 Z" fill="#334155" opacity="0.5" />
+            <g transform="translate(140, 420)">
+              <rect x="0" y="0" width="800" height="740" fill="#1e293b" stroke="#475569" strokeWidth="4" rx="14" />
+              <path d="M 0 0 L 260 0 L 300 45 L 800 45 L 800 740 L 0 740 Z" fill="#334155" opacity="0.5" />
 
-              <rect x="40" y="70" width="720" height="710" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" rx="8" />
-              <rect x="80" y="45" width="24" height="85" fill="none" stroke="#94a3b8" strokeWidth="5" rx="10" />
+              <rect x="40" y="65" width="720" height="630" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" rx="8" />
+              <rect x="80" y="45" width="24" height="75" fill="none" stroke="#94a3b8" strokeWidth="5" rx="10" />
 
-              <text x="130" y="130" fill="#0f172a" fontSize="26" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+              <text x="130" y="115" fill="#0f172a" fontSize="24" fontWeight="900" fontFamily="'Montserrat', sans-serif">
                 {primaryText || 'DEKLASIFIKASI BERKAS PENYELIDIKAN'}
               </text>
-              <text x="130" y="165" fill="#475569" fontSize="16" fontWeight="700" fontFamily="monospace">
+              <text x="130" y="145" fill="#475569" fontSize="15" fontWeight="700" fontFamily="monospace">
                 KASUS: {locationTag || 'EFEK DOMINO SEJARAH'}
               </text>
-              <line x1="80" y1="190" x2="680" y2="190" stroke="#cbd5e1" strokeWidth="3" />
+              <line x1="80" y1="170" x2="680" y2="170" stroke="#cbd5e1" strokeWidth="3" />
 
-              <rect x="80" y="220" width="600" height="120" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="2" rx="6" />
-              <text x="110" y="270" fill="#0f172a" fontSize="24" fontWeight="900" fontFamily="'Montserrat', sans-serif">
-                {title.length > 32 ? title.slice(0, 32) + '...' : title}
+              <rect x="80" y="195" width="600" height="110" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="2" rx="6" />
+              <text x="110" y="245" fill="#0f172a" fontSize="22" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                {title}
               </text>
-              <text x="110" y="310" fill="#475569" fontSize="16" fontWeight="600" fontFamily="monospace">
-                LOKASI: {locationTag}
+              <text x="110" y="278" fill="#64748b" fontSize="14" fontWeight="700" fontFamily="monospace">
+                TEMUAN FORENSIK RESMI
               </text>
 
-              <g transform="translate(80, 370)">
-                <rect x="0" y="0" width="600" height="280" fill="#0f172a" stroke="#334155" strokeWidth="2" rx="6" />
-                <line x1="0" y1="140" x2="600" y2="140" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" strokeDasharray="4 4" />
-                <line x1="300" y1="0" x2="300" y2="280" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" strokeDasharray="4 4" />
-                <circle cx="300" cy="140" r="70" fill="none" stroke="#FFE600" strokeWidth="2" />
-                <text x="300" y="145" fill="#FFE600" fontSize="16" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
+              <g transform="translate(100, 340)">
+                <line x1="0" y1="0" x2="600" y2="0" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" strokeDasharray="4 4" />
+                <circle cx="300" cy="110" r="55" fill="none" stroke="#FFE600" strokeWidth="2" />
+                <text x="300" y="115" fill="#FFE600" fontSize="15" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
                   REKA KEJADIAN FORENSIK
                 </text>
-                <text x="300" y="175" fill="#94a3b8" fontSize="13" fontFamily="monospace" textAnchor="middle">
+                <text x="300" y="140" fill="#94a3b8" fontSize="12" fontFamily="monospace" textAnchor="middle">
                   {subtitle || 'BUKTI MATERIL & CHRONO-TRACE'}
                 </text>
               </g>
 
-              <g transform={`translate(420, 640) rotate(-12)`} opacity={stampSpring}>
-                <rect x="-15" y="-12" width="270" height="60" fill="none" stroke="#ef4444" strokeWidth="4" rx="4" />
-                <text x="120" y="30" fill="#ef4444" fontSize="22" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="4">
+              <g transform={`translate(420, 560) rotate(-10)`} opacity={stampSpring}>
+                <rect x="-15" y="-12" width="260" height="55" fill="none" stroke="#ef4444" strokeWidth="4" rx="4" />
+                <text x="115" y="26" fill="#ef4444" fontSize="20" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="4">
                   {stampText || 'TOP SECRET'}
                 </text>
               </g>
@@ -598,7 +619,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
         </svg>
       </div>
 
-      {/* 3. Bottom Film Vignette & Shadow Gradient for Subtitles */}
+      {/* 3. Bottom Film Vignette & Shadow Gradient for Subtitles (Ensures 100% legibility) */}
       <div
         style={{
           position: 'absolute',

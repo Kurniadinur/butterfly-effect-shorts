@@ -21,17 +21,17 @@ export interface ButterflyNode {
   chaosLevel: number; // 0 to 100
   mediaType: 'photo' | 'broll' | 'graphic';
   mediaUrl: string;
-  directorType?: DirectorSceneType | string;
+  directorType?: DirectorSceneType | string | null;
   zoomDirection?: ZoomDirection;
-  primaryText?: string;
-  secondaryText?: string;
-  stampText?: string;
-  quoteText?: string;
-  metricLabel?: string;
-  metricValue?: string;
-  accentColor?: string;
+  primaryText?: string | null;
+  secondaryText?: string | null;
+  stampText?: string | null;
+  quoteText?: string | null;
+  metricLabel?: string | null;
+  metricValue?: string | null;
+  accentColor?: string | null;
   caption: string;
-  sfxTrigger?: string;
+  sfxTrigger?: string | null;
   startFrame: number;
   durationFrames: number;
 }
@@ -47,16 +47,16 @@ export interface ButterflyStoryData {
   id: string;
   title: string;
   hook: {
-    archetype?: string;
+    archetype?: string | null;
     narration: string;
     leftTitle: string;
     rightTitle: string;
-    leftBadge?: string;
-    rightBadge?: string;
-    leftPrimaryText?: string;
-    leftStampText?: string;
-    leftImage?: string;
-    rightImage?: string;
+    leftBadge?: string | null;
+    rightBadge?: string | null;
+    leftPrimaryText?: string | null;
+    leftStampText?: string | null;
+    leftImage?: string | null;
+    rightImage?: string | null;
     durationFrames: number;
   };
   nodes: ButterflyNode[];
