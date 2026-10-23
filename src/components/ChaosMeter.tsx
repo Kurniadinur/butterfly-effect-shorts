@@ -1,113 +1,82 @@
 import React from 'react';
-import { useCurrentFrame, interpolate } from 'remotion';
 
 interface ChaosMeterProps {
-  chaosLevel: number; // 0 to 100
+  chaosLevel: number;
   timeOrYear: string;
 }
 
 export const ChaosMeter: React.FC<ChaosMeterProps> = ({ chaosLevel, timeOrYear }) => {
-  const frame = useCurrentFrame();
-
-  // Color mapping based on chaos level
-  let themeColor = '#10b981'; // emerald green
-  let statusText = 'STABIL';
-  if (chaosLevel >= 75) {
-    themeColor = '#ef4444'; // red
-    statusText = 'BENCANA GLOBAL';
-  } else if (chaosLevel >= 45) {
-    themeColor = '#f59e0b'; // amber/orange
-    statusText = 'ESKALASI CEPAT';
-  } else if (chaosLevel >= 20) {
-    themeColor = '#38bdf8'; // sky blue
-    statusText = 'ANOMALI TERDETEKSI';
-  }
-
-  // Blinking dot animation
-  const dotOpacity = interpolate(Math.sin(frame * 0.15), [-1, 1], [0.3, 1]);
-
   return (
     <div
       style={{
         position: 'absolute',
-        top: '70px',
+        top: '75px',
         left: '60px',
         right: '60px',
         zIndex: 40,
-        fontFamily: "'Space Grotesk', 'JetBrains Mono', sans-serif",
+        fontFamily: "'Space Grotesk', -apple-system, sans-serif",
       }}
     >
-      {/* Top Header Row */}
+      {/* Top Editorial Row */}
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '12px',
+          paddingBottom: '12px',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
         }}
       >
-        {/* Left Status Indicator */}
+        {/* Left: Declassified Archive Tag */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div
-            style={{
-              width: '12px',
-              height: '12px',
-              borderRadius: '50%',
-              backgroundColor: themeColor,
-              opacity: dotOpacity,
-              boxShadow: `0 0 12px ${themeColor}`,
-            }}
-          />
           <span
             style={{
-              fontSize: '22px',
-              fontWeight: 700,
-              letterSpacing: '2px',
-              color: themeColor,
+              backgroundColor: '#dc2626',
+              color: '#ffffff',
+              fontSize: '15px',
+              fontWeight: 800,
+              padding: '3px 10px',
+              borderRadius: '3px',
+              letterSpacing: '1.5px',
               textTransform: 'uppercase',
             }}
           >
-            CHAOS INDEX: {Math.round(chaosLevel)}%
+            ARSIP SEJARAH
           </span>
           <span
             style={{
-              fontSize: '18px',
-              color: '#94a3b8',
-              backgroundColor: 'rgba(255, 255, 255, 0.08)',
-              padding: '2px 8px',
-              borderRadius: '4px',
+              fontSize: '17px',
+              color: 'rgba(255, 255, 255, 0.7)',
               fontWeight: 600,
+              letterSpacing: '0.5px',
             }}
           >
-            {statusText}
+            BERKAS NO. 1989-11
           </span>
         </div>
 
-        {/* Right Timestamp */}
+        {/* Right: Date & Time Stamp */}
         <div
           style={{
-            fontSize: '22px',
+            fontSize: '18px',
             fontWeight: 700,
             color: '#f8fafc',
-            backgroundColor: 'rgba(15, 23, 42, 0.7)',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            padding: '6px 14px',
-            borderRadius: '6px',
-            letterSpacing: '1px',
+            letterSpacing: '0.5px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
           }}
         >
-          ⏱ {timeOrYear}
+          <span>⏱</span> {timeOrYear}
         </div>
       </div>
 
-      {/* Progress Bar Track */}
+      {/* Minimalist Timeline Line */}
       <div
         style={{
           width: '100%',
-          height: '10px',
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          borderRadius: '5px',
-          overflow: 'hidden',
+          height: '3px',
+          backgroundColor: 'rgba(255, 255, 255, 0.08)',
           position: 'relative',
         }}
       >
@@ -115,10 +84,8 @@ export const ChaosMeter: React.FC<ChaosMeterProps> = ({ chaosLevel, timeOrYear }
           style={{
             width: `${Math.min(100, Math.max(0, chaosLevel))}%`,
             height: '100%',
-            backgroundColor: themeColor,
-            boxShadow: `0 0 16px ${themeColor}`,
+            backgroundColor: chaosLevel >= 75 ? '#ef4444' : '#e2e8f0',
             transition: 'width 0.3s ease-out',
-            borderRadius: '5px',
           }}
         />
       </div>

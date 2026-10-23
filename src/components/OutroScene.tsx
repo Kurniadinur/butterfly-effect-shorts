@@ -12,16 +12,16 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
   const entrance = spring({
     frame,
     fps,
-    config: { damping: 12, mass: 0.8 },
+    config: { damping: 16, mass: 0.8 },
   });
 
   return (
     <div
       style={{
         position: 'absolute',
-        top: '360px',
-        left: '70px',
-        right: '70px',
+        top: '320px',
+        left: '60px',
+        right: '60px',
         zIndex: 30,
         transform: `scale(${entrance})`,
         opacity: entrance,
@@ -33,53 +33,51 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
     >
       <div
         style={{
-          width: '90px',
-          height: '90px',
-          borderRadius: '50%',
-          backgroundColor: '#ef4444',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: '48px',
-          fontWeight: 900,
-          color: '#ffffff',
-          boxShadow: '0 0 40px rgba(239, 68, 68, 0.8)',
-          marginBottom: '30px',
-        }}
-      >
-        ?
-      </div>
-
-      <div
-        style={{
-          backgroundColor: 'rgba(15, 23, 42, 0.9)',
-          border: '2px solid rgba(239, 68, 68, 0.7)',
-          borderRadius: '24px',
-          padding: '40px 30px',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.9)',
-          backdropFilter: 'blur(20px)',
+          backgroundColor: '#0f141f',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
+          borderRadius: '18px',
+          padding: '40px 32px',
+          boxShadow: '0 25px 60px rgba(0, 0, 0, 0.9)',
+          width: '100%',
         }}
       >
         <span
           style={{
-            fontSize: '20px',
-            color: '#f87171',
+            fontSize: '15px',
+            color: '#dc2626',
             fontWeight: 800,
             letterSpacing: '2px',
             textTransform: 'uppercase',
+            backgroundColor: 'rgba(220, 38, 38, 0.15)',
+            padding: '4px 14px',
+            borderRadius: '4px',
+            display: 'inline-block',
+            marginBottom: '16px',
           }}
         >
-          EFEK KUPU-KUPU
+          KILAS BALIK SEJARAH
         </span>
+
+        <h3
+          style={{
+            fontSize: '26px',
+            color: '#94a3b8',
+            fontWeight: 700,
+            margin: '0 0 16px 0',
+            letterSpacing: '-0.3px',
+          }}
+        >
+          Cuma gara-gara salah satu kata.
+        </h3>
 
         <h2
           style={{
-            fontSize: '40px',
+            fontSize: '38px',
             fontWeight: 900,
             color: '#ffffff',
             lineHeight: 1.3,
-            marginTop: '16px',
-            marginBottom: '24px',
+            margin: '0 0 28px 0',
+            fontFamily: "'Montserrat', sans-serif",
           }}
         >
           {question}
@@ -88,16 +86,17 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
         <div
           style={{
             display: 'inline-block',
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: 'rgba(255, 255, 255, 0.08)',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
             padding: '10px 24px',
             borderRadius: '999px',
-            fontSize: '22px',
+            fontSize: '18px',
             fontWeight: 700,
-            color: '#facc15',
-            letterSpacing: '1px',
+            color: '#f8fafc',
+            letterSpacing: '0.5px',
           }}
         >
-          👇 TULIS DI KOLOM KOMENTAR
+          💬 Tulis pendapatmu di komentar
         </div>
       </div>
     </div>

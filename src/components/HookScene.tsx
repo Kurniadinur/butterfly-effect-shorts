@@ -17,15 +17,13 @@ export const HookScene: React.FC<HookSceneProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Entrance spring
-  const scale = spring({
+  const entrance = spring({
     frame,
     fps,
-    config: { damping: 12, mass: 0.7 },
+    config: { damping: 16, mass: 0.8 },
   });
 
-  // Pulse flash at the very beginning (first 6 frames)
-  const flash = interpolate(frame, [0, 4, 8], [0.8, 0.4, 0], {
+  const zoomEffect = interpolate(frame, [0, 180], [1.0, 1.08], {
     extrapolateRight: 'clamp',
   });
 
@@ -37,35 +35,35 @@ export const HookScene: React.FC<HookSceneProps> = ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: '170px 60px 380px 60px',
+        padding: '150px 60px 360px 60px',
         zIndex: 30,
       }}
     >
-      {/* Top Shock Header */}
+      {/* Top Documentary Headline */}
       <div
         style={{
           textAlign: 'center',
-          marginBottom: '32px',
-          transform: `scale(${scale})`,
+          marginBottom: '30px',
+          transform: `scale(${entrance})`,
         }}
       >
-        <div
+        <span
           style={{
             display: 'inline-block',
-            backgroundColor: '#ef4444',
-            color: '#ffffff',
-            padding: '6px 20px',
-            borderRadius: '999px',
-            fontSize: '22px',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            color: '#cbd5e1',
+            padding: '4px 14px',
+            borderRadius: '4px',
+            fontSize: '15px',
             fontWeight: 800,
             letterSpacing: '2px',
             textTransform: 'uppercase',
-            marginBottom: '14px',
-            boxShadow: '0 0 25px rgba(239, 68, 68, 0.6)',
+            marginBottom: '12px',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
           }}
         >
           PARADOKS SEJARAH
-        </div>
+        </span>
         <h1
           style={{
             fontSize: '44px',
@@ -74,33 +72,32 @@ export const HookScene: React.FC<HookSceneProps> = ({
             margin: 0,
             lineHeight: 1.15,
             letterSpacing: '-1px',
-            textShadow: '0 4px 20px rgba(0, 0, 0, 0.9)',
+            fontFamily: "'Montserrat', sans-serif",
           }}
         >
           DARI SALAH BACA SELEMBAR MEMO...
         </h1>
       </div>
 
-      {/* Split Comparison Cards (Left vs Right) */}
+      {/* Side-by-Side Split Cards */}
       <div
         style={{
           width: '100%',
           flex: 1,
           display: 'flex',
-          gap: '24px',
+          gap: '16px',
           position: 'relative',
         }}
       >
-        {/* Left Card: The Minuscule Trigger */}
+        {/* Left Side: The Minute Cause */}
         <div
           style={{
             flex: 1,
-            borderRadius: '20px',
+            borderRadius: '14px',
             overflow: 'hidden',
-            backgroundColor: '#0f172a',
-            border: '2px solid rgba(56, 189, 248, 0.7)',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.6)',
-            position: 'relative',
+            backgroundColor: '#0f141f',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.8)',
             display: 'flex',
             flexDirection: 'column',
           }}
@@ -113,65 +110,59 @@ export const HookScene: React.FC<HookSceneProps> = ({
                 height: '100%',
                 objectFit: 'cover',
                 objectPosition: 'top 20%',
-                transform: `scale(${1.05 + frame * 0.002})`,
+                transform: `scale(${zoomEffect})`,
+                filter: 'contrast(1.05) brightness(0.95)',
               }}
             />
             <div
               style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent 60%)',
+                background: 'linear-gradient(to top, #0f141f 0%, transparent 50%)',
               }}
             />
           </div>
-          <div
-            style={{
-              padding: '16px',
-              backgroundColor: '#0f172a',
-              textAlign: 'center',
-            }}
-          >
-            <span style={{ fontSize: '16px', color: '#38bdf8', fontWeight: 700 }}>
-              AWAL MULA SEPELE
+          <div style={{ padding: '16px', textAlign: 'center', backgroundColor: '#0f141f' }}>
+            <span style={{ fontSize: '14px', color: '#94a3b8', fontWeight: 700, letterSpacing: '1px' }}>
+              AWAL MULA
             </span>
-            <div style={{ fontSize: '24px', fontWeight: 800, color: '#ffffff', marginTop: '4px' }}>
+            <div style={{ fontSize: '22px', fontWeight: 800, color: '#ffffff', marginTop: '4px' }}>
               {leftTitle}
             </div>
           </div>
         </div>
 
-        {/* Center Arrow / Transition Pill */}
+        {/* Center Minimalist Transition Badge */}
         <div
           style={{
             position: 'absolute',
             left: '50%',
             top: '50%',
             transform: 'translate(-50%, -50%)',
-            backgroundColor: '#ef4444',
-            color: '#ffffff',
-            fontWeight: 900,
-            fontSize: '26px',
-            padding: '12px 20px',
+            backgroundColor: '#0f172a',
+            color: '#f8fafc',
+            fontWeight: 800,
+            fontSize: '18px',
+            padding: '8px 16px',
             borderRadius: '999px',
-            boxShadow: '0 0 30px rgba(239, 68, 68, 0.8)',
+            border: '2px solid rgba(255, 255, 255, 0.25)',
+            boxShadow: '0 8px 25px rgba(0, 0, 0, 0.9)',
             zIndex: 10,
             letterSpacing: '1px',
-            border: '3px solid #ffffff',
           }}
         >
-          ➔ AKIBATNYA
+          AKIBATNYA ➔
         </div>
 
-        {/* Right Card: The Massive Disaster */}
+        {/* Right Side: The Massive Outcome */}
         <div
           style={{
             flex: 1,
-            borderRadius: '20px',
+            borderRadius: '14px',
             overflow: 'hidden',
-            backgroundColor: '#0f172a',
-            border: '2px solid rgba(239, 68, 68, 0.7)',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.6)',
-            position: 'relative',
+            backgroundColor: '#0f141f',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.8)',
             display: 'flex',
             flexDirection: 'column',
           }}
@@ -183,46 +174,28 @@ export const HookScene: React.FC<HookSceneProps> = ({
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                transform: `scale(${1.05 + frame * 0.002})`,
+                transform: `scale(${zoomEffect})`,
+                filter: 'contrast(1.05) brightness(0.95)',
               }}
             />
             <div
               style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent 60%)',
+                background: 'linear-gradient(to top, #0f141f 0%, transparent 50%)',
               }}
             />
           </div>
-          <div
-            style={{
-              padding: '16px',
-              backgroundColor: '#0f172a',
-              textAlign: 'center',
-            }}
-          >
-            <span style={{ fontSize: '16px', color: '#ef4444', fontWeight: 700 }}>
-              DAMPAK GLOBAL
+          <div style={{ padding: '16px', textAlign: 'center', backgroundColor: '#0f141f' }}>
+            <span style={{ fontSize: '14px', color: '#ef4444', fontWeight: 700, letterSpacing: '1px' }}>
+              DAMPAK AKHIR
             </span>
-            <div style={{ fontSize: '24px', fontWeight: 800, color: '#ffffff', marginTop: '4px' }}>
+            <div style={{ fontSize: '22px', fontWeight: 800, color: '#ffffff', marginTop: '4px' }}>
               {rightTitle}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Flash overlay on first frames */}
-      {flash > 0 && (
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundColor: '#ffffff',
-            opacity: flash,
-            pointerEvents: 'none',
-          }}
-        />
-      )}
     </div>
   );
 };

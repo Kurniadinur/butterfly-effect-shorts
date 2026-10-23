@@ -53,7 +53,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = BERLIN_
       }}
     >
       {/* 1. Living Atmospheric Background */}
-      <AtmosphericBackground chaosLevel={currentChaosLevel} />
+      <AtmosphericBackground />
 
       {/* 2. Top HUD Chaos Meter */}
       <ChaosMeter chaosLevel={currentChaosLevel} timeOrYear={currentTimeOrYear} />
