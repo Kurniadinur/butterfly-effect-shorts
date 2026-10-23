@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useCurrentFrame } from 'remotion';
 import { WordTimestamp } from '../data/types';
-import { cleanSubtitleWord } from '../data/berlinWallStory';
+import { cleanSubtitleWord } from '../utils/textUtils';
 
 interface KineticSubtitleProps {
   wordTimestamps: WordTimestamp[];

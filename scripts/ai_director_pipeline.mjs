@@ -403,7 +403,15 @@ export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(fullStory, nul
 `;
 
   fs.writeFileSync(outStoryTs, fileContent, 'utf-8');
-  console.log(`      ✓ Data cerita tersimpan dan aktif di: src/data/currentStory.ts`);
+
+  // Also save a permanent archive copy in src/data/stories/<storyId>.ts
+  const storiesDir = path.join(ROOT_DIR, 'src', 'data', 'stories');
+  fs.mkdirSync(storiesDir, { recursive: true });
+  const archivePath = path.join(storiesDir, `${storyData.id}.ts`);
+  fs.writeFileSync(archivePath, fileContent, 'utf-8');
+
+  console.log(`      ✓ Data cerita aktif tersimpan di : src/data/currentStory.ts`);
+  console.log(`      ✓ Arsip cerita tersimpan di       : src/data/stories/${storyData.id}.ts`);
   console.log(`      ✓ Total frame video: ${actualTotalFrames} frames (${(actualTotalFrames / 30).toFixed(2)} detik)`);
   console.log(`      ✓ Total halaman subtitle: ${pageIndex} halaman stationary\n`);
 }
