@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { spawn } from 'child_process';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
+import { transcribeWithGroq } from './align_groq.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -180,12 +181,26 @@ async function generateVoiceover(storyData) {
 }
 
 // -----------------------------------------------------------------------------
-// STEP 3: Whisper Millisecond Ground-Truth Alignment
+// STEP 3: Whisper Millisecond Ground-Truth Alignment (Groq Cloud LPU)
 // -----------------------------------------------------------------------------
 async function runWhisperAlignment(wavPath, storyId) {
-  console.log('[3/4] Melakukan penyelarasan audio milidetik via Whisper ASR lokal...');
   const jsonOutput = path.join(ROOT_DIR, 'public', 'butterfly', 'audio', `${storyId}_whisper.json`);
+  const groqApiKey = process.env.GROQ_API_KEY;
 
+  if (groqApiKey) {
+    try {
+      console.log('[3/4] Melakukan penyelarasan audio via Groq Cloud LPU (Whisper Large V3)...');
+      console.log('      (Kecepatan tinggi ~3 detik, akurasi tinggi, bebas beban CPU!)');
+      const whisperData = await transcribeWithGroq(wavPath, jsonOutput);
+      console.log(`      ✓ Total durasi audio: ${whisperData.totalDurationSec} detik`);
+      console.log(`      ✓ Total kata terdeteksi: ${whisperData.allWords.length} kata (Whisper Large V3)\n`);
+      return whisperData;
+    } catch (groqErr) {
+      console.warn(`[Peringatan] Groq Cloud gagal (${groqErr.message}). Beralih ke fallback Whisper lokal...`);
+    }
+  }
+
+  console.log('[3/4] Menjalankan fallback Whisper ASR lokal...');
   await new Promise((resolve, reject) => {
     const py = spawn('python', [
       path.join(__dirname, 'align_whisper.py'),
