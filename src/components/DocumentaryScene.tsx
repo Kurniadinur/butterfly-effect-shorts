@@ -1,11 +1,12 @@
 import React from 'react';
 import { Img, useCurrentFrame, staticFile, interpolate } from 'remotion';
+import { ZoomDirection } from '../data/types';
 
 interface DocumentarySceneProps {
   mediaUrl: string;
   locationTag?: string;
   headline?: string;
-  zoomDirection?: 'in' | 'out' | 'panRight' | 'panLeft';
+  zoomDirection?: ZoomDirection;
   durationFrames: number;
 }
 
@@ -18,16 +19,24 @@ export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
 }) => {
   const frame = useCurrentFrame();
 
+  // Normalize zoomDirection
+  let dir = zoomDirection;
+  if (dir === 'zoomIn') dir = 'in';
+  if (dir === 'zoomOut') dir = 'out';
+  if (dir !== 'in' && dir !== 'out' && dir !== 'panRight' && dir !== 'panLeft') {
+    dir = 'in';
+  }
+
   // Natural slow Ken Burns motion across the duration
   let scale = 1.0;
   let translateX = 0;
   let translateY = 0;
 
-  if (zoomDirection === 'in') {
+  if (dir === 'in') {
     scale = interpolate(frame, [0, durationFrames], [1.0, 1.12], { extrapolateRight: 'clamp' });
-  } else if (zoomDirection === 'out') {
+  } else if (dir === 'out') {
     scale = interpolate(frame, [0, durationFrames], [1.12, 1.0], { extrapolateRight: 'clamp' });
-  } else if (zoomDirection === 'panRight') {
+  } else if (dir === 'panRight') {
     scale = 1.08;
     translateX = interpolate(frame, [0, durationFrames], [-20, 20], { extrapolateRight: 'clamp' });
   } else {

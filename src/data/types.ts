@@ -11,6 +11,8 @@ export type DirectorSceneType =
   | 'breaking-ticker'
   | 'critical-gauge';
 
+export type ZoomDirection = 'in' | 'out' | 'panRight' | 'panLeft' | 'zoomIn' | 'zoomOut' | string;
+
 export interface ButterflyNode {
   step: number;
   timeOrYear: string;
@@ -20,7 +22,7 @@ export interface ButterflyNode {
   mediaType: 'photo' | 'broll' | 'graphic';
   mediaUrl: string;
   directorType?: DirectorSceneType | string;
-  zoomDirection?: 'in' | 'out' | 'panRight' | 'panLeft';
+  zoomDirection?: ZoomDirection;
   primaryText?: string;
   secondaryText?: string;
   stampText?: string;
@@ -45,7 +47,7 @@ export interface ButterflyStoryData {
   id: string;
   title: string;
   hook: {
-    archetype: string;
+    archetype?: string;
     narration: string;
     leftTitle: string;
     rightTitle: string;
