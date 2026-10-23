@@ -1,137 +1,232 @@
-import { ButterflyStoryData, WordTimestamp } from './types';
-
-function generateWordTimestamps(
-  scriptSegments: { text: string; startFrame: number; endFrame: number }[]
-): WordTimestamp[] {
-  const result: WordTimestamp[] = [];
-
-  for (const seg of scriptSegments) {
-    const words = seg.text.trim().split(/\s+/);
-    const totalFrames = seg.endFrame - seg.startFrame;
-    const framesPerWord = totalFrames / words.length;
-
-    words.forEach((word, idx) => {
-      const start = Math.floor(seg.startFrame + idx * framesPerWord);
-      const end = Math.floor(seg.startFrame + (idx + 1) * framesPerWord);
-      result.push({
-        word,
-        startFrame: start,
-        endFrame: end,
-      });
-    });
-  }
-
-  return result;
-}
-
-const segments = [
-  {
-    text: 'Kalian bayangin... dari salah baca selembar memo, sebuah negara adidaya runtuh dalam semalam?',
-    startFrame: 0,
-    endFrame: 222,
-  },
-  {
-    text: 'Tahun 1989, juru bicara Jerman Timur Günter Schabowski kelelahan dan disodorkan memo aturan imigrasi tanpa sempat dibaca.',
-    startFrame: 222,
-    endFrame: 555,
-  },
-  {
-    text: "Di siaran langsung televisi, saat ditanya kapan aturan berlaku, dia panik dan menjawab asal: 'Detik ini juga.'",
-    startFrame: 555,
-    endFrame: 819,
-  },
-  {
-    text: 'Hanya dalam hitungan menit, berita menyebar liar! Puluhan ribu warga langsung mengepung gerbang Tembok Berlin, sementara tentara bingung tanpa instruksi atasan.',
-    startFrame: 819,
-    endFrame: 1179,
-  },
-  {
-    text: 'Kalah jumlah dan takut pertumpahan darah, gerbang akhirnya dibuka. Malam itu, Tembok Berlin tumbang, dan Uni Soviet bubar selamanya!',
-    startFrame: 1179,
-    endFrame: 1521,
-  },
-  {
-    text: 'Cuma gara-gara salah satu kata. Menurutmu, apa keputusan sepelemu hari ini yang bakal ngerubah hidupmu 5 tahun lagi?',
-    startFrame: 1521,
-    endFrame: 1820,
-  },
-];
+import { ButterflyStoryData } from './types';
+import { SYNCED_WORD_TIMESTAMPS } from './syncedWordTimestamps';
+export { cleanSubtitleWord } from '../utils/textUtils';
 
 export const BERLIN_WALL_STORY: ButterflyStoryData = {
   id: 'berlin-wall-1989',
-  title: 'Salah Baca Memo Pemicu Tumbangnya Tembok Berlin',
+  title: 'Salah Baca Memo Pemicu Runtuhnya Tembok Berlin',
   hook: {
     archetype: 'The Chilling Paradox',
     narration:
-      'Kalian bayangin... dari salah baca selembar memo, sebuah negara adidaya runtuh dalam semalam?',
-    leftTitle: 'Memo Salah Baca',
+      'Kalian bayangin, dari satu orang yang kelelahan dan salah baca selembar memo, sebuah negara adidaya bisa runtuh hanya dalam satu malam.',
+    leftTitle: 'Memo Tanpa Dibaca',
     rightTitle: 'Uni Soviet Bubar',
     leftImage: 'butterfly/media/schabowski_press.jpg',
-    rightImage: 'butterfly/media/berlin_wall_demolition.jpg',
-    durationFrames: 222,
+    rightImage: 'butterfly/media/wall_demolition.jpg',
+    durationFrames: 257,
   },
   nodes: [
     {
       step: 1,
-      timeOrYear: '1989 | 18:53',
-      headline: 'MEMO TANPA DIBACA',
+      timeOrYear: 'BERLIN TIMUR • 1989',
+      headline: 'BLUNDER PALING GILA SEJARAH',
       narration:
-        'Tahun 1989, juru bicara Günter Schabowski kelelahan dan disodorkan memo aturan imigrasi tanpa sempat dibaca.',
-      chaosLevel: 25,
+        'Ini adalah salah satu blunder paling fatal dan gila dalam sejarah modern dunia.',
+      chaosLevel: 20,
       mediaType: 'photo',
       mediaUrl: 'butterfly/media/schabowski_press.jpg',
-      caption: 'Günter Schabowski memegang dokumen sesaat sebelum konferensi pers.',
-      startFrame: 222,
-      durationFrames: 333,
+      caption: 'Günter Schabowski sesaat sebelum konferensi pers dimulai.',
+      startFrame: 257,
+      durationFrames: 159,
     },
     {
       step: 2,
-      timeOrYear: '1989 | 18:57',
-      headline: 'JAWABAN ASAL DI SIARAN TV',
+      timeOrYear: '9 NOV 1989 • 15:00',
+      headline: 'KETEGANGAN DI TITIK DIDIH',
       narration:
-        "Di siaran langsung, saat ditanya kapan aturan berlaku, dia panik dan menjawab asal: 'Detik ini juga.'",
-      chaosLevel: 55,
+        'Tanggal 9 November 1989, ketegangan di Jerman Timur sedang berada di titik didih.',
+      chaosLevel: 35,
       mediaType: 'photo',
-      mediaUrl: 'butterfly/media/checkpoint_gate.jpg',
-      caption: 'Jawaban spontan yang tidak pernah direncanakan pemerintah.',
-      startFrame: 555,
-      durationFrames: 264,
+      mediaUrl: 'butterfly/media/checkpoint_charlie.jpg',
+      caption: 'Pos perbatasan dijaga ketat oleh tentara bersenjata lengkap.',
+      startFrame: 416,
+      durationFrames: 183,
     },
     {
       step: 3,
-      timeOrYear: '1989 | 21:00',
-      headline: 'PULUHAN RIBU WARGA MENGEPUNG',
+      timeOrYear: 'LEIPZIG & BERLIN • 1989',
+      headline: 'PULUHAN RIBU WARGA BERDEMONSTRASI',
       narration:
-        'Berita menyebar liar! Puluhan ribu warga langsung mengepung gerbang Tembok Berlin, sementara tentara bingung tanpa perintah.',
-      chaosLevel: 80,
+        'Puluhan ribu warga berdemonstrasi menuntut kebebasan.',
+      chaosLevel: 50,
       mediaType: 'photo',
       mediaUrl: 'butterfly/media/berlin_crowd.jpg',
-      caption: 'Massa memadati pos perbatasan Bornholmer Straße.',
-      startFrame: 819,
-      durationFrames: 360,
+      caption: 'Tekanan publik semakin tak terbendung di seluruh kota.',
+      startFrame: 599,
+      durationFrames: 108,
     },
     {
       step: 4,
-      timeOrYear: '1989 | 23:30',
+      timeOrYear: 'MARKAS PARTAI SED • BERLIN TIMUR',
+      headline: 'DRAF ATURAN PELONGGARAN VISA',
+      narration:
+        'Di markas partai, pemerintah sebenarnya hanya ingin membuat aturan pelonggaran visa biasa, yang baru berlaku besok lewat birokrasi ketat.',
+      chaosLevel: 60,
+      mediaType: 'graphic',
+      directorType: 'bureaucracy-draft',
+      mediaUrl: 'bureaucracy-draft',
+      caption: 'Rencana awal hanyalah birokrasi visa formal yang lambat.',
+      startFrame: 707,
+      durationFrames: 224,
+    },
+    {
+      step: 5,
+      timeOrYear: '18:00 • PUSAT PERS BERLIN',
+      headline: 'MEMO DISODORKAN TANPA DIBACA',
+      narration:
+        'Tepat sebelum konferensi pers dimulai, juru bicara Günter Schabowski buru-buru disodorkan selembar memo, tanpa sempat dia baca sama sekali.',
+      chaosLevel: 70,
+      mediaType: 'graphic',
+      directorType: 'memo-handoff',
+      mediaUrl: 'memo-handoff',
+      caption: 'Selembar kertas yang kelak meruntuhkan tembok pemisah.',
+      startFrame: 931,
+      durationFrames: 237,
+    },
+    {
+      step: 6,
+      timeOrYear: 'SIARAN LANGSUNG DUNIA',
+      headline: 'MENIT KE-57 KONFERENSI PERS',
+      narration:
+        'Di depan ratusan jurnalis dari seluruh dunia, siaran langsung televisi pun dimulai. Semuanya berjalan membosankan, sampai menit ke-57.',
+      chaosLevel: 75,
+      mediaType: 'photo',
+      mediaUrl: 'butterfly/media/press_room.jpg',
+      caption: 'Konferensi pers yang disiarkan langsung ke seluruh Eropa.',
+      startFrame: 1168,
+      durationFrames: 264,
+    },
+    {
+      step: 7,
+      timeOrYear: '18:57 • RUANG PERS INTERNASIONAL',
+      headline: 'PERTANYAAN TAK TERDUGA',
+      narration:
+        'Seorang jurnalis asal Italia, Riccardo Ehrman, melempar pertanyaan tak terduga: Kapan aturan perjalanan baru ini mulai berlaku?',
+      chaosLevel: 80,
+      mediaType: 'graphic',
+      directorType: 'press-question',
+      mediaUrl: 'press-question',
+      caption: 'Pertanyaan spontan yang memicu kepanikan juru bicara.',
+      startFrame: 1432,
+      durationFrames: 236,
+    },
+    {
+      step: 8,
+      timeOrYear: '19:00 • DETIK PALING FATAL SEJARAH',
+      headline: "'SEGERA. DETIK INI JUGA!'",
+      narration:
+        'Schabowski mendadak panik. Dia membolak-balik kertas memo di mejanya, kacamata melorot, lalu bergumam ragu: Setahu saya... segera. Detik ini juga.',
+      chaosLevel: 85,
+      mediaType: 'graphic',
+      directorType: 'schabowski-slip',
+      mediaUrl: 'schabowski-slip',
+      caption: 'Schabowski panik dan mengeluarkan jawaban fatal tanpa otorisasi.',
+      startFrame: 1668,
+      durationFrames: 329,
+    },
+    {
+      step: 9,
+      timeOrYear: '21:00 • BREAKING NEWS EROPA',
+      headline: 'SIARAN BERITA INTERNASIONAL',
+      narration:
+        'Ruang pers langsung gempar! Hanya dalam hitungan menit, stasiun berita internasional menyiarkan kabar mengejutkan: Pintu perbatasan Tembok Berlin telah dibuka!',
+      chaosLevel: 90,
+      mediaType: 'graphic',
+      directorType: 'breaking-news',
+      mediaUrl: 'breaking-news',
+      caption: 'Berita breaking news menyebar ke seluruh penjuru dunia.',
+      startFrame: 1997,
+      durationFrames: 359,
+    },
+    {
+      step: 10,
+      timeOrYear: '22:00 • BORNHOLMER STRASSE',
+      headline: 'PULUHAN RIBU WARGA MENYERBU',
+      narration:
+        'Kabar itu menyebar liar bagai api membakar hutan kering. Puluhan ribu warga Berlin Timur langsung tumpah ruah ke jalanan, menyerbu pos perbatasan Bornholmer Straße.',
+      chaosLevel: 95,
+      mediaType: 'photo',
+      mediaUrl: 'butterfly/media/berlin_crowd.jpg',
+      caption: 'Lautan manusia menuntut gerbang segera dibuka malam itu juga.',
+      startFrame: 2356,
+      durationFrames: 224,
+    },
+    {
+      step: 11,
+      timeOrYear: '22:30 • POS BORNHOLMER STRASSE',
+      headline: 'TENTARA PANIK TANPA PERINTAH',
+      narration:
+        'Di pos perbatasan, para tentara gemetar ketakutan. Mereka panik menelepon atasan, tapi tidak ada satu pun jenderal yang berani memberi perintah tembak.',
+      chaosLevel: 97,
+      mediaType: 'graphic',
+      directorType: 'panic-phone',
+      mediaUrl: 'panic-phone',
+      caption: 'Komandan perbatasan ditinggalkan tanpa perintah dari pusat.',
+      startFrame: 2580,
+      durationFrames: 296,
+    },
+    {
+      step: 12,
+      timeOrYear: '23:30 • GERBANG TERBUKA',
+      headline: 'GERBANG DIBUKA PAKSA',
+      narration:
+        'Kalah jumlah dan takut pertumpahan darah massal, gerbang perbatasan akhirnya dibuka paksa.',
+      chaosLevel: 98,
+      mediaType: 'photo',
+      mediaUrl: 'butterfly/media/checkpoint_gate.jpg',
+      caption: 'Gerbang besi akhirnya menyerah pada gelombang rakyat.',
+      startFrame: 2876,
+      durationFrames: 165,
+    },
+    {
+      step: 13,
+      timeOrYear: '9 NOV 1989 • TENGAH MALAM',
       headline: 'TEMBOK BERLIN RUNTUH',
       narration:
-        'Kalah jumlah, gerbang akhirnya dibuka. Malam itu Tembok Berlin tumbang, dan Uni Soviet bubar selamanya!',
+        'Malam itu warga barat dan timur berpelukan sambil menangis. Mereka memanjat tembok dengan palu godam, menari di atas beton pembatas, dan meruntuhkan Tembok Berlin untuk selamanya.',
       chaosLevel: 100,
       mediaType: 'photo',
-      mediaUrl: 'butterfly/media/berlin_wall_demolition.jpg',
-      caption: 'Warga merayakan bersatunya Jerman setelah puluhan tahun terpisah.',
-      startFrame: 1179,
-      durationFrames: 342,
+      mediaUrl: 'butterfly/media/wall_demolition.jpg',
+      caption: 'Rakyat merayakan runtuhnya simbol tirani Perang Dingin.',
+      startFrame: 3041,
+      durationFrames: 255,
+    },
+    {
+      step: 14,
+      timeOrYear: '1989 - 1991 • AKIBAT GLOBAL',
+      headline: 'UNI SOVIET BUBAR MENJADI 15 NEGARA',
+      narration:
+        'Hanya berselang beberapa bulan, seluruh Uni Soviet bubar, dan peta geopolitik dunia berubah total.',
+      chaosLevel: 100,
+      mediaType: 'graphic',
+      directorType: 'soviet-collapse',
+      mediaUrl: 'soviet-collapse',
+      caption: 'Dominasi blok timur berakhir dan tatanan dunia berubah selamanya.',
+      startFrame: 3296,
+      durationFrames: 189,
+    },
+    {
+      step: 15,
+      timeOrYear: 'KILAS BALIK FORENSIK',
+      headline: 'SATU KATA MENGUBAH DUNIA',
+      narration:
+        'Semua revolusi raksasa ini, dimulai dari satu orang yang salah ngomong satu kalimat di siaran TV.',
+      chaosLevel: 100,
+      mediaType: 'photo',
+      mediaUrl: 'butterfly/media/brandenburg_night.jpg',
+      caption: 'The ultimate butterfly effect in modern human history.',
+      startFrame: 3485,
+      durationFrames: 219,
     },
   ],
   outro: {
     narration:
-      'Menurutmu, apa keputusan sepelemu hari ini yang bakal ngerubah hidupmu 5 tahun lagi?',
+      'Menurutmu, apa keputusan sepele yang kamu ambil hari ini, yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?',
     question:
-      'Apa keputusan sepelemu hari ini yang kira-kira bakal ngerubah hidupmu 5 tahun lagi?',
-    durationFrames: 300,
+      'Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah jalan hidupmu 5 tahun lagi?',
+    durationFrames: 136,
   },
-  wordTimestamps: generateWordTimestamps(segments),
-  audioUrl: 'butterfly/audio/berlin_wall_voiceover.mp3',
-  totalDurationFrames: 1825, // ~60.8 seconds @ 30 FPS
+  wordTimestamps: SYNCED_WORD_TIMESTAMPS,
+  audioUrl: 'butterfly/audio/berlin_wall_voiceover.wav',
+  totalDurationFrames: 3840, // Exact 127.96 seconds @ 30 FPS
 };

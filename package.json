@@ -1,7 +1,7 @@
 {
-  "name": "EngProject",
+  "name": "ButterflyProject",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "Butterfly Effect Forensic Documentary in Remotion",
   "repository": {},
   "license": "UNLICENSED",
   "engines": {
@@ -29,14 +29,12 @@
   },
   "scripts": {
     "dev": "remotion studio",
-    "render:race-shorts": "remotion render AlgorithmRace-Shorts out/algorithm-race-shorts.mp4",
-    "render:race-landscape": "remotion render AlgorithmRace-Landscape out/algorithm-race-landscape.mp4",
-    "render:landscape": "remotion render UniverseScale-Landscape out/universe-scale-16x9.mp4",
-    "render:shorts": "remotion render UniverseScale-Shorts out/universe-scale-shorts-9x16.mp4",
-    "preview": "remotion still AlgorithmRace-Shorts preview-race-shorts.png --frame=260",
+    "director": "node scripts/ai_director_pipeline.mjs",
+    "render": "remotion render src/index.ts ButterflyEffect-Shorts out/butterfly_effect_shorts.mp4",
+    "render:shorts": "remotion render src/index.ts ButterflyEffect-Shorts out/butterfly_effect_shorts.mp4",
+    "generate:voice": "node scripts/generate_voice_gemini.mjs",
     "build": "remotion bundle",
-    "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "tsc --noEmit"
   },
   "allowScripts": {
     "esbuild": false

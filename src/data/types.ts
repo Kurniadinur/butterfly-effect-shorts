@@ -1,3 +1,16 @@
+export type DirectorSceneType =
+  | 'bureaucracy-draft'
+  | 'memo-handoff'
+  | 'press-question'
+  | 'schabowski-slip'
+  | 'breaking-news'
+  | 'panic-phone'
+  | 'soviet-collapse'
+  | 'forensic-dossier'
+  | 'tactical-map'
+  | 'breaking-ticker'
+  | 'critical-gauge';
+
 export interface ButterflyNode {
   step: number;
   timeOrYear: string;
@@ -6,6 +19,7 @@ export interface ButterflyNode {
   chaosLevel: number; // 0 to 100
   mediaType: 'photo' | 'broll' | 'graphic';
   mediaUrl: string;
+  directorType?: DirectorSceneType | string;
   caption: string;
   sfxTrigger?: string;
   startFrame: number;
@@ -16,6 +30,7 @@ export interface WordTimestamp {
   word: string;
   startFrame: number;
   endFrame: number;
+  pageIndex?: number;
 }
 
 export interface ButterflyStoryData {

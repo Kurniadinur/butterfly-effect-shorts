@@ -1,88 +1,152 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useCurrentFrame } from 'remotion';
 import { WordTimestamp } from '../data/types';
+import { cleanSubtitleWord } from '../data/berlinWallStory';
 
 interface KineticSubtitleProps {
   wordTimestamps: WordTimestamp[];
 }
 
+interface SubtitlePage {
+  pageIndex: number;
+  words: WordTimestamp[];
+  startFrame: number;
+  endFrame: number;
+}
+
 export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps }) => {
   const frame = useCurrentFrame();
 
-  if (!wordTimestamps || wordTimestamps.length === 0) {
+  // Group timestamps into discrete, stationary pages of 2-3 words
+  const pages = useMemo<SubtitlePage[]>(() => {
+    if (!wordTimestamps || wordTimestamps.length === 0) return [];
+
+    const pageMap = new Map<number, WordTimestamp[]>();
+
+    // If words already have pageIndex assigned, group by pageIndex
+    const hasPageIndex = wordTimestamps.some((w) => w.pageIndex !== undefined);
+
+    if (hasPageIndex) {
+      wordTimestamps.forEach((w, idx) => {
+        const pIdx = w.pageIndex ?? Math.floor(idx / 3);
+        if (!pageMap.has(pIdx)) {
+          pageMap.set(pIdx, []);
+        }
+        pageMap.get(pIdx)!.push(w);
+      });
+    } else {
+      // Fallback: partition every 2 to 3 words
+      let i = 0;
+      let pIdx = 0;
+      while (i < wordTimestamps.length) {
+        const remaining = wordTimestamps.length - i;
+        const size = remaining === 4 ? 2 : remaining <= 3 ? remaining : 3;
+        pageMap.set(pIdx, wordTimestamps.slice(i, i + size));
+        i += size;
+        pIdx++;
+      }
+    }
+
+    const result: SubtitlePage[] = [];
+    pageMap.forEach((words, pIdx) => {
+      if (words.length > 0) {
+        result.push({
+          pageIndex: pIdx,
+          words,
+          startFrame: words[0].startFrame,
+          endFrame: words[words.length - 1].endFrame,
+        });
+      }
+    });
+
+    return result.sort((a, b) => a.startFrame - b.startFrame);
+  }, [wordTimestamps]);
+
+  if (pages.length === 0) {
     return null;
   }
 
-  // Find currently spoken word index
-  const activeIndex = wordTimestamps.findIndex(
-    (w) => frame >= w.startFrame && frame <= w.endFrame
-  );
+  // Find currently active page. Keep page visible until the next page begins if gap is short (< 20 frames)
+  const activePageIndex = pages.findIndex((page, idx) => {
+    const nextStart = pages[idx + 1]?.startFrame ?? page.endFrame;
+    const holdUntil = nextStart - page.endFrame <= 20 ? nextStart : page.endFrame;
+    return frame >= page.startFrame && frame < holdUntil;
+  });
 
-  // If between words, show the closest upcoming or previous word
-  let displayIndex = activeIndex;
-  if (displayIndex === -1) {
-    displayIndex = wordTimestamps.findIndex((w) => frame < w.startFrame);
-    if (displayIndex === -1) {
-      displayIndex = wordTimestamps.length - 1;
-    }
+  if (activePageIndex === -1) {
+    return null;
   }
 
-  // Display only 2 to 3 words at a time for maximum legibility on mobile
-  const CHUNK_SIZE = 3;
-  const chunkStart = Math.max(0, Math.min(displayIndex - 1, wordTimestamps.length - CHUNK_SIZE));
-  const currentChunk = wordTimestamps.slice(chunkStart, chunkStart + CHUNK_SIZE);
+  const activePage = pages[activePageIndex];
+
+  // Determine active word within this page
+  let activeWordIndex = activePage.words.findIndex(
+    (w) => frame >= w.startFrame && frame < w.endFrame
+  );
+
+  // If between words or in hold-period, keep last word active or none
+  if (activeWordIndex === -1 && frame >= activePage.endFrame) {
+    activeWordIndex = activePage.words.length - 1;
+  }
 
   return (
     <div
       style={{
         position: 'absolute',
-        bottom: '220px',
-        left: '60px',
-        right: '60px',
+        bottom: '260px',
+        left: '40px',
+        right: '40px',
         zIndex: 50,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         pointerEvents: 'none',
+        textAlign: 'center',
       }}
     >
+      {/* 
+        Stationary phrase container:
+        The words remain firmly in place across the entire page duration.
+        Zero horizontal drift, zero eye fatigue.
+      */}
       <div
         style={{
-          display: 'inline-flex',
+          display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '8px 16px',
-          padding: '12px 24px',
-          backgroundColor: 'rgba(0, 0, 0, 0.88)',
-          borderRadius: '14px',
-          border: '1.5px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 8px 30px rgba(0, 0, 0, 0.9)',
-          maxWidth: '850px',
+          alignItems: 'center',
+          gap: '12px 20px',
+          maxWidth: '960px',
         }}
       >
-        {currentChunk.map((w, idx) => {
-          const globalIdx = chunkStart + idx;
-          const isActive = globalIdx === activeIndex;
+        {activePage.words.map((w, idx) => {
+          const cleanWord = cleanSubtitleWord(w.word);
+          if (!cleanWord) return null;
+
+          const isActive = idx === activeWordIndex;
 
           return (
             <span
-              key={`${w.word}-${globalIdx}`}
+              key={`${cleanWord}-${w.startFrame}-${idx}`}
               style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: '44px',
+                fontFamily: "'Montserrat', -apple-system, sans-serif",
+                fontSize: '54px',
                 fontWeight: 900,
-                color: isActive ? '#facc15' : '#ffffff',
+                color: isActive ? '#FFE600' : '#FFFFFF',
                 textTransform: 'uppercase',
-                letterSpacing: '0.5px',
+                letterSpacing: '-0.5px',
+                lineHeight: 1.15,
+                // Bold multi-directional stroke & shadow for effortless legibility on any background
                 textShadow: isActive
-                  ? '0 0 20px rgba(250, 204, 21, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
-                  : '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000',
+                  ? '0 0 25px rgba(255, 230, 0, 0.9), -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 0 6px 15px rgba(0, 0, 0, 0.95)'
+                  : '-3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 0 6px 15px rgba(0, 0, 0, 0.95)',
                 display: 'inline-block',
                 transform: isActive ? 'scale(1.08)' : 'scale(1)',
-                transition: 'transform 0.08s ease-out',
+                transformOrigin: 'center center',
+                transition: 'transform 0.06s ease-out, color 0.06s ease-out',
               }}
             >
-              {w.word}
+              {cleanWord}
             </span>
           );
         })}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Composition } from 'remotion';
 import './index.css';
 import { ButterflyEffect } from './components/ButterflyEffect';
-import { BERLIN_WALL_STORY } from './data/berlinWallStory';
+import { CURRENT_STORY } from './data/currentStory';
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -10,12 +10,12 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="ButterflyEffect-Shorts"
         component={ButterflyEffect}
-        durationInFrames={BERLIN_WALL_STORY.totalDurationFrames}
+        durationInFrames={CURRENT_STORY.totalDurationFrames}
         fps={30}
         width={1080}
         height={1920}
         defaultProps={{
-          data: BERLIN_WALL_STORY,
+          data: CURRENT_STORY,
         }}
       />
     </>

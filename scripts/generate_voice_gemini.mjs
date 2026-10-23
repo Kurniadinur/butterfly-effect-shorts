@@ -4,80 +4,87 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 
-dotenv.config();
+dotenv.config({ path: 'C:/Users/dinur/Documents/ButterflyProject/.env' });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 
-const SCRIPT_TEXT = (
-  "Kalian bayangin... dari salah baca selembar memo, sebuah negara adidaya runtuh dalam semalam? " +
-  "Tahun 1989, juru bicara Jerman Timur Günter Schabowski kelelahan dan disodorkan memo aturan imigrasi tanpa sempat dibaca. " +
-  "Di siaran langsung televisi, saat ditanya kapan aturan berlaku, dia panik dan menjawab asal: Detik ini juga. " +
-  "Hanya dalam hitungan menit, berita menyebar liar! Puluhan ribu warga langsung mengepung gerbang Tembok Berlin, sementara tentara bingung tanpa instruksi atasan. " +
-  "Kalah jumlah dan takut pertumpahan darah, gerbang akhirnya dibuka. Malam itu, Tembok Berlin tumbang, dan Uni Soviet bubar selamanya! " +
-  "Cuma gara-gara salah satu kata. Menurutmu, apa keputusan sepelemu hari ini yang bakal ngerubah hidupmu 5 tahun lagi?"
+// All 4 keys for automatic rotation / failover
+const API_KEYS = [
+  process.env.GEMINI_API_KEY,
+  process.env.GEMINI_API_KEY_2,
+  process.env.GEMINI_API_KEY_3,
+  process.env.GEMINI_API_KEY_4,
+].filter(Boolean);
+
+export const EXPANDED_SCRIPT = (
+  "Kalian bayangin... dari satu orang yang kelelahan dan salah baca selembar memo, sebuah negara adidaya bisa runtuh hanya dalam satu malam? " +
+  "Ini adalah salah satu blunder paling fatal dan gila dalam sejarah modern dunia. " +
+  "Tanggal 9 November 1989. Ketegangan di Jerman Timur sedang berada di titik didih. Puluhan ribu warga berdemonstrasi menuntut kebebasan. " +
+  "Di markas partai, pemerintah sebenarnya hanya ingin membuat aturan pelonggaran visa biasa, yang baru berlaku besok lewat birokrasi ketat. " +
+  "Tepat sebelum konferensi pers dimulai, juru bicara Günter Schabowski buru-buru disodorkan selembar memo tanpa sempat dia baca sama sekali. " +
+  "Di depan ratusan jurnalis dari seluruh dunia, siaran langsung televisi pun dimulai. Semuanya berjalan membosankan... sampai menit ke-57. " +
+  "Seorang jurnalis asal Italia, Riccardo Ehrman, melempar pertanyaan tak terduga: Kapan aturan perjalanan baru ini mulai berlaku? " +
+  "Schabowski mendadak panik. Dia membolak-balik kertas memo di mejanya, kacamata melorot, lalu bergumam ragu: Setahu saya... segera. Detik ini juga. " +
+  "Ruang pers langsung gempar! " +
+  "Hanya dalam hitungan menit, stasiun berita internasional menyiarkan kabar mengejutkan: Pintu perbatasan Tembok Berlin telah dibuka! " +
+  "Kabar itu menyebar liar bagai api membakar hutan kering. Puluhan ribu warga Berlin Timur langsung tumpah ruah ke jalanan, menyerbu pos perbatasan Bornholmer Straße. " +
+  "Di pos perbatasan, para tentara gemetar ketakutan. Mereka panik menelepon atasan, tapi tidak ada satu pun jenderal yang berani memberi perintah tembak. " +
+  "Kalah jumlah dan takut pertumpahan darah massal, gerbang perbatasan akhirnya dibuka paksa. " +
+  "Malam itu, warga barat dan timur berpelukan sambil menangis. Mereka memanjat tembok dengan palu godam, menari di atas beton pembatas, dan meruntuhkan Tembok Berlin untuk selamanya. " +
+  "Hanya berselang beberapa bulan, seluruh Uni Soviet bubar, dan peta geopolitik dunia berubah total. " +
+  "Semua revolusi raksasa ini... dimulai dari satu orang yang salah ngomong satu kalimat di siaran TV. " +
+  "Menurutmu, apa keputusan sepele yang kamu ambil hari ini... yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?"
 );
 
-async function main() {
-  const apiKey = process.env.GEMINI_API_KEY;
+async function generateWithRotation(text) {
+  let lastError = null;
 
-  if (!apiKey) {
-    console.log('===============================================================');
-    console.log('[PERHATIAN] GEMINI_API_KEY di file .env masih kosong!');
-    console.log('Untuk menggunakan suara Gemini TTS resmi dari Google:');
-    console.log('1. Buka file: C:\\Users\\dinur\\Documents\\ButterflyProject\\.env');
-    console.log('2. Isi GEMINI_API_KEY=AIzaSy... Anda.');
-    console.log('3. Jalankan kembali script ini.');
-    console.log('===============================================================\n');
-    return;
+  for (let i = 0; i < API_KEYS.length; i++) {
+    const key = API_KEYS[i];
+    console.log(`[TTS Engine] Mencoba API Key ${i + 1} / ${API_KEYS.length}...`);
+
+    try {
+      const ai = new GoogleGenAI({ apiKey: key });
+      const response = await ai.models.generateContent({
+        model: 'gemini-3.8-flash-lite-tts',
+        contents: text,
+      });
+
+      const part = response.candidates?.[0]?.content?.parts?.[0];
+      if (part?.inlineData?.data) {
+        console.log(`[TTS Engine] SUKSES menggunakan Key ${i + 1}!`);
+        return Buffer.from(part.inlineData.data, 'base64');
+      }
+    } catch (err) {
+      console.warn(`[TTS Engine] Key ${i + 1} gagal (${err.message}). Mencoba key berikutnya...`);
+      lastError = err;
+    }
   }
 
-  console.log('[1/3] Menghubungi Google Gemini API untuk sintesis suara...');
-  const ai = new GoogleGenAI({ apiKey });
+  throw new Error(`Semua 4 API Key gagal. Error terakhir: ${lastError?.message}`);
+}
+
+async function main() {
+  console.log('===============================================================');
+  console.log('   GOOGLE GEMINI 3.8 FLASH LITE TTS - STORYTELLER ENGINE       ');
+  console.log('   Tersedia: 4 Kunci API Otomatis Rotasi (Anti-Limit)          ');
+  console.log('===============================================================\n');
 
   try {
-    const response = await ai.models.generateContent({
-      model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
-      contents: [
-        {
-          role: 'user',
-          parts: [
-            {
-              text: `Bertindaklah sebagai storyteller misteri Indonesia sekelas Nessie Judge. Bacakan teks berikut dengan intonasi dramatis, jeda napas yang pas saat ada titik-tiga, dan suara yang memikat:\n\n${SCRIPT_TEXT}`,
-            },
-          ],
-        },
-      ],
-      config: {
-        responseModalities: ['AUDIO'],
-        speechConfig: {
-          voiceConfig: {
-            prebuiltVoiceConfig: {
-              voiceName: 'Aoede', // Pilihan suara ekspresif wanita Google (Aoede, Kore) atau pria (Puck, Fenrir)
-            },
-          },
-        },
-      },
-    });
+    const audioBuffer = await generateWithRotation(EXPANDED_SCRIPT);
+    const outAudioWav = path.join(ROOT_DIR, 'public', 'butterfly', 'audio', 'berlin_wall_voiceover.wav');
+    const outAudioMp3 = path.join(ROOT_DIR, 'public', 'butterfly', 'audio', 'berlin_wall_voiceover.mp3');
 
-    const candidates = response.candidates;
-    if (candidates && candidates[0]?.content?.parts) {
-      for (const part of candidates[0].content.parts) {
-        if (part.inlineData && part.inlineData.data) {
-          const buffer = Buffer.from(part.inlineData.data, 'base64');
-          const outAudio = path.join(ROOT_DIR, 'public', 'butterfly', 'audio', 'berlin_wall_voiceover.wav');
-          fs.writeFileSync(outAudio, buffer);
-          console.log(`[2/3] Audio Gemini TTS berhasil disimpan di: ${outAudio}`);
-          console.log('[3/3] Selesai! Suara narasi Google Gemini siap digunakan.');
-          return;
-        }
-      }
-    }
+    fs.writeFileSync(outAudioWav, audioBuffer);
+    fs.writeFileSync(outAudioMp3, audioBuffer);
 
-    console.log('[INFO] Model mengembalikan respon teks:', response.text);
+    console.log(`\n[SUKSES] Audio voiceover Gemini 3.8 berhasil disimpan:`);
+    console.log(`- ${outAudioWav}`);
+    console.log(`- ${outAudioMp3}`);
   } catch (err) {
-    console.error('[ERROR] Gagal men-generate suara Gemini:', err.message);
+    console.error('[FATAL]', err.message);
   }
 }
 
