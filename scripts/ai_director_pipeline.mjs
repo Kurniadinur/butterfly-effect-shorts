@@ -312,53 +312,65 @@ async function generateStoryboard(topic) {
   if (provider === 'groq') {
     result = await generateStoryboardWithGroq(topic, dynamicPrompt);
   } else {
-    let keySucceeded = false;
-    let lastKeyErr = null;
+    console.log(`      ⚡ Menjalankan Parallel Multi-Key Race (${API_KEYS.length} Gemini Keys + Groq LPU Turbo)...`);
 
-    // Full Rotational Failover across ALL available API Keys
-    for (let k = 0; k < API_KEYS.length; k++) {
-      const currentKey = API_KEYS[k];
-      const ai = new GoogleGenAI({ apiKey: currentKey });
-      const candidateModels = [process.env.GEMINI_MODEL || 'gemini-3.5-flash', 'gemini-3.8-flash'];
+    // Build parallel racing tasks across verified working keys & models
+    const tasks = [];
 
-      for (const modelName of [...new Set(candidateModels)]) {
-        try {
-          const generatePromise = ai.models.generateContent({
-            model: modelName,
-            contents: [
-              {
-                role: 'user',
-                parts: [{ text: dynamicPrompt }],
-              },
-            ],
-            config: {
-              temperature: 0.88,
-              topP: 0.95,
-            },
-          });
-          // 8s timeout per attempt for fast responsive rotation
-          const timeoutPromise = new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('Timeout (>8s)')), 8000)
-          );
-          const response = await Promise.race([generatePromise, timeoutPromise]);
-          if (response.text) {
-            result = response.text;
-            keySucceeded = true;
-            console.log(`      ✓ Naskah berhasil disusun via Gemini Key ${k + 1} (${modelName})!`);
-            break;
-          }
-        } catch (err) {
-          lastKeyErr = err;
-          console.warn(`      [Key ${k + 1} - ${modelName}] Kendala: ${err.message.slice(0, 50)}. Mencoba key/model berikutnya...`);
-        }
-      }
-
-      if (keySucceeded) break;
+    // Key 1: gemini-2.5-flash (fastest ~2.8s) and gemini-3.5-flash
+    if (API_KEYS[0]) {
+      const ai1 = new GoogleGenAI({ apiKey: API_KEYS[0] });
+      tasks.push(
+        ai1.models.generateContent({
+          model: 'gemini-2.5-flash',
+          contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
+          config: { temperature: 0.88, topP: 0.95 },
+        }).then((res) => ({ provider: 'Gemini Key 1 (gemini-2.5-flash)', text: res.text }))
+      );
+      tasks.push(
+        ai1.models.generateContent({
+          model: 'gemini-3.5-flash',
+          contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
+          config: { temperature: 0.88, topP: 0.95 },
+        }).then((res) => ({ provider: 'Gemini Key 1 (gemini-3.5-flash)', text: res.text }))
+      );
     }
 
-    if (!result) {
-      console.warn(`\n[Peringatan] Seluruh ${API_KEYS.length} Gemini API Key sedang sibuk/antre (${lastKeyErr?.message.slice(0, 50)}).`);
-      console.log(`[Failover Kilat] Mengalihkan langsung ke Groq Cloud LPU (~2 detik, 0% CPU)...`);
+    // Keys 2, 3, 4: gemini-3.5-flash in parallel
+    for (let k = 1; k < API_KEYS.length; k++) {
+      const keyIndex = k;
+      const ai = new GoogleGenAI({ apiKey: API_KEYS[keyIndex] });
+      tasks.push(
+        ai.models.generateContent({
+          model: 'gemini-3.5-flash',
+          contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
+          config: { temperature: 0.88, topP: 0.95 },
+        }).then((res) => ({ provider: `Gemini Key ${keyIndex + 1} (gemini-3.5-flash)`, text: res.text }))
+      );
+    }
+
+    // Groq LPU Turbo Safety Net:
+    // If Gemini is queued or experiencing global 503 spikes past 6.0 seconds,
+    // Groq LPU automatically joins and finishes in ~1.6s so the user never waits or times out!
+    const groqSafetyPromise = new Promise((resolve, reject) => {
+      setTimeout(async () => {
+        try {
+          console.log(`      ⏱️ [Speed Optimizer] Gemini antre >6s, mengaktifkan Groq LPU (~1.6s) agar tidak menunggu lama...`);
+          const groqText = await generateStoryboardWithGroq(topic, dynamicPrompt);
+          resolve({ provider: 'Groq Cloud LPU (Turbo Failover)', text: groqText });
+        } catch (e) {
+          reject(e);
+        }
+      }, 6000);
+    });
+    tasks.push(groqSafetyPromise);
+
+    try {
+      const winner = await Promise.any(tasks);
+      result = winner.text;
+      console.log(`      🎉 [Pemenang Balapan AI] Naskah tercepat selesai oleh: ${winner.provider}!`);
+    } catch (allErr) {
+      console.warn(`[Peringatan] Seluruh kandidat paralel mengalami kendala (${allErr.message}). Mengaktifkan panggilan darurat Groq LPU...`);
       result = await generateStoryboardWithGroq(topic, dynamicPrompt);
     }
   }
