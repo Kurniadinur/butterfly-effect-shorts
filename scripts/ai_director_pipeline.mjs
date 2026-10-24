@@ -137,39 +137,102 @@ async function callGeminiWithRotation(taskFn) {
   throw new Error(`Semua ${API_KEYS.length} API Key gagal dieksekusi. Error terakhir: ${lastErr?.message}`);
 }
 
+// Groq Cloud LPU Fallback (Zero 503 Spike Guarantee)
+async function generateStoryboardWithGroq(topic) {
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey) throw new Error('GROQ_API_KEY tidak ditemukan di file .env');
+
+  console.log('      [LPU Failover] Mengaktifkan Groq Cloud LPU (0% Spike, Super Cepat)...');
+  const models = ['openai/gpt-oss-120b', 'qwen/qwen3.8-27b'];
+  let lastErr = null;
+
+  for (const modelName of models) {
+    try {
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: modelName,
+          messages: [
+            {
+              role: 'system',
+              content: 'You are an autonomous AI Film Director specializing in dramatic Butterfly Effect short videos. You must output pure valid JSON with NO markdown formatting and NO conversational text.',
+            },
+            {
+              role: 'user',
+              content: `${DIRECTOR_PROMPT}\n\nTopik Butterfly Effect Baru: "${topic}"`,
+            },
+          ],
+          response_format: { type: 'json_object' },
+          temperature: 0.8,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.choices?.[0]?.message?.content) {
+        console.log(`      ✓ Naskah berhasil disusun via Groq LPU (${modelName})!`);
+        return data.choices[0].message.content;
+      }
+      if (data.error) throw new Error(data.error.message);
+    } catch (err) {
+      lastErr = err;
+      console.warn(`      [Groq Failover] Model ${modelName} gagal: ${err.message}. Mencoba model berikutnya...`);
+    }
+  }
+  throw lastErr || new Error('Semua model Groq gagal.');
+}
+
 // -----------------------------------------------------------------------------
-// STEP 1: Direct Storyboard via Gemini with High Creativity (Temp 0.85)
+// STEP 1: Direct Storyboard via Gemini / Groq with High Creativity (Temp 0.85)
 // -----------------------------------------------------------------------------
 async function generateStoryboard(topic) {
   console.log('[1/4] Sutradara AI sedang merancang alur cerita & kurasi visual unik...');
   console.log('      (Menganalisa topik & menyusun 8-15 adegan berantai...)');
   const t0 = Date.now();
-  const result = await callGeminiWithRotation(async (ai, key, keyNum) => {
-    const candidateModels = [process.env.GEMINI_MODEL || 'gemini-3.5-flash', 'gemini-3.5-flash', 'gemini-3.8-flash'];
-    let lastModelErr = null;
-    for (const modelName of [...new Set(candidateModels)]) {
-      try {
-        const response = await ai.models.generateContent({
-          model: modelName,
-          contents: [
-            {
-              role: 'user',
-              parts: [{ text: `${DIRECTOR_PROMPT}\n\nTopik Butterfly Effect Baru: "${topic}"` }],
-            },
-          ],
-          config: {
-            temperature: 0.85,
-            topP: 0.95,
-          },
-        });
-        if (response.text) return response.text;
-      } catch (err) {
-        lastModelErr = err;
-        console.warn(`      [Model Failover] Model ${modelName} gagal: ${err.message.slice(0, 80)}. Mencoba model alternatif...`);
-      }
+  let result = '';
+
+  const provider = (process.env.STORY_PROVIDER || 'auto').toLowerCase();
+
+  if (provider === 'groq') {
+    result = await generateStoryboardWithGroq(topic);
+  } else {
+    try {
+      result = await callGeminiWithRotation(async (ai, key, keyNum) => {
+        const candidateModels = [process.env.GEMINI_MODEL || 'gemini-3.5-flash', 'gemini-3.5-flash', 'gemini-3.8-flash'];
+        let lastModelErr = null;
+        for (const modelName of [...new Set(candidateModels)]) {
+          try {
+            const response = await ai.models.generateContent({
+              model: modelName,
+              contents: [
+                {
+                  role: 'user',
+                  parts: [{ text: `${DIRECTOR_PROMPT}\n\nTopik Butterfly Effect Baru: "${topic}"` }],
+                },
+              ],
+              config: {
+                temperature: 0.85,
+                topP: 0.95,
+              },
+            });
+            if (response.text) return response.text;
+          } catch (err) {
+            lastModelErr = err;
+            console.warn(`      [Model Failover] Model ${modelName} gagal: ${err.message.slice(0, 80)}. Mencoba model alternatif...`);
+          }
+        }
+        throw lastModelErr || new Error('Gagal menghasilkan storyboard');
+      });
+    } catch (geminiErr) {
+      console.warn(`\n[Peringatan] Server Google Gemini sedang mengalami antrean trafik (503).`);
+      console.log(`[Failover Otomatis] Mengalihkan ke Groq Cloud LPU Llama/GPT-OSS...`);
+      result = await generateStoryboardWithGroq(topic);
     }
-    throw lastModelErr || new Error('Gagal menghasilkan storyboard');
-  });
+  }
+
   console.log(`      ✓ Naskah & kurasi visual selesai dalam ${((Date.now() - t0) / 1000).toFixed(1)} detik.`);
 
   const cleaned = result.replace(/```json/gi, '').replace(/```/g, '').trim();
