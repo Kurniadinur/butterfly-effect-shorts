@@ -380,16 +380,18 @@ async function generateStoryboard(topic) {
   }
   fs.mkdirSync(storyMediaDir, { recursive: true });
 
-  // Helper to strictly detect if a scene is explicitly about a specific historical person or landmark
+  // Helper to strictly detect if a scene is explicitly about a specific historical person or authentic object
   function isExplicitHistoricalSubject(txt, query) {
     const combined = (txt + ' ' + (query || '')).toLowerCase();
     const explicitEntities = [
       'schabowski', 'dyatlov', 'fleming', 'princip', 'fleet', 'ferdinand',
       'napoleon', 'krenz', 'legasov', 'gorbachev', 'hitler', 'stalin', 'churchill',
       'kennedy', 'lincoln', 'caesar', 'einstein', 'oppenheimer', 'newton',
-      'titanic', 'brandenburg', 'checkpoint charlie', 'lusitania', 'carpathia',
+      'titanic', 'brandenburg gate', 'lusitania', 'carpathia',
       'bismarck', 'archduke', 'gavrilo', 'edward smith', 'captain smith',
-      'akimov', 'toptunov', 'valery legasov', 'boris shcherbina', 'j. bruce ismay'
+      'akimov', 'toptunov', 'valery legasov', 'boris shcherbina', 'j. bruce ismay',
+      'columbus', 'galileo', 'darwin', 'edison', 'tesla', 'fdr', 'truman',
+      'hirohito', 'nixon', 'khrushchev', 'trotsky', 'lenin', 'cleopatra'
     ];
     return explicitEntities.some((entity) => combined.includes(entity));
   }
