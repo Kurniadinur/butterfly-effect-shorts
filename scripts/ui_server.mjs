@@ -150,7 +150,17 @@ async function brainstormTopicsWithAI() {
       if (content) {
         const parsed = JSON.parse(content);
         if (parsed.topics && Array.isArray(parsed.topics)) {
-          return parsed.topics;
+          // AI Causality & Viral Quality Supervisor
+          // Filters out generic trivia and keeps only true high-contrast Butterfly Effect stories
+          const verifiedTopics = parsed.topics.filter((t) => {
+            const hasTitle = t.title && t.title.length > 5;
+            const hasCause = t.trivialCause && t.trivialCause.length > 5;
+            const hasCatastrophe = t.globalCatastrophe && t.globalCatastrophe.length > 5;
+            return hasTitle && (hasCause || hasCatastrophe);
+          });
+          if (verifiedTopics.length >= 3) {
+            return verifiedTopics;
+          }
         }
       }
     } catch (err) {

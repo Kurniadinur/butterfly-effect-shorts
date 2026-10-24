@@ -97,6 +97,18 @@ export function recordFeedback({ storyId, title, rating, note, storyData }) {
   return memory;
 }
 
+function sanitizeLayoutDensity(data) {
+  if (!data || !Array.isArray(data.nodes)) return data;
+  data.nodes.forEach((n) => {
+    if (n.primaryText && n.primaryText.length > 28) n.primaryText = n.primaryText.slice(0, 28);
+    if (n.secondaryText && n.secondaryText.length > 34) n.secondaryText = n.secondaryText.slice(0, 34);
+    if (n.stampText && n.stampText.length > 16) n.stampText = n.stampText.slice(0, 16);
+    if (n.metricLabel && n.metricLabel.length > 15) n.metricLabel = n.metricLabel.slice(0, 15);
+    if (n.metricValue && n.metricValue.length > 15) n.metricValue = n.metricValue.slice(0, 15);
+  });
+  return data;
+}
+
 /**
  * Autonomous AI Quality Critic / Auditor (Actor-Critic Self-Refinement Loop)
  * Reviews the drafted storyboard before rendering, detecting hallucinations,
@@ -132,6 +144,12 @@ KRITERIA AUDIT KETAT:
    - Pastikan 'editorialStyle' ada dan sesuai dengan topik ('cold-war-crisis', 'noir-forensic', 'industrial-decay', 'amber-urgent', atau 'clean-documentary').
    - Pastikan 'grainIntensity' berada di ambang aman (0.03 - 0.065), tidak menyilaukan dan nyaman di mata penonton.
    - Pastikan 'shakeThresholdChaos' proporsional (60-75) agar kamera berguncang halus hanya saat momen tegang puncak.
+6. SUPERVISI TIPOGRAFI & DENSITAS TEKS VECTOR SKETCH:
+   - Pastikan teks grafis tidak kepanjangan agar tidak terpotong di layar HP:
+     * 'primaryText': maksimal 25 karakter.
+     * 'secondaryText': maksimal 30 karakter.
+     * 'stampText': maksimal 16 karakter (huruf kapital singkat & padat).
+     * 'headline': 3 sampai 6 kata.
 
 FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
 {
@@ -175,13 +193,14 @@ FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
         if (content) {
           const parsed = JSON.parse(content);
           if (parsed && typeof parsed === 'object') {
+            const finalStory = parsed.refinedStory && Array.isArray(parsed.refinedStory.nodes)
+              ? parsed.refinedStory
+              : storyData;
             return {
               approved: parsed.approved !== false,
               score: typeof parsed.score === 'number' ? parsed.score : 90,
               notes: parsed.notes || 'Sensor otomatis selesai.',
-              storyData: parsed.refinedStory && Array.isArray(parsed.refinedStory.nodes)
-                ? parsed.refinedStory
-                : storyData,
+              storyData: sanitizeLayoutDensity(finalStory),
             };
           }
         }
@@ -196,6 +215,6 @@ FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
     approved: true,
     score: 95,
     notes: 'Verifikasi integritas struktur lolos.',
-    storyData,
+    storyData: sanitizeLayoutDensity(storyData),
   };
 }

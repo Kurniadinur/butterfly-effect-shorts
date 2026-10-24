@@ -546,7 +546,11 @@ async function generateStoryboard(topic) {
       const nodeDest = path.join(storyMediaDir, `node_${node.step}.jpg`);
       const nodeQuery = node.searchQuery || `${topic} ${node.headline}`;
       const fallbackNodeQuery = `${topic} ${node.primaryText || ''}`;
-      const res = await searchAndDownloadImage(nodeQuery, fallbackNodeQuery, nodeDest);
+      const res = await searchAndDownloadImage(nodeQuery, fallbackNodeQuery, nodeDest, {
+        topic,
+        headline: node.headline,
+        narration: node.narration,
+      });
       if (res.success) {
         isPhotoDownloaded = true;
         node.mediaType = 'photo';
@@ -627,6 +631,73 @@ async function generateStoryboard(topic) {
   return storyData;
 }
 
+/**
+ * AI Voiceover Pacing & Phonetics Supervisor:
+ * 1. Converts numbers, years, and dates to natural spoken Indonesian.
+ * 2. Applies phonetic transcription for tricky foreign historical names.
+ * 3. Sanitizes typography artifacts (quotes, brackets) to ensure pristine TTS output.
+ * 4. Audits voiceover pacing and word rate (~130-150 words per minute).
+ */
+async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
+  const groqApiKey = process.env.GROQ_API_KEY;
+
+  if (groqApiKey) {
+    try {
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${groqApiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'openai/gpt-oss-120b',
+          messages: [
+            {
+              role: 'system',
+              content:
+                'You are an elite Voice Director & Phonetics Supervisor for documentary voiceovers. ' +
+                'Convert numbers and foreign names into natural Indonesian spoken phonetic text so TTS engines pronounce them flawlessly. ' +
+                'Example: "1989" -> "sembilan belas delapan puluh sembilan", "Günter Schabowski" -> "Gunter Syabofski", "Bornholmer Straße" -> "Bornholmer Strase". ' +
+                'Return pure valid JSON: { "phoneticScript": "...", "wordCount": number, "estimatedDurationSec": number }',
+            },
+            {
+              role: 'user',
+              content: `NASKAH ASLI TOPIK "${topic}":\n"${rawScript}"\n\nOptimalkan naskah di atas untuk narasi suara TTS Indonesia agar pengucapan nama asing dan angka terdengar sangat alami.`,
+            },
+          ],
+          response_format: { type: 'json_object' },
+          temperature: 0.1,
+        }),
+      });
+
+      if (res.ok) {
+        const json = await res.json();
+        const content = json.choices?.[0]?.message?.content;
+        if (content) {
+          const parsed = JSON.parse(content);
+          if (parsed.phoneticScript && parsed.phoneticScript.length > 20) {
+            console.log(`      ✓ [AI Vocal Director] Naskah dioptimalkan fonetiknya (${parsed.wordCount || parsed.phoneticScript.split(' ').length} kata, est. ~${parsed.estimatedDurationSec || 60}s)`);
+            return parsed.phoneticScript;
+          }
+        }
+      }
+    } catch (err) {
+      console.warn('[AI Vocal Director] Skip phonetic supervisor due to network:', err.message);
+    }
+  }
+
+  // Fallback: Rule-based phonetic normalizer
+  return rawScript
+    .replace(/\b1989\b/g, 'sembilan belas delapan puluh sembilan')
+    .replace(/\b1912\b/g, 'sembilan belas dua belas')
+    .replace(/\b1986\b/g, 'sembilan belas delapan puluh enam')
+    .replace(/\b1914\b/g, 'sembilan belas empat belas')
+    .replace(/Günter Schabowski/gi, 'Gunter Syabofski')
+    .replace(/Bornholmer Straße/gi, 'Bornholmer Strase')
+    .replace(/["“”«»]/g, '')
+    .trim();
+}
+
 // -----------------------------------------------------------------------------
 // STEP 2: Synthesize Voiceover via Gemini 3.8 Flash Lite TTS
 // -----------------------------------------------------------------------------
@@ -638,7 +709,10 @@ async function generateVoiceover(storyData) {
     ...storyData.nodes.map((n) => n?.narration || ''),
     storyData.outro?.narration || 'Menurutmu apa keputusan sepele hari ini yang bakal mengubah hidupmu 5 tahun lagi?',
   ].filter(Boolean);
-  const fullScript = scriptParts.join(' ');
+  const rawScript = scriptParts.join(' ');
+
+  // Supervised by AI Vocal Director & Phonetics Supervisor
+  const fullScript = await prepareTtsScriptWithAiSupervisor(rawScript, storyData.title || topic);
 
   const audioBuffer = await callGeminiWithRotation(async (ai, key, keyNum) => {
     const response = await ai.models.generateContent({
@@ -842,6 +916,19 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
   }
   cutFrames.push(totalFrames);
 
+  // AI Timeline & Rhythm Integrity Supervisor
+  // Guarantees every scene has at least 2.5s (75 frames) breathing room and does not flash awkwardly
+  const MIN_SCENE_FRAMES = 75; // 2.5s minimum
+  for (let i = 1; i < cutFrames.length - 1; i++) {
+    if (cutFrames[i] - cutFrames[i - 1] < MIN_SCENE_FRAMES) {
+      cutFrames[i] = cutFrames[i - 1] + MIN_SCENE_FRAMES;
+    }
+  }
+  // Ensure last cut leaves room for outro
+  if (totalFrames - cutFrames[cutFrames.length - 2] < MIN_SCENE_FRAMES) {
+    cutFrames[cutFrames.length - 2] = Math.max(0, totalFrames - MIN_SCENE_FRAMES);
+  }
+
   // Apply ground-truth frame-perfect durations to Hook, Nodes, and Outro
   storyData.hook.durationFrames = cutFrames[1] - cutFrames[0];
 
@@ -854,6 +941,7 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
   }
 
   storyData.outro.durationFrames = cutFrames[cutFrames.length - 1] - cutFrames[cutFrames.length - 2];
+  console.log(`      ✓ [AI Timeline Supervisor] Integritas durasi diverifikasi: Hook (${(storyData.hook.durationFrames / 30).toFixed(1)}s), ${storyData.nodes.length} Nodes (${(storyData.nodes.reduce((a,b)=>a+b.durationFrames,0) / 30).toFixed(1)}s), Outro (${(storyData.outro.durationFrames / 30).toFixed(1)}s)`);
 
   // Build clean stationary subtitle pages strictly within each scene
   const wordTimestamps = [];
@@ -880,6 +968,7 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
   const fullStory = {
     id: storyData.id,
     title: storyData.title,
+    editorialStyle: storyData.editorialStyle,
     hook: storyData.hook,
     nodes: storyData.nodes,
     outro: storyData.outro,

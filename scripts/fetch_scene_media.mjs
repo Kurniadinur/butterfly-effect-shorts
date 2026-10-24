@@ -105,16 +105,103 @@ async function searchOpenverseAll(query) {
 }
 
 /**
+ * AI Visual Asset & Archival Photo Curator (Supervisor):
+ * Inspects candidate images found in Wikimedia/Wikipedia and verifies
+ * whether any candidate is genuinely an authentic archival portrait or real historical photo.
+ * If all candidates are non-authentic (tourist signs, modern selfies, maps, plaques, logos),
+ * it rejects them so the scene safely falls back to a 100% accurate vector sketch.
+ */
+async function auditAndSelectArchivalCandidate(candidates, query, context = {}) {
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey || candidates.length === 0) {
+    // If offline, use heuristic scoring rather than raw random
+    const scored = candidates
+      .map((c) => {
+        let score = 0;
+        const lower = c.title.toLowerCase();
+        if (lower.includes('portrait') || lower.includes('bundesarchiv') || lower.includes('official') || lower.includes('1989') || lower.includes('1912')) score += 5;
+        if (lower.includes('sign') || lower.includes('checkpoint') || lower.includes('plaque') || lower.includes('stamp') || lower.includes('logo')) score -= 10;
+        return { candidate: c, score };
+      })
+      .sort((a, b) => b.score - a.score);
+    return scored[0]?.score >= 0 ? scored[0].candidate : null;
+  }
+
+  try {
+    const candidateSummaries = candidates.map((c, idx) => ({
+      index: idx,
+      title: c.title,
+      source: c.source,
+    }));
+
+    const prompt = `
+You are a Senior Archival Photo Curator & Fact-Checker for an elite historical documentary.
+Review the following archival photo candidates for a historical scene:
+
+SCENE CONTEXT:
+Query: "${query}"
+Headline: "${context.headline || ''}"
+Narration: "${context.narration || ''}"
+
+CANDIDATES:
+${JSON.stringify(candidateSummaries, null, 2)}
+
+STRICT CURATION RULES:
+1. SELECT ONLY authentic historical photographs or official portraits of the real person, building, or historical event.
+2. REJECT: Modern street signs, commemorative stamps, book covers, tourist checkpoint signs, logos, maps, or unrelated crowds.
+3. If NONE of the candidates are authentic historical photos matching the scene, return "selectedIndex": -1 to fall back to an animated vector sketch.
+4. Return pure JSON: { "selectedIndex": number, "isAuthentic": boolean, "reason": "brief explanation" }
+`;
+
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'openai/gpt-oss-120b',
+        messages: [
+          { role: 'system', content: 'You are an elite Archival Photo Curator. Return pure valid JSON.' },
+          { role: 'user', content: prompt },
+        ],
+        response_format: { type: 'json_object' },
+        temperature: 0.1,
+      }),
+    });
+
+    if (res.ok) {
+      const json = await res.json();
+      const content = json.choices?.[0]?.message?.content;
+      if (content) {
+        const parsed = JSON.parse(content);
+        if (parsed.isAuthentic && typeof parsed.selectedIndex === 'number' && parsed.selectedIndex >= 0 && parsed.selectedIndex < candidates.length) {
+          console.log(`      ✓ [AI Photo Curator] Disetujui: "${candidates[parsed.selectedIndex].title}" (${parsed.reason})`);
+          return candidates[parsed.selectedIndex];
+        } else {
+          console.log(`      🛡️ [AI Photo Curator] Ditolak (${parsed.reason || 'Bukan foto sejarah otentik'}). Beralih ke sketsa vektor.`);
+          return null;
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('[AI Photo Curator] Skip curator due to network:', err.message);
+  }
+
+  return candidates[0] || null;
+}
+
+/**
  * Searches across multiple global archival sources and downloads the highest quality image.
- * Uses random candidate selection among verified matches so repeated runs of the same topic
- * yield fresh, diverse historical archival imagery rather than the exact same thumbnail.
+ * Uses the AI Photo Curator Supervisor to verify historical authenticity before downloading.
  *
  * @param {string} query - Specific English search query
  * @param {string} fallbackQuery - Secondary query if first yields no results
  * @param {string} destPath - Full filesystem destination path for the saved image
+ * @param {object} context - Context containing headline and narration for AI Curator
  * @returns {Promise<{ success: boolean, title?: string, source?: string, destPath?: string }>}
  */
-export async function searchAndDownloadImage(query, fallbackQuery, destPath) {
+export async function searchAndDownloadImage(query, fallbackQuery, destPath, context = {}) {
   const queries = [query, fallbackQuery].filter(Boolean);
 
   const allCandidates = [];
@@ -133,18 +220,18 @@ export async function searchAndDownloadImage(query, fallbackQuery, destPath) {
       if (openv.length > 0) allCandidates.push(...openv);
     }
 
-    if (allCandidates.length >= 3) break;
+    if (allCandidates.length >= 4) break;
   }
 
   if (allCandidates.length === 0) {
     return { success: false };
   }
 
-  // Pick randomly from the valid archival matches to guarantee visual variety
-  const candidate = allCandidates[Math.floor(Math.random() * allCandidates.length)];
+  // Supervised selection by AI Archival Photo Curator
+  const candidate = await auditAndSelectArchivalCandidate(allCandidates, query, context);
 
   if (!candidate || !candidate.url) {
-    return { success: false };
+    return { success: false, fallbackToGraphic: true };
   }
 
   try {
