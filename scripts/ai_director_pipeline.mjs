@@ -63,12 +63,13 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (VISUAL HARUS 100% MENJELASKAN MOMEN):
    - Gunakan "mediaType": "photo" HANYA jika ada foto sejarah riil yang relevan.
    - Gunakan "mediaType": "graphic" untuk adegan dramatis/abstrak/dokumen rahasia/kepanikan.
    - Pilihan "directorType" jika graphic:
-     * "bureaucracy-draft"  : Berkas birokrasi rahasia di atas meja kayu.
-     * "memo-handoff"       : Sketsa tangan menyelipkan kertas memo rahasia di meja.
-     * "press-question"     : Siluet jurnalis mengangkat mikrofon di bawah lampu sorot.
-     * "schabowski-slip"    : Kacamata melorot, jam digital berdetik, ucapan fatal.
-     * "breaking-news"      : Monitor TV tabung vintage dengan ticker darurat.
+     * "wall-demolition"   : Animasi aksi riil massa merobohkan Tembok Berlin, siluet orang di atas dinding mengayunkan palu godam dengan percikan api, retakan dinding beton menjalar, dan lautan massa mendorong dinding.
+     * "gate-breach"       : Animasi aksi riil palang gerbang perbatasan berayun terbuka ke atas, lampu sirene merah berputar di pos jaga, dan ribuan siluet warga menerobos maju membawa senter.
+     * "press-podium"      : Podium konferensi pers Schabowski, hujan kilatan blitz kamera wartawan yang menyala-nyala, jam digital berdetik 18:57, dan dokumen fatal di tangan.
+     * "memo-investigation": Kertas dokumen memo rahasia di bawah sorotan lampu meja dengan kaca pembesar memindai kata fatal 'sofort' (segera) berstabilo kuning dan stempel merah deklasifikasi.
+     * "domino-collapse"   : Balok domino 3D geopolitik beruntun jatuh menabrak satu sama lain dari Tembok Berlin hingga keruntuhan Uni Soviet.
      * "panic-phone"        : Pos jaga dengan telepon engkol bergetar merah tanpa perintah atasan.
+     * "breaking-news"      : Monitor TV tabung vintage dengan ticker darurat.
      * "soviet-collapse"    : Peta geopolitik retak & Uni Soviet bubar jadi 15 negara.
      * "forensic-dossier"   : Berkas penyelidikan deklasifikasi dengan stempel merah TOP SECRET.
      * "tactical-map"       : Radar taktis melingkar & titik koordinat target episentrum.
@@ -251,41 +252,68 @@ async function generateStoryboard(topic) {
 
   let photoCount = 0;
   let graphicCount = 0;
+  const usedPhotos = new Set();
 
   for (let i = 0; i < storyData.nodes.length; i++) {
     const node = storyData.nodes[i];
     node.step = i + 1;
+    const txt = (node.headline + ' ' + node.narration + ' ' + (node.caption || '')).toLowerCase();
 
-    // Check if photo actually exists locally and has valid size (> 1KB)
-    if (node.mediaType === 'photo') {
-      const photoPath = path.join(ROOT_DIR, 'public', node.mediaUrl);
-      const isValidPhoto = fs.existsSync(photoPath) && fs.statSync(photoPath).size > 1024;
+    // High-impact action moments MUST be animated action sketches:
+    // 1) Wall demolition (massa merobohkan tembok, palu godam, retakan beton)
+    // 2) Gate breach (palang gerbang terbuka, sirene pos jaga, massa menyerbu)
+    // 3) Domino collapse (balok domino geopolitik runtuh beruntun)
+    // 4) Memo investigation (kaca pembesar memindai kata fatal 'sofort')
+    const isWallDemolition = txt.includes('tembok') && (txt.includes('roboh') || txt.includes('palu') || txt.includes('hancur') || txt.includes('dorong') || txt.includes('beton'));
+    const isGateBreach = (txt.includes('gerbang') || txt.includes('palang')) && (txt.includes('buka') || txt.includes('terobos') || txt.includes('jebol') || txt.includes('pasrah'));
+    const isDominoCollapse = txt.includes('domino') || txt.includes('soviet') || txt.includes('komunis') || txt.includes('bubar') || txt.includes('kolaps') || txt.includes('tirai besi');
+    const isMemoInvestigate = (txt.includes('memo') || txt.includes('draf') || txt.includes('regulasi') || txt.includes('rahasia')) && (txt.includes('sofort') || txt.includes('baca') || txt.includes('segera') || i === 0);
 
-      if (!isValidPhoto) {
-        // Automatically route to an appropriate forensic graphic scene
-        node.mediaType = 'graphic';
-        const txt = (node.headline + ' ' + node.narration).toLowerCase();
-        if (txt.includes('peta') || txt.includes('radar') || txt.includes('laut') || txt.includes('pesawat') || txt.includes('koordinat')) {
-          node.directorType = 'tactical-map';
-        } else if (txt.includes('tekanan') || txt.includes('alarm') || txt.includes('reaktor') || txt.includes('bahaya') || txt.includes('mesin')) {
-          node.directorType = 'critical-gauge';
-        } else if (txt.includes('tv') || txt.includes('berita') || txt.includes('siaran') || txt.includes('breaking')) {
-          node.directorType = 'breaking-ticker';
-        } else if (txt.includes('telepon') || txt.includes('panik') || txt.includes('pos')) {
-          node.directorType = 'panic-phone';
-        } else if (txt.includes('memo') || txt.includes('surat') || txt.includes('kertas') || txt.includes('kunci')) {
-          node.directorType = 'memo-handoff';
-        } else {
-          node.directorType = 'forensic-dossier';
-        }
+    // 1. Semantically match authentic historical photos from database for appropriate moments
+    let candidatePhoto = null;
+    if (!isWallDemolition && !isGateBreach && !isDominoCollapse && !isMemoInvestigate) {
+      if (txt.includes('schabowski') || txt.includes('kacamata') || txt.includes('blunder') || txt.includes('ucapan fatal')) {
+        candidatePhoto = 'butterfly/media/schabowski_flustered.jpg';
+      } else if (txt.includes('massa') || txt.includes('warga') || txt.includes('kerumunan') || txt.includes('serbu') || txt.includes('padati')) {
+        candidatePhoto = 'butterfly/media/berlin_crowd.jpg';
+      } else if (txt.includes('wartawan') || txt.includes('konferensi') || txt.includes('pers')) {
+        candidatePhoto = 'butterfly/media/schabowski_press.jpg';
+      } else if (i === storyData.nodes.length - 1 || txt.includes('bebas') || txt.includes('malam') || txt.includes('sejarah') || txt.includes('peradaban')) {
+        candidatePhoto = 'butterfly/media/brandenburg_night.jpg';
       }
     }
 
-    if (node.mediaType === 'graphic') {
-      graphicCount++;
-      if (!node.directorType) node.directorType = 'forensic-dossier';
-    } else {
+    // Alternating rhythm: balance photos vs action sketches (~50:50)
+    const shouldPickPhoto = candidatePhoto && !usedPhotos.has(candidatePhoto) && (i % 2 === 1 || i === storyData.nodes.length - 1);
+
+    if (shouldPickPhoto) {
+      usedPhotos.add(candidatePhoto);
+      node.mediaType = 'photo';
+      node.mediaUrl = candidatePhoto;
       photoCount++;
+    } else {
+      // 2. Assign the EXACT action sketch matching the moment
+      node.mediaType = 'graphic';
+      graphicCount++;
+
+      // Strict priority matching for graphic scenes
+      if (isDominoCollapse) {
+        node.directorType = 'domino-collapse';
+      } else if (isWallDemolition) {
+        node.directorType = 'wall-demolition';
+      } else if (isGateBreach || txt.includes('pos bornholmer') || txt.includes('gerbang')) {
+        node.directorType = 'gate-breach';
+      } else if (txt.includes('konferensi') || txt.includes('pers') || txt.includes('wartawan') || txt.includes('podium') || txt.includes('schabowski') || txt.includes('blunder') || txt.includes('bicara')) {
+        node.directorType = 'press-podium';
+      } else if (isMemoInvestigate || txt.includes('kertas') || txt.includes('surat') || txt.includes('dokumen')) {
+        node.directorType = 'memo-investigation';
+      } else if (txt.includes('telepon') || txt.includes('panik') || txt.includes('dering') || txt.includes('pos jaga') || txt.includes('alarm')) {
+        node.directorType = 'panic-phone';
+      } else if (txt.includes('tv') || txt.includes('siaran') || txt.includes('breaking') || txt.includes('berita') || txt.includes('kabar')) {
+        node.directorType = 'breaking-news';
+      } else {
+        node.directorType = 'forensic-dossier';
+      }
     }
 
     if (!node.zoomDirection) {

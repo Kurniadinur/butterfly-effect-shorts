@@ -9,7 +9,13 @@ export type DirectorSceneType =
   | 'forensic-dossier'
   | 'tactical-map'
   | 'breaking-ticker'
-  | 'critical-gauge';
+  | 'critical-gauge'
+  | 'wall-demolition'
+  | 'gate-breach'
+  | 'domino-collapse'
+  | 'press-podium'
+  | 'memo-investigation'
+  | string;
 
 export type ZoomDirection = 'in' | 'out' | 'panRight' | 'panLeft' | 'zoomIn' | 'zoomOut' | string;
 

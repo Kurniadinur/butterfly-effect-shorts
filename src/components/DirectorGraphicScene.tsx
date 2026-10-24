@@ -13,6 +13,11 @@ export type DirectorSceneType =
   | 'tactical-map'
   | 'breaking-ticker'
   | 'critical-gauge'
+  | 'wall-demolition'
+  | 'gate-breach'
+  | 'domino-collapse'
+  | 'press-podium'
+  | 'memo-investigation'
   | string;
 
 export interface DirectorGraphicSceneProps {
@@ -559,7 +564,442 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           )}
 
           {/* ======================================================== */}
-          {/* SCENE K: FORENSIC DOSSIER (Universal High-Impact Default) */}
+          {/* SCENE K: WALL DEMOLITION (Massa Merobohkan Tembok Berlin) */}
+          {/* ======================================================== */}
+          {(type === 'wall-demolition' || type === 'wall-demolition-action') && (
+            <g transform="translate(100, 390)">
+              <rect x="0" y="0" width="880" height="780" fill="#030712" stroke="#374151" strokeWidth="4" rx="16" />
+
+              {/* Sweeping Night Searchlights */}
+              {(() => {
+                const angle1 = Math.sin(frame * 0.04) * 35;
+                const angle2 = Math.cos(frame * 0.035) * 30;
+                return (
+                  <g>
+                    <polygon
+                      points={`120,740 ${440 + angle1 * 8},-100 ${560 + angle1 * 8},-100`}
+                      fill="url(#spotlightDir)"
+                      opacity="0.35"
+                    />
+                    <polygon
+                      points={`760,740 ${400 + angle2 * 7},-100 ${520 + angle2 * 7},-100`}
+                      fill="url(#spotlightDir)"
+                      opacity="0.3"
+                    />
+                  </g>
+                );
+              })()}
+
+              {/* Concrete Berlin Wall Structure */}
+              <g transform="translate(40, 310)">
+                <rect x="0" y="0" width="800" height="330" fill="#1f2937" stroke="#4b5563" strokeWidth="4" rx="4" />
+                {[160, 320, 480, 640].map((x) => (
+                  <line key={x} x1={x} y1="0" x2={x} y2="330" stroke="#111827" strokeWidth="5" />
+                ))}
+
+                {/* Historic Wall Graffiti */}
+                <text x="180" y="160" fill="#ef4444" fontSize="46" fontWeight="900" fontFamily="'Montserrat', sans-serif" transform="rotate(-6 180 160)" opacity="0.9">
+                  FREIHEIT
+                </text>
+                <text x="490" y="180" fill="#38bdf8" fontSize="40" fontWeight="900" fontFamily="monospace" transform="rotate(4 490 180)" opacity="0.9">
+                  TOR AUF! 1989
+                </text>
+                <circle cx="380" cy="190" r="32" fill="none" stroke="#FFE600" strokeWidth="5" opacity="0.8" />
+                <line x1="380" y1="158" x2="380" y2="222" stroke="#FFE600" strokeWidth="4" opacity="0.8" />
+                <line x1="348" y1="190" x2="380" y2="190" stroke="#FFE600" strokeWidth="4" opacity="0.8" />
+                <line x1="412" y1="190" x2="380" y2="190" stroke="#FFE600" strokeWidth="4" opacity="0.8" />
+
+                {/* Expanding Fissures and Glowing Cracks */}
+                {(() => {
+                  const crackProgress = interpolate(frame, [0, 40], [400, 0], { extrapolateRight: 'clamp' });
+                  return (
+                    <g>
+                      <path
+                        d="M 320 0 L 335 70 L 310 130 L 340 190 L 325 260 L 340 330"
+                        fill="none"
+                        stroke="#f59e0b"
+                        strokeWidth="6"
+                        strokeDasharray="400"
+                        strokeDashoffset={crackProgress}
+                      />
+                      <path
+                        d="M 335 70 L 390 110 L 430 160"
+                        fill="none"
+                        stroke="#f59e0b"
+                        strokeWidth="4"
+                        strokeDasharray="200"
+                        strokeDashoffset={crackProgress * 0.7}
+                      />
+                    </g>
+                  );
+                })()}
+
+                {/* Falling Concrete Chunks */}
+                {[
+                  { x: 300, y: 160 + ((frame * 6) % 170), size: 14, rot: frame * 8 },
+                  { x: 340, y: 130 + ((frame * 7) % 190), size: 18, rot: -frame * 6 },
+                ].map((chunk, idx) => (
+                  <rect
+                    key={idx}
+                    x={chunk.x}
+                    y={chunk.y}
+                    width={chunk.size}
+                    height={chunk.size}
+                    fill="#9ca3af"
+                    stroke="#1f2937"
+                    transform={`rotate(${chunk.rot} ${chunk.x + chunk.size / 2} ${chunk.y + chunk.size / 2})`}
+                  />
+                ))}
+              </g>
+
+              {/* People on Top of Wall Swinging Sledgehammer (Silhouette) */}
+              <g transform="translate(40, 310)">
+                {(() => {
+                  const hammerSwing = Math.sin(frame * 0.28);
+                  const hammerRot = hammerSwing * 45;
+                  const isImpact = hammerSwing < -0.85;
+                  return (
+                    <g transform="translate(320, 0)">
+                      <circle cx="0" cy="-60" r="14" fill="#000000" />
+                      <path d="M -8 -46 L 8 -46 L 12 -5 L -12 -5 Z" fill="#000000" />
+                      <line x1="-8" y1="-5" x2="-18" y2="25" stroke="#000000" strokeWidth="8" strokeLinecap="round" />
+                      <line x1="8" y1="-5" x2="18" y2="25" stroke="#000000" strokeWidth="8" strokeLinecap="round" />
+
+                      <g transform={`rotate(${hammerRot} 0 -35)`}>
+                        <line x1="0" y1="-35" x2="35" y2="-65" stroke="#000000" strokeWidth="6" strokeLinecap="round" />
+                        <line x1="25" y1="-75" x2="45" y2="-55" stroke="#ef4444" strokeWidth="12" strokeLinecap="square" />
+                      </g>
+
+                      {isImpact && (
+                        <g transform="translate(10, 0)">
+                          <circle cx="0" cy="0" r="18" fill="#FFE600" />
+                          <line x1="-22" y1="-15" x2="22" y2="15" stroke="#ffffff" strokeWidth="4" />
+                          <line x1="-15" y1="22" x2="15" y2="-22" stroke="#ffffff" strokeWidth="4" />
+                        </g>
+                      )}
+                    </g>
+                  );
+                })()}
+
+                {/* Celebrating Figures */}
+                <g transform="translate(200, 0)">
+                  <circle cx="0" cy="-55" r="13" fill="#000000" />
+                  <path d="M -7 -42 L 7 -42 L 10 0 L -10 0 Z" fill="#000000" />
+                  <path d="M -7 -35 L -25 -65 L -20 -80" fill="none" stroke="#000000" strokeWidth="6" strokeLinecap="round" />
+                  <path d="M 7 -35 L 25 -65 L 20 -80" fill="none" stroke="#000000" strokeWidth="6" strokeLinecap="round" />
+                </g>
+
+                <g transform="translate(480, 0)">
+                  <circle cx="0" cy="-58" r="13" fill="#000000" />
+                  <path d="M -7 -45 L 7 -45 L 10 0 L -10 0 Z" fill="#000000" />
+                  <path d="M -7 -38 L -30 -65" fill="none" stroke="#000000" strokeWidth="6" strokeLinecap="round" />
+                  <path d="M 7 -38 L 30 -70" fill="none" stroke="#000000" strokeWidth="6" strokeLinecap="round" />
+                </g>
+              </g>
+
+              {/* Crowd at Base Pushing Against the Wall */}
+              <g transform="translate(40, 560)">
+                <rect x="0" y="80" width="800" height="90" fill="#090d16" />
+                {Array.from({ length: 18 }).map((_, i) => {
+                  const px = 20 + i * 44;
+                  const pushBob = Math.sin(frame * 0.15 + i) * 4;
+                  return (
+                    <g key={i} transform={`translate(${px}, ${pushBob})`}>
+                      <circle cx="0" cy="0" r="12" fill="#05070a" />
+                      <path d="M -8 12 L 8 12 L 10 80 L -10 80 Z" fill="#05070a" />
+                      <line x1="0" y1="20" x2="18" y2="0" stroke="#05070a" strokeWidth="6" strokeLinecap="round" />
+                    </g>
+                  );
+                })}
+              </g>
+
+              {/* Action Banner */}
+              <g transform="translate(30, 30)">
+                <rect x="0" y="0" width="820" height="55" fill="rgba(220, 38, 38, 0.95)" rx="8" />
+                <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+                  ⚡ REKA KEJADIAN: MASSA MEROBOHKAN TEMBOK BERLIN
+                </text>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE L: GATE BREACH (Gerbang Dibuka & Lautan Massa Maju) */}
+          {/* ======================================================== */}
+          {(type === 'gate-breach' || type === 'gate-breach-crowd') && (
+            <g transform="translate(100, 390)">
+              <rect x="0" y="0" width="880" height="780" fill="#050811" stroke="#334155" strokeWidth="4" rx="16" />
+
+              {/* Guard Control Booth on Left */}
+              <g transform="translate(80, 260)">
+                <rect x="0" y="0" width="160" height="340" fill="#1e293b" stroke="#64748b" strokeWidth="4" rx="8" />
+                <rect x="25" y="40" width="110" height="100" fill="#fef08a" stroke="#475569" strokeWidth="3" rx="4" />
+                <circle cx="80" cy="95" r="22" fill="#0f172a" />
+                <path d="M 60 120 L 100 120 L 110 140 L 50 140 Z" fill="#0f172a" />
+
+                <g transform="translate(80, -20)">
+                  <polygon points="-25,20 25,20 18,-15 -18,-15" fill={pulse > 0.5 ? '#ef4444' : '#7f1d1d'} />
+                  <circle cx="0" cy="-18" r="14" fill="#ef4444" opacity={0.7 + pulse * 0.3} />
+                </g>
+              </g>
+
+              {/* The Barrier Gate Swinging UPWARD */}
+              {(() => {
+                const gateAngle = interpolate(frame, [0, 45], [0, -75], {
+                  extrapolateLeft: 'clamp',
+                  extrapolateRight: 'clamp',
+                });
+                return (
+                  <g transform="translate(240, 480)">
+                    <rect x="-15" y="-30" width="30" height="150" fill="#334155" rx="4" />
+                    <circle cx="0" cy="0" r="18" fill="#e2e8f0" stroke="#0f172a" strokeWidth="4" />
+
+                    <g transform={`rotate(${gateAngle} 0 0)`}>
+                      <line x1="0" y1="0" x2="560" y2="0" stroke="#ffffff" strokeWidth="18" strokeLinecap="round" />
+                      {[80, 160, 240, 320, 400, 480].map((bx) => (
+                        <line key={bx} x1={bx} y1="-9" x2={bx + 35} y2="-9" stroke="#dc2626" strokeWidth="18" />
+                      ))}
+                      <circle cx="560" cy="0" r="12" fill="#dc2626" />
+                    </g>
+                  </g>
+                );
+              })()}
+
+              {/* Flood of People Silhouettes Rushing Across Border */}
+              <g transform="translate(60, 460)">
+                <line x1="0" y1="140" x2="760" y2="140" stroke="#475569" strokeWidth="4" strokeDasharray="16 12" />
+
+                {Array.from({ length: 20 }).map((_, i) => {
+                  const runSpeed = (frame * (3 + (i % 3))) % 840;
+                  const px = (runSpeed + i * 40) % 800;
+                  const py = 80 + (i % 4) * 14;
+                  const bob = Math.sin(frame * 0.4 + i) * 5;
+                  return (
+                    <g key={i} transform={`translate(${px}, ${py + bob})`}>
+                      <circle cx="0" cy="-35" r="10" fill="#000000" />
+                      <path d="M -6 -25 L 6 -25 L 8 15 L -8 15 Z" fill="#000000" />
+                      <line x1="-4" y1="15" x2="-14" y2="38" stroke="#000000" strokeWidth="5" />
+                      <line x1="4" y1="15" x2="14" y2="38" stroke="#000000" strokeWidth="5" />
+                      {i % 4 === 0 && (
+                        <polygon
+                          points="6,-10 120,-30 120,10"
+                          fill="rgba(254, 240, 138, 0.25)"
+                        />
+                      )}
+                    </g>
+                  );
+                })}
+              </g>
+
+              {/* Action Banner */}
+              <g transform="translate(30, 30)">
+                <rect x="0" y="0" width="820" height="55" fill="rgba(2, 132, 199, 0.95)" rx="8" />
+                <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+                  🚨 GERBANG BORNHOLMER DIBUKA: LAUTAN MASSA MENEROBOS
+                </text>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE M: PRESS PODIUM (Konferensi Pers & Hujan Blitz)    */}
+          {/* ======================================================== */}
+          {(type === 'press-podium' || type === 'press-conference') && (
+            <g transform="translate(100, 390)">
+              <rect x="0" y="0" width="880" height="780" fill="#0a0f1d" stroke="#374151" strokeWidth="4" rx="16" />
+
+              {/* Random Camera Flashbulbs Popping */}
+              {(() => {
+                const flash1 = Math.sin(frame * 1.8) > 0.85;
+                const flash2 = Math.cos(frame * 2.3) > 0.88;
+                return (
+                  <g>
+                    {flash1 && <circle cx="220" cy="180" r="160" fill="#ffffff" opacity="0.8" />}
+                    {flash2 && <circle cx="680" cy="220" r="140" fill="#ffffff" opacity="0.75" />}
+                  </g>
+                );
+              })()}
+
+              {/* The Press Conference Rostrum */}
+              <g transform="translate(440, 320)">
+                <polygon points="-120,380 120,380 90,140 -90,140" fill="#1e293b" stroke="#64748b" strokeWidth="4" />
+                <rect x="-140" y="110" width="280" height="32" fill="#334155" stroke="#94a3b8" strokeWidth="3" rx="4" />
+
+                <g transform="translate(0, 40)">
+                  <circle cx="0" cy="-70" r="28" fill="#0f172a" />
+                  <rect x="-18" y="-76" width="36" height="12" fill="none" stroke="#FFE600" strokeWidth="4" rx="3" />
+                  <polygon points="-70,70 70,70 50,-30 -50,-30" fill="#0f172a" />
+                  <polygon points="-8,-30 8,-30 12,30 -12,30" fill="#dc2626" />
+
+                  <g transform={`rotate(${Math.sin(frame * 0.3) * 6} 20 20)`}>
+                    <rect x="-40" y="10" width="80" height="60" fill="#f8fafc" stroke="#475569" strokeWidth="2" rx="2" />
+                    <line x1="-30" y1="25" x2="30" y2="25" stroke="#94a3b8" strokeWidth="3" />
+                    <line x1="-30" y1="40" x2="20" y2="40" stroke="#94a3b8" strokeWidth="3" />
+                  </g>
+                </g>
+
+                {[-80, -40, 0, 40, 80].map((mx, idx) => (
+                  <g key={idx} transform={`translate(${mx}, 110)`}>
+                    <line x1="0" y1="0" x2={mx * 0.2} y2="-55" stroke="#cbd5e1" strokeWidth="5" />
+                    <circle cx={mx * 0.2} cy="-62" r="10" fill="#38bdf8" stroke="#000" strokeWidth="2" />
+                  </g>
+                ))}
+              </g>
+
+              {/* Digital Clock Showing Fatal Time */}
+              <g transform="translate(360, 100)">
+                <rect x="0" y="0" width="160" height="48" fill="#020617" stroke="#ef4444" strokeWidth="3" rx="6" />
+                <text x="80" y="33" fill="#ef4444" fontSize="22" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                  18:57:04
+                </text>
+              </g>
+
+              {/* Action Banner */}
+              <g transform="translate(30, 30)">
+                <rect x="0" y="0" width="820" height="55" fill="rgba(220, 38, 38, 0.95)" rx="8" />
+                <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+                  🎙️ PUSAT PERS: SCHABOWSKI MEMBACA DOKUMEN SALAH
+                </text>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE N: MEMO INVESTIGATION (Kertas Memo & Kaca Pembesar) */}
+          {/* ======================================================== */}
+          {(type === 'memo-investigation' || type === 'secret-document') && (
+            <g transform="translate(100, 390)">
+              <rect x="0" y="0" width="880" height="780" fill="#090d16" stroke="#374151" strokeWidth="4" rx="16" />
+
+              <g transform="translate(140, 95)">
+                <rect x="0" y="0" width="600" height="590" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="3" rx="8" />
+                <rect x="40" y="35" width="240" height="32" fill="#dc2626" rx="4" />
+                <text x="160" y="57" fill="#ffffff" fontSize="13" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                  DOKUMEN BIROKRASI SED #89
+                </text>
+
+                <text x="40" y="110" fill="#0f172a" fontSize="22" fontWeight="900" fontFamily="monospace">
+                  ENTWURF REISEBESTIMMUNGEN
+                </text>
+
+                <line x1="40" y1="130" x2="560" y2="130" stroke="#cbd5e1" strokeWidth="3" />
+
+                {[165, 195, 225, 285, 315, 345, 405, 435].map((ly, i) => (
+                  <line key={i} x1="40" y1={ly} x2={i % 2 === 0 ? 560 : 500} y2={ly} stroke="#94a3b8" strokeWidth="4" />
+                ))}
+
+                {/* Highlighted Fatal Paragraph */}
+                <g transform="translate(40, 245)">
+                  <rect x="-10" y="-5" width="540" height="34" fill="#fde047" opacity="0.8" rx="4" />
+                  <text x="0" y="20" fill="#000000" fontSize="18" fontWeight="900" fontFamily="monospace">
+                    PARAGRAF 4: "...sofort, unverzüglich."
+                  </text>
+                </g>
+
+                <g transform="translate(400, 450) rotate(-12)" opacity={stampSpring}>
+                  <circle cx="50" cy="50" r="50" fill="none" stroke="#dc2626" strokeWidth="5" strokeDasharray="8 4" />
+                  <text x="50" y="45" fill="#dc2626" fontSize="15" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                    TOP SECRET
+                  </text>
+                  <text x="50" y="65" fill="#dc2626" fontSize="12" fontWeight="700" fontFamily="monospace" textAnchor="middle">
+                    FATAL MEMO
+                  </text>
+                </g>
+
+                {/* Scanning Magnifying Glass */}
+                {(() => {
+                  const magX = 260 + Math.sin(frame * 0.1) * 90;
+                  return (
+                    <g transform={`translate(${magX}, 250)`}>
+                      <circle cx="0" cy="0" r="48" fill="rgba(255,255,255,0.2)" stroke="#d97706" strokeWidth="8" />
+                      <line x1="34" y1="34" x2="85" y2="85" stroke="#78350f" strokeWidth="12" strokeLinecap="round" />
+                      <circle cx="-15" cy="-15" r="12" fill="#ffffff" opacity="0.6" />
+                    </g>
+                  );
+                })()}
+              </g>
+
+              {/* Action Banner */}
+              <g transform="translate(30, 30)">
+                <rect x="0" y="0" width="820" height="55" fill="rgba(217, 119, 6, 0.95)" rx="8" />
+                <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+                  🔍 BUKTI MATERIL: KESALAHAN KATA "SOFORT" (SEGERA)
+                </text>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE O: DOMINO COLLAPSE (Efek Domino Geopolitik Runtuh)  */}
+          {/* ======================================================== */}
+          {(type === 'domino-collapse' || type === 'domino-effect') && (
+            <g transform="translate(100, 390)">
+              <rect x="0" y="0" width="880" height="780" fill="#030712" stroke="#374151" strokeWidth="4" rx="16" />
+
+              <g transform="translate(40, 520)">
+                {[0, 40, 80, 120, 160].map((gy) => (
+                  <line key={gy} x1="0" y1={gy} x2="800" y2={gy} stroke="#1f2937" strokeWidth="2" />
+                ))}
+              </g>
+
+              {/* Sequential Falling Domino Slabs (Tumbling Forward Left to Right) */}
+              {[
+                { name: '1. TEMBOK BERLIN', sub: '9 NOV 1989', startF: 0, color: '#ef4444' },
+                { name: '2. POLANDIA & HUNGARIA', sub: 'DES 1989', startF: 16, color: '#f59e0b' },
+                { name: '3. CEKOSLOWAKIA', sub: '1990', startF: 32, color: '#38bdf8' },
+                { name: '4. PAKTA WARSAWA', sub: '1991', startF: 48, color: '#a855f7' },
+                { name: '5. UNI SOVIET', sub: '26 DES 1991', startF: 64, color: '#dc2626' },
+              ].map((domino, idx) => {
+                const tilt = interpolate(frame, [domino.startF, domino.startF + 14], [0, 68], {
+                  extrapolateLeft: 'clamp',
+                  extrapolateRight: 'clamp',
+                });
+                const dx = 150 + idx * 130;
+                const dy = 440;
+                return (
+                  <g key={idx} transform={`translate(${dx}, ${dy})`}>
+                    <g transform={`rotate(${tilt} 0 160)`}>
+                      <rect x="-32" y="-120" width="64" height="280" fill="#1e293b" stroke={domino.color} strokeWidth="4" rx="6" />
+                      <rect x="-28" y="-115" width="56" height="270" fill={domino.color} opacity="0.2" />
+                      <text
+                        x="-8"
+                        y="0"
+                        fill="#ffffff"
+                        fontSize="14"
+                        fontWeight="900"
+                        fontFamily="'Montserrat', sans-serif"
+                        transform="rotate(90 -8 0)"
+                      >
+                        {domino.name}
+                      </text>
+                      <text
+                        x="14"
+                        y="30"
+                        fill="#cbd5e1"
+                        fontSize="11"
+                        fontWeight="bold"
+                        fontFamily="monospace"
+                        transform="rotate(90 14 30)"
+                      >
+                        {domino.sub}
+                      </text>
+                    </g>
+                  </g>
+                );
+              })}
+
+              {/* Action Banner */}
+              <g transform="translate(30, 30)">
+                <rect x="0" y="0" width="820" height="55" fill="rgba(220, 38, 38, 0.95)" rx="8" />
+                <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+                  💥 REKA ADEGAN: EFEK DOMINO RUNTUHNYA TIRAI BESI
+                </text>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE P: FORENSIC DOSSIER (Universal High-Impact Default) */}
           {/* ======================================================== */}
           {(type === 'forensic-dossier' ||
             (![
@@ -573,6 +1013,11 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               'tactical-map',
               'critical-gauge',
               'breaking-ticker',
+              'wall-demolition',
+              'gate-breach',
+              'domino-collapse',
+              'press-podium',
+              'memo-investigation',
             ].includes(type))) && (
             <g transform="translate(140, 420)">
               <rect x="0" y="0" width="800" height="740" fill="#1e293b" stroke="#475569" strokeWidth="4" rx="14" />
