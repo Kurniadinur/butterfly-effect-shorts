@@ -21,6 +21,14 @@ export type DirectorSceneType =
   | 'maritime-disaster'
   | 'reactor-meltdown'
   | 'laboratory-discovery'
+  | 'clock-countdown'
+  | 'key-lockbox'
+  | 'car-route'
+  | 'radiation-hazard'
+  | 'valve-failure'
+  | 'telegraph-wire'
+  | 'crowd-protest'
+  | 'courtroom-gavel'
   | string;
 
 export interface DirectorGraphicSceneProps {
@@ -534,7 +542,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                   {(stampText || 'COLLAPSE').slice(0, 14)}
                 </text>
                 <text x="490" y="180" fill="#38bdf8" fontSize="36" fontWeight="900" fontFamily="monospace" transform="rotate(4 490 180)" opacity="0.9">
-                  {(secondaryText || headline || 'SYSTEM BREACH').slice(0, 16)}
+                  {(secondaryText || title || 'SYSTEM BREACH').slice(0, 16)}
                 </text>
                 <circle cx="380" cy="190" r="32" fill="none" stroke="#FFE600" strokeWidth="5" opacity="0.8" />
                 <line x1="380" y1="158" x2="380" y2="222" stroke="#FFE600" strokeWidth="4" opacity="0.8" />
@@ -1043,6 +1051,337 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           )}
 
           {/* ======================================================== */}
+          {/* SCENE T: CLOCK COUNTDOWN / TIME PRESSURE                */}
+          {/* ======================================================== */}
+          {(type === 'clock-countdown' || type === 'fatal-clock' || type === 'time-pressure') && (
+            <g transform="translate(180, 410)">
+              <g transform="translate(360, 360)">
+                <circle cx="0" cy="0" r="280" fill="#09101d" stroke="#334155" strokeWidth="8" />
+                <circle cx="0" cy="0" r="240" fill="none" stroke="rgba(239, 68, 68, 0.25)" strokeWidth="3" />
+
+                {Array.from({ length: 12 }).map((_, i) => {
+                  const rad = (i * 30 * Math.PI) / 180;
+                  const x1 = Math.sin(rad) * 220;
+                  const y1 = -Math.cos(rad) * 220;
+                  const x2 = Math.sin(rad) * 255;
+                  const y2 = -Math.cos(rad) * 255;
+                  return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={i % 3 === 0 ? '#ef4444' : '#64748b'} strokeWidth={i % 3 === 0 ? 6 : 2} />;
+                })}
+
+                {(() => {
+                  const secAngle = (frame * 12) % 360;
+                  const minAngle = (frame * 1.5) % 360;
+                  return (
+                    <g>
+                      <line x1="0" y1="0" x2={Math.sin((minAngle * Math.PI) / 180) * 160} y2={-Math.cos((minAngle * Math.PI) / 180) * 160} stroke="#f8fafc" strokeWidth="8" strokeLinecap="round" />
+                      <line x1="0" y1="0" x2={Math.sin((secAngle * Math.PI) / 180) * 220} y2={-Math.cos((secAngle * Math.PI) / 180) * 220} stroke="#ef4444" strokeWidth="4" strokeLinecap="round" />
+                      <circle cx="0" cy="0" r="14" fill="#ef4444" stroke="#000" strokeWidth="3" />
+                    </g>
+                  );
+                })()}
+
+                <rect x="-170" y="80" width="340" height="70" fill="#030712" stroke="#ef4444" strokeWidth="2" rx="8" />
+                <text x="0" y="128" fill="#ef4444" fontSize="34" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="4">
+                  {metricValue || '00:03.45'}
+                </text>
+                <text x="0" y="65" fill="#94a3b8" fontSize="13" fontWeight="bold" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+                  {primaryText || 'DETIK MENJELANG BENCANA'}
+                </text>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE U: KEY LOCKBOX / FORGOTTEN KEY                     */}
+          {/* ======================================================== */}
+          {(type === 'key-lockbox' || type === 'forgotten-key' || type === 'missing-key') && (
+            <g transform="translate(180, 410)">
+              <g transform="translate(60, 80)" style={{ filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.9))' }}>
+                <rect x="0" y="0" width="600" height="520" fill="#1e293b" stroke="#475569" strokeWidth="6" rx="16" />
+                <rect x="20" y="20" width="560" height="480" fill="#0f172a" rx="10" />
+
+                <circle cx="300" cy="220" r="110" fill="#1e293b" stroke="#ef4444" strokeWidth="6" />
+                <circle cx="300" cy="220" r="85" fill="none" stroke="#f59e0b" strokeWidth="3" strokeDasharray="10 8" />
+
+                <path d="M 292 190 A 18 18 0 1 1 308 190 L 314 245 L 286 245 Z" fill="#ef4444" opacity={0.8 + pulse * 0.2} />
+
+                <g transform="translate(130, 370)">
+                  <rect x="0" y="0" width="340" height="65" fill="#7f1d1d" stroke="#ef4444" strokeWidth="3" rx="6" />
+                  <text x="170" y="42" fill="#ffffff" fontSize="20" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+                    {stampText || 'KUNCI TIDAK DITEMUKAN'}
+                  </text>
+                </g>
+
+                <g transform={`translate(${480 + Math.sin(frame * 0.1) * 8}, ${110 + Math.cos(frame * 0.1) * 8})`}>
+                  <circle cx="0" cy="0" r="42" fill="#030712" stroke="#FFE600" strokeWidth="4" />
+                  <text x="0" y="16" fill="#FFE600" fontSize="48" fontWeight="900" fontFamily="'Montserrat', sans-serif" textAnchor="middle">
+                    ?
+                  </text>
+                  <text x="0" y="62" fill="#f8fafc" fontSize="13" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
+                    {metricLabel || 'TEROPONG HILANG'}
+                  </text>
+                </g>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE V: CAR ROUTE / WRONG TURN                          */}
+          {/* ======================================================== */}
+          {(type === 'car-route' || type === 'wrong-turn' || type === 'transit-blunder') && (
+            <g transform="translate(150, 420)">
+              <g transform="translate(40, 50)">
+                <rect x="40" y="240" width="620" height="120" fill="#1e293b" />
+                <rect x="360" y="40" width="120" height="520" fill="#1e293b" />
+
+                <line x1="40" y1="300" x2="360" y2="300" stroke="#f8fafc" strokeWidth="4" strokeDasharray="20 15" opacity="0.6" />
+                <line x1="420" y1="40" x2="420" y2="560" stroke="#f8fafc" strokeWidth="4" strokeDasharray="20 15" opacity="0.6" />
+
+                <path d="M 60 300 L 420 300 L 420 80" fill="none" stroke="#38bdf8" strokeWidth="6" opacity="0.4" strokeDasharray="10 8" />
+                <path d="M 60 300 L 420 300 L 420 480" fill="none" stroke="#ef4444" strokeWidth="8" strokeDasharray="300" strokeDashoffset={strokeProgress * 0.4} />
+
+                {(() => {
+                  const carProgress = interpolate(frame, [0, durationFrames], [0, 1], { extrapolateRight: 'clamp' });
+                  const carX = carProgress < 0.6 ? interpolate(carProgress, [0, 0.6], [80, 420]) : 420;
+                  const carY = carProgress < 0.6 ? 300 : interpolate(carProgress, [0.6, 1], [300, 460]);
+                  const carRot = carProgress < 0.6 ? 0 : 90;
+                  return (
+                    <g transform={`translate(${carX}, ${carY}) rotate(${carRot})`}>
+                      <rect x="-35" y="-18" width="70" height="36" fill="#f59e0b" stroke="#000" strokeWidth="3" rx="8" />
+                      <rect x="-15" y="-12" width="30" height="24" fill="#0f172a" rx="4" />
+                      <circle cx="-20" cy="-18" r="6" fill="#000" />
+                      <circle cx="20" cy="-18" r="6" fill="#000" />
+                      <circle cx="-20" cy="18" r="6" fill="#000" />
+                      <circle cx="20" cy="18" r="6" fill="#000" />
+                    </g>
+                  );
+                })()}
+
+                <g transform="translate(420, 500)">
+                  <circle cx="0" cy="0" r="32" fill="#ef4444" />
+                  <line x1="-16" y1="-16" x2="16" y2="16" stroke="#ffffff" strokeWidth="6" strokeLinecap="round" />
+                  <line x1="16" y1="-16" x2="-16" y2="16" stroke="#ffffff" strokeWidth="6" strokeLinecap="round" />
+                  <text x="45" y="8" fill="#ef4444" fontSize="18" fontWeight="900" fontFamily="monospace">
+                    {stampText || 'SALAH BELOK'}
+                  </text>
+                </g>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE W: RADIATION HAZARD / TOXIC CLOUD                  */}
+          {/* ======================================================== */}
+          {(type === 'radiation-hazard' || type === 'toxic-cloud' || type === 'hazard-spread') && (
+            <g transform="translate(180, 410)">
+              <g transform="translate(360, 360)">
+                {[120, 200, 270, 330].map((r, i) => {
+                  const waveScale = (frame * 1.5 + i * 40) % 320;
+                  return (
+                    <circle
+                      key={i}
+                      cx="0"
+                      cy="0"
+                      r={waveScale}
+                      fill="none"
+                      stroke="#f59e0b"
+                      strokeWidth="3"
+                      opacity={Math.max(0, 1 - waveScale / 320)}
+                      strokeDasharray="8 6"
+                    />
+                  );
+                })}
+
+                <g transform={`rotate(${frame * 0.4})`}>
+                  <circle cx="0" cy="0" r="140" fill="#0f172a" stroke="#FFE600" strokeWidth="8" />
+                  {[0, 120, 240].map((ang) => (
+                    <path
+                      key={ang}
+                      d="M 0 0 L -35 -125 A 130 130 0 0 1 35 -125 Z"
+                      fill="#FFE600"
+                      transform={`rotate(${ang})`}
+                    />
+                  ))}
+                  <circle cx="0" cy="0" r="45" fill="#0f172a" />
+                  <circle cx="0" cy="0" r="28" fill="#FFE600" />
+                </g>
+
+                <g transform="translate(-180, 190)">
+                  <rect x="0" y="0" width="360" height="75" fill="#030712" stroke="#ef4444" strokeWidth="3" rx="8" />
+                  <text x="180" y="35" fill="#ef4444" fontSize="28" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                    {metricValue || '15,000 ROENTGEN'}
+                  </text>
+                  <text x="180" y="60" fill="#f59e0b" fontSize="13" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
+                    STATUS: {stampText || 'LETHAL OVERLOAD'}
+                  </text>
+                </g>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE X: VALVE FAILURE / PIPELINE BREACH                 */}
+          {/* ======================================================== */}
+          {(type === 'valve-failure' || type === 'pipeline-breach' || type === 'pressure-burst') && (
+            <g transform="translate(160, 420)">
+              <g transform="translate(60, 80)">
+                <rect x="60" y="240" width="580" height="100" fill="#334155" stroke="#1e293b" strokeWidth="6" rx="6" />
+                <rect x="300" y="60" width="100" height="420" fill="#334155" stroke="#1e293b" strokeWidth="6" rx="6" />
+
+                <g transform={`translate(350, 60) rotate(${frame * 4})`}>
+                  <circle cx="0" cy="0" r="65" fill="#ef4444" stroke="#7f1d1d" strokeWidth="6" />
+                  <line x1="-65" y1="0" x2="65" y2="0" stroke="#ffffff" strokeWidth="8" />
+                  <line x1="0" y1="-65" x2="0" y2="65" stroke="#ffffff" strokeWidth="8" />
+                  <circle cx="0" cy="0" r="20" fill="#000000" />
+                </g>
+
+                {Array.from({ length: 12 }).map((_, i) => {
+                  const jetDist = ((frame * 12 + i * 25) % 180) + 30;
+                  const jetAngle = -45 + (i % 5) * 22;
+                  const jx = 350 + Math.cos((jetAngle * Math.PI) / 180) * jetDist;
+                  const jy = 240 + Math.sin((jetAngle * Math.PI) / 180) * jetDist;
+                  return (
+                    <circle
+                      key={i}
+                      cx={jx}
+                      cy={jy}
+                      r={10 + (i % 6) * 3}
+                      fill="#ffffff"
+                      opacity={Math.max(0, 0.9 - jetDist / 200)}
+                    />
+                  );
+                })}
+
+                <g transform="translate(140, 400)">
+                  <rect x="0" y="0" width="380" height="70" fill="#7f1d1d" stroke="#ef4444" strokeWidth="3" rx="8" />
+                  <text x="190" y="42" fill="#ffffff" fontSize="24" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                    {primaryText || 'KEGAGALAN KATUP TEKANAN'}
+                  </text>
+                </g>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE Y: TELEGRAPH WIRE / MORSE SIGNAL                   */}
+          {/* ======================================================== */}
+          {(type === 'telegraph-wire' || type === 'morse-signal' || type === 'emergency-signal') && (
+            <g transform="translate(160, 420)">
+              <g transform="translate(60, 80)">
+                <line x1="350" y1="120" x2="350" y2="380" stroke="#94a3b8" strokeWidth="8" />
+                <line x1="280" y1="180" x2="420" y2="180" stroke="#94a3b8" strokeWidth="5" />
+                <line x1="300" y1="240" x2="400" y2="240" stroke="#94a3b8" strokeWidth="5" />
+                <line x1="350" y1="380" x2="240" y2="520" stroke="#64748b" strokeWidth="6" />
+                <line x1="350" y1="380" x2="460" y2="520" stroke="#64748b" strokeWidth="6" />
+
+                {[40, 90, 150, 220].map((r, i) => {
+                  const ringR = (r + frame * 3) % 240;
+                  return (
+                    <circle
+                      key={i}
+                      cx="350"
+                      cy="120"
+                      r={ringR}
+                      fill="none"
+                      stroke="#38bdf8"
+                      strokeWidth="3"
+                      opacity={Math.max(0, 1 - ringR / 240)}
+                    />
+                  );
+                })}
+                <circle cx="350" cy="120" r="18" fill="#ef4444" stroke="#ffffff" strokeWidth="4" />
+
+                <g transform="translate(60, 390)" style={{ filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.8))' }}>
+                  <rect x="0" y="0" width="560" height="90" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="3" rx="8" />
+                  <text x="30" y="42" fill="#0f172a" fontSize="24" fontWeight="900" fontFamily="monospace">
+                    {quoteText || 'CQD SOS • DISTRESS SIGNAL'}
+                  </text>
+                  <text x="30" y="70" fill="#ef4444" fontSize="16" fontWeight="bold" fontFamily="monospace">
+                    {metricValue || '• • • — — — • • •'}
+                  </text>
+                </g>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE Z: CROWD PROTEST / MASS REVOLT                     */}
+          {/* ======================================================== */}
+          {(type === 'crowd-protest' || type === 'mass-revolt' || type === 'revolution-action') && (
+            <g transform="translate(100, 400)">
+              <polygon points="120,680 400,-80 500,-80" fill="url(#spotlightDir)" opacity="0.3" />
+              <polygon points="760,680 440,-80 540,-80" fill="url(#spotlightDir)" opacity="0.3" />
+
+              <g transform="translate(40, 360)">
+                {Array.from({ length: 24 }).map((_, i) => {
+                  const px = 10 + i * 32;
+                  const py = 120 + Math.sin(frame * 0.15 + i) * 6;
+                  const hasPlacard = i % 3 === 0;
+                  return (
+                    <g key={i} transform={`translate(${px}, ${py})`}>
+                      <circle cx="0" cy="0" r="13" fill="#05070a" />
+                      <path d="M -8 12 L 8 12 L 12 120 L -12 120 Z" fill="#05070a" />
+                      {hasPlacard && (
+                        <g transform="translate(0, -60)">
+                          <line x1="0" y1="60" x2="0" y2="0" stroke="#05070a" strokeWidth="4" />
+                          <rect x="-24" y="-30" width="48" height="30" fill="#e2e8f0" stroke="#05070a" strokeWidth="2" />
+                          <line x1="-16" y1="-15" x2="16" y2="-15" stroke="#ef4444" strokeWidth="3" />
+                        </g>
+                      )}
+                    </g>
+                  );
+                })}
+              </g>
+
+              <g transform="translate(440, 260)">
+                <circle cx="0" cy="0" r="28" fill="#ef4444" />
+                <polygon points="0,0 60,-35 60,35" fill="#ef4444" opacity="0.8" />
+                <text x="80" y="10" fill="#FFE600" fontSize="24" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                  {stampText || 'SUARA RAKYAT'}
+                </text>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE AA: COURTROOM GAVEL / INQUIRY TRIBUNAL             */}
+          {/* ======================================================== */}
+          {(type === 'courtroom-gavel' || type === 'inquiry-tribunal' || type === 'verdict-ruling') && (
+            <g transform="translate(180, 420)">
+              <g transform="translate(60, 80)">
+                <rect x="220" y="340" width="180" height="40" fill="#78350f" stroke="#451a03" strokeWidth="4" rx="6" />
+
+                {(() => {
+                  const strikeProg = Math.sin(frame * 0.25);
+                  const rot = strikeProg > 0 ? strikeProg * 35 : strikeProg * 8;
+                  const isImpact = strikeProg < -0.8;
+                  return (
+                    <g transform="translate(310, 335)">
+                      <g transform={`rotate(${rot} 0 0)`}>
+                        <line x1="0" y1="0" x2="130" y2="-120" stroke="#92400e" strokeWidth="12" strokeLinecap="round" />
+                        <rect x="-35" y="-30" width="70" height="36" fill="#78350f" stroke="#451a03" strokeWidth="4" rx="6" />
+                      </g>
+                      {isImpact && (
+                        <g>
+                          <circle cx="0" cy="5" r={24 + pulse * 15} fill="none" stroke="#FFE600" strokeWidth="4" />
+                          <line x1="-30" y1="5" x2="30" y2="5" stroke="#ffffff" strokeWidth="4" />
+                        </g>
+                      )}
+                    </g>
+                  );
+                })()}
+
+                <g transform="translate(130, 430)">
+                  <rect x="0" y="0" width="360" height="65" fill="#7f1d1d" stroke="#ef4444" strokeWidth="3" rx="8" />
+                  <text x="180" y="42" fill="#ffffff" fontSize="22" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="3">
+                    {stampText || 'INVESTIGASI RESMI'}
+                  </text>
+                </g>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
           {/* SCENE S: FORENSIC DOSSIER (Universal High-Impact Default) */}
           {/* ======================================================== */}
           {(type === 'forensic-dossier' ||
@@ -1065,6 +1404,14 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               'maritime-disaster',
               'reactor-meltdown',
               'laboratory-discovery',
+              'clock-countdown',
+              'key-lockbox',
+              'car-route',
+              'radiation-hazard',
+              'valve-failure',
+              'telegraph-wire',
+              'crowd-protest',
+              'courtroom-gavel',
             ].includes(type))) && (
             <g transform="translate(140, 420)">
               <g style={{ filter: 'drop-shadow(0 25px 45px rgba(0,0,0,0.85))' }}>

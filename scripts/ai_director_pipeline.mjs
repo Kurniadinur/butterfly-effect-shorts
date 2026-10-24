@@ -68,25 +68,34 @@ const DIRECTOR_PROMPT = `
 Kamu adalah Creative Director & Sutradara Dokumenter Papan Atas Dunia sekaligus Storyteller bertaraf Nessie Judge (Nerror).
 Tugasmu adalah menciptakan naskah dan alur visual "Butterfly Effect" (efek domino sebab-akibat ekstrem) berdurasi 60-120 detik untuk YouTube Shorts / TikTok (9:16).
 
-PRINSIP WAJIB SUTRADARA KELAS DUNIA (VISUAL HARUS 100% MENJELASKAN MOMEN):
-1. VISUAL FIDELITY MUTLAK (PENCARIAN FOTO & SKETSA ARSIP OTOMATIS):
-   - DILARANG menampilkan visual yang abstrak atau tidak ada kaitannya dengan kalimat narasi!
-   - Setiap adegan WAJIB secara gamblang memperlihatkan bukti visual dari apa yang sedang diucapkan.
-   - Kamu (AI Sutradara) WAJIB menyediakan kata kunci pencarian arsip sejarah bahasa Inggris yang akurat ("searchQuery", "leftSearchQuery", "rightSearchQuery") agar pipeline otomatis mengunduh foto/sketsa asli dari Wikipedia & Wikimedia Commons!
-   - DILARANG KERAS mencantumkan nama file statis Berlin Wall jika topiknya bukan Tembok Berlin!
+PRINSIP WAJIB SUTRADARA KELAS DUNIA (STRATEGI UTAMA: FULL SKETSA ANIMASI FORENSIK):
+1. VISUAL STRATEGY (DEFAULT WAJIB SKETSA ANIMASI FORENSIK):
+   - Gunakan 'mediaType': 'graphic' (sketsa animasi vektor forensik dinamis) untuk 80% hingga 100% adegan!
+   - Sketsa animasi forensik memberikan gaya dokumenter investigasi yang konsisten, dramatis, bergerak dinamis, dan 100% akurat menjelaskan proses kejadian.
+   - PENGECUALIAN KETAT UNTUK 'mediaType': 'photo' (HANYA BUKTI ARSIP SAKSI NYATA):
+     * 'photo' HANYA BOLEH digunakan jika adegan tersebut SECARA EKSPLISIT menyebutkan NAMA TOKOH SEJARAH NYATA (misal: Anatoly Dyatlov, Günter Schabowski, Alexander Fleming, Gavrilo Princip, Frederick Fleet, Napoleon Bonaparte) atau OBJEK/BANGUNAN SEJARAH ASLI (misal: RMS Titanic, Gerbang Brandenburg, Checkpoint Charlie).
+     * DILARANG KERAS menggunakan foto untuk adegan aksi umum/proses (seperti: katup bocor, uji coba malam, alarm berbunyi, mobil belok, jam berdetik, massa berkumpul, telepon berdering) — semua adegan proses dan aksi WAJIB menggunakan sketsa animasi forensik ('graphic')!
 2. JANGAN PERNAH MENAMPILKAN WAJAH PELAKU / FOKUS UTAMA DI HOOK VIDEO (DETIK 0-4)!
    - Di Hook, penonton HANYA boleh merasakan KONTRAS EKSTREM antara Awal Sepele vs Bencana Global.
 3. DILARANG KERAS MENGULANG FOTO / SKETSA YANG SAMA BERTURUT-TURUT!
    - Setiap adegan harus memiliki sudut pandang baru, variasi tempo, dan pergerakan kamera (cameraMotion): "zoomIn", "zoomOut", "panRight", atau "panLeft".
-4. KATALOG SKETSA ANIMASI FORENSIK ("directorType") JIKA DIRENDER SEBAGAI GRAFIK VECTOR:
-   * "wall-demolition"   : Animasi aksi massa merobohkan dinding/benteng/tembok, siluet orang mengayunkan palu godam dengan percikan api, retakan beton menjalar, dan lautan massa mendorong dinding.
-   * "gate-breach"       : Animasi aksi palang gerbang perbatasan/pos pemeriksaan terangkat ke atas, lampu sirene merah berputar di pos jaga, dan siluet warga menerobos maju membawa senter.
+4. KATALOG LENGKAP 26 SKETSA ANIMASI FORENSIK ("directorType"):
+   * "clock-countdown"   : Jam analog vintage berdetik cepat, hitungan mundur digital milidetik, zona bahaya merah. (Detik-detik genting, keputusan sepele hitungan detik).
+   * "key-lockbox"       : Loker/brankas baja dengan siluet kunci hilang bertanda tanya kuning, gembok darurat, stempel KUNCI TERTINGGAL. (Kelalaian kunci, akses darurat terabaikan).
+   * "car-route"         : Peta jalan taktis dengan mobil bergerak di jalur rute, panah belokan salah merah, palang jalan buntu. (Sopir salah belok, konvoi salah jalur).
+   * "radiation-hazard"  : Lambang radiasi trefoil nuklir berputar, gelombang awan racun/radiasi konsentris melingkar, indikator dosimeter roentgen bahaya.
+   * "valve-failure"     : Pipa industri tekanan tinggi dengan katup roda berputar cepat, semburan uap/gas bocor membahana, indikator kegagalan tekanan.
+   * "telegraph-wire"    : Tiang radio komunikasi telegraf dengan pita kode morse SOS CQD berdenyut dan gelombang radio melingkar.
+   * "crowd-protest"     : Lautan siluet ribuan massa mengangkat plakat dan megafon di bawah sorotan lampu jalan.
+   * "courtroom-gavel"   : Palu hakim kayu menghantam balok suara dengan gelombang kejut cincin emas, vonis investigasi resmi.
+   * "wall-demolition"   : Animasi aksi massa merobohkan dinding/benteng/tembok, siluet orang mengayunkan palu godam dengan percikan api, retakan beton menjalar.
+   * "gate-breach"       : Animasi aksi palang gerbang perbatasan/pos pemeriksaan terangkat ke atas, lampu sirene merah berputar di pos jaga, siluet warga menerobos.
    * "domino-collapse"   : Balok domino 3D beruntun saling bertumbukan dan tumbang ke depan. (Tuliskan 5 tahap berurutan dipisahkan koma pada 'secondaryText'!).
-   * "maritime-disaster" : Siluet kapal laut/samudra miring tenggelam di laut gelap bersalju, gunung es tajam, dan gelombang sinyal radio darurat SOS CQD melingkar memancar.
-   * "reactor-meltdown"  : Penampang reaktor nuklir/industri dengan batang kendali membara merah berdenyut, indikator suhu/radiasi kritis, dan alarm bahaya.
+   * "maritime-disaster" : Siluet kapal laut miring tenggelam di laut gelap bersalju, gunung es tajam, dan sinyal darurat radio SOS CQD melingkar memancar.
+   * "reactor-meltdown"  : Penampang reaktor nuklir dengan batang kendali membara merah berdenyut, indikator suhu/radiasi kritis, dan alarm bahaya.
    * "laboratory-discovery": Cawan petri laboratorium di bawah mikroskop, biakan bakteri dengan cincin zona inhibisi antibiotik yang tidak sengaja terbentuk.
-   * "press-podium"      : Podium konferensi pers/pidato, hujan kilatan blitz kamera wartawan yang menyala-nyala acak, jam digital berdetik, dan dokumen di tangan.
-   * "memo-investigation": Kertas dokumen memo rahasia di bawah sorotan lampu meja dengan kaca pembesar memindai kata fatal berstabilo kuning dan stempel merah deklasifikasi.
+   * "press-podium"      : Podium konferensi pers/pidato, hujan kilatan blitz kamera wartawan yang menyala acak, jam digital berdetik, dan dokumen di tangan.
+   * "memo-investigation": Kertas dokumen memo rahasia di bawah sorotan lampu meja dengan kaca pembesar memindai kata fatal berstabilo kuning dan stempel merah.
    * "panic-phone"       : Pos jaga dengan telepon engkol darurat bergetar merah tanpa instruksi atasan.
    * "breaking-news"     : Monitor TV tabung vintage dengan ticker darurat breaking news.
    * "soviet-collapse"   : Peta wilayah geopolitik retak & terpecah belah jadi negara-negara merdeka.
@@ -115,8 +124,8 @@ FORMAT JSON WAJIB:
     "rightBadge": "BENCANA GLOBAL",
     "leftPrimaryText": "Teks judul dokumen awal",
     "leftStampText": "BUKTI AWAL",
-    "leftSearchQuery": "English search keyword for Cause archival photo/sketch (e.g. 'RMS Titanic binoculars key' or 'Alexander Fleming lab 1928')",
-    "rightSearchQuery": "English search keyword for Catastrophe archival photo/sketch (e.g. 'Sinking of the Titanic Stower' or 'Penicillin bacterial culture plate')"
+    "leftSearchQuery": "English search keyword for Cause archival photo/sketch",
+    "rightSearchQuery": "English search keyword for Catastrophe archival photo/sketch"
   },
   "nodes": [
     {
@@ -125,8 +134,9 @@ FORMAT JSON WAJIB:
       "headline": "JUDUL ADEGAN SINGKAT BESAR",
       "narration": "Naskah narasi suara 10-25 kata yang dramatis...",
       "chaosLevel": 20,
-      "directorType": "salah satu dari 16 katalog di atas",
-      "searchQuery": "English search keyword for authentic archival photo or sketch for this exact scene (e.g. 'Frederick Fleet lookout', 'Titanic iceberg collision', 'Chernobyl Reactor 4 control room', etc.)",
+      "mediaType": "graphic (paling utama) ATAU photo (HANYA JIKA ADA NAMA TOKOH/OBJEK ASLI)",
+      "directorType": "salah satu dari 26 katalog di atas",
+      "searchQuery": "Hanya isi jika mediaType photo: nama tokoh atau objek sejarah spesifik (misal: 'Anatoly Dyatlov portrait', 'RMS Titanic 1912 ship')",
       "zoomDirection": "zoomIn / zoomOut / panRight / panLeft",
       "primaryText": "Teks judul spesifik di dalam elemen grafis",
       "secondaryText": "Teks subjudul / keterangan grafis (untuk domino-collapse: tuliskan 5 tahap dipisah koma)",
@@ -348,43 +358,59 @@ async function generateStoryboard(topic) {
   }
   fs.mkdirSync(storyMediaDir, { recursive: true });
 
+  // Helper to strictly detect if a scene is explicitly about a specific historical person or landmark
+  function isExplicitHistoricalSubject(txt, query) {
+    const combined = (txt + ' ' + (query || '')).toLowerCase();
+    const explicitEntities = [
+      'schabowski', 'dyatlov', 'fleming', 'princip', 'fleet', 'ferdinand',
+      'napoleon', 'krenz', 'legasov', 'gorbachev', 'hitler', 'stalin', 'churchill',
+      'kennedy', 'lincoln', 'caesar', 'einstein', 'oppenheimer', 'newton',
+      'titanic', 'brandenburg', 'checkpoint charlie', 'lusitania', 'carpathia',
+      'bismarck', 'archduke', 'gavrilo', 'edward smith', 'captain smith',
+      'akimov', 'toptunov', 'valery legasov', 'boris shcherbina', 'j. bruce ismay'
+    ];
+    return explicitEntities.some((entity) => combined.includes(entity));
+  }
+
+  function isHistoricalClimaxEvent(txt, query) {
+    const combined = (txt + ' ' + (query || '')).toLowerCase();
+    const climaxEntities = [
+      'world war', 'perang dunia', 'berlin wall', 'tembok berlin',
+      'chernobyl', 'reaktor chernobyl', 'titanic', 'kapal titanic',
+      'cold war', 'perang dingin', 'watergate', 'hiroshima'
+    ];
+    return climaxEntities.some((entity) => combined.includes(entity));
+  }
+
   console.log(`\n      [Visual Hunter (Clean Slate)] Memulai pencarian arsip foto & sketsa baru dari 0 untuk: "${storyData.title || topic}"...`);
 
-  // 1. Download Hook Left Image (Trivial Cause) from 0
+  // 1. Download Hook Left Image (Trivial Cause) ONLY if explicit historical person/landmark
   const hookLeftDest = path.join(storyMediaDir, 'hook_cause.jpg');
   const hookLeftQuery = storyData.hook?.leftSearchQuery || `${topic} ${storyData.hook?.leftTitle || 'cause'}`;
   let hookLeftDone = false;
-  const leftRes = await searchAndDownloadImage(hookLeftQuery, storyData.hook?.leftTitle, hookLeftDest);
-  if (leftRes.success) {
-    hookLeftDone = true;
-    console.log(`      ✓ [Hook Pemicu] Arsip terunduh: "${leftRes.title}" (${leftRes.source})`);
-  }
-
-  if (hookLeftDone) {
-    storyData.hook.leftImage = `butterfly/media/${storySlug}/hook_cause.jpg`;
-  } else if (topic.toLowerCase().includes('berlin') && fs.existsSync(path.join(ROOT_DIR, 'public', 'butterfly/media/memo_document.jpg'))) {
-    storyData.hook.leftImage = 'butterfly/media/memo_document.jpg';
+  if (isExplicitHistoricalSubject(storyData.hook?.leftTitle || '', hookLeftQuery)) {
+    const leftRes = await searchAndDownloadImage(hookLeftQuery, storyData.hook?.leftTitle, hookLeftDest);
+    if (leftRes.success) {
+      hookLeftDone = true;
+      console.log(`      ✓ [Hook Pemicu] Arsip terunduh: "${leftRes.title}" (${leftRes.source})`);
+    }
   } else {
-    storyData.hook.leftImage = null;
+    console.log(`      ⚙ [Hook Pemicu] Menggunakan Grafis Tipografi Forensik Borderless (Tanpa foto B-roll acak)`);
   }
+  storyData.hook.leftImage = hookLeftDone ? `butterfly/media/${storySlug}/hook_cause.jpg` : null;
 
-  // 2. Download Hook Right Image (Catastrophe Climax) from 0
+  // 2. Download Hook Right Image (Catastrophe Climax) ONLY if verified historical event or entity
   const hookRightDest = path.join(storyMediaDir, 'hook_effect.jpg');
   const hookRightQuery = storyData.hook?.rightSearchQuery || `${topic} ${storyData.hook?.rightTitle || 'catastrophe'}`;
   let hookRightDone = false;
-  const rightRes = await searchAndDownloadImage(hookRightQuery, storyData.hook?.rightTitle, hookRightDest);
-  if (rightRes.success) {
-    hookRightDone = true;
-    console.log(`      ✓ [Hook Bencana] Arsip terunduh: "${rightRes.title}" (${rightRes.source})`);
+  if (isExplicitHistoricalSubject(storyData.hook?.rightTitle || '', hookRightQuery) || isHistoricalClimaxEvent(storyData.hook?.rightTitle || '', hookRightQuery)) {
+    const rightRes = await searchAndDownloadImage(hookRightQuery, storyData.hook?.rightTitle, hookRightDest);
+    if (rightRes.success) {
+      hookRightDone = true;
+      console.log(`      ✓ [Hook Bencana] Arsip terunduh: "${rightRes.title}" (${rightRes.source})`);
+    }
   }
-
-  if (hookRightDone) {
-    storyData.hook.rightImage = `butterfly/media/${storySlug}/hook_effect.jpg`;
-  } else if (topic.toLowerCase().includes('berlin') && fs.existsSync(path.join(ROOT_DIR, 'public', 'butterfly/media/wall_demolition.jpg'))) {
-    storyData.hook.rightImage = 'butterfly/media/wall_demolition.jpg';
-  } else {
-    storyData.hook.rightImage = null;
-  }
+  storyData.hook.rightImage = hookRightDone ? `butterfly/media/${storySlug}/hook_effect.jpg` : null;
 
   let photoCount = 0;
   let graphicCount = 0;
@@ -395,7 +421,9 @@ async function generateStoryboard(topic) {
     'reactor-meltdown', 'laboratory-discovery', 'press-podium', 'memo-investigation',
     'panic-phone', 'breaking-news', 'soviet-collapse', 'tactical-map',
     'critical-gauge', 'forensic-dossier', 'bureaucracy-draft', 'memo-handoff',
-    'breaking-ticker', 'press-question', 'schabowski-slip'
+    'breaking-ticker', 'press-question', 'schabowski-slip',
+    'clock-countdown', 'key-lockbox', 'car-route', 'radiation-hazard',
+    'valve-failure', 'telegraph-wire', 'crowd-protest', 'courtroom-gavel'
   ]);
 
   for (let i = 0; i < storyData.nodes.length; i++) {
@@ -403,39 +431,59 @@ async function generateStoryboard(topic) {
     node.step = i + 1;
     const txt = (node.headline + ' ' + node.narration + ' ' + (node.caption || '')).toLowerCase();
 
-    const nodeDest = path.join(storyMediaDir, `node_${node.step}.jpg`);
-    const nodeQuery = node.searchQuery || `${topic} ${node.headline}`;
-    const fallbackNodeQuery = `${topic} ${node.primaryText || ''}`;
+    // STRICT USER RULE: Default to FULL ANIMATED SKETCH (graphic).
+    // B-Roll Photo is ONLY permitted if an explicit historical person or landmark is mentioned!
+    const qualifiesForPhoto = node.mediaType === 'photo' && isExplicitHistoricalSubject(txt, node.searchQuery);
 
     let isPhotoDownloaded = false;
-    const res = await searchAndDownloadImage(nodeQuery, fallbackNodeQuery, nodeDest);
-    if (res.success) {
-      isPhotoDownloaded = true;
-      console.log(`      ✓ [Adegan ${node.step}] Ditemukan arsip foto/sketsa: "${res.title}" (${res.source})`);
+    if (qualifiesForPhoto) {
+      const nodeDest = path.join(storyMediaDir, `node_${node.step}.jpg`);
+      const nodeQuery = node.searchQuery || `${topic} ${node.headline}`;
+      const fallbackNodeQuery = `${topic} ${node.primaryText || ''}`;
+      const res = await searchAndDownloadImage(nodeQuery, fallbackNodeQuery, nodeDest);
+      if (res.success) {
+        isPhotoDownloaded = true;
+        node.mediaType = 'photo';
+        node.mediaUrl = `butterfly/media/${storySlug}/node_${node.step}.jpg`;
+        usedPhotos.add(node.mediaUrl);
+        photoCount++;
+        console.log(`      ✓ [Bukti Saksi Nyata Adegan ${node.step}] Arsip tokoh/objek: "${res.title}" (${res.source})`);
+      }
     }
 
-    if (isPhotoDownloaded) {
-      node.mediaType = 'photo';
-      node.mediaUrl = `butterfly/media/${storySlug}/node_${node.step}.jpg`;
-      usedPhotos.add(node.mediaUrl);
-      photoCount++;
-    } else {
+    if (!isPhotoDownloaded) {
+      // 100% Vector Forensic Animated Sketch
       node.mediaType = 'graphic';
-      node.mediaUrl = node.directorType || 'forensic-dossier';
       graphicCount++;
 
       // If the AI already chose a valid directorType, RESPECT AND PRESERVE THE AI'S CHOICE!
       if (node.directorType && VALID_DIRECTOR_TYPES.has(node.directorType)) {
         // AI choice is preserved!
       } else {
-        // Fallback semantic matcher if directorType is missing or invalid:
-        if (txt.includes('kapal') || txt.includes('tenggelam') || txt.includes('gunung es') || txt.includes('titanic') || txt.includes('samudera')) {
+        // Comprehensive Semantic Matcher across all 26 archetypes:
+        if (txt.includes('jam') || txt.includes('detik') || txt.includes('menit') || txt.includes('waktu') || txt.includes('hitung') || txt.includes('countdown')) {
+          node.directorType = 'clock-countdown';
+        } else if (txt.includes('kunci') || txt.includes('loker') || txt.includes('brankas') || txt.includes('teropong') || txt.includes('terkunci')) {
+          node.directorType = 'key-lockbox';
+        } else if (txt.includes('sopir') || txt.includes('mobil') || txt.includes('belok') || txt.includes('rute') || txt.includes('jalan') || txt.includes('tikungan')) {
+          node.directorType = 'car-route';
+        } else if (txt.includes('katup') || txt.includes('valve') || txt.includes('pipa') || txt.includes('bocor') || txt.includes('uap') || txt.includes('tekanan')) {
+          node.directorType = 'valve-failure';
+        } else if (txt.includes('radiasi') || txt.includes('roentgen') || txt.includes('hazard') || txt.includes('awan') || txt.includes('nuklir') || txt.includes('pripyat')) {
+          node.directorType = 'radiation-hazard';
+        } else if (txt.includes('telegraf') || txt.includes('morse') || txt.includes('sinyal') || txt.includes('sos') || txt.includes('cqd') || txt.includes('radio')) {
+          node.directorType = 'telegraph-wire';
+        } else if (txt.includes('protes') || txt.includes('revolusi') || txt.includes('massa') || txt.includes('demo') || txt.includes('rakyat') || txt.includes('megafon')) {
+          node.directorType = 'crowd-protest';
+        } else if (txt.includes('sidang') || txt.includes('pengadilan') || txt.includes('vonis') || txt.includes('hakim') || txt.includes('investigasi') || txt.includes('saksi')) {
+          node.directorType = 'courtroom-gavel';
+        } else if (txt.includes('kapal') || txt.includes('tenggelam') || txt.includes('gunung es') || txt.includes('titanic') || txt.includes('samudera') || txt.includes('laut')) {
           node.directorType = 'maritime-disaster';
-        } else if (txt.includes('reaktor') || txt.includes('nuklir') || txt.includes('chernobyl') || txt.includes('radiasi') || txt.includes('meltdown')) {
+        } else if (txt.includes('reaktor') || txt.includes('batang kendali') || txt.includes('chernobyl') || txt.includes('meltdown') || txt.includes('daya')) {
           node.directorType = 'reactor-meltdown';
         } else if (txt.includes('bakteri') || txt.includes('penisilin') || txt.includes('laboratorium') || txt.includes('cawan') || txt.includes('jamur')) {
           node.directorType = 'laboratory-discovery';
-        } else if (txt.includes('domino') || txt.includes('bubar') || txt.includes('kolaps') || txt.includes('tirai besi') || txt.includes('runtuh beruntun')) {
+        } else if (txt.includes('domino') || txt.includes('bubar') || txt.includes('kolaps') || txt.includes('tirai besi') || txt.includes('runtuh beruntun') || txt.includes('berantai')) {
           node.directorType = 'domino-collapse';
         } else if (txt.includes('tembok') || txt.includes('roboh') || txt.includes('palu') || txt.includes('dorong') || txt.includes('hancur') || txt.includes('beton')) {
           node.directorType = 'wall-demolition';
@@ -451,13 +499,14 @@ async function generateStoryboard(topic) {
           node.directorType = 'breaking-news';
         } else if (txt.includes('peta') || txt.includes('radar') || txt.includes('koordinat') || txt.includes('target')) {
           node.directorType = 'tactical-map';
-        } else if (txt.includes('tekanan') || txt.includes('suhu') || txt.includes('daya') || txt.includes('kecepatan') || txt.includes('overload')) {
+        } else if (txt.includes('tekanan') || txt.includes('suhu') || txt.includes('kecepatan') || txt.includes('overload')) {
           node.directorType = 'critical-gauge';
         } else {
           node.directorType = 'forensic-dossier';
         }
       }
-      console.log(`      ⚙ [Adegan ${node.step}] Menggunakan sketsa forensik dinamis: "${node.directorType}"`);
+      node.mediaUrl = node.directorType;
+      console.log(`      ⚙ [Sketsa Animasi Forensik Adegan ${node.step}] Menggunakan: "${node.directorType}"`);
     }
 
     if (!node.zoomDirection) {

@@ -63,14 +63,6 @@ export const HookScene: React.FC<HookSceneProps> = ({
     { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
   );
 
-  // Divider pulse at the moment of escalation
-  const dividerFlash = interpolate(
-    frame,
-    [switchPoint - 10, switchPoint, switchPoint + 10],
-    [0, 1, 0],
-    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
-  );
-
   const docPrimaryText = leftPrimaryText || leftTitle;
 
   return (
@@ -122,25 +114,76 @@ export const HookScene: React.FC<HookSceneProps> = ({
               style={{
                 position: 'absolute',
                 inset: 0,
-                backgroundColor: '#0c121e',
+                backgroundColor: '#0a0f18',
+                backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.4) 0%, #070b12 100%)',
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
+                padding: '40px',
               }}
             >
+              {/* Subtle forensic grid overlay */}
               <div
                 style={{
-                  padding: '30px',
-                  backgroundColor: '#1e293b',
-                  borderRadius: '12px',
+                  position: 'absolute',
+                  inset: 0,
+                  opacity: 0.12,
+                  backgroundImage:
+                    'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
+                  backgroundSize: '40px 40px',
+                }}
+              />
+              <div
+                style={{
+                  position: 'relative',
+                  zIndex: 2,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
                   textAlign: 'center',
                 }}
               >
-                <div style={{ color: '#ef4444', fontWeight: 900, fontFamily: 'monospace' }}>
-                  {leftStampText}
+                <div
+                  style={{
+                    color: '#FFE600',
+                    fontWeight: 900,
+                    fontFamily: 'monospace',
+                    fontSize: '15px',
+                    letterSpacing: '3px',
+                    textTransform: 'uppercase',
+                    marginBottom: '10px',
+                    textShadow: '0 0 10px rgba(255,230,0,0.4)',
+                  }}
+                >
+                  ⚡ {leftStampText || 'BUKTI AWAL'}
                 </div>
-                <div style={{ color: '#ffffff', fontSize: '24px', fontWeight: 900 }}>
+                <div
+                  style={{
+                    color: '#ffffff',
+                    fontSize: '36px',
+                    fontWeight: 900,
+                    fontFamily: "'Space Grotesk', -apple-system, sans-serif",
+                    letterSpacing: '-1px',
+                    lineHeight: 1.15,
+                    textTransform: 'uppercase',
+                    maxWidth: '850px',
+                    textShadow: '0 4px 20px rgba(0,0,0,0.8)',
+                  }}
+                >
                   {docPrimaryText}
+                </div>
+                <div
+                  style={{
+                    marginTop: '12px',
+                    color: '#64748b',
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    fontFamily: 'monospace',
+                    letterSpacing: '2px',
+                  }}
+                >
+                  [ REKONSTRUKSI FORENSIK • FAKTA SEJARAH ]
                 </div>
               </div>
             </div>
@@ -187,25 +230,77 @@ export const HookScene: React.FC<HookSceneProps> = ({
               style={{
                 position: 'absolute',
                 inset: 0,
-                backgroundColor: '#180707',
+                backgroundColor: '#160505',
+                backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(80, 15, 15, 0.45) 0%, #0d0202 100%)',
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
+                padding: '40px',
               }}
             >
+              {/* Subtle hazard grid */}
               <div
                 style={{
-                  padding: '30px',
-                  backgroundColor: '#2b0c0c',
-                  borderRadius: '12px',
+                  position: 'absolute',
+                  inset: 0,
+                  opacity: 0.14,
+                  backgroundImage:
+                    'linear-gradient(rgba(239,68,68,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(239,68,68,0.2) 1px, transparent 1px)',
+                  backgroundSize: '40px 40px',
+                }}
+              />
+              <div
+                style={{
+                  position: 'relative',
+                  zIndex: 2,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
                   textAlign: 'center',
                 }}
               >
-                <div style={{ color: '#ef4444', fontWeight: 900, fontFamily: 'monospace' }}>
-                  {rightBadge}
+                <div
+                  style={{
+                    color: '#ef4444',
+                    fontWeight: 900,
+                    fontFamily: 'monospace',
+                    fontSize: '15px',
+                    letterSpacing: '3px',
+                    textTransform: 'uppercase',
+                    marginBottom: '10px',
+                    textShadow: '0 0 10px rgba(239,68,68,0.5)',
+                  }}
+                >
+                  🚨 {rightBadge || 'BENCANA GLOBAL'}
                 </div>
-                <div style={{ color: '#ffffff', fontSize: '24px', fontWeight: 900 }}>
+                <div
+                  style={{
+                    color: '#ffffff',
+                    fontSize: '36px',
+                    fontWeight: 900,
+                    fontFamily: "'Space Grotesk', -apple-system, sans-serif",
+                    letterSpacing: '-1px',
+                    lineHeight: 1.15,
+                    textTransform: 'uppercase',
+                    maxWidth: '850px',
+                    textShadow: '0 4px 25px rgba(220,38,38,0.4)',
+                  }}
+                >
                   {rightTitle}
+                </div>
+                <div
+                  style={{
+                    marginTop: '12px',
+                    color: '#f87171',
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    fontFamily: 'monospace',
+                    letterSpacing: '2px',
+                    opacity: 0.8,
+                  }}
+                >
+                  [ TITIK BALIK PERADABAN DUNIA ]
                 </div>
               </div>
             </div>

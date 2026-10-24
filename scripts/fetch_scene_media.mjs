@@ -13,10 +13,25 @@ function isValidImageUrl(url) {
   return true;
 }
 
+// Helper to ensure search query relevance against article title
+function isTitleRelevant(pageTitle, query) {
+  if (!pageTitle || !query) return false;
+  // Extract significant words (length >= 3, excluding generic keywords)
+  const words = query
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter((w) => w.length >= 3 && !['photo', 'image', 'picture', 'sketch', 'drawing', 'portret', 'portrait', 'foto', 'historical', 'sejarah', 'the', 'and', 'for'].includes(w));
+  if (words.length === 0) return true;
+  const lowerTitle = pageTitle.toLowerCase();
+  // Require at least one significant query word to exist in the matched Wikipedia/Commons title
+  return words.some((w) => lowerTitle.includes(w));
+}
+
 // 1. Wikipedia Pageimages API
 async function searchWikipedia(query, lang = 'en') {
   try {
-    const url = `https://${lang}.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrnamespace=0&gsrlimit=4&prop=pageimages&pithumbsize=1280&format=json&origin=*`;
+    const url = `https://${lang}.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrnamespace=0&gsrlimit=5&prop=pageimages&pithumbsize=1280&format=json&origin=*`;
     const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
     if (!res.ok) return null;
     const data = await res.json();
@@ -24,7 +39,7 @@ async function searchWikipedia(query, lang = 'en') {
     // Sort pages by index/relevance
     pages.sort((a, b) => (a.index || 99) - (b.index || 99));
     for (const p of pages) {
-      if (p.thumbnail && p.thumbnail.source && isValidImageUrl(p.thumbnail.source)) {
+      if (p.thumbnail && p.thumbnail.source && isValidImageUrl(p.thumbnail.source) && isTitleRelevant(p.title, query)) {
         return {
           title: p.title,
           url: p.thumbnail.source,
@@ -49,9 +64,10 @@ async function searchCommons(query) {
     for (const p of pages) {
       const info = p.imageinfo?.[0];
       const imgUrl = info?.thumburl || info?.url;
-      if (imgUrl && isValidImageUrl(imgUrl) && info.mime?.startsWith('image/')) {
+      const cleanTitle = p.title.replace(/^File:/i, '');
+      if (imgUrl && isValidImageUrl(imgUrl) && info.mime?.startsWith('image/') && isTitleRelevant(cleanTitle, query)) {
         return {
-          title: p.title.replace(/^File:/i, ''),
+          title: cleanTitle,
           url: imgUrl,
           source: 'commons',
         };
@@ -72,7 +88,7 @@ async function searchOpenverse(query) {
     const data = await res.json();
     if (data.results && data.results.length > 0) {
       for (const item of data.results) {
-        if (item.url && isValidImageUrl(item.url)) {
+        if (item.url && isValidImageUrl(item.url) && isTitleRelevant(item.title || '', query)) {
           return {
             title: item.title || query,
             url: item.url,

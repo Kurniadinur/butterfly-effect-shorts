@@ -18,6 +18,14 @@ export type DirectorSceneType =
   | 'maritime-disaster'
   | 'reactor-meltdown'
   | 'laboratory-discovery'
+  | 'clock-countdown'
+  | 'key-lockbox'
+  | 'car-route'
+  | 'radiation-hazard'
+  | 'valve-failure'
+  | 'telegraph-wire'
+  | 'crowd-protest'
+  | 'courtroom-gavel'
   | string;
 
 export type ZoomDirection = 'in' | 'out' | 'panRight' | 'panLeft' | 'zoomIn' | 'zoomOut' | string;
@@ -31,6 +39,7 @@ export interface ButterflyNode {
   mediaType: 'photo' | 'broll' | 'graphic';
   mediaUrl: string;
   directorType?: DirectorSceneType | string | null;
+  searchQuery?: string | null;
   zoomDirection?: ZoomDirection;
   primaryText?: string | null;
   secondaryText?: string | null;
@@ -64,6 +73,8 @@ export interface ButterflyStoryData {
     rightBadge?: string | null;
     leftPrimaryText?: string | null;
     leftStampText?: string | null;
+    leftSearchQuery?: string | null;
+    rightSearchQuery?: string | null;
     leftImage?: string | null;
     rightImage?: string | null;
     durationFrames: number;
