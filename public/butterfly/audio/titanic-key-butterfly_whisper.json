@@ -1,0 +1,1387 @@
+{
+  "model": "whisper-large-v3",
+  "engine": "Groq Cloud LPU",
+  "totalDurationSec": 54.76,
+  "allWords": [
+    {
+      "word": "Kalian",
+      "start": 0,
+      "end": 0.46
+    },
+    {
+      "word": "bayangin,",
+      "start": 0.46,
+      "end": 1.42
+    },
+    {
+      "word": "dari",
+      "start": 1.42,
+      "end": 1.54
+    },
+    {
+      "word": "kunci",
+      "start": 1.54,
+      "end": 1.86
+    },
+    {
+      "word": "teropong",
+      "start": 1.86,
+      "end": 2.14
+    },
+    {
+      "word": "yang",
+      "start": 2.14,
+      "end": 2.3
+    },
+    {
+      "word": "tertinggal,",
+      "start": 2.3,
+      "end": 3.32
+    },
+    {
+      "word": "tenggelamnya",
+      "start": 3.36,
+      "end": 3.78
+    },
+    {
+      "word": "Titanic",
+      "start": 3.78,
+      "end": 4.1
+    },
+    {
+      "word": "mengubah",
+      "start": 4.1,
+      "end": 4.52
+    },
+    {
+      "word": "sejarah",
+      "start": 4.52,
+      "end": 4.9
+    },
+    {
+      "word": "dunia",
+      "start": 4.9,
+      "end": 5.2
+    },
+    {
+      "word": "hanya",
+      "start": 5.2,
+      "end": 5.5
+    },
+    {
+      "word": "dalam",
+      "start": 5.5,
+      "end": 5.74
+    },
+    {
+      "word": "satu",
+      "start": 5.74,
+      "end": 5.96
+    },
+    {
+      "word": "malam.",
+      "start": 5.96,
+      "end": 6.3
+    },
+    {
+      "word": "Ribuan",
+      "start": 7.04,
+      "end": 7.3
+    },
+    {
+      "word": "penonton",
+      "start": 7.3,
+      "end": 7.68
+    },
+    {
+      "word": "menyaksikan",
+      "start": 7.68,
+      "end": 8.14
+    },
+    {
+      "word": "Titanic",
+      "start": 8.14,
+      "end": 8.5
+    },
+    {
+      "word": "melaju",
+      "start": 8.5,
+      "end": 8.8
+    },
+    {
+      "word": "megah",
+      "start": 8.8,
+      "end": 9.06
+    },
+    {
+      "word": "dari",
+      "start": 9.06,
+      "end": 9.28
+    },
+    {
+      "word": "pelabuhan",
+      "start": 9.28,
+      "end": 9.68
+    },
+    {
+      "word": "Southampton.",
+      "start": 9.68,
+      "end": 10.76
+    },
+    {
+      "word": "Seorang",
+      "start": 11.02,
+      "end": 11.18
+    },
+    {
+      "word": "petugas",
+      "start": 11.18,
+      "end": 11.52
+    },
+    {
+      "word": "menyimpan",
+      "start": 11.52,
+      "end": 11.92
+    },
+    {
+      "word": "kunci",
+      "start": 11.92,
+      "end": 12.16
+    },
+    {
+      "word": "teropong",
+      "start": 12.16,
+      "end": 12.52
+    },
+    {
+      "word": "di",
+      "start": 12.52,
+      "end": 12.68
+    },
+    {
+      "word": "loker",
+      "start": 12.68,
+      "end": 12.86
+    },
+    {
+      "word": "kabin",
+      "start": 12.86,
+      "end": 13.22
+    },
+    {
+      "word": "tanpa",
+      "start": 13.22,
+      "end": 13.54
+    },
+    {
+      "word": "mencatatnya.",
+      "start": 13.54,
+      "end": 14.12
+    },
+    {
+      "word": "Petugas",
+      "start": 14.84,
+      "end": 15.04
+    },
+    {
+      "word": "jaga",
+      "start": 15.04,
+      "end": 15.32
+    },
+    {
+      "word": "malam",
+      "start": 15.32,
+      "end": 15.48
+    },
+    {
+      "word": "menunggu",
+      "start": 15.48,
+      "end": 15.74
+    },
+    {
+      "word": "teropong,",
+      "start": 15.74,
+      "end": 16.66
+    },
+    {
+      "word": "namun",
+      "start": 16.66,
+      "end": 16.8
+    },
+    {
+      "word": "tidak",
+      "start": 16.8,
+      "end": 17.02
+    },
+    {
+      "word": "ada.",
+      "start": 17.02,
+      "end": 17.26
+    },
+    {
+      "word": "Pandangan",
+      "start": 17.94,
+      "end": 18.22
+    },
+    {
+      "word": "terbatas",
+      "start": 18.22,
+      "end": 18.62
+    },
+    {
+      "word": "di",
+      "start": 18.62,
+      "end": 18.78
+    },
+    {
+      "word": "laut",
+      "start": 18.78,
+      "end": 18.9
+    },
+    {
+      "word": "gelap.",
+      "start": 18.9,
+      "end": 19.16
+    },
+    {
+      "word": "Sebuah",
+      "start": 19.88,
+      "end": 20.06
+    },
+    {
+      "word": "gunung",
+      "start": 20.06,
+      "end": 20.34
+    },
+    {
+      "word": "es",
+      "start": 20.34,
+      "end": 20.54
+    },
+    {
+      "word": "raksasa",
+      "start": 20.54,
+      "end": 20.8
+    },
+    {
+      "word": "muncul",
+      "start": 20.8,
+      "end": 21.12
+    },
+    {
+      "word": "di",
+      "start": 21.12,
+      "end": 21.24
+    },
+    {
+      "word": "jalur,",
+      "start": 21.24,
+      "end": 21.98
+    },
+    {
+      "word": "tak",
+      "start": 21.98,
+      "end": 22.04
+    },
+    {
+      "word": "terdeteksi",
+      "start": 22.04,
+      "end": 22.54
+    },
+    {
+      "word": "karena",
+      "start": 22.54,
+      "end": 22.76
+    },
+    {
+      "word": "ketiadaan",
+      "start": 22.76,
+      "end": 23.18
+    },
+    {
+      "word": "teropong.",
+      "start": 23.18,
+      "end": 24.02
+    },
+    {
+      "word": "Tabrakan",
+      "start": 24.22,
+      "end": 24.54
+    },
+    {
+      "word": "memicu",
+      "start": 24.54,
+      "end": 24.86
+    },
+    {
+      "word": "rangkaian",
+      "start": 24.86,
+      "end": 25.18
+    },
+    {
+      "word": "kegagalan.",
+      "start": 25.18,
+      "end": 26.18
+    },
+    {
+      "word": "Benturan,",
+      "start": 25.7,
+      "end": 27.1
+    },
+    {
+      "word": "pecahnya",
+      "start": 27.1,
+      "end": 27.42
+    },
+    {
+      "word": "sekat,",
+      "start": 27.42,
+      "end": 28.2
+    },
+    {
+      "word": "masuknya",
+      "start": 28.2,
+      "end": 28.5
+    },
+    {
+      "word": "air,",
+      "start": 28.5,
+      "end": 29.22
+    },
+    {
+      "word": "kemiringan,",
+      "start": 29.22,
+      "end": 30.1
+    },
+    {
+      "word": "tenggelam",
+      "start": 30.1,
+      "end": 30.44
+    },
+    {
+      "word": "Titanic",
+      "start": 31.02,
+      "end": 31.34
+    },
+    {
+      "word": "perlahan",
+      "start": 31.34,
+      "end": 31.68
+    },
+    {
+      "word": "menukik,",
+      "start": 31.68,
+      "end": 32.42
+    },
+    {
+      "word": "menelan",
+      "start": 32.42,
+      "end": 32.68
+    },
+    {
+      "word": "ribuan",
+      "start": 32.68,
+      "end": 32.98
+    },
+    {
+      "word": "nyawa",
+      "start": 32.98,
+      "end": 33.2
+    },
+    {
+      "word": "dalam",
+      "start": 33.2,
+      "end": 33.44
+    },
+    {
+      "word": "hitungan",
+      "start": 33.44,
+      "end": 33.82
+    },
+    {
+      "word": "menit",
+      "start": 33.82,
+      "end": 34
+    },
+    {
+      "word": "Stasiun",
+      "start": 34.5,
+      "end": 34.86
+    },
+    {
+      "word": "radio",
+      "start": 34.86,
+      "end": 35.14
+    },
+    {
+      "word": "menyiarkan",
+      "start": 35.14,
+      "end": 35.52
+    },
+    {
+      "word": "berita",
+      "start": 35.52,
+      "end": 35.86
+    },
+    {
+      "word": "mengerikan,",
+      "start": 35.86,
+      "end": 36.86
+    },
+    {
+      "word": "dunia",
+      "start": 36.86,
+      "end": 37.14
+    },
+    {
+      "word": "terdiam",
+      "start": 37.14,
+      "end": 37.52
+    },
+    {
+      "word": "dalam",
+      "start": 37.52,
+      "end": 37.76
+    },
+    {
+      "word": "duka",
+      "start": 37.76,
+      "end": 38.04
+    },
+    {
+      "word": "Kecelakaan",
+      "start": 38.58,
+      "end": 39.06
+    },
+    {
+      "word": "memaksa",
+      "start": 39.06,
+      "end": 39.38
+    },
+    {
+      "word": "pemerintah",
+      "start": 39.38,
+      "end": 39.82
+    },
+    {
+      "word": "mengeluarkan",
+      "start": 39.82,
+      "end": 40.24
+    },
+    {
+      "word": "peraturan",
+      "start": 40.24,
+      "end": 40.7
+    },
+    {
+      "word": "baru",
+      "start": 40.7,
+      "end": 40.98
+    },
+    {
+      "word": "tentang",
+      "start": 40.98,
+      "end": 41.32
+    },
+    {
+      "word": "peralatan",
+      "start": 41.32,
+      "end": 41.76
+    },
+    {
+      "word": "pengamatan",
+      "start": 41.76,
+      "end": 42.28
+    },
+    {
+      "word": "Monumen",
+      "start": 42.9,
+      "end": 43.22
+    },
+    {
+      "word": "digital",
+      "start": 43.22,
+      "end": 43.54
+    },
+    {
+      "word": "menampilkan",
+      "start": 43.54,
+      "end": 44.04
+    },
+    {
+      "word": "data",
+      "start": 44.04,
+      "end": 44.24
+    },
+    {
+      "word": "terperinci,",
+      "start": 44.24,
+      "end": 45.38
+    },
+    {
+      "word": "mengingatkan",
+      "start": 45.38,
+      "end": 45.76
+    },
+    {
+      "word": "generasi",
+      "start": 45.76,
+      "end": 46.14
+    },
+    {
+      "word": "akan",
+      "start": 46.14,
+      "end": 46.34
+    },
+    {
+      "word": "pentingnya",
+      "start": 46.34,
+      "end": 46.78
+    },
+    {
+      "word": "detail",
+      "start": 46.78,
+      "end": 46.98
+    },
+    {
+      "word": "kecil",
+      "start": 46.98,
+      "end": 47.28
+    },
+    {
+      "word": "Menurutmu,",
+      "start": 47.88,
+      "end": 48.98
+    },
+    {
+      "word": "apa",
+      "start": 48.98,
+      "end": 49.1
+    },
+    {
+      "word": "keputusan",
+      "start": 49.1,
+      "end": 49.52
+    },
+    {
+      "word": "sepele",
+      "start": 49.52,
+      "end": 49.82
+    },
+    {
+      "word": "yang",
+      "start": 49.82,
+      "end": 49.94
+    },
+    {
+      "word": "kamu",
+      "start": 49.94,
+      "end": 50.16
+    },
+    {
+      "word": "ambil",
+      "start": 50.16,
+      "end": 50.4
+    },
+    {
+      "word": "hari",
+      "start": 50.4,
+      "end": 50.62
+    },
+    {
+      "word": "ini,",
+      "start": 50.62,
+      "end": 51.34
+    },
+    {
+      "word": "yang",
+      "start": 51.34,
+      "end": 51.46
+    },
+    {
+      "word": "tanpa",
+      "start": 51.46,
+      "end": 51.74
+    },
+    {
+      "word": "kamu",
+      "start": 51.74,
+      "end": 51.96
+    },
+    {
+      "word": "sadari,",
+      "start": 51.96,
+      "end": 52.8
+    },
+    {
+      "word": "bakal",
+      "start": 52.8,
+      "end": 52.98
+    },
+    {
+      "word": "mengubah",
+      "start": 52.98,
+      "end": 53.3
+    },
+    {
+      "word": "jalan",
+      "start": 53.3,
+      "end": 53.52
+    },
+    {
+      "word": "hidupmu",
+      "start": 53.52,
+      "end": 53.88
+    },
+    {
+      "word": "5",
+      "start": 53.88,
+      "end": 54.02
+    },
+    {
+      "word": "tahun",
+      "start": 54.02,
+      "end": 54.22
+    },
+    {
+      "word": "lagi?",
+      "start": 54.22,
+      "end": 54.94
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 2.84,
+      "text": "Kalian bayangin, dari kunci teropong yang tertinggal,",
+      "words": [
+        {
+          "word": "Kalian",
+          "start": 0,
+          "end": 0.46
+        },
+        {
+          "word": "bayangin,",
+          "start": 0.46,
+          "end": 1.42
+        },
+        {
+          "word": "dari",
+          "start": 1.42,
+          "end": 1.54
+        },
+        {
+          "word": "kunci",
+          "start": 1.54,
+          "end": 1.86
+        },
+        {
+          "word": "teropong",
+          "start": 1.86,
+          "end": 2.14
+        },
+        {
+          "word": "yang",
+          "start": 2.14,
+          "end": 2.3
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 3.32,
+      "end": 6.32,
+      "text": "tenggelamnya Titanic mengubah sejarah dunia hanya dalam satu malam.",
+      "words": [
+        {
+          "word": "tenggelamnya",
+          "start": 3.36,
+          "end": 3.78
+        },
+        {
+          "word": "Titanic",
+          "start": 3.78,
+          "end": 4.1
+        },
+        {
+          "word": "mengubah",
+          "start": 4.1,
+          "end": 4.52
+        },
+        {
+          "word": "sejarah",
+          "start": 4.52,
+          "end": 4.9
+        },
+        {
+          "word": "dunia",
+          "start": 4.9,
+          "end": 5.2
+        },
+        {
+          "word": "hanya",
+          "start": 5.2,
+          "end": 5.5
+        },
+        {
+          "word": "dalam",
+          "start": 5.5,
+          "end": 5.74
+        },
+        {
+          "word": "satu",
+          "start": 5.74,
+          "end": 5.96
+        },
+        {
+          "word": "malam.",
+          "start": 5.96,
+          "end": 6.3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 7.02,
+      "end": 10.3,
+      "text": "Ribuan penonton menyaksikan Titanic melaju megah dari pelabuhan Southampton.",
+      "words": [
+        {
+          "word": "Ribuan",
+          "start": 7.04,
+          "end": 7.3
+        },
+        {
+          "word": "penonton",
+          "start": 7.3,
+          "end": 7.68
+        },
+        {
+          "word": "menyaksikan",
+          "start": 7.68,
+          "end": 8.14
+        },
+        {
+          "word": "Titanic",
+          "start": 8.14,
+          "end": 8.5
+        },
+        {
+          "word": "melaju",
+          "start": 8.5,
+          "end": 8.8
+        },
+        {
+          "word": "megah",
+          "start": 8.8,
+          "end": 9.06
+        },
+        {
+          "word": "dari",
+          "start": 9.06,
+          "end": 9.28
+        },
+        {
+          "word": "pelabuhan",
+          "start": 9.28,
+          "end": 9.68
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 10.96,
+      "end": 14.12,
+      "text": "Seorang petugas menyimpan kunci teropong di loker kabin tanpa mencatatnya.",
+      "words": [
+        {
+          "word": "Seorang",
+          "start": 11.02,
+          "end": 11.18
+        },
+        {
+          "word": "petugas",
+          "start": 11.18,
+          "end": 11.52
+        },
+        {
+          "word": "menyimpan",
+          "start": 11.52,
+          "end": 11.92
+        },
+        {
+          "word": "kunci",
+          "start": 11.92,
+          "end": 12.16
+        },
+        {
+          "word": "teropong",
+          "start": 12.16,
+          "end": 12.52
+        },
+        {
+          "word": "di",
+          "start": 12.52,
+          "end": 12.68
+        },
+        {
+          "word": "loker",
+          "start": 12.68,
+          "end": 12.86
+        },
+        {
+          "word": "kabin",
+          "start": 12.86,
+          "end": 13.22
+        },
+        {
+          "word": "tanpa",
+          "start": 13.22,
+          "end": 13.54
+        },
+        {
+          "word": "mencatatnya.",
+          "start": 13.54,
+          "end": 14.12
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 14.74,
+      "end": 17.28,
+      "text": "Petugas jaga malam menunggu teropong, namun tidak ada.",
+      "words": [
+        {
+          "word": "Petugas",
+          "start": 14.84,
+          "end": 15.04
+        },
+        {
+          "word": "jaga",
+          "start": 15.04,
+          "end": 15.32
+        },
+        {
+          "word": "malam",
+          "start": 15.32,
+          "end": 15.48
+        },
+        {
+          "word": "menunggu",
+          "start": 15.48,
+          "end": 15.74
+        },
+        {
+          "word": "teropong,",
+          "start": 15.74,
+          "end": 16.66
+        },
+        {
+          "word": "namun",
+          "start": 16.66,
+          "end": 16.8
+        },
+        {
+          "word": "tidak",
+          "start": 16.8,
+          "end": 17.02
+        },
+        {
+          "word": "ada.",
+          "start": 17.02,
+          "end": 17.26
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 17.88,
+      "end": 19.2,
+      "text": "Pandangan terbatas di laut gelap.",
+      "words": [
+        {
+          "word": "Pandangan",
+          "start": 17.94,
+          "end": 18.22
+        },
+        {
+          "word": "terbatas",
+          "start": 18.22,
+          "end": 18.62
+        },
+        {
+          "word": "di",
+          "start": 18.62,
+          "end": 18.78
+        },
+        {
+          "word": "laut",
+          "start": 18.78,
+          "end": 18.9
+        },
+        {
+          "word": "gelap.",
+          "start": 18.9,
+          "end": 19.16
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 19.82,
+      "end": 23.54,
+      "text": "Sebuah gunung es raksasa muncul di jalur, tak terdeteksi karena ketiadaan teropong.",
+      "words": [
+        {
+          "word": "Sebuah",
+          "start": 19.88,
+          "end": 20.06
+        },
+        {
+          "word": "gunung",
+          "start": 20.06,
+          "end": 20.34
+        },
+        {
+          "word": "es",
+          "start": 20.34,
+          "end": 20.54
+        },
+        {
+          "word": "raksasa",
+          "start": 20.54,
+          "end": 20.8
+        },
+        {
+          "word": "muncul",
+          "start": 20.8,
+          "end": 21.12
+        },
+        {
+          "word": "di",
+          "start": 21.12,
+          "end": 21.24
+        },
+        {
+          "word": "jalur,",
+          "start": 21.24,
+          "end": 21.98
+        },
+        {
+          "word": "tak",
+          "start": 21.98,
+          "end": 22.04
+        },
+        {
+          "word": "terdeteksi",
+          "start": 22.04,
+          "end": 22.54
+        },
+        {
+          "word": "karena",
+          "start": 22.54,
+          "end": 22.76
+        },
+        {
+          "word": "ketiadaan",
+          "start": 22.76,
+          "end": 23.18
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 24.16,
+      "end": 25.7,
+      "text": "Tabrakan memicu rangkaian kegagalan.",
+      "words": [
+        {
+          "word": "Tabrakan",
+          "start": 24.22,
+          "end": 24.54
+        },
+        {
+          "word": "memicu",
+          "start": 24.54,
+          "end": 24.86
+        },
+        {
+          "word": "rangkaian",
+          "start": 24.86,
+          "end": 25.18
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 25.7,
+      "end": 30.48,
+      "text": "Benturan, pecahnya sekat, masuknya air, kemiringan, tenggelam",
+      "words": [
+        {
+          "word": "Benturan,",
+          "start": 25.7,
+          "end": 27.1
+        },
+        {
+          "word": "pecahnya",
+          "start": 27.1,
+          "end": 27.42
+        },
+        {
+          "word": "sekat,",
+          "start": 27.42,
+          "end": 28.2
+        },
+        {
+          "word": "masuknya",
+          "start": 28.2,
+          "end": 28.5
+        },
+        {
+          "word": "air,",
+          "start": 28.5,
+          "end": 29.22
+        },
+        {
+          "word": "kemiringan,",
+          "start": 29.22,
+          "end": 30.1
+        },
+        {
+          "word": "tenggelam",
+          "start": 30.1,
+          "end": 30.44
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 30.48,
+      "end": 34.04,
+      "text": "Titanic perlahan menukik, menelan ribuan nyawa dalam hitungan menit",
+      "words": [
+        {
+          "word": "Titanic",
+          "start": 31.02,
+          "end": 31.34
+        },
+        {
+          "word": "perlahan",
+          "start": 31.34,
+          "end": 31.68
+        },
+        {
+          "word": "menukik,",
+          "start": 31.68,
+          "end": 32.42
+        },
+        {
+          "word": "menelan",
+          "start": 32.42,
+          "end": 32.68
+        },
+        {
+          "word": "ribuan",
+          "start": 32.68,
+          "end": 32.98
+        },
+        {
+          "word": "nyawa",
+          "start": 32.98,
+          "end": 33.2
+        },
+        {
+          "word": "dalam",
+          "start": 33.2,
+          "end": 33.44
+        },
+        {
+          "word": "hitungan",
+          "start": 33.44,
+          "end": 33.82
+        },
+        {
+          "word": "menit",
+          "start": 33.82,
+          "end": 34
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 34.04,
+      "end": 38.06,
+      "text": "Stasiun radio menyiarkan berita mengerikan, dunia terdiam dalam duka",
+      "words": [
+        {
+          "word": "Stasiun",
+          "start": 34.5,
+          "end": 34.86
+        },
+        {
+          "word": "radio",
+          "start": 34.86,
+          "end": 35.14
+        },
+        {
+          "word": "menyiarkan",
+          "start": 35.14,
+          "end": 35.52
+        },
+        {
+          "word": "berita",
+          "start": 35.52,
+          "end": 35.86
+        },
+        {
+          "word": "mengerikan,",
+          "start": 35.86,
+          "end": 36.86
+        },
+        {
+          "word": "dunia",
+          "start": 36.86,
+          "end": 37.14
+        },
+        {
+          "word": "terdiam",
+          "start": 37.14,
+          "end": 37.52
+        },
+        {
+          "word": "dalam",
+          "start": 37.52,
+          "end": 37.76
+        },
+        {
+          "word": "duka",
+          "start": 37.76,
+          "end": 38.04
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 38.06,
+      "end": 42.3,
+      "text": "Kecelakaan memaksa pemerintah mengeluarkan peraturan baru tentang peralatan pengamatan",
+      "words": [
+        {
+          "word": "Kecelakaan",
+          "start": 38.58,
+          "end": 39.06
+        },
+        {
+          "word": "memaksa",
+          "start": 39.06,
+          "end": 39.38
+        },
+        {
+          "word": "pemerintah",
+          "start": 39.38,
+          "end": 39.82
+        },
+        {
+          "word": "mengeluarkan",
+          "start": 39.82,
+          "end": 40.24
+        },
+        {
+          "word": "peraturan",
+          "start": 40.24,
+          "end": 40.7
+        },
+        {
+          "word": "baru",
+          "start": 40.7,
+          "end": 40.98
+        },
+        {
+          "word": "tentang",
+          "start": 40.98,
+          "end": 41.32
+        },
+        {
+          "word": "peralatan",
+          "start": 41.32,
+          "end": 41.76
+        },
+        {
+          "word": "pengamatan",
+          "start": 41.76,
+          "end": 42.28
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 42.3,
+      "end": 47.32,
+      "text": "Monumen digital menampilkan data terperinci, mengingatkan generasi akan pentingnya detail kecil",
+      "words": [
+        {
+          "word": "Monumen",
+          "start": 42.9,
+          "end": 43.22
+        },
+        {
+          "word": "digital",
+          "start": 43.22,
+          "end": 43.54
+        },
+        {
+          "word": "menampilkan",
+          "start": 43.54,
+          "end": 44.04
+        },
+        {
+          "word": "data",
+          "start": 44.04,
+          "end": 44.24
+        },
+        {
+          "word": "terperinci,",
+          "start": 44.24,
+          "end": 45.38
+        },
+        {
+          "word": "mengingatkan",
+          "start": 45.38,
+          "end": 45.76
+        },
+        {
+          "word": "generasi",
+          "start": 45.76,
+          "end": 46.14
+        },
+        {
+          "word": "akan",
+          "start": 46.14,
+          "end": 46.34
+        },
+        {
+          "word": "pentingnya",
+          "start": 46.34,
+          "end": 46.78
+        },
+        {
+          "word": "detail",
+          "start": 46.78,
+          "end": 46.98
+        },
+        {
+          "word": "kecil",
+          "start": 46.98,
+          "end": 47.28
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 47.82,
+      "end": 54.46,
+      "text": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini, yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?",
+      "words": [
+        {
+          "word": "Menurutmu,",
+          "start": 47.88,
+          "end": 48.98
+        },
+        {
+          "word": "apa",
+          "start": 48.98,
+          "end": 49.1
+        },
+        {
+          "word": "keputusan",
+          "start": 49.1,
+          "end": 49.52
+        },
+        {
+          "word": "sepele",
+          "start": 49.52,
+          "end": 49.82
+        },
+        {
+          "word": "yang",
+          "start": 49.82,
+          "end": 49.94
+        },
+        {
+          "word": "kamu",
+          "start": 49.94,
+          "end": 50.16
+        },
+        {
+          "word": "ambil",
+          "start": 50.16,
+          "end": 50.4
+        },
+        {
+          "word": "hari",
+          "start": 50.4,
+          "end": 50.62
+        },
+        {
+          "word": "ini,",
+          "start": 50.62,
+          "end": 51.34
+        },
+        {
+          "word": "yang",
+          "start": 51.34,
+          "end": 51.46
+        },
+        {
+          "word": "tanpa",
+          "start": 51.46,
+          "end": 51.74
+        },
+        {
+          "word": "kamu",
+          "start": 51.74,
+          "end": 51.96
+        },
+        {
+          "word": "sadari,",
+          "start": 51.96,
+          "end": 52.8
+        },
+        {
+          "word": "bakal",
+          "start": 52.8,
+          "end": 52.98
+        },
+        {
+          "word": "mengubah",
+          "start": 52.98,
+          "end": 53.3
+        },
+        {
+          "word": "jalan",
+          "start": 53.3,
+          "end": 53.52
+        },
+        {
+          "word": "hidupmu",
+          "start": 53.52,
+          "end": 53.88
+        },
+        {
+          "word": "5",
+          "start": 53.88,
+          "end": 54.02
+        },
+        {
+          "word": "tahun",
+          "start": 54.02,
+          "end": 54.22
+        }
+      ]
+    }
+  ],
+  "text": " Kalian bayangin, dari kunci teropong yang tertinggal, tenggelamnya Titanic mengubah sejarah dunia hanya dalam satu malam. Ribuan penonton menyaksikan Titanic melaju megah dari pelabuhan Southampton. Seorang petugas menyimpan kunci teropong di loker kabin tanpa mencatatnya. Petugas jaga malam menunggu teropong, namun tidak ada. Pandangan terbatas di laut gelap. Sebuah gunung es raksasa muncul di jalur, tak terdeteksi karena ketiadaan teropong. Tabrakan memicu rangkaian kegagalan. Benturan, pecahnya sekat, masuknya air, kemiringan, tenggelam Titanic perlahan menukik, menelan ribuan nyawa dalam hitungan menit Stasiun radio menyiarkan berita mengerikan, dunia terdiam dalam duka Kecelakaan memaksa pemerintah mengeluarkan peraturan baru tentang peralatan pengamatan Monumen digital menampilkan data terperinci, mengingatkan generasi akan pentingnya detail kecil Menurutmu, apa keputusan sepele yang kamu ambil hari ini, yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?"
+}

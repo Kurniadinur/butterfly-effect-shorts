@@ -5,6 +5,7 @@ import { spawn } from 'child_process';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 import { transcribeWithGroq } from './align_groq.mjs';
+import { searchAndDownloadImage } from './fetch_scene_media.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -68,16 +69,17 @@ Kamu adalah Creative Director & Sutradara Dokumenter Papan Atas Dunia sekaligus 
 Tugasmu adalah menciptakan naskah dan alur visual "Butterfly Effect" (efek domino sebab-akibat ekstrem) berdurasi 60-120 detik untuk YouTube Shorts / TikTok (9:16).
 
 PRINSIP WAJIB SUTRADARA KELAS DUNIA (VISUAL HARUS 100% MENJELASKAN MOMEN):
-1. VISUAL FIDELITY MUTLAK (AI SUTRADARA MEMILIH SKETSA YANG COCOK):
+1. VISUAL FIDELITY MUTLAK (PENCARIAN FOTO & SKETSA ARSIP OTOMATIS):
    - DILARANG menampilkan visual yang abstrak atau tidak ada kaitannya dengan kalimat narasi!
    - Setiap adegan WAJIB secara gamblang memperlihatkan bukti visual dari apa yang sedang diucapkan.
-   - Kamu (AI Sutradara) berkuasa penuh memilih tipe sketsa animasi (directorType) yang paling akurat untuk setiap momen cerita.
+   - Kamu (AI Sutradara) WAJIB menyediakan kata kunci pencarian arsip sejarah bahasa Inggris yang akurat ("searchQuery", "leftSearchQuery", "rightSearchQuery") agar pipeline otomatis mengunduh foto/sketsa asli dari Wikipedia & Wikimedia Commons!
+   - DILARANG KERAS mencantumkan nama file statis Berlin Wall jika topiknya bukan Tembok Berlin!
 2. JANGAN PERNAH MENAMPILKAN WAJAH PELAKU / FOKUS UTAMA DI HOOK VIDEO (DETIK 0-4)!
    - Di Hook, penonton HANYA boleh merasakan KONTRAS EKSTREM antara Awal Sepele vs Bencana Global.
 3. DILARANG KERAS MENGULANG FOTO / SKETSA YANG SAMA BERTURUT-TURUT!
    - Setiap adegan harus memiliki sudut pandang baru, variasi tempo, dan pergerakan kamera (cameraMotion): "zoomIn", "zoomOut", "panRight", atau "panLeft".
-4. KATALOG SKETSA ANIMASI FORENSIK YANG BISA KAMU PILIH ("directorType"):
-   * "wall-demolition"   : Animasi aksi massa merobohkan dinding/benteng/tembok, siluet orang mengayunkan palu godam dengan percikan api, retakan dinding beton menjalar, dan lautan massa mendorong dinding.
+4. KATALOG SKETSA ANIMASI FORENSIK ("directorType") JIKA DIRENDER SEBAGAI GRAFIK VECTOR:
+   * "wall-demolition"   : Animasi aksi massa merobohkan dinding/benteng/tembok, siluet orang mengayunkan palu godam dengan percikan api, retakan beton menjalar, dan lautan massa mendorong dinding.
    * "gate-breach"       : Animasi aksi palang gerbang perbatasan/pos pemeriksaan terangkat ke atas, lampu sirene merah berputar di pos jaga, dan siluet warga menerobos maju membawa senter.
    * "domino-collapse"   : Balok domino 3D beruntun saling bertumbukan dan tumbang ke depan. (Tuliskan 5 tahap berurutan dipisahkan koma pada 'secondaryText'!).
    * "maritime-disaster" : Siluet kapal laut/samudra miring tenggelam di laut gelap bersalju, gunung es tajam, dan gelombang sinyal radio darurat SOS CQD melingkar memancar.
@@ -98,7 +100,7 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (VISUAL HARUS 100% MENJELASKAN MOMEN):
    - ESKALASI TEGANG (8 hingga 14 adegan berantai): Dari kelalaian kecil, kepanikan, kekacauan berantai, hingga klimaks sejarah dunia berubah.
    - CHILLING OUTRO: Pertanyaan menggantung yang memancing penonton berkomentar ("Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah hidupmu 5 tahun lagi?").
 6. VARIASI CERITA SEGAR:
-   - Setiap kali diminta membuat cerita baru (bahkan untuk topik yang sama), hasilkan alur, narasi, dan pilihan adegan visual yang SEGAR dan BERBEDA! Jangan mengulang urutan yang persis sama.
+   - Setiap kali diminta membuat cerita baru (bahkan untuk topik yang sama), hasilkan alur, narasi, dan pilihan visual yang SEGAR dan BERBEDA! Jangan mengulang urutan yang persis sama.
 7. HANYA OUTPUT JSON MURNI TANPA KATA PENGANTAR DAN TANPA MARKDOWN!
 
 FORMAT JSON WAJIB:
@@ -113,8 +115,8 @@ FORMAT JSON WAJIB:
     "rightBadge": "BENCANA GLOBAL",
     "leftPrimaryText": "Teks judul dokumen awal",
     "leftStampText": "BUKTI AWAL",
-    "rightImage": "butterfly/media/wall_demolition.jpg",
-    "leftImage": "butterfly/media/memo_document.jpg"
+    "leftSearchQuery": "English search keyword for Cause archival photo/sketch (e.g. 'RMS Titanic binoculars key' or 'Alexander Fleming lab 1928')",
+    "rightSearchQuery": "English search keyword for Catastrophe archival photo/sketch (e.g. 'Sinking of the Titanic Stower' or 'Penicillin bacterial culture plate')"
   },
   "nodes": [
     {
@@ -123,8 +125,8 @@ FORMAT JSON WAJIB:
       "headline": "JUDUL ADEGAN SINGKAT BESAR",
       "narration": "Naskah narasi suara 10-25 kata yang dramatis...",
       "chaosLevel": 20,
-      "mediaType": "photo atau graphic",
       "directorType": "salah satu dari 16 katalog di atas",
+      "searchQuery": "English search keyword for authentic archival photo or sketch for this exact scene (e.g. 'Frederick Fleet lookout', 'Titanic iceberg collision', 'Chernobyl Reactor 4 control room', etc.)",
       "zoomDirection": "zoomIn / zoomOut / panRight / panLeft",
       "primaryText": "Teks judul spesifik di dalam elemen grafis",
       "secondaryText": "Teks subjudul / keterangan grafis (untuk domino-collapse: tuliskan 5 tahap dipisah koma)",
@@ -132,7 +134,6 @@ FORMAT JSON WAJIB:
       "quoteText": "Teks kutipan ucapan / pertanyaan jika ada",
       "metricLabel": "Label indikator (misal: KORBAN JIWA, TEKANAN, RADIASI, PENONTON)",
       "metricValue": "Nilai indikator (misal: 1,517 JIWA, 99.4%, SOS CQD, 18:57:04)",
-      "mediaUrl": "nama file foto jika photo, atau nama directorType jika graphic",
       "caption": "Keterangan forensik singkat..."
     }
   ],
@@ -247,7 +248,7 @@ async function generateStoryboard(topic) {
         let lastModelErr = null;
         for (const modelName of [...new Set(candidateModels)]) {
           try {
-            const response = await ai.models.generateContent({
+            const generatePromise = ai.models.generateContent({
               model: modelName,
               contents: [
                 {
@@ -260,6 +261,10 @@ async function generateStoryboard(topic) {
                 topP: 0.95,
               },
             });
+            const timeoutPromise = new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('Gemini API timeout (>15s)')), 15000)
+            );
+            const response = await Promise.race([generatePromise, timeoutPromise]);
             if (response.text) return response.text;
           } catch (err) {
             lastModelErr = err;
@@ -280,12 +285,61 @@ async function generateStoryboard(topic) {
   const cleaned = result.replace(/```json/gi, '').replace(/```/g, '').trim();
   const storyData = JSON.parse(cleaned);
 
-  // Validate Hook images
-  if (!storyData.hook.rightImage || !fs.existsSync(path.join(ROOT_DIR, 'public', storyData.hook.rightImage))) {
-    storyData.hook.rightImage = 'butterfly/media/wall_demolition.jpg';
+  const storySlug = (storyData.id || topic)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+    .slice(0, 45) || 'butterfly-story';
+
+  const storyMediaDir = path.join(ROOT_DIR, 'public', 'butterfly', 'media', storySlug);
+  if (!fs.existsSync(storyMediaDir)) {
+    fs.mkdirSync(storyMediaDir, { recursive: true });
   }
-  if (!storyData.hook.leftImage || !fs.existsSync(path.join(ROOT_DIR, 'public', storyData.hook.leftImage))) {
+
+  console.log(`\n      [Visual Hunter] Memulai pencarian arsip foto & sketsa dinamis untuk: "${storyData.title || topic}"...`);
+
+  // 1. Download Hook Left Image (Trivial Cause)
+  const hookLeftDest = path.join(storyMediaDir, 'hook_cause.jpg');
+  const hookLeftQuery = storyData.hook?.leftSearchQuery || `${topic} ${storyData.hook?.leftTitle || 'cause'}`;
+  let hookLeftDone = false;
+  if (fs.existsSync(hookLeftDest) && fs.statSync(hookLeftDest).size > 8192) {
+    hookLeftDone = true;
+  } else {
+    const leftRes = await searchAndDownloadImage(hookLeftQuery, storyData.hook?.leftTitle, hookLeftDest);
+    if (leftRes.success) {
+      hookLeftDone = true;
+      console.log(`      ✓ [Hook Pemicu] Arsip terunduh: "${leftRes.title}" (${leftRes.source})`);
+    }
+  }
+
+  if (hookLeftDone) {
+    storyData.hook.leftImage = `butterfly/media/${storySlug}/hook_cause.jpg`;
+  } else if (topic.toLowerCase().includes('berlin') && fs.existsSync(path.join(ROOT_DIR, 'public', 'butterfly/media/memo_document.jpg'))) {
     storyData.hook.leftImage = 'butterfly/media/memo_document.jpg';
+  } else {
+    storyData.hook.leftImage = null;
+  }
+
+  // 2. Download Hook Right Image (Catastrophe Climax)
+  const hookRightDest = path.join(storyMediaDir, 'hook_effect.jpg');
+  const hookRightQuery = storyData.hook?.rightSearchQuery || `${topic} ${storyData.hook?.rightTitle || 'catastrophe'}`;
+  let hookRightDone = false;
+  if (fs.existsSync(hookRightDest) && fs.statSync(hookRightDest).size > 8192) {
+    hookRightDone = true;
+  } else {
+    const rightRes = await searchAndDownloadImage(hookRightQuery, storyData.hook?.rightTitle, hookRightDest);
+    if (rightRes.success) {
+      hookRightDone = true;
+      console.log(`      ✓ [Hook Bencana] Arsip terunduh: "${rightRes.title}" (${rightRes.source})`);
+    }
+  }
+
+  if (hookRightDone) {
+    storyData.hook.rightImage = `butterfly/media/${storySlug}/hook_effect.jpg`;
+  } else if (topic.toLowerCase().includes('berlin') && fs.existsSync(path.join(ROOT_DIR, 'public', 'butterfly/media/wall_demolition.jpg'))) {
+    storyData.hook.rightImage = 'butterfly/media/wall_demolition.jpg';
+  } else {
+    storyData.hook.rightImage = null;
   }
 
   let photoCount = 0;
@@ -305,19 +359,29 @@ async function generateStoryboard(topic) {
     node.step = i + 1;
     const txt = (node.headline + ' ' + node.narration + ' ' + (node.caption || '')).toLowerCase();
 
-    // Check if photo actually exists locally and has valid size (> 1KB)
-    let isPhotoValid = false;
-    if (node.mediaType === 'photo' && node.mediaUrl) {
-      const fullPath = path.join(ROOT_DIR, 'public', node.mediaUrl);
-      if (fs.existsSync(fullPath) && fs.statSync(fullPath).size > 1024 && !usedPhotos.has(node.mediaUrl)) {
-        isPhotoValid = true;
-        usedPhotos.add(node.mediaUrl);
-        photoCount++;
+    const nodeDest = path.join(storyMediaDir, `node_${node.step}.jpg`);
+    const nodeQuery = node.searchQuery || `${topic} ${node.headline}`;
+    const fallbackNodeQuery = `${topic} ${node.primaryText || ''}`;
+
+    let isPhotoDownloaded = false;
+    if (fs.existsSync(nodeDest) && fs.statSync(nodeDest).size > 8192) {
+      isPhotoDownloaded = true;
+    } else {
+      const res = await searchAndDownloadImage(nodeQuery, fallbackNodeQuery, nodeDest);
+      if (res.success) {
+        isPhotoDownloaded = true;
+        console.log(`      ✓ [Adegan ${node.step}] Ditemukan arsip foto/sketsa: "${res.title}" (${res.source})`);
       }
     }
 
-    if (!isPhotoValid) {
+    if (isPhotoDownloaded) {
+      node.mediaType = 'photo';
+      node.mediaUrl = `butterfly/media/${storySlug}/node_${node.step}.jpg`;
+      usedPhotos.add(node.mediaUrl);
+      photoCount++;
+    } else {
       node.mediaType = 'graphic';
+      node.mediaUrl = node.directorType || 'forensic-dossier';
       graphicCount++;
 
       // If the AI already chose a valid directorType, RESPECT AND PRESERVE THE AI'S CHOICE!
@@ -353,6 +417,7 @@ async function generateStoryboard(topic) {
           node.directorType = 'forensic-dossier';
         }
       }
+      console.log(`      ⚙ [Adegan ${node.step}] Menggunakan sketsa forensik dinamis: "${node.directorType}"`);
     }
 
     if (!node.zoomDirection) {
@@ -625,7 +690,7 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
     outro: storyData.outro,
     wordTimestamps,
     audioUrl: relAudioUrl,
-    totalDurationFrames: actualTotalFrames,
+    totalDurationFrames: totalFrames,
   };
 
   // Save to active story file
@@ -653,7 +718,7 @@ export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(fullStory, nul
 
   console.log(`      ✓ Data cerita aktif tersimpan di : src/data/currentStory.ts`);
   console.log(`      ✓ Arsip cerita tersimpan di       : src/data/stories/${storyData.id}.ts`);
-  console.log(`      ✓ Total frame video: ${actualTotalFrames} frames (${(actualTotalFrames / 30).toFixed(2)} detik)`);
+  console.log(`      ✓ Total frame video: ${totalFrames} frames (${(totalFrames / 30).toFixed(2)} detik)`);
   console.log(`      ✓ Total halaman subtitle: ${pageIndex} halaman stationary\n`);
 }
 

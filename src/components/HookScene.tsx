@@ -29,8 +29,8 @@ export const HookScene: React.FC<HookSceneProps> = ({
   const leftBadge = rawLeftBadge || '⚡ AWAL MULA SEPELE';
   const rightBadge = rawRightBadge || '🚨 BENCANA GLOBAL';
   const leftStampText = rawLeftStampText || 'BUKTI SEPELE';
-  const leftImage = rawLeftImage || 'butterfly/media/memo_document.jpg';
-  const rightImage = rawRightImage || 'butterfly/media/wall_demolition.jpg';
+  const leftImage = rawLeftImage;
+  const rightImage = rawRightImage;
   const frame = useCurrentFrame();
 
   // 1. Rock-steady, continuous cinematic camera drift across the ENTIRE duration
@@ -171,16 +171,45 @@ export const HookScene: React.FC<HookSceneProps> = ({
             transition: 'opacity 0.2s ease-out',
           }}
         >
-          <Img
-            src={staticFile(rightImage)}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center 40%',
-              filter: 'contrast(1.15) brightness(0.85)',
-            }}
-          />
+          {rightImage ? (
+            <Img
+              src={staticFile(rightImage)}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center 40%',
+                filter: 'contrast(1.15) brightness(0.85)',
+              }}
+            />
+          ) : (
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundColor: '#180707',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <div
+                style={{
+                  padding: '30px',
+                  backgroundColor: '#2b0c0c',
+                  borderRadius: '12px',
+                  textAlign: 'center',
+                }}
+              >
+                <div style={{ color: '#ef4444', fontWeight: 900, fontFamily: 'monospace' }}>
+                  {rightBadge}
+                </div>
+                <div style={{ color: '#ffffff', fontSize: '24px', fontWeight: 900 }}>
+                  {rightTitle}
+                </div>
+              </div>
+            </div>
+          )}
           {/* Red apocalyptic atmosphere gradient */}
           <div
             style={{

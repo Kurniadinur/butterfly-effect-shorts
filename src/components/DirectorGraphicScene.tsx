@@ -236,14 +236,14 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           )}
 
           {/* ======================================================== */}
-          {/* SCENE D: SCHABOWSKI SLIP (Audio Waveform & Transkrip)   */}
+          {/* SCENE D: AUDIO SPECTRUM & TRANSCRIPT (Kutipan Suara Asli) */}
           {/* ======================================================== */}
-          {type === 'schabowski-slip' && (
+          {(type === 'schabowski-slip' || type === 'audio-spectrogram') && (
             <g transform="translate(120, 420)">
               {/* Real Audio Waveform Oscilloscope Display */}
               <g transform="translate(40, 60)">
                 <text x="20" y="30" fill="#94a3b8" fontSize="14" fontWeight="bold" fontFamily="monospace" letterSpacing="1">
-                  AUDIO FREQUENCY SPECTROGRAM • EAST BERLIN TV FEED
+                  AUDIO FREQUENCY SPECTROGRAM • {locationTag || 'TRANSMISSION FEED'}
                 </text>
 
                 {/* 24 Dynamic Audio Bars */}
@@ -271,20 +271,20 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 <rect x="0" y="0" width="760" height="260" fill="#1e293b" rx="10" />
 
                 <text x="30" y="55" fill="#ef4444" fontSize="15" fontWeight="900" fontFamily="monospace" letterSpacing="2">
-                  UCAPAN ASLI GÜNTER SCHABOWSKI:
+                  TRANSKRIP REKAMAN FORENSIK:
                 </text>
 
                 <text x="30" y="110" fill="#FFE600" fontSize="28" fontWeight="900" fontFamily="'Montserrat', sans-serif">
-                  "Das tritt nach meiner Kenntnis..."
+                  {quoteText || primaryText || 'PERNYATAAN RESMI SAKSI KUNCI'}
                 </text>
-                <text x="30" y="155" fill="#f8fafc" fontSize="30" fontWeight="900" fontFamily="'Montserrat', sans-serif">
-                  "...ist das sofort, unverzüglich!"
+                <text x="30" y="155" fill="#f8fafc" fontSize="26" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                  {secondaryText || 'Diverifikasi Tanpa Penundaan'}
                 </text>
 
                 <line x1="30" y1="185" x2="730" y2="185" stroke="#334155" strokeWidth="2" strokeDasharray="6 4" />
 
-                <text x="30" y="225" fill="#38bdf8" fontSize="22" fontWeight="900" fontFamily="monospace">
-                  ARTI: "SEGERA, TANPA PENUNDAAN!"
+                <text x="30" y="225" fill="#38bdf8" fontSize="20" fontWeight="900" fontFamily="monospace">
+                  STATUS: {stampText || 'VERIFIED RECORDING'} • {metricValue || '100% MATCH'}
                 </text>
               </g>
             </g>
@@ -350,26 +350,42 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           )}
 
           {/* ======================================================== */}
-          {/* SCENE G: SOVIET COLLAPSE (Peta Geopolitik Pecah)         */}
+          {/* SCENE G: GEOPOLITICAL COLLAPSE (Peta Wilayah Terpecah)   */}
           {/* ======================================================== */}
-          {type === 'soviet-collapse' && (
+          {(type === 'soviet-collapse' || type === 'systemic-collapse') && (
             <g transform="translate(140, 420)">
               <g transform="translate(80, 80)">
-                {[
-                  [120, 160, 'BERLIN TIMUR'],
-                  [190, 240, 'POLANDIA'],
-                  [260, 320, 'HUNGARIA'],
-                  [390, 340, 'UKRAINA'],
-                  [500, 200, 'MOSKOW'],
-                ].map(([cx, cy, label], idx) => (
-                  <g key={idx} transform={`translate(${cx}, ${cy})`}>
-                    <circle cx="0" cy="0" r="14" fill="#FFE600" stroke="#000" strokeWidth="3" />
-                    <circle cx="0" cy="0" r={24 + pulse * 12} fill="none" stroke="#FFE600" strokeWidth="2" opacity={1 - pulse * 0.7} />
-                    <text x="24" y="6" fill="#f8fafc" fontSize="16" fontWeight="900" fontFamily="monospace">
-                      {label}
-                    </text>
-                  </g>
-                ))}
+                {(() => {
+                  let points = [
+                    [120, 160, 'SEKTOR 1'],
+                    [190, 240, 'SEKTOR 2'],
+                    [260, 320, 'SEKTOR 3'],
+                    [390, 340, 'SEKTOR 4'],
+                    [500, 200, 'EPISENTRUM'],
+                  ];
+                  if (secondaryText && secondaryText.includes(',')) {
+                    const parts = secondaryText.split(',').map((s) => s.trim().toUpperCase());
+                    points = parts.slice(0, 5).map((label, idx) => {
+                      const baseCoords = [
+                        [120, 160],
+                        [190, 240],
+                        [260, 320],
+                        [390, 340],
+                        [500, 200],
+                      ];
+                      return [baseCoords[idx][0], baseCoords[idx][1], label.slice(0, 14)];
+                    });
+                  }
+                  return points.map(([cx, cy, label], idx) => (
+                    <g key={idx} transform={`translate(${cx}, ${cy})`}>
+                      <circle cx="0" cy="0" r="14" fill="#FFE600" stroke="#000" strokeWidth="3" />
+                      <circle cx="0" cy="0" r={24 + pulse * 12} fill="none" stroke="#FFE600" strokeWidth="2" opacity={1 - pulse * 0.7} />
+                      <text x="24" y="6" fill="#f8fafc" fontSize="16" fontWeight="900" fontFamily="monospace">
+                        {label}
+                      </text>
+                    </g>
+                  ));
+                })()}
 
                 {/* Fracturing Geopolitical Cracks */}
                 <path
@@ -506,19 +522,19 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 );
               })()}
 
-              {/* Concrete Berlin Wall Structure */}
+              {/* Heavy Concrete Barrier / Wall Structure */}
               <g transform="translate(40, 310)" style={{ filter: 'drop-shadow(0 25px 45px rgba(0,0,0,0.9))' }}>
                 <rect x="0" y="0" width="800" height="330" fill="#1f2937" rx="4" />
                 {[160, 320, 480, 640].map((x) => (
                   <line key={x} x1={x} y1="0" x2={x} y2="330" stroke="#111827" strokeWidth="5" />
                 ))}
 
-                {/* Historic Wall Graffiti */}
+                {/* Dramatic Action Typography on Barrier */}
                 <text x="180" y="160" fill="#ef4444" fontSize="42" fontWeight="900" fontFamily="'Montserrat', sans-serif" transform="rotate(-6 180 160)" opacity="0.9">
-                  {(stampText || 'FREIHEIT').slice(0, 14)}
+                  {(stampText || 'COLLAPSE').slice(0, 14)}
                 </text>
                 <text x="490" y="180" fill="#38bdf8" fontSize="36" fontWeight="900" fontFamily="monospace" transform="rotate(4 490 180)" opacity="0.9">
-                  {(secondaryText || 'TOR AUF! 1989').slice(0, 16)}
+                  {(secondaryText || headline || 'SYSTEM BREACH').slice(0, 16)}
                 </text>
                 <circle cx="380" cy="190" r="32" fill="none" stroke="#FFE600" strokeWidth="5" opacity="0.8" />
                 <line x1="380" y1="158" x2="380" y2="222" stroke="#FFE600" strokeWidth="4" opacity="0.8" />
@@ -821,11 +837,11 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               {/* Sequential Falling Domino Slabs (Tumbling Forward Left to Right) */}
               {(() => {
                 let dominoList = [
-                  { name: '1. TEMBOK BERLIN', sub: '9 NOV 1989', startF: 0, color: '#ef4444' },
-                  { name: '2. POLANDIA & HUNGARIA', sub: 'DES 1989', startF: 16, color: '#f59e0b' },
-                  { name: '3. CEKOSLOWAKIA', sub: '1990', startF: 32, color: '#38bdf8' },
-                  { name: '4. PAKTA WARSAWA', sub: '1991', startF: 48, color: '#a855f7' },
-                  { name: '5. UNI SOVIET', sub: '26 DES 1991', startF: 64, color: '#dc2626' },
+                  { name: '1. KELALAIAN SEPELE', sub: 'PEMICU AWAL', startF: 0, color: '#ef4444' },
+                  { name: '2. ESKALASI REAKSI', sub: 'MULAI TIDAK TERKENDALI', startF: 16, color: '#f59e0b' },
+                  { name: '3. KEKACAUAN SISTEM', sub: 'PANIK MELUAS', startF: 32, color: '#38bdf8' },
+                  { name: '4. KEGAGALAN FATAL', sub: 'TITIK TANPA KEMBALI', startF: 48, color: '#a855f7' },
+                  { name: '5. DAMPAK GLOBAL', sub: 'BENCANA SEJARAH', startF: 64, color: '#dc2626' },
                 ];
                 if (secondaryText && secondaryText.includes(',')) {
                   const parts = secondaryText.split(',').map((s) => s.trim()).filter(Boolean);
