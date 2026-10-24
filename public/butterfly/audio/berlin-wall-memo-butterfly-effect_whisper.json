@@ -1,0 +1,2700 @@
+{
+  "model": "whisper-large-v3",
+  "engine": "Groq Cloud LPU",
+  "totalDurationSec": 96.44,
+  "allWords": [
+    {
+      "word": "Kalian",
+      "start": 0.2,
+      "end": 0.48
+    },
+    {
+      "word": "bayangin,",
+      "start": 0.48,
+      "end": 1.56
+    },
+    {
+      "word": "cuma",
+      "start": 1.56,
+      "end": 1.72
+    },
+    {
+      "word": "gara-gara",
+      "start": 1.72,
+      "end": 2.04
+    },
+    {
+      "word": "salah",
+      "start": 2.04,
+      "end": 2.3
+    },
+    {
+      "word": "baca",
+      "start": 2.3,
+      "end": 2.62
+    },
+    {
+      "word": "selembar",
+      "start": 2.62,
+      "end": 3.02
+    },
+    {
+      "word": "memo",
+      "start": 3.02,
+      "end": 3.34
+    },
+    {
+      "word": "di",
+      "start": 3.34,
+      "end": 3.56
+    },
+    {
+      "word": "siaran",
+      "start": 3.56,
+      "end": 3.76
+    },
+    {
+      "word": "langsung,",
+      "start": 3.76,
+      "end": 4.72
+    },
+    {
+      "word": "tembok",
+      "start": 4.8,
+      "end": 5
+    },
+    {
+      "word": "Berlin",
+      "start": 5,
+      "end": 5.32
+    },
+    {
+      "word": "dan",
+      "start": 5.32,
+      "end": 5.52
+    },
+    {
+      "word": "Uni",
+      "start": 5.52,
+      "end": 5.72
+    },
+    {
+      "word": "Soviet",
+      "start": 5.72,
+      "end": 6
+    },
+    {
+      "word": "runtuh",
+      "start": 6,
+      "end": 6.4
+    },
+    {
+      "word": "hanya",
+      "start": 6.4,
+      "end": 6.68
+    },
+    {
+      "word": "dalam",
+      "start": 6.68,
+      "end": 6.92
+    },
+    {
+      "word": "satu",
+      "start": 6.92,
+      "end": 7.14
+    },
+    {
+      "word": "malam.",
+      "start": 7.14,
+      "end": 7.94
+    },
+    {
+      "word": "Tepat",
+      "start": 8.16,
+      "end": 8.34
+    },
+    {
+      "word": "sebelum",
+      "start": 8.34,
+      "end": 8.62
+    },
+    {
+      "word": "konferensi",
+      "start": 8.62,
+      "end": 9.06
+    },
+    {
+      "word": "pers,",
+      "start": 9.06,
+      "end": 9.76
+    },
+    {
+      "word": "jurubicara",
+      "start": 9.82,
+      "end": 10.26
+    },
+    {
+      "word": "Gunter",
+      "start": 10.26,
+      "end": 10.64
+    },
+    {
+      "word": "Schabowski",
+      "start": 10.64,
+      "end": 11.1
+    },
+    {
+      "word": "disodori",
+      "start": 11.1,
+      "end": 11.54
+    },
+    {
+      "word": "selembar",
+      "start": 11.54,
+      "end": 11.92
+    },
+    {
+      "word": "draft",
+      "start": 11.92,
+      "end": 12.16
+    },
+    {
+      "word": "regulasi",
+      "start": 12.16,
+      "end": 12.56
+    },
+    {
+      "word": "visa",
+      "start": 12.56,
+      "end": 12.8
+    },
+    {
+      "word": "yang",
+      "start": 12.8,
+      "end": 13
+    },
+    {
+      "word": "sama",
+      "start": 13,
+      "end": 13.32
+    },
+    {
+      "word": "sekali",
+      "start": 13.32,
+      "end": 13.58
+    },
+    {
+      "word": "belum",
+      "start": 13.58,
+      "end": 13.78
+    },
+    {
+      "word": "sempat",
+      "start": 13.78,
+      "end": 14.1
+    },
+    {
+      "word": "ia",
+      "start": 14.1,
+      "end": 14.3
+    },
+    {
+      "word": "pelajari.",
+      "start": 14.3,
+      "end": 15.16
+    },
+    {
+      "word": "Setelah",
+      "start": 15.44,
+      "end": 15.58
+    },
+    {
+      "word": "satu",
+      "start": 15.58,
+      "end": 15.8
+    },
+    {
+      "word": "jam",
+      "start": 15.8,
+      "end": 15.94
+    },
+    {
+      "word": "paparan",
+      "start": 15.94,
+      "end": 16.24
+    },
+    {
+      "word": "membosankan,",
+      "start": 16.24,
+      "end": 16.88
+    },
+    {
+      "word": "seorang",
+      "start": 17.44,
+      "end": 17.58
+    },
+    {
+      "word": "jurnalis",
+      "start": 17.58,
+      "end": 17.94
+    },
+    {
+      "word": "Italia",
+      "start": 17.94,
+      "end": 18.26
+    },
+    {
+      "word": "mengangkat",
+      "start": 18.26,
+      "end": 18.6
+    },
+    {
+      "word": "mikrofon",
+      "start": 18.6,
+      "end": 19.04
+    },
+    {
+      "word": "dan",
+      "start": 19.04,
+      "end": 19.22
+    },
+    {
+      "word": "melempar",
+      "start": 19.22,
+      "end": 19.54
+    },
+    {
+      "word": "pertanyaan",
+      "start": 19.54,
+      "end": 20
+    },
+    {
+      "word": "tak",
+      "start": 20,
+      "end": 20.12
+    },
+    {
+      "word": "terduga",
+      "start": 20.12,
+      "end": 20.48
+    },
+    {
+      "word": "tentang",
+      "start": 20.48,
+      "end": 20.76
+    },
+    {
+      "word": "izin",
+      "start": 20.76,
+      "end": 21.04
+    },
+    {
+      "word": "perjalanan",
+      "start": 21.04,
+      "end": 21.52
+    },
+    {
+      "word": "ke",
+      "start": 21.52,
+      "end": 21.64
+    },
+    {
+      "word": "barat.",
+      "start": 21.64,
+      "end": 21.84
+    },
+    {
+      "word": "Schabowski",
+      "start": 22.5,
+      "end": 22.82
+    },
+    {
+      "word": "mulai",
+      "start": 22.82,
+      "end": 23.04
+    },
+    {
+      "word": "berkeringat",
+      "start": 23.04,
+      "end": 23.46
+    },
+    {
+      "word": "dingin,",
+      "start": 23.46,
+      "end": 24.12
+    },
+    {
+      "word": "membalik-balik",
+      "start": 24.38,
+      "end": 24.76
+    },
+    {
+      "word": "tumpukan",
+      "start": 24.76,
+      "end": 25.06
+    },
+    {
+      "word": "kertas",
+      "start": 25.06,
+      "end": 25.3
+    },
+    {
+      "word": "memo",
+      "start": 25.3,
+      "end": 25.6
+    },
+    {
+      "word": "yang",
+      "start": 25.6,
+      "end": 25.74
+    },
+    {
+      "word": "rumit,",
+      "start": 25.74,
+      "end": 26.5
+    },
+    {
+      "word": "mencari",
+      "start": 26.56,
+      "end": 26.78
+    },
+    {
+      "word": "tanggal",
+      "start": 26.78,
+      "end": 27.1
+    },
+    {
+      "word": "yang",
+      "start": 27.1,
+      "end": 27.22
+    },
+    {
+      "word": "sebenarnya",
+      "start": 27.22,
+      "end": 27.58
+    },
+    {
+      "word": "belum",
+      "start": 27.58,
+      "end": 27.78
+    },
+    {
+      "word": "boleh",
+      "start": 27.78,
+      "end": 27.98
+    },
+    {
+      "word": "diumumkan.",
+      "start": 27.98,
+      "end": 28.42
+    },
+    {
+      "word": "Tanpa",
+      "start": 28.94,
+      "end": 29.16
+    },
+    {
+      "word": "menyadari",
+      "start": 29.16,
+      "end": 29.5
+    },
+    {
+      "word": "kesalahannya,",
+      "start": 29.5,
+      "end": 30.6
+    },
+    {
+      "word": "dia",
+      "start": 30.6,
+      "end": 30.68
+    },
+    {
+      "word": "mengucapkan",
+      "start": 30.68,
+      "end": 31.18
+    },
+    {
+      "word": "kalimat",
+      "start": 31.18,
+      "end": 31.46
+    },
+    {
+      "word": "fatal.",
+      "start": 31.46,
+      "end": 32.26
+    },
+    {
+      "word": "Berlaku",
+      "start": 32.4,
+      "end": 32.74
+    },
+    {
+      "word": "segera,",
+      "start": 32.74,
+      "end": 33.56
+    },
+    {
+      "word": "tanpa",
+      "start": 33.56,
+      "end": 33.82
+    },
+    {
+      "word": "penundaan.",
+      "start": 33.82,
+      "end": 34.38
+    },
+    {
+      "word": "Jutaan",
+      "start": 34.94,
+      "end": 35.24
+    },
+    {
+      "word": "penonton",
+      "start": 35.24,
+      "end": 35.48
+    },
+    {
+      "word": "TV",
+      "start": 35.48,
+      "end": 35.72
+    },
+    {
+      "word": "terbelalak",
+      "start": 35.72,
+      "end": 36.18
+    },
+    {
+      "word": "tak",
+      "start": 36.18,
+      "end": 36.32
+    },
+    {
+      "word": "percaya.",
+      "start": 36.32,
+      "end": 37.16
+    },
+    {
+      "word": "Televisi",
+      "start": 37.3,
+      "end": 37.6
+    },
+    {
+      "word": "Jerman",
+      "start": 37.6,
+      "end": 37.84
+    },
+    {
+      "word": "Barat",
+      "start": 37.84,
+      "end": 38.08
+    },
+    {
+      "word": "langsung",
+      "start": 38.08,
+      "end": 38.34
+    },
+    {
+      "word": "menyiarkan",
+      "start": 38.34,
+      "end": 38.74
+    },
+    {
+      "word": "breaking",
+      "start": 38.74,
+      "end": 39.16
+    },
+    {
+      "word": "news",
+      "start": 39.16,
+      "end": 39.34
+    },
+    {
+      "word": "darurat.",
+      "start": 39.34,
+      "end": 40.22
+    },
+    {
+      "word": "Malam",
+      "start": 40.3,
+      "end": 40.44
+    },
+    {
+      "word": "ini,",
+      "start": 40.44,
+      "end": 41.12
+    },
+    {
+      "word": "gerbang",
+      "start": 41.12,
+      "end": 41.28
+    },
+    {
+      "word": "tembok",
+      "start": 41.28,
+      "end": 41.54
+    },
+    {
+      "word": "Berlin",
+      "start": 41.54,
+      "end": 41.82
+    },
+    {
+      "word": "resmi",
+      "start": 41.82,
+      "end": 42.14
+    },
+    {
+      "word": "dibuka",
+      "start": 42.14,
+      "end": 42.48
+    },
+    {
+      "word": "untuk",
+      "start": 42.48,
+      "end": 42.66
+    },
+    {
+      "word": "semua",
+      "start": 42.66,
+      "end": 42.9
+    },
+    {
+      "word": "orang.",
+      "start": 42.9,
+      "end": 43.64
+    },
+    {
+      "word": "Puluhan",
+      "start": 43.78,
+      "end": 43.96
+    },
+    {
+      "word": "ribu",
+      "start": 43.96,
+      "end": 44.22
+    },
+    {
+      "word": "warga",
+      "start": 44.22,
+      "end": 44.46
+    },
+    {
+      "word": "Berlin",
+      "start": 44.46,
+      "end": 44.7
+    },
+    {
+      "word": "Timur",
+      "start": 44.7,
+      "end": 44.96
+    },
+    {
+      "word": "berbondong-bondong",
+      "start": 44.96,
+      "end": 45.62
+    },
+    {
+      "word": "memadati",
+      "start": 45.62,
+      "end": 46.04
+    },
+    {
+      "word": "pos",
+      "start": 46.04,
+      "end": 46.28
+    },
+    {
+      "word": "penjagaan",
+      "start": 46.28,
+      "end": 46.76
+    },
+    {
+      "word": "militer.",
+      "start": 46.76,
+      "end": 47.56
+    },
+    {
+      "word": "Menuntut",
+      "start": 47.66,
+      "end": 47.94
+    },
+    {
+      "word": "gerbang",
+      "start": 47.94,
+      "end": 48.18
+    },
+    {
+      "word": "dibuka",
+      "start": 48.18,
+      "end": 48.6
+    },
+    {
+      "word": "berdasarkan",
+      "start": 48.6,
+      "end": 49.14
+    },
+    {
+      "word": "siaran",
+      "start": 49.14,
+      "end": 49.42
+    },
+    {
+      "word": "televisi",
+      "start": 49.42,
+      "end": 49.76
+    },
+    {
+      "word": "tadi.",
+      "start": 49.76,
+      "end": 50.46
+    },
+    {
+      "word": "Komandan",
+      "start": 50.62,
+      "end": 50.84
+    },
+    {
+      "word": "Harald",
+      "start": 50.84,
+      "end": 51.14
+    },
+    {
+      "word": "Jäger",
+      "start": 51.14,
+      "end": 51.4
+    },
+    {
+      "word": "panik",
+      "start": 51.4,
+      "end": 51.74
+    },
+    {
+      "word": "setengah",
+      "start": 51.74,
+      "end": 51.98
+    },
+    {
+      "word": "mati.",
+      "start": 51.98,
+      "end": 52.82
+    },
+    {
+      "word": "Telefon",
+      "start": 52.9,
+      "end": 53.06
+    },
+    {
+      "word": "darurat",
+      "start": 53.06,
+      "end": 53.38
+    },
+    {
+      "word": "pos",
+      "start": 53.38,
+      "end": 53.58
+    },
+    {
+      "word": "bergetar",
+      "start": 53.58,
+      "end": 53.94
+    },
+    {
+      "word": "terus-menerus.",
+      "start": 53.94,
+      "end": 54.96
+    },
+    {
+      "word": "Tapi",
+      "start": 54.98,
+      "end": 55.12
+    },
+    {
+      "word": "tak",
+      "start": 55.12,
+      "end": 55.24
+    },
+    {
+      "word": "ada",
+      "start": 55.24,
+      "end": 55.4
+    },
+    {
+      "word": "satupun",
+      "start": 55.4,
+      "end": 55.7
+    },
+    {
+      "word": "atasan",
+      "start": 55.7,
+      "end": 56.02
+    },
+    {
+      "word": "militer",
+      "start": 56.02,
+      "end": 56.36
+    },
+    {
+      "word": "yang",
+      "start": 56.36,
+      "end": 56.58
+    },
+    {
+      "word": "berani",
+      "start": 56.58,
+      "end": 56.86
+    },
+    {
+      "word": "memberi",
+      "start": 56.86,
+      "end": 57.2
+    },
+    {
+      "word": "komando",
+      "start": 57.2,
+      "end": 57.46
+    },
+    {
+      "word": "tembak.",
+      "start": 57.46,
+      "end": 58.28
+    },
+    {
+      "word": "Tak",
+      "start": 58.24,
+      "end": 58.38
+    },
+    {
+      "word": "sanggup",
+      "start": 58.38,
+      "end": 58.64
+    },
+    {
+      "word": "membantai",
+      "start": 58.64,
+      "end": 59
+    },
+    {
+      "word": "rakyat",
+      "start": 59,
+      "end": 59.24
+    },
+    {
+      "word": "sendiri,",
+      "start": 59.24,
+      "end": 60.1
+    },
+    {
+      "word": "komandan",
+      "start": 60.1,
+      "end": 60.36
+    },
+    {
+      "word": "perbatasan",
+      "start": 60.36,
+      "end": 60.86
+    },
+    {
+      "word": "memerintahkan",
+      "start": 60.86,
+      "end": 61.46
+    },
+    {
+      "word": "palang",
+      "start": 61.46,
+      "end": 61.74
+    },
+    {
+      "word": "dibuka.",
+      "start": 61.74,
+      "end": 62.6
+    },
+    {
+      "word": "Arus",
+      "start": 62.74,
+      "end": 62.86
+    },
+    {
+      "word": "manusia",
+      "start": 62.86,
+      "end": 63.22
+    },
+    {
+      "word": "menerobos",
+      "start": 63.22,
+      "end": 63.56
+    },
+    {
+      "word": "masuk",
+      "start": 63.56,
+      "end": 63.82
+    },
+    {
+      "word": "ke",
+      "start": 63.82,
+      "end": 64
+    },
+    {
+      "word": "Berlin",
+      "start": 64,
+      "end": 64.18
+    },
+    {
+      "word": "Barat",
+      "start": 64.18,
+      "end": 64.44
+    },
+    {
+      "word": "tanpa",
+      "start": 64.44,
+      "end": 64.7
+    },
+    {
+      "word": "perlawanan.",
+      "start": 64.7,
+      "end": 65.68
+    },
+    {
+      "word": "Rakyat",
+      "start": 65.8,
+      "end": 65.96
+    },
+    {
+      "word": "dari",
+      "start": 65.96,
+      "end": 66.16
+    },
+    {
+      "word": "kedua",
+      "start": 66.16,
+      "end": 66.34
+    },
+    {
+      "word": "belah",
+      "start": 66.34,
+      "end": 66.5
+    },
+    {
+      "word": "pihak",
+      "start": 66.5,
+      "end": 66.82
+    },
+    {
+      "word": "memanjat",
+      "start": 66.82,
+      "end": 67.18
+    },
+    {
+      "word": "tembok",
+      "start": 67.18,
+      "end": 67.42
+    },
+    {
+      "word": "Berlin",
+      "start": 67.42,
+      "end": 67.7
+    },
+    {
+      "word": "dengan",
+      "start": 67.7,
+      "end": 67.94
+    },
+    {
+      "word": "palu",
+      "start": 67.94,
+      "end": 68.18
+    },
+    {
+      "word": "dan",
+      "start": 68.18,
+      "end": 68.34
+    },
+    {
+      "word": "linggis,",
+      "start": 68.34,
+      "end": 69.18
+    },
+    {
+      "word": "berdansa",
+      "start": 69.22,
+      "end": 69.6
+    },
+    {
+      "word": "dan",
+      "start": 69.6,
+      "end": 69.82
+    },
+    {
+      "word": "merobokkan",
+      "start": 69.82,
+      "end": 70.3
+    },
+    {
+      "word": "dinding",
+      "start": 70.3,
+      "end": 70.52
+    },
+    {
+      "word": "tirai",
+      "start": 70.52,
+      "end": 70.82
+    },
+    {
+      "word": "besi",
+      "start": 70.82,
+      "end": 71.02
+    },
+    {
+      "word": "yang",
+      "start": 71.02,
+      "end": 71.18
+    },
+    {
+      "word": "memisahkan",
+      "start": 71.18,
+      "end": 71.6
+    },
+    {
+      "word": "mereka",
+      "start": 71.6,
+      "end": 71.9
+    },
+    {
+      "word": "puluhan",
+      "start": 71.9,
+      "end": 72.18
+    },
+    {
+      "word": "tahun.",
+      "start": 72.18,
+      "end": 72.92
+    },
+    {
+      "word": "Efek",
+      "start": 73.22,
+      "end": 73.3
+    },
+    {
+      "word": "domino",
+      "start": 73.3,
+      "end": 73.66
+    },
+    {
+      "word": "melesat",
+      "start": 73.66,
+      "end": 73.96
+    },
+    {
+      "word": "tanpa",
+      "start": 73.96,
+      "end": 74.18
+    },
+    {
+      "word": "henti.",
+      "start": 74.18,
+      "end": 74.92
+    },
+    {
+      "word": "Jerman",
+      "start": 75.08,
+      "end": 75.24
+    },
+    {
+      "word": "bersatu",
+      "start": 75.24,
+      "end": 75.54
+    },
+    {
+      "word": "kembali,",
+      "start": 75.54,
+      "end": 76.44
+    },
+    {
+      "word": "rezim",
+      "start": 76.44,
+      "end": 76.6
+    },
+    {
+      "word": "komunis",
+      "start": 76.6,
+      "end": 76.96
+    },
+    {
+      "word": "Eropa",
+      "start": 76.96,
+      "end": 77.24
+    },
+    {
+      "word": "Timur",
+      "start": 77.24,
+      "end": 77.46
+    },
+    {
+      "word": "tumbang,",
+      "start": 77.46,
+      "end": 78.22
+    },
+    {
+      "word": "dan",
+      "start": 78.24,
+      "end": 78.34
+    },
+    {
+      "word": "akhirnya",
+      "start": 78.34,
+      "end": 78.66
+    },
+    {
+      "word": "Uni",
+      "start": 78.66,
+      "end": 78.82
+    },
+    {
+      "word": "Soviet",
+      "start": 78.82,
+      "end": 79.12
+    },
+    {
+      "word": "resmi",
+      "start": 79.12,
+      "end": 79.42
+    },
+    {
+      "word": "bubar",
+      "start": 79.42,
+      "end": 79.7
+    },
+    {
+      "word": "menjadi",
+      "start": 79.7,
+      "end": 79.98
+    },
+    {
+      "word": "15",
+      "start": 79.98,
+      "end": 80.32
+    },
+    {
+      "word": "negara.",
+      "start": 80.32,
+      "end": 80.7
+    },
+    {
+      "word": "Dokumen",
+      "start": 81.36,
+      "end": 81.56
+    },
+    {
+      "word": "asli",
+      "start": 81.56,
+      "end": 81.82
+    },
+    {
+      "word": "membuktikan",
+      "start": 81.82,
+      "end": 82.36
+    },
+    {
+      "word": "instruksi",
+      "start": 82.36,
+      "end": 82.72
+    },
+    {
+      "word": "itu",
+      "start": 82.72,
+      "end": 82.92
+    },
+    {
+      "word": "aslinya",
+      "start": 82.92,
+      "end": 83.24
+    },
+    {
+      "word": "dijadwalkan",
+      "start": 83.24,
+      "end": 83.74
+    },
+    {
+      "word": "berlaku",
+      "start": 83.74,
+      "end": 84.1
+    },
+    {
+      "word": "esok",
+      "start": 84.1,
+      "end": 84.32
+    },
+    {
+      "word": "paginya",
+      "start": 84.32,
+      "end": 84.68
+    },
+    {
+      "word": "lewat",
+      "start": 84.68,
+      "end": 85
+    },
+    {
+      "word": "kantor",
+      "start": 85,
+      "end": 85.3
+    },
+    {
+      "word": "imigrasi",
+      "start": 85.3,
+      "end": 85.72
+    },
+    {
+      "word": "resmi.",
+      "start": 85.72,
+      "end": 86.48
+    },
+    {
+      "word": "satu",
+      "start": 86.54,
+      "end": 86.76
+    },
+    {
+      "word": "kecerobohan",
+      "start": 86.76,
+      "end": 87.22
+    },
+    {
+      "word": "membaca",
+      "start": 87.22,
+      "end": 87.54
+    },
+    {
+      "word": "memo",
+      "start": 87.54,
+      "end": 87.84
+    },
+    {
+      "word": "merombok",
+      "start": 87.84,
+      "end": 88.3
+    },
+    {
+      "word": "sejarah",
+      "start": 88.3,
+      "end": 88.68
+    },
+    {
+      "word": "peradaban",
+      "start": 88.68,
+      "end": 89.04
+    },
+    {
+      "word": "bumi.",
+      "start": 89.04,
+      "end": 89.84
+    },
+    {
+      "word": "Menurutmu,",
+      "start": 89.94,
+      "end": 90.82
+    },
+    {
+      "word": "apa",
+      "start": 90.82,
+      "end": 90.88
+    },
+    {
+      "word": "keputusan",
+      "start": 90.88,
+      "end": 91.26
+    },
+    {
+      "word": "sepele",
+      "start": 91.26,
+      "end": 91.58
+    },
+    {
+      "word": "yang",
+      "start": 91.58,
+      "end": 91.72
+    },
+    {
+      "word": "kamu",
+      "start": 91.72,
+      "end": 91.92
+    },
+    {
+      "word": "ambil",
+      "start": 91.92,
+      "end": 92.14
+    },
+    {
+      "word": "hari",
+      "start": 92.14,
+      "end": 92.32
+    },
+    {
+      "word": "ini",
+      "start": 92.32,
+      "end": 92.52
+    },
+    {
+      "word": "yang",
+      "start": 92.2,
+      "end": 93.12
+    },
+    {
+      "word": "tanpa",
+      "start": 93.12,
+      "end": 93.4
+    },
+    {
+      "word": "kamu",
+      "start": 93.4,
+      "end": 93.62
+    },
+    {
+      "word": "sadari",
+      "start": 93.62,
+      "end": 94
+    },
+    {
+      "word": "bakal",
+      "start": 94,
+      "end": 94.56
+    },
+    {
+      "word": "mengubah",
+      "start": 94.56,
+      "end": 94.94
+    },
+    {
+      "word": "jalan",
+      "start": 94.94,
+      "end": 95.18
+    },
+    {
+      "word": "hidupmu",
+      "start": 95.18,
+      "end": 95.52
+    },
+    {
+      "word": "5",
+      "start": 95.52,
+      "end": 95.7
+    },
+    {
+      "word": "tahun",
+      "start": 95.7,
+      "end": 95.9
+    },
+    {
+      "word": "lagi?",
+      "start": 95.9,
+      "end": 96.14
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 4.24,
+      "text": "Kalian bayangin, cuma gara-gara salah baca selembar memo di siaran langsung,",
+      "words": [
+        {
+          "word": "Kalian",
+          "start": 0.2,
+          "end": 0.48
+        },
+        {
+          "word": "bayangin,",
+          "start": 0.48,
+          "end": 1.56
+        },
+        {
+          "word": "cuma",
+          "start": 1.56,
+          "end": 1.72
+        },
+        {
+          "word": "gara-gara",
+          "start": 1.72,
+          "end": 2.04
+        },
+        {
+          "word": "salah",
+          "start": 2.04,
+          "end": 2.3
+        },
+        {
+          "word": "baca",
+          "start": 2.3,
+          "end": 2.62
+        },
+        {
+          "word": "selembar",
+          "start": 2.62,
+          "end": 3.02
+        },
+        {
+          "word": "memo",
+          "start": 3.02,
+          "end": 3.34
+        },
+        {
+          "word": "di",
+          "start": 3.34,
+          "end": 3.56
+        },
+        {
+          "word": "siaran",
+          "start": 3.56,
+          "end": 3.76
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 4.74,
+      "end": 7.46,
+      "text": "tembok Berlin dan Uni Soviet runtuh hanya dalam satu malam.",
+      "words": [
+        {
+          "word": "tembok",
+          "start": 4.8,
+          "end": 5
+        },
+        {
+          "word": "Berlin",
+          "start": 5,
+          "end": 5.32
+        },
+        {
+          "word": "dan",
+          "start": 5.32,
+          "end": 5.52
+        },
+        {
+          "word": "Uni",
+          "start": 5.52,
+          "end": 5.72
+        },
+        {
+          "word": "Soviet",
+          "start": 5.72,
+          "end": 6
+        },
+        {
+          "word": "runtuh",
+          "start": 6,
+          "end": 6.4
+        },
+        {
+          "word": "hanya",
+          "start": 6.4,
+          "end": 6.68
+        },
+        {
+          "word": "dalam",
+          "start": 6.68,
+          "end": 6.92
+        },
+        {
+          "word": "satu",
+          "start": 6.92,
+          "end": 7.14
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 8.12,
+      "end": 9.3,
+      "text": "Tepat sebelum konferensi pers,",
+      "words": [
+        {
+          "word": "Tepat",
+          "start": 8.16,
+          "end": 8.34
+        },
+        {
+          "word": "sebelum",
+          "start": 8.34,
+          "end": 8.62
+        },
+        {
+          "word": "konferensi",
+          "start": 8.62,
+          "end": 9.06
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 9.8,
+      "end": 14.68,
+      "text": "jurubicara Gunter Schabowski disodori selembar draft regulasi visa yang sama sekali belum sempat ia pelajari.",
+      "words": [
+        {
+          "word": "jurubicara",
+          "start": 9.82,
+          "end": 10.26
+        },
+        {
+          "word": "Gunter",
+          "start": 10.26,
+          "end": 10.64
+        },
+        {
+          "word": "Schabowski",
+          "start": 10.64,
+          "end": 11.1
+        },
+        {
+          "word": "disodori",
+          "start": 11.1,
+          "end": 11.54
+        },
+        {
+          "word": "selembar",
+          "start": 11.54,
+          "end": 11.92
+        },
+        {
+          "word": "draft",
+          "start": 11.92,
+          "end": 12.16
+        },
+        {
+          "word": "regulasi",
+          "start": 12.16,
+          "end": 12.56
+        },
+        {
+          "word": "visa",
+          "start": 12.56,
+          "end": 12.8
+        },
+        {
+          "word": "yang",
+          "start": 12.8,
+          "end": 13
+        },
+        {
+          "word": "sama",
+          "start": 13,
+          "end": 13.32
+        },
+        {
+          "word": "sekali",
+          "start": 13.32,
+          "end": 13.58
+        },
+        {
+          "word": "belum",
+          "start": 13.58,
+          "end": 13.78
+        },
+        {
+          "word": "sempat",
+          "start": 13.78,
+          "end": 14.1
+        },
+        {
+          "word": "ia",
+          "start": 14.1,
+          "end": 14.3
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 15.38,
+      "end": 16.92,
+      "text": "Setelah satu jam paparan membosankan,",
+      "words": [
+        {
+          "word": "Setelah",
+          "start": 15.44,
+          "end": 15.58
+        },
+        {
+          "word": "satu",
+          "start": 15.58,
+          "end": 15.8
+        },
+        {
+          "word": "jam",
+          "start": 15.8,
+          "end": 15.94
+        },
+        {
+          "word": "paparan",
+          "start": 15.94,
+          "end": 16.24
+        },
+        {
+          "word": "membosankan,",
+          "start": 16.24,
+          "end": 16.88
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 17.38,
+      "end": 21.88,
+      "text": "seorang jurnalis Italia mengangkat mikrofon dan melempar pertanyaan tak terduga tentang izin perjalanan ke barat.",
+      "words": [
+        {
+          "word": "seorang",
+          "start": 17.44,
+          "end": 17.58
+        },
+        {
+          "word": "jurnalis",
+          "start": 17.58,
+          "end": 17.94
+        },
+        {
+          "word": "Italia",
+          "start": 17.94,
+          "end": 18.26
+        },
+        {
+          "word": "mengangkat",
+          "start": 18.26,
+          "end": 18.6
+        },
+        {
+          "word": "mikrofon",
+          "start": 18.6,
+          "end": 19.04
+        },
+        {
+          "word": "dan",
+          "start": 19.04,
+          "end": 19.22
+        },
+        {
+          "word": "melempar",
+          "start": 19.22,
+          "end": 19.54
+        },
+        {
+          "word": "pertanyaan",
+          "start": 19.54,
+          "end": 20
+        },
+        {
+          "word": "tak",
+          "start": 20,
+          "end": 20.12
+        },
+        {
+          "word": "terduga",
+          "start": 20.12,
+          "end": 20.48
+        },
+        {
+          "word": "tentang",
+          "start": 20.48,
+          "end": 20.76
+        },
+        {
+          "word": "izin",
+          "start": 20.76,
+          "end": 21.04
+        },
+        {
+          "word": "perjalanan",
+          "start": 21.04,
+          "end": 21.52
+        },
+        {
+          "word": "ke",
+          "start": 21.52,
+          "end": 21.64
+        },
+        {
+          "word": "barat.",
+          "start": 21.64,
+          "end": 21.84
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 22.44,
+      "end": 23.76,
+      "text": "Schabowski mulai berkeringat dingin,",
+      "words": [
+        {
+          "word": "Schabowski",
+          "start": 22.5,
+          "end": 22.82
+        },
+        {
+          "word": "mulai",
+          "start": 22.82,
+          "end": 23.04
+        },
+        {
+          "word": "berkeringat",
+          "start": 23.04,
+          "end": 23.46
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 24.3,
+      "end": 26.02,
+      "text": "membalik-balik tumpukan kertas memo yang rumit,",
+      "words": [
+        {
+          "word": "membalik-balik",
+          "start": 24.38,
+          "end": 24.76
+        },
+        {
+          "word": "tumpukan",
+          "start": 24.76,
+          "end": 25.06
+        },
+        {
+          "word": "kertas",
+          "start": 25.06,
+          "end": 25.3
+        },
+        {
+          "word": "memo",
+          "start": 25.3,
+          "end": 25.6
+        },
+        {
+          "word": "yang",
+          "start": 25.6,
+          "end": 25.74
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 26.5,
+      "end": 28.44,
+      "text": "mencari tanggal yang sebenarnya belum boleh diumumkan.",
+      "words": [
+        {
+          "word": "mencari",
+          "start": 26.56,
+          "end": 26.78
+        },
+        {
+          "word": "tanggal",
+          "start": 26.78,
+          "end": 27.1
+        },
+        {
+          "word": "yang",
+          "start": 27.1,
+          "end": 27.22
+        },
+        {
+          "word": "sebenarnya",
+          "start": 27.22,
+          "end": 27.58
+        },
+        {
+          "word": "belum",
+          "start": 27.58,
+          "end": 27.78
+        },
+        {
+          "word": "boleh",
+          "start": 27.78,
+          "end": 27.98
+        },
+        {
+          "word": "diumumkan.",
+          "start": 27.98,
+          "end": 28.42
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 28.96,
+      "end": 31.78,
+      "text": "Tanpa menyadari kesalahannya, dia mengucapkan kalimat fatal.",
+      "words": [
+        {
+          "word": "Tanpa",
+          "start": 28.94,
+          "end": 29.16
+        },
+        {
+          "word": "menyadari",
+          "start": 29.16,
+          "end": 29.5
+        },
+        {
+          "word": "kesalahannya,",
+          "start": 29.5,
+          "end": 30.6
+        },
+        {
+          "word": "dia",
+          "start": 30.6,
+          "end": 30.68
+        },
+        {
+          "word": "mengucapkan",
+          "start": 30.68,
+          "end": 31.18
+        },
+        {
+          "word": "kalimat",
+          "start": 31.18,
+          "end": 31.46
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 32.36,
+      "end": 34.4,
+      "text": "Berlaku segera, tanpa penundaan.",
+      "words": [
+        {
+          "word": "Berlaku",
+          "start": 32.4,
+          "end": 32.74
+        },
+        {
+          "word": "segera,",
+          "start": 32.74,
+          "end": 33.56
+        },
+        {
+          "word": "tanpa",
+          "start": 33.56,
+          "end": 33.82
+        },
+        {
+          "word": "penundaan.",
+          "start": 33.82,
+          "end": 34.38
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 34.94,
+      "end": 36.68,
+      "text": "Jutaan penonton TV terbelalak tak percaya.",
+      "words": [
+        {
+          "word": "Jutaan",
+          "start": 34.94,
+          "end": 35.24
+        },
+        {
+          "word": "penonton",
+          "start": 35.24,
+          "end": 35.48
+        },
+        {
+          "word": "TV",
+          "start": 35.48,
+          "end": 35.72
+        },
+        {
+          "word": "terbelalak",
+          "start": 35.72,
+          "end": 36.18
+        },
+        {
+          "word": "tak",
+          "start": 36.18,
+          "end": 36.32
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 37.24,
+      "end": 39.74,
+      "text": "Televisi Jerman Barat langsung menyiarkan breaking news darurat.",
+      "words": [
+        {
+          "word": "Televisi",
+          "start": 37.3,
+          "end": 37.6
+        },
+        {
+          "word": "Jerman",
+          "start": 37.6,
+          "end": 37.84
+        },
+        {
+          "word": "Barat",
+          "start": 37.84,
+          "end": 38.08
+        },
+        {
+          "word": "langsung",
+          "start": 38.08,
+          "end": 38.34
+        },
+        {
+          "word": "menyiarkan",
+          "start": 38.34,
+          "end": 38.74
+        },
+        {
+          "word": "breaking",
+          "start": 38.74,
+          "end": 39.16
+        },
+        {
+          "word": "news",
+          "start": 39.16,
+          "end": 39.34
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 40.22,
+      "end": 43.16,
+      "text": "Malam ini, gerbang tembok Berlin resmi dibuka untuk semua orang.",
+      "words": [
+        {
+          "word": "Malam",
+          "start": 40.3,
+          "end": 40.44
+        },
+        {
+          "word": "ini,",
+          "start": 40.44,
+          "end": 41.12
+        },
+        {
+          "word": "gerbang",
+          "start": 41.12,
+          "end": 41.28
+        },
+        {
+          "word": "tembok",
+          "start": 41.28,
+          "end": 41.54
+        },
+        {
+          "word": "Berlin",
+          "start": 41.54,
+          "end": 41.82
+        },
+        {
+          "word": "resmi",
+          "start": 41.82,
+          "end": 42.14
+        },
+        {
+          "word": "dibuka",
+          "start": 42.14,
+          "end": 42.48
+        },
+        {
+          "word": "untuk",
+          "start": 42.48,
+          "end": 42.66
+        },
+        {
+          "word": "semua",
+          "start": 42.66,
+          "end": 42.9
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 43.74,
+      "end": 47.08,
+      "text": "Puluhan ribu warga Berlin Timur berbondong-bondong memadati pos penjagaan militer.",
+      "words": [
+        {
+          "word": "Puluhan",
+          "start": 43.78,
+          "end": 43.96
+        },
+        {
+          "word": "ribu",
+          "start": 43.96,
+          "end": 44.22
+        },
+        {
+          "word": "warga",
+          "start": 44.22,
+          "end": 44.46
+        },
+        {
+          "word": "Berlin",
+          "start": 44.46,
+          "end": 44.7
+        },
+        {
+          "word": "Timur",
+          "start": 44.7,
+          "end": 44.96
+        },
+        {
+          "word": "berbondong-bondong",
+          "start": 44.96,
+          "end": 45.62
+        },
+        {
+          "word": "memadati",
+          "start": 45.62,
+          "end": 46.04
+        },
+        {
+          "word": "pos",
+          "start": 46.04,
+          "end": 46.28
+        },
+        {
+          "word": "penjagaan",
+          "start": 46.28,
+          "end": 46.76
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 47.62,
+      "end": 49.98,
+      "text": "Menuntut gerbang dibuka berdasarkan siaran televisi tadi.",
+      "words": [
+        {
+          "word": "Menuntut",
+          "start": 47.66,
+          "end": 47.94
+        },
+        {
+          "word": "gerbang",
+          "start": 47.94,
+          "end": 48.18
+        },
+        {
+          "word": "dibuka",
+          "start": 48.18,
+          "end": 48.6
+        },
+        {
+          "word": "berdasarkan",
+          "start": 48.6,
+          "end": 49.14
+        },
+        {
+          "word": "siaran",
+          "start": 49.14,
+          "end": 49.42
+        },
+        {
+          "word": "televisi",
+          "start": 49.42,
+          "end": 49.76
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 50.26,
+      "end": 52.34,
+      "text": "Komandan Harald Jäger panik setengah mati.",
+      "words": [
+        {
+          "word": "Komandan",
+          "start": 50.62,
+          "end": 50.84
+        },
+        {
+          "word": "Harald",
+          "start": 50.84,
+          "end": 51.14
+        },
+        {
+          "word": "Jäger",
+          "start": 51.14,
+          "end": 51.4
+        },
+        {
+          "word": "panik",
+          "start": 51.4,
+          "end": 51.74
+        },
+        {
+          "word": "setengah",
+          "start": 51.74,
+          "end": 51.98
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "start": 52.82,
+      "end": 54.48,
+      "text": "Telefon darurat pos bergetar terus-menerus.",
+      "words": [
+        {
+          "word": "Telefon",
+          "start": 52.9,
+          "end": 53.06
+        },
+        {
+          "word": "darurat",
+          "start": 53.06,
+          "end": 53.38
+        },
+        {
+          "word": "pos",
+          "start": 53.38,
+          "end": 53.58
+        },
+        {
+          "word": "bergetar",
+          "start": 53.58,
+          "end": 53.94
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 54.94,
+      "end": 57.8,
+      "text": "Tapi tak ada satupun atasan militer yang berani memberi komando tembak.",
+      "words": [
+        {
+          "word": "Tapi",
+          "start": 54.98,
+          "end": 55.12
+        },
+        {
+          "word": "tak",
+          "start": 55.12,
+          "end": 55.24
+        },
+        {
+          "word": "ada",
+          "start": 55.24,
+          "end": 55.4
+        },
+        {
+          "word": "satupun",
+          "start": 55.4,
+          "end": 55.7
+        },
+        {
+          "word": "atasan",
+          "start": 55.7,
+          "end": 56.02
+        },
+        {
+          "word": "militer",
+          "start": 56.02,
+          "end": 56.36
+        },
+        {
+          "word": "yang",
+          "start": 56.36,
+          "end": 56.58
+        },
+        {
+          "word": "berani",
+          "start": 56.58,
+          "end": 56.86
+        },
+        {
+          "word": "memberi",
+          "start": 56.86,
+          "end": 57.2
+        },
+        {
+          "word": "komando",
+          "start": 57.2,
+          "end": 57.46
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 57.8,
+      "end": 62.12,
+      "text": "Tak sanggup membantai rakyat sendiri, komandan perbatasan memerintahkan palang dibuka.",
+      "words": [
+        {
+          "word": "Tak",
+          "start": 58.24,
+          "end": 58.38
+        },
+        {
+          "word": "sanggup",
+          "start": 58.38,
+          "end": 58.64
+        },
+        {
+          "word": "membantai",
+          "start": 58.64,
+          "end": 59
+        },
+        {
+          "word": "rakyat",
+          "start": 59,
+          "end": 59.24
+        },
+        {
+          "word": "sendiri,",
+          "start": 59.24,
+          "end": 60.1
+        },
+        {
+          "word": "komandan",
+          "start": 60.1,
+          "end": 60.36
+        },
+        {
+          "word": "perbatasan",
+          "start": 60.36,
+          "end": 60.86
+        },
+        {
+          "word": "memerintahkan",
+          "start": 60.86,
+          "end": 61.46
+        },
+        {
+          "word": "palang",
+          "start": 61.46,
+          "end": 61.74
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "start": 62.66,
+      "end": 65.2,
+      "text": "Arus manusia menerobos masuk ke Berlin Barat tanpa perlawanan.",
+      "words": [
+        {
+          "word": "Arus",
+          "start": 62.74,
+          "end": 62.86
+        },
+        {
+          "word": "manusia",
+          "start": 62.86,
+          "end": 63.22
+        },
+        {
+          "word": "menerobos",
+          "start": 63.22,
+          "end": 63.56
+        },
+        {
+          "word": "masuk",
+          "start": 63.56,
+          "end": 63.82
+        },
+        {
+          "word": "ke",
+          "start": 63.82,
+          "end": 64
+        },
+        {
+          "word": "Berlin",
+          "start": 64,
+          "end": 64.18
+        },
+        {
+          "word": "Barat",
+          "start": 64.18,
+          "end": 64.44
+        },
+        {
+          "word": "tanpa",
+          "start": 64.44,
+          "end": 64.7
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "start": 65.68,
+      "end": 68.7,
+      "text": "Rakyat dari kedua belah pihak memanjat tembok Berlin dengan palu dan linggis,",
+      "words": [
+        {
+          "word": "Rakyat",
+          "start": 65.8,
+          "end": 65.96
+        },
+        {
+          "word": "dari",
+          "start": 65.96,
+          "end": 66.16
+        },
+        {
+          "word": "kedua",
+          "start": 66.16,
+          "end": 66.34
+        },
+        {
+          "word": "belah",
+          "start": 66.34,
+          "end": 66.5
+        },
+        {
+          "word": "pihak",
+          "start": 66.5,
+          "end": 66.82
+        },
+        {
+          "word": "memanjat",
+          "start": 66.82,
+          "end": 67.18
+        },
+        {
+          "word": "tembok",
+          "start": 67.18,
+          "end": 67.42
+        },
+        {
+          "word": "Berlin",
+          "start": 67.42,
+          "end": 67.7
+        },
+        {
+          "word": "dengan",
+          "start": 67.7,
+          "end": 67.94
+        },
+        {
+          "word": "palu",
+          "start": 67.94,
+          "end": 68.18
+        },
+        {
+          "word": "dan",
+          "start": 68.18,
+          "end": 68.34
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "start": 69.18,
+      "end": 72.48,
+      "text": "berdansa dan merobokkan dinding tirai besi yang memisahkan mereka puluhan tahun.",
+      "words": [
+        {
+          "word": "berdansa",
+          "start": 69.22,
+          "end": 69.6
+        },
+        {
+          "word": "dan",
+          "start": 69.6,
+          "end": 69.82
+        },
+        {
+          "word": "merobokkan",
+          "start": 69.82,
+          "end": 70.3
+        },
+        {
+          "word": "dinding",
+          "start": 70.3,
+          "end": 70.52
+        },
+        {
+          "word": "tirai",
+          "start": 70.52,
+          "end": 70.82
+        },
+        {
+          "word": "besi",
+          "start": 70.82,
+          "end": 71.02
+        },
+        {
+          "word": "yang",
+          "start": 71.02,
+          "end": 71.18
+        },
+        {
+          "word": "memisahkan",
+          "start": 71.18,
+          "end": 71.6
+        },
+        {
+          "word": "mereka",
+          "start": 71.6,
+          "end": 71.9
+        },
+        {
+          "word": "puluhan",
+          "start": 71.9,
+          "end": 72.18
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "start": 73.12,
+      "end": 74.44,
+      "text": "Efek domino melesat tanpa henti.",
+      "words": [
+        {
+          "word": "Efek",
+          "start": 73.22,
+          "end": 73.3
+        },
+        {
+          "word": "domino",
+          "start": 73.3,
+          "end": 73.66
+        },
+        {
+          "word": "melesat",
+          "start": 73.66,
+          "end": 73.96
+        },
+        {
+          "word": "tanpa",
+          "start": 73.96,
+          "end": 74.18
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "start": 75.02,
+      "end": 77.78,
+      "text": "Jerman bersatu kembali, rezim komunis Eropa Timur tumbang,",
+      "words": [
+        {
+          "word": "Jerman",
+          "start": 75.08,
+          "end": 75.24
+        },
+        {
+          "word": "bersatu",
+          "start": 75.24,
+          "end": 75.54
+        },
+        {
+          "word": "kembali,",
+          "start": 75.54,
+          "end": 76.44
+        },
+        {
+          "word": "rezim",
+          "start": 76.44,
+          "end": 76.6
+        },
+        {
+          "word": "komunis",
+          "start": 76.6,
+          "end": 76.96
+        },
+        {
+          "word": "Eropa",
+          "start": 76.96,
+          "end": 77.24
+        },
+        {
+          "word": "Timur",
+          "start": 77.24,
+          "end": 77.46
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "start": 78.22,
+      "end": 80.72,
+      "text": "dan akhirnya Uni Soviet resmi bubar menjadi 15 negara.",
+      "words": [
+        {
+          "word": "dan",
+          "start": 78.24,
+          "end": 78.34
+        },
+        {
+          "word": "akhirnya",
+          "start": 78.34,
+          "end": 78.66
+        },
+        {
+          "word": "Uni",
+          "start": 78.66,
+          "end": 78.82
+        },
+        {
+          "word": "Soviet",
+          "start": 78.82,
+          "end": 79.12
+        },
+        {
+          "word": "resmi",
+          "start": 79.12,
+          "end": 79.42
+        },
+        {
+          "word": "bubar",
+          "start": 79.42,
+          "end": 79.7
+        },
+        {
+          "word": "menjadi",
+          "start": 79.7,
+          "end": 79.98
+        },
+        {
+          "word": "15",
+          "start": 79.98,
+          "end": 80.32
+        },
+        {
+          "word": "negara.",
+          "start": 80.32,
+          "end": 80.7
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "start": 81.3,
+      "end": 86,
+      "text": "Dokumen asli membuktikan instruksi itu aslinya dijadwalkan berlaku esok paginya lewat kantor imigrasi resmi.",
+      "words": [
+        {
+          "word": "Dokumen",
+          "start": 81.36,
+          "end": 81.56
+        },
+        {
+          "word": "asli",
+          "start": 81.56,
+          "end": 81.82
+        },
+        {
+          "word": "membuktikan",
+          "start": 81.82,
+          "end": 82.36
+        },
+        {
+          "word": "instruksi",
+          "start": 82.36,
+          "end": 82.72
+        },
+        {
+          "word": "itu",
+          "start": 82.72,
+          "end": 82.92
+        },
+        {
+          "word": "aslinya",
+          "start": 82.92,
+          "end": 83.24
+        },
+        {
+          "word": "dijadwalkan",
+          "start": 83.24,
+          "end": 83.74
+        },
+        {
+          "word": "berlaku",
+          "start": 83.74,
+          "end": 84.1
+        },
+        {
+          "word": "esok",
+          "start": 84.1,
+          "end": 84.32
+        },
+        {
+          "word": "paginya",
+          "start": 84.32,
+          "end": 84.68
+        },
+        {
+          "word": "lewat",
+          "start": 84.68,
+          "end": 85
+        },
+        {
+          "word": "kantor",
+          "start": 85,
+          "end": 85.3
+        },
+        {
+          "word": "imigrasi",
+          "start": 85.3,
+          "end": 85.72
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "start": 86,
+      "end": 89.4,
+      "text": "satu kecerobohan membaca memo merombok sejarah peradaban bumi.",
+      "words": [
+        {
+          "word": "satu",
+          "start": 86.54,
+          "end": 86.76
+        },
+        {
+          "word": "kecerobohan",
+          "start": 86.76,
+          "end": 87.22
+        },
+        {
+          "word": "membaca",
+          "start": 87.22,
+          "end": 87.54
+        },
+        {
+          "word": "memo",
+          "start": 87.54,
+          "end": 87.84
+        },
+        {
+          "word": "merombok",
+          "start": 87.84,
+          "end": 88.3
+        },
+        {
+          "word": "sejarah",
+          "start": 88.3,
+          "end": 88.68
+        },
+        {
+          "word": "peradaban",
+          "start": 88.68,
+          "end": 89.04
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "start": 89.86,
+      "end": 92.56,
+      "text": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini",
+      "words": [
+        {
+          "word": "Menurutmu,",
+          "start": 89.94,
+          "end": 90.82
+        },
+        {
+          "word": "apa",
+          "start": 90.82,
+          "end": 90.88
+        },
+        {
+          "word": "keputusan",
+          "start": 90.88,
+          "end": 91.26
+        },
+        {
+          "word": "sepele",
+          "start": 91.26,
+          "end": 91.58
+        },
+        {
+          "word": "yang",
+          "start": 91.58,
+          "end": 91.72
+        },
+        {
+          "word": "kamu",
+          "start": 91.72,
+          "end": 91.92
+        },
+        {
+          "word": "ambil",
+          "start": 91.92,
+          "end": 92.14
+        },
+        {
+          "word": "hari",
+          "start": 92.14,
+          "end": 92.32
+        },
+        {
+          "word": "ini",
+          "start": 92.32,
+          "end": 92.52
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "start": 92.56,
+      "end": 96.14,
+      "text": "yang tanpa kamu sadari bakal mengubah jalan hidupmu 5 tahun lagi?",
+      "words": [
+        {
+          "word": "tanpa",
+          "start": 93.12,
+          "end": 93.4
+        },
+        {
+          "word": "kamu",
+          "start": 93.4,
+          "end": 93.62
+        },
+        {
+          "word": "sadari",
+          "start": 93.62,
+          "end": 94
+        },
+        {
+          "word": "bakal",
+          "start": 94,
+          "end": 94.56
+        },
+        {
+          "word": "mengubah",
+          "start": 94.56,
+          "end": 94.94
+        },
+        {
+          "word": "jalan",
+          "start": 94.94,
+          "end": 95.18
+        },
+        {
+          "word": "hidupmu",
+          "start": 95.18,
+          "end": 95.52
+        },
+        {
+          "word": "5",
+          "start": 95.52,
+          "end": 95.7
+        },
+        {
+          "word": "tahun",
+          "start": 95.7,
+          "end": 95.9
+        },
+        {
+          "word": "lagi?",
+          "start": 95.9,
+          "end": 96.14
+        }
+      ]
+    }
+  ],
+  "text": " Kalian bayangin, cuma gara-gara salah baca selembar memo di siaran langsung, tembok Berlin dan Uni Soviet runtuh hanya dalam satu malam. Tepat sebelum konferensi pers, jurubicara Gunter Schabowski disodori selembar draft regulasi visa yang sama sekali belum sempat ia pelajari. Setelah satu jam paparan membosankan, seorang jurnalis Italia mengangkat mikrofon dan melempar pertanyaan tak terduga tentang izin perjalanan ke barat. Schabowski mulai berkeringat dingin, membalik-balik tumpukan kertas memo yang rumit, mencari tanggal yang sebenarnya belum boleh diumumkan. Tanpa menyadari kesalahannya, dia mengucapkan kalimat fatal. Berlaku segera, tanpa penundaan. Jutaan penonton TV terbelalak tak percaya. Televisi Jerman Barat langsung menyiarkan breaking news darurat. Malam ini, gerbang tembok Berlin resmi dibuka untuk semua orang. Puluhan ribu warga Berlin Timur berbondong-bondong memadati pos penjagaan militer. Menuntut gerbang dibuka berdasarkan siaran televisi tadi. Komandan Harald Jäger panik setengah mati. Telefon darurat pos bergetar terus-menerus. Tapi tak ada satupun atasan militer yang berani memberi komando tembak. Tak sanggup membantai rakyat sendiri, komandan perbatasan memerintahkan palang dibuka. Arus manusia menerobos masuk ke Berlin Barat tanpa perlawanan. Rakyat dari kedua belah pihak memanjat tembok Berlin dengan palu dan linggis, berdansa dan merobokkan dinding tirai besi yang memisahkan mereka puluhan tahun. Efek domino melesat tanpa henti. Jerman bersatu kembali, rezim komunis Eropa Timur tumbang, dan akhirnya Uni Soviet resmi bubar menjadi 15 negara. Dokumen asli membuktikan instruksi itu aslinya dijadwalkan berlaku esok paginya lewat kantor imigrasi resmi. satu kecerobohan membaca memo merombok sejarah peradaban bumi. Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang tanpa kamu sadari bakal mengubah jalan hidupmu 5 tahun lagi?"
+}

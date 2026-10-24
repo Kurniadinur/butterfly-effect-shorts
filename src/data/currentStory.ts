@@ -3,1616 +3,1791 @@ import { ButterflyStoryData } from './types';
 export { cleanSubtitleWord } from '../utils/textUtils';
 
 export const CURRENT_STORY: ButterflyStoryData = {
-  "id": "butterfly-fall-of-berlin-wall",
-  "title": "MEMO SALAH BACA YANG MERUNTUHKAN UNI SOVIET",
+  "id": "berlin-wall-memo-butterfly-effect",
+  "title": "SELEMBAR MEMO MERUNTUHKAN TEMBOK BERLIN",
   "hook": {
-    "narration": "Kalian bayangin... dari selembar memo kusam yang lupa dibaca, Tembok Berlin runtuh dan Uni Soviet hancur hanya dalam satu malam?",
-    "leftTitle": "Memo Luput Dibaca",
-    "rightTitle": "Uni Soviet Runtuh",
+    "narration": "Kalian bayangin... cuma gara-gara salah baca selembar memo di siaran langsung, Tembok Berlin dan Uni Soviet runtuh hanya dalam satu malam?",
+    "leftTitle": "Draf Memo Perjalanan",
+    "rightTitle": "Runtuhnya Blok Timur",
     "leftBadge": "AWAL MULA SEPELE",
-    "rightBadge": "BENCANA GEOPOLITIK",
-    "leftPrimaryText": "DRAFT PERATURAN VISA 09.11.1989",
-    "leftStampText": "UNCHECKED DRAFT",
-    "rightImage": "butterfly/media/wall_demolition.jpg",
+    "rightBadge": "BENCANA GLOBAL",
+    "leftPrimaryText": "REISEDOKUMENT DDR-1989",
+    "leftStampText": "EMBARGO 04:00 AM",
+    "rightImage": "butterfly/media/berlin_wall_fall.jpg",
     "leftImage": "butterfly/media/memo_document.jpg",
-    "durationFrames": 233
+    "durationFrames": 212
   },
   "nodes": [
     {
       "step": 1,
-      "timeOrYear": "BERLIN TIMUR • 9 NOV 1989 - 15:00",
-      "headline": "DRAFT PERATURAN RAHASIA",
-      "narration": "Birokrat tingkat menengah Jerman Timur menyusun draft aturan visa baru yang membingungkan dan belum diverifikasi atasan.",
+      "timeOrYear": "BERLIN TIMUR • 9 NOV 1989 • 18:00",
+      "headline": "MEMO RAHASIA DISERAHKAN TANPA DIBACA",
+      "narration": "Tepat sebelum konferensi pers, juru bicara Günter Schabowski disodori selembar draf regulasi visa yang sama sekali belum sempat ia pelajari.",
       "chaosLevel": 15,
       "mediaType": "graphic",
-      "directorType": "bureaucracy-draft",
+      "directorType": "memo-handoff",
       "zoomDirection": "zoomIn",
-      "primaryText": "REISEVERORDNUNG DRAFT",
-      "secondaryText": "DOKUMEN INTERN BIROKRASI",
-      "stampText": "TOP SECRET",
-      "quoteText": "",
-      "metricLabel": "STATUS MEMO",
-      "metricValue": "BELUM VERIFIKASI",
-      "mediaUrl": "bureaucracy-draft",
-      "caption": "Draft birokrasi yang penuh kerancuan teknis dibuat tanpa persetujuan komando puncak.",
-      "startFrame": 233,
-      "durationFrames": 218
+      "primaryText": "REISEREGELUNG DOKUMENT",
+      "secondaryText": "Draf transisi perbatasan Jerman Timur",
+      "stampText": "STRENG GEHEIM",
+      "quoteText": "Pegang ini, umumkan di depan pers.",
+      "metricLabel": "WAKTU MEMBACA",
+      "metricValue": "0 DETIK",
+      "mediaUrl": "memo-handoff",
+      "caption": "Penyerahan draf instruksi perjalanan sesaat sebelum siaran pers dimulai.",
+      "startFrame": 212,
+      "durationFrames": 215
     },
     {
       "step": 2,
-      "timeOrYear": "BERLIN TIMUR • 9 NOV 1989 - 17:30",
-      "headline": "ESTAFET CATATAN FATAL",
-      "narration": "Tanpa briefing dan instruksi, selembar catatan kasar itu langsung diselipkan ke tangan juru bicara Günter Schabowski tepat sebelum siaran pers.",
+      "timeOrYear": "PUSAT PERS INTERNASIONAL • 18:53",
+      "headline": "PERTANYAAN MENDADAK DARI JURNALIS",
+      "narration": "Setelah satu jam paparan membosankan, seorang jurnalis Italia mengangkat mikrofon dan melempar pertanyaan tak terduga tentang izin perjalanan ke Barat.",
       "chaosLevel": 30,
       "mediaType": "graphic",
-      "directorType": "memo-handoff",
+      "directorType": "press-question",
       "zoomDirection": "panRight",
-      "primaryText": "MEMORANDUM DARURAT",
-      "secondaryText": "DISERAHKAN TANPA CATATAN INSTRUKSI",
-      "stampText": "UNREAD MEMO",
-      "quoteText": "",
-      "metricLabel": "STATUS BRIEFING",
-      "metricValue": "0 MINUTING",
-      "mediaUrl": "memo-handoff",
-      "caption": "Kertas memo berbahaya berpindah tangan tanpa ada yang sempat membacanya.",
-      "startFrame": 451,
-      "durationFrames": 260
+      "primaryText": "PERTANYAAN FATAL RICCARDO EHRMAN",
+      "secondaryText": "Siaran langsung televisi Jerman Timur & dunia",
+      "stampText": "LIVE BROADCAST",
+      "quoteText": "Kapan aturan perjalanan ini mulai berlaku?",
+      "metricLabel": "JURNALIS INTERNASIONAL",
+      "metricValue": "150+ PERS",
+      "mediaUrl": "press-question",
+      "caption": "Mikrofon jurnalis menuntut kepastian batas waktu pemberlakuan visa.",
+      "startFrame": 427,
+      "durationFrames": 232
     },
     {
       "step": 3,
-      "timeOrYear": "RUANG KONFERENSI PERS • 18:53",
-      "headline": "PERTANYAAN MENDADAK",
-      "narration": "Di bawah lampu sorot, wartawan Italia melempar pertanyaan mendadak: Kapan persisnya peraturan perjalanan baru ini mulai berlaku?",
+      "timeOrYear": "MEJA KONFERENSI PERS • 18:56",
+      "headline": "KEPANIKAN DAN GAGAP DI DEPAN KAMERA",
+      "narration": "Schabowski mulai berkeringat dingin, membalik-balik tumpukan kertas memo yang rumit, mencari tanggal yang sebenarnya belum boleh diumumkan.",
       "chaosLevel": 45,
       "mediaType": "graphic",
-      "directorType": "press-question",
+      "directorType": "schabowski-slip",
       "zoomDirection": "zoomIn",
-      "primaryText": "PRESS CONFERENCE LIVE",
-      "secondaryText": "PERTANYAAN SPONTAN JURNALIS",
-      "stampText": "LIVE BROADCAST",
-      "quoteText": "'Kapan aturan izin perjalanan ini resmi berlaku?'",
-      "metricLabel": "AUDIENS REKOR",
-      "metricValue": "JUTAAN PENONTON",
-      "mediaUrl": "press-question",
-      "caption": "Pertanyaan tak terduga yang memicu kebingungan di depan kamera siaran langsung.",
-      "startFrame": 711,
-      "durationFrames": 233
+      "primaryText": "KEBINGUNGAN DI MEJA SIDANG",
+      "secondaryText": "Kacamata melorot, mencari klausul embargo",
+      "stampText": "UNVERZÜGLICH",
+      "quoteText": "Sepengetahuan saya... aturan ini...",
+      "metricLabel": "DETAK JANTUNG",
+      "metricValue": "135 BPM",
+      "mediaUrl": "schabowski-slip",
+      "caption": "Schabowski gelagapan mencari tanggal aktivasi yang tersembunyi di catatan kaki.",
+      "startFrame": 659,
+      "durationFrames": 213
     },
     {
       "step": 4,
-      "timeOrYear": "RUANG KONFERENSI PERS • 18:57",
-      "headline": "SALAH BACA SEJARAH",
-      "narration": "Gugup dan panik, Schabowski membetulkan kacamata, meraba kertas memo, lalu mengucapkan kata fatal: Segera, tanpa penundaan!",
+      "timeOrYear": "SIARAN LANGSUNG INTERNASIONAL • 18:57",
+      "headline": "DUA KATA YANG MENGUBAH DUNIA",
+      "narration": "Tanpa menyadari kesalahannya, dia mengucapkan kalimat fatal: 'Berlaku segera, tanpa penundaan!'. Jutaan penonton TV terbelalak tak percaya.",
       "chaosLevel": 60,
-      "mediaType": "graphic",
-      "directorType": "schabowski-slip",
-      "zoomDirection": "zoomOut",
-      "primaryText": "SOFORT, UNVERZÜGLICH",
-      "secondaryText": "UCAPAN FATAL JURU BICARA",
-      "stampText": "FATAL ERROR",
-      "quoteText": "'Sejauh yang saya tahu... ini berlaku segera, tanpa penundaan.'",
-      "metricLabel": "WAKTU BERLAKU",
-      "metricValue": "DETIK INI JUGA",
-      "mediaUrl": "schabowski-slip",
-      "caption": "Kecerobohan lisan paling mahal dalam sejarah Perang Dingin.",
-      "startFrame": 944,
-      "durationFrames": 224
-    },
-    {
-      "step": 5,
-      "timeOrYear": "BERLIN TIMUR & BARAT • 19:05",
-      "headline": "BREAKING NEWS GLOBAL",
-      "narration": "TV Jerman Barat mendadak memotong siaran dan menayangkan breaking news: Jerman Timur Resmi Membuka Perbatasan Malam Ini!",
-      "chaosLevel": 75,
       "mediaType": "graphic",
       "directorType": "breaking-ticker",
       "zoomDirection": "panLeft",
-      "primaryText": "BREAKING NEWS: PERBATASAN DIBUKA",
-      "secondaryText": "SIARAN SATELIT DARURAT INTERNASIONAL",
-      "stampText": "FLASH NEWS",
-      "quoteText": "'Pintu Tembok Berlin telah dibuka untuk publik!'",
-      "metricLabel": "JANGKAUAN",
-      "metricValue": "GLOBAL BROADCAST",
+      "primaryText": "SOFORT, UNVERZÜGLICH!",
+      "secondaryText": "Perbatasan diumumkan terbuka detik ini juga",
+      "stampText": "GLOBAL SHOCK",
+      "quoteText": "Das tritt nach meiner Kenntnis... ist das sofort, unverzüglich.",
+      "metricLabel": "ESTIMASI PENONTON",
+      "metricValue": "100+ JUTA",
       "mediaUrl": "breaking-ticker",
-      "caption": "Berita salah kaprah disebarkan ke seluruh dunia dalam hitungan menit.",
-      "startFrame": 1168,
-      "durationFrames": 218
+      "caption": "Pernyataan spontan tanpa konfirmasi komando pusat militer.",
+      "startFrame": 872,
+      "durationFrames": 213
+    },
+    {
+      "step": 5,
+      "timeOrYear": "STUDIO BERITA JERMAN BARAT • 19:17",
+      "headline": "KANTOR BERITA MENYIARKAN BOM INFORMASI",
+      "narration": "Televisi Jerman Barat langsung menyiarkan breaking news darurat: 'Malam ini, gerbang Tembok Berlin resmi dibuka untuk semua orang!'.",
+      "chaosLevel": 70,
+      "mediaType": "graphic",
+      "directorType": "breaking-news",
+      "zoomDirection": "zoomOut",
+      "primaryText": "BREAKING: DIE MAUER IST OFFEN!",
+      "secondaryText": "ARD Tagesthemen menyebarkan kabar ke seantero Berlin",
+      "stampText": "CONFIRMED LIVE",
+      "quoteText": "Pintu perbatasan Berlin Timur telah dibuka!",
+      "metricLabel": "JANGKAUAN SIARAN",
+      "metricValue": "SELURUH EROPA",
+      "mediaUrl": "breaking-news",
+      "caption": "Media barat mengamplifikasi kesalahan pernyataan Schabowski sebagai pembukaan resmi.",
+      "startFrame": 1085,
+      "durationFrames": 202
     },
     {
       "step": 6,
       "timeOrYear": "POS BORNHOLMER STRASSE • 20:30",
-      "headline": "MASSA MENYERBU GERBANG",
-      "narration": "Puluhan ribu warga Jerman Timur terkejut melihat TV dan langsung menyerbu pos pemeriksaan, menuntut pintu perbatasan dibuka.",
-      "chaosLevel": 85,
+      "headline": "LAUTAN MASSA MENGEPUNG GERBANG PERBATASAN",
+      "narration": "Puluhan ribu warga Berlin Timur berbondong-bondong memadati pos penjagaan militer, menuntut gerbang dibuka berdasarkan siaran televisi tadi.",
+      "chaosLevel": 80,
       "mediaType": "graphic",
+      "directorType": "tactical-map",
       "zoomDirection": "zoomIn",
-      "primaryText": "",
-      "secondaryText": "",
-      "stampText": "",
-      "quoteText": "",
-      "metricLabel": "JUMLAH MASSA",
-      "metricValue": "20.000+ WARGA",
+      "primaryText": "POS PENJAGAAN BORNHOLMER STRASSE",
+      "secondaryText": "Massa tanpa senjata mengepung barikade lapis baja",
+      "stampText": "CRITICAL CROWD",
+      "quoteText": "Buka pintunya! Pemerintah bilang di TV sudah bebas!",
+      "metricLabel": "KERUMUNAN MASSA",
+      "metricValue": "20,000+ ORANG",
       "mediaUrl": "butterfly/media/bornholmer_crowd.jpg",
-      "caption": "Kerumunan raksasa memadati pos penjagaan perbatasan tanpa koordinasi.",
-      "directorType": "breaking-ticker",
-      "startFrame": 1386,
-      "durationFrames": 226
+      "caption": "Warga Berlin Timur memadati zona terlarang pos pemeriksaan Bornholmer Straße.",
+      "startFrame": 1287,
+      "durationFrames": 215
     },
     {
       "step": 7,
-      "timeOrYear": "POS BORNHOLMER STRASSE • 21:15",
-      "headline": "TELEPON DARURAT HENING",
-      "narration": "Komandan pos jaga panik menelepon atasan. Namun di markas pusat, telepon darurat bergetar tanpa ada jenderal yang berani memberi perintah.",
+      "timeOrYear": "POS KOMANDO PENJAGA PERBATASAN • 21:15",
+      "headline": "TELEPON DARURAT TANPA PERINTAH JENDERAL",
+      "narration": "Komandan Harald Jäger panik setengah mati. Telepon darurat pos bergetar terus-menerus, tapi tak ada satu pun atasan militer yang berani memberi komando tembak.",
       "chaosLevel": 90,
       "mediaType": "graphic",
       "directorType": "panic-phone",
       "zoomDirection": "panRight",
-      "primaryText": "POS JAGA BORNHOLMER",
-      "secondaryText": "MARKAS BESAR TIDAK MERESPONS",
+      "primaryText": "STASI EMERGENCY LINE: SILENT",
+      "secondaryText": "Markas komando menolak mengeluarkan perintah resmi",
       "stampText": "NO COMMAND",
-      "quoteText": "'Atasan menolak bertanggung jawab dan membiarkan telepon berdering.'",
-      "metricLabel": "RESPONS ATASAN",
-      "metricValue": "NIHIL",
+      "quoteText": "Jenderal! Kami terkepung ribuan orang, tembak atau buka?!",
+      "metricLabel": "TELEPON DARURAT",
+      "metricValue": "TIDAK TERJAWAB",
       "mediaUrl": "panic-phone",
-      "caption": "Penjaga perbatasan terisolasi tanpa ada instruksi penanganan massa.",
-      "startFrame": 1612,
-      "durationFrames": 251
+      "caption": "Petinggi Stasi dan jenderal perbatasan lepas tangan menghadapi lautan manusia.",
+      "startFrame": 1502,
+      "durationFrames": 244
     },
     {
       "step": 8,
-      "timeOrYear": "GERBANG PERBATASAN • 23:30",
-      "headline": "PALANG GERBANG DIBUKA",
-      "narration": "Takut terjadi kepanikan massal dan pertumpahan darah, komandan pos terpaksa mengambil keputusan sepihak: Buka Gerbang!",
+      "timeOrYear": "TEMBOK BERLIN • 23:30",
+      "headline": "PALANG PERBATASAN DIBUKA PENUH",
+      "narration": "Tak sanggup membantai rakyat sendiri, komandan perbatasan memerintahkan palang dibuka. Arus manusia menerobos masuk ke Berlin Barat tanpa perlawanan.",
       "chaosLevel": 95,
       "mediaType": "graphic",
+      "directorType": "forensic-dossier",
       "zoomDirection": "zoomOut",
-      "primaryText": "",
-      "secondaryText": "",
-      "stampText": "",
-      "quoteText": "",
-      "metricLabel": "STATUS GERBANG",
-      "metricValue": "DIBUKA SEPIHAK",
-      "mediaUrl": "butterfly/media/border_gate_open.jpg",
-      "caption": "Palang perbatasan diangkat secara sepihak untuk menghindari pertumpahan darah.",
-      "directorType": "panic-phone",
-      "startFrame": 1863,
-      "durationFrames": 215
+      "primaryText": "BORDER BREACH: BORNHOLMER TOR",
+      "secondaryText": "Prajurit perbatasan melangkah mundur dari barikade",
+      "stampText": "GATES OPENED",
+      "quoteText": "Buka semua gerbang, jangan ada yang menembak!",
+      "metricLabel": "ARUS LINTAS",
+      "metricValue": "TAK TERBENDUNG",
+      "mediaUrl": "butterfly/media/border_gate_surge.jpg",
+      "caption": "Momen bersejarah saat penjaga perbatasan mengangkat palang pemisah selama 28 tahun.",
+      "startFrame": 1746,
+      "durationFrames": 229
     },
     {
       "step": 9,
-      "timeOrYear": "TEMBOK BERLIN • 10 NOV 1989",
-      "headline": "TEMBOK BERLIN RUNTUH",
-      "narration": "Ribuan orang merayakan kebebasan di atas Tembok Berlin, menghancurkan beton pembatas Perang Dingin dengan palu dan martil.",
-      "chaosLevel": 98,
-      "mediaType": "photo",
+      "timeOrYear": "BRANDENBURG GATE • TENGAH MALAM",
+      "headline": "PESTA KEBEBASAN DI ATAS SIMBOL KEMATIAN",
+      "narration": "Rakyat dari kedua belah pihak memanjat Tembok Berlin dengan palu dan linggis, berdansa dan merobohkan dinding tirai besi yang memisahkan mereka puluhan tahun.",
+      "chaosLevel": 85,
+      "mediaType": "graphic",
+      "directorType": "forensic-dossier",
       "zoomDirection": "panLeft",
-      "primaryText": "",
-      "secondaryText": "",
-      "stampText": "",
-      "quoteText": "",
-      "metricLabel": "DURASI BERDIRI",
-      "metricValue": "28 TAHUN RUNTUH",
-      "mediaUrl": "butterfly/media/wall_demolition.jpg",
-      "caption": "Massa merobohkan Tembok Berlin yang membelah Jerman selama puluhan tahun.",
-      "startFrame": 2078,
-      "durationFrames": 222
+      "primaryText": "EUPHORIA DI GERBANG BRANDENBURG",
+      "secondaryText": "Tembok pemisah mulai dihancurkan dengan godam warga",
+      "stampText": "WALL COLLAPSE",
+      "quoteText": "Berlin ist wieder eins! Berlin kembali satu!",
+      "metricLabel": "PANJANG TEMBOK",
+      "metricValue": "155 KILOMETER",
+      "mediaUrl": "butterfly/media/dancing_on_wall.jpg",
+      "caption": "Ribuan warga merayakan runtuhnya tembok beton di depan Gerbang Brandenburg.",
+      "startFrame": 1975,
+      "durationFrames": 242
     },
     {
       "step": 10,
-      "timeOrYear": "EROPA TIMUR • 1989-1991",
-      "headline": "UNI SOVIET BUBAR",
-      "narration": "Efek domino tidak terbendung. Runtuhnya tembok menjatuhkan rezim komunis Eropa Timur hingga Uni Soviet resmi bubar.",
+      "timeOrYear": "MOSKWA & BLOK TIMUR • 1989-1991",
+      "headline": "RUNTUHNYA KEKUATAN IMPERIUM UNI SOVIET",
+      "narration": "Efek domino melesat tanpa henti. Jerman bersatu kembali, rezim komunis Eropa Timur tumbang, dan akhirnya Uni Soviet resmi bubar menjadi 15 negara.",
       "chaosLevel": 100,
       "mediaType": "graphic",
       "directorType": "soviet-collapse",
       "zoomDirection": "zoomIn",
-      "primaryText": "COLLAPSE OF USSR",
-      "secondaryText": "PERUBAHAN PETA GEOPOLITIK DUNIA",
-      "stampText": "DISSOLVED",
-      "quoteText": "",
-      "metricLabel": "NEGARA BARU",
-      "metricValue": "15 NEGARA",
+      "primaryText": "BUBARNYA IMPERIUM TIRAI BESI",
+      "secondaryText": "Perang Dingin berakhir total dalam tempo 24 bulan",
+      "stampText": "EMPIRE DISSOLVED",
+      "quoteText": "Tatanan dunia Perang Dingin resmi tamat.",
+      "metricLabel": "NEGARA MERDEKA",
+      "metricValue": "15 NEGARA BARU",
       "mediaUrl": "soviet-collapse",
-      "caption": "Peta geopolitik dunia hancur dan terpecah menjadi 15 negara independen.",
-      "startFrame": 2300,
-      "durationFrames": 209
+      "caption": "Peta geopolitik Eurasia terpecah setelah kejatuhan simbolik Tembok Berlin.",
+      "startFrame": 2217,
+      "durationFrames": 224
     },
     {
       "step": 11,
-      "timeOrYear": "BERKAS FORENSIK SEJARAH",
-      "headline": "DOSSIER KELESUSAN BIROKRASI",
-      "narration": "Siapa sangka, berakhirnya perang superpower dan runtuhnya kekaisaran Soviet berawal dari selembar memo yang tak sempat dibaca?",
-      "chaosLevel": 100,
+      "timeOrYear": "ARSIP DEKLASIFIKASI • 1999",
+      "headline": "FAKTA FORENSIK: SEHARUSNYA BERLAKU BESOK PAGI",
+      "narration": "Dokumen asli membuktikan instruksi itu aslinya dijadwalkan berlaku esok paginya lewat kantor imigrasi resmi. Satu kecerobohan membaca memo merombak sejarah peradaban bumi.",
+      "chaosLevel": 10,
       "mediaType": "graphic",
       "directorType": "forensic-dossier",
       "zoomDirection": "zoomOut",
-      "primaryText": "DOSSIER FORENSIK #1989",
-      "secondaryText": "EFEK DOMINO KECELAKAAN BIROKRASI",
+      "primaryText": "BERKAS ASLI: EMBARGO 10 NOVEMBER 04:00",
+      "secondaryText": "Izin visa reguler yang terlanjur diumumkan bebas tanpa syarat",
       "stampText": "DECLASSIFIED",
-      "quoteText": "",
-      "metricLabel": "FAKTOR KUNCI",
-      "metricValue": "MEMO 1 LEMBAR",
+      "quoteText": "Instruksi itu tidak pernah dimaksudkan membuka tembok malam itu.",
+      "metricLabel": "SELISIH WAKTU FATAL",
+      "metricValue": "10 JAM TERLALU CEPAT",
       "mediaUrl": "forensic-dossier",
-      "caption": "Dokumen rahasia membuktikan runtuhnya tembok adalah kecelakaan birokrasi.",
-      "startFrame": 2509,
-      "durationFrames": 229
+      "caption": "Dossier rahasia Politbiro yang mencantumkan jadwal asli pemberlakuan visa.",
+      "startFrame": 2441,
+      "durationFrames": 262
     }
   ],
   "outro": {
     "narration": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini, yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?",
     "question": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah jalan hidupmu 5 tahun lagi?",
-    "durationFrames": 227
+    "durationFrames": 190
   },
   "wordTimestamps": [
     {
       "word": "Kalian",
-      "startFrame": 7,
-      "endFrame": 17,
+      "startFrame": 6,
+      "endFrame": 14,
       "pageIndex": 0
     },
     {
       "word": "bayangin",
-      "startFrame": 17,
-      "endFrame": 48,
+      "startFrame": 14,
+      "endFrame": 47,
       "pageIndex": 0
     },
     {
-      "word": "dari",
-      "startFrame": 48,
-      "endFrame": 51,
+      "word": "cuma",
+      "startFrame": 47,
+      "endFrame": 52,
       "pageIndex": 0
+    },
+    {
+      "word": "gara-gara",
+      "startFrame": 52,
+      "endFrame": 61,
+      "pageIndex": 1
+    },
+    {
+      "word": "salah",
+      "startFrame": 61,
+      "endFrame": 69,
+      "pageIndex": 1
+    },
+    {
+      "word": "baca",
+      "startFrame": 69,
+      "endFrame": 79,
+      "pageIndex": 1
     },
     {
       "word": "selembar",
-      "startFrame": 51,
-      "endFrame": 62,
-      "pageIndex": 1
+      "startFrame": 79,
+      "endFrame": 91,
+      "pageIndex": 2
     },
     {
       "word": "memo",
-      "startFrame": 62,
-      "endFrame": 71,
-      "pageIndex": 1
-    },
-    {
-      "word": "kusam",
-      "startFrame": 71,
-      "endFrame": 83,
-      "pageIndex": 1
-    },
-    {
-      "word": "yang",
-      "startFrame": 83,
-      "endFrame": 89,
+      "startFrame": 91,
+      "endFrame": 100,
       "pageIndex": 2
     },
     {
-      "word": "lupa",
-      "startFrame": 89,
-      "endFrame": 95,
+      "word": "di",
+      "startFrame": 100,
+      "endFrame": 107,
       "pageIndex": 2
     },
     {
-      "word": "dibaca",
-      "startFrame": 95,
-      "endFrame": 124,
-      "pageIndex": 2
+      "word": "siaran",
+      "startFrame": 107,
+      "endFrame": 113,
+      "pageIndex": 3
+    },
+    {
+      "word": "langsung",
+      "startFrame": 113,
+      "endFrame": 142,
+      "pageIndex": 3
     },
     {
       "word": "tembok",
-      "startFrame": 124,
-      "endFrame": 131,
+      "startFrame": 144,
+      "endFrame": 150,
       "pageIndex": 3
     },
     {
       "word": "Berlin",
-      "startFrame": 131,
-      "endFrame": 141,
-      "pageIndex": 3
-    },
-    {
-      "word": "runtuh",
-      "startFrame": 141,
-      "endFrame": 154,
-      "pageIndex": 3
+      "startFrame": 150,
+      "endFrame": 160,
+      "pageIndex": 4
     },
     {
       "word": "dan",
-      "startFrame": 154,
+      "startFrame": 160,
       "endFrame": 166,
       "pageIndex": 4
     },
     {
       "word": "Uni",
       "startFrame": 166,
-      "endFrame": 173,
+      "endFrame": 172,
       "pageIndex": 4
     },
     {
       "word": "Soviet",
-      "startFrame": 173,
-      "endFrame": 182,
-      "pageIndex": 4
+      "startFrame": 172,
+      "endFrame": 180,
+      "pageIndex": 5
     },
     {
-      "word": "hancur",
-      "startFrame": 182,
-      "endFrame": 196,
+      "word": "runtuh",
+      "startFrame": 180,
+      "endFrame": 192,
       "pageIndex": 5
     },
     {
       "word": "hanya",
-      "startFrame": 196,
-      "endFrame": 208,
+      "startFrame": 192,
+      "endFrame": 200,
       "pageIndex": 5
     },
     {
       "word": "dalam",
-      "startFrame": 208,
-      "endFrame": 215,
-      "pageIndex": 5
+      "startFrame": 200,
+      "endFrame": 208,
+      "pageIndex": 6
     },
     {
       "word": "satu",
-      "startFrame": 215,
-      "endFrame": 223,
+      "startFrame": 208,
+      "endFrame": 214,
       "pageIndex": 6
     },
     {
       "word": "malam",
-      "startFrame": 223,
-      "endFrame": 247,
+      "startFrame": 214,
+      "endFrame": 238,
       "pageIndex": 6
     },
     {
-      "word": "Birokrat",
-      "startFrame": 257,
-      "endFrame": 269,
-      "pageIndex": 6
-    },
-    {
-      "word": "tingkat",
-      "startFrame": 269,
-      "endFrame": 280,
+      "word": "Tepat",
+      "startFrame": 245,
+      "endFrame": 250,
       "pageIndex": 7
     },
     {
-      "word": "menengah",
-      "startFrame": 280,
-      "endFrame": 289,
+      "word": "sebelum",
+      "startFrame": 250,
+      "endFrame": 259,
       "pageIndex": 7
     },
     {
-      "word": "Jerman",
-      "startFrame": 289,
-      "endFrame": 298,
+      "word": "konferensi",
+      "startFrame": 259,
+      "endFrame": 272,
       "pageIndex": 7
     },
     {
-      "word": "Timur",
-      "startFrame": 298,
+      "word": "pers",
+      "startFrame": 272,
+      "endFrame": 293,
+      "pageIndex": 8
+    },
+    {
+      "word": "jurubicara",
+      "startFrame": 295,
       "endFrame": 308,
       "pageIndex": 8
     },
     {
-      "word": "menyusun",
+      "word": "Gunter",
       "startFrame": 308,
-      "endFrame": 330,
+      "endFrame": 319,
       "pageIndex": 8
     },
     {
-      "word": "draft",
-      "startFrame": 330,
-      "endFrame": 338,
-      "pageIndex": 8
-    },
-    {
-      "word": "aturan",
-      "startFrame": 338,
-      "endFrame": 349,
+      "word": "Schabowski",
+      "startFrame": 319,
+      "endFrame": 333,
       "pageIndex": 9
     },
     {
-      "word": "visa",
-      "startFrame": 349,
-      "endFrame": 356,
+      "word": "disodori",
+      "startFrame": 333,
+      "endFrame": 346,
       "pageIndex": 9
-    },
-    {
-      "word": "baru",
-      "startFrame": 356,
-      "endFrame": 365,
-      "pageIndex": 9
-    },
-    {
-      "word": "yang",
-      "startFrame": 365,
-      "endFrame": 370,
-      "pageIndex": 10
-    },
-    {
-      "word": "membingungkan",
-      "startFrame": 370,
-      "endFrame": 387,
-      "pageIndex": 10
-    },
-    {
-      "word": "dan",
-      "startFrame": 387,
-      "endFrame": 400,
-      "pageIndex": 10
-    },
-    {
-      "word": "belum",
-      "startFrame": 400,
-      "endFrame": 406,
-      "pageIndex": 11
-    },
-    {
-      "word": "diverifikasi",
-      "startFrame": 406,
-      "endFrame": 424,
-      "pageIndex": 11
-    },
-    {
-      "word": "atasan",
-      "startFrame": 424,
-      "endFrame": 448,
-      "pageIndex": 11
-    },
-    {
-      "word": "Tanpa",
-      "startFrame": 460,
-      "endFrame": 467,
-      "pageIndex": 12
-    },
-    {
-      "word": "briefing",
-      "startFrame": 467,
-      "endFrame": 478,
-      "pageIndex": 12
-    },
-    {
-      "word": "dan",
-      "startFrame": 478,
-      "endFrame": 484,
-      "pageIndex": 12
-    },
-    {
-      "word": "instruksi",
-      "startFrame": 484,
-      "endFrame": 518,
-      "pageIndex": 13
     },
     {
       "word": "selembar",
-      "startFrame": 518,
-      "endFrame": 526,
+      "startFrame": 346,
+      "endFrame": 358,
+      "pageIndex": 9
+    },
+    {
+      "word": "draft",
+      "startFrame": 358,
+      "endFrame": 365,
+      "pageIndex": 10
+    },
+    {
+      "word": "regulasi",
+      "startFrame": 365,
+      "endFrame": 377,
+      "pageIndex": 10
+    },
+    {
+      "word": "visa",
+      "startFrame": 377,
+      "endFrame": 384,
+      "pageIndex": 10
+    },
+    {
+      "word": "yang",
+      "startFrame": 384,
+      "endFrame": 390,
+      "pageIndex": 11
+    },
+    {
+      "word": "sama",
+      "startFrame": 390,
+      "endFrame": 400,
+      "pageIndex": 11
+    },
+    {
+      "word": "sekali",
+      "startFrame": 400,
+      "endFrame": 407,
+      "pageIndex": 11
+    },
+    {
+      "word": "belum",
+      "startFrame": 407,
+      "endFrame": 413,
+      "pageIndex": 12
+    },
+    {
+      "word": "sempat",
+      "startFrame": 413,
+      "endFrame": 423,
+      "pageIndex": 12
+    },
+    {
+      "word": "ia",
+      "startFrame": 423,
+      "endFrame": 429,
+      "pageIndex": 12
+    },
+    {
+      "word": "pelajari",
+      "startFrame": 429,
+      "endFrame": 455,
       "pageIndex": 13
     },
     {
-      "word": "catatan",
-      "startFrame": 526,
-      "endFrame": 536,
+      "word": "Setelah",
+      "startFrame": 463,
+      "endFrame": 467,
       "pageIndex": 13
     },
     {
-      "word": "kasar",
-      "startFrame": 536,
-      "endFrame": 546,
+      "word": "satu",
+      "startFrame": 467,
+      "endFrame": 474,
+      "pageIndex": 13
+    },
+    {
+      "word": "jam",
+      "startFrame": 474,
+      "endFrame": 478,
       "pageIndex": 14
     },
     {
-      "word": "itu",
-      "startFrame": 546,
-      "endFrame": 550,
+      "word": "paparan",
+      "startFrame": 478,
+      "endFrame": 487,
       "pageIndex": 14
     },
     {
-      "word": "langsung",
-      "startFrame": 550,
-      "endFrame": 563,
+      "word": "membosankan",
+      "startFrame": 487,
+      "endFrame": 506,
       "pageIndex": 14
     },
     {
-      "word": "diselipkan",
-      "startFrame": 563,
-      "endFrame": 577,
+      "word": "seorang",
+      "startFrame": 523,
+      "endFrame": 527,
       "pageIndex": 15
     },
     {
-      "word": "ke",
-      "startFrame": 577,
-      "endFrame": 583,
+      "word": "jurnalis",
+      "startFrame": 527,
+      "endFrame": 538,
       "pageIndex": 15
-    },
-    {
-      "word": "tangan",
-      "startFrame": 583,
-      "endFrame": 591,
-      "pageIndex": 15
-    },
-    {
-      "word": "jurubicara",
-      "startFrame": 591,
-      "endFrame": 609,
-      "pageIndex": 16
-    },
-    {
-      "word": "Gunter",
-      "startFrame": 609,
-      "endFrame": 623,
-      "pageIndex": 16
-    },
-    {
-      "word": "Schabowski",
-      "startFrame": 623,
-      "endFrame": 636,
-      "pageIndex": 16
-    },
-    {
-      "word": "tepat",
-      "startFrame": 636,
-      "endFrame": 658,
-      "pageIndex": 17
-    },
-    {
-      "word": "sebelum",
-      "startFrame": 658,
-      "endFrame": 669,
-      "pageIndex": 17
-    },
-    {
-      "word": "siaran",
-      "startFrame": 669,
-      "endFrame": 677,
-      "pageIndex": 17
-    },
-    {
-      "word": "pers",
-      "startFrame": 677,
-      "endFrame": 700,
-      "pageIndex": 18
-    },
-    {
-      "word": "Di",
-      "startFrame": 711,
-      "endFrame": 716,
-      "pageIndex": 18
-    },
-    {
-      "word": "bawah",
-      "startFrame": 716,
-      "endFrame": 721,
-      "pageIndex": 18
-    },
-    {
-      "word": "lampu",
-      "startFrame": 721,
-      "endFrame": 730,
-      "pageIndex": 19
-    },
-    {
-      "word": "sorot",
-      "startFrame": 730,
-      "endFrame": 753,
-      "pageIndex": 19
-    },
-    {
-      "word": "wartawan",
-      "startFrame": 753,
-      "endFrame": 761,
-      "pageIndex": 19
     },
     {
       "word": "Italia",
-      "startFrame": 761,
-      "endFrame": 773,
-      "pageIndex": 20
+      "startFrame": 538,
+      "endFrame": 548,
+      "pageIndex": 15
     },
     {
-      "word": "melempar",
-      "startFrame": 773,
-      "endFrame": 786,
-      "pageIndex": 20
+      "word": "mengangkat",
+      "startFrame": 548,
+      "endFrame": 558,
+      "pageIndex": 16
     },
     {
-      "word": "pertanyaan",
-      "startFrame": 786,
-      "endFrame": 800,
-      "pageIndex": 20
-    },
-    {
-      "word": "mendadak",
-      "startFrame": 800,
-      "endFrame": 809,
-      "pageIndex": 21
-    },
-    {
-      "word": "Kapan",
-      "startFrame": 825,
-      "endFrame": 836,
-      "pageIndex": 21
-    },
-    {
-      "word": "persisnya",
-      "startFrame": 836,
-      "endFrame": 853,
-      "pageIndex": 21
-    },
-    {
-      "word": "peraturan",
-      "startFrame": 853,
-      "endFrame": 866,
-      "pageIndex": 22
-    },
-    {
-      "word": "perjalanan",
-      "startFrame": 866,
-      "endFrame": 881,
-      "pageIndex": 22
-    },
-    {
-      "word": "baru",
-      "startFrame": 881,
-      "endFrame": 887,
-      "pageIndex": 22
-    },
-    {
-      "word": "ini",
-      "startFrame": 887,
-      "endFrame": 892,
-      "pageIndex": 23
-    },
-    {
-      "word": "mulai",
-      "startFrame": 892,
-      "endFrame": 897,
-      "pageIndex": 23
-    },
-    {
-      "word": "berlaku",
-      "startFrame": 897,
-      "endFrame": 923,
-      "pageIndex": 23
-    },
-    {
-      "word": "Gugup",
-      "startFrame": 936,
-      "endFrame": 942,
-      "pageIndex": 24
+      "word": "mikrofon",
+      "startFrame": 558,
+      "endFrame": 571,
+      "pageIndex": 16
     },
     {
       "word": "dan",
-      "startFrame": 942,
-      "endFrame": 947,
-      "pageIndex": 24
+      "startFrame": 571,
+      "endFrame": 577,
+      "pageIndex": 16
     },
     {
-      "word": "panik",
-      "startFrame": 947,
-      "endFrame": 973,
-      "pageIndex": 24
+      "word": "melempar",
+      "startFrame": 577,
+      "endFrame": 586,
+      "pageIndex": 17
+    },
+    {
+      "word": "pertanyaan",
+      "startFrame": 586,
+      "endFrame": 600,
+      "pageIndex": 17
+    },
+    {
+      "word": "tak",
+      "startFrame": 600,
+      "endFrame": 604,
+      "pageIndex": 17
+    },
+    {
+      "word": "terduga",
+      "startFrame": 604,
+      "endFrame": 614,
+      "pageIndex": 18
+    },
+    {
+      "word": "tentang",
+      "startFrame": 614,
+      "endFrame": 623,
+      "pageIndex": 18
+    },
+    {
+      "word": "izin",
+      "startFrame": 623,
+      "endFrame": 631,
+      "pageIndex": 18
+    },
+    {
+      "word": "perjalanan",
+      "startFrame": 631,
+      "endFrame": 646,
+      "pageIndex": 19
+    },
+    {
+      "word": "ke",
+      "startFrame": 646,
+      "endFrame": 649,
+      "pageIndex": 19
+    },
+    {
+      "word": "barat",
+      "startFrame": 649,
+      "endFrame": 655,
+      "pageIndex": 19
     },
     {
       "word": "Schabowski",
-      "startFrame": 973,
-      "endFrame": 985,
-      "pageIndex": 25
+      "startFrame": 675,
+      "endFrame": 685,
+      "pageIndex": 20
     },
     {
-      "word": "membetulkan",
-      "startFrame": 985,
-      "endFrame": 1001,
-      "pageIndex": 25
+      "word": "mulai",
+      "startFrame": 685,
+      "endFrame": 691,
+      "pageIndex": 20
     },
     {
-      "word": "kacamata",
-      "startFrame": 1001,
-      "endFrame": 1014,
-      "pageIndex": 25
+      "word": "berkeringat",
+      "startFrame": 691,
+      "endFrame": 704,
+      "pageIndex": 20
     },
     {
-      "word": "Meraba",
-      "startFrame": 1025,
-      "endFrame": 1036,
-      "pageIndex": 26
+      "word": "dingin",
+      "startFrame": 704,
+      "endFrame": 724,
+      "pageIndex": 21
+    },
+    {
+      "word": "membalik-balik",
+      "startFrame": 731,
+      "endFrame": 743,
+      "pageIndex": 21
+    },
+    {
+      "word": "tumpukan",
+      "startFrame": 743,
+      "endFrame": 752,
+      "pageIndex": 21
     },
     {
       "word": "kertas",
-      "startFrame": 1036,
-      "endFrame": 1045,
-      "pageIndex": 26
+      "startFrame": 752,
+      "endFrame": 759,
+      "pageIndex": 22
     },
     {
       "word": "memo",
-      "startFrame": 1045,
-      "endFrame": 1072,
+      "startFrame": 759,
+      "endFrame": 768,
+      "pageIndex": 22
+    },
+    {
+      "word": "yang",
+      "startFrame": 768,
+      "endFrame": 772,
+      "pageIndex": 22
+    },
+    {
+      "word": "rumit",
+      "startFrame": 772,
+      "endFrame": 795,
+      "pageIndex": 23
+    },
+    {
+      "word": "mencari",
+      "startFrame": 797,
+      "endFrame": 803,
+      "pageIndex": 23
+    },
+    {
+      "word": "tanggal",
+      "startFrame": 803,
+      "endFrame": 813,
+      "pageIndex": 23
+    },
+    {
+      "word": "yang",
+      "startFrame": 813,
+      "endFrame": 817,
+      "pageIndex": 24
+    },
+    {
+      "word": "sebenarnya",
+      "startFrame": 817,
+      "endFrame": 827,
+      "pageIndex": 24
+    },
+    {
+      "word": "belum",
+      "startFrame": 827,
+      "endFrame": 833,
+      "pageIndex": 24
+    },
+    {
+      "word": "boleh",
+      "startFrame": 833,
+      "endFrame": 839,
+      "pageIndex": 25
+    },
+    {
+      "word": "diumumkan",
+      "startFrame": 839,
+      "endFrame": 853,
+      "pageIndex": 25
+    },
+    {
+      "word": "Tanpa",
+      "startFrame": 868,
+      "endFrame": 875,
+      "pageIndex": 25
+    },
+    {
+      "word": "menyadari",
+      "startFrame": 875,
+      "endFrame": 885,
       "pageIndex": 26
     },
     {
-      "word": "lalu",
-      "startFrame": 1072,
-      "endFrame": 1075,
-      "pageIndex": 27
+      "word": "kesalahannya",
+      "startFrame": 885,
+      "endFrame": 918,
+      "pageIndex": 26
+    },
+    {
+      "word": "dia",
+      "startFrame": 918,
+      "endFrame": 920,
+      "pageIndex": 26
     },
     {
       "word": "mengucapkan",
-      "startFrame": 1075,
-      "endFrame": 1092,
+      "startFrame": 920,
+      "endFrame": 935,
       "pageIndex": 27
     },
     {
-      "word": "kata",
-      "startFrame": 1092,
-      "endFrame": 1098,
+      "word": "kalimat",
+      "startFrame": 935,
+      "endFrame": 944,
       "pageIndex": 27
     },
     {
       "word": "fatal",
-      "startFrame": 1098,
-      "endFrame": 1108,
+      "startFrame": 944,
+      "endFrame": 968,
+      "pageIndex": 27
+    },
+    {
+      "word": "Berlaku",
+      "startFrame": 972,
+      "endFrame": 982,
       "pageIndex": 28
     },
     {
-      "word": "Segera",
-      "startFrame": 1103,
-      "endFrame": 1153,
+      "word": "segera",
+      "startFrame": 982,
+      "endFrame": 1007,
       "pageIndex": 28
     },
     {
       "word": "tanpa",
-      "startFrame": 1153,
-      "endFrame": 1163,
+      "startFrame": 1007,
+      "endFrame": 1015,
       "pageIndex": 28
     },
     {
       "word": "penundaan",
-      "startFrame": 1163,
-      "endFrame": 1179,
+      "startFrame": 1015,
+      "endFrame": 1031,
+      "pageIndex": 29
+    },
+    {
+      "word": "Jutaan",
+      "startFrame": 1048,
+      "endFrame": 1057,
+      "pageIndex": 29
+    },
+    {
+      "word": "penonton",
+      "startFrame": 1057,
+      "endFrame": 1064,
       "pageIndex": 29
     },
     {
       "word": "TV",
-      "startFrame": 1199,
-      "endFrame": 1206,
-      "pageIndex": 29
-    },
-    {
-      "word": "Jerman",
-      "startFrame": 1206,
-      "endFrame": 1216,
-      "pageIndex": 29
-    },
-    {
-      "word": "Barat",
-      "startFrame": 1216,
-      "endFrame": 1223,
+      "startFrame": 1064,
+      "endFrame": 1072,
       "pageIndex": 30
     },
     {
-      "word": "mendadak",
-      "startFrame": 1223,
-      "endFrame": 1235,
+      "word": "terbelalak",
+      "startFrame": 1072,
+      "endFrame": 1085,
       "pageIndex": 30
-    },
-    {
-      "word": "memotong",
-      "startFrame": 1235,
-      "endFrame": 1245,
-      "pageIndex": 30
-    },
-    {
-      "word": "siaran",
-      "startFrame": 1245,
-      "endFrame": 1255,
-      "pageIndex": 31
-    },
-    {
-      "word": "dan",
-      "startFrame": 1255,
-      "endFrame": 1266,
-      "pageIndex": 31
-    },
-    {
-      "word": "menayangkan",
-      "startFrame": 1266,
-      "endFrame": 1283,
-      "pageIndex": 31
-    },
-    {
-      "word": "breaking",
-      "startFrame": 1283,
-      "endFrame": 1292,
-      "pageIndex": 32
-    },
-    {
-      "word": "news",
-      "startFrame": 1292,
-      "endFrame": 1301,
-      "pageIndex": 32
-    },
-    {
-      "word": "Jerman",
-      "startFrame": 1286,
-      "endFrame": 1327,
-      "pageIndex": 32
-    },
-    {
-      "word": "Timur",
-      "startFrame": 1327,
-      "endFrame": 1337,
-      "pageIndex": 33
-    },
-    {
-      "word": "resmi",
-      "startFrame": 1337,
-      "endFrame": 1356,
-      "pageIndex": 33
-    },
-    {
-      "word": "membuka",
-      "startFrame": 1356,
-      "endFrame": 1368,
-      "pageIndex": 33
-    },
-    {
-      "word": "perbatasan",
-      "startFrame": 1368,
-      "endFrame": 1384,
-      "pageIndex": 34
-    },
-    {
-      "word": "malam",
-      "startFrame": 1384,
-      "endFrame": 1396,
-      "pageIndex": 34
-    },
-    {
-      "word": "ini",
-      "startFrame": 1396,
-      "endFrame": 1401,
-      "pageIndex": 34
-    },
-    {
-      "word": "Puluhan",
-      "startFrame": 1425,
-      "endFrame": 1437,
-      "pageIndex": 35
-    },
-    {
-      "word": "ribu",
-      "startFrame": 1437,
-      "endFrame": 1445,
-      "pageIndex": 35
-    },
-    {
-      "word": "warga",
-      "startFrame": 1445,
-      "endFrame": 1453,
-      "pageIndex": 35
-    },
-    {
-      "word": "Jerman",
-      "startFrame": 1453,
-      "endFrame": 1461,
-      "pageIndex": 36
-    },
-    {
-      "word": "Timur",
-      "startFrame": 1461,
-      "endFrame": 1470,
-      "pageIndex": 36
-    },
-    {
-      "word": "terkejut",
-      "startFrame": 1470,
-      "endFrame": 1485,
-      "pageIndex": 36
-    },
-    {
-      "word": "melihat",
-      "startFrame": 1485,
-      "endFrame": 1496,
-      "pageIndex": 37
-    },
-    {
-      "word": "TV",
-      "startFrame": 1496,
-      "endFrame": 1503,
-      "pageIndex": 37
-    },
-    {
-      "word": "Dan",
-      "startFrame": 1519,
-      "endFrame": 1523,
-      "pageIndex": 37
-    },
-    {
-      "word": "langsung",
-      "startFrame": 1523,
-      "endFrame": 1535,
-      "pageIndex": 38
-    },
-    {
-      "word": "menyerbu",
-      "startFrame": 1535,
-      "endFrame": 1547,
-      "pageIndex": 38
-    },
-    {
-      "word": "pos",
-      "startFrame": 1547,
-      "endFrame": 1555,
-      "pageIndex": 38
-    },
-    {
-      "word": "pemeriksaan",
-      "startFrame": 1555,
-      "endFrame": 1571,
-      "pageIndex": 39
-    },
-    {
-      "word": "menuntut",
-      "startFrame": 1585,
-      "endFrame": 1599,
-      "pageIndex": 39
-    },
-    {
-      "word": "pintu",
-      "startFrame": 1599,
-      "endFrame": 1607,
-      "pageIndex": 39
-    },
-    {
-      "word": "perbatasan",
-      "startFrame": 1607,
-      "endFrame": 1621,
-      "pageIndex": 40
-    },
-    {
-      "word": "dibuka",
-      "startFrame": 1621,
-      "endFrame": 1646,
-      "pageIndex": 40
-    },
-    {
-      "word": "Komandan",
-      "startFrame": 1659,
-      "endFrame": 1667,
-      "pageIndex": 40
-    },
-    {
-      "word": "pos",
-      "startFrame": 1667,
-      "endFrame": 1673,
-      "pageIndex": 41
-    },
-    {
-      "word": "jaga",
-      "startFrame": 1673,
-      "endFrame": 1683,
-      "pageIndex": 41
-    },
-    {
-      "word": "panik",
-      "startFrame": 1683,
-      "endFrame": 1696,
-      "pageIndex": 41
-    },
-    {
-      "word": "menelpon",
-      "startFrame": 1696,
-      "endFrame": 1706,
-      "pageIndex": 42
-    },
-    {
-      "word": "atasan",
-      "startFrame": 1706,
-      "endFrame": 1732,
-      "pageIndex": 42
-    },
-    {
-      "word": "Namun",
-      "startFrame": 1738,
-      "endFrame": 1744,
-      "pageIndex": 42
-    },
-    {
-      "word": "di",
-      "startFrame": 1744,
-      "endFrame": 1748,
-      "pageIndex": 43
-    },
-    {
-      "word": "markas",
-      "startFrame": 1748,
-      "endFrame": 1756,
-      "pageIndex": 43
-    },
-    {
-      "word": "pusat",
-      "startFrame": 1756,
-      "endFrame": 1780,
-      "pageIndex": 43
-    },
-    {
-      "word": "telpon",
-      "startFrame": 1777,
-      "endFrame": 1784,
-      "pageIndex": 44
-    },
-    {
-      "word": "darurat",
-      "startFrame": 1784,
-      "endFrame": 1794,
-      "pageIndex": 44
-    },
-    {
-      "word": "bergetar",
-      "startFrame": 1794,
-      "endFrame": 1807,
-      "pageIndex": 44
-    },
-    {
-      "word": "tanpa",
-      "startFrame": 1804,
-      "endFrame": 1828,
-      "pageIndex": 45
-    },
-    {
-      "word": "ada",
-      "startFrame": 1828,
-      "endFrame": 1835,
-      "pageIndex": 45
-    },
-    {
-      "word": "jenderal",
-      "startFrame": 1835,
-      "endFrame": 1848,
-      "pageIndex": 45
-    },
-    {
-      "word": "yang",
-      "startFrame": 1848,
-      "endFrame": 1853,
-      "pageIndex": 46
-    },
-    {
-      "word": "berani",
-      "startFrame": 1853,
-      "endFrame": 1863,
-      "pageIndex": 46
-    },
-    {
-      "word": "memberi",
-      "startFrame": 1863,
-      "endFrame": 1872,
-      "pageIndex": 46
-    },
-    {
-      "word": "perintah",
-      "startFrame": 1872,
-      "endFrame": 1882,
-      "pageIndex": 47
-    },
-    {
-      "word": "Takut",
-      "startFrame": 1909,
-      "endFrame": 1912,
-      "pageIndex": 47
-    },
-    {
-      "word": "terjadi",
-      "startFrame": 1912,
-      "endFrame": 1922,
-      "pageIndex": 47
-    },
-    {
-      "word": "kepanikan",
-      "startFrame": 1922,
-      "endFrame": 1933,
-      "pageIndex": 48
-    },
-    {
-      "word": "massal",
-      "startFrame": 1933,
-      "endFrame": 1944,
-      "pageIndex": 48
-    },
-    {
-      "word": "dan",
-      "startFrame": 1944,
-      "endFrame": 1948,
-      "pageIndex": 48
-    },
-    {
-      "word": "pertumpahan",
-      "startFrame": 1948,
-      "endFrame": 1960,
-      "pageIndex": 49
-    },
-    {
-      "word": "darah",
-      "startFrame": 1960,
-      "endFrame": 1985,
-      "pageIndex": 49
-    },
-    {
-      "word": "komandan",
-      "startFrame": 1991,
-      "endFrame": 1996,
-      "pageIndex": 49
-    },
-    {
-      "word": "pos",
-      "startFrame": 1996,
-      "endFrame": 2002,
-      "pageIndex": 50
-    },
-    {
-      "word": "terpaksa",
-      "startFrame": 2002,
-      "endFrame": 2015,
-      "pageIndex": 50
-    },
-    {
-      "word": "mengambil",
-      "startFrame": 2015,
-      "endFrame": 2024,
-      "pageIndex": 50
-    },
-    {
-      "word": "keputusan",
-      "startFrame": 2024,
-      "endFrame": 2036,
-      "pageIndex": 51
-    },
-    {
-      "word": "sepihak",
-      "startFrame": 2036,
-      "endFrame": 2060,
-      "pageIndex": 51
-    },
-    {
-      "word": "Buka",
-      "startFrame": 2062,
-      "endFrame": 2068,
-      "pageIndex": 51
-    },
-    {
-      "word": "gerbang",
-      "startFrame": 2068,
-      "endFrame": 2091,
-      "pageIndex": 52
-    },
-    {
-      "word": "Ribuan",
-      "startFrame": 2107,
-      "endFrame": 2113,
-      "pageIndex": 52
-    },
-    {
-      "word": "orang",
-      "startFrame": 2113,
-      "endFrame": 2121,
-      "pageIndex": 52
-    },
-    {
-      "word": "merayakan",
-      "startFrame": 2121,
-      "endFrame": 2133,
-      "pageIndex": 53
-    },
-    {
-      "word": "kebebasan",
-      "startFrame": 2133,
-      "endFrame": 2149,
-      "pageIndex": 53
-    },
-    {
-      "word": "di",
-      "startFrame": 2149,
-      "endFrame": 2159,
-      "pageIndex": 53
-    },
-    {
-      "word": "atas",
-      "startFrame": 2159,
-      "endFrame": 2164,
-      "pageIndex": 54
-    },
-    {
-      "word": "tembok",
-      "startFrame": 2164,
-      "endFrame": 2171,
-      "pageIndex": 54
-    },
-    {
-      "word": "Berlin",
-      "startFrame": 2171,
-      "endFrame": 2196,
-      "pageIndex": 54
-    },
-    {
-      "word": "menghancurkan",
-      "startFrame": 2198,
-      "endFrame": 2214,
-      "pageIndex": 55
-    },
-    {
-      "word": "beton",
-      "startFrame": 2214,
-      "endFrame": 2222,
-      "pageIndex": 55
-    },
-    {
-      "word": "pembatas",
-      "startFrame": 2222,
-      "endFrame": 2234,
-      "pageIndex": 55
-    },
-    {
-      "word": "perang",
-      "startFrame": 2234,
-      "endFrame": 2242,
-      "pageIndex": 56
-    },
-    {
-      "word": "dingin",
-      "startFrame": 2242,
-      "endFrame": 2249,
-      "pageIndex": 56
-    },
-    {
-      "word": "dengan",
-      "startFrame": 2244,
-      "endFrame": 2267,
-      "pageIndex": 56
-    },
-    {
-      "word": "palu",
-      "startFrame": 2267,
-      "endFrame": 2276,
-      "pageIndex": 57
-    },
-    {
-      "word": "dan",
-      "startFrame": 2276,
-      "endFrame": 2281,
-      "pageIndex": 57
-    },
-    {
-      "word": "martil",
-      "startFrame": 2281,
-      "endFrame": 2291,
-      "pageIndex": 57
-    },
-    {
-      "word": "Efek",
-      "startFrame": 2321,
-      "endFrame": 2324,
-      "pageIndex": 58
-    },
-    {
-      "word": "domino",
-      "startFrame": 2324,
-      "endFrame": 2335,
-      "pageIndex": 58
-    },
-    {
-      "word": "tidak",
-      "startFrame": 2335,
-      "endFrame": 2341,
-      "pageIndex": 58
-    },
-    {
-      "word": "terbendung",
-      "startFrame": 2341,
-      "endFrame": 2353,
-      "pageIndex": 59
-    },
-    {
-      "word": "Runtuhnya",
-      "startFrame": 2371,
-      "endFrame": 2383,
-      "pageIndex": 59
-    },
-    {
-      "word": "tembok",
-      "startFrame": 2383,
-      "endFrame": 2393,
-      "pageIndex": 59
-    },
-    {
-      "word": "menjatuhkan",
-      "startFrame": 2393,
-      "endFrame": 2412,
-      "pageIndex": 60
-    },
-    {
-      "word": "rezim",
-      "startFrame": 2412,
-      "endFrame": 2421,
-      "pageIndex": 60
-    },
-    {
-      "word": "komunis",
-      "startFrame": 2421,
-      "endFrame": 2434,
-      "pageIndex": 60
-    },
-    {
-      "word": "Eropa",
-      "startFrame": 2434,
-      "endFrame": 2444,
-      "pageIndex": 61
-    },
-    {
-      "word": "Timur",
-      "startFrame": 2444,
-      "endFrame": 2451,
-      "pageIndex": 61
-    },
-    {
-      "word": "hingga",
-      "startFrame": 2452,
-      "endFrame": 2468,
-      "pageIndex": 61
-    },
-    {
-      "word": "Uni",
-      "startFrame": 2468,
-      "endFrame": 2475,
-      "pageIndex": 62
-    },
-    {
-      "word": "Soviet",
-      "startFrame": 2475,
-      "endFrame": 2483,
-      "pageIndex": 62
-    },
-    {
-      "word": "resmi",
-      "startFrame": 2483,
-      "endFrame": 2496,
-      "pageIndex": 62
-    },
-    {
-      "word": "bubar",
-      "startFrame": 2496,
-      "endFrame": 2519,
-      "pageIndex": 63
-    },
-    {
-      "word": "Siapa",
-      "startFrame": 2527,
-      "endFrame": 2534,
-      "pageIndex": 63
-    },
-    {
-      "word": "sangka",
-      "startFrame": 2534,
-      "endFrame": 2563,
-      "pageIndex": 63
-    },
-    {
-      "word": "berakhirnya",
-      "startFrame": 2563,
-      "endFrame": 2573,
-      "pageIndex": 64
-    },
-    {
-      "word": "perang",
-      "startFrame": 2573,
-      "endFrame": 2581,
-      "pageIndex": 64
-    },
-    {
-      "word": "super",
-      "startFrame": 2581,
-      "endFrame": 2588,
-      "pageIndex": 64
-    },
-    {
-      "word": "power",
-      "startFrame": 2588,
-      "endFrame": 2594,
-      "pageIndex": 65
-    },
-    {
-      "word": "dan",
-      "startFrame": 2590,
-      "endFrame": 2611,
-      "pageIndex": 65
-    },
-    {
-      "word": "runtuhnya",
-      "startFrame": 2611,
-      "endFrame": 2627,
-      "pageIndex": 65
-    },
-    {
-      "word": "kekaisaran",
-      "startFrame": 2627,
-      "endFrame": 2640,
-      "pageIndex": 66
-    },
-    {
-      "word": "Soviet",
-      "startFrame": 2640,
-      "endFrame": 2650,
-      "pageIndex": 66
-    },
-    {
-      "word": "berawal",
-      "startFrame": 2651,
-      "endFrame": 2674,
-      "pageIndex": 66
-    },
-    {
-      "word": "dari",
-      "startFrame": 2674,
-      "endFrame": 2680,
-      "pageIndex": 67
-    },
-    {
-      "word": "selembar",
-      "startFrame": 2680,
-      "endFrame": 2691,
-      "pageIndex": 67
-    },
-    {
-      "word": "memo",
-      "startFrame": 2691,
-      "endFrame": 2698,
-      "pageIndex": 67
-    },
-    {
-      "word": "yang",
-      "startFrame": 2698,
-      "endFrame": 2710,
-      "pageIndex": 68
     },
     {
       "word": "tak",
-      "startFrame": 2710,
-      "endFrame": 2716,
-      "pageIndex": 68
+      "startFrame": 1085,
+      "endFrame": 1090,
+      "pageIndex": 30
     },
     {
-      "word": "sempat",
-      "startFrame": 2716,
-      "endFrame": 2725,
-      "pageIndex": 68
+      "word": "percaya",
+      "startFrame": 1090,
+      "endFrame": 1115,
+      "pageIndex": 31
     },
     {
-      "word": "dibaca",
-      "startFrame": 2725,
-      "endFrame": 2735,
-      "pageIndex": 69
+      "word": "Televisi",
+      "startFrame": 1119,
+      "endFrame": 1128,
+      "pageIndex": 31
     },
     {
-      "word": "Menurutmu",
-      "startFrame": 2760,
-      "endFrame": 2789,
-      "pageIndex": 69
+      "word": "Jerman",
+      "startFrame": 1128,
+      "endFrame": 1135,
+      "pageIndex": 31
     },
     {
-      "word": "apa",
-      "startFrame": 2789,
-      "endFrame": 2791,
-      "pageIndex": 69
+      "word": "Barat",
+      "startFrame": 1135,
+      "endFrame": 1142,
+      "pageIndex": 32
     },
     {
-      "word": "keputusan",
-      "startFrame": 2791,
-      "endFrame": 2803,
-      "pageIndex": 70
+      "word": "langsung",
+      "startFrame": 1142,
+      "endFrame": 1150,
+      "pageIndex": 32
     },
     {
-      "word": "sepele",
-      "startFrame": 2803,
-      "endFrame": 2812,
-      "pageIndex": 70
+      "word": "menyiarkan",
+      "startFrame": 1150,
+      "endFrame": 1162,
+      "pageIndex": 32
     },
     {
-      "word": "yang",
-      "startFrame": 2812,
-      "endFrame": 2816,
-      "pageIndex": 70
+      "word": "breaking",
+      "startFrame": 1162,
+      "endFrame": 1175,
+      "pageIndex": 33
     },
     {
-      "word": "kamu",
-      "startFrame": 2816,
-      "endFrame": 2821,
-      "pageIndex": 71
+      "word": "news",
+      "startFrame": 1175,
+      "endFrame": 1180,
+      "pageIndex": 33
     },
     {
-      "word": "ambil",
-      "startFrame": 2821,
-      "endFrame": 2828,
-      "pageIndex": 71
+      "word": "darurat",
+      "startFrame": 1180,
+      "endFrame": 1207,
+      "pageIndex": 33
     },
     {
-      "word": "hari",
-      "startFrame": 2828,
-      "endFrame": 2836,
-      "pageIndex": 71
+      "word": "Malam",
+      "startFrame": 1209,
+      "endFrame": 1213,
+      "pageIndex": 34
     },
     {
       "word": "ini",
-      "startFrame": 2836,
-      "endFrame": 2839,
-      "pageIndex": 72
+      "startFrame": 1213,
+      "endFrame": 1234,
+      "pageIndex": 34
+    },
+    {
+      "word": "gerbang",
+      "startFrame": 1234,
+      "endFrame": 1238,
+      "pageIndex": 34
+    },
+    {
+      "word": "tembok",
+      "startFrame": 1238,
+      "endFrame": 1246,
+      "pageIndex": 35
+    },
+    {
+      "word": "Berlin",
+      "startFrame": 1246,
+      "endFrame": 1255,
+      "pageIndex": 35
+    },
+    {
+      "word": "resmi",
+      "startFrame": 1255,
+      "endFrame": 1264,
+      "pageIndex": 35
+    },
+    {
+      "word": "dibuka",
+      "startFrame": 1264,
+      "endFrame": 1274,
+      "pageIndex": 36
+    },
+    {
+      "word": "untuk",
+      "startFrame": 1274,
+      "endFrame": 1280,
+      "pageIndex": 36
+    },
+    {
+      "word": "semua",
+      "startFrame": 1280,
+      "endFrame": 1287,
+      "pageIndex": 36
+    },
+    {
+      "word": "orang",
+      "startFrame": 1287,
+      "endFrame": 1309,
+      "pageIndex": 37
+    },
+    {
+      "word": "Puluhan",
+      "startFrame": 1313,
+      "endFrame": 1319,
+      "pageIndex": 37
+    },
+    {
+      "word": "ribu",
+      "startFrame": 1319,
+      "endFrame": 1327,
+      "pageIndex": 37
+    },
+    {
+      "word": "warga",
+      "startFrame": 1327,
+      "endFrame": 1334,
+      "pageIndex": 38
+    },
+    {
+      "word": "Berlin",
+      "startFrame": 1334,
+      "endFrame": 1341,
+      "pageIndex": 38
+    },
+    {
+      "word": "Timur",
+      "startFrame": 1341,
+      "endFrame": 1349,
+      "pageIndex": 38
+    },
+    {
+      "word": "berbondong-bondong",
+      "startFrame": 1349,
+      "endFrame": 1369,
+      "pageIndex": 39
+    },
+    {
+      "word": "memadati",
+      "startFrame": 1369,
+      "endFrame": 1381,
+      "pageIndex": 39
+    },
+    {
+      "word": "pos",
+      "startFrame": 1381,
+      "endFrame": 1388,
+      "pageIndex": 39
+    },
+    {
+      "word": "penjagaan",
+      "startFrame": 1388,
+      "endFrame": 1403,
+      "pageIndex": 40
+    },
+    {
+      "word": "militer",
+      "startFrame": 1403,
+      "endFrame": 1427,
+      "pageIndex": 40
+    },
+    {
+      "word": "Menuntut",
+      "startFrame": 1430,
+      "endFrame": 1438,
+      "pageIndex": 40
+    },
+    {
+      "word": "gerbang",
+      "startFrame": 1438,
+      "endFrame": 1445,
+      "pageIndex": 41
+    },
+    {
+      "word": "dibuka",
+      "startFrame": 1445,
+      "endFrame": 1458,
+      "pageIndex": 41
+    },
+    {
+      "word": "berdasarkan",
+      "startFrame": 1458,
+      "endFrame": 1474,
+      "pageIndex": 41
+    },
+    {
+      "word": "siaran",
+      "startFrame": 1474,
+      "endFrame": 1483,
+      "pageIndex": 42
+    },
+    {
+      "word": "televisi",
+      "startFrame": 1483,
+      "endFrame": 1493,
+      "pageIndex": 42
+    },
+    {
+      "word": "tadi",
+      "startFrame": 1493,
+      "endFrame": 1514,
+      "pageIndex": 42
+    },
+    {
+      "word": "Komandan",
+      "startFrame": 1519,
+      "endFrame": 1525,
+      "pageIndex": 43
+    },
+    {
+      "word": "Harald",
+      "startFrame": 1525,
+      "endFrame": 1534,
+      "pageIndex": 43
+    },
+    {
+      "word": "Jäger",
+      "startFrame": 1534,
+      "endFrame": 1542,
+      "pageIndex": 43
+    },
+    {
+      "word": "panik",
+      "startFrame": 1542,
+      "endFrame": 1552,
+      "pageIndex": 44
+    },
+    {
+      "word": "setengah",
+      "startFrame": 1552,
+      "endFrame": 1559,
+      "pageIndex": 44
+    },
+    {
+      "word": "mati",
+      "startFrame": 1559,
+      "endFrame": 1585,
+      "pageIndex": 44
+    },
+    {
+      "word": "Telefon",
+      "startFrame": 1587,
+      "endFrame": 1592,
+      "pageIndex": 45
+    },
+    {
+      "word": "darurat",
+      "startFrame": 1592,
+      "endFrame": 1601,
+      "pageIndex": 45
+    },
+    {
+      "word": "pos",
+      "startFrame": 1601,
+      "endFrame": 1607,
+      "pageIndex": 45
+    },
+    {
+      "word": "bergetar",
+      "startFrame": 1607,
+      "endFrame": 1618,
+      "pageIndex": 46
+    },
+    {
+      "word": "terus-menerus",
+      "startFrame": 1618,
+      "endFrame": 1649,
+      "pageIndex": 46
+    },
+    {
+      "word": "Tapi",
+      "startFrame": 1649,
+      "endFrame": 1654,
+      "pageIndex": 46
+    },
+    {
+      "word": "tak",
+      "startFrame": 1654,
+      "endFrame": 1657,
+      "pageIndex": 47
+    },
+    {
+      "word": "ada",
+      "startFrame": 1657,
+      "endFrame": 1662,
+      "pageIndex": 47
+    },
+    {
+      "word": "satupun",
+      "startFrame": 1662,
+      "endFrame": 1671,
+      "pageIndex": 47
+    },
+    {
+      "word": "atasan",
+      "startFrame": 1671,
+      "endFrame": 1681,
+      "pageIndex": 48
+    },
+    {
+      "word": "militer",
+      "startFrame": 1681,
+      "endFrame": 1691,
+      "pageIndex": 48
     },
     {
       "word": "yang",
-      "startFrame": 2829,
-      "endFrame": 2856,
-      "pageIndex": 72
+      "startFrame": 1691,
+      "endFrame": 1697,
+      "pageIndex": 48
+    },
+    {
+      "word": "berani",
+      "startFrame": 1697,
+      "endFrame": 1706,
+      "pageIndex": 49
+    },
+    {
+      "word": "memberi",
+      "startFrame": 1706,
+      "endFrame": 1716,
+      "pageIndex": 49
+    },
+    {
+      "word": "komando",
+      "startFrame": 1716,
+      "endFrame": 1724,
+      "pageIndex": 49
+    },
+    {
+      "word": "tembak",
+      "startFrame": 1724,
+      "endFrame": 1748,
+      "pageIndex": 50
+    },
+    {
+      "word": "Tak",
+      "startFrame": 1747,
+      "endFrame": 1751,
+      "pageIndex": 50
+    },
+    {
+      "word": "sanggup",
+      "startFrame": 1751,
+      "endFrame": 1759,
+      "pageIndex": 50
+    },
+    {
+      "word": "membantai",
+      "startFrame": 1759,
+      "endFrame": 1770,
+      "pageIndex": 51
+    },
+    {
+      "word": "rakyat",
+      "startFrame": 1770,
+      "endFrame": 1777,
+      "pageIndex": 51
+    },
+    {
+      "word": "sendiri",
+      "startFrame": 1777,
+      "endFrame": 1803,
+      "pageIndex": 51
+    },
+    {
+      "word": "komandan",
+      "startFrame": 1803,
+      "endFrame": 1811,
+      "pageIndex": 52
+    },
+    {
+      "word": "perbatasan",
+      "startFrame": 1811,
+      "endFrame": 1826,
+      "pageIndex": 52
+    },
+    {
+      "word": "memerintahkan",
+      "startFrame": 1826,
+      "endFrame": 1844,
+      "pageIndex": 52
+    },
+    {
+      "word": "palang",
+      "startFrame": 1844,
+      "endFrame": 1852,
+      "pageIndex": 53
+    },
+    {
+      "word": "dibuka",
+      "startFrame": 1852,
+      "endFrame": 1878,
+      "pageIndex": 53
+    },
+    {
+      "word": "Arus",
+      "startFrame": 1882,
+      "endFrame": 1886,
+      "pageIndex": 53
+    },
+    {
+      "word": "manusia",
+      "startFrame": 1886,
+      "endFrame": 1897,
+      "pageIndex": 54
+    },
+    {
+      "word": "menerobos",
+      "startFrame": 1897,
+      "endFrame": 1907,
+      "pageIndex": 54
+    },
+    {
+      "word": "masuk",
+      "startFrame": 1907,
+      "endFrame": 1915,
+      "pageIndex": 54
+    },
+    {
+      "word": "ke",
+      "startFrame": 1915,
+      "endFrame": 1920,
+      "pageIndex": 55
+    },
+    {
+      "word": "Berlin",
+      "startFrame": 1920,
+      "endFrame": 1925,
+      "pageIndex": 55
+    },
+    {
+      "word": "Barat",
+      "startFrame": 1925,
+      "endFrame": 1933,
+      "pageIndex": 55
     },
     {
       "word": "tanpa",
-      "startFrame": 2856,
-      "endFrame": 2867,
-      "pageIndex": 72
+      "startFrame": 1933,
+      "endFrame": 1941,
+      "pageIndex": 56
     },
     {
-      "word": "kamu",
-      "startFrame": 2867,
-      "endFrame": 2873,
-      "pageIndex": 73
+      "word": "perlawanan",
+      "startFrame": 1941,
+      "endFrame": 1970,
+      "pageIndex": 56
     },
     {
-      "word": "sadari",
-      "startFrame": 2873,
-      "endFrame": 2885,
-      "pageIndex": 73
+      "word": "Rakyat",
+      "startFrame": 1974,
+      "endFrame": 1979,
+      "pageIndex": 56
     },
     {
-      "word": "bakal",
-      "startFrame": 2884,
-      "endFrame": 2906,
-      "pageIndex": 73
+      "word": "dari",
+      "startFrame": 1979,
+      "endFrame": 1985,
+      "pageIndex": 57
     },
     {
-      "word": "mengubah",
-      "startFrame": 2906,
-      "endFrame": 2917,
-      "pageIndex": 74
+      "word": "kedua",
+      "startFrame": 1985,
+      "endFrame": 1990,
+      "pageIndex": 57
     },
     {
-      "word": "jalan",
-      "startFrame": 2917,
-      "endFrame": 2925,
-      "pageIndex": 74
+      "word": "belah",
+      "startFrame": 1990,
+      "endFrame": 1995,
+      "pageIndex": 57
     },
     {
-      "word": "hidupmu",
-      "startFrame": 2925,
-      "endFrame": 2938,
-      "pageIndex": 74
+      "word": "pihak",
+      "startFrame": 1995,
+      "endFrame": 2005,
+      "pageIndex": 58
     },
     {
-      "word": "5",
-      "startFrame": 2938,
-      "endFrame": 2942,
-      "pageIndex": 75
+      "word": "memanjat",
+      "startFrame": 2005,
+      "endFrame": 2015,
+      "pageIndex": 58
+    },
+    {
+      "word": "tembok",
+      "startFrame": 2015,
+      "endFrame": 2023,
+      "pageIndex": 58
+    },
+    {
+      "word": "Berlin",
+      "startFrame": 2023,
+      "endFrame": 2031,
+      "pageIndex": 59
+    },
+    {
+      "word": "dengan",
+      "startFrame": 2031,
+      "endFrame": 2038,
+      "pageIndex": 59
+    },
+    {
+      "word": "palu",
+      "startFrame": 2038,
+      "endFrame": 2045,
+      "pageIndex": 59
+    },
+    {
+      "word": "dan",
+      "startFrame": 2045,
+      "endFrame": 2050,
+      "pageIndex": 60
+    },
+    {
+      "word": "linggis",
+      "startFrame": 2050,
+      "endFrame": 2075,
+      "pageIndex": 60
+    },
+    {
+      "word": "berdansa",
+      "startFrame": 2077,
+      "endFrame": 2088,
+      "pageIndex": 60
+    },
+    {
+      "word": "dan",
+      "startFrame": 2088,
+      "endFrame": 2095,
+      "pageIndex": 61
+    },
+    {
+      "word": "merobokkan",
+      "startFrame": 2095,
+      "endFrame": 2109,
+      "pageIndex": 61
+    },
+    {
+      "word": "dinding",
+      "startFrame": 2109,
+      "endFrame": 2116,
+      "pageIndex": 61
+    },
+    {
+      "word": "tirai",
+      "startFrame": 2116,
+      "endFrame": 2125,
+      "pageIndex": 62
+    },
+    {
+      "word": "besi",
+      "startFrame": 2125,
+      "endFrame": 2131,
+      "pageIndex": 62
+    },
+    {
+      "word": "yang",
+      "startFrame": 2131,
+      "endFrame": 2135,
+      "pageIndex": 62
+    },
+    {
+      "word": "memisahkan",
+      "startFrame": 2135,
+      "endFrame": 2148,
+      "pageIndex": 63
+    },
+    {
+      "word": "mereka",
+      "startFrame": 2148,
+      "endFrame": 2157,
+      "pageIndex": 63
+    },
+    {
+      "word": "puluhan",
+      "startFrame": 2157,
+      "endFrame": 2165,
+      "pageIndex": 63
     },
     {
       "word": "tahun",
-      "startFrame": 2942,
-      "endFrame": 2948,
+      "startFrame": 2165,
+      "endFrame": 2188,
+      "pageIndex": 64
+    },
+    {
+      "word": "Efek",
+      "startFrame": 2197,
+      "endFrame": 2199,
+      "pageIndex": 64
+    },
+    {
+      "word": "domino",
+      "startFrame": 2199,
+      "endFrame": 2210,
+      "pageIndex": 64
+    },
+    {
+      "word": "melesat",
+      "startFrame": 2210,
+      "endFrame": 2219,
+      "pageIndex": 65
+    },
+    {
+      "word": "tanpa",
+      "startFrame": 2219,
+      "endFrame": 2225,
+      "pageIndex": 65
+    },
+    {
+      "word": "henti",
+      "startFrame": 2225,
+      "endFrame": 2248,
+      "pageIndex": 65
+    },
+    {
+      "word": "Jerman",
+      "startFrame": 2252,
+      "endFrame": 2257,
+      "pageIndex": 66
+    },
+    {
+      "word": "bersatu",
+      "startFrame": 2257,
+      "endFrame": 2266,
+      "pageIndex": 66
+    },
+    {
+      "word": "kembali",
+      "startFrame": 2266,
+      "endFrame": 2293,
+      "pageIndex": 66
+    },
+    {
+      "word": "rezim",
+      "startFrame": 2293,
+      "endFrame": 2298,
+      "pageIndex": 67
+    },
+    {
+      "word": "komunis",
+      "startFrame": 2298,
+      "endFrame": 2309,
+      "pageIndex": 67
+    },
+    {
+      "word": "Eropa",
+      "startFrame": 2309,
+      "endFrame": 2317,
+      "pageIndex": 67
+    },
+    {
+      "word": "Timur",
+      "startFrame": 2317,
+      "endFrame": 2324,
+      "pageIndex": 68
+    },
+    {
+      "word": "tumbang",
+      "startFrame": 2324,
+      "endFrame": 2347,
+      "pageIndex": 68
+    },
+    {
+      "word": "dan",
+      "startFrame": 2347,
+      "endFrame": 2350,
+      "pageIndex": 68
+    },
+    {
+      "word": "akhirnya",
+      "startFrame": 2350,
+      "endFrame": 2360,
+      "pageIndex": 69
+    },
+    {
+      "word": "Uni",
+      "startFrame": 2360,
+      "endFrame": 2365,
+      "pageIndex": 69
+    },
+    {
+      "word": "Soviet",
+      "startFrame": 2365,
+      "endFrame": 2374,
+      "pageIndex": 69
+    },
+    {
+      "word": "resmi",
+      "startFrame": 2374,
+      "endFrame": 2383,
+      "pageIndex": 70
+    },
+    {
+      "word": "bubar",
+      "startFrame": 2383,
+      "endFrame": 2391,
+      "pageIndex": 70
+    },
+    {
+      "word": "menjadi",
+      "startFrame": 2391,
+      "endFrame": 2399,
+      "pageIndex": 70
+    },
+    {
+      "word": "15",
+      "startFrame": 2399,
+      "endFrame": 2410,
+      "pageIndex": 71
+    },
+    {
+      "word": "negara",
+      "startFrame": 2410,
+      "endFrame": 2421,
+      "pageIndex": 71
+    },
+    {
+      "word": "Dokumen",
+      "startFrame": 2441,
+      "endFrame": 2447,
+      "pageIndex": 71
+    },
+    {
+      "word": "asli",
+      "startFrame": 2447,
+      "endFrame": 2455,
+      "pageIndex": 72
+    },
+    {
+      "word": "membuktikan",
+      "startFrame": 2455,
+      "endFrame": 2471,
+      "pageIndex": 72
+    },
+    {
+      "word": "instruksi",
+      "startFrame": 2471,
+      "endFrame": 2482,
+      "pageIndex": 72
+    },
+    {
+      "word": "itu",
+      "startFrame": 2482,
+      "endFrame": 2488,
+      "pageIndex": 73
+    },
+    {
+      "word": "aslinya",
+      "startFrame": 2488,
+      "endFrame": 2497,
+      "pageIndex": 73
+    },
+    {
+      "word": "dijadwalkan",
+      "startFrame": 2497,
+      "endFrame": 2512,
+      "pageIndex": 73
+    },
+    {
+      "word": "berlaku",
+      "startFrame": 2512,
+      "endFrame": 2523,
+      "pageIndex": 74
+    },
+    {
+      "word": "esok",
+      "startFrame": 2523,
+      "endFrame": 2530,
+      "pageIndex": 74
+    },
+    {
+      "word": "paginya",
+      "startFrame": 2530,
+      "endFrame": 2540,
+      "pageIndex": 74
+    },
+    {
+      "word": "lewat",
+      "startFrame": 2540,
+      "endFrame": 2550,
       "pageIndex": 75
     },
     {
-      "word": "lagi",
-      "startFrame": 2948,
-      "endFrame": 2955,
+      "word": "kantor",
+      "startFrame": 2550,
+      "endFrame": 2559,
       "pageIndex": 75
+    },
+    {
+      "word": "imigrasi",
+      "startFrame": 2559,
+      "endFrame": 2572,
+      "pageIndex": 75
+    },
+    {
+      "word": "resmi",
+      "startFrame": 2572,
+      "endFrame": 2594,
+      "pageIndex": 76
+    },
+    {
+      "word": "satu",
+      "startFrame": 2596,
+      "endFrame": 2603,
+      "pageIndex": 76
+    },
+    {
+      "word": "kecerobohan",
+      "startFrame": 2603,
+      "endFrame": 2617,
+      "pageIndex": 76
+    },
+    {
+      "word": "membaca",
+      "startFrame": 2617,
+      "endFrame": 2626,
+      "pageIndex": 77
+    },
+    {
+      "word": "memo",
+      "startFrame": 2626,
+      "endFrame": 2635,
+      "pageIndex": 77
+    },
+    {
+      "word": "merombok",
+      "startFrame": 2635,
+      "endFrame": 2649,
+      "pageIndex": 77
+    },
+    {
+      "word": "sejarah",
+      "startFrame": 2649,
+      "endFrame": 2660,
+      "pageIndex": 78
+    },
+    {
+      "word": "peradaban",
+      "startFrame": 2660,
+      "endFrame": 2671,
+      "pageIndex": 78
+    },
+    {
+      "word": "bumi",
+      "startFrame": 2671,
+      "endFrame": 2695,
+      "pageIndex": 78
+    },
+    {
+      "word": "Menurutmu",
+      "startFrame": 2698,
+      "endFrame": 2725,
+      "pageIndex": 79
+    },
+    {
+      "word": "apa",
+      "startFrame": 2725,
+      "endFrame": 2726,
+      "pageIndex": 79
+    },
+    {
+      "word": "keputusan",
+      "startFrame": 2726,
+      "endFrame": 2738,
+      "pageIndex": 79
+    },
+    {
+      "word": "sepele",
+      "startFrame": 2738,
+      "endFrame": 2747,
+      "pageIndex": 80
+    },
+    {
+      "word": "yang",
+      "startFrame": 2747,
+      "endFrame": 2752,
+      "pageIndex": 80
+    },
+    {
+      "word": "kamu",
+      "startFrame": 2752,
+      "endFrame": 2758,
+      "pageIndex": 80
+    },
+    {
+      "word": "ambil",
+      "startFrame": 2758,
+      "endFrame": 2764,
+      "pageIndex": 81
+    },
+    {
+      "word": "hari",
+      "startFrame": 2764,
+      "endFrame": 2770,
+      "pageIndex": 81
+    },
+    {
+      "word": "ini",
+      "startFrame": 2770,
+      "endFrame": 2776,
+      "pageIndex": 81
+    },
+    {
+      "word": "yang",
+      "startFrame": 2766,
+      "endFrame": 2794,
+      "pageIndex": 82
+    },
+    {
+      "word": "tanpa",
+      "startFrame": 2794,
+      "endFrame": 2802,
+      "pageIndex": 82
+    },
+    {
+      "word": "kamu",
+      "startFrame": 2802,
+      "endFrame": 2809,
+      "pageIndex": 82
+    },
+    {
+      "word": "sadari",
+      "startFrame": 2809,
+      "endFrame": 2820,
+      "pageIndex": 83
+    },
+    {
+      "word": "bakal",
+      "startFrame": 2820,
+      "endFrame": 2837,
+      "pageIndex": 83
+    },
+    {
+      "word": "mengubah",
+      "startFrame": 2837,
+      "endFrame": 2848,
+      "pageIndex": 83
+    },
+    {
+      "word": "jalan",
+      "startFrame": 2848,
+      "endFrame": 2855,
+      "pageIndex": 84
+    },
+    {
+      "word": "hidupmu",
+      "startFrame": 2855,
+      "endFrame": 2866,
+      "pageIndex": 84
+    },
+    {
+      "word": "5",
+      "startFrame": 2866,
+      "endFrame": 2871,
+      "pageIndex": 84
+    },
+    {
+      "word": "tahun",
+      "startFrame": 2871,
+      "endFrame": 2877,
+      "pageIndex": 85
+    },
+    {
+      "word": "lagi",
+      "startFrame": 2877,
+      "endFrame": 2884,
+      "pageIndex": 85
     }
   ],
-  "audioUrl": "butterfly/audio/butterfly-fall-of-berlin-wall_voiceover.wav",
-  "totalDurationFrames": 2965
+  "audioUrl": "butterfly/audio/berlin-wall-memo-butterfly-effect_voiceover.wav",
+  "totalDurationFrames": 2893
 };
