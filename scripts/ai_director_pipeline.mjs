@@ -404,35 +404,31 @@ async function generateStoryboard(topic) {
     return climaxEntities.some((entity) => combined.includes(entity));
   }
 
-  console.log(`\n      [Visual Hunter (Clean Slate)] Memulai pencarian arsip foto & sketsa baru dari 0 untuk: "${storyData.title || topic}"...`);
+  console.log(`\n      [Visual Hunter (Clean Slate)] Kurasi visual otonom untuk: "${storyData.title || topic}"...`);
 
-  // 1. Download Hook Left Image (Trivial Cause) ONLY if explicit historical person/landmark
-  const hookLeftDest = path.join(storyMediaDir, 'hook_cause.jpg');
-  const hookLeftQuery = storyData.hook?.leftSearchQuery || `${topic} ${storyData.hook?.leftTitle || 'cause'}`;
-  let hookLeftDone = false;
-  if (isExplicitHistoricalSubject(storyData.hook?.leftTitle || '', hookLeftQuery)) {
-    const leftRes = await searchAndDownloadImage(hookLeftQuery, storyData.hook?.leftTitle, hookLeftDest);
-    if (leftRes.success) {
-      hookLeftDone = true;
-      console.log(`      ✓ [Hook Pemicu] Arsip terunduh: "${leftRes.title}" (${leftRes.source})`);
-    }
-  } else {
-    console.log(`      ⚙ [Hook Pemicu] Menggunakan Grafis Tipografi Forensik Borderless (Tanpa foto B-roll acak)`);
-  }
-  storyData.hook.leftImage = hookLeftDone ? `butterfly/media/${storySlug}/hook_cause.jpg` : null;
+  // Hook Pembuka: 100% Sketsa Animasi Vektor Dinamis & Tipografi Forensik (ZERO B-roll web scraper risk!)
+  storyData.hook.leftImage = null;
+  storyData.hook.rightImage = null;
 
-  // 2. Download Hook Right Image (Catastrophe Climax) ONLY if verified historical event or entity
-  const hookRightDest = path.join(storyMediaDir, 'hook_effect.jpg');
-  const hookRightQuery = storyData.hook?.rightSearchQuery || `${topic} ${storyData.hook?.rightTitle || 'catastrophe'}`;
-  let hookRightDone = false;
-  if (isExplicitHistoricalSubject(storyData.hook?.rightTitle || '', hookRightQuery) || isHistoricalClimaxEvent(storyData.hook?.rightTitle || '', hookRightQuery)) {
-    const rightRes = await searchAndDownloadImage(hookRightQuery, storyData.hook?.rightTitle, hookRightDest);
-    if (rightRes.success) {
-      hookRightDone = true;
-      console.log(`      ✓ [Hook Bencana] Arsip terunduh: "${rightRes.title}" (${rightRes.source})`);
-    }
+  // Tentukan arketipe animasi pembuka yang dramatis & 100% relevan
+  if (!storyData.hook.archetype) {
+    const graphicNode = storyData.nodes.find(
+      (n) => n.directorType && n.directorType !== 'forensic-dossier'
+    );
+    const topLower = topic.toLowerCase();
+    storyData.hook.archetype = graphicNode
+      ? graphicNode.directorType
+      : topLower.includes('berlin')
+      ? 'wall-demolition'
+      : topLower.includes('chernobyl')
+      ? 'reactor-meltdown'
+      : topLower.includes('titanic')
+      ? 'maritime-disaster'
+      : topLower.includes('sopir') || topLower.includes('mobil')
+      ? 'car-route'
+      : 'memo-investigation';
   }
-  storyData.hook.rightImage = hookRightDone ? `butterfly/media/${storySlug}/hook_effect.jpg` : null;
+  console.log(`      ⚙ [Hook Sinematik 1080x1920] Menggunakan Sketsa Vektor Dinamis: "${storyData.hook.archetype}" (Bebas dari foto acak internet)`);
 
   let photoCount = 0;
   let graphicCount = 0;

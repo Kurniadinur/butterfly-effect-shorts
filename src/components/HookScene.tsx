@@ -1,8 +1,10 @@
 import React from 'react';
 import { Img, useCurrentFrame, staticFile, interpolate } from 'remotion';
+import { DirectorGraphicScene } from './DirectorGraphicScene';
 
 export interface HookSceneProps {
   hookStyle?: string | null;
+  archetype?: string | null;
   headline?: string | null;
   kicker?: string | null;
   leftTitle: string;
@@ -19,6 +21,7 @@ export interface HookSceneProps {
 
 export const HookScene: React.FC<HookSceneProps> = ({
   hookStyle = 'fullscreen-dramatic',
+  archetype,
   headline: rawHeadline,
   kicker: rawKicker,
   leftTitle,
@@ -80,8 +83,29 @@ export const HookScene: React.FC<HookSceneProps> = ({
                 filter: 'contrast(1.18) brightness(0.72) saturate(0.9)',
               }}
             />
+          ) : archetype ? (
+            // Fullscreen Animated Forensic Vector Archetype for Hook
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                opacity: 0.9,
+                filter: 'contrast(1.15) brightness(0.8)',
+              }}
+            >
+              <DirectorGraphicScene
+                type={archetype}
+                title={headline}
+                subtitle=""
+                locationTag={kicker || 'DOKUMENTER SEJARAH'}
+                durationFrames={durationFrames}
+                primaryText={leftPrimaryText || leftTitle}
+                stampText={leftStampText || 'BUKTI AWAL'}
+                accentColor="#FFE600"
+              />
+            </div>
           ) : (
-            // Fullscreen Archival Forensic Radar Command Center (when no photo)
+            // Fullscreen Archival Forensic Radar Command Center (when no archetype)
             <div
               style={{
                 position: 'absolute',
