@@ -1,0 +1,371 @@
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { spawn } from 'child_process';
+import dotenv from 'dotenv';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ROOT_DIR = path.resolve(__dirname, '..');
+
+dotenv.config({ path: path.join(ROOT_DIR, '.env') });
+
+const PORT = process.env.UI_PORT || 3333;
+
+const CREATIVE_PERSPECTIVES = [
+  {
+    name: 'DRAMA BIROKRASI & BLUNDER DOKUMEN RAHASIA',
+    angle: 'Fokuskan alur pada kelalaian birokrasi, draf regulasi terburu-buru, memo fatal tanpa penjelasan jam berlaku, dan kebingungan juru bicara di depan kamera dunia.',
+  },
+  {
+    name: 'KETEGANGAN LAPANGAN & POS PENJAGA PERBATASAN',
+    angle: 'Fokuskan alur pada komandan pos penjaga yang terisolasi, telepon darurat yang diabaikan atasan, ribuan warga yang menuntut dibukanya gerbang, dan keputusan pasrah menghindari pertumpahan darah.',
+  },
+  {
+    name: 'PERAN KRUSIAL JURNALIS & KEKUATAN BREAKING NEWS',
+    angle: 'Fokuskan alur pada wartawan yang melempar pertanyaan mendadak, kepanikan jawaban spontan di ruang pers, serta ledakan breaking news televisi yang menyulut jutaan warga keluar rumah.',
+  },
+  {
+    name: 'EFEK DOMINO GEOPOLITIK GLOBAL (KOLAPS SISTEMIK)',
+    angle: 'Fokuskan alur pada analogi efek domino sebab-akibat ekstrem: bagaimana kesalahan sepele 3 detik meruntuhkan perbatasan, merobohkan benteng ideologi, memicu revolusi damai, hingga membubarkan imperium adidaya.',
+  },
+  {
+    name: 'DETIK-DETIK SPONTAN & REVOLUSI RAKYAT DI ATAS TEMBOK',
+    angle: 'Fokuskan alur pada antusiasme dan keberanian rakyat jelata, palu godam yang menghantam beton pemisah, tangis reuni sanak saudara di tengah malam, dan malam paling bersejarah abad 20.',
+  },
+];
+
+// Active generation process tracking
+let activeGenProcess = null;
+let logSubscribers = [];
+let executionLogs = [];
+
+function broadcastLog(data) {
+  const line = data.toString();
+  executionLogs.push(line);
+  if (executionLogs.length > 200) executionLogs.shift();
+  for (const res of logSubscribers) {
+    res.write(`data: ${JSON.stringify({ log: line })}\n\n`);
+  }
+}
+
+// Built-in Curated Viral Butterfly Effect Topics
+const CURATED_TOPICS = [
+  {
+    title: 'Runtuhnya Tembok Berlin Karena Salah Baca Memo',
+    category: 'Sejarah Dunia',
+    trivialCause: 'Juru bicara salah membaca selembar catatan memo tanpa briefing',
+    globalCatastrophe: 'Tembok Berlin dijebol warga, Tirai Besi runtuh, dan Uni Soviet bubar dalam 1 malam',
+    hookSnippet: 'Kalian bayangin... dari selembar memo yang salah dibaca saat siaran langsung TV, Uni Soviet runtuh hanya dalam satu malam?',
+  },
+  {
+    title: 'Tenggelamnya Kapal Titanic Karena Kunci Teropong Tertinggal',
+    category: 'Maritim & Kelalaian',
+    trivialCause: 'Petugas pemegang kunci loker teropong dipindah tugas mendadak dan lupa menyerahkan kuncinya',
+    globalCatastrophe: 'Pengawas tak bisa melihat gunung es di malam gelap, Titanic menabrak dan 1.500 jiwa melayang',
+    hookSnippet: 'Kalian bayangin... dari sebuah kunci loker kecil yang lupa diserahkan, kapal termewah di dunia karam ke dasar samudera?',
+  },
+  {
+    title: 'Meledaknya Reaktor Nuklir Chernobyl Akibat Uji Coba Tengah Malam',
+    category: 'Bencana Sains & Nuklir',
+    trivialCause: 'Penundaan jadwal uji coba turbin listrik yang dipaksakan saat pergantian shift malam tanpa persiapan',
+    globalCatastrophe: 'Reaktor 4 meledak dahsyat, awan radiasi mematikan menyelimuti benua Eropa',
+    hookSnippet: 'Kalian bayangin... dari uji coba kelistrikan sepele di tengah malam, benua Eropa nyaris musnah oleh awan radiasi nuklir?',
+  },
+  {
+    title: 'Pecahnya Perang Dunia I Karena Sopir Salah Belok',
+    category: 'Perang & Intelijen',
+    trivialCause: 'Sopir Putra Mahkota Franz Ferdinand salah mengambil jalan dan mematikan mesin di depan kafe',
+    globalCatastrophe: 'Penembak Gavrilo Princip melihat kesempatan emas, memicu Perang Dunia I yang menewaskan 20 juta orang',
+    hookSnippet: 'Kalian bayangin... dari seorang sopir yang salah belok di tikungan jalan, 20 juta manusia tewas dalam perang dunia?',
+  },
+  {
+    title: 'Penemuan Antibiotik Penisilin Karena Peneliti Lupa Cuci Piring Laboratorium',
+    category: 'Penemuan Tidak Sengaja',
+    trivialCause: 'Alexander Fleming pergi berlibur dan meninggalkan cawan petri berisi bakteri terbuka dekat jendela',
+    globalCatastrophe: 'Jamur Penicillium liar mengkontaminasi cawan, melahirkan antibiotik yang menyelamatkan 200 juta nyawa',
+    hookSnippet: 'Kalian bayangin... dari kebiasaan jorok seorang ilmuwan yang lupa mencuci cawan petri, 200 juta nyawa manusia di bumi terselamatkan?',
+  },
+  {
+    title: 'Kekalahan Napoleon di Pertempuran Waterloo Akibat Sakit Wasir',
+    category: 'Tokoh & Sejarah',
+    trivialCause: 'Napoleon Bonaparte menderita sakit wasir akut di pagi hari pertempuran',
+    globalCatastrophe: 'Terlambat memerintahkan serangan meriam, pasukan koalisi tiba, imperium Prancis tumbang selamanya',
+    hookSnippet: 'Kalian bayangin... dari penyakit wasir yang diderita seorang kaisar di pagi hari, kekaisaran Prancis runtuh selamanya?',
+  },
+];
+
+// Helper: Read and parse currentStory.ts
+function getCurrentStory() {
+  try {
+    const filePath = path.join(ROOT_DIR, 'src', 'data', 'currentStory.ts');
+    if (!fs.existsSync(filePath)) return null;
+    const content = fs.readFileSync(filePath, 'utf8');
+    const marker = 'CURRENT_STORY';
+    const markerIdx = content.indexOf(marker);
+    if (markerIdx === -1) return null;
+    const startIdx = content.indexOf('{', markerIdx);
+    const endIdx = content.lastIndexOf('}');
+    if (startIdx !== -1 && endIdx !== -1) {
+      const jsonStr = content.slice(startIdx, endIdx + 1);
+      return JSON.parse(jsonStr);
+    }
+  } catch (err) {
+    console.error('Error reading currentStory:', err.message);
+  }
+  return null;
+}
+
+// Helper: Call AI (Gemini or Groq) to brainstorm viral topics
+async function brainstormTopicsWithAI() {
+  const apiKey = process.env.GROQ_API_KEY;
+  if (apiKey) {
+    try {
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'openai/gpt-oss-120b',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are a viral YouTube Shorts / TikTok Documentary Producer. Generate 6 shocking, high-contrast Butterfly Effect story concepts. Return pure valid JSON with an array named "topics".',
+            },
+            {
+              role: 'user',
+              content: 'Hasilkan 6 ide cerita Butterfly Effect (sebab sepele vs akibat bencana/kejadian masif) yang paling viral dan mencengangkan. Format JSON: { "topics": [ { "title": "...", "category": "...", "trivialCause": "...", "globalCatastrophe": "...", "hookSnippet": "..." } ] }',
+            },
+          ],
+          response_format: { type: 'json_object' },
+          temperature: 0.9,
+        }),
+      });
+      const data = await res.json();
+      const content = data.choices?.[0]?.message?.content;
+      if (content) {
+        const parsed = JSON.parse(content);
+        if (parsed.topics && Array.isArray(parsed.topics)) {
+          return parsed.topics;
+        }
+      }
+    } catch (err) {
+      console.warn('Groq brainstorm failed, falling back to curated list:', err.message);
+    }
+  }
+  return CURATED_TOPICS;
+}
+
+// Create HTTP Server
+const server = http.createServer(async (req, res) => {
+  const url = new URL(req.url, `http://${req.headers.host}`);
+  const pathname = url.pathname;
+
+  // CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
+  // 1. Serve UI Homepage
+  if (pathname === '/' || pathname === '/index.html') {
+    const htmlPath = path.join(ROOT_DIR, 'public', 'ui', 'index.html');
+    if (fs.existsSync(htmlPath)) {
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      fs.createReadStream(htmlPath).pipe(res);
+      return;
+    } else {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('UI file not found');
+      return;
+    }
+  }
+
+  // 2. API: Current Story Data
+  if (pathname === '/api/story') {
+    const story = getCurrentStory();
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(story || { error: 'Belum ada cerita yang aktif' }));
+    return;
+  }
+
+  // 3. API: Creative Perspectives List
+  if (pathname === '/api/perspectives') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(CREATIVE_PERSPECTIVES));
+    return;
+  }
+
+  // 4. API: Brainstorm Topics (AI or Curated)
+  if (pathname === '/api/brainstorm') {
+    const topics = await brainstormTopicsWithAI();
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(topics));
+    return;
+  }
+
+  // 5. API: Server-Sent Events (SSE) Live Log Stream
+  if (pathname === '/api/stream-logs') {
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+    });
+    // Send history
+    for (const line of executionLogs) {
+      res.write(`data: ${JSON.stringify({ log: line })}\n\n`);
+    }
+    logSubscribers.push(res);
+    req.on('close', () => {
+      logSubscribers = logSubscribers.filter((s) => s !== res);
+    });
+    return;
+  }
+
+  // 6. API: Start AI Director Story Production
+  if (pathname === '/api/generate' && req.method === 'POST') {
+    let body = '';
+    req.on('data', (chunk) => (body += chunk));
+    req.on('end', () => {
+      let params = {};
+      try {
+        params = JSON.parse(body);
+      } catch (e) {
+        params = {};
+      }
+
+      const topic = params.topic || 'Runtuhnya Tembok Berlin Karena Salah Baca Memo';
+      const perspective = params.perspective !== undefined ? String(params.perspective) : '';
+
+      if (activeGenProcess) {
+        res.writeHead(409, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Produksi cerita lain sedang berjalan!' }));
+        return;
+      }
+
+      executionLogs = [];
+      broadcastLog(`[UI STUDIO] Memulai produksi naskah baru: "${topic}"...\n`);
+
+      const args = [path.join(ROOT_DIR, 'scripts', 'ai_director_pipeline.mjs'), topic];
+      if (perspective !== '') args.push(perspective);
+
+      activeGenProcess = spawn('node', args, { cwd: ROOT_DIR });
+
+      activeGenProcess.stdout.on('data', (data) => broadcastLog(data));
+      activeGenProcess.stderr.on('data', (data) => broadcastLog(data));
+
+      activeGenProcess.on('close', (code) => {
+        broadcastLog(`\n[UI STUDIO] Proses selesai dengan kode keluar: ${code}\n`);
+        activeGenProcess = null;
+      });
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ status: 'started', topic }));
+    });
+    return;
+  }
+
+  // 7. API: Trigger Cloud Render in GitHub Actions
+  if (pathname === '/api/cloud-render' && req.method === 'POST') {
+    broadcastLog('[CLOUD] Mengirim pembaruan kode dan memicu GitHub Actions Cloud Render...\n');
+
+    // Run git add & commit & push & gh workflow run
+    const cmd = spawn('powershell.exe', [
+      '-NoProfile',
+      '-Command',
+      'git add .; git commit -m "Trigger render from Web UI" --allow-empty; git push origin main; gh workflow run render.yml',
+    ], { cwd: ROOT_DIR });
+
+    cmd.stdout.on('data', (d) => broadcastLog(d));
+    cmd.stderr.on('data', (d) => broadcastLog(d));
+
+    cmd.on('close', (code) => {
+      broadcastLog(`[CLOUD] Perintah render cloud selesai (Code: ${code})\n`);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ status: code === 0 ? 'triggered' : 'failed', code }));
+    });
+    return;
+  }
+
+  // 8. API: Check Cloud Render Status
+  if (pathname === '/api/cloud-status') {
+    const cmd = spawn('gh', [
+      'run',
+      'list',
+      '--workflow=render.yml',
+      '-L',
+      '1',
+      '--json',
+      'databaseId,status,conclusion,url,createdAt,displayTitle',
+    ], { cwd: ROOT_DIR });
+
+    let out = '';
+    cmd.stdout.on('data', (d) => (out += d));
+    cmd.on('close', (code) => {
+      try {
+        const runs = JSON.parse(out);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(runs[0] || null));
+      } catch (err) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+      }
+    });
+    return;
+  }
+
+  // 9. API: Download Video MP4 from Cloud
+  if (pathname === '/api/download-artifact' && req.method === 'POST') {
+    broadcastLog('[DOWNLOAD] Mengunduh hasil render MP4 dari GitHub Actions ke folder out/...\n');
+    const cmd = spawn('gh', ['run', 'download', '--name', 'video-artifact', '--dir', 'out/'], {
+      cwd: ROOT_DIR,
+    });
+    cmd.stdout.on('data', (d) => broadcastLog(d));
+    cmd.stderr.on('data', (d) => broadcastLog(d));
+    cmd.on('close', (code) => {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ status: code === 0 ? 'success' : 'failed', code }));
+    });
+    return;
+  }
+
+  // 10. Serve Audio Files
+  if (pathname.startsWith('/audio/')) {
+    const filename = path.basename(pathname);
+    const audioPath = path.join(ROOT_DIR, 'public', 'butterfly', 'audio', filename);
+    if (fs.existsSync(audioPath)) {
+      res.writeHead(200, { 'Content-Type': 'audio/wav' });
+      fs.createReadStream(audioPath).pipe(res);
+      return;
+    }
+  }
+
+  // 11. Serve Media Files
+  if (pathname.startsWith('/media/')) {
+    const filename = path.basename(pathname);
+    const mediaPath = path.join(ROOT_DIR, 'public', 'butterfly', 'media', filename);
+    if (fs.existsSync(mediaPath)) {
+      res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+      fs.createReadStream(mediaPath).pipe(res);
+      return;
+    }
+  }
+
+  res.writeHead(404, { 'Content-Type': 'text/plain' });
+  res.end('Not found');
+});
+
+server.listen(PORT, () => {
+  console.log('================================================================');
+  console.log(`🎬 BUTTERFLY EFFECT STUDIO UI SERVER AKTIF`);
+  console.log(`URL Dashboard : http://localhost:${PORT}`);
+  console.log('================================================================');
+});

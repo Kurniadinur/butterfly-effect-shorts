@@ -214,8 +214,11 @@ async function generateStoryboard(topic) {
   console.log('[1/4] Sutradara AI sedang merancang alur cerita & kurasi visual unik...');
   console.log('      (Menganalisa topik & menyusun 8-15 adegan berantai...)');
 
-  // Random Perspective & Creative Salt for High Variance & Fresh Stories
-  const selectedPerspective = CREATIVE_PERSPECTIVES[Math.floor(Math.random() * CREATIVE_PERSPECTIVES.length)];
+  // Perspective selection (explicit or random for high variance)
+  const explicitPerspectiveIdx = process.argv[3] !== undefined && !isNaN(Number(process.argv[3])) ? Number(process.argv[3]) : null;
+  const selectedPerspective = explicitPerspectiveIdx !== null && CREATIVE_PERSPECTIVES[explicitPerspectiveIdx]
+    ? CREATIVE_PERSPECTIVES[explicitPerspectiveIdx]
+    : CREATIVE_PERSPECTIVES[Math.floor(Math.random() * CREATIVE_PERSPECTIVES.length)];
   const sessionSalt = Date.now().toString(36);
   console.log(`      ✓ Sudut Pandang Kreatif: ${selectedPerspective.name}`);
   console.log(`      ✓ Arahan Sutradara: "${selectedPerspective.angle}"`);
@@ -602,4 +605,7 @@ async function main() {
   }
 }
 
-main();
+// Only execute main when run directly as CLI script
+if (process.argv[1] && path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1])) {
+  main();
+}

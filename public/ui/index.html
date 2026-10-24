@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butterfly Effect Studio — Autonomous AI Director</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #060911;
+      color: #f1f5f9;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b0f19;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ef4444;
+    }
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(51, 65, 85, 0.5);
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(71, 85, 105, 0.35);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(239, 68, 68, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.15);
+    }
+    .pulse-glow {
+      box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#070a13] text-slate-100 flex flex-col">
+
+  <!-- ============================================================ -->
+  <!-- 1. TOP NAVBAR                                                -->
+  <!-- ============================================================ -->
+  <header class="border-b border-slate-800 bg-[#0b0f19]/80 backdrop-blur sticky top-0 z-50 px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 via-rose-500 to-amber-500 flex items-center justify-center font-black text-xl shadow-lg shadow-red-900/40">
+        🦋
+      </div>
+      <div>
+        <h1 class="text-lg font-black tracking-wider uppercase text-white flex items-center gap-2">
+          BUTTERFLY EFFECT <span class="text-xs px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-800 font-mono">STUDIO v3.0</span>
+        </h1>
+        <p class="text-xs text-slate-400">Autonomous AI Documentary & Video Shorts Director</p>
+      </div>
+    </div>
+
+    <!-- Status Badges -->
+    <div class="flex items-center gap-3 text-xs font-mono">
+      <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-800/80 text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Gemini 3.8 / Groq LPU
+      </div>
+      <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/60 border border-blue-800/80 text-blue-400">
+        <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+        Whisper Large V3
+      </div>
+      <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-950/60 border border-purple-800/80 text-purple-400">
+        <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+        GitHub Actions Cloud
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- 2. MAIN CONTAINER                                            -->
+  <!-- ============================================================ -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-6 space-y-8">
+
+    <!-- HERO SECTION: BRAINSTORM & INSPIRATION -->
+    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-bold tracking-widest text-red-400 uppercase bg-red-950/70 border border-red-800/60 px-3 py-1 rounded-full">
+            💡 AI STORY BRAINSTORMER
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white mt-2">
+            Pilih Ide Cerita Viral atau Buat Baru
+          </h2>
+          <p class="text-sm text-slate-400 mt-1 max-w-2xl">
+            Klik salah satu ide cerita sebab-akibat ekstrem di bawah, atau tekan tombol Acak untuk meminta AI Sutradara menyusun topik baru yang mengejutkan.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button id="btn-brainstorm" onclick="fetchBrainstormTopics()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sm font-bold flex items-center gap-2 transition">
+            <span>🎲</span>
+            <span>Ide Baru Lainnya (AI)</span>
+          </button>
+          <button id="btn-surprise" onclick="generateSurpriseStory()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-400 hover:to-rose-500 text-sm font-black text-white flex items-center gap-2 shadow-lg shadow-rose-900/30 transition">
+            <span>✨</span>
+            <span>Surprise Me (Otomatis)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Brainstorm Topics Grid -->
+      <div id="topics-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- CONTROL PANEL: CUSTOM TOPIC & PERSPECTIVE -->
+    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase bg-blue-950/70 border border-blue-800/60 px-3 py-1 rounded-full">
+            🎬 KONTROL SUTRADARA
+          </span>
+          <h3 class="text-xl font-black text-white mt-2">Formulir Naskah & Sudut Pandang</h3>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-mono text-slate-300 font-bold uppercase mb-2">
+            Topik Cerita Butterfly Effect (Bebas / Kustom):
+          </label>
+          <div class="flex gap-2">
+            <input
+              id="input-topic"
+              type="text"
+              class="flex-1 px-4 py-3.5 bg-slate-900 border border-slate-700 rounded-xl text-white font-semibold text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition"
+              placeholder="Contoh: Runtuhnya Tembok Berlin Karena Salah Baca Memo"
+              value="Runtuhnya Tembok Berlin Karena Salah Baca Memo"
+            />
+            <button onclick="document.getElementById('input-topic').value = ''" class="px-3 bg-slate-800 border border-slate-700 rounded-xl text-slate-400 hover:text-white transition">
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <!-- Creative Perspectives Selector -->
+        <div>
+          <label class="block text-xs font-mono text-slate-300 font-bold uppercase mb-2">
+            Pilih Sudut Pandang Kreatif Sutradara (Angle Cerita):
+          </label>
+          <div id="perspective-options" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- Execute Production Button -->
+        <div class="pt-4">
+          <button
+            id="btn-produce"
+            onclick="startProduction()"
+            class="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-black text-base uppercase tracking-wider shadow-xl shadow-red-950/60 transition pulse-glow flex items-center justify-center gap-3"
+          >
+            <span class="text-xl">🎬</span>
+            <span>Mulai Produksi Cerita & Sketsa AI Sekarang</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE PRODUCTION LOGS TERMINAL -->
+    <section id="terminal-section" class="glass-panel rounded-2xl p-6 space-y-4 hidden">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-red-500 animate-ping"></span>
+          <h4 class="text-sm font-mono font-bold uppercase tracking-wider text-slate-200">
+            Live Production Terminal
+          </h4>
+        </div>
+        <span id="production-status-pill" class="text-xs font-mono px-2.5 py-1 rounded bg-yellow-950 text-yellow-400 border border-yellow-800">
+          SEDANG MEMPROSES...
+        </span>
+      </div>
+
+      <div id="terminal-box" class="h-64 overflow-y-auto bg-black/90 p-4 rounded-xl font-mono text-xs text-emerald-400 leading-relaxed border border-slate-800 shadow-inner">
+        <!-- Terminal log stream -->
+      </div>
+    </section>
+
+    <!-- CURRENT STORY INSPECTOR & SCENES -->
+    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <span class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase bg-emerald-950/70 border border-emerald-800/60 px-3 py-1 rounded-full">
+            📋 STORYBOARD AKTIF
+          </span>
+          <h3 id="story-title" class="text-2xl font-black text-white mt-2">
+            Memuat cerita aktif...
+          </h3>
+          <p id="story-meta" class="text-xs font-mono text-slate-400 mt-1">
+            Total Frame: - | Durasi: - | Kata: -
+          </p>
+        </div>
+
+        <!-- Audio Voiceover Player -->
+        <div class="flex flex-col items-start sm:items-end gap-2">
+          <span class="text-xs font-mono text-slate-400 uppercase">Voiceover Hasil AI TTS:</span>
+          <audio id="audio-player" controls class="h-10 rounded-lg max-w-xs"></audio>
+        </div>
+      </div>
+
+      <!-- Hook Card Preview -->
+      <div id="hook-card" class="bg-gradient-to-r from-slate-900 to-slate-950 p-5 rounded-xl border border-slate-700/60 flex flex-col md:flex-row gap-6 items-center justify-between">
+        <!-- Hook Details -->
+      </div>
+
+      <!-- Scenes Grid -->
+      <div>
+        <h4 class="text-sm font-mono uppercase tracking-wider text-slate-300 font-bold mb-4 flex items-center justify-between">
+          <span>Alur Rangkaian Adegan Forensik:</span>
+          <span id="scene-count-badge" class="text-xs bg-slate-800 px-2 py-0.5 rounded text-slate-400">0 Adegan</span>
+        </h4>
+        <div id="scenes-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOUD RENDER & ACTIONS -->
+    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border-2 border-red-900/30">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-950/70 border border-purple-800/60 px-3 py-1 rounded-full">
+            ☁️ CLOUD EXPORT & RENDER
+          </span>
+          <h3 class="text-2xl font-black text-white mt-2">Ekspor Video MP4 (GitHub Cloud)</h3>
+          <p class="text-xs text-slate-400 mt-1">
+            Render video resolusi tinggi tanpa membebani laptop. Server GitHub Actions 16GB RAM akan merender video secara otomatis.
+          </p>
+        </div>
+
+        <div id="cloud-status-badge" class="text-xs font-mono px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">
+          Memeriksa status cloud...
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+        <button
+          onclick="triggerCloudRender()"
+          id="btn-cloud-render"
+          class="py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-500 font-bold text-white text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-950/40 transition"
+        >
+          <span>🚀</span>
+          <span>Render di Cloud GitHub</span>
+        </button>
+
+        <button
+          onclick="downloadArtifact()"
+          id="btn-download"
+          class="py-3.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 text-sm flex items-center justify-center gap-2 transition"
+        >
+          <span>📥</span>
+          <span>Download Video MP4</span>
+        </button>
+
+        <a
+          href="http://localhost:3000"
+          target="_blank"
+          class="py-3.5 px-4 rounded-xl bg-blue-600/30 hover:bg-blue-600/40 border border-blue-500/40 font-bold text-blue-200 text-sm flex items-center justify-center gap-2 transition"
+        >
+          <span>🎥</span>
+          <span>Buka Remotion Studio (Preview)</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-800 py-6 text-center text-xs font-mono text-slate-500">
+    Butterfly Effect Shorts Studio • Autonomous Visual Forensic Engine v3.0
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- 3. JAVASCRIPT APP LOGIC                                      -->
+  <!-- ============================================================ -->
+  <script>
+    let currentStoryData = null;
+    let selectedPerspectiveIdx = 0;
+    let eventSource = null;
+
+    // Visual Director Sketch Badges Info
+    const SKETCH_INFO = {
+      'wall-demolition': { name: 'Massa Merobohkan Tembok', icon: '⚡', color: 'border-red-600 text-red-400 bg-red-950/40' },
+      'gate-breach': { name: 'Gerbang Terobos', icon: '🚨', color: 'border-blue-600 text-blue-400 bg-blue-950/40' },
+      'domino-collapse': { name: 'Efek Domino 3D', icon: '💥', color: 'border-amber-600 text-amber-400 bg-amber-950/40' },
+      'maritime-disaster': { name: 'Bencana Kapal & Es', icon: '🚢', color: 'border-cyan-600 text-cyan-400 bg-cyan-950/40' },
+      'reactor-meltdown': { name: 'Reaktor Nuklir Kritis', icon: '☢️', color: 'border-rose-600 text-rose-400 bg-rose-950/40' },
+      'laboratory-discovery': { name: 'Penemuan Laboratorium', icon: '🔬', color: 'border-emerald-600 text-emerald-400 bg-emerald-950/40' },
+      'press-podium': { name: 'Podium Konferensi Pers', icon: '🎙️', color: 'border-purple-600 text-purple-400 bg-purple-950/40' },
+      'memo-investigation': { name: 'Dokumen & Kaca Pembesar', icon: '🔍', color: 'border-yellow-600 text-yellow-400 bg-yellow-950/40' },
+      'panic-phone': { name: 'Telepon Panik Pos Jaga', icon: '☎️', color: 'border-orange-600 text-orange-400 bg-orange-950/40' },
+      'breaking-news': { name: 'TV Breaking News', icon: '📺', color: 'border-red-500 text-red-300 bg-red-950/30' },
+      'tactical-map': { name: 'Radar Taktis', icon: '🎯', color: 'border-blue-500 text-blue-300 bg-blue-950/30' },
+      'critical-gauge': { name: 'Meteran Bahaya', icon: '⚠️', color: 'border-yellow-500 text-yellow-300 bg-yellow-950/30' },
+      'forensic-dossier': { name: 'Berkas Arsip Forensik', icon: '📁', color: 'border-slate-500 text-slate-300 bg-slate-900/40' },
+      'bureaucracy-draft': { name: 'Draf Regulasi', icon: '📜', color: 'border-slate-500 text-slate-300 bg-slate-900/40' },
+      'memo-handoff': { name: 'Tangan Menyelipkan Kertas', icon: '🤝', color: 'border-indigo-500 text-indigo-300 bg-indigo-950/30' },
+    };
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', async () => {
+      initEventStream();
+      await fetchBrainstormTopics();
+      await fetchPerspectives();
+      await fetchCurrentStory();
+      await checkCloudStatus();
+      setInterval(checkCloudStatus, 15000); // Polling status cloud tiap 15 detik
+    });
+
+    // 1. Setup Server-Sent Events (SSE) Live Logs
+    function initEventStream() {
+      if (eventSource) eventSource.close();
+      eventSource = new EventSource('/api/stream-logs');
+      eventSource.onmessage = (e) => {
+        try {
+          const data = JSON.parse(e.data);
+          if (data.log) {
+            appendTerminalLog(data.log);
+          }
+        } catch (err) {}
+      };
+    }
+
+    function appendTerminalLog(text) {
+      const box = document.getElementById('terminal-box');
+      const div = document.createElement('div');
+      div.textContent = text;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    // 2. Fetch Curated / AI Brainstorm Topics
+    async function fetchBrainstormTopics() {
+      const grid = document.getElementById('topics-grid');
+      grid.innerHTML = '<div class="col-span-full py-8 text-center text-sm font-mono text-slate-500">Menganalisis ide viral dari AI...</div>';
+
+      try {
+        const res = await fetch('/api/brainstorm');
+        const topics = await res.json();
+        grid.innerHTML = '';
+
+        topics.forEach((t) => {
+          const card = document.createElement('div');
+          card.className = 'glass-card p-4 rounded-xl cursor-pointer flex flex-col justify-between space-y-3';
+          card.onclick = () => selectTopic(t.title);
+          card.innerHTML = `
+            <div class="space-y-1.5">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                ${t.category || 'Butterfly Effect'}
+              </span>
+              <h4 class="font-bold text-sm text-white leading-snug hover:text-red-400 transition">${t.title}</h4>
+            </div>
+            <div class="text-xs text-slate-400 space-y-1 border-t border-slate-800 pt-2">
+              <div class="flex items-start gap-1.5">
+                <span class="text-amber-400 font-bold shrink-0">⚡</span>
+                <span class="line-clamp-2">${t.trivialCause || t.hookSnippet || ''}</span>
+              </div>
+            </div>
+            <button class="w-full py-1.5 rounded-lg bg-slate-800/80 hover:bg-red-600 text-[11px] font-bold text-slate-300 hover:text-white transition">
+              Pilih Topik Ini ➔
+            </button>
+          `;
+          grid.appendChild(card);
+        });
+      } catch (err) {
+        grid.innerHTML = '<div class="col-span-full py-4 text-center text-xs text-red-400">Gagal memuat ide. Silakan coba lagi.</div>';
+      }
+    }
+
+    function selectTopic(topicTitle) {
+      const input = document.getElementById('input-topic');
+      input.value = topicTitle;
+      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      input.classList.add('ring-2', 'ring-red-500');
+      setTimeout(() => input.classList.remove('ring-2', 'ring-red-500'), 1500);
+    }
+
+    // 3. Fetch Creative Perspectives
+    async function fetchPerspectives() {
+      const container = document.getElementById('perspective-options');
+      try {
+        const res = await fetch('/api/perspectives');
+        const list = await res.json();
+        container.innerHTML = '';
+
+        // Add "Acak / Random" option
+        const randomCard = createPerspectiveCard('🎲 Acak / Otomatis AI', 'AI bebas memilih sudut pandang paling pas secara otonom.', -1);
+        container.appendChild(randomCard);
+
+        list.forEach((p, idx) => {
+          const card = createPerspectiveCard(p.name, p.angle, idx);
+          container.appendChild(card);
+        });
+      } catch (err) {}
+    }
+
+    function createPerspectiveCard(name, desc, idx) {
+      const div = document.createElement('div');
+      const isSelected = selectedPerspectiveIdx === idx;
+      div.className = `p-3 rounded-xl border text-xs cursor-pointer transition flex flex-col justify-between ${
+        isSelected
+          ? 'bg-red-950/40 border-red-500 text-white shadow-md shadow-red-950/40'
+          : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
+      }`;
+      div.onclick = () => {
+        selectedPerspectiveIdx = idx;
+        fetchPerspectives();
+      };
+      div.innerHTML = `
+        <div class="font-bold uppercase tracking-wider text-[11px] ${isSelected ? 'text-red-400' : 'text-slate-300'}">${name}</div>
+        <p class="mt-1 line-clamp-2 text-[10px] opacity-80">${desc}</p>
+      `;
+      return div;
+    }
+
+    // 4. Fetch and Render Current Story
+    async function fetchCurrentStory() {
+      try {
+        const res = await fetch('/api/story');
+        const data = await res.json();
+        if (data.error) return;
+        currentStoryData = data;
+
+        document.getElementById('story-title').textContent = data.title;
+        document.getElementById('story-meta').textContent = `Total Frame: ${data.totalDurationFrames} frames | Durasi: ${(data.totalDurationFrames / 30).toFixed(1)} detik | Total Adegan: ${data.nodes.length}`;
+        document.getElementById('scene-count-badge').textContent = `${data.nodes.length} Adegan`;
+
+        // Audio Player
+        if (data.audioPath) {
+          const audioPlayer = document.getElementById('audio-player');
+          const audioFilename = data.audioPath.split('/').pop().split('\\').pop();
+          audioPlayer.src = `/audio/${audioFilename}`;
+        }
+
+        // Render Hook Card
+        const hookBox = document.getElementById('hook-card');
+        hookBox.innerHTML = `
+          <div class="space-y-1">
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-800">HOOK VIDEO</span>
+            <p class="text-sm font-semibold text-slate-200 mt-1 italic">"${data.hook.narration}"</p>
+          </div>
+          <div class="flex items-center gap-4 shrink-0 font-mono text-xs">
+            <div class="text-center px-3 py-1.5 rounded bg-slate-800 border border-slate-700">
+              <div class="text-[10px] text-slate-400">AWAL SEPELE</div>
+              <div class="font-bold text-white">${data.hook.leftTitle}</div>
+            </div>
+            <span class="text-red-500 font-bold">➔</span>
+            <div class="text-center px-3 py-1.5 rounded bg-slate-800 border border-slate-700">
+              <div class="text-[10px] text-slate-400">BENCANA GLOBAL</div>
+              <div class="font-bold text-amber-400">${data.hook.rightTitle}</div>
+            </div>
+          </div>
+        `;
+
+        // Render Scenes
+        const grid = document.getElementById('scenes-grid');
+        grid.innerHTML = '';
+        data.nodes.forEach((n) => {
+          const visual = SKETCH_INFO[n.directorType] || { name: n.directorType || 'Sketsa Arsip', icon: '📁', color: 'border-slate-600 text-slate-400 bg-slate-900/40' };
+          const card = document.createElement('div');
+          card.className = 'glass-card p-4 rounded-xl space-y-3';
+          card.innerHTML = `
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono font-black px-2 py-0.5 rounded bg-slate-800 text-white">#${n.step}</span>
+                <span class="text-[11px] font-mono text-slate-400">${n.timeOrYear || ''}</span>
+              </div>
+              <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full border ${visual.color} flex items-center gap-1.5">
+                <span>${visual.icon}</span>
+                <span>${visual.name}</span>
+              </span>
+            </div>
+
+            <div>
+              <h5 class="text-sm font-black text-white uppercase">${n.headline}</h5>
+              <p class="text-xs text-slate-300 mt-1 leading-relaxed">${n.narration}</p>
+            </div>
+
+            <!-- Chaos Level Indicator -->
+            <div class="space-y-1">
+              <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                <span>CHAOS LEVEL</span>
+                <span class="font-bold ${n.chaosLevel > 70 ? 'text-red-400' : 'text-amber-400'}">${n.chaosLevel}%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="h-full ${n.chaosLevel > 70 ? 'bg-gradient-to-r from-amber-500 to-red-600' : 'bg-amber-500'}" style="width: ${n.chaosLevel}%"></div>
+              </div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error('Error fetching story:', err);
+      }
+    }
+
+    // 5. Start Autonomous Production
+    async function startProduction() {
+      const topicInput = document.getElementById('input-topic').value.trim();
+      if (!topicInput) {
+        alert('Harap masukkan atau pilih topik cerita terlebih dahulu!');
+        return;
+      }
+
+      const terminalSec = document.getElementById('terminal-section');
+      const produceBtn = document.getElementById('btn-produce');
+      const terminalBox = document.getElementById('terminal-box');
+
+      terminalSec.classList.remove('hidden');
+      terminalBox.innerHTML = '';
+      produceBtn.disabled = true;
+      produceBtn.innerHTML = `<span>⏳</span><span>Sutradara AI Sedang Memproduksi...</span>`;
+
+      try {
+        const res = await fetch('/api/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            topic: topicInput,
+            perspective: selectedPerspectiveIdx >= 0 ? selectedPerspectiveIdx : undefined,
+          }),
+        });
+
+        const data = await res.json();
+        if (data.error) {
+          alert(data.error);
+          produceBtn.disabled = false;
+          produceBtn.innerHTML = `<span>🎬</span><span>Mulai Produksi Cerita & Sketsa AI Sekarang</span>`;
+          return;
+        }
+
+        // Poll until completion
+        const checkDoneInterval = setInterval(async () => {
+          const terminalText = terminalBox.textContent;
+          if (terminalText.includes('PRODUKSI SUKSES!') || terminalText.includes('kode keluar: 0')) {
+            clearInterval(checkDoneInterval);
+            produceBtn.disabled = false;
+            produceBtn.innerHTML = `<span>🎬</span><span>Mulai Produksi Cerita & Sketsa AI Sekarang</span>`;
+            document.getElementById('production-status-pill').textContent = 'PRODUKSI SELESAI!';
+            document.getElementById('production-status-pill').className = 'text-xs font-mono px-2.5 py-1 rounded bg-emerald-950 text-emerald-400 border border-emerald-800';
+            await fetchCurrentStory();
+            alert('🎉 Produksi cerita baru selesai! Storyboard dan narasi audio telah diperbarui.');
+          } else if (terminalText.includes('kode keluar: 1') || terminalText.includes('[ERROR]')) {
+            clearInterval(checkDoneInterval);
+            produceBtn.disabled = false;
+            produceBtn.innerHTML = `<span>🎬</span><span>Mulai Produksi Cerita & Sketsa AI Sekarang</span>`;
+            document.getElementById('production-status-pill').textContent = 'PRODUKSI GAGAL';
+            document.getElementById('production-status-pill').className = 'text-xs font-mono px-2.5 py-1 rounded bg-red-950 text-red-400 border border-red-800';
+          }
+        }, 2000);
+
+      } catch (err) {
+        alert('Gagal menghubungi server: ' + err.message);
+        produceBtn.disabled = false;
+        produceBtn.innerHTML = `<span>🎬</span><span>Mulai Produksi Cerita & Sketsa AI Sekarang</span>`;
+      }
+    }
+
+    // 6. Surprise Me: Pick a topic and produce automatically
+    async function generateSurpriseStory() {
+      const res = await fetch('/api/brainstorm');
+      const topics = await res.json();
+      if (topics && topics.length > 0) {
+        const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+        selectTopic(randomTopic.title);
+        selectedPerspectiveIdx = -1; // Random perspective
+        startProduction();
+      }
+    }
+
+    // 7. Trigger Cloud Render
+    async function triggerCloudRender() {
+      const btn = document.getElementById('btn-cloud-render');
+      btn.disabled = true;
+      btn.innerHTML = `<span>⏳</span><span>Memicu Render Cloud...</span>`;
+
+      try {
+        const res = await fetch('/api/cloud-render', { method: 'POST' });
+        const data = await res.json();
+        if (data.status === 'triggered') {
+          alert('🚀 Cloud Render berhasil dipicu di GitHub Actions! Video MP4 sedang dirender di cloud.');
+          await checkCloudStatus();
+        } else {
+          alert('Kendala memicu render cloud. Periksa koneksi git/gh.');
+        }
+      } catch (err) {
+        alert('Error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<span>🚀</span><span>Render di Cloud GitHub</span>`;
+      }
+    }
+
+    // 8. Check Cloud Status
+    async function checkCloudStatus() {
+      const badge = document.getElementById('cloud-status-badge');
+      try {
+        const res = await fetch('/api/cloud-status');
+        const run = await res.json();
+        if (!run || run.error) {
+          badge.textContent = 'GitHub Actions: Siap';
+          badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300';
+          return;
+        }
+
+        if (run.status === 'in_progress' || run.status === 'queued') {
+          badge.innerHTML = `<span class="inline-block w-2 h-2 rounded-full bg-yellow-400 animate-ping mr-1"></span> Render Cloud Sedang Berjalan...`;
+          badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-yellow-950 border border-yellow-800 text-yellow-300';
+        } else if (run.conclusion === 'success') {
+          badge.innerHTML = `<span class="text-emerald-400 font-bold mr-1">✓</span> Render Cloud Selesai (MP4 Siap Unduh)`;
+          badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-300';
+        } else if (run.conclusion === 'failure') {
+          badge.innerHTML = `Render Cloud Terakhir Gagal`;
+          badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-red-950 border border-red-800 text-red-300';
+        }
+      } catch (e) {}
+    }
+
+    // 9. Download Artifact
+    async function downloadArtifact() {
+      const btn = document.getElementById('btn-download');
+      btn.innerHTML = `<span>⏳</span><span>Mengunduh...</span>`;
+      try {
+        const res = await fetch('/api/download-artifact', { method: 'POST' });
+        const data = await res.json();
+        if (data.status === 'success') {
+          alert('✓ Video MP4 berhasil diunduh ke folder out/!');
+        } else {
+          alert('Belum ada video MP4 yang siap diunduh dari cloud. Pastikan render cloud sudah selesai.');
+        }
+      } catch (err) {
+        alert('Gagal mengunduh: ' + err.message);
+      } finally {
+        btn.innerHTML = `<span>📥</span><span>Download Video MP4</span>`;
+      }
+    }
+  </script>
+</body>
+</html>
