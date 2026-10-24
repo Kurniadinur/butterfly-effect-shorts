@@ -150,12 +150,16 @@ KRITERIA AUDIT KETAT:
      * 'secondaryText': maksimal 30 karakter.
      * 'stampText': maksimal 16 karakter (huruf kapital singkat & padat).
      * 'headline': 3 sampai 6 kata.
+7. SUPERVISI RETENSI VIRAL YOUTUBE SHORTS (VIRAL RETENTION ARC & SEAMLESS LOOP):
+   - Hook 3 Detik (Stop-The-Scroll): Kalimat pembuka harus langsung menyebutkan waktu/tokoh spesifik dan kontras sepele vs masif.
+   - Seamless Infinite Loop: Pastikan bagian penutup outro dapat menyambung kembali secara halus ke awal hook agar retensi melebihi 100%.
 
 FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
 {
   "approved": true / false,
   "score": 0-100,
-  "notes": "Penjelasan singkat audit...",
+  "retentionScore": 0-100,
+  "notes": "Penjelasan singkat audit & retensi...",
   "refinedStory": { objek storyData lengkap yang sudah disempurnakan }
 }
 `;
@@ -199,6 +203,7 @@ FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
             return {
               approved: parsed.approved !== false,
               score: typeof parsed.score === 'number' ? parsed.score : 90,
+              retentionScore: typeof parsed.retentionScore === 'number' ? parsed.retentionScore : 92,
               notes: parsed.notes || 'Sensor otomatis selesai.',
               storyData: sanitizeLayoutDensity(finalStory),
             };

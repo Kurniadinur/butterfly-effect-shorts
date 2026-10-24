@@ -2,6 +2,10 @@
   "system_principles": [
     "Sketsa animasi vektor dinamis (DirectorGraphicScene) adalah fondasi visual utama video (80-100%).",
     "B-roll foto asli dilarang untuk konsep umum/aksi, HANYA diizinkan jika menampilkan wajah tokoh sejarah nyata (portrait) atau objek sejarah otentik dengan bukti arsip yang terverifikasi.",
+    "Aturan 3 Detik Pertama (Stop-The-Scroll): Mulai langsung dengan Pattern Interrupt + Kontras Tajam ([Waktu/Tokoh Spesifik] + [Aksi Mikro Sepele] + [Bencana/Konsekuensi Masif Dunia]).",
+    "Teknik Seamless Infinite Loop: Kalimat penutup outro dirancang menyambung kembali ke kata pertama pada kalimat pembuka hook agar retensi melonjak > 100%.",
+    "Visual Shift 2.5 Detik: Setiap 2.0-3.0 detik wajib ada pergantian adegan, guncangan kamera data-driven, atau punch tipografi agar penonton tidak mengalami micro-boredom.",
+    "Desain Audio Berlapis (Tactile Soundscape ala MagnatesMedia/Johnny Harris): Voiceover jernih di depan (1.0), Drone tensi atmosfer di latar (0.14), Shutter click transisi (0.65), dan Sub-bass impact pada klimaks (0.55).",
     "Hook pembuka dilarang menggunakan kalimat klise 'Kalian bayangin... dari...', gunakan pembuka dramatis variatif (fakta dingin, misteri, kronologis mendadak).",
     "Hook pembuka menggunakan format fullscreen-dramatic atau arketipe sketsa vektor, bukan split-screen kaku.",
     "Akurasi sejarah wajib mutlak: dilarang memasukkan elemen fiksi (seperti katup bocor di Tembok Berlin atau mobil belok di Titanic)."
@@ -20,6 +24,62 @@
         "wall-demolition"
       ],
       "why_successful": "Suka banget dengan sketsa memo-investigation dan foto Bundesarchiv Schabowski!"
+    },
+    {
+      "id": "ww1-driver-wrong-turn-sarajevo",
+      "title": "PERANG DUNIA 1: SALAH BELOK GANG BUNTU 30 DETIK",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "28 Juni 1914. Sopir ini hanya salah belok di satu gang kecil... dan karena mobilnya mogok 30 detik, 20 juta manusia tewas.",
+      "scenes": [
+        "clock-countdown",
+        "car-route",
+        "panic-phone",
+        "tactical-map",
+        "domino-collapse"
+      ],
+      "why_successful": "Benchmark YouTube 18M+ views: Kontras ekstrem detik mikro vs korban 20 juta jiwa dengan visual rute peta mobil dan efek domino."
+    },
+    {
+      "id": "titanic-missing-locker-key",
+      "title": "TENGGELAMNYA TITANIC: KUNCI LOKER YANG TERTINGGAL DI KANTONG",
+      "hookStyle": "forensic-dossier",
+      "hookNarration": "14 April 1912. Kapal termewah di dunia tenggelam ke dasar samudera... hanya karena sebutir anak kunci loker tertinggal di kantong pelaut yang cuti.",
+      "scenes": [
+        "key-lockbox",
+        "telegraph-wire",
+        "clock-countdown",
+        "maritime-disaster",
+        "courtroom-gavel"
+      ],
+      "why_successful": "Benchmark YouTube 12M+ views: Misteri kunci teropong binokular yang tertinggal di darat memicu tabrakan gunung es di malam tanpa bulan."
+    },
+    {
+      "id": "chernobyl-az5-control-rod-blunder",
+      "title": "TRAGEDI CHERNOBYL: TOMBOL DARURAT YANG MELEDAKKAN REAKTOR",
+      "hookStyle": "breaking-transmission",
+      "hookNarration": "26 April 1986. Pria ini menekan tombol paling aman di ruang kendali nuklir... tapi tombol itulah yang meledakkan seluruh reaktor.",
+      "scenes": [
+        "critical-gauge",
+        "valve-failure",
+        "reactor-meltdown",
+        "radiation-hazard",
+        "soviet-collapse"
+      ],
+      "why_successful": "Benchmark YouTube 9M+ views: Ironi tombol penghenti darurat AZ-5 berujung grafit yang justru memicu lonjakan reaktivitas mematikan."
+    },
+    {
+      "id": "penicillin-alexander-fleming-unwashed-dish",
+      "title": "PENEMUAN PENISILIN: PIRING LABORATORIUM YANG LUPA DICUCI",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "Ilmuwan ini terkenal pemalas dan jorok. Tapi karena dia lupa mencuci piring laboratorium sebelum liburan... 200 juta nyawa manusia terselamatkan.",
+      "scenes": [
+        "bureaucracy-draft",
+        "laboratory-discovery",
+        "critical-gauge",
+        "domino-collapse",
+        "courtroom-gavel"
+      ],
+      "why_successful": "Benchmark YouTube 15M+ views: Keberuntungan saintifik terbesar dunia dari kelalaian higienitas sepele."
     }
   ],
   "blacklisted_patterns": [

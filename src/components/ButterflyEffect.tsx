@@ -172,6 +172,26 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
       {data.audioUrl && (
         <Audio src={staticFile(data.audioUrl)} volume={1.0} />
       )}
+
+      {/* 9. Continuous Ambient Tension Drone (Deep Cinematic Bed, Volume 0.14) */}
+      {Array.from({ length: Math.ceil(data.totalDurationFrames / 360) }).map((_, idx) => (
+        <Sequence
+          key={`sfx-drone-${idx}`}
+          from={idx * 360}
+          durationInFrames={Math.min(360, data.totalDurationFrames - idx * 360)}
+        >
+          <Audio src={staticFile('butterfly/sfx/tension_drone.wav')} volume={0.14} />
+        </Sequence>
+      ))}
+
+      {/* 10. Climax Sub-Bass Impact Boom (Triggered automatically when chaosLevel >= 75) */}
+      {data.nodes
+        .filter((n) => n.chaosLevel >= 75)
+        .map((n) => (
+          <Sequence key={`sfx-climax-${n.step}`} from={n.startFrame} durationInFrames={45}>
+            <Audio src={staticFile('butterfly/sfx/cinematic_impact.wav')} volume={0.55} />
+          </Sequence>
+        ))}
     </div>
   );
 };
