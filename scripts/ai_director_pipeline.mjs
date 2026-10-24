@@ -7,6 +7,8 @@ import { GoogleGenAI } from '@google/genai';
 import { transcribeWithGroq } from './align_groq.mjs';
 import { searchAndDownloadImage } from './fetch_scene_media.mjs';
 import { loadLearningMemory, auditAndRefineStory } from './learning_manager.mjs';
+import { runVisualQASupervisor } from './ai_visual_inspector.mjs';
+import { generatePublishingPack } from './generate_publishing_pack.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -1035,6 +1037,20 @@ async function main() {
     const { wavPath, relAudioUrl } = await generateVoiceover(storyData);
     const whisperData = await runWhisperAlignment(wavPath, storyData.id);
     buildSynchronizedStory(storyData, whisperData, relAudioUrl);
+
+    // 5. Automated AI Visual QA Supervisor (Vision Inspection & Safe-Zone Quality Gate)
+    try {
+      await runVisualQASupervisor(storyData);
+    } catch (qaErr) {
+      console.warn('      ⚠ [Visual QA Skip]', qaErr.message);
+    }
+
+    // 6. Automated YouTube Shorts Viral Publishing Pack (Titles, Description, Hashtags, Pinned Comment)
+    try {
+      await generatePublishingPack(storyData);
+    } catch (pubErr) {
+      console.warn('      ⚠ [Publishing Pack Skip]', pubErr.message);
+    }
 
     console.log('================================================================');
     console.log('   PRODUKSI SUKSES! VIDEO SIAP DITINJAU ATAU DIRENDER CLOUD     ');

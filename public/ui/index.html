@@ -242,6 +242,100 @@
       </div>
     </section>
 
+    <!-- AI VISUAL QA SUPERVISOR & VIRAL PUBLISHING PACK -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- 1. AI Visual QA Quality Gate -->
+      <section class="glass-panel rounded-2xl p-6 sm:p-7 space-y-5 border border-cyan-500/30">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/70 border border-cyan-800/60 px-3 py-1 rounded-full">
+              👁️ AI VISUAL QA SUPERVISOR
+            </span>
+          </div>
+          <div id="qa-score-badge" class="text-xs font-mono font-black px-3 py-1 rounded-full bg-cyan-950 border border-cyan-600 text-cyan-300">
+            MEMUAT SKOR...
+          </div>
+        </div>
+
+        <div id="qa-content-box" class="space-y-4 text-xs font-mono">
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-400">Status Safe-Zone 9:16 Shorts:</span>
+              <span id="qa-safe-zone" class="font-bold text-white">-</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-400">Keterbacaan Tipografi:</span>
+              <span id="qa-legibility" class="font-bold text-emerald-400">-</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-400">Potensi Retensi 3 Detik Hook:</span>
+              <span id="qa-hook-potency" class="font-bold text-amber-400">-</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-cyan-950/20 border border-cyan-800/40 text-slate-300 leading-relaxed">
+            <span class="text-cyan-400 font-bold block mb-1">📝 Evaluasi Sutradara Vision AI:</span>
+            <p id="qa-critique" class="italic text-slate-300">Memeriksa keyframe render...</p>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 text-slate-400">
+            <span class="text-amber-400 font-bold block mb-0.5">💡 Rekomendasi Polesan:</span>
+            <p id="qa-polish" class="text-slate-300">-</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Viral Publishing Pack (Ready-to-Post) -->
+      <section class="glass-panel rounded-2xl p-6 sm:p-7 space-y-5 border border-purple-500/30">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-950/70 border border-purple-800/60 px-3 py-1 rounded-full">
+              🚀 PAKET PUBLIKASI SHORTS (SIAP UPLOAD)
+            </span>
+          </div>
+          <span class="text-xs font-mono text-slate-400">1-Klik Salin</span>
+        </div>
+
+        <div id="publishing-pack-box" class="space-y-4 text-xs font-mono">
+          <!-- Recommended Title -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-purple-400 font-bold">Judul YouTube Shorts (High-CTR):</span>
+              <button onclick="copyElementText('pub-title', this)" class="px-2.5 py-1 rounded bg-purple-900/60 hover:bg-purple-800 text-purple-200 border border-purple-700/60 text-[11px] transition">
+                Salin Judul
+              </button>
+            </div>
+            <p id="pub-title" class="font-bold text-white text-sm">Memuat judul rekomendasi...</p>
+          </div>
+
+          <!-- Pinned Comment -->
+          <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 font-bold">Pinned Comment (Pemicu Debat):</span>
+              <button onclick="copyElementText('pub-pinned', this)" class="px-2.5 py-1 rounded bg-amber-900/60 hover:bg-amber-800 text-amber-200 border border-amber-700/60 text-[11px] transition">
+                Salin Komentar
+              </button>
+            </div>
+            <p id="pub-pinned" class="text-slate-300 italic text-[11px] line-clamp-2">-</p>
+          </div>
+
+          <!-- Description & Hashtags -->
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="copyElementText('pub-desc-hidden', this)" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-850 border border-slate-700 text-slate-200 font-bold flex items-center justify-center gap-2 transition text-center">
+              <span>📋</span>
+              <span>Salin Deskripsi Lengkap</span>
+            </button>
+            <button onclick="copyElementText('pub-tags-hidden', this)" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-850 border border-slate-700 text-purple-300 font-bold flex items-center justify-center gap-2 transition text-center">
+              <span>#️⃣</span>
+              <span>Salin 20 Hashtags Viral</span>
+            </button>
+          </div>
+          <div id="pub-desc-hidden" class="hidden"></div>
+          <div id="pub-tags-hidden" class="hidden"></div>
+        </div>
+      </section>
+    </div>
+
     <!-- AUTONOMOUS LEARNING & FEEDBACK LOOP -->
     <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border border-emerald-500/30">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -452,6 +546,8 @@
       await fetchBrainstormTopics();
       await fetchPerspectives();
       await fetchCurrentStory();
+      await fetchQAReport();
+      await fetchPublishingPack();
       await fetchLearningMemory();
       await checkCloudStatus();
       setInterval(checkCloudStatus, 15000); // Polling status cloud tiap 15 detik
@@ -720,7 +816,9 @@
             document.getElementById('production-status-pill').textContent = 'PRODUKSI SELESAI!';
             document.getElementById('production-status-pill').className = 'text-xs font-mono px-2.5 py-1 rounded bg-emerald-950 text-emerald-400 border border-emerald-800';
             await fetchCurrentStory();
-            alert('🎉 Produksi cerita baru selesai! Storyboard dan narasi audio telah diperbarui.');
+            await fetchQAReport();
+            await fetchPublishingPack();
+            alert('🎉 Produksi cerita baru selesai! Storyboard, narasi audio, inspeksi visual AI, dan paket publikasi telah diperbarui.');
           } else if (terminalText.includes('kode keluar: 1') || terminalText.includes('[ERROR]')) {
             clearInterval(checkDoneInterval);
             produceBtn.disabled = false;
@@ -747,6 +845,60 @@
         selectedPerspectiveIdx = -1; // Random perspective
         startProduction();
       }
+    }
+
+    // 6b. Fetch and Render Latest AI Visual QA Report
+    async function fetchQAReport() {
+      try {
+        const res = await fetch('/api/qa-report');
+        const report = await res.json();
+        const badge = document.getElementById('qa-score-badge');
+        if (!report || !report.hookFrameAudit) {
+          badge.textContent = 'BELUM DIAUDIT';
+          badge.className = 'text-xs font-mono font-bold px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-400';
+          return;
+        }
+
+        const audit = report.hookFrameAudit;
+        badge.textContent = `SKOR VISUAL: ${report.overallScore}/100 [${report.status}]`;
+        badge.className = report.overallScore >= 85
+          ? 'text-xs font-mono font-black px-3 py-1 rounded-full bg-emerald-950 border border-emerald-500 text-emerald-300'
+          : 'text-xs font-mono font-black px-3 py-1 rounded-full bg-amber-950 border border-amber-500 text-amber-300';
+
+        document.getElementById('qa-safe-zone').textContent = audit.safeZoneClear ? 'Aman (100% Sesuai Zona UI)' : 'Perlu Penyesuaian Mikro';
+        document.getElementById('qa-safe-zone').className = audit.safeZoneClear ? 'font-bold text-emerald-400' : 'font-bold text-amber-400';
+        document.getElementById('qa-legibility').textContent = audit.legibilityRating || 'EXCELLENT';
+        document.getElementById('qa-hook-potency').textContent = audit.hookEngagement ? audit.hookEngagement.slice(0, 60) + '...' : '-';
+        document.getElementById('qa-critique').textContent = audit.visualCritique || audit.critique || 'Keyframe tervalidasi.';
+        document.getElementById('qa-polish').textContent = audit.recommendedPolish || audit.recommendedAction || 'Semua elemen siap tayang.';
+      } catch (err) {}
+    }
+
+    // 6c. Fetch and Render Latest Viral Publishing Pack
+    async function fetchPublishingPack() {
+      try {
+        const res = await fetch('/api/publishing-pack');
+        const pack = await res.json();
+        if (!pack || !pack.recommendedTitle) return;
+
+        document.getElementById('pub-title').textContent = pack.recommendedTitle;
+        document.getElementById('pub-pinned').textContent = pack.pinnedComment || '-';
+        document.getElementById('pub-desc-hidden').textContent = pack.description || '';
+        document.getElementById('pub-tags-hidden').textContent = (pack.hashtags || []).join(' ');
+      } catch (err) {}
+    }
+
+    function copyElementText(elementId, btnElement) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const text = el.textContent || el.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const origText = btnElement.innerHTML;
+        btnElement.innerHTML = '✓ Tersalin!';
+        setTimeout(() => {
+          btnElement.innerHTML = origText;
+        }, 2000);
+      });
     }
 
     let cloudPollInterval = null;

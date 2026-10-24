@@ -98,6 +98,20 @@ const CURATED_TOPICS = [
 ];
 
 // Helper: Read and parse currentStory.ts
+function getLatestJsonInDir(dirPath) {
+  try {
+    if (!fs.existsSync(dirPath)) return null;
+    const files = fs.readdirSync(dirPath).filter((f) => f.endsWith('.json'));
+    if (files.length === 0) return null;
+    files.sort((a, b) => {
+      return fs.statSync(path.join(dirPath, b)).mtimeMs - fs.statSync(path.join(dirPath, a)).mtimeMs;
+    });
+    return JSON.parse(fs.readFileSync(path.join(dirPath, files[0]), 'utf-8'));
+  } catch (e) {
+    return null;
+  }
+}
+
 function getCurrentStory() {
   try {
     const filePath = path.join(ROOT_DIR, 'src', 'data', 'currentStory.ts');
@@ -228,6 +242,22 @@ const server = http.createServer(async (req, res) => {
     const memory = loadLearningMemory();
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(memory));
+    return;
+  }
+
+  // 4d. API: Get Latest AI Visual QA Report
+  if (pathname === '/api/qa-report') {
+    const report = getLatestJsonInDir(path.join(ROOT_DIR, 'out', 'qa_audit'));
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(report || { status: 'NO_REPORT_YET', score: null }));
+    return;
+  }
+
+  // 4e. API: Get Latest Viral Publishing Pack
+  if (pathname === '/api/publishing-pack') {
+    const pack = getLatestJsonInDir(path.join(ROOT_DIR, 'out', 'publishing_pack'));
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(pack || { status: 'NO_PACK_YET' }));
     return;
   }
 
