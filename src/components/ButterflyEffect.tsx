@@ -65,6 +65,14 @@ const SKETCH_FOLEY_SFX: Record<
   'valve-failure': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.24, offsetFrames: 12, durationFrames: 22 },
   'critical-gauge': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.22, offsetFrames: 12, durationFrames: 22 },
   'telegraph-wire': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.20, offsetFrames: 15, durationFrames: 33 },
+  'press-podium': { sfx: 'butterfly/sfx/camera_blitz.wav', volume: 0.28, offsetFrames: 14, durationFrames: 15 },
+  'press-question': { sfx: 'butterfly/sfx/camera_blitz.wav', volume: 0.28, offsetFrames: 14, durationFrames: 15 },
+  'panic-phone': { sfx: 'butterfly/sfx/phone_ring.wav', volume: 0.26, offsetFrames: 12, durationFrames: 25 },
+  'domino-collapse': { sfx: 'butterfly/sfx/domino_click.wav', volume: 0.28, offsetFrames: 10, durationFrames: 22 },
+  'laboratory-discovery': { sfx: 'butterfly/sfx/beaker_clink.wav', volume: 0.25, offsetFrames: 14, durationFrames: 20 },
+  'car-route': { sfx: 'butterfly/sfx/car_skid.wav', volume: 0.26, offsetFrames: 12, durationFrames: 24 },
+  'breaking-news': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.24, offsetFrames: 10, durationFrames: 26 },
+  'breaking-ticker': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.24, offsetFrames: 10, durationFrames: 26 },
 };
 
 export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT_STORY }) => {

@@ -283,6 +283,130 @@ function generateSteamHiss() {
   return createWavBuffer(sampleRate, 1, samples);
 }
 
+// 13. Camera Blitz Flash Pop (Press podium / Journalists)
+function generateCameraBlitz() {
+  const sampleRate = 44100;
+  const durationSec = 0.45;
+  const totalSamples = Math.round(sampleRate * durationSec);
+  const samples = new Float32Array(totalSamples);
+  for (let i = 0; i < totalSamples; i++) {
+    const t = i / sampleRate;
+    // Electronic capacitor pop at 0.05s
+    let pop = 0;
+    if (t >= 0.03 && t < 0.15) {
+      const dt = t - 0.03;
+      pop = (Math.sin(2 * Math.PI * 1800 * dt) + (Math.random() * 2 - 1) * 0.6) * Math.exp(-dt * 65) * 0.8;
+    }
+    // High-pitched capacitor whine
+    const whine = Math.sin(2 * Math.PI * 3200 * t) * Math.exp(-t * 8.0) * 0.15;
+    samples[i] = pop + whine;
+  }
+  return createWavBuffer(sampleRate, 1, samples);
+}
+
+// 14. Vintage Rotary Phone Ring (Panic phone / Emergency post)
+function generatePhoneRing() {
+  const sampleRate = 44100;
+  const durationSec = 0.85;
+  const totalSamples = Math.round(sampleRate * durationSec);
+  const samples = new Float32Array(totalSamples);
+  for (let i = 0; i < totalSamples; i++) {
+    const t = i / sampleRate;
+    // Bell clapper tremolo at 18Hz
+    const clapper = 0.5 + 0.5 * Math.sin(2 * Math.PI * 18 * t);
+    // Dual bell chime frequencies (850Hz & 1050Hz)
+    const bell = (Math.sin(2 * Math.PI * 850 * t) + Math.sin(2 * Math.PI * 1050 * t) * 0.7) * clapper;
+    const env = t < 0.7 ? 1.0 : Math.exp(-(t - 0.7) * 12.0);
+    samples[i] = bell * env * 0.4;
+  }
+  return createWavBuffer(sampleRate, 1, samples);
+}
+
+// 15. Domino Rapid Cascade (Domino collapse 3D)
+function generateDominoClick() {
+  const sampleRate = 44100;
+  const durationSec = 0.7;
+  const totalSamples = Math.round(sampleRate * durationSec);
+  const samples = new Float32Array(totalSamples);
+  const taps = [0.05, 0.14, 0.22, 0.30, 0.38, 0.45];
+  for (let i = 0; i < totalSamples; i++) {
+    const t = i / sampleRate;
+    let val = 0;
+    for (let k = 0; k < taps.length; k++) {
+      const tapTime = taps[k];
+      if (t >= tapTime && t < tapTime + 0.08) {
+        const dt = t - tapTime;
+        const freq = 650 + k * 80;
+        val += Math.sin(2 * Math.PI * freq * dt) * Math.exp(-dt * 70) * (0.5 + k * 0.08);
+      }
+    }
+    samples[i] = val * 0.65;
+  }
+  return createWavBuffer(sampleRate, 1, samples);
+}
+
+// 16. Glass Beaker Clink (Laboratory discovery / Petri dish)
+function generateBeakerClink() {
+  const sampleRate = 44100;
+  const durationSec = 0.65;
+  const totalSamples = Math.round(sampleRate * durationSec);
+  const samples = new Float32Array(totalSamples);
+  for (let i = 0; i < totalSamples; i++) {
+    const t = i / sampleRate;
+    const chime = Math.sin(2 * Math.PI * 2650 * t) * Math.exp(-t * 6.0) * 0.55;
+    const harmonic = Math.sin(2 * Math.PI * 5300 * t) * Math.exp(-t * 12.0) * 0.25;
+    samples[i] = (chime + harmonic) * 0.7;
+  }
+  return createWavBuffer(sampleRate, 1, samples);
+}
+
+// 17. Car Tire Skid & Engine Brake (Car route / Sarajevo convoy)
+function generateCarSkid() {
+  const sampleRate = 44100;
+  const durationSec = 0.75;
+  const totalSamples = Math.round(sampleRate * durationSec);
+  const samples = new Float32Array(totalSamples);
+  for (let i = 0; i < totalSamples; i++) {
+    const t = i / sampleRate;
+    // Rubber screech: high-frequency modulated friction
+    const freq = 1600 - 400 * t;
+    const screech = Math.sin(2 * Math.PI * freq * t) * (0.6 + 0.4 * Math.sin(2 * Math.PI * 45 * t));
+    const noise = (Math.random() * 2 - 1) * 0.35;
+    const env = t < 0.1 ? (t / 0.1) : Math.exp(-(t - 0.1) * 4.5);
+    samples[i] = (screech * 0.6 + noise * 0.4) * env * 0.55;
+  }
+  return createWavBuffer(sampleRate, 1, samples);
+}
+
+// 18. Emergency Broadcast Alert Beeps (Breaking news / TV transmission)
+function generateBroadcastBeeps() {
+  const sampleRate = 44100;
+  const durationSec = 0.8;
+  const totalSamples = Math.round(sampleRate * durationSec);
+  const samples = new Float32Array(totalSamples);
+  const beeps = [
+    { start: 0.05, end: 0.22 },
+    { start: 0.28, end: 0.45 },
+    { start: 0.51, end: 0.72 },
+  ];
+  for (let i = 0; i < totalSamples; i++) {
+    const t = i / sampleRate;
+    let active = false;
+    for (const b of beeps) {
+      if (t >= b.start && t <= b.end) {
+        active = true;
+        break;
+      }
+    }
+    if (active) {
+      // Dual-frequency alert chime (853Hz & 960Hz)
+      const tone = (Math.sin(2 * Math.PI * 853 * t) + Math.sin(2 * Math.PI * 960 * t) * 0.8) * 0.35;
+      samples[i] = tone;
+    }
+  }
+  return createWavBuffer(sampleRate, 1, samples);
+}
+
 // Run synthesis
 fs.mkdirSync(SFX_DIR, { recursive: true });
 
@@ -299,6 +423,12 @@ const sfxList = [
   { name: 'hammer_hit.wav', gen: generateHammerHit },
   { name: 'gate_creak.wav', gen: generateGateCreak },
   { name: 'steam_hiss.wav', gen: generateSteamHiss },
+  { name: 'camera_blitz.wav', gen: generateCameraBlitz },
+  { name: 'phone_ring.wav', gen: generatePhoneRing },
+  { name: 'domino_click.wav', gen: generateDominoClick },
+  { name: 'beaker_clink.wav', gen: generateBeakerClink },
+  { name: 'car_skid.wav', gen: generateCarSkid },
+  { name: 'broadcast_beeps.wav', gen: generateBroadcastBeeps },
 ];
 
 for (const sfx of sfxList) {
