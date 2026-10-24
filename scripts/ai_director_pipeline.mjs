@@ -37,49 +37,69 @@ console.log(`Audio Sync   : Groq Cloud LPU (Whisper Large V3)`);
 console.log('================================================================\n');
 
 // -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // 1. MASTER SUTRADARA & CREATIVE DIRECTOR PROMPT
 // -----------------------------------------------------------------------------
+export const CREATIVE_PERSPECTIVES = [
+  {
+    name: 'DRAMA BIROKRASI & BLUNDER DOKUMEN RAHASIA',
+    angle: 'Fokuskan alur pada kelalaian birokrasi, draf regulasi terburu-buru, memo fatal tanpa penjelasan jam berlaku, dan kebingungan juru bicara di depan kamera dunia.',
+  },
+  {
+    name: 'KETEGANGAN LAPANGAN & POS PENJAGA PERBATASAN',
+    angle: 'Fokuskan alur pada komandan pos penjaga yang terisolasi, telepon darurat yang diabaikan atasan, ribuan warga yang menuntut dibukanya gerbang, dan keputusan pasrah menghindari pertumpahan darah.',
+  },
+  {
+    name: 'PERAN KRUSIAL JURNALIS & KEKUATAN BREAKING NEWS',
+    angle: 'Fokuskan alur pada wartawan yang melempar pertanyaan mendadak, kepanikan jawaban spontan di ruang pers, serta ledakan breaking news televisi yang menyulut jutaan warga keluar rumah.',
+  },
+  {
+    name: 'EFEK DOMINO GEOPOLITIK GLOBAL (KOLAPS SISTEMIK)',
+    angle: 'Fokuskan alur pada analogi efek domino sebab-akibat ekstrem: bagaimana kesalahan sepele 3 detik meruntuhkan perbatasan, merobohkan benteng ideologi, memicu revolusi damai, hingga membubarkan imperium adidaya.',
+  },
+  {
+    name: 'DETIK-DETIK SPONTAN & REVOLUSI RAKYAT DI ATAS TEMBOK',
+    angle: 'Fokuskan alur pada antusiasme dan keberanian rakyat jelata, palu godam yang menghantam beton pemisah, tangis reuni sanak saudara di tengah malam, dan malam paling bersejarah abad 20.',
+  },
+];
+
 const DIRECTOR_PROMPT = `
 Kamu adalah Creative Director & Sutradara Dokumenter Papan Atas Dunia sekaligus Storyteller bertaraf Nessie Judge (Nerror).
 Tugasmu adalah menciptakan naskah dan alur visual "Butterfly Effect" (efek domino sebab-akibat ekstrem) berdurasi 60-120 detik untuk YouTube Shorts / TikTok (9:16).
 
 PRINSIP WAJIB SUTRADARA KELAS DUNIA (VISUAL HARUS 100% MENJELASKAN MOMEN):
-1. VISUAL FIDELITY MUTLAK (DILARANG ASAL GAMBAR):
+1. VISUAL FIDELITY MUTLAK (AI SUTRADARA MEMILIH SKETSA YANG COCOK):
    - DILARANG menampilkan visual yang abstrak atau tidak ada kaitannya dengan kalimat narasi!
-   - Setiap adegan WAJIB secara gamblang memperlihatkan bukti visual dari apa yang sedang diucapkan:
-     * Jika narasi menyebut dokumen/memo/surat rahasia -> Visual WAJIB memperlihatkan dokumen/memo tersebut secara close-up dengan teks dan stempel yang relevan.
-     * Jika narasi menyebut wartawan melempar pertanyaan mendadak -> Visual WAJIB memperlihatkan suasana konferensi pers dan mikrofon dengan kutipan pertanyaan spesifik.
-     * Jika narasi menyebut kepanikan tokoh utama -> Visual WAJIB memperlihatkan kepanikan tokoh atau meja kerjanya yang kacau, BUKAN foto formal yang tenang.
-     * Jika narasi menyebut kerumunan menyerbu gerbang perbatasan -> Visual WAJIB memperlihatkan gerbang perbatasan dan massa rakyat yang menembusnya.
-     * Jika narasi menyebut pos jaga panik menelepon atasan -> Visual WAJIB memperlihatkan telepon darurat pos jaga bergetar merah tanpa ada jawaban jenderal.
+   - Setiap adegan WAJIB secara gamblang memperlihatkan bukti visual dari apa yang sedang diucapkan.
+   - Kamu (AI Sutradara) berkuasa penuh memilih tipe sketsa animasi (directorType) yang paling akurat untuk setiap momen cerita.
 2. JANGAN PERNAH MENAMPILKAN WAJAH PELAKU / FOKUS UTAMA DI HOOK VIDEO (DETIK 0-4)!
-   - Di Hook, penonton HANYA boleh merasakan KONTRAS EKSTREM antara:
-     * Awal Sepele (misal: "Selembar Memo Tanpa Dibaca", "Kunci Teropong Tertinggal", "Uji Coba Daya Reaktor").
-     * Bencana Global (misal: "Uni Soviet Runtuh", "Kapal Titanic Tenggelam", "Reaktor Nuklir Meledak").
-   - Wajah tokoh HANYA boleh muncul saat naskah secara khusus mulai memperkenalkannya atau saat kilas balik di adegan akhir!
-3. DILARANG KERAS MENGULANG FOTO ORANG/OBJEK YANG SAMA BERTURUT-TURUT!
+   - Di Hook, penonton HANYA boleh merasakan KONTRAS EKSTREM antara Awal Sepele vs Bencana Global.
+3. DILARANG KERAS MENGULANG FOTO / SKETSA YANG SAMA BERTURUT-TURUT!
    - Setiap adegan harus memiliki sudut pandang baru, variasi tempo, dan pergerakan kamera (cameraMotion): "zoomIn", "zoomOut", "panRight", atau "panLeft".
-4. PEMILIHAN TIPE VISUAL SUTRADARA:
-   - Gunakan "mediaType": "photo" HANYA jika ada foto sejarah riil yang relevan.
-   - Gunakan "mediaType": "graphic" untuk adegan dramatis/abstrak/dokumen rahasia/kepanikan.
-   - Pilihan "directorType" jika graphic:
-     * "wall-demolition"   : Animasi aksi riil massa merobohkan Tembok Berlin, siluet orang di atas dinding mengayunkan palu godam dengan percikan api, retakan dinding beton menjalar, dan lautan massa mendorong dinding.
-     * "gate-breach"       : Animasi aksi riil palang gerbang perbatasan berayun terbuka ke atas, lampu sirene merah berputar di pos jaga, dan ribuan siluet warga menerobos maju membawa senter.
-     * "press-podium"      : Podium konferensi pers Schabowski, hujan kilatan blitz kamera wartawan yang menyala-nyala, jam digital berdetik 18:57, dan dokumen fatal di tangan.
-     * "memo-investigation": Kertas dokumen memo rahasia di bawah sorotan lampu meja dengan kaca pembesar memindai kata fatal 'sofort' (segera) berstabilo kuning dan stempel merah deklasifikasi.
-     * "domino-collapse"   : Balok domino 3D geopolitik beruntun jatuh menabrak satu sama lain dari Tembok Berlin hingga keruntuhan Uni Soviet.
-     * "panic-phone"        : Pos jaga dengan telepon engkol bergetar merah tanpa perintah atasan.
-     * "breaking-news"      : Monitor TV tabung vintage dengan ticker darurat.
-     * "soviet-collapse"    : Peta geopolitik retak & Uni Soviet bubar jadi 15 negara.
-     * "forensic-dossier"   : Berkas penyelidikan deklasifikasi dengan stempel merah TOP SECRET.
-     * "tactical-map"       : Radar taktis melingkar & titik koordinat target episentrum.
-     * "critical-gauge"     : Indikator tekanan bahaya dan alarm kelebihan beban.
-     * "breaking-ticker"    : Siaran langsung satelit darurat internasional.
-4. STRUKTUR NARRATIVE NESSIE JUDGE:
+4. KATALOG SKETSA ANIMASI FORENSIK YANG BISA KAMU PILIH ("directorType"):
+   * "wall-demolition"   : Animasi aksi massa merobohkan dinding/benteng/tembok, siluet orang mengayunkan palu godam dengan percikan api, retakan dinding beton menjalar, dan lautan massa mendorong dinding.
+   * "gate-breach"       : Animasi aksi palang gerbang perbatasan/pos pemeriksaan terangkat ke atas, lampu sirene merah berputar di pos jaga, dan siluet warga menerobos maju membawa senter.
+   * "domino-collapse"   : Balok domino 3D beruntun saling bertumbukan dan tumbang ke depan. (Tuliskan 5 tahap berurutan dipisahkan koma pada 'secondaryText'!).
+   * "maritime-disaster" : Siluet kapal laut/samudra miring tenggelam di laut gelap bersalju, gunung es tajam, dan gelombang sinyal radio darurat SOS CQD melingkar memancar.
+   * "reactor-meltdown"  : Penampang reaktor nuklir/industri dengan batang kendali membara merah berdenyut, indikator suhu/radiasi kritis, dan alarm bahaya.
+   * "laboratory-discovery": Cawan petri laboratorium di bawah mikroskop, biakan bakteri dengan cincin zona inhibisi antibiotik yang tidak sengaja terbentuk.
+   * "press-podium"      : Podium konferensi pers/pidato, hujan kilatan blitz kamera wartawan yang menyala-nyala acak, jam digital berdetik, dan dokumen di tangan.
+   * "memo-investigation": Kertas dokumen memo rahasia di bawah sorotan lampu meja dengan kaca pembesar memindai kata fatal berstabilo kuning dan stempel merah deklasifikasi.
+   * "panic-phone"       : Pos jaga dengan telepon engkol darurat bergetar merah tanpa instruksi atasan.
+   * "breaking-news"     : Monitor TV tabung vintage dengan ticker darurat breaking news.
+   * "soviet-collapse"   : Peta wilayah geopolitik retak & terpecah belah jadi negara-negara merdeka.
+   * "tactical-map"      : Radar taktis melingkar & titik koordinat target episentrum gerakan.
+   * "critical-gauge"    : Indikator meteran bahaya, tekanan overload, atau suhu kritis.
+   * "forensic-dossier"  : Berkas penyelidikan deklasifikasi dengan stempel merah TOP SECRET.
+   * "bureaucracy-draft" : Meja birokrasi dengan tumpukan draf regulasi formal.
+   * "memo-handoff"      : Sketsa tangan menyelipkan berkas rahasia di meja gelap.
+5. STRUKTUR NARRATIVE NESSIE JUDGE:
    - HOOK: "Kalian bayangin... dari [hal sepele], [dampak global masif] bisa terjadi hanya dalam satu malam?"
    - ESKALASI TEGANG (8 hingga 14 adegan berantai): Dari kelalaian kecil, kepanikan, kekacauan berantai, hingga klimaks sejarah dunia berubah.
    - CHILLING OUTRO: Pertanyaan menggantung yang memancing penonton berkomentar ("Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah hidupmu 5 tahun lagi?").
-5. HANYA OUTPUT JSON MURNI TANPA KATA PENGANTAR DAN TANPA MARKDOWN!
+6. VARIASI CERITA SEGAR:
+   - Setiap kali diminta membuat cerita baru (bahkan untuk topik yang sama), hasilkan alur, narasi, dan pilihan adegan visual yang SEGAR dan BERBEDA! Jangan mengulang urutan yang persis sama.
+7. HANYA OUTPUT JSON MURNI TANPA KATA PENGANTAR DAN TANPA MARKDOWN!
 
 FORMAT JSON WAJIB:
 {
@@ -93,7 +113,8 @@ FORMAT JSON WAJIB:
     "rightBadge": "BENCANA GLOBAL",
     "leftPrimaryText": "Teks judul dokumen awal",
     "leftStampText": "BUKTI AWAL",
-    "rightImage": "butterfly/media/wall_demolition.jpg"
+    "rightImage": "butterfly/media/wall_demolition.jpg",
+    "leftImage": "butterfly/media/memo_document.jpg"
   },
   "nodes": [
     {
@@ -103,15 +124,15 @@ FORMAT JSON WAJIB:
       "narration": "Naskah narasi suara 10-25 kata yang dramatis...",
       "chaosLevel": 20,
       "mediaType": "photo atau graphic",
-      "directorType": "pilih salah satu dari 11 opsi jika graphic",
+      "directorType": "salah satu dari 16 katalog di atas",
       "zoomDirection": "zoomIn / zoomOut / panRight / panLeft",
       "primaryText": "Teks judul spesifik di dalam elemen grafis",
-      "secondaryText": "Teks subjudul / keterangan grafis",
+      "secondaryText": "Teks subjudul / keterangan grafis (untuk domino-collapse: tuliskan 5 tahap dipisah koma)",
       "stampText": "Teks stempel resmi (misal: TOP SECRET, SINKING, CRITICAL, OVERLOAD)",
       "quoteText": "Teks kutipan ucapan / pertanyaan jika ada",
-      "metricLabel": "Label indikator (misal: KORBAN JIWA, TEKANAN, RADIASI)",
-      "metricValue": "Nilai indikator (misal: 1,517 JIWA, 99.4%, SOS CQD)",
-      "mediaUrl": "nama file foto atau nama directorType",
+      "metricLabel": "Label indikator (misal: KORBAN JIWA, TEKANAN, RADIASI, PENONTON)",
+      "metricValue": "Nilai indikator (misal: 1,517 JIWA, 99.4%, SOS CQD, 18:57:04)",
+      "mediaUrl": "nama file foto jika photo, atau nama directorType jika graphic",
       "caption": "Keterangan forensik singkat..."
     }
   ],
@@ -139,7 +160,7 @@ async function callGeminiWithRotation(taskFn) {
 }
 
 // Groq Cloud LPU Fallback (Zero 503 Spike Guarantee)
-async function generateStoryboardWithGroq(topic) {
+async function generateStoryboardWithGroq(topic, dynamicPrompt) {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) throw new Error('GROQ_API_KEY tidak ditemukan di file .env');
 
@@ -164,11 +185,11 @@ async function generateStoryboardWithGroq(topic) {
             },
             {
               role: 'user',
-              content: `${DIRECTOR_PROMPT}\n\nTopik Butterfly Effect Baru: "${topic}"`,
+              content: dynamicPrompt,
             },
           ],
           response_format: { type: 'json_object' },
-          temperature: 0.8,
+          temperature: 0.88,
         }),
       });
 
@@ -187,18 +208,35 @@ async function generateStoryboardWithGroq(topic) {
 }
 
 // -----------------------------------------------------------------------------
-// STEP 1: Direct Storyboard via Gemini / Groq with High Creativity (Temp 0.85)
+// STEP 1: Direct Storyboard via Gemini / Groq with High Creativity (Temp 0.88)
 // -----------------------------------------------------------------------------
 async function generateStoryboard(topic) {
   console.log('[1/4] Sutradara AI sedang merancang alur cerita & kurasi visual unik...');
   console.log('      (Menganalisa topik & menyusun 8-15 adegan berantai...)');
+
+  // Random Perspective & Creative Salt for High Variance & Fresh Stories
+  const selectedPerspective = CREATIVE_PERSPECTIVES[Math.floor(Math.random() * CREATIVE_PERSPECTIVES.length)];
+  const sessionSalt = Date.now().toString(36);
+  console.log(`      ✓ Sudut Pandang Kreatif: ${selectedPerspective.name}`);
+  console.log(`      ✓ Arahan Sutradara: "${selectedPerspective.angle}"`);
+
+  const dynamicPrompt = `${DIRECTOR_PROMPT}\n\n` +
+    `================================================================\n` +
+    `ARAHAN SUTRADARA UNTUK PRODUKSI INI (TAKE / ATTEMPT BARU):\n` +
+    `SUDUT PANDANG (PERSPECTIVE): ${selectedPerspective.name}\n` +
+    `INSTRUKSI KHUSUS: ${selectedPerspective.angle}\n` +
+    `UNIQUE SESSION SEED: ${sessionSalt}\n` +
+    `PENTING: Buat naskah, alur cerita, kalimat narasi, dan pilihan visual yang SEGAR, BERVARIASI, dan BERBEDA dari versi sebelumnya!\n` +
+    `================================================================\n\n` +
+    `Topik Cerita Butterfly Effect: "${topic}"`;
+
   const t0 = Date.now();
   let result = '';
 
   const provider = (process.env.STORY_PROVIDER || 'auto').toLowerCase();
 
   if (provider === 'groq') {
-    result = await generateStoryboardWithGroq(topic);
+    result = await generateStoryboardWithGroq(topic, dynamicPrompt);
   } else {
     try {
       result = await callGeminiWithRotation(async (ai, key, keyNum) => {
@@ -211,11 +249,11 @@ async function generateStoryboard(topic) {
               contents: [
                 {
                   role: 'user',
-                  parts: [{ text: `${DIRECTOR_PROMPT}\n\nTopik Butterfly Effect Baru: "${topic}"` }],
+                  parts: [{ text: dynamicPrompt }],
                 },
               ],
               config: {
-                temperature: 0.85,
+                temperature: 0.88,
                 topP: 0.95,
               },
             });
@@ -230,7 +268,7 @@ async function generateStoryboard(topic) {
     } catch (geminiErr) {
       console.warn(`\n[Peringatan] Server Google Gemini sedang mengalami antrean trafik (503).`);
       console.log(`[Failover Otomatis] Mengalihkan ke Groq Cloud LPU Llama/GPT-OSS...`);
-      result = await generateStoryboardWithGroq(topic);
+      result = await generateStoryboardWithGroq(topic, dynamicPrompt);
     }
   }
 
@@ -238,9 +276,6 @@ async function generateStoryboard(topic) {
 
   const cleaned = result.replace(/```json/gi, '').replace(/```/g, '').trim();
   const storyData = JSON.parse(cleaned);
-
-  // Validate visual media to guarantee ZERO broken images and ZERO repeated photos
-  const mediaDir = path.join(ROOT_DIR, 'public', 'butterfly', 'media');
 
   // Validate Hook images
   if (!storyData.hook.rightImage || !fs.existsSync(path.join(ROOT_DIR, 'public', storyData.hook.rightImage))) {
@@ -254,65 +289,66 @@ async function generateStoryboard(topic) {
   let graphicCount = 0;
   const usedPhotos = new Set();
 
+  const VALID_DIRECTOR_TYPES = new Set([
+    'wall-demolition', 'gate-breach', 'domino-collapse', 'maritime-disaster',
+    'reactor-meltdown', 'laboratory-discovery', 'press-podium', 'memo-investigation',
+    'panic-phone', 'breaking-news', 'soviet-collapse', 'tactical-map',
+    'critical-gauge', 'forensic-dossier', 'bureaucracy-draft', 'memo-handoff',
+    'breaking-ticker', 'press-question', 'schabowski-slip'
+  ]);
+
   for (let i = 0; i < storyData.nodes.length; i++) {
     const node = storyData.nodes[i];
     node.step = i + 1;
     const txt = (node.headline + ' ' + node.narration + ' ' + (node.caption || '')).toLowerCase();
 
-    // High-impact action moments MUST be animated action sketches:
-    // 1) Wall demolition (massa merobohkan tembok, palu godam, retakan beton)
-    // 2) Gate breach (palang gerbang terbuka, sirene pos jaga, massa menyerbu)
-    // 3) Domino collapse (balok domino geopolitik runtuh beruntun)
-    // 4) Memo investigation (kaca pembesar memindai kata fatal 'sofort')
-    const isWallDemolition = txt.includes('tembok') && (txt.includes('roboh') || txt.includes('palu') || txt.includes('hancur') || txt.includes('dorong') || txt.includes('beton'));
-    const isGateBreach = (txt.includes('gerbang') || txt.includes('palang')) && (txt.includes('buka') || txt.includes('terobos') || txt.includes('jebol') || txt.includes('pasrah'));
-    const isDominoCollapse = txt.includes('domino') || txt.includes('soviet') || txt.includes('komunis') || txt.includes('bubar') || txt.includes('kolaps') || txt.includes('tirai besi');
-    const isMemoInvestigate = (txt.includes('memo') || txt.includes('draf') || txt.includes('regulasi') || txt.includes('rahasia')) && (txt.includes('sofort') || txt.includes('baca') || txt.includes('segera') || i === 0);
-
-    // 1. Semantically match authentic historical photos from database for appropriate moments
-    let candidatePhoto = null;
-    if (!isWallDemolition && !isGateBreach && !isDominoCollapse && !isMemoInvestigate) {
-      if (txt.includes('schabowski') || txt.includes('kacamata') || txt.includes('blunder') || txt.includes('ucapan fatal')) {
-        candidatePhoto = 'butterfly/media/schabowski_flustered.jpg';
-      } else if (txt.includes('massa') || txt.includes('warga') || txt.includes('kerumunan') || txt.includes('serbu') || txt.includes('padati')) {
-        candidatePhoto = 'butterfly/media/berlin_crowd.jpg';
-      } else if (txt.includes('wartawan') || txt.includes('konferensi') || txt.includes('pers')) {
-        candidatePhoto = 'butterfly/media/schabowski_press.jpg';
-      } else if (i === storyData.nodes.length - 1 || txt.includes('bebas') || txt.includes('malam') || txt.includes('sejarah') || txt.includes('peradaban')) {
-        candidatePhoto = 'butterfly/media/brandenburg_night.jpg';
+    // Check if photo actually exists locally and has valid size (> 1KB)
+    let isPhotoValid = false;
+    if (node.mediaType === 'photo' && node.mediaUrl) {
+      const fullPath = path.join(ROOT_DIR, 'public', node.mediaUrl);
+      if (fs.existsSync(fullPath) && fs.statSync(fullPath).size > 1024 && !usedPhotos.has(node.mediaUrl)) {
+        isPhotoValid = true;
+        usedPhotos.add(node.mediaUrl);
+        photoCount++;
       }
     }
 
-    // Alternating rhythm: balance photos vs action sketches (~50:50)
-    const shouldPickPhoto = candidatePhoto && !usedPhotos.has(candidatePhoto) && (i % 2 === 1 || i === storyData.nodes.length - 1);
-
-    if (shouldPickPhoto) {
-      usedPhotos.add(candidatePhoto);
-      node.mediaType = 'photo';
-      node.mediaUrl = candidatePhoto;
-      photoCount++;
-    } else {
-      // 2. Assign the EXACT action sketch matching the moment
+    if (!isPhotoValid) {
       node.mediaType = 'graphic';
       graphicCount++;
 
-      // Strict priority matching for graphic scenes
-      if (isDominoCollapse) {
-        node.directorType = 'domino-collapse';
-      } else if (isWallDemolition) {
-        node.directorType = 'wall-demolition';
-      } else if (isGateBreach || txt.includes('pos bornholmer') || txt.includes('gerbang')) {
-        node.directorType = 'gate-breach';
-      } else if (txt.includes('konferensi') || txt.includes('pers') || txt.includes('wartawan') || txt.includes('podium') || txt.includes('schabowski') || txt.includes('blunder') || txt.includes('bicara')) {
-        node.directorType = 'press-podium';
-      } else if (isMemoInvestigate || txt.includes('kertas') || txt.includes('surat') || txt.includes('dokumen')) {
-        node.directorType = 'memo-investigation';
-      } else if (txt.includes('telepon') || txt.includes('panik') || txt.includes('dering') || txt.includes('pos jaga') || txt.includes('alarm')) {
-        node.directorType = 'panic-phone';
-      } else if (txt.includes('tv') || txt.includes('siaran') || txt.includes('breaking') || txt.includes('berita') || txt.includes('kabar')) {
-        node.directorType = 'breaking-news';
+      // If the AI already chose a valid directorType, RESPECT AND PRESERVE THE AI'S CHOICE!
+      if (node.directorType && VALID_DIRECTOR_TYPES.has(node.directorType)) {
+        // AI choice is preserved!
       } else {
-        node.directorType = 'forensic-dossier';
+        // Fallback semantic matcher if directorType is missing or invalid:
+        if (txt.includes('kapal') || txt.includes('tenggelam') || txt.includes('gunung es') || txt.includes('titanic') || txt.includes('samudera')) {
+          node.directorType = 'maritime-disaster';
+        } else if (txt.includes('reaktor') || txt.includes('nuklir') || txt.includes('chernobyl') || txt.includes('radiasi') || txt.includes('meltdown')) {
+          node.directorType = 'reactor-meltdown';
+        } else if (txt.includes('bakteri') || txt.includes('penisilin') || txt.includes('laboratorium') || txt.includes('cawan') || txt.includes('jamur')) {
+          node.directorType = 'laboratory-discovery';
+        } else if (txt.includes('domino') || txt.includes('bubar') || txt.includes('kolaps') || txt.includes('tirai besi') || txt.includes('runtuh beruntun')) {
+          node.directorType = 'domino-collapse';
+        } else if (txt.includes('tembok') || txt.includes('roboh') || txt.includes('palu') || txt.includes('dorong') || txt.includes('hancur') || txt.includes('beton')) {
+          node.directorType = 'wall-demolition';
+        } else if (txt.includes('gerbang') || txt.includes('palang') || txt.includes('pos bornholmer') || txt.includes('serbu') || txt.includes('terobos') || txt.includes('buka')) {
+          node.directorType = 'gate-breach';
+        } else if (txt.includes('konferensi') || txt.includes('pers') || txt.includes('wartawan') || txt.includes('podium') || txt.includes('bicara')) {
+          node.directorType = 'press-podium';
+        } else if (txt.includes('memo') || txt.includes('draf') || txt.includes('regulasi') || txt.includes('surat') || txt.includes('kertas') || txt.includes('sofort') || txt.includes('dokumen')) {
+          node.directorType = 'memo-investigation';
+        } else if (txt.includes('telepon') || txt.includes('panik') || txt.includes('dering') || txt.includes('pos jaga') || txt.includes('alarm')) {
+          node.directorType = 'panic-phone';
+        } else if (txt.includes('tv') || txt.includes('siaran') || txt.includes('breaking') || txt.includes('berita') || txt.includes('kabar')) {
+          node.directorType = 'breaking-news';
+        } else if (txt.includes('peta') || txt.includes('radar') || txt.includes('koordinat') || txt.includes('target')) {
+          node.directorType = 'tactical-map';
+        } else if (txt.includes('tekanan') || txt.includes('suhu') || txt.includes('daya') || txt.includes('kecepatan') || txt.includes('overload')) {
+          node.directorType = 'critical-gauge';
+        } else {
+          node.directorType = 'forensic-dossier';
+        }
       }
     }
 

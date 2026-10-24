@@ -18,6 +18,9 @@ export type DirectorSceneType =
   | 'domino-collapse'
   | 'press-podium'
   | 'memo-investigation'
+  | 'maritime-disaster'
+  | 'reactor-meltdown'
+  | 'laboratory-discovery'
   | string;
 
 export interface DirectorGraphicSceneProps {
@@ -598,11 +601,11 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 ))}
 
                 {/* Historic Wall Graffiti */}
-                <text x="180" y="160" fill="#ef4444" fontSize="46" fontWeight="900" fontFamily="'Montserrat', sans-serif" transform="rotate(-6 180 160)" opacity="0.9">
-                  FREIHEIT
+                <text x="180" y="160" fill="#ef4444" fontSize="42" fontWeight="900" fontFamily="'Montserrat', sans-serif" transform="rotate(-6 180 160)" opacity="0.9">
+                  {(stampText || 'FREIHEIT').slice(0, 14)}
                 </text>
-                <text x="490" y="180" fill="#38bdf8" fontSize="40" fontWeight="900" fontFamily="monospace" transform="rotate(4 490 180)" opacity="0.9">
-                  TOR AUF! 1989
+                <text x="490" y="180" fill="#38bdf8" fontSize="36" fontWeight="900" fontFamily="monospace" transform="rotate(4 490 180)" opacity="0.9">
+                  {(secondaryText || 'TOR AUF! 1989').slice(0, 16)}
                 </text>
                 <circle cx="380" cy="190" r="32" fill="none" stroke="#FFE600" strokeWidth="5" opacity="0.8" />
                 <line x1="380" y1="158" x2="380" y2="222" stroke="#FFE600" strokeWidth="4" opacity="0.8" />
@@ -717,7 +720,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               <g transform="translate(30, 30)">
                 <rect x="0" y="0" width="820" height="55" fill="rgba(220, 38, 38, 0.95)" rx="8" />
                 <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
-                  ⚡ REKA KEJADIAN: MASSA MEROBOHKAN TEMBOK BERLIN
+                  {primaryText ? `⚡ REKA KEJADIAN: ${primaryText.slice(0, 36)}` : '⚡ REKA KEJADIAN: MASSA MEROBOHKAN TEMBOK BERLIN'}
                 </text>
               </g>
             </g>
@@ -795,7 +798,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               <g transform="translate(30, 30)">
                 <rect x="0" y="0" width="820" height="55" fill="rgba(2, 132, 199, 0.95)" rx="8" />
                 <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
-                  🚨 GERBANG BORNHOLMER DIBUKA: LAUTAN MASSA MENEROBOS
+                  {primaryText ? `🚨 PERIMETER JEBOL: ${primaryText.slice(0, 36)}` : '🚨 GERBANG BORNHOLMER DIBUKA: LAUTAN MASSA MENEROBOS'}
                 </text>
               </g>
             </g>
@@ -850,7 +853,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               <g transform="translate(360, 100)">
                 <rect x="0" y="0" width="160" height="48" fill="#020617" stroke="#ef4444" strokeWidth="3" rx="6" />
                 <text x="80" y="33" fill="#ef4444" fontSize="22" fontWeight="900" fontFamily="monospace" textAnchor="middle">
-                  18:57:04
+                  {(metricValue || locationTag || '18:57:04').slice(0, 12)}
                 </text>
               </g>
 
@@ -858,7 +861,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               <g transform="translate(30, 30)">
                 <rect x="0" y="0" width="820" height="55" fill="rgba(220, 38, 38, 0.95)" rx="8" />
                 <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
-                  🎙️ PUSAT PERS: SCHABOWSKI MEMBACA DOKUMEN SALAH
+                  {primaryText ? `🎙️ KONFERENSI PERS: ${primaryText.slice(0, 36)}` : '🎙️ PUSAT PERS: SCHABOWSKI MEMBACA DOKUMEN SALAH'}
                 </text>
               </g>
             </g>
@@ -875,11 +878,11 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 <rect x="0" y="0" width="600" height="590" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="3" rx="8" />
                 <rect x="40" y="35" width="240" height="32" fill="#dc2626" rx="4" />
                 <text x="160" y="57" fill="#ffffff" fontSize="13" fontWeight="900" fontFamily="monospace" textAnchor="middle">
-                  DOKUMEN BIROKRASI SED #89
+                  {(stampText || 'DOKUMEN INVESTIGASI').slice(0, 24)}
                 </text>
 
-                <text x="40" y="110" fill="#0f172a" fontSize="22" fontWeight="900" fontFamily="monospace">
-                  ENTWURF REISEBESTIMMUNGEN
+                <text x="40" y="110" fill="#0f172a" fontSize="20" fontWeight="900" fontFamily="monospace">
+                  {(secondaryText || title || 'DOKUMEN RESMI').slice(0, 32)}
                 </text>
 
                 <line x1="40" y1="130" x2="560" y2="130" stroke="#cbd5e1" strokeWidth="3" />
@@ -891,18 +894,18 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 {/* Highlighted Fatal Paragraph */}
                 <g transform="translate(40, 245)">
                   <rect x="-10" y="-5" width="540" height="34" fill="#fde047" opacity="0.8" rx="4" />
-                  <text x="0" y="20" fill="#000000" fontSize="18" fontWeight="900" fontFamily="monospace">
-                    PARAGRAF 4: "...sofort, unverzüglich."
+                  <text x="0" y="20" fill="#000000" fontSize="17" fontWeight="900" fontFamily="monospace">
+                    {primaryText ? `BUKTI KATA: "${primaryText.slice(0, 30)}"` : 'PARAGRAF 4: "...sofort, unverzüglich."'}
                   </text>
                 </g>
 
                 <g transform="translate(400, 450) rotate(-12)" opacity={stampSpring}>
                   <circle cx="50" cy="50" r="50" fill="none" stroke="#dc2626" strokeWidth="5" strokeDasharray="8 4" />
                   <text x="50" y="45" fill="#dc2626" fontSize="15" fontWeight="900" fontFamily="monospace" textAnchor="middle">
-                    TOP SECRET
+                    {stampText || 'TOP SECRET'}
                   </text>
                   <text x="50" y="65" fill="#dc2626" fontSize="12" fontWeight="700" fontFamily="monospace" textAnchor="middle">
-                    FATAL MEMO
+                    BUKTI MATERIL
                   </text>
                 </g>
 
@@ -923,7 +926,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               <g transform="translate(30, 30)">
                 <rect x="0" y="0" width="820" height="55" fill="rgba(217, 119, 6, 0.95)" rx="8" />
                 <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
-                  🔍 BUKTI MATERIL: KESALAHAN KATA "SOFORT" (SEGERA)
+                  {primaryText ? `🔍 BUKTI MATERIL: ${primaryText.slice(0, 36)}` : '🔍 BUKTI MATERIL: KESALAHAN KATA "SOFORT" (SEGERA)'}
                 </text>
               </g>
             </g>
@@ -943,63 +946,253 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               </g>
 
               {/* Sequential Falling Domino Slabs (Tumbling Forward Left to Right) */}
-              {[
-                { name: '1. TEMBOK BERLIN', sub: '9 NOV 1989', startF: 0, color: '#ef4444' },
-                { name: '2. POLANDIA & HUNGARIA', sub: 'DES 1989', startF: 16, color: '#f59e0b' },
-                { name: '3. CEKOSLOWAKIA', sub: '1990', startF: 32, color: '#38bdf8' },
-                { name: '4. PAKTA WARSAWA', sub: '1991', startF: 48, color: '#a855f7' },
-                { name: '5. UNI SOVIET', sub: '26 DES 1991', startF: 64, color: '#dc2626' },
-              ].map((domino, idx) => {
-                const tilt = interpolate(frame, [domino.startF, domino.startF + 14], [0, 68], {
-                  extrapolateLeft: 'clamp',
-                  extrapolateRight: 'clamp',
-                });
-                const dx = 150 + idx * 130;
-                const dy = 440;
-                return (
-                  <g key={idx} transform={`translate(${dx}, ${dy})`}>
-                    <g transform={`rotate(${tilt} 0 160)`}>
-                      <rect x="-32" y="-120" width="64" height="280" fill="#1e293b" stroke={domino.color} strokeWidth="4" rx="6" />
-                      <rect x="-28" y="-115" width="56" height="270" fill={domino.color} opacity="0.2" />
-                      <text
-                        x="-8"
-                        y="0"
-                        fill="#ffffff"
-                        fontSize="14"
-                        fontWeight="900"
-                        fontFamily="'Montserrat', sans-serif"
-                        transform="rotate(90 -8 0)"
-                      >
-                        {domino.name}
-                      </text>
-                      <text
-                        x="14"
-                        y="30"
-                        fill="#cbd5e1"
-                        fontSize="11"
-                        fontWeight="bold"
-                        fontFamily="monospace"
-                        transform="rotate(90 14 30)"
-                      >
-                        {domino.sub}
-                      </text>
+              {(() => {
+                let dominoList = [
+                  { name: '1. TEMBOK BERLIN', sub: '9 NOV 1989', startF: 0, color: '#ef4444' },
+                  { name: '2. POLANDIA & HUNGARIA', sub: 'DES 1989', startF: 16, color: '#f59e0b' },
+                  { name: '3. CEKOSLOWAKIA', sub: '1990', startF: 32, color: '#38bdf8' },
+                  { name: '4. PAKTA WARSAWA', sub: '1991', startF: 48, color: '#a855f7' },
+                  { name: '5. UNI SOVIET', sub: '26 DES 1991', startF: 64, color: '#dc2626' },
+                ];
+                if (secondaryText && secondaryText.includes(',')) {
+                  const parts = secondaryText.split(',').map((s) => s.trim()).filter(Boolean);
+                  if (parts.length >= 3) {
+                    const colors = ['#ef4444', '#f59e0b', '#38bdf8', '#a855f7', '#dc2626'];
+                    dominoList = parts.slice(0, 5).map((p, idx) => ({
+                      name: `${idx + 1}. ${p.toUpperCase().slice(0, 16)}`,
+                      sub: `TAHAP ${idx + 1}`,
+                      startF: idx * 16,
+                      color: colors[idx % colors.length],
+                    }));
+                  }
+                }
+                return dominoList.map((domino, idx) => {
+                  const tilt = interpolate(frame, [domino.startF, domino.startF + 14], [0, 68], {
+                    extrapolateLeft: 'clamp',
+                    extrapolateRight: 'clamp',
+                  });
+                  const dx = 150 + idx * 130;
+                  const dy = 440;
+                  return (
+                    <g key={idx} transform={`translate(${dx}, ${dy})`}>
+                      <g transform={`rotate(${tilt} 0 160)`}>
+                        <rect x="-32" y="-120" width="64" height="280" fill="#1e293b" stroke={domino.color} strokeWidth="4" rx="6" />
+                        <rect x="-28" y="-115" width="56" height="270" fill={domino.color} opacity="0.2" />
+                        <text
+                          x="-8"
+                          y="0"
+                          fill="#ffffff"
+                          fontSize="14"
+                          fontWeight="900"
+                          fontFamily="'Montserrat', sans-serif"
+                          transform="rotate(90 -8 0)"
+                        >
+                          {domino.name}
+                        </text>
+                        <text
+                          x="14"
+                          y="30"
+                          fill="#cbd5e1"
+                          fontSize="11"
+                          fontWeight="bold"
+                          fontFamily="monospace"
+                          transform="rotate(90 14 30)"
+                        >
+                          {domino.sub}
+                        </text>
+                      </g>
                     </g>
-                  </g>
-                );
-              })}
+                  );
+                });
+              })()}
 
               {/* Action Banner */}
               <g transform="translate(30, 30)">
                 <rect x="0" y="0" width="820" height="55" fill="rgba(220, 38, 38, 0.95)" rx="8" />
                 <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
-                  💥 REKA ADEGAN: EFEK DOMINO RUNTUHNYA TIRAI BESI
+                  {primaryText ? `💥 EFEK DOMINO: ${primaryText.slice(0, 36)}` : '💥 REKA ADEGAN: EFEK DOMINO RUNTUHNYA SEJARAH'}
                 </text>
               </g>
             </g>
           )}
 
           {/* ======================================================== */}
-          {/* SCENE P: FORENSIC DOSSIER (Universal High-Impact Default) */}
+          {/* SCENE P: MARITIME DISASTER (Kapal, Gunung Es, SOS Laut) */}
+          {/* ======================================================== */}
+          {(type === 'maritime-disaster' || type === 'ship-iceberg') && (
+            <g transform="translate(100, 390)">
+              <rect x="0" y="0" width="880" height="780" fill="#020617" stroke="#1e293b" strokeWidth="4" rx="16" />
+
+              {/* Night Sky & Stars */}
+              {[
+                { x: 120, y: 120 }, { x: 260, y: 90 }, { x: 420, y: 140 },
+                { x: 600, y: 80 }, { x: 740, y: 110 }, { x: 810, y: 160 },
+              ].map((s, i) => (
+                <circle key={i} cx={s.x} cy={s.y} r={1.5 + (i % 2)} fill="#ffffff" opacity={0.6 + Math.sin(frame * 0.2 + i) * 0.4} />
+              ))}
+
+              {/* Jagged Iceberg on Right */}
+              <g transform="translate(580, 260)">
+                <polygon points="120,380 40,240 100,160 170,120 230,190 280,380" fill="#0f172a" stroke="#38bdf8" strokeWidth="3" opacity="0.9" />
+                <polygon points="100,160 170,120 180,240 110,260" fill="#38bdf8" opacity="0.25" />
+                <text x="170" y="105" fill="#38bdf8" fontSize="14" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
+                  GUNUNG ES (ICEBERG)
+                </text>
+              </g>
+
+              {/* Tilting Ocean Liner Ship Silhouette */}
+              {(() => {
+                const shipTilt = interpolate(frame, [0, 60], [-8, -26], { extrapolateRight: 'clamp' });
+                return (
+                  <g transform={`translate(280, 480) rotate(${shipTilt})`}>
+                    {/* Ship Hull */}
+                    <polygon points="-220,40 -180,-20 160,-20 220,10 180,50 -200,50" fill="#090d16" stroke="#475569" strokeWidth="4" />
+                    <rect x="-160" y="-55" width="280" height="35" fill="#1e293b" stroke="#64748b" strokeWidth="3" rx="2" />
+                    {/* Smokestacks */}
+                    {[-100, -30, 40, 110].map((cx, idx) => (
+                      <g key={idx} transform={`translate(${cx}, -85)`}>
+                        <rect x="-10" y="0" width="20" height="32" fill="#dc2626" stroke="#000" strokeWidth="2" />
+                        <rect x="-10" y="0" width="20" height="10" fill="#000" />
+                        {/* Smoke puffs */}
+                        <circle cx={-5 - ((frame + idx * 8) % 20)} cy={-10 - ((frame * 2 + idx * 10) % 35)} r={8} fill="#475569" opacity="0.4" />
+                      </g>
+                    ))}
+                    {/* Radio Mast & SOS Waves */}
+                    <line x1="-30" y1="-85" x2="-30" y2="-150" stroke="#cbd5e1" strokeWidth="4" />
+                    <circle cx="-30" cy="-150" r={16 + (frame % 28)} fill="none" stroke="#ef4444" strokeWidth="3" opacity={1 - (frame % 28) / 28} />
+                    <text x="-30" y="-175" fill="#ef4444" fontSize="18" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                      SOS ... --- ... CQD
+                    </text>
+                  </g>
+                );
+              })()}
+
+              {/* Rolling Ocean Waves at Bottom */}
+              <g transform="translate(0, 560)">
+                <path
+                  d={`M 0 60 Q 220 ${40 + Math.sin(frame * 0.1) * 15} 440 60 T 880 60 L 880 220 L 0 220 Z`}
+                  fill="#031024"
+                  stroke="#1e3a8a"
+                  strokeWidth="4"
+                />
+                <path
+                  d={`M 0 90 Q 200 ${80 + Math.cos(frame * 0.12) * 12} 400 90 T 880 90 L 880 220 L 0 220 Z`}
+                  fill="#020817"
+                  opacity="0.8"
+                />
+              </g>
+
+              {/* Action Banner */}
+              <g transform="translate(30, 30)">
+                <rect x="0" y="0" width="820" height="55" fill="rgba(2, 132, 199, 0.95)" rx="8" />
+                <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+                  {primaryText ? `🚢 REKA KEJADIAN: ${primaryText.slice(0, 36)}` : '🚢 REKA KEJADIAN: DETIK-DETIK BENCANA MARITIM'}
+                </text>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE Q: REACTOR MELTDOWN (Reaktor Nuklir / Korseling)   */}
+          {/* ======================================================== */}
+          {(type === 'reactor-meltdown' || type === 'nuclear-disaster') && (
+            <g transform="translate(100, 390)">
+              <rect x="0" y="0" width="880" height="780" fill="#080305" stroke="#7f1d1d" strokeWidth="4" rx="16" />
+
+              {/* Glowing Radiation Hazard Core */}
+              <g transform="translate(440, 420)">
+                {/* Radiation containment vessel */}
+                <circle cx="0" cy="0" r="220" fill="#180709" stroke="#dc2626" strokeWidth="6" strokeDasharray="18 10" />
+                <circle cx="0" cy="0" r={160 + pulse * 20} fill="none" stroke="#ef4444" strokeWidth="3" opacity="0.6" />
+
+                {/* Nuclear Fuel Rods */}
+                {[-100, -50, 0, 50, 100].map((rx, idx) => (
+                  <g key={idx} transform={`translate(${rx}, -90)`}>
+                    <rect x="-12" y="0" width="24" height="180" fill="#2d0607" stroke="#ef4444" strokeWidth="3" rx="4" />
+                    <rect x="-8" y={idx % 2 === 0 ? frame % 60 : (frame * 1.5) % 60} width="16" height="40" fill="#f87171" opacity="0.85" rx="3" />
+                  </g>
+                ))}
+
+                {/* Radiation Warning Trefoil */}
+                <circle cx="0" cy="0" r="32" fill="#FFE600" stroke="#000" strokeWidth="4" />
+                <circle cx="0" cy="0" r="10" fill="#000000" />
+              </g>
+
+              {/* Warning Overheat Gauge Display */}
+              <g transform="translate(240, 120)">
+                <rect x="0" y="0" width="400" height="90" fill="#1c0507" stroke="#ef4444" strokeWidth="3" rx="10" />
+                <text x="200" y="38" fill="#fca5a5" fontSize="15" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                  [!] {metricLabel || 'SUHU INTI REAKTOR'}
+                </text>
+                <text x="200" y="74" fill="#ef4444" fontSize="32" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                  {metricValue || '3,820°C CRITICAL'}
+                </text>
+              </g>
+
+              {/* Action Banner */}
+              <g transform="translate(30, 30)">
+                <rect x="0" y="0" width="820" height="55" fill="rgba(220, 38, 38, 0.95)" rx="8" />
+                <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+                  {primaryText ? `☢️ REKA KEJADIAN: ${primaryText.slice(0, 36)}` : '☢️ REKA KEJADIAN: LONJAKAN RADIASI INTI REAKTOR'}
+                </text>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE R: LABORATORY DISCOVERY (Petri Dish / Mikroskop)   */}
+          {/* ======================================================== */}
+          {(type === 'laboratory-discovery' || type === 'medical-breakthrough') && (
+            <g transform="translate(100, 390)">
+              <rect x="0" y="0" width="880" height="780" fill="#030d0a" stroke="#064e3b" strokeWidth="4" rx="16" />
+
+              {/* Circular Petri Dish Glass */}
+              <g transform="translate(440, 420)">
+                <circle cx="0" cy="0" r="230" fill="#061c14" stroke="#059669" strokeWidth="6" />
+                <circle cx="0" cy="0" r="215" fill="#042f22" stroke="#10b981" strokeWidth="2" strokeDasharray="12 8" />
+
+                {/* Staph Bacteria Colonies (Yellow/Orange Dots) */}
+                {Array.from({ length: 28 }).map((_, i) => {
+                  const angle = (i / 28) * Math.PI * 2;
+                  const dist = 110 + (i % 5) * 18;
+                  const bx = Math.cos(angle) * dist;
+                  const by = Math.sin(angle) * dist;
+                  return (
+                    <circle key={i} cx={bx} cy={by} r={6 + (i % 4)} fill="#f59e0b" stroke="#78350f" strokeWidth="2" opacity="0.85" />
+                  );
+                })}
+
+                {/* Accidental Penicillium Mold Center */}
+                <circle cx="0" cy="0" r="75" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" strokeWidth="4" strokeDasharray="8 6" />
+                <circle cx="0" cy="0" r={45 + pulse * 6} fill="#047857" stroke="#34d399" strokeWidth="4" />
+                <text x="0" y="6" fill="#ffffff" fontSize="12" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                  PENICILLIUM
+                </text>
+                <text x="0" y="115" fill="#34d399" fontSize="13" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
+                  ZONA INHIBISI BAKTERI
+                </text>
+              </g>
+
+              {/* Microscope Reticle Crosshairs */}
+              <g transform="translate(440, 420)">
+                <line x1="-240" y1="0" x2="-85" y2="0" stroke="#34d399" strokeWidth="2" opacity="0.6" />
+                <line x1="85" y1="0" x2="240" y2="0" stroke="#34d399" strokeWidth="2" opacity="0.6" />
+                <line x1="0" y1="-240" x2="0" y2="-85" stroke="#34d399" strokeWidth="2" opacity="0.6" />
+                <line x1="0" y1="85" x2="0" y2="240" stroke="#34d399" strokeWidth="2" opacity="0.6" />
+              </g>
+
+              {/* Action Banner */}
+              <g transform="translate(30, 30)">
+                <rect x="0" y="0" width="820" height="55" fill="rgba(5, 150, 105, 0.95)" rx="8" />
+                <text x="410" y="36" fill="#ffffff" fontSize="19" fontWeight="900" fontFamily="monospace" textAnchor="middle" letterSpacing="2">
+                  {primaryText ? `🔬 BUKTI FORENSIK: ${primaryText.slice(0, 36)}` : '🔬 BUKTI FORENSIK: KONTAMINASI TIDAK SENGAJA'}
+                </text>
+              </g>
+            </g>
+          )}
+
+          {/* ======================================================== */}
+          {/* SCENE S: FORENSIC DOSSIER (Universal High-Impact Default) */}
           {/* ======================================================== */}
           {(type === 'forensic-dossier' ||
             (![
@@ -1018,6 +1211,9 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
               'domino-collapse',
               'press-podium',
               'memo-investigation',
+              'maritime-disaster',
+              'reactor-meltdown',
+              'laboratory-discovery',
             ].includes(type))) && (
             <g transform="translate(140, 420)">
               <rect x="0" y="0" width="800" height="740" fill="#1e293b" stroke="#475569" strokeWidth="4" rx="14" />

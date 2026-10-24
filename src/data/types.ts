@@ -15,6 +15,9 @@ export type DirectorSceneType =
   | 'domino-collapse'
   | 'press-podium'
   | 'memo-investigation'
+  | 'maritime-disaster'
+  | 'reactor-meltdown'
+  | 'laboratory-discovery'
   | string;
 
 export type ZoomDirection = 'in' | 'out' | 'panRight' | 'panLeft' | 'zoomIn' | 'zoomOut' | string;
