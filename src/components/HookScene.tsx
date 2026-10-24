@@ -102,7 +102,6 @@ export const HookScene: React.FC<HookSceneProps> = ({
             right: 0,
             height: '52%',
             overflow: 'hidden',
-            borderBottom: '3px solid rgba(255, 230, 0, 0.6)',
             opacity: leftOpacity,
             transition: 'opacity 0.2s ease-out',
           }}
@@ -134,7 +133,6 @@ export const HookScene: React.FC<HookSceneProps> = ({
                   padding: '30px',
                   backgroundColor: '#1e293b',
                   borderRadius: '12px',
-                  border: '2px solid #475569',
                   textAlign: 'center',
                 }}
               >
@@ -192,22 +190,6 @@ export const HookScene: React.FC<HookSceneProps> = ({
             }}
           />
         </div>
-
-        {/* ============================================================== */}
-        {/* DYNAMIC LASER / DIVIDER LINE BETWEEN TWO WORLDS                */}
-        {/* ============================================================== */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: 0,
-            right: 0,
-            height: '4px',
-            backgroundColor: isSecondHalf ? '#ef4444' : '#FFE600',
-            boxShadow: `0 0 25px ${isSecondHalf ? '#ef4444' : '#FFE600'}, 0 0 50px ${dividerFlash > 0 ? '#ffffff' : 'transparent'}`,
-            zIndex: 20,
-          }}
-        />
       </div>
 
       {/* Heavy bottom film gradient to guarantee 100% subtitle legibility */}
@@ -224,7 +206,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
         }}
       />
 
-      {/* Top Editorial Headline (Dynamic Director Badge & Headline) */}
+      {/* Top Editorial Headline (Dynamic Clean Kicker & Headline) */}
       <div
         style={{
           position: 'absolute',
@@ -236,22 +218,17 @@ export const HookScene: React.FC<HookSceneProps> = ({
       >
         <div
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            backgroundColor: isSecondHalf ? '#dc2626' : '#d97706',
-            color: '#ffffff',
-            padding: '6px 16px',
-            borderRadius: '4px',
+            fontFamily: "'Space Grotesk', -apple-system, sans-serif",
             fontSize: '15px',
-            fontWeight: 900,
-            letterSpacing: '2px',
+            fontWeight: 800,
+            color: isSecondHalf ? '#ef4444' : '#FFE600',
+            letterSpacing: '2.5px',
             textTransform: 'uppercase',
-            marginBottom: '12px',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.6)',
+            marginBottom: '8px',
+            textShadow: '0 2px 10px rgba(0, 0, 0, 0.9)',
           }}
         >
-          <span>{isSecondHalf ? rightBadge : leftBadge}</span>
+          {isSecondHalf ? rightBadge : leftBadge}
         </div>
 
         <h1

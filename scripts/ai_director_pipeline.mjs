@@ -446,7 +446,7 @@ async function runWhisperAlignment(wavPath, storyId) {
 }
 
 // -----------------------------------------------------------------------------
-// STEP 4: Subtitle Paging & Story Construction
+// STEP 4: Subtitle Paging & Story Construction (Ground-Truth Audio Aligned)
 // -----------------------------------------------------------------------------
 function cleanSubtitleWord(rawWord) {
   if (!rawWord) return '';
@@ -457,90 +457,165 @@ function cleanSubtitleWord(rawWord) {
     .trim();
 }
 
-function partitionIntoChunks(items) {
+function normalizeToken(w) {
+  return (w || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function partitionClause(words) {
   const chunks = [];
   let i = 0;
-  while (i < items.length) {
-    const remaining = items.length - i;
+  while (i < words.length) {
+    const remaining = words.length - i;
     let size = 3;
     if (remaining === 4) {
       size = 2;
     } else if (remaining === 2) {
       size = 2;
-    } else if (remaining === 1) {
-      if (chunks.length > 0 && chunks[chunks.length - 1].length <= 2) {
-        chunks[chunks.length - 1].push(items[i]);
-        break;
-      }
-      size = 1;
+    } else if (remaining <= 3) {
+      size = remaining;
     }
-    chunks.push(items.slice(i, i + size));
+    chunks.push(words.slice(i, i + size));
     i += size;
   }
   return chunks;
 }
 
+function partitionSectionWords(sectionWords) {
+  const clauses = [];
+  let currentClause = [];
+
+  for (let i = 0; i < sectionWords.length; i++) {
+    const w = sectionWords[i];
+    currentClause.push(w);
+
+    const hasPunctuation = /[.!?]/.test(w.word);
+    const nextWord = sectionWords[i + 1];
+    const isBreathPause = nextWord ? (nextWord.start - w.end) >= 0.25 : false;
+
+    if (hasPunctuation || isBreathPause || i === sectionWords.length - 1) {
+      clauses.push(currentClause);
+      currentClause = [];
+    }
+  }
+
+  const allChunks = [];
+  for (const clause of clauses) {
+    if (clause.length > 0) {
+      allChunks.push(...partitionClause(clause));
+    }
+  }
+  return allChunks;
+}
+
 function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
-  console.log('[4/4] Membangun timeline sinkron dan kinetic subtitle stationary...');
+  console.log('[4/4] Membangun timeline sinkron audio ground-truth dan kinetic subtitle berirama...');
 
   const FPS = 30;
+  const allWords = whisperData.allWords || [];
   const totalFrames = Math.round(whisperData.totalDurationSec * FPS);
 
-  // Build clean stationary subtitle pages
+  const scriptSections = [
+    { id: 'hook', text: storyData.hook.narration, target: storyData.hook },
+    ...storyData.nodes.map((n) => ({ id: `node_${n.step}`, text: n.narration, target: n })),
+    { id: 'outro', text: storyData.outro.narration, target: storyData.outro },
+  ];
+
+  let wordIdx = 0;
+  const matchedSections = [];
+
+  for (let s = 0; s < scriptSections.length; s++) {
+    const currentSec = scriptSections[s];
+    const nextSec = scriptSections[s + 1];
+
+    const startWordIdx = wordIdx;
+    let endWordIdx = -1;
+
+    if (!nextSec) {
+      endWordIdx = allWords.length - 1;
+      wordIdx = allWords.length;
+    } else {
+      const nextStartTokens = nextSec.text.split(/\s+/).map(normalizeToken).filter((t) => t.length > 2).slice(0, 4);
+      let foundNextStart = -1;
+      for (let i = startWordIdx + 4; i < allWords.length; i++) {
+        const wClean = normalizeToken(allWords[i]?.word);
+        if (nextStartTokens.length > 0 && (wClean === nextStartTokens[0] || (wClean.startsWith(nextStartTokens[0]) && nextStartTokens[0].length >= 4))) {
+          if (nextStartTokens.length >= 2 && i + 1 < allWords.length) {
+            const wNext = normalizeToken(allWords[i + 1]?.word);
+            if (wNext.includes(nextStartTokens[1]) || nextStartTokens[1].includes(wNext)) {
+              foundNextStart = i;
+              break;
+            }
+          } else {
+            foundNextStart = i;
+            break;
+          }
+        }
+      }
+
+      if (foundNextStart !== -1) {
+        endWordIdx = foundNextStart - 1;
+        wordIdx = foundNextStart;
+      } else {
+        const approxWords = currentSec.text.split(/\s+/).length;
+        endWordIdx = Math.min(allWords.length - 1, startWordIdx + approxWords - 1);
+        wordIdx = endWordIdx + 1;
+      }
+    }
+
+    const assignedWords = allWords.slice(startWordIdx, endWordIdx + 1);
+    matchedSections.push({
+      ...currentSec,
+      words: assignedWords,
+      startSec: assignedWords[0]?.start ?? 0,
+      endSec: assignedWords[assignedWords.length - 1]?.end ?? 0,
+    });
+  }
+
+  // Calculate cut frames placed right in the silence gap between scenes
+  const cutFrames = [0];
+  for (let s = 0; s < matchedSections.length - 1; s++) {
+    const cur = matchedSections[s];
+    const nxt = matchedSections[s + 1];
+    const midSec = (cur.endSec + nxt.startSec) / 2;
+    const cutF = Math.round(midSec * FPS);
+    cutFrames.push(cutF);
+  }
+  cutFrames.push(totalFrames);
+
+  // Apply ground-truth frame-perfect durations to Hook, Nodes, and Outro
+  storyData.hook.durationFrames = cutFrames[1] - cutFrames[0];
+
+  for (let i = 0; i < storyData.nodes.length; i++) {
+    const node = storyData.nodes[i];
+    const startF = cutFrames[i + 1];
+    const endF = cutFrames[i + 2];
+    node.startFrame = startF;
+    node.durationFrames = endF - startF;
+  }
+
+  storyData.outro.durationFrames = cutFrames[cutFrames.length - 1] - cutFrames[cutFrames.length - 2];
+
+  // Build clean stationary subtitle pages strictly within each scene
   const wordTimestamps = [];
   let pageIndex = 0;
 
-  const validWords = whisperData.allWords.map((w) => ({
-    word: cleanSubtitleWord(w.word),
-    startFrame: Math.round(w.start * FPS),
-    endFrame: Math.round(w.end * FPS),
-  })).filter((w) => w.word.length > 0);
-
-  const chunks = partitionIntoChunks(validWords);
-  for (const chunk of chunks) {
-    chunk.forEach((w) => {
-      wordTimestamps.push({
-        ...w,
-        pageIndex,
-      });
-    });
-    pageIndex++;
+  for (const sec of matchedSections) {
+    const chunks = partitionSectionWords(sec.words);
+    for (const chunk of chunks) {
+      for (const w of chunk) {
+        const cleanW = cleanSubtitleWord(w.word);
+        if (cleanW) {
+          wordTimestamps.push({
+            word: cleanW,
+            startFrame: Math.round(w.start * FPS),
+            endFrame: Math.round(w.end * FPS),
+            pageIndex,
+          });
+        }
+      }
+      pageIndex++;
+    }
   }
-
-  // Calculate proportional durations for Hook, Nodes, and Outro
-  const allScriptParts = [
-    storyData.hook.narration,
-    ...storyData.nodes.map((n) => n.narration),
-    storyData.outro.narration,
-  ];
-
-  const totalChars = allScriptParts.reduce((acc, text) => acc + text.length, 0);
-
-  let currentFrame = 0;
-
-  // Hook frames
-  const hookRatio = storyData.hook.narration.length / totalChars;
-  const hookFrames = Math.max(120, Math.round(totalFrames * hookRatio));
-  storyData.hook.durationFrames = hookFrames;
-  currentFrame += hookFrames;
-
-  // Nodes frames
-  for (let i = 0; i < storyData.nodes.length; i++) {
-    const node = storyData.nodes[i];
-    const nodeRatio = node.narration.length / totalChars;
-
-    let nodeFrames = Math.round(totalFrames * nodeRatio);
-    if (nodeFrames < 90) nodeFrames = 90;
-
-    node.startFrame = currentFrame;
-    node.durationFrames = nodeFrames;
-    currentFrame += nodeFrames;
-  }
-
-  // Outro frames (remaining frames)
-  const outroFrames = Math.max(90, totalFrames - currentFrame);
-  storyData.outro.durationFrames = outroFrames;
-  const actualTotalFrames = currentFrame + outroFrames;
 
   const fullStory = {
     id: storyData.id,

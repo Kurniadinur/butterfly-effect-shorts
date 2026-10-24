@@ -66,10 +66,15 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
     return null;
   }
 
-  // Find currently active page. Keep page visible until the next page begins if gap is short (< 20 frames)
+  // Find currently active page:
+  // Subtitles only stay visible while words are actively spoken or during microscopic word transitions (<= 6 frames).
+  // During natural breath pauses or scene cuts, subtitles cleanly disappear so visuals can breathe!
   const activePageIndex = pages.findIndex((page, idx) => {
     const nextStart = pages[idx + 1]?.startFrame ?? page.endFrame;
-    const holdUntil = nextStart - page.endFrame <= 20 ? nextStart : page.endFrame;
+    const gap = nextStart - page.endFrame;
+    // If the gap to the next page is small (<= 6 frames / 0.2s), hold smoothly.
+    // If there is a breath pause (> 6 frames) or silence, strictly cut off at page.endFrame!
+    const holdUntil = gap <= 6 ? nextStart : page.endFrame;
     return frame >= page.startFrame && frame < holdUntil;
   });
 
@@ -84,7 +89,7 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
     (w) => frame >= w.startFrame && frame < w.endFrame
   );
 
-  // If between words or in hold-period, keep last word active or none
+  // If between adjacent words on the same page, keep the last spoken word active
   if (activeWordIndex === -1 && frame >= activePage.endFrame) {
     activeWordIndex = activePage.words.length - 1;
   }

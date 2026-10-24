@@ -33,11 +33,10 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
     >
       <div
         style={{
-          backgroundColor: '#0f141f',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
+          backgroundColor: 'rgba(15, 20, 31, 0.92)',
           borderRadius: '18px',
           padding: '40px 32px',
-          boxShadow: '0 25px 60px rgba(0, 0, 0, 0.9)',
+          boxShadow: '0 30px 70px rgba(0, 0, 0, 0.95)',
           width: '100%',
         }}
       >
