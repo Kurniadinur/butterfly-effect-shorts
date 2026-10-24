@@ -145,20 +145,30 @@ async function generateStoryboard(topic) {
   console.log('      (Menganalisa topik & menyusun 8-15 adegan berantai...)');
   const t0 = Date.now();
   const result = await callGeminiWithRotation(async (ai, key, keyNum) => {
-    const response = await ai.models.generateContent({
-      model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
-      contents: [
-        {
-          role: 'user',
-          parts: [{ text: `${DIRECTOR_PROMPT}\n\nTopik Butterfly Effect Baru: "${topic}"` }],
-        },
-      ],
-      config: {
-        temperature: 0.85,
-        topP: 0.95,
-      },
-    });
-    return response.text || '';
+    const candidateModels = [process.env.GEMINI_MODEL || 'gemini-3.5-flash', 'gemini-3.5-flash', 'gemini-3.8-flash'];
+    let lastModelErr = null;
+    for (const modelName of [...new Set(candidateModels)]) {
+      try {
+        const response = await ai.models.generateContent({
+          model: modelName,
+          contents: [
+            {
+              role: 'user',
+              parts: [{ text: `${DIRECTOR_PROMPT}\n\nTopik Butterfly Effect Baru: "${topic}"` }],
+            },
+          ],
+          config: {
+            temperature: 0.85,
+            topP: 0.95,
+          },
+        });
+        if (response.text) return response.text;
+      } catch (err) {
+        lastModelErr = err;
+        console.warn(`      [Model Failover] Model ${modelName} gagal: ${err.message.slice(0, 80)}. Mencoba model alternatif...`);
+      }
+    }
+    throw lastModelErr || new Error('Gagal menghasilkan storyboard');
   });
   console.log(`      ✓ Naskah & kurasi visual selesai dalam ${((Date.now() - t0) / 1000).toFixed(1)} detik.`);
 
