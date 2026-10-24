@@ -15,24 +15,24 @@ const PORT = process.env.UI_PORT || 3333;
 
 const CREATIVE_PERSPECTIVES = [
   {
-    name: 'DRAMA BIROKRASI & BLUNDER DOKUMEN RAHASIA',
-    angle: 'Fokuskan alur pada kelalaian birokrasi, draf regulasi terburu-buru, memo fatal tanpa penjelasan jam berlaku, dan kebingungan juru bicara di depan kamera dunia.',
+    name: 'BLUNDER SEPELE & KELALAIAN MANUSIAWI',
+    angle: 'Fokuskan alur cerita pada momen kelalaian manusiawi paling awal: benda kecil yang terlupakan, memo terburu-buru, salah belok, atau keputusan sepele dalam hitungan detik yang tanpa disadari memicu rangkaian bencana tak terkendali.',
   },
   {
-    name: 'KETEGANGAN LAPANGAN & POS PENJAGA PERBATASAN',
-    angle: 'Fokuskan alur pada komandan pos penjaga yang terisolasi, telepon darurat yang diabaikan atasan, ribuan warga yang menuntut dibukanya gerbang, dan keputusan pasrah menghindari pertumpahan darah.',
+    name: 'KETEGANGAN LAPANGAN DI TITIK KRITIS',
+    angle: 'Fokuskan alur cerita pada kepanikan operator lapangan di garis depan: petugas jaga yang terisolasi, alarm darurat yang berbunyi, komunikasi radio yang terputus, dan detik-detik menegangkan saat mereka menyadari bahaya sudah terlambat dihentikan.',
   },
   {
-    name: 'PERAN KRUSIAL JURNALIS & KEKUATAN BREAKING NEWS',
-    angle: 'Fokuskan alur pada wartawan yang melempar pertanyaan mendadak, kepanikan jawaban spontan di ruang pers, serta ledakan breaking news televisi yang menyulut jutaan warga keluar rumah.',
+    name: 'EFEK DOMINO SEBAB-AKIBAT SISTEMIK',
+    angle: 'Fokuskan alur cerita pada eskalasi efek domino ekstrem bertahap: bagaimana 1 kesalahan mikro merusak sistem lapis pertama, merembet ke kekacauan lapis kedua, memicu kegagalan total, hingga menghancurkan seluruh struktur peradaban.',
   },
   {
-    name: 'EFEK DOMINO GEOPOLITIK GLOBAL (KOLAPS SISTEMIK)',
-    angle: 'Fokuskan alur pada analogi efek domino sebab-akibat ekstrem: bagaimana kesalahan sepele 3 detik meruntuhkan perbatasan, merobohkan benteng ideologi, memicu revolusi damai, hingga membubarkan imperium adidaya.',
+    name: 'BREAKING NEWS & REAKSI KAGET DUNIA',
+    angle: 'Fokuskan alur cerita pada ledakan kabar mengejutkan: transmisi darurat, kepanikan publik yang meluas, pers internasional yang menyiarkan bencana secara langsung, dan keterkejutan jutaan manusia saat menyadari sejarah berubah dalam semalam.',
   },
   {
-    name: 'DETIK-DETIK SPONTAN & REVOLUSI RAKYAT DI ATAS TEMBOK',
-    angle: 'Fokuskan alur pada antusiasme dan keberanian rakyat jelata, palu godam yang menghantam beton pemisah, tangis reuni sanak saudara di tengah malam, dan malam paling bersejarah abad 20.',
+    name: 'INVESTIGASI FORENSIK DOKUMENTER & BUKTI KUNCI',
+    angle: 'Fokuskan alur cerita pada rekonstruksi forensik dingin ala Nessie Judge: analisis kronologis jam demi jam, berkas investigasi deklasifikasi, kata-kata terakhir para saksi kunci, dan pengungkapan fakta bahwa tragedi ini bisa dicegah jika satu hal kecil tidak terabaikan.',
   },
 ];
 

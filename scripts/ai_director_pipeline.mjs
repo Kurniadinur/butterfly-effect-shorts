@@ -43,24 +43,24 @@ console.log('================================================================\n'
 // -----------------------------------------------------------------------------
 export const CREATIVE_PERSPECTIVES = [
   {
-    name: 'DRAMA BIROKRASI & BLUNDER DOKUMEN RAHASIA',
-    angle: 'Fokuskan alur pada kelalaian birokrasi, draf regulasi terburu-buru, memo fatal tanpa penjelasan jam berlaku, dan kebingungan juru bicara di depan kamera dunia.',
+    name: 'BLUNDER SEPELE & KELALAIAN MANUSIAWI',
+    angle: 'Fokuskan alur cerita pada momen kelalaian manusiawi paling awal: benda kecil yang terlupakan, memo terburu-buru, salah belok, atau keputusan sepele dalam hitungan detik yang tanpa disadari memicu rangkaian bencana tak terkendali.',
   },
   {
-    name: 'KETEGANGAN LAPANGAN & POS PENJAGA PERBATASAN',
-    angle: 'Fokuskan alur pada komandan pos penjaga yang terisolasi, telepon darurat yang diabaikan atasan, ribuan warga yang menuntut dibukanya gerbang, dan keputusan pasrah menghindari pertumpahan darah.',
+    name: 'KETEGANGAN LAPANGAN DI TITIK KRITIS',
+    angle: 'Fokuskan alur cerita pada kepanikan operator lapangan di garis depan: petugas jaga yang terisolasi, alarm darurat yang berbunyi, komunikasi radio yang terputus, dan detik-detik menegangkan saat mereka menyadari bahaya sudah terlambat dihentikan.',
   },
   {
-    name: 'PERAN KRUSIAL JURNALIS & KEKUATAN BREAKING NEWS',
-    angle: 'Fokuskan alur pada wartawan yang melempar pertanyaan mendadak, kepanikan jawaban spontan di ruang pers, serta ledakan breaking news televisi yang menyulut jutaan warga keluar rumah.',
+    name: 'EFEK DOMINO SEBAB-AKIBAT SISTEMIK',
+    angle: 'Fokuskan alur cerita pada eskalasi efek domino ekstrem bertahap: bagaimana 1 kesalahan mikro merusak sistem lapis pertama, merembet ke kekacauan lapis kedua, memicu kegagalan total, hingga menghancurkan seluruh struktur peradaban.',
   },
   {
-    name: 'EFEK DOMINO GEOPOLITIK GLOBAL (KOLAPS SISTEMIK)',
-    angle: 'Fokuskan alur pada analogi efek domino sebab-akibat ekstrem: bagaimana kesalahan sepele 3 detik meruntuhkan perbatasan, merobohkan benteng ideologi, memicu revolusi damai, hingga membubarkan imperium adidaya.',
+    name: 'BREAKING NEWS & REAKSI KAGET DUNIA',
+    angle: 'Fokuskan alur cerita pada ledakan kabar mengejutkan: transmisi darurat, kepanikan publik yang meluas, pers internasional yang menyiarkan bencana secara langsung, dan keterkejutan jutaan manusia saat menyadari sejarah berubah dalam semalam.',
   },
   {
-    name: 'DETIK-DETIK SPONTAN & REVOLUSI RAKYAT DI ATAS TEMBOK',
-    angle: 'Fokuskan alur pada antusiasme dan keberanian rakyat jelata, palu godam yang menghantam beton pemisah, tangis reuni sanak saudara di tengah malam, dan malam paling bersejarah abad 20.',
+    name: 'INVESTIGASI FORENSIK DOKUMENTER & BUKTI KUNCI',
+    angle: 'Fokuskan alur cerita pada rekonstruksi forensik dingin ala Nessie Judge: analisis kronologis jam demi jam, berkas investigasi deklasifikasi, kata-kata terakhir para saksi kunci, dan pengungkapan fakta bahwa tragedi ini bisa dicegah jika satu hal kecil tidak terabaikan.',
   },
 ];
 
@@ -243,39 +243,42 @@ async function generateStoryboard(topic) {
     result = await generateStoryboardWithGroq(topic, dynamicPrompt);
   } else {
     try {
-      result = await callGeminiWithRotation(async (ai, key, keyNum) => {
-        const candidateModels = [process.env.GEMINI_MODEL || 'gemini-3.5-flash', 'gemini-3.5-flash', 'gemini-3.8-flash'];
-        let lastModelErr = null;
-        for (const modelName of [...new Set(candidateModels)]) {
-          try {
-            const generatePromise = ai.models.generateContent({
-              model: modelName,
-              contents: [
-                {
-                  role: 'user',
-                  parts: [{ text: dynamicPrompt }],
-                },
-              ],
-              config: {
-                temperature: 0.88,
-                topP: 0.95,
+      // Fast single-key attempt with 12s timeout; if busy/503, failover instantly to Groq LPU
+      const ai = new GoogleGenAI({ apiKey: API_KEYS[0] });
+      const candidateModels = [process.env.GEMINI_MODEL || 'gemini-3.5-flash', 'gemini-3.8-flash'];
+      let lastModelErr = null;
+      for (const modelName of [...new Set(candidateModels)]) {
+        try {
+          const generatePromise = ai.models.generateContent({
+            model: modelName,
+            contents: [
+              {
+                role: 'user',
+                parts: [{ text: dynamicPrompt }],
               },
-            });
-            const timeoutPromise = new Promise((_, reject) =>
-              setTimeout(() => reject(new Error('Gemini API timeout (>15s)')), 15000)
-            );
-            const response = await Promise.race([generatePromise, timeoutPromise]);
-            if (response.text) return response.text;
-          } catch (err) {
-            lastModelErr = err;
-            console.warn(`      [Model Failover] Model ${modelName} gagal: ${err.message.slice(0, 80)}. Mencoba model alternatif...`);
+            ],
+            config: {
+              temperature: 0.88,
+              topP: 0.95,
+            },
+          });
+          const timeoutPromise = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Gemini API timeout (>12s)')), 12000)
+          );
+          const response = await Promise.race([generatePromise, timeoutPromise]);
+          if (response.text) {
+            result = response.text;
+            break;
           }
+        } catch (err) {
+          lastModelErr = err;
+          console.warn(`      [Model Failover] Model ${modelName} gagal: ${err.message.slice(0, 80)}.`);
         }
-        throw lastModelErr || new Error('Gagal menghasilkan storyboard');
-      });
+      }
+      if (!result) throw lastModelErr || new Error('Gagal dari Gemini');
     } catch (geminiErr) {
-      console.warn(`\n[Peringatan] Server Google Gemini sedang mengalami antrean trafik (503).`);
-      console.log(`[Failover Otomatis] Mengalihkan ke Groq Cloud LPU Llama/GPT-OSS...`);
+      console.warn(`\n[Peringatan] Server Google Gemini sedang sibuk/antre (${geminiErr.message.slice(0, 50)}).`);
+      console.log(`[Failover Kilat] Mengalihkan langsung ke Groq Cloud LPU (~2 detik, 0% CPU)...`);
       result = await generateStoryboardWithGroq(topic, dynamicPrompt);
     }
   }
@@ -285,31 +288,76 @@ async function generateStoryboard(topic) {
   const cleaned = result.replace(/```json/gi, '').replace(/```/g, '').trim();
   const storyData = JSON.parse(cleaned);
 
-  const storySlug = (storyData.id || topic)
+  // Normalize Hook
+  if (!storyData.hook || typeof storyData.hook !== 'object') {
+    storyData.hook = {
+      narration: `Kalian bayangin... dari sebuah kesalahan sepele, peristiwa ${topic} bisa terjadi dalam satu malam?`,
+      leftTitle: 'Awal Mula Sepele',
+      rightTitle: 'Bencana Global',
+      leftBadge: 'AWAL MULA SEPELE',
+      rightBadge: 'BENCANA GLOBAL',
+    };
+  } else {
+    if (!storyData.hook.narration) {
+      storyData.hook.narration = `Kalian bayangin... dari ${storyData.hook.leftTitle || 'hal sepele'}, ${storyData.hook.rightTitle || 'bencana besar'} terjadi hanya dalam satu malam?`;
+    }
+    if (!storyData.hook.leftTitle) storyData.hook.leftTitle = 'Awal Mula Sepele';
+    if (!storyData.hook.rightTitle) storyData.hook.rightTitle = 'Bencana Global';
+    if (!storyData.hook.leftBadge) storyData.hook.leftBadge = 'AWAL MULA SEPELE';
+    if (!storyData.hook.rightBadge) storyData.hook.rightBadge = 'BENCANA GLOBAL';
+  }
+
+  // Normalize Outro
+  if (!storyData.outro || typeof storyData.outro !== 'object') {
+    const defaultOutro = typeof storyData.outro === 'string'
+      ? storyData.outro
+      : 'Menurutmu, apa keputusan sepele yang kamu ambil hari ini, yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?';
+    storyData.outro = {
+      narration: defaultOutro,
+      question: defaultOutro,
+    };
+  } else {
+    if (!storyData.outro.narration) {
+      storyData.outro.narration = storyData.outro.question || 'Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah hidupmu 5 tahun lagi?';
+    }
+    if (!storyData.outro.question) {
+      storyData.outro.question = storyData.outro.narration;
+    }
+  }
+
+  // Normalize Nodes
+  if (!Array.isArray(storyData.nodes) || storyData.nodes.length === 0) {
+    throw new Error('Storyboard JSON tidak memiliki array nodes yang valid');
+  }
+
+  // Enforce Clean Slate from 0: Unique Production Run ID (Zero stale cache reuse)
+  const runId = Date.now().toString(36);
+  const baseSlug = (storyData.id || topic)
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '')
-    .slice(0, 45) || 'butterfly-story';
+    .slice(0, 35) || 'story';
+  storyData.id = `${baseSlug}-${runId}`;
 
+  const storySlug = storyData.id;
   const storyMediaDir = path.join(ROOT_DIR, 'public', 'butterfly', 'media', storySlug);
-  if (!fs.existsSync(storyMediaDir)) {
-    fs.mkdirSync(storyMediaDir, { recursive: true });
+  
+  // Wipe and recreate directory to guarantee 100% fresh visuals from 0
+  if (fs.existsSync(storyMediaDir)) {
+    fs.rmSync(storyMediaDir, { recursive: true, force: true });
   }
+  fs.mkdirSync(storyMediaDir, { recursive: true });
 
-  console.log(`\n      [Visual Hunter] Memulai pencarian arsip foto & sketsa dinamis untuk: "${storyData.title || topic}"...`);
+  console.log(`\n      [Visual Hunter (Clean Slate)] Memulai pencarian arsip foto & sketsa baru dari 0 untuk: "${storyData.title || topic}"...`);
 
-  // 1. Download Hook Left Image (Trivial Cause)
+  // 1. Download Hook Left Image (Trivial Cause) from 0
   const hookLeftDest = path.join(storyMediaDir, 'hook_cause.jpg');
   const hookLeftQuery = storyData.hook?.leftSearchQuery || `${topic} ${storyData.hook?.leftTitle || 'cause'}`;
   let hookLeftDone = false;
-  if (fs.existsSync(hookLeftDest) && fs.statSync(hookLeftDest).size > 8192) {
+  const leftRes = await searchAndDownloadImage(hookLeftQuery, storyData.hook?.leftTitle, hookLeftDest);
+  if (leftRes.success) {
     hookLeftDone = true;
-  } else {
-    const leftRes = await searchAndDownloadImage(hookLeftQuery, storyData.hook?.leftTitle, hookLeftDest);
-    if (leftRes.success) {
-      hookLeftDone = true;
-      console.log(`      ✓ [Hook Pemicu] Arsip terunduh: "${leftRes.title}" (${leftRes.source})`);
-    }
+    console.log(`      ✓ [Hook Pemicu] Arsip terunduh: "${leftRes.title}" (${leftRes.source})`);
   }
 
   if (hookLeftDone) {
@@ -320,18 +368,14 @@ async function generateStoryboard(topic) {
     storyData.hook.leftImage = null;
   }
 
-  // 2. Download Hook Right Image (Catastrophe Climax)
+  // 2. Download Hook Right Image (Catastrophe Climax) from 0
   const hookRightDest = path.join(storyMediaDir, 'hook_effect.jpg');
   const hookRightQuery = storyData.hook?.rightSearchQuery || `${topic} ${storyData.hook?.rightTitle || 'catastrophe'}`;
   let hookRightDone = false;
-  if (fs.existsSync(hookRightDest) && fs.statSync(hookRightDest).size > 8192) {
+  const rightRes = await searchAndDownloadImage(hookRightQuery, storyData.hook?.rightTitle, hookRightDest);
+  if (rightRes.success) {
     hookRightDone = true;
-  } else {
-    const rightRes = await searchAndDownloadImage(hookRightQuery, storyData.hook?.rightTitle, hookRightDest);
-    if (rightRes.success) {
-      hookRightDone = true;
-      console.log(`      ✓ [Hook Bencana] Arsip terunduh: "${rightRes.title}" (${rightRes.source})`);
-    }
+    console.log(`      ✓ [Hook Bencana] Arsip terunduh: "${rightRes.title}" (${rightRes.source})`);
   }
 
   if (hookRightDone) {
@@ -364,14 +408,10 @@ async function generateStoryboard(topic) {
     const fallbackNodeQuery = `${topic} ${node.primaryText || ''}`;
 
     let isPhotoDownloaded = false;
-    if (fs.existsSync(nodeDest) && fs.statSync(nodeDest).size > 8192) {
+    const res = await searchAndDownloadImage(nodeQuery, fallbackNodeQuery, nodeDest);
+    if (res.success) {
       isPhotoDownloaded = true;
-    } else {
-      const res = await searchAndDownloadImage(nodeQuery, fallbackNodeQuery, nodeDest);
-      if (res.success) {
-        isPhotoDownloaded = true;
-        console.log(`      ✓ [Adegan ${node.step}] Ditemukan arsip foto/sketsa: "${res.title}" (${res.source})`);
-      }
+      console.log(`      ✓ [Adegan ${node.step}] Ditemukan arsip foto/sketsa: "${res.title}" (${res.source})`);
     }
 
     if (isPhotoDownloaded) {
@@ -439,10 +479,10 @@ async function generateVoiceover(storyData) {
   console.log('[2/4] Mensintesis narasi vokal via Gemini 3.8 Flash Lite TTS...');
 
   const scriptParts = [
-    storyData.hook.narration,
-    ...storyData.nodes.map((n) => n.narration),
-    storyData.outro.narration,
-  ];
+    storyData.hook?.narration || 'Kalian bayangin ini...',
+    ...storyData.nodes.map((n) => n?.narration || ''),
+    storyData.outro?.narration || 'Menurutmu apa keputusan sepele hari ini yang bakal mengubah hidupmu 5 tahun lagi?',
+  ].filter(Boolean);
   const fullScript = scriptParts.join(' ');
 
   const audioBuffer = await callGeminiWithRotation(async (ai, key, keyNum) => {
