@@ -40,6 +40,33 @@ const TransitionShutterFlash: React.FC<{ cutFrames: number[] }> = ({ cutFrames }
   );
 };
 
+/**
+ * AI Audio Supervisor Map:
+ * Maps each forensic vector sketch archetype to its subtle, non-distracting
+ * tactile Foley sound effect. Volumes strictly clamped between 0.20 and 0.30
+ * so speech (volume 1.0) remains 100% crystal clear.
+ */
+const SKETCH_FOLEY_SFX: Record<
+  string,
+  { sfx: string; volume: number; offsetFrames: number; durationFrames: number }
+> = {
+  'key-lockbox': { sfx: 'butterfly/sfx/lock_click.wav', volume: 0.28, offsetFrames: 14, durationFrames: 12 },
+  'maritime-disaster': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.20, offsetFrames: 18, durationFrames: 33 },
+  'courtroom-gavel': { sfx: 'butterfly/sfx/gavel_strike.wav', volume: 0.30, offsetFrames: 15, durationFrames: 16 },
+  'memo-investigation': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.26, offsetFrames: 12, durationFrames: 12 },
+  'bureaucracy-draft': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.24, offsetFrames: 12, durationFrames: 12 },
+  'forensic-dossier': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.26, offsetFrames: 14, durationFrames: 12 },
+  'tactical-map': { sfx: 'butterfly/sfx/radar_ping.wav', volume: 0.20, offsetFrames: 16, durationFrames: 25 },
+  'radiation-hazard': { sfx: 'butterfly/sfx/geiger_tick.wav', volume: 0.24, offsetFrames: 10, durationFrames: 30 },
+  'reactor-meltdown': { sfx: 'butterfly/sfx/geiger_tick.wav', volume: 0.24, offsetFrames: 10, durationFrames: 30 },
+  'clock-countdown': { sfx: 'butterfly/sfx/clock_tick.wav', volume: 0.20, offsetFrames: 10, durationFrames: 20 },
+  'wall-demolition': { sfx: 'butterfly/sfx/hammer_hit.wav', volume: 0.30, offsetFrames: 14, durationFrames: 18 },
+  'gate-breach': { sfx: 'butterfly/sfx/gate_creak.wav', volume: 0.26, offsetFrames: 12, durationFrames: 25 },
+  'valve-failure': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.24, offsetFrames: 12, durationFrames: 22 },
+  'critical-gauge': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.22, offsetFrames: 12, durationFrames: 22 },
+  'telegraph-wire': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.20, offsetFrames: 15, durationFrames: 33 },
+};
+
 export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT_STORY }) => {
   const frame = useCurrentFrame();
 
@@ -192,6 +219,36 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
             <Audio src={staticFile('butterfly/sfx/cinematic_impact.wav')} volume={0.55} />
           </Sequence>
         ))}
+
+      {/* 11. Subtle Action-Matched Sketch Foley SFX (Non-Distracting, Volume 0.20 - 0.30) */}
+      {/* Hook Archetype Foley */}
+      {data.hook.archetype && SKETCH_FOLEY_SFX[data.hook.archetype] && (
+        <Sequence
+          key="sfx-hook-foley"
+          from={SKETCH_FOLEY_SFX[data.hook.archetype].offsetFrames}
+          durationInFrames={SKETCH_FOLEY_SFX[data.hook.archetype].durationFrames}
+        >
+          <Audio
+            src={staticFile(SKETCH_FOLEY_SFX[data.hook.archetype].sfx)}
+            volume={SKETCH_FOLEY_SFX[data.hook.archetype].volume}
+          />
+        </Sequence>
+      )}
+
+      {/* Nodes Forensic Sketch Foley */}
+      {data.nodes.map((node) => {
+        if (!node.directorType || !SKETCH_FOLEY_SFX[node.directorType]) return null;
+        const foley = SKETCH_FOLEY_SFX[node.directorType];
+        return (
+          <Sequence
+            key={`sfx-sketch-${node.step}`}
+            from={node.startFrame + foley.offsetFrames}
+            durationInFrames={foley.durationFrames}
+          >
+            <Audio src={staticFile(foley.sfx)} volume={foley.volume} />
+          </Sequence>
+        );
+      })}
     </div>
   );
 };

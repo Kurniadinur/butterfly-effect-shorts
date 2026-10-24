@@ -153,6 +153,9 @@ KRITERIA AUDIT KETAT:
 7. SUPERVISI RETENSI VIRAL YOUTUBE SHORTS (VIRAL RETENTION ARC & SEAMLESS LOOP):
    - Hook 3 Detik (Stop-The-Scroll): Kalimat pembuka harus langsung menyebutkan waktu/tokoh spesifik dan kontras sepele vs masif.
    - Seamless Infinite Loop: Pastikan bagian penutup outro dapat menyambung kembali secara halus ke awal hook agar retensi melebihi 100%.
+8. SUPERVISI SOUND DESIGN SKETSA (FOLEY MATCHING & ANTI-DISTRACTION GUARANTEE):
+   - Efek suara sketsa harus relevan dengan arketipe visualnya (misal: lock_click untuk key-lockbox, morse_code untuk maritime/telegraph, gavel_strike untuk courtroom, paper_stamp untuk memo).
+   - Menjamin volume berada pada rentang halus (0.20 - 0.30) dan diputar dengan jeda ~12 frame setelah cut agar suara narasi (1.0) tetap jernih dan fokus penonton tidak terganggu.
 
 FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
 {
