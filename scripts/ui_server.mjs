@@ -380,12 +380,21 @@ const server = http.createServer(async (req, res) => {
   // 9. API: Download Video MP4 from Cloud
   if (pathname === '/api/download-artifact' && req.method === 'POST') {
     broadcastLog('[DOWNLOAD] Mengunduh hasil render MP4 dari GitHub Actions ke folder out/...\n');
-    const cmd = spawn('gh', ['run', 'download', '--name', 'video-artifact', '--dir', 'out/'], {
+    const targetFile = path.join(ROOT_DIR, 'out', 'butterfly_effect_shorts.mp4');
+    if (fs.existsSync(targetFile)) {
+      try {
+        fs.unlinkSync(targetFile);
+      } catch (e) {
+        broadcastLog(`[WARN] Gagal menghapus file lama: ${e.message}\n`);
+      }
+    }
+    const cmd = spawn('gh', ['run', 'download', '--name', 'remotion-video', '--dir', 'out/'], {
       cwd: ROOT_DIR,
     });
     cmd.stdout.on('data', (d) => broadcastLog(d));
     cmd.stderr.on('data', (d) => broadcastLog(d));
     cmd.on('close', (code) => {
+      broadcastLog(code === 0 ? '🎉 [DOWNLOAD SELESAI] File out/butterfly_effect_shorts.mp4 siap ditonton!\n' : `❌ [DOWNLOAD GAGAL] Kode keluar: ${code}\n`);
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ status: code === 0 ? 'success' : 'failed', code }));
     });
