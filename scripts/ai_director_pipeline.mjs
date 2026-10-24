@@ -284,11 +284,15 @@ async function generateStoryboard(topic) {
   if (provider === 'groq') {
     result = await generateStoryboardWithGroq(topic, dynamicPrompt);
   } else {
-    try {
-      // Fast single-key attempt with 12s timeout; if busy/503, failover instantly to Groq LPU
-      const ai = new GoogleGenAI({ apiKey: API_KEYS[0] });
+    let keySucceeded = false;
+    let lastKeyErr = null;
+
+    // Full Rotational Failover across ALL available API Keys
+    for (let k = 0; k < API_KEYS.length; k++) {
+      const currentKey = API_KEYS[k];
+      const ai = new GoogleGenAI({ apiKey: currentKey });
       const candidateModels = [process.env.GEMINI_MODEL || 'gemini-3.5-flash', 'gemini-3.8-flash'];
-      let lastModelErr = null;
+
       for (const modelName of [...new Set(candidateModels)]) {
         try {
           const generatePromise = ai.models.generateContent({
@@ -304,22 +308,28 @@ async function generateStoryboard(topic) {
               topP: 0.95,
             },
           });
+          // 8s timeout per attempt for fast responsive rotation
           const timeoutPromise = new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('Gemini API timeout (>12s)')), 12000)
+            setTimeout(() => reject(new Error('Timeout (>8s)')), 8000)
           );
           const response = await Promise.race([generatePromise, timeoutPromise]);
           if (response.text) {
             result = response.text;
+            keySucceeded = true;
+            console.log(`      ✓ Naskah berhasil disusun via Gemini Key ${k + 1} (${modelName})!`);
             break;
           }
         } catch (err) {
-          lastModelErr = err;
-          console.warn(`      [Model Failover] Model ${modelName} gagal: ${err.message.slice(0, 80)}.`);
+          lastKeyErr = err;
+          console.warn(`      [Key ${k + 1} - ${modelName}] Kendala: ${err.message.slice(0, 50)}. Mencoba key/model berikutnya...`);
         }
       }
-      if (!result) throw lastModelErr || new Error('Gagal dari Gemini');
-    } catch (geminiErr) {
-      console.warn(`\n[Peringatan] Server Google Gemini sedang sibuk/antre (${geminiErr.message.slice(0, 50)}).`);
+
+      if (keySucceeded) break;
+    }
+
+    if (!result) {
+      console.warn(`\n[Peringatan] Seluruh ${API_KEYS.length} Gemini API Key sedang sibuk/antre (${lastKeyErr?.message.slice(0, 50)}).`);
       console.log(`[Failover Kilat] Mengalihkan langsung ke Groq Cloud LPU (~2 detik, 0% CPU)...`);
       result = await generateStoryboardWithGroq(topic, dynamicPrompt);
     }
