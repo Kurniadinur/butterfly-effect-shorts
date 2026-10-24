@@ -5,6 +5,18 @@ export { cleanSubtitleWord } from '../utils/textUtils';
 export const CURRENT_STORY: ButterflyStoryData = {
   "id": "runtuh-tembok-berlin-memo-2024-mvm7w4tc",
   "title": "RUNTUHNYA TEMBOK BERLIN: MEMO YANG SALAH DIBACA",
+  "editorialStyle": {
+    "mood": "cold-war-crisis",
+    "grainIntensity": 0.048,
+    "vignetteStrength": 0.35,
+    "lightLeak": {
+      "enabled": true,
+      "color": "rgba(100, 140, 160, 0.12)",
+      "position": "top-right"
+    },
+    "shakeSensitivity": "moderate",
+    "shakeThresholdChaos": 60
+  },
   "hook": {
     "hookStyle": "fullscreen-dramatic",
     "kicker": "9 NOVEMBER 1989",

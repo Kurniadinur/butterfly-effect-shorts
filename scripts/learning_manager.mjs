@@ -128,6 +128,10 @@ KRITERIA AUDIT KETAT:
    - Pilihan 'directorType' harus 100% masuk akal dengan apa yang dinarasikan.
 4. ZERO WEIRD B-ROLL:
    - Pastikan tidak ada pencarian foto bebas yang berpotensi menarik gambar salah (seperti Checkpoint Charlie atau foto modern).
+5. MONITOR GAYA EDITING & KENYAMANAN MATA (EYE COMFORT & ATMOSPHERE):
+   - Pastikan 'editorialStyle' ada dan sesuai dengan topik ('cold-war-crisis', 'noir-forensic', 'industrial-decay', 'amber-urgent', atau 'clean-documentary').
+   - Pastikan 'grainIntensity' berada di ambang aman (0.03 - 0.065), tidak menyilaukan dan nyaman di mata penonton.
+   - Pastikan 'shakeThresholdChaos' proporsional (60-75) agar kamera berguncang halus hanya saat momen tegang puncak.
 
 FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
 {

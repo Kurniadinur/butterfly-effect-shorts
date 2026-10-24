@@ -538,12 +538,18 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 ))}
 
                 {/* Dramatic Action Typography on Barrier */}
-                <text x="180" y="160" fill="#ef4444" fontSize="42" fontWeight="900" fontFamily="'Montserrat', sans-serif" transform="rotate(-6 180 160)" opacity="0.9">
-                  {(stampText || 'COLLAPSE').slice(0, 14)}
+                <text x="180" y="160" fill="#ef4444" fontSize="38" fontWeight="900" fontFamily="'Montserrat', sans-serif" transform="rotate(-6 180 160)" opacity="0.9">
+                  {stampText || 'COLLAPSE'}
                 </text>
-                <text x="490" y="180" fill="#38bdf8" fontSize="36" fontWeight="900" fontFamily="monospace" transform="rotate(4 490 180)" opacity="0.9">
-                  {(secondaryText || title || 'SYSTEM BREACH').slice(0, 16)}
-                </text>
+                {(() => {
+                  const barrierText = secondaryText || title || 'SYSTEM BREACH';
+                  const fontSize = barrierText.length > 20 ? 22 : barrierText.length > 14 ? 26 : 32;
+                  return (
+                    <text x="560" y="180" textAnchor="middle" fill="#38bdf8" fontSize={fontSize} fontWeight="900" fontFamily="monospace" transform="rotate(4 560 180)" opacity="0.9">
+                      {barrierText}
+                    </text>
+                  );
+                })()}
                 <circle cx="380" cy="190" r="32" fill="none" stroke="#FFE600" strokeWidth="5" opacity="0.8" />
                 <line x1="380" y1="158" x2="380" y2="222" stroke="#FFE600" strokeWidth="4" opacity="0.8" />
                 <line x1="348" y1="190" x2="380" y2="190" stroke="#FFE600" strokeWidth="4" opacity="0.8" />

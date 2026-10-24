@@ -30,6 +30,28 @@ export type DirectorSceneType =
 
 export type ZoomDirection = 'in' | 'out' | 'panRight' | 'panLeft' | 'zoomIn' | 'zoomOut' | string;
 
+export type EditorialMood =
+  | 'cold-war-crisis'
+  | 'noir-forensic'
+  | 'amber-urgent'
+  | 'industrial-decay'
+  | 'clean-documentary'
+  | string;
+
+export interface EditorialStyle {
+  mood: EditorialMood;
+  tintColor?: string; // Hex or rgba color tint
+  grainIntensity?: number; // 0.03 to 0.065 (strictly eye-comfortable)
+  vignetteStrength?: number; // 0.2 to 0.5
+  lightLeak?: {
+    enabled: boolean;
+    color?: string;
+    position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+  };
+  shakeSensitivity?: 'subtle' | 'moderate' | 'dramatic';
+  shakeThresholdChaos?: number; // Chaos level where camera micro-tremor activates (default 65)
+}
+
 export interface ButterflyNode {
   step: number;
   timeOrYear: string;
@@ -64,6 +86,7 @@ export interface WordTimestamp {
 export interface ButterflyStoryData {
   id: string;
   title: string;
+  editorialStyle?: EditorialStyle;
   hook: {
     hookStyle?: 'fullscreen-dramatic' | 'forensic-dossier' | 'breaking-transmission' | 'split-contrast' | string | null;
     archetype?: string | null;

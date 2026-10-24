@@ -126,10 +126,30 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
    * "breaking-ticker"   : Ticker darurat telegraf teks berjalan.
    * "press-question"    : Mikrofon wartawan mengajukan pertanyaan mendesak.
 
+6. SUPERVISI GAYA EDITING & WARNA DINAMIS (EDITORIAL STYLE OTONOM):
+   AI Sutradara WAJIB menentukan 'editorialStyle' secara mandiri sesuai tema cerita agar video memiliki mood visual unik dan tidak monoton:
+   - 'editorialStyle.mood': Tentukan preset visual paling cocok:
+     * 'cold-war-crisis'  : Spionase, Perang Dingin, krisis politik, memo rahasia, tembok pembatas.
+     * 'noir-forensic'     : Bencana laut, deklasifikasi arsip misteri, kapal karam, investigasi kematian.
+     * 'amber-urgent'     : Breaking news mendadak, alarm pos jaga, kepanikan massa, kebakaran/ledakan.
+     * 'industrial-decay' : Bencana reaktor nuklir, kebocoran radiasi, kegagalan turbin industri pabrik.
+     * 'clean-documentary': Penemuan sains & laboratorium, era modern, birokrasi, penemuan obat.
+   - 'editorialStyle.grainIntensity': 0.03 hingga 0.06 (butiran film 35mm yang nyaman di mata penonton, dilarang berlebihan!).
+   - 'editorialStyle.vignetteStrength': 0.25 hingga 0.45 (bayangan tepi sinematik lembut).
+   - 'editorialStyle.shakeSensitivity': 'subtle' atau 'moderate'.
+   - 'editorialStyle.shakeThresholdChaos': Level chaos (60-75) saat guncangan kamera mulai aktif pada momen tegang.
+
 FORMAT JSON WAJIB:
 {
   "id": "slug-id",
   "title": "JUDUL DRAMATIS HURUF BESAR",
+  "editorialStyle": {
+    "mood": "cold-war-crisis ATAU noir-forensic ATAU amber-urgent ATAU industrial-decay ATAU clean-documentary",
+    "grainIntensity": 0.048,
+    "vignetteStrength": 0.35,
+    "shakeSensitivity": "moderate",
+    "shakeThresholdChaos": 65
+  },
   "hook": {
     "hookStyle": "fullscreen-dramatic ATAU forensic-dossier ATAU breaking-transmission ATAU split-contrast",
     "kicker": "BADGE SINGKAT EDITORIAL (misal: '9 NOVEMBER 1989', 'KESALAHAN FATAL')",
@@ -347,6 +367,38 @@ async function generateStoryboard(topic) {
     storyData = auditRes.storyData;
   }
   console.log(`      ✓ [AI Supervisor] Skor Kelayakan: ${auditRes.score}/100 - ${auditRes.notes}`);
+
+  // Normalize & Supervise Editorial Style (AI-Directed Eye Comfort & Mood Tone)
+  if (!storyData.editorialStyle || typeof storyData.editorialStyle !== 'object') {
+    const topicLower = topic.toLowerCase();
+    let defaultMood = 'clean-documentary';
+    if (topicLower.includes('berlin') || topicLower.includes('perang') || topicLower.includes('soviet') || topicLower.includes('spionase')) {
+      defaultMood = 'cold-war-crisis';
+    } else if (topicLower.includes('titanic') || topicLower.includes('kapal') || topicLower.includes('misteri') || topicLower.includes('forensik')) {
+      defaultMood = 'noir-forensic';
+    } else if (topicLower.includes('chernobyl') || topicLower.includes('nuklir') || topicLower.includes('radiasi') || topicLower.includes('ledakan')) {
+      defaultMood = 'industrial-decay';
+    } else if (topicLower.includes('darurat') || topicLower.includes('panik') || topicLower.includes('breaking') || topicLower.includes('kebakaran')) {
+      defaultMood = 'amber-urgent';
+    }
+    storyData.editorialStyle = {
+      mood: defaultMood,
+      grainIntensity: 0.048,
+      vignetteStrength: 0.35,
+      shakeSensitivity: 'moderate',
+      shakeThresholdChaos: 65,
+    };
+  } else {
+    if (!storyData.editorialStyle.mood) storyData.editorialStyle.mood = 'cold-war-crisis';
+    // Clamp grain intensity for eye comfort (0.025 to 0.065)
+    const rawGrain = typeof storyData.editorialStyle.grainIntensity === 'number' ? storyData.editorialStyle.grainIntensity : 0.048;
+    storyData.editorialStyle.grainIntensity = Math.max(0.025, Math.min(0.065, rawGrain));
+    const rawVignette = typeof storyData.editorialStyle.vignetteStrength === 'number' ? storyData.editorialStyle.vignetteStrength : 0.35;
+    storyData.editorialStyle.vignetteStrength = Math.max(0.2, Math.min(0.5, rawVignette));
+    if (!storyData.editorialStyle.shakeSensitivity) storyData.editorialStyle.shakeSensitivity = 'moderate';
+    if (typeof storyData.editorialStyle.shakeThresholdChaos !== 'number') storyData.editorialStyle.shakeThresholdChaos = 65;
+  }
+  console.log(`      🎨 [AI Editorial Style] Mood: ${storyData.editorialStyle.mood} | Grain: ${storyData.editorialStyle.grainIntensity} | Shake Chaos: ${storyData.editorialStyle.shakeThresholdChaos}`);
 
   // Normalize Hook
   if (!storyData.hook || typeof storyData.hook !== 'object') {

@@ -220,6 +220,11 @@
         </div>
       </div>
 
+      <!-- AI Cinema & Editorial Style Indicator -->
+      <div id="editorial-style-box" class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+        <!-- Rendered dynamically -->
+      </div>
+
       <!-- Hook Card Preview -->
       <div id="hook-card" class="bg-gradient-to-r from-slate-900 to-slate-950 p-5 rounded-xl border border-slate-700/60 flex flex-col md:flex-row gap-6 items-center justify-between">
         <!-- Hook Details -->
@@ -575,6 +580,36 @@
           const audioPlayer = document.getElementById('audio-player');
           const audioFilename = data.audioPath.split('/').pop().split('\\').pop();
           audioPlayer.src = `/audio/${audioFilename}`;
+        }
+
+        // Render Editorial Style Indicator (AI Cinema Supervisor)
+        const styleBox = document.getElementById('editorial-style-box');
+        if (data.editorialStyle) {
+          const ed = data.editorialStyle;
+          const moodNames = {
+            'cold-war-crisis': 'Cold War Crisis (Slate-Green)',
+            'noir-forensic': 'Noir Forensic (Slate-Blue)',
+            'amber-urgent': 'Amber Emergency (Tungsten Warm)',
+            'industrial-decay': 'Industrial Decay (Bronze Charcoal)',
+            'clean-documentary': 'Clean Documentary (Crisp Cinema)',
+          };
+          styleBox.innerHTML = `
+            <div class="flex items-center gap-2">
+              <span class="text-lg">🎨</span>
+              <div>
+                <span class="text-[10px] text-slate-400 uppercase">Supervisi AI Editor:</span>
+                <span class="font-bold text-amber-300 ml-1">${moodNames[ed.mood] || ed.mood}</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 text-slate-300">
+              <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80">🎞️ Grain: ${(ed.grainIntensity * 100).toFixed(1)}% (Nyaman di Mata)</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80">🌘 Vignette: ${(ed.vignetteStrength * 100).toFixed(0)}%</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80">⚡ Dynamic Shake: Chaos ≥ ${ed.shakeThresholdChaos || 65}</span>
+            </div>
+          `;
+          styleBox.classList.remove('hidden');
+        } else {
+          styleBox.classList.add('hidden');
         }
 
         // Render Hook Card
