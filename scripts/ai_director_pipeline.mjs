@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 import { transcribeWithGroq } from './align_groq.mjs';
 import { searchAndDownloadImage } from './fetch_scene_media.mjs';
+import { loadLearningMemory, auditAndRefineStory } from './learning_manager.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -250,8 +251,23 @@ async function generateStoryboard(topic) {
   console.log(`      ✓ Sudut Pandang Kreatif: ${selectedPerspective.name}`);
   console.log(`      ✓ Arahan Sutradara: "${selectedPerspective.angle}"`);
 
+  // Load Autonomous Learning Memory
+  const learningDb = loadLearningMemory();
+  const benchmarkExamples = (learningDb.best_story_benchmarks || [])
+    .slice(0, 3)
+    .map(
+      (b) =>
+        `- Judul: "${b.title}"\n  Gaya Hook: "${b.hookStyle}" (${b.hookNarration})\n  Adegan: ${(b.scenes || []).join(' -> ')}\n  Alasan Sukses: ${b.why_successful}`
+    )
+    .join('\n');
+  const blacklistedStr = (learningDb.blacklisted_patterns || []).join(', ');
+
   const dynamicPrompt = `${DIRECTOR_PROMPT}\n\n` +
     `================================================================\n` +
+    `MEMORI PEMBELAJARAN OTONOM DARI FEEDBACK SEBELUMNYA:\n` +
+    `CONTOH NASKAH TERBAIK YANG DISUKAI PENONTON:\n${benchmarkExamples || 'Gunakan format dokumenter orisinil.'}\n\n` +
+    `DAFTAR POLA/KATA YANG DILARANG (BLACKLISTED): ${blacklistedStr || 'Tidak ada.'}\n` +
+    `================================================================\n\n` +
     `ARAHAN SUTRADARA UNTUK PRODUKSI INI (TAKE / ATTEMPT BARU):\n` +
     `SUDUT PANDANG (PERSPECTIVE): ${selectedPerspective.name}\n` +
     `INSTRUKSI KHUSUS: ${selectedPerspective.angle}\n` +
@@ -312,7 +328,15 @@ async function generateStoryboard(topic) {
   console.log(`      ✓ Naskah & kurasi visual selesai dalam ${((Date.now() - t0) / 1000).toFixed(1)} detik.`);
 
   const cleaned = result.replace(/```json/gi, '').replace(/```/g, '').trim();
-  const storyData = JSON.parse(cleaned);
+  let storyData = JSON.parse(cleaned);
+
+  // Autonomous AI Quality Critic Audit (Actor-Critic Self-Refinement Loop)
+  console.log(`\n      [AI Supervisor Audit] Mengaudit naskah secara mandiri (Fact-Check & Anti-Halusinasi)...`);
+  const auditRes = await auditAndRefineStory(storyData, topic);
+  if (auditRes.storyData) {
+    storyData = auditRes.storyData;
+  }
+  console.log(`      ✓ [AI Supervisor] Skor Kelayakan: ${auditRes.score}/100 - ${auditRes.notes}`);
 
   // Normalize Hook
   if (!storyData.hook || typeof storyData.hook !== 'object') {

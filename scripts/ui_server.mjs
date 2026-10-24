@@ -4,6 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { spawn } from 'child_process';
 import dotenv from 'dotenv';
+import { loadLearningMemory, recordFeedback } from './learning_manager.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -57,42 +58,42 @@ const CURATED_TOPICS = [
     category: 'Sejarah Dunia',
     trivialCause: 'Juru bicara salah membaca selembar catatan memo tanpa briefing',
     globalCatastrophe: 'Tembok Berlin dijebol warga, Tirai Besi runtuh, dan Uni Soviet bubar dalam 1 malam',
-    hookSnippet: 'Kalian bayangin... dari selembar memo yang salah dibaca saat siaran langsung TV, Uni Soviet runtuh hanya dalam satu malam?',
+    hookSnippet: '9 November 1989. Satu kesalahan membaca catatan di siaran langsung TV... menghapus negara adidaya dalam 4 jam.',
   },
   {
     title: 'Tenggelamnya Kapal Titanic Karena Kunci Teropong Tertinggal',
     category: 'Maritim & Kelalaian',
     trivialCause: 'Petugas pemegang kunci loker teropong dipindah tugas mendadak dan lupa menyerahkan kuncinya',
     globalCatastrophe: 'Pengawas tak bisa melihat gunung es di malam gelap, Titanic menabrak dan 1.500 jiwa melayang',
-    hookSnippet: 'Kalian bayangin... dari sebuah kunci loker kecil yang lupa diserahkan, kapal termewah di dunia karam ke dasar samudera?',
+    hookSnippet: 'Tidak ada yang menyangka, tenggelamnya kapal termewah di dunia berawal dari kunci loker yang tertinggal di darat.',
   },
   {
     title: 'Meledaknya Reaktor Nuklir Chernobyl Akibat Uji Coba Tengah Malam',
     category: 'Bencana Sains & Nuklir',
     trivialCause: 'Penundaan jadwal uji coba turbin listrik yang dipaksakan saat pergantian shift malam tanpa persiapan',
     globalCatastrophe: 'Reaktor 4 meledak dahsyat, awan radiasi mematikan menyelimuti benua Eropa',
-    hookSnippet: 'Kalian bayangin... dari uji coba kelistrikan sepele di tengah malam, benua Eropa nyaris musnah oleh awan radiasi nuklir?',
+    hookSnippet: 'Sebuah uji coba listrik tengah malam yang dipaksakan... menyulap kota modern berpenduduk 50.000 jiwa jadi zona mati selamanya.',
   },
   {
     title: 'Pecahnya Perang Dunia I Karena Sopir Salah Belok',
     category: 'Perang & Intelijen',
     trivialCause: 'Sopir Putra Mahkota Franz Ferdinand salah mengambil jalan dan mematikan mesin di depan kafe',
     globalCatastrophe: 'Penembak Gavrilo Princip melihat kesempatan emas, memicu Perang Dunia I yang menewaskan 20 juta orang',
-    hookSnippet: 'Kalian bayangin... dari seorang sopir yang salah belok di tikungan jalan, 20 juta manusia tewas dalam perang dunia?',
+    hookSnippet: 'Satu belokan salah di jalan sempit Sarajevo... memicu perang besar yang menewaskan 20 juta manusia.',
   },
   {
     title: 'Penemuan Antibiotik Penisilin Karena Peneliti Lupa Cuci Piring Laboratorium',
     category: 'Penemuan Tidak Sengaja',
     trivialCause: 'Alexander Fleming pergi berlibur dan meninggalkan cawan petri berisi bakteri terbuka dekat jendela',
     globalCatastrophe: 'Jamur Penicillium liar mengkontaminasi cawan, melahirkan antibiotik yang menyelamatkan 200 juta nyawa',
-    hookSnippet: 'Kalian bayangin... dari kebiasaan jorok seorang ilmuwan yang lupa mencuci cawan petri, 200 juta nyawa manusia di bumi terselamatkan?',
+    hookSnippet: 'Meninggalkan cawan laboratorium kotor sebelum berlibur... tidak sengaja melahirkan obat penyelamat 200 juta nyawa.',
   },
   {
     title: 'Kekalahan Napoleon di Pertempuran Waterloo Akibat Sakit Wasir',
     category: 'Tokoh & Sejarah',
     trivialCause: 'Napoleon Bonaparte menderita sakit wasir akut di pagi hari pertempuran',
     globalCatastrophe: 'Terlambat memerintahkan serangan meriam, pasukan koalisi tiba, imperium Prancis tumbang selamanya',
-    hookSnippet: 'Kalian bayangin... dari penyakit wasir yang diderita seorang kaisar di pagi hari, kekaisaran Prancis runtuh selamanya?',
+    hookSnippet: 'Rasa sakit fisik sepele di pagi hari... membuat sang kaisar penakluk Eropa kehilangan seluruh kekaisarannya.',
   },
 ];
 
@@ -209,6 +210,42 @@ const server = http.createServer(async (req, res) => {
     const topics = await brainstormTopicsWithAI();
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(topics));
+    return;
+  }
+
+  // 4b. API: Get Autonomous Learning Memory
+  if (pathname === '/api/memory') {
+    const memory = loadLearningMemory();
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(memory));
+    return;
+  }
+
+  // 4c. API: Submit User Feedback / Learning Instruction
+  if (pathname === '/api/feedback' && req.method === 'POST') {
+    let body = '';
+    req.on('data', (chunk) => (body += chunk));
+    req.on('end', () => {
+      try {
+        const payload = JSON.parse(body);
+        const storyData = getCurrentStory();
+        const updated = recordFeedback({
+          storyId: payload.storyId || storyData?.id,
+          title: payload.title || storyData?.title,
+          rating: payload.rating,
+          note: payload.note,
+          storyData,
+        });
+        broadcastLog(
+          `\n[AI MEMORY] Evaluasi diterima (${payload.rating.toUpperCase()}): "${payload.note || 'Tersimpan'}". Memori pembelajaran diperbarui!\n`
+        );
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true, updatedMemory: updated }));
+      } catch (err) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+      }
+    });
     return;
   }
 

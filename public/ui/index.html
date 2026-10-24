@@ -237,6 +237,71 @@
       </div>
     </section>
 
+    <!-- AUTONOMOUS LEARNING & FEEDBACK LOOP -->
+    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border border-emerald-500/30">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase bg-emerald-950/70 border border-emerald-800/60 px-3 py-1 rounded-full">
+            🧠 SISTEM PEMBELAJARAN OTONOM AI (AUTONOMOUS LEARNING)
+          </span>
+          <h3 class="text-2xl font-black text-white mt-2">Beri Nilai & Ajari AI Sutradara</h3>
+          <p class="text-xs text-slate-400 mt-1">
+            Setiap penilaian Anda akan disimpan ke database memori pembelajaran permanen. AI Sutradara akan mengingat video terbaik sebagai referensi dan menghindari pola yang Anda beri nilai negatif.
+          </p>
+        </div>
+        <div id="learning-stats-badge" class="text-xs font-mono px-3 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-700/60 text-emerald-300">
+          Memori AI: Memuat...
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
+        <!-- Quick Feedback Buttons -->
+        <div class="lg:col-span-2 space-y-4">
+          <label class="text-xs font-mono text-slate-300 font-bold uppercase tracking-wider block">
+            Evaluasi Produksi Cerita Ini:
+          </label>
+          <div class="flex flex-wrap gap-3">
+            <button
+              id="btn-feedback-positive"
+              onclick="submitFeedback('positive')"
+              class="flex-1 min-w-[180px] px-5 py-3 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/50 text-emerald-200 font-bold text-sm flex items-center justify-center gap-2 transition active:scale-95 shadow-lg shadow-emerald-950/30"
+            >
+              <span>👍 Suka Banget</span>
+              <span class="text-xs font-normal opacity-80">(Jadikan Benchmark)</span>
+            </button>
+            <button
+              id="btn-feedback-negative"
+              onclick="submitFeedback('negative')"
+              class="flex-1 min-w-[180px] px-5 py-3 rounded-xl bg-red-600/20 hover:bg-red-600/30 border border-red-500/50 text-red-200 font-bold text-sm flex items-center justify-center gap-2 transition active:scale-95 shadow-lg shadow-red-950/30"
+            >
+              <span>👎 Kurang Pas</span>
+              <span class="text-xs font-normal opacity-80">(Ajari AI Perbaiki)</span>
+            </button>
+          </div>
+          <div>
+            <input
+              type="text"
+              id="feedback-note"
+              placeholder="Catatan tambahan untuk AI (misal: 'alurnya pas', 'jangan pakai foto itu lagi', 'tempo hook bagus')..."
+              class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"
+            />
+          </div>
+          <div id="feedback-alert" class="hidden text-xs font-mono p-3 rounded-lg"></div>
+        </div>
+
+        <!-- Learning Memory Summary -->
+        <div class="bg-slate-950/60 rounded-xl p-4 border border-slate-800 space-y-3 text-xs font-mono">
+          <div class="text-slate-400 font-bold uppercase flex items-center justify-between border-b border-slate-800 pb-2">
+            <span>Daftar Benchmark Tersimpan:</span>
+            <span id="benchmark-count" class="text-emerald-400">0 Cerita</span>
+          </div>
+          <div id="benchmark-list" class="space-y-2 text-slate-300 max-h-32 overflow-y-auto">
+            <!-- Dynamic benchmarks -->
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CLOUD RENDER & ACTIONS -->
     <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border-2 border-red-900/30">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -382,6 +447,7 @@
       await fetchBrainstormTopics();
       await fetchPerspectives();
       await fetchCurrentStory();
+      await fetchLearningMemory();
       await checkCloudStatus();
       setInterval(checkCloudStatus, 15000); // Polling status cloud tiap 15 detik
     });
@@ -831,6 +897,86 @@
         alert('Gagal mengunduh: ' + err.message);
       } finally {
         btn.innerHTML = `<span>📥</span><span>Download Video MP4</span>`;
+      }
+    }
+    // 10. Autonomous Learning Memory Fetch & Feedback
+    async function fetchLearningMemory() {
+      try {
+        const res = await fetch('/api/memory');
+        const memory = await res.json();
+        const statsBadge = document.getElementById('learning-stats-badge');
+        const benchmarkCount = document.getElementById('benchmark-count');
+        const benchmarkList = document.getElementById('benchmark-list');
+
+        const benchmarks = memory.best_story_benchmarks || [];
+        const blacklisted = memory.blacklisted_patterns || [];
+        const feedbacks = memory.user_feedbacks || [];
+
+        statsBadge.textContent = `🧠 Memori AI: ${benchmarks.length} Benchmark | ${blacklisted.length} Filter Blacklist | ${feedbacks.length} Feedback`;
+        benchmarkCount.textContent = `${benchmarks.length} Cerita`;
+
+        benchmarkList.innerHTML = '';
+        if (benchmarks.length === 0) {
+          benchmarkList.innerHTML = '<div class="text-slate-500 italic">Belum ada benchmark tersimpan. Beri nilai 👍 untuk menyimpan cerita pertama.</div>';
+        } else {
+          benchmarks.forEach((b) => {
+            const item = document.createElement('div');
+            item.className = 'p-2 rounded bg-slate-900 border border-slate-800 text-[11px] leading-tight';
+            item.innerHTML = `
+              <div class="font-bold text-white flex items-center justify-between">
+                <span>⭐ ${b.title}</span>
+                <span class="text-slate-500 font-normal">[${b.hookStyle}]</span>
+              </div>
+              <div class="text-emerald-400 mt-0.5 text-[10px]">${b.why_successful}</div>
+            `;
+            benchmarkList.appendChild(item);
+          });
+        }
+      } catch (err) {
+        console.error('Error fetching learning memory:', err);
+      }
+    }
+
+    async function submitFeedback(rating) {
+      const noteInput = document.getElementById('feedback-note');
+      const alertBox = document.getElementById('feedback-alert');
+      const note = noteInput.value.trim();
+
+      const btnPos = document.getElementById('btn-feedback-positive');
+      const btnNeg = document.getElementById('btn-feedback-negative');
+      btnPos.disabled = true;
+      btnNeg.disabled = true;
+
+      try {
+        const res = await fetch('/api/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            storyId: currentStoryData?.id,
+            title: currentStoryData?.title,
+            rating,
+            note,
+          }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          alertBox.className = 'text-xs font-mono p-3 rounded-lg bg-emerald-950/80 border border-emerald-700 text-emerald-300 block';
+          alertBox.textContent = rating === 'positive'
+            ? '✓ Terima kasih! Cerita ini telah disimpan sebagai benchmark memori AI untuk video mendatang.'
+            : '✓ Pelajaran dicatat! AI akan mengingat dan menghindari pola/masalah ini pada produksi selanjutnya.';
+          noteInput.value = '';
+          await fetchLearningMemory();
+        } else {
+          alertBox.className = 'text-xs font-mono p-3 rounded-lg bg-red-950/80 border border-red-700 text-red-300 block';
+          alertBox.textContent = 'Gagal menyimpan evaluasi: ' + (data.error || 'Terjadi kesalahan');
+        }
+      } catch (err) {
+        alertBox.className = 'text-xs font-mono p-3 rounded-lg bg-red-950/80 border border-red-700 text-red-300 block';
+        alertBox.textContent = 'Gagal mengirim evaluasi: ' + err.message;
+      } finally {
+        btnPos.disabled = false;
+        btnNeg.disabled = false;
+        setTimeout(() => alertBox.classList.add('hidden'), 5000);
       }
     }
   </script>
