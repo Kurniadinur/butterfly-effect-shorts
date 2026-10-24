@@ -255,6 +255,64 @@
         </div>
       </div>
 
+      <!-- LIVE CLOUD PROGRESS TRACKER CONTAINER -->
+      <div id="cloud-tracker-box" class="hidden bg-slate-950/90 border border-purple-800/60 rounded-xl p-5 space-y-4 shadow-xl shadow-purple-950/20">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-3">
+            <span id="tracker-spinner" class="w-3 h-3 rounded-full bg-purple-500 animate-ping"></span>
+            <div>
+              <h4 id="tracker-title" class="text-sm font-black text-white uppercase tracking-wider flex items-center gap-2">
+                GitHub Cloud Actions In-Progress
+              </h4>
+              <p id="tracker-subtitle" class="text-xs font-mono text-slate-400 mt-0.5">Menyiapkan runner cloud 16GB RAM...</p>
+            </div>
+          </div>
+          <a
+            id="tracker-link"
+            href="https://github.com/Kurniadinur/butterfly-effect-shorts/actions"
+            target="_blank"
+            class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-mono text-slate-200 flex items-center gap-1.5 transition self-start sm:self-auto hover:text-white"
+          >
+            <span>🔗</span>
+            <span>Buka Live Console GitHub Actions ➔</span>
+          </a>
+        </div>
+
+        <!-- Progress Percentage Bar -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-mono">
+            <span id="tracker-step-label" class="text-slate-300 font-bold">Langkah 1/7</span>
+            <span id="tracker-percent-label" class="text-purple-400 font-bold">15%</span>
+          </div>
+          <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
+            <div id="tracker-progress-bar" class="h-full bg-gradient-to-r from-purple-600 via-rose-500 to-amber-500 transition-all duration-500" style="width: 15%"></div>
+          </div>
+        </div>
+
+        <!-- Step-by-Step Checklist -->
+        <div id="tracker-steps-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono pt-2">
+          <!-- Dynamic Steps -->
+        </div>
+
+        <!-- Completion Alert Banner -->
+        <div id="tracker-completion-banner" class="hidden p-4 rounded-xl bg-emerald-950/70 border border-emerald-600/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🎉</span>
+            <div>
+              <div class="font-black text-emerald-300 text-sm">VIDEO MP4 SELESAI DIRENDER DI CLOUD!</div>
+              <div class="text-xs text-emerald-400/80">File artifact MP4 sudah siap diunduh ke folder out/ laptop Anda.</div>
+            </div>
+          </div>
+          <button
+            onclick="downloadArtifact()"
+            class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-emerald-950/50 transition flex items-center gap-2 whitespace-nowrap"
+          >
+            <span>📥</span>
+            <span>Download MP4 Sekarang</span>
+          </button>
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
         <button
           onclick="triggerCloudRender()"
@@ -590,18 +648,27 @@
       }
     }
 
+    let cloudPollInterval = null;
+
     // 7. Trigger Cloud Render
     async function triggerCloudRender() {
       const btn = document.getElementById('btn-cloud-render');
+      const trackerBox = document.getElementById('cloud-tracker-box');
       btn.disabled = true;
-      btn.innerHTML = `<span>⏳</span><span>Memicu Render Cloud...</span>`;
+      btn.innerHTML = `<span>⏳</span><span>Memicu GitHub Cloud...</span>`;
+
+      trackerBox.classList.remove('hidden');
+      trackerBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById('tracker-subtitle').textContent = 'Mengirim pembaruan kode dan memicu GitHub Actions...';
 
       try {
         const res = await fetch('/api/cloud-render', { method: 'POST' });
         const data = await res.json();
         if (data.status === 'triggered') {
-          alert('🚀 Cloud Render berhasil dipicu di GitHub Actions! Video MP4 sedang dirender di cloud.');
           await checkCloudStatus();
+          if (!cloudPollInterval) {
+            cloudPollInterval = setInterval(checkCloudStatus, 3000);
+          }
         } else {
           alert('Kendala memicu render cloud. Periksa koneksi git/gh.');
         }
@@ -613,9 +680,20 @@
       }
     }
 
-    // 8. Check Cloud Status
+    // 8. Check Cloud Status with Step-by-Step UI
     async function checkCloudStatus() {
       const badge = document.getElementById('cloud-status-badge');
+      const trackerBox = document.getElementById('cloud-tracker-box');
+      const trackerTitle = document.getElementById('tracker-title');
+      const trackerSubtitle = document.getElementById('tracker-subtitle');
+      const trackerLink = document.getElementById('tracker-link');
+      const trackerStepLabel = document.getElementById('tracker-step-label');
+      const trackerPercentLabel = document.getElementById('tracker-percent-label');
+      const trackerProgressBar = document.getElementById('tracker-progress-bar');
+      const trackerStepsList = document.getElementById('tracker-steps-list');
+      const completionBanner = document.getElementById('tracker-completion-banner');
+      const trackerSpinner = document.getElementById('tracker-spinner');
+
       try {
         const res = await fetch('/api/cloud-status');
         const run = await res.json();
@@ -625,17 +703,116 @@
           return;
         }
 
-        if (run.status === 'in_progress' || run.status === 'queued') {
-          badge.innerHTML = `<span class="inline-block w-2 h-2 rounded-full bg-yellow-400 animate-ping mr-1"></span> Render Cloud Sedang Berjalan...`;
-          badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-yellow-950 border border-yellow-800 text-yellow-300';
-        } else if (run.conclusion === 'success') {
-          badge.innerHTML = `<span class="text-emerald-400 font-bold mr-1">✓</span> Render Cloud Selesai (MP4 Siap Unduh)`;
-          badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-300';
-        } else if (run.conclusion === 'failure') {
-          badge.innerHTML = `Render Cloud Terakhir Gagal`;
-          badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-red-950 border border-red-800 text-red-300';
+        // Set live URL link
+        if (run.url) {
+          trackerLink.href = run.url;
         }
-      } catch (e) {}
+
+        if (run.status === 'in_progress' || run.status === 'queued') {
+          trackerBox.classList.remove('hidden');
+          badge.innerHTML = `<span class="inline-block w-2 h-2 rounded-full bg-yellow-400 animate-ping mr-1"></span> Render Cloud: Sedang Berjalan...`;
+          badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-yellow-950 border border-yellow-800 text-yellow-300';
+
+          trackerTitle.innerHTML = `<span class="text-yellow-400">🔄</span> GitHub Cloud Actions: Sedang Berjalan`;
+          trackerSubtitle.textContent = `Langkah aktif: ${run.currentStepName || 'Menjalankan proses...'}`;
+          trackerSpinner.className = 'w-3 h-3 rounded-full bg-yellow-400 animate-ping';
+
+          // Progress calculation based on currentStepNumber (1 to 7)
+          const stepWeights = { 1: 12, 2: 24, 3: 36, 4: 50, 5: 65, 6: 85, 7: 95 };
+          const percent = stepWeights[run.currentStepNumber] || 50;
+          trackerStepLabel.textContent = `Langkah ${run.currentStepNumber || 1} dari ${run.totalSteps || 7}: ${run.currentStepName}`;
+          trackerPercentLabel.textContent = `${percent}%`;
+          trackerProgressBar.style.width = `${percent}%`;
+
+          // Render Checklist
+          if (run.steps && run.steps.length > 0) {
+            trackerStepsList.innerHTML = '';
+            run.steps.forEach((s) => {
+              const isDone = s.status === 'completed' && s.conclusion === 'success';
+              const isRunning = s.status === 'in_progress';
+              const div = document.createElement('div');
+              div.className = `p-2 rounded-lg border flex items-center justify-between ${
+                isDone
+                  ? 'bg-emerald-950/30 border-emerald-800/60 text-emerald-300'
+                  : isRunning
+                  ? 'bg-yellow-950/40 border-yellow-700/80 text-yellow-300 font-bold ring-1 ring-yellow-500'
+                  : 'bg-slate-900/40 border-slate-800/60 text-slate-500'
+              }`;
+              div.innerHTML = `
+                <div class="flex items-center gap-2 truncate">
+                  <span>${isDone ? '✅' : isRunning ? '⏳' : '⚪'}</span>
+                  <span class="truncate">${s.number}. ${s.name}</span>
+                </div>
+                <span class="text-[10px] shrink-0 font-bold uppercase ${isDone ? 'text-emerald-400' : isRunning ? 'text-yellow-400 animate-pulse' : 'text-slate-600'}">
+                  ${isDone ? 'SELESAI' : isRunning ? 'PROSES' : 'MENUNGGU'}
+                </span>
+              `;
+              trackerStepsList.appendChild(div);
+            });
+          }
+
+          completionBanner.classList.add('hidden');
+
+          // Ensure polling is active
+          if (!cloudPollInterval) {
+            cloudPollInterval = setInterval(checkCloudStatus, 3000);
+          }
+
+        } else if (run.status === 'completed') {
+          // Finished!
+          if (run.conclusion === 'success') {
+            badge.innerHTML = `<span class="text-emerald-400 font-bold mr-1">✓</span> Render Cloud Selesai (MP4 Siap Unduh)`;
+            badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-300';
+
+            trackerBox.classList.remove('hidden');
+            trackerTitle.innerHTML = `<span class="text-emerald-400">✅</span> Render Cloud Selesai 100%!`;
+            trackerSubtitle.textContent = `Video MP4 berhasil dikompilasi di server GitHub Actions.`;
+            trackerSpinner.className = 'w-3 h-3 rounded-full bg-emerald-500';
+            trackerStepLabel.textContent = `Seluruh 7 Langkah Selesai`;
+            trackerPercentLabel.textContent = `100%`;
+            trackerProgressBar.style.width = `100%`;
+            completionBanner.classList.remove('hidden');
+
+            // Render all steps as completed
+            if (run.steps && run.steps.length > 0) {
+              trackerStepsList.innerHTML = '';
+              run.steps.forEach((s) => {
+                const div = document.createElement('div');
+                div.className = 'p-2 rounded-lg border bg-emerald-950/30 border-emerald-800/60 text-emerald-300 flex items-center justify-between';
+                div.innerHTML = `
+                  <div class="flex items-center gap-2 truncate">
+                    <span>✅</span>
+                    <span class="truncate">${s.number}. ${s.name}</span>
+                  </div>
+                  <span class="text-[10px] shrink-0 font-bold uppercase text-emerald-400">SELESAI</span>
+                `;
+                trackerStepsList.appendChild(div);
+              });
+            }
+
+            if (cloudPollInterval) {
+              clearInterval(cloudPollInterval);
+              cloudPollInterval = null;
+            }
+          } else {
+            // Failure
+            badge.innerHTML = `Render Cloud Gagal`;
+            badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-red-950 border border-red-800 text-red-300';
+
+            trackerBox.classList.remove('hidden');
+            trackerTitle.innerHTML = `<span class="text-red-400">❌</span> Render Cloud Mengalami Kendala`;
+            trackerSubtitle.textContent = `Klik tautan "Buka Live Console" untuk memeriksa log error.`;
+            trackerSpinner.className = 'w-3 h-3 rounded-full bg-red-500';
+
+            if (cloudPollInterval) {
+              clearInterval(cloudPollInterval);
+              cloudPollInterval = null;
+            }
+          }
+        }
+      } catch (e) {
+        console.error('Error checking cloud status:', e);
+      }
     }
 
     // 9. Download Artifact

@@ -295,9 +295,9 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // 8. API: Check Cloud Render Status
+  // 8. API: Check Cloud Render Status with Step-by-Step Progress
   if (pathname === '/api/cloud-status') {
-    const cmd = spawn('gh', [
+    const listCmd = spawn('gh', [
       'run',
       'list',
       '--workflow=render.yml',
@@ -307,13 +307,68 @@ const server = http.createServer(async (req, res) => {
       'databaseId,status,conclusion,url,createdAt,displayTitle',
     ], { cwd: ROOT_DIR });
 
-    let out = '';
-    cmd.stdout.on('data', (d) => (out += d));
-    cmd.on('close', (code) => {
+    let listOut = '';
+    listCmd.stdout.on('data', (d) => (listOut += d));
+    listCmd.on('close', (code) => {
       try {
-        const runs = JSON.parse(out);
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(runs[0] || null));
+        const runs = JSON.parse(listOut);
+        if (!runs || runs.length === 0) {
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify(null));
+          return;
+        }
+        const runId = runs[0].databaseId;
+
+        // Fetch detailed step-by-step progress
+        const viewCmd = spawn('gh', [
+          'run',
+          'view',
+          String(runId),
+          '--json',
+          'databaseId,status,conclusion,url,createdAt,jobs,displayTitle',
+        ], { cwd: ROOT_DIR });
+
+        let viewOut = '';
+        viewCmd.stdout.on('data', (d) => (viewOut += d));
+        viewCmd.on('close', () => {
+          try {
+            const detail = JSON.parse(viewOut);
+            const job = detail.jobs?.[0];
+            const steps = job?.steps || [];
+
+            // Filter primary pipeline steps (1 to 7)
+            const mainSteps = steps.filter((s) => s.number <= 7);
+            const currentStep =
+              mainSteps.find((s) => s.status === 'in_progress') ||
+              (detail.status === 'completed' ? mainSteps[mainSteps.length - 1] : mainSteps[0]);
+
+            const responseData = {
+              databaseId: detail.databaseId,
+              status: detail.status, // 'in_progress', 'completed', 'queued'
+              conclusion: detail.conclusion, // 'success', 'failure', ''
+              url: detail.url,
+              displayTitle: detail.displayTitle,
+              createdAt: detail.createdAt,
+              currentStepName: currentStep?.name || 'Menyiapkan runner cloud...',
+              currentStepNumber: currentStep?.number || 1,
+              totalSteps: mainSteps.length || 7,
+              steps: mainSteps.map((s) => ({
+                number: s.number,
+                name: s.name,
+                status: s.status, // 'completed', 'in_progress', 'pending'
+                conclusion: s.conclusion, // 'success', 'failure', null
+                startedAt: s.startedAt,
+                completedAt: s.completedAt,
+              })),
+            };
+
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify(responseData));
+          } catch (e) {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify(runs[0]));
+          }
+        });
       } catch (err) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: err.message }));
