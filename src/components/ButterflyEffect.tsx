@@ -67,6 +67,9 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
       {/* 1. Cinematic Hook (Frames 0 -> hook.durationFrames) */}
       <Sequence from={0} durationInFrames={data.hook.durationFrames}>
         <HookScene
+          hookStyle={data.hook.hookStyle}
+          headline={data.hook.headline}
+          kicker={data.hook.kicker}
           leftTitle={data.hook.leftTitle}
           rightTitle={data.hook.rightTitle}
           leftBadge={data.hook.leftBadge}

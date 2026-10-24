@@ -65,7 +65,10 @@ export interface ButterflyStoryData {
   id: string;
   title: string;
   hook: {
+    hookStyle?: 'fullscreen-dramatic' | 'forensic-dossier' | 'breaking-transmission' | 'split-contrast' | string | null;
     archetype?: string | null;
+    headline?: string | null;
+    kicker?: string | null;
     narration: string;
     leftTitle: string;
     rightTitle: string;

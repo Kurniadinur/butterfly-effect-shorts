@@ -68,56 +68,72 @@ const DIRECTOR_PROMPT = `
 Kamu adalah Creative Director & Sutradara Dokumenter Papan Atas Dunia sekaligus Storyteller bertaraf Nessie Judge (Nerror).
 Tugasmu adalah menciptakan naskah dan alur visual "Butterfly Effect" (efek domino sebab-akibat ekstrem) berdurasi 60-120 detik untuk YouTube Shorts / TikTok (9:16).
 
-PRINSIP WAJIB SUTRADARA KELAS DUNIA (STRATEGI UTAMA: FULL SKETSA ANIMASI FORENSIK):
-1. VISUAL STRATEGY (DEFAULT WAJIB SKETSA ANIMASI FORENSIK):
-   - Gunakan 'mediaType': 'graphic' (sketsa animasi vektor forensik dinamis) untuk 80% hingga 100% adegan!
-   - Sketsa animasi forensik memberikan gaya dokumenter investigasi yang konsisten, dramatis, bergerak dinamis, dan 100% akurat menjelaskan proses kejadian.
-   - PENGECUALIAN KETAT UNTUK 'mediaType': 'photo' (HANYA BUKTI ARSIP SAKSI NYATA):
-     * 'photo' HANYA BOLEH digunakan jika adegan tersebut SECARA EKSPLISIT menyebutkan NAMA TOKOH SEJARAH NYATA (misal: Anatoly Dyatlov, Günter Schabowski, Alexander Fleming, Gavrilo Princip, Frederick Fleet, Napoleon Bonaparte) atau OBJEK/BANGUNAN SEJARAH ASLI (misal: RMS Titanic, Gerbang Brandenburg, Checkpoint Charlie).
-     * DILARANG KERAS menggunakan foto untuk adegan aksi umum/proses (seperti: katup bocor, uji coba malam, alarm berbunyi, mobil belok, jam berdetik, massa berkumpul, telepon berdering) — semua adegan proses dan aksi WAJIB menggunakan sketsa animasi forensik ('graphic')!
-2. JANGAN PERNAH MENAMPILKAN WAJAH PELAKU / FOKUS UTAMA DI HOOK VIDEO (DETIK 0-4)!
-   - Di Hook, penonton HANYA boleh merasakan KONTRAS EKSTREM antara Awal Sepele vs Bencana Global.
-3. DILARANG KERAS MENGULANG FOTO / SKETSA YANG SAMA BERTURUT-TURUT!
-   - Setiap adegan harus memiliki sudut pandang baru, variasi tempo, dan pergerakan kamera (cameraMotion): "zoomIn", "zoomOut", "panRight", atau "panLeft".
-4. KATALOG LENGKAP 26 SKETSA ANIMASI FORENSIK ("directorType"):
-   * "clock-countdown"   : Jam analog vintage berdetik cepat, hitungan mundur digital milidetik, zona bahaya merah. (Detik-detik genting, keputusan sepele hitungan detik).
-   * "key-lockbox"       : Loker/brankas baja dengan siluet kunci hilang bertanda tanya kuning, gembok darurat, stempel KUNCI TERTINGGAL. (Kelalaian kunci, akses darurat terabaikan).
-   * "car-route"         : Peta jalan taktis dengan mobil bergerak di jalur rute, panah belokan salah merah, palang jalan buntu. (Sopir salah belok, konvoi salah jalur).
-   * "radiation-hazard"  : Lambang radiasi trefoil nuklir berputar, gelombang awan racun/radiasi konsentris melingkar, indikator dosimeter roentgen bahaya.
-   * "valve-failure"     : Pipa industri tekanan tinggi dengan katup roda berputar cepat, semburan uap/gas bocor membahana, indikator kegagalan tekanan.
-   * "telegraph-wire"    : Tiang radio komunikasi telegraf dengan pita kode morse SOS CQD berdenyut dan gelombang radio melingkar.
-   * "crowd-protest"     : Lautan siluet ribuan massa mengangkat plakat dan megafon di bawah sorotan lampu jalan.
-   * "courtroom-gavel"   : Palu hakim kayu menghantam balok suara dengan gelombang kejut cincin emas, vonis investigasi resmi.
-   * "wall-demolition"   : Animasi aksi massa merobohkan dinding/benteng/tembok, siluet orang mengayunkan palu godam dengan percikan api, retakan beton menjalar.
-   * "gate-breach"       : Animasi aksi palang gerbang perbatasan/pos pemeriksaan terangkat ke atas, lampu sirene merah berputar di pos jaga, siluet warga menerobos.
-   * "domino-collapse"   : Balok domino 3D beruntun saling bertumbukan dan tumbang ke depan. (Tuliskan 5 tahap berurutan dipisahkan koma pada 'secondaryText'!).
-   * "maritime-disaster" : Siluet kapal laut miring tenggelam di laut gelap bersalju, gunung es tajam, dan sinyal darurat radio SOS CQD melingkar memancar.
-   * "reactor-meltdown"  : Penampang reaktor nuklir dengan batang kendali membara merah berdenyut, indikator suhu/radiasi kritis, dan alarm bahaya.
-   * "laboratory-discovery": Cawan petri laboratorium di bawah mikroskop, biakan bakteri dengan cincin zona inhibisi antibiotik yang tidak sengaja terbentuk.
-   * "press-podium"      : Podium konferensi pers/pidato, hujan kilatan blitz kamera wartawan yang menyala acak, jam digital berdetik, dan dokumen di tangan.
+PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!):
+1. GAYA VISUAL HOOK PEMBUKA (BEBAS DARI TEMPLATE KAKU):
+   - Kamu (AI Sutradara) WAJIB memilih salah satu dari 4 gaya Hook pembuka ('hookStyle') yang paling dramatis untuk topik ini:
+     * "fullscreen-dramatic" : Tampilan layar penuh sinematik (1080x1920) dengan arsip bersejarah otentik atau grafik komando resolusi tinggi, headline editorial raksasa di atas, dan atmosfer dokumenter modern (Vox / Johnny Harris). BUKAN split-screen kaku!
+     * "forensic-dossier"    : Tampilan berkas investigasi deklasifikasi meja gelap, stempel merah rahasia beranimasi, laser scanner, dan dokumen kasus fatal.
+     * "breaking-transmission": Tampilan monitor TV vintage siaran darurat breaking news dengan scanlines analog, glitch siaran mendadak, dan banner peringatan merah.
+     * "split-contrast"      : Tampilan perbandingan kontras dunia mikro vs makro (hanya gunakan jika kamu memang ingin membandingkan dua kutub secara spesifik).
+   - Tentukan 'kicker' (badge editorial pendek, misal: "9 NOVEMBER 1989", "SIARAN TV LANGSUNG", "KESALAHAN FATAL").
+   - Tentukan 'headline' (judul pancingan besar 3-5 kata, misal: "SATU MEMO MEROBOHKAN TEMBOK", "KUNCI LOKER YANG DILUPAKAN").
+
+2. VARIASI KALIMAT PEMBUKA (DILARANG KERAS MENGGUNAKAN SATU TEMPLATE KALIMAT!):
+   - DILARANG SELALU MENGGUNAKAN: "Kalian bayangin... dari X, Y terjadi dalam satu malam?". Kalimat ini sudah basi!
+   - Ciptakan variasi kalimat pembuka yang selalu segar, mengejutkan, dan alami seperti kreator manusia papan atas:
+     * Contoh Gaya Fakta Dingin: "9 November 1989. Pria ini salah membaca satu lembar catatan di siaran langsung TV... dan malam itu juga, negara adidaya tamat."
+     * Contoh Gaya Misteri Saksi: "Tidak ada yang menyangka, tenggelamnya kapal termewah di dunia berawal dari kelalaian sepele: kunci loker yang tertinggal di darat."
+     * Contoh Gaya Kronologi Mendadak: "Dalam 4 jam, ribuan massa bersenjata palu merobohkan benteng beton paling ketat di dunia... hanya karena sebuah memo tanpa briefing."
+
+3. AKURASI SEJARAH WAJIB MUTLAK (DILARANG MENGARANG ELEMEN FIKSI!):
+   - DILARANG KERAS mengarang elemen fiksi seperti katup pipa gas bocor, kecelakaan mobil, atau tabung meledak pada peristiwa sejarah yang tidak memilikinya!
+   - Pilihlah arketipe sketsa ('directorType') yang 100% SESUAI dengan peristiwa sejarah nyata:
+     * Pada peristiwa Tembok Berlin: HANYA gunakan arketipe nyata seperti "press-podium" (konferensi pers Schabowski), "memo-investigation" (memo salah baca), "breaking-news" (siaran berita TV yang mengguncang Berlin), "panic-phone" (telepon pos jaga perbatasan yang diabaikan markas), "gate-breach" (gerbang pos perbatasan dibuka), "wall-demolition" (warga merobohkan tembok dengan palu), atau "soviet-collapse" (kolaps Uni Soviet). JANGAN PERNAH gunakan 'valve-failure' atau 'car-route' untuk Tembok Berlin!
+     * Pada peristiwa Titanic: HANYA gunakan "key-lockbox", "maritime-disaster", "clock-countdown", "telegraph-wire", "courtroom-gavel", dll.
+     * Pada peristiwa Chernobyl: HANYA gunakan "reactor-meltdown", "radiation-hazard", "valve-failure", "critical-gauge", dll.
+
+4. STRATEGI VISUAL (SKETSA FORENSIK DINAMIS + FOTO BUKTI ARSIP OTENTIK):
+   - 'mediaType': 'graphic' (sketsa vektor forensik dinamis) untuk adegan proses, aksi massa, rekonstruksi kronologis, dan simbol investigasi.
+   - 'mediaType': 'photo' (arsip foto asli) HANYA jika menyebutkan tokoh nyata (Schabowski, Dyatlov, Fleming, Princip, dll.) atau bangunan/objek bersejarah nyata.
+   - Sediakan kata kunci pencarian bahasa Inggris yang SPESIFIK dan BERAGAM pada 'searchQuery' dan 'rightSearchQuery' (misal: "Bornholmer Strasse border opening 1989 crowd", "Mauerspechte Berlin Wall chiseled 1989", "East German border checkpoint 1989", bukan hanya "Berlin Wall"!).
+
+5. KATALOG 26 SKETSA ANIMASI FORENSIK ("directorType"):
+   * "press-podium"      : Podium konferensi pers/pidato, kilatan blitz kamera wartawan yang menyala acak, jam berdetik, dan dokumen di tangan.
    * "memo-investigation": Kertas dokumen memo rahasia di bawah sorotan lampu meja dengan kaca pembesar memindai kata fatal berstabilo kuning dan stempel merah.
+   * "memo-handoff"      : Sketsa tangan menyelipkan berkas rahasia di meja gelap.
    * "panic-phone"       : Pos jaga dengan telepon engkol darurat bergetar merah tanpa instruksi atasan.
-   * "breaking-news"     : Monitor TV tabung vintage dengan ticker darurat breaking news.
+   * "gate-breach"       : Palang gerbang perbatasan/pos pemeriksaan terangkat ke atas, sirene merah berputar, warga menerobos maju.
+   * "wall-demolition"   : Aksi massa merobohkan dinding/benteng/tembok, siluet mengayunkan palu godam dengan percikan api, retakan beton menjalar.
+   * "breaking-news"     : Monitor TV tabung vintage dengan ticker darurat breaking news siaran langsung.
+   * "crowd-protest"     : Lautan siluet ribuan massa mengangkat plakat dan megafon di bawah sorotan lampu jalan.
    * "soviet-collapse"   : Peta wilayah geopolitik retak & terpecah belah jadi negara-negara merdeka.
-   * "tactical-map"      : Radar taktis melingkar & titik koordinat target episentrum gerakan.
+   * "domino-collapse"   : Balok domino 3D beruntun saling bertumbukan dan tumbang ke depan (tuliskan 5 tahap dipisahkan koma pada 'secondaryText').
+   * "clock-countdown"   : Jam analog vintage berdetik cepat, hitungan mundur digital milidetik, zona bahaya merah.
+   * "key-lockbox"       : Loker/brankas baja dengan siluet kunci hilang bertanda tanya kuning, gembok darurat, stempel KUNCI TERTINGGAL.
+   * "car-route"         : Peta jalan taktis dengan mobil bergerak di jalur rute, panah belokan salah merah. (Hanya untuk konvoi mobil/sopir!).
+   * "radiation-hazard"  : Lambang radiasi trefoil nuklir berputar, gelombang awan racun/radiasi konsentris melingkar, dosimeter roentgen.
+   * "valve-failure"     : Pipa industri tekanan tinggi dengan katup roda berputar cepat, semburan uap/gas bocor membahana. (Hanya untuk pabrik/pipa/reaktor!).
+   * "telegraph-wire"    : Tiang radio komunikasi telegraf dengan pita kode morse SOS CQD berdenyut dan gelombang radio.
+   * "courtroom-gavel"   : Palu hakim kayu menghantam balok suara dengan gelombang kejut cincin emas, vonis investigasi resmi.
+   * "maritime-disaster" : Siluet kapal laut miring tenggelam di laut gelap bersalju, gunung es tajam, dan sinyal radio darurat memancar.
+   * "reactor-meltdown"  : Penampang reaktor nuklir dengan batang kendali membara merah berdenyut, indikator suhu/radiasi kritis.
+   * "laboratory-discovery": Cawan petri laboratorium di bawah mikroskop, biakan bakteri dengan cincin inhibisi antibiotik.
+   * "tactical-map"      : Radar taktis melingkar & titik koordinat target pergerakan.
    * "critical-gauge"    : Indikator meteran bahaya, tekanan overload, atau suhu kritis.
    * "forensic-dossier"  : Berkas penyelidikan deklasifikasi dengan stempel merah TOP SECRET.
    * "bureaucracy-draft" : Meja birokrasi dengan tumpukan draf regulasi formal.
-   * "memo-handoff"      : Sketsa tangan menyelipkan berkas rahasia di meja gelap.
-5. STRUKTUR NARRATIVE NESSIE JUDGE:
-   - HOOK: "Kalian bayangin... dari [hal sepele], [dampak global masif] bisa terjadi hanya dalam satu malam?"
-   - ESKALASI TEGANG (8 hingga 14 adegan berantai): Dari kelalaian kecil, kepanikan, kekacauan berantai, hingga klimaks sejarah dunia berubah.
-   - CHILLING OUTRO: Pertanyaan menggantung yang memancing penonton berkomentar ("Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah hidupmu 5 tahun lagi?").
-6. VARIASI CERITA SEGAR:
-   - Setiap kali diminta membuat cerita baru (bahkan untuk topik yang sama), hasilkan alur, narasi, dan pilihan visual yang SEGAR dan BERBEDA! Jangan mengulang urutan yang persis sama.
-7. HANYA OUTPUT JSON MURNI TANPA KATA PENGANTAR DAN TANPA MARKDOWN!
+   * "breaking-ticker"   : Ticker darurat telegraf teks berjalan.
+   * "press-question"    : Mikrofon wartawan mengajukan pertanyaan mendesak.
 
 FORMAT JSON WAJIB:
 {
   "id": "slug-id",
   "title": "JUDUL DRAMATIS HURUF BESAR",
   "hook": {
-    "narration": "Kalian bayangin... dari [hal sepele], [dampak masif] terjadi dalam satu malam?",
+    "hookStyle": "fullscreen-dramatic ATAU forensic-dossier ATAU breaking-transmission ATAU split-contrast",
+    "kicker": "BADGE SINGKAT EDITORIAL (misal: '9 NOVEMBER 1989', 'KESALAHAN FATAL')",
+    "headline": "JUDUL PANCINGAN BESAR (misal: 'SATU MEMO MEROBOHKAN TEMBOK')",
+    "narration": "Kalimat pembuka menggigit dan segar tanpa kalimat klise...",
     "leftTitle": "Hal Sepele",
     "rightTitle": "Dampak Global",
     "leftBadge": "AWAL MULA SEPELE",
@@ -125,25 +141,25 @@ FORMAT JSON WAJIB:
     "leftPrimaryText": "Teks judul dokumen awal",
     "leftStampText": "BUKTI AWAL",
     "leftSearchQuery": "English search keyword for Cause archival photo/sketch",
-    "rightSearchQuery": "English search keyword for Catastrophe archival photo/sketch"
+    "rightSearchQuery": "Specific varied English keyword for Catastrophe archival photo (misal: 'Bornholmer Strasse border opening crowd 1989')"
   },
   "nodes": [
     {
       "step": 1,
       "timeOrYear": "LOKASI / TAHUN • JAM",
       "headline": "JUDUL ADEGAN SINGKAT BESAR",
-      "narration": "Naskah narasi suara 10-25 kata yang dramatis...",
+      "narration": "Naskah narasi suara 10-25 kata yang dramatis dan otentik secara sejarah...",
       "chaosLevel": 20,
-      "mediaType": "graphic (paling utama) ATAU photo (HANYA JIKA ADA NAMA TOKOH/OBJEK ASLI)",
-      "directorType": "salah satu dari 26 katalog di atas",
-      "searchQuery": "Hanya isi jika mediaType photo: nama tokoh atau objek sejarah spesifik (misal: 'Anatoly Dyatlov portrait', 'RMS Titanic 1912 ship')",
+      "mediaType": "graphic (utama) ATAU photo (hanya untuk nama tokoh/objek asli)",
+      "directorType": "salah satu arketipe yang 100% RELEVAN DENGAN SEJARAHNYA",
+      "searchQuery": "Hanya jika photo: nama tokoh atau objek sejarah spesifik",
       "zoomDirection": "zoomIn / zoomOut / panRight / panLeft",
-      "primaryText": "Teks judul spesifik di dalam elemen grafis",
-      "secondaryText": "Teks subjudul / keterangan grafis (untuk domino-collapse: tuliskan 5 tahap dipisah koma)",
-      "stampText": "Teks stempel resmi (misal: TOP SECRET, SINKING, CRITICAL, OVERLOAD)",
-      "quoteText": "Teks kutipan ucapan / pertanyaan jika ada",
-      "metricLabel": "Label indikator (misal: KORBAN JIWA, TEKANAN, RADIASI, PENONTON)",
-      "metricValue": "Nilai indikator (misal: 1,517 JIWA, 99.4%, SOS CQD, 18:57:04)",
+      "primaryText": "Teks judul spesifik di dalam grafis",
+      "secondaryText": "Teks subjudul / keterangan grafis",
+      "stampText": "Teks stempel resmi (misal: CONFIDENTIAL, TOP SECRET, LIVE, BREAKING)",
+      "quoteText": "Kutipan ucapan asli jika ada",
+      "metricLabel": "Label indikator",
+      "metricValue": "Nilai indikator",
       "caption": "Keterangan forensik singkat..."
     }
   ],
@@ -301,15 +317,21 @@ async function generateStoryboard(topic) {
   // Normalize Hook
   if (!storyData.hook || typeof storyData.hook !== 'object') {
     storyData.hook = {
-      narration: `Kalian bayangin... dari sebuah kesalahan sepele, peristiwa ${topic} bisa terjadi dalam satu malam?`,
+      hookStyle: 'fullscreen-dramatic',
+      kicker: 'DOKUMENTER INVESTIGASI',
+      headline: storyData.title || topic,
+      narration: `Satu kelalaian kecil yang tampak sepele... mengubah jalannya sejarah dunia hanya dalam hitungan jam.`,
       leftTitle: 'Awal Mula Sepele',
       rightTitle: 'Bencana Global',
       leftBadge: 'AWAL MULA SEPELE',
       rightBadge: 'BENCANA GLOBAL',
     };
   } else {
+    if (!storyData.hook.hookStyle) storyData.hook.hookStyle = 'fullscreen-dramatic';
+    if (!storyData.hook.kicker) storyData.hook.kicker = 'DOKUMENTER INVESTIGASI';
+    if (!storyData.hook.headline) storyData.hook.headline = storyData.title || topic;
     if (!storyData.hook.narration) {
-      storyData.hook.narration = `Kalian bayangin... dari ${storyData.hook.leftTitle || 'hal sepele'}, ${storyData.hook.rightTitle || 'bencana besar'} terjadi hanya dalam satu malam?`;
+      storyData.hook.narration = `Satu kelalaian kecil pada ${storyData.hook.leftTitle || 'hari itu'} memicu rangkaian kehancuran tak terbendung hingga meruntuhkan tatanan dunia.`;
     }
     if (!storyData.hook.leftTitle) storyData.hook.leftTitle = 'Awal Mula Sepele';
     if (!storyData.hook.rightTitle) storyData.hook.rightTitle = 'Bencana Global';

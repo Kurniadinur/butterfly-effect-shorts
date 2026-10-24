@@ -28,37 +28,37 @@ function isTitleRelevant(pageTitle, query) {
   return words.some((w) => lowerTitle.includes(w));
 }
 
-// 1. Wikipedia Pageimages API
-async function searchWikipedia(query, lang = 'en') {
+// 1. Wikipedia Pageimages API - collects all valid candidates
+async function searchWikipediaAll(query, lang = 'en') {
+  const matches = [];
   try {
-    const url = `https://${lang}.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrnamespace=0&gsrlimit=5&prop=pageimages&pithumbsize=1280&format=json&origin=*`;
+    const url = `https://${lang}.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrnamespace=0&gsrlimit=6&prop=pageimages&pithumbsize=1280&format=json&origin=*`;
     const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
-    if (!res.ok) return null;
+    if (!res.ok) return matches;
     const data = await res.json();
     const pages = data.query ? Object.values(data.query.pages) : [];
-    // Sort pages by index/relevance
-    pages.sort((a, b) => (a.index || 99) - (b.index || 99));
     for (const p of pages) {
       if (p.thumbnail && p.thumbnail.source && isValidImageUrl(p.thumbnail.source) && isTitleRelevant(p.title, query)) {
-        return {
+        matches.push({
           title: p.title,
           url: p.thumbnail.source,
           source: `wikipedia_${lang}`,
-        };
+        });
       }
     }
   } catch (err) {
-    // silently catch network glitch
+    // silently catch
   }
-  return null;
+  return matches;
 }
 
-// 2. Wikimedia Commons File Search API
-async function searchCommons(query) {
+// 2. Wikimedia Commons File Search API - collects all valid candidates
+async function searchCommonsAll(query) {
+  const matches = [];
   try {
-    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query + ' filetype:bitmap')}&gsrnamespace=6&gsrlimit=5&prop=imageinfo&iiprop=url|mime|size&iiurlwidth=1280&format=json&origin=*`;
+    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query + ' filetype:bitmap')}&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url|mime|size&iiurlwidth=1280&format=json&origin=*`;
     const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
-    if (!res.ok) return null;
+    if (!res.ok) return matches;
     const data = await res.json();
     const pages = data.query ? Object.values(data.query.pages) : [];
     for (const p of pages) {
@@ -66,45 +66,48 @@ async function searchCommons(query) {
       const imgUrl = info?.thumburl || info?.url;
       const cleanTitle = p.title.replace(/^File:/i, '');
       if (imgUrl && isValidImageUrl(imgUrl) && info.mime?.startsWith('image/') && isTitleRelevant(cleanTitle, query)) {
-        return {
+        matches.push({
           title: cleanTitle,
           url: imgUrl,
           source: 'commons',
-        };
+        });
       }
     }
   } catch (err) {
     // silently catch
   }
-  return null;
+  return matches;
 }
 
 // 3. Openverse Creative Commons & Public Domain API
-async function searchOpenverse(query) {
+async function searchOpenverseAll(query) {
+  const matches = [];
   try {
-    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&page_size=5`;
+    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&page_size=6`;
     const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
-    if (!res.ok) return null;
+    if (!res.ok) return matches;
     const data = await res.json();
     if (data.results && data.results.length > 0) {
       for (const item of data.results) {
         if (item.url && isValidImageUrl(item.url) && isTitleRelevant(item.title || '', query)) {
-          return {
+          matches.push({
             title: item.title || query,
             url: item.url,
             source: 'openverse',
-          };
+          });
         }
       }
     }
   } catch (err) {
     // silently catch
   }
-  return null;
+  return matches;
 }
 
 /**
  * Searches across multiple global archival sources and downloads the highest quality image.
+ * Uses random candidate selection among verified matches so repeated runs of the same topic
+ * yield fresh, diverse historical archival imagery rather than the exact same thumbnail.
  *
  * @param {string} query - Specific English search query
  * @param {string} fallbackQuery - Secondary query if first yields no results
@@ -114,24 +117,31 @@ async function searchOpenverse(query) {
 export async function searchAndDownloadImage(query, fallbackQuery, destPath) {
   const queries = [query, fallbackQuery].filter(Boolean);
 
-  let candidate = null;
+  const allCandidates = [];
   for (const q of queries) {
-    // Try Wikipedia EN
-    candidate = await searchWikipedia(q, 'en');
-    if (candidate) break;
+    // 1. Commons (richest variety of authentic historical photography)
+    const commons = await searchCommonsAll(q);
+    if (commons.length > 0) allCandidates.push(...commons);
 
-    // Try Wikimedia Commons
-    candidate = await searchCommons(q);
-    if (candidate) break;
+    // 2. Wikipedia EN
+    const wiki = await searchWikipediaAll(q, 'en');
+    if (wiki.length > 0) allCandidates.push(...wiki);
 
-    // Try Openverse
-    candidate = await searchOpenverse(q);
-    if (candidate) break;
+    // 3. Openverse
+    if (allCandidates.length < 2) {
+      const openv = await searchOpenverseAll(q);
+      if (openv.length > 0) allCandidates.push(...openv);
+    }
 
-    // Try Wikipedia ID
-    candidate = await searchWikipedia(q, 'id');
-    if (candidate) break;
+    if (allCandidates.length >= 3) break;
   }
+
+  if (allCandidates.length === 0) {
+    return { success: false };
+  }
+
+  // Pick randomly from the valid archival matches to guarantee visual variety
+  const candidate = allCandidates[Math.floor(Math.random() * allCandidates.length)];
 
   if (!candidate || !candidate.url) {
     return { success: false };
