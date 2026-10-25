@@ -107,10 +107,13 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
      * Pada peristiwa Titanic: HANYA gunakan "key-lockbox", "maritime-disaster", "clock-countdown", "telegraph-wire", "courtroom-gavel", dll.
      * Pada peristiwa Chernobyl: HANYA gunakan "reactor-meltdown", "radiation-hazard", "valve-failure", "critical-gauge", dll.
 
-4. STRATEGI VISUAL (SKETSA FORENSIK DINAMIS + FOTO BUKTI ARSIP OTENTIK):
-   - 'mediaType': 'graphic' (sketsa vektor forensik dinamis) untuk adegan proses, aksi massa, rekonstruksi kronologis, dan simbol investigasi.
-   - 'mediaType': 'photo' (arsip foto asli) HANYA jika menyebutkan tokoh nyata (Schabowski, Dyatlov, Fleming, Princip, dll.) atau bangunan/objek bersejarah nyata.
-   - Sediakan kata kunci pencarian bahasa Inggris yang SPESIFIK dan BERAGAM pada 'searchQuery' dan 'rightSearchQuery' (misal: "Bornholmer Strasse border opening 1989 crowd", "Mauerspechte Berlin Wall chiseled 1989", "East German border checkpoint 1989", bukan hanya "Berlin Wall"!).
+4. STRATEGI VISUAL (RITME HYBRID 50/50: FOTO ARSIP OTENTIK + SKETSA FORENSIK DINAMIS):
+   - Ciptakan ritme visual berganti-ganti yang dinamis antara FOTO ARSIP SEJARAH NYATA dan SKETSA FORENSIK TAKTIS:
+     * 'mediaType': 'photo' (arsip foto nyata bersejarah) untuk adegan yang melibatkan tokoh sejarah nyata, lokasi/bangunan asli, kapal, pesawat, atau peristiwa publik.
+       Wajib sertakan 'searchQuery' bahasa Inggris yang spesifik dan presisi (misal: "Guenther Schabowski press conference 1989", "Bornholmer Strasse border checkpoint 1989", "Mauerspechte Berlin Wall chiseled", "Soviet submarine B-59 officer Vasili Arkhipov", "Titanic departure Southampton 1912").
+     * 'mediaType': 'graphic' (sketsa vektor forensik dinamis) untuk adegan rekonstruksi teknis, aksi massa, proses dokumen rahasia, peta rute, jam hitungan mundur, atau grafik meteran.
+       Pilih arketipe 'directorType' yang paling presisi dari katalog 26 arketipe.
+   - KESEIMBANGAN RETENSI: Terapkan rasio ideal sekitar 40% - 50% foto arsip otentik dan 50% - 60% sketsa forensik dinamis agar video terasa berbobot seperti dokumenter Vox / Johnny Harris / MagnatesMedia!
 
 5. KATALOG 26 SKETSA ANIMASI FORENSIK ("directorType"):
    * "press-podium"      : Podium konferensi pers/pidato, kilatan blitz kamera wartawan yang menyala acak, jam berdetik, dan dokumen di tangan.
@@ -678,11 +681,7 @@ async function generateStoryboard(topic) {
 
   console.log(`\n      [Visual Hunter (Clean Slate)] Kurasi visual otonom untuk: "${storyData.title || topic}"...`);
 
-  // Hook Pembuka: 100% Sketsa Animasi Vektor Dinamis & Tipografi Forensik (ZERO B-roll web scraper risk!)
-  storyData.hook.leftImage = null;
-  storyData.hook.rightImage = null;
-
-  // Tentukan arketipe animasi pembuka yang dramatis & 100% relevan
+  // Tentukan arketipe animasi pembuka yang dramatis & 100% relevan sebagai fallback
   if (!storyData.hook.archetype) {
     const graphicNode = storyData.nodes.find(
       (n) => n.directorType && n.directorType !== 'forensic-dossier'
@@ -700,7 +699,26 @@ async function generateStoryboard(topic) {
       ? 'car-route'
       : 'memo-investigation';
   }
-  console.log(`      ⚙ [Hook Sinematik 1080x1920] Menggunakan Sketsa Vektor Dinamis: "${storyData.hook.archetype}" (Bebas dari foto acak internet)`);
+
+  // Hook Visual Curation: Cari arsip foto sejarah hero otentik untuk hook pembuka
+  const hookHeroQuery = storyData.hook.rightSearchQuery || storyData.hook.leftSearchQuery || `${topic} historical documentary photograph`;
+  const hookDest = path.join(storyMediaDir, 'hero_hook.jpg');
+  console.log(`      [Hook Visual Hunter] Mencari arsip visual otentik untuk hook: "${hookHeroQuery}"...`);
+  const hookRes = await searchAndDownloadImage(hookHeroQuery, `${topic} historical documentary`, hookDest, {
+    topic,
+    headline: storyData.hook.headline,
+    narration: storyData.hook.narration,
+  });
+
+  if (hookRes.success) {
+    storyData.hook.rightImage = `butterfly/media/${storySlug}/hero_hook.jpg`;
+    storyData.hook.leftImage = `butterfly/media/${storySlug}/hero_hook.jpg`;
+    console.log(`      ✓ [Hero Hook Arsip Otentik] Berhasil dikurasi: "${hookRes.title}" (${hookRes.source})`);
+  } else {
+    storyData.hook.leftImage = null;
+    storyData.hook.rightImage = null;
+    console.log(`      ⚙ [Hero Hook Sinematik 1080x1920] Menggunakan Sketsa Vektor Dinamis: "${storyData.hook.archetype}"`);
+  }
 
   let photoCount = 0;
   let graphicCount = 0;
@@ -721,9 +739,9 @@ async function generateStoryboard(topic) {
     node.step = i + 1;
     const txt = (node.headline + ' ' + node.narration + ' ' + (node.caption || '')).toLowerCase();
 
-    // STRICT USER RULE: Default to FULL ANIMATED SKETCH (graphic).
-    // B-Roll Photo is ONLY permitted if an explicit historical person or landmark is mentioned!
-    const qualifiesForPhoto = node.mediaType === 'photo' && isExplicitHistoricalSubject(txt, node.searchQuery);
+    // Universal Archival Qualification:
+    // Setiap adegan yang ditandai foto atau memiliki searchQuery berhak mencari foto sejarah otentik
+    const qualifiesForPhoto = node.mediaType === 'photo' || Boolean(node.searchQuery);
 
     let isPhotoDownloaded = false;
     if (qualifiesForPhoto) {

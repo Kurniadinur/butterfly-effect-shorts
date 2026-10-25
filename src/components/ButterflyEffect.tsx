@@ -10,6 +10,7 @@ import { OutroScene } from './OutroScene';
 import { FilmEffects } from './effects/FilmEffects';
 import { CameraShake } from './effects/CameraShake';
 import { CinematicOptics } from './effects/CinematicOptics';
+import { AtmosphericBackground } from './AtmosphericBackground';
 
 export interface ButterflyEffectProps {
   data?: ButterflyStoryData;
@@ -121,6 +122,9 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         shakeThresholdChaos={data.editorialStyle?.shakeThresholdChaos ?? 65}
         sensitivity={data.editorialStyle?.shakeSensitivity ?? 'moderate'}
       >
+        {/* 0. Permanent Investigation Canvas (Rich Desk Surface, Blueprint Grid, Margin Ticks, Lamp Pool) */}
+        <AtmosphericBackground mood={data.editorialStyle?.mood} />
+
         {/* 1. Cinematic Hook (Frames 0 -> hook.durationFrames) */}
         <Sequence from={0} durationInFrames={data.hook.durationFrames}>
           <HookScene

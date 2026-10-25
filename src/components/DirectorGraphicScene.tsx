@@ -89,17 +89,17 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
       style={{
         position: 'absolute',
         inset: 0,
-        backgroundColor: '#05070c',
+        backgroundColor: 'transparent',
         overflow: 'hidden',
       }}
     >
-      {/* 1. Deep Cinematic Vignette & Atmospheric Radial Lighting (Human Creator Style - Zero Tech Grids) */}
+      {/* 1. Deep Cinematic Vignette & Atmospheric Radial Lighting (Blends with AtmosphericBackground) */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'radial-gradient(ellipse at 50% 45%, #0f172a 0%, #070a13 55%, #020408 100%)',
-          opacity: 0.95,
+          background: 'radial-gradient(ellipse at 50% 45%, rgba(15, 23, 42, 0.2) 0%, rgba(7, 10, 19, 0.45) 60%, rgba(2, 4, 8, 0.75) 100%)',
+          opacity: 0.35,
         }}
       />
 
@@ -220,26 +220,117 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           )}
 
           {/* ======================================================== */}
-          {/* SCENE C: PRESS QUESTION (Interogasi Mikrofon)            */}
+          {/* SCENE C: PRESS QUESTION (Interogasi Mikrofon Forensik)   */}
           {/* ======================================================== */}
           {type === 'press-question' && (
-            <g transform="translate(0, -280)">
-              <polygon points="540,650 320,1350 760,1350" fill="url(#spotlightDir)" opacity="0.3" />
-              <g transform="translate(460, 850)">
-                <circle cx="80" cy="50" r="42" fill="#1e293b" stroke="#e2e8f0" strokeWidth="4" />
-                <path d="M 30 110 L 130 110 L 160 320 L 0 320 Z" fill="#0f172a" stroke="#94a3b8" strokeWidth="4" />
-                <path d="M 120 150 Q 180 130 210 70 L 230 80 Q 190 170 140 190 Z" fill="#1e293b" stroke="#e2e8f0" strokeWidth="4" />
-                <rect x="215" y="45" width="22" height="40" fill="#f59e0b" rx="5" stroke="#ffffff" strokeWidth="2" />
-                <line x1="226" y1="85" x2="226" y2="120" stroke="#94a3b8" strokeWidth="4" />
-                <circle cx="226" cy="65" r={25 + pulse * 20} fill="none" stroke="#f59e0b" strokeWidth="3" opacity={1 - pulse * 0.7} />
-                <circle cx="226" cy="65" r={50 + pulse * 30} fill="none" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6 6" opacity={0.8 - pulse * 0.7} />
+            <g transform="translate(100, 360)">
+              {/* Overhead Spotlight Beam onto Press Table */}
+              <polygon points="440,0 120,680 760,680" fill="url(#spotlightDir)" opacity="0.22" />
+
+              {/* Main Press Conference Podium / Desk */}
+              <g style={{ filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.85))' }}>
+                {/* Woodgrain & Steel Conference Table Edge */}
+                <rect x="40" y="580" width="800" height="140" fill="#1e293b" stroke="#334155" strokeWidth="4" rx="8" />
+                <rect x="40" y="580" width="800" height="20" fill="#334155" />
+                <line x1="40" y1="600" x2="840" y2="600" stroke="#f59e0b" strokeWidth="3" opacity="0.8" />
+
+                {/* Live Microphone Stand 1 (Left - German Rundfunk Style) */}
+                <g transform="translate(260, 520) rotate(-16)">
+                  <line x1="0" y1="80" x2="0" y2="-80" stroke="#64748b" strokeWidth="8" strokeLinecap="round" />
+                  <rect x="-18" y="-120" width="36" height="55" fill="#475569" stroke="#cbd5e1" strokeWidth="3" rx="8" />
+                  <line x1="-12" y1="-105" x2="12" y2="-105" stroke="#94a3b8" strokeWidth="2" />
+                  <line x1="-12" y1="-95" x2="12" y2="-95" stroke="#94a3b8" strokeWidth="2" />
+                  <line x1="-12" y1="-85" x2="12" y2="-85" stroke="#94a3b8" strokeWidth="2" />
+                  <rect x="-8" y="-65" width="16" height="12" fill="#ef4444" rx="2" />
+                </g>
+
+                {/* Live Microphone Stand 2 (Center - Broadcast Cardioid Mic) */}
+                <g transform="translate(440, 480)">
+                  <line x1="0" y1="120" x2="0" y2="-90" stroke="#94a3b8" strokeWidth="10" strokeLinecap="round" />
+                  <circle cx="0" cy="110" r="30" fill="#0f172a" stroke="#475569" strokeWidth="4" />
+                  <circle cx="0" cy="-110" r="28" fill="#1e293b" stroke="#f8fafc" strokeWidth="3" />
+                  <circle cx="0" cy="-110" r="22" fill="#334155" stroke="#94a3b8" strokeWidth="2" strokeDasharray="4 2" />
+                  {/* Concentric Audio Pulse Waves */}
+                  <circle cx="0" cy="-110" r={40 + pulse * 28} fill="none" stroke="#f59e0b" strokeWidth="2.5" opacity={1 - pulse * 0.8} />
+                  <circle cx="0" cy="-110" r={70 + pulse * 38} fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="6 4" opacity={0.7 - pulse * 0.6} />
+                </g>
+
+                {/* Live Microphone Stand 3 (Right - Italian ANSA Reporter Style) */}
+                <g transform="translate(620, 520) rotate(16)">
+                  <line x1="0" y1="80" x2="0" y2="-80" stroke="#64748b" strokeWidth="8" strokeLinecap="round" />
+                  <rect x="-18" y="-120" width="36" height="55" fill="#475569" stroke="#cbd5e1" strokeWidth="3" rx="8" />
+                  <line x1="-12" y1="-105" x2="12" y2="-105" stroke="#94a3b8" strokeWidth="2" />
+                  <line x1="-12" y1="-95" x2="12" y2="-95" stroke="#94a3b8" strokeWidth="2" />
+                  <line x1="-12" y1="-85" x2="12" y2="-85" stroke="#94a3b8" strokeWidth="2" />
+                  <rect x="-8" y="-65" width="16" height="12" fill="#38bdf8" rx="2" />
+                </g>
+
+                {/* Reporter Accreditation Badge on Table */}
+                <g transform="translate(100, 620) rotate(-4)">
+                  <rect x="0" y="0" width="180" height="70" fill="#f8fafc" stroke="#94a3b8" strokeWidth="2" rx="4" />
+                  <rect x="0" y="0" width="180" height="16" fill="#dc2626" />
+                  <text x="90" y="12" fill="#ffffff" fontSize="9" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                    PRESS CORPS // ACCREDITED
+                  </text>
+                  <text x="90" y="42" fill="#0f172a" fontSize="13" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                    P. BRUSCHINI (ANSA)
+                  </text>
+                  <line x1="20" y1="54" x2="160" y2="54" stroke="#cbd5e1" strokeWidth="2" />
+                </g>
+
+                {/* Audio Oscilloscope / Frequency VU Bars on Desk */}
+                <g transform="translate(340, 625)">
+                  {Array.from({ length: 16 }).map((_, i) => {
+                    const barH = Math.abs(Math.sin(frame * 0.25 + i * 0.4)) * 38 + 8;
+                    return (
+                      <rect
+                        key={i}
+                        x={i * 16}
+                        y={50 - barH}
+                        width="11"
+                        height={barH}
+                        fill={barH > 35 ? '#ef4444' : barH > 22 ? '#f59e0b' : '#38bdf8'}
+                        rx="2"
+                      />
+                    );
+                  })}
+                </g>
+
+                {/* Live Transmission Status Badge */}
+                <g transform="translate(640, 630)">
+                  <rect x="0" y="0" width="160" height="42" fill="#020617" stroke="#ef4444" strokeWidth="2" rx="4" />
+                  <circle cx="22" cy="21" r="7" fill={pulse > 0.4 ? '#ef4444' : '#7f1d1d'} />
+                  <text x="40" y="26" fill="#f8fafc" fontSize="12" fontWeight="900" fontFamily="monospace">
+                    LIVE ON AIR
+                  </text>
+                </g>
               </g>
 
-              {quoteText && (
-                <text x="540" y="780" fill="#FFE600" fontSize="28" fontWeight="900" fontFamily="'Montserrat', sans-serif" textAnchor="middle" style={{ filter: 'drop-shadow(0 4px 15px rgba(0,0,0,0.9))' }}>
-                  "{quoteText}"
+              {/* Journalist Question Callout Card */}
+              <g transform="translate(100, 180)" style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.9))' }}>
+                <rect x="0" y="0" width="680" height="150" fill="rgba(15, 23, 42, 0.96)" stroke="#38bdf8" strokeWidth="3" rx="10" />
+                <rect x="0" y="0" width="12" height="150" fill="#38bdf8" />
+
+                <text x="35" y="42" fill="#38bdf8" fontSize="14" fontWeight="900" fontFamily="monospace" letterSpacing="2">
+                  PERTANYAAN WARTAWAN // VERBATIM:
                 </text>
-              )}
+
+                <text
+                  x="35"
+                  y="95"
+                  fill="#FFE600"
+                  fontSize="27"
+                  fontWeight="900"
+                  fontFamily="'Montserrat', sans-serif"
+                  style={{ filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.8))' }}
+                >
+                  "{quoteText || primaryText || 'Kapan peraturan ini mulai berlaku?'}"
+                </text>
+
+                <text x="35" y="130" fill="#94a3b8" fontSize="14" fontWeight="700" fontFamily="monospace">
+                  {secondaryText || 'Pertanyaan mendadak tanpa jawaban di naskah'}
+                </text>
+              </g>
             </g>
           )}
 
@@ -598,62 +689,94 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 ))}
               </g>
 
-              {/* People on Top of Wall Swinging Sledgehammer (Silhouette) */}
+              {/* Industrial Heavy Sledgehammer Striking the Wall Epicenter */}
               <g transform="translate(40, 310)">
                 {(() => {
                   const hammerSwing = Math.sin(frame * 0.28);
-                  const hammerRot = hammerSwing * 45;
+                  const hammerRot = hammerSwing * 50;
                   const isImpact = hammerSwing < -0.85;
                   return (
-                    <g transform="translate(320, 0)">
-                      <circle cx="0" cy="-60" r="14" fill="#000000" />
-                      <path d="M -8 -46 L 8 -46 L 12 -5 L -12 -5 Z" fill="#000000" />
-                      <line x1="-8" y1="-5" x2="-18" y2="25" stroke="#000000" strokeWidth="8" strokeLinecap="round" />
-                      <line x1="8" y1="-5" x2="18" y2="25" stroke="#000000" strokeWidth="8" strokeLinecap="round" />
-
-                      <g transform={`rotate(${hammerRot} 0 -35)`}>
-                        <line x1="0" y1="-35" x2="35" y2="-65" stroke="#000000" strokeWidth="6" strokeLinecap="round" />
-                        <line x1="25" y1="-75" x2="45" y2="-55" stroke="#ef4444" strokeWidth="12" strokeLinecap="square" />
+                    <g transform="translate(380, 190)">
+                      {/* Heavy Steel Sledgehammer */}
+                      <g transform={`rotate(${hammerRot} 0 -80)`}>
+                        {/* Hickory Handle */}
+                        <line x1="0" y1="-80" x2="55" y2="-170" stroke="#b45309" strokeWidth="9" strokeLinecap="round" />
+                        <line x1="5" y1="-75" x2="55" y2="-160" stroke="#fef3c7" strokeWidth="2" opacity="0.6" />
+                        {/* Forged Steel Hammer Head */}
+                        <rect x="40" y="-190" width="36" height="26" fill="#475569" stroke="#cbd5e1" strokeWidth="3" rx="3" />
+                        <rect x="36" y="-188" width="8" height="22" fill="#ef4444" rx="2" />
                       </g>
 
+                      {/* Explosive Seismic Shockwave & Sparks on Impact */}
                       {isImpact && (
-                        <g transform="translate(10, 0)">
-                          <circle cx="0" cy="0" r="18" fill="#FFE600" />
-                          <line x1="-22" y1="-15" x2="22" y2="15" stroke="#ffffff" strokeWidth="4" />
-                          <line x1="-15" y1="22" x2="15" y2="-22" stroke="#ffffff" strokeWidth="4" />
+                        <g>
+                          <circle cx="0" cy="0" r={45 + pulse * 25} fill="none" stroke="#FFE600" strokeWidth="5" opacity={0.9} />
+                          <circle cx="0" cy="0" r={75 + pulse * 35} fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="8 6" opacity={0.7} />
+                          {/* Radiating Spark Rays */}
+                          {[-45, -20, 0, 25, 50, 80].map((deg, sIdx) => (
+                            <line
+                              key={sIdx}
+                              x1="0"
+                              y1="0"
+                              x2={Math.cos((deg * Math.PI) / 180) * 60}
+                              y2={Math.sin((deg * Math.PI) / 180) * 60}
+                              stroke="#ffffff"
+                              strokeWidth="4"
+                              strokeLinecap="round"
+                            />
+                          ))}
                         </g>
                       )}
+
+                      {/* Exposed Twisted Steel Rebar Jutting from Breach */}
+                      <path d="M -30 20 Q -50 45 -40 85" fill="none" stroke="#94a3b8" strokeWidth="5" strokeLinecap="round" />
+                      <path d="M 25 15 Q 45 40 35 75" fill="none" stroke="#94a3b8" strokeWidth="5" strokeLinecap="round" />
                     </g>
                   );
                 })()}
-
-                {/* Celebrating Figures */}
-                <g transform="translate(200, 0)">
-                  <circle cx="0" cy="-55" r="13" fill="#000000" />
-                  <path d="M -7 -42 L 7 -42 L 10 0 L -10 0 Z" fill="#000000" />
-                  <path d="M -7 -35 L -25 -65 L -20 -80" fill="none" stroke="#000000" strokeWidth="6" strokeLinecap="round" />
-                  <path d="M 7 -35 L 25 -65 L 20 -80" fill="none" stroke="#000000" strokeWidth="6" strokeLinecap="round" />
-                </g>
-
-                <g transform="translate(480, 0)">
-                  <circle cx="0" cy="-58" r="13" fill="#000000" />
-                  <path d="M -7 -45 L 7 -45 L 10 0 L -10 0 Z" fill="#000000" />
-                  <path d="M -7 -38 L -30 -65" fill="none" stroke="#000000" strokeWidth="6" strokeLinecap="round" />
-                  <path d="M 7 -38 L 30 -70" fill="none" stroke="#000000" strokeWidth="6" strokeLinecap="round" />
-                </g>
               </g>
 
-              {/* Crowd at Base Pushing Against the Wall */}
-              <g transform="translate(40, 560)">
-                <rect x="0" y="80" width="800" height="90" fill="#090d16" />
-                {Array.from({ length: 18 }).map((_, i) => {
-                  const px = 20 + i * 44;
-                  const pushBob = Math.sin(frame * 0.15 + i) * 4;
+              {/* Organic Multi-Layer Crowd Horizon at Base (Zero Stick Figures) */}
+              <g transform="translate(40, 520)">
+                {/* Secondary Deep Crowd Silhouette Layer */}
+                <path
+                  d="M 0 90 Q 30 65 60 85 Q 90 55 130 80 Q 170 50 210 75 Q 250 55 290 85 Q 330 60 370 80 Q 410 50 450 75 Q 490 55 530 80 Q 570 60 610 85 Q 650 50 690 75 Q 730 60 760 85 Q 780 70 800 90 L 800 160 L 0 160 Z"
+                  fill="#0f172a"
+                  opacity="0.85"
+                />
+
+                {/* Primary Forefront Dense Crowd Horizon with Raised Arms & Chisels */}
+                <path
+                  d="M 0 120 Q 25 85 50 110 Q 80 75 115 105 Q 150 70 185 100 Q 220 75 255 115 Q 295 70 335 100 Q 375 75 415 105 Q 455 65 495 100 Q 535 80 575 110 Q 615 70 655 100 Q 695 75 735 105 Q 765 85 800 120 L 800 200 L 0 200 Z"
+                  fill="#050811"
+                />
+
+                {/* Raised Chisels, Hammers, and Outstretched Hands */}
+                {[90, 165, 230, 310, 435, 520, 610, 690, 755].map((x, idx) => {
+                  const armBob = Math.sin(frame * 0.18 + idx) * 8;
+                  const isChisel = idx % 2 === 0;
                   return (
-                    <g key={i} transform={`translate(${px}, ${pushBob})`}>
-                      <circle cx="0" cy="0" r="12" fill="#05070a" />
-                      <path d="M -8 12 L 8 12 L 10 80 L -10 80 Z" fill="#05070a" />
-                      <line x1="0" y1="20" x2="18" y2="0" stroke="#05070a" strokeWidth="6" strokeLinecap="round" />
+                    <g key={idx} transform={`translate(${x}, ${95 + armBob})`}>
+                      <line x1="0" y1="20" x2={isChisel ? "12" : "-10"} y2="-20" stroke="#050811" strokeWidth="7" strokeLinecap="round" />
+                      {isChisel ? (
+                        <rect x="10" y="-32" width="6" height="15" fill="#94a3b8" rx="1" />
+                      ) : (
+                        <circle cx="-10" cy="-22" r="5" fill="#f59e0b" />
+                      )}
+                    </g>
+                  );
+                })}
+
+                {/* Dynamic Camera Flashes in the Crowd */}
+                {Array.from({ length: 4 }).map((_, fIdx) => {
+                  const flashX = 120 + fIdx * 180 + ((frame * 23) % 80);
+                  const isFlashing = (frame + fIdx * 9) % 24 < 3;
+                  if (!isFlashing) return null;
+                  return (
+                    <g key={`flash-${fIdx}`} transform={`translate(${flashX}, 100)`}>
+                      <circle cx="0" cy="0" r="16" fill="#ffffff" opacity="0.9" />
+                      <line x1="-25" y1="0" x2="25" y2="0" stroke="#ffffff" strokeWidth="3" />
+                      <line x1="0" y1="-25" x2="0" y2="25" stroke="#ffffff" strokeWidth="3" />
                     </g>
                   );
                 })}
@@ -1124,7 +1247,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                     ?
                   </text>
                   <text x="0" y="62" fill="#f8fafc" fontSize="13" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
-                    {metricLabel || 'TEROPONG HILANG'}
+                    {metricLabel || primaryText || 'AKSES KRITIS'}
                   </text>
                 </g>
               </g>
@@ -1311,39 +1434,107 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           )}
 
           {/* ======================================================== */}
-          {/* SCENE Z: CROWD PROTEST / MASS REVOLT                     */}
+          {/* SCENE Z: CROWD PROTEST / MASS REVOLT (Siluet Organik)    */}
           {/* ======================================================== */}
           {(type === 'crowd-protest' || type === 'mass-revolt' || type === 'revolution-action') && (
-            <g transform="translate(100, 400)">
-              <polygon points="120,680 400,-80 500,-80" fill="url(#spotlightDir)" opacity="0.3" />
-              <polygon points="760,680 440,-80 540,-80" fill="url(#spotlightDir)" opacity="0.3" />
+            <g transform="translate(100, 370)">
+              {/* Dynamic Criss-Crossing Searchlights in the Night Sky */}
+              {(() => {
+                const sAngle1 = Math.sin(frame * 0.035) * 40;
+                const sAngle2 = Math.cos(frame * 0.04) * 35;
+                return (
+                  <g>
+                    <polygon
+                      points={`80,720 ${350 + sAngle1 * 6},-80 ${480 + sAngle1 * 6},-80`}
+                      fill="url(#spotlightDir)"
+                      opacity="0.25"
+                    />
+                    <polygon
+                      points={`800,720 ${420 + sAngle2 * 6},-80 ${550 + sAngle2 * 6},-80`}
+                      fill="url(#spotlightDir)"
+                      opacity="0.22"
+                    />
+                  </g>
+                );
+              })()}
 
-              <g transform="translate(40, 360)">
-                {Array.from({ length: 24 }).map((_, i) => {
-                  const px = 10 + i * 32;
-                  const py = 120 + Math.sin(frame * 0.15 + i) * 6;
-                  const hasPlacard = i % 3 === 0;
+              {/* Broadcaster / Protest Megaphone with Acoustic Wavefronts */}
+              <g transform="translate(120, 240)" style={{ filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.9))' }}>
+                <g transform="rotate(-15)">
+                  {/* Tripod Stand */}
+                  <line x1="0" y1="40" x2="-25" y2="120" stroke="#475569" strokeWidth="6" strokeLinecap="round" />
+                  <line x1="0" y1="40" x2="25" y2="120" stroke="#475569" strokeWidth="6" strokeLinecap="round" />
+                  {/* Megaphone Cone */}
+                  <polygon points="0,20 120,-30 120,70" fill="#ef4444" stroke="#f8fafc" strokeWidth="3" />
+                  <rect x="-30" y="5" width="30" height="30" fill="#1e293b" rx="4" />
+                  {/* Concentric Acoustic Wavefronts */}
+                  <circle cx="120" cy="20" r={30 + pulse * 25} fill="none" stroke="#FFE600" strokeWidth="3" opacity={1 - pulse * 0.7} />
+                  <circle cx="120" cy="20" r={55 + pulse * 35} fill="none" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6 4" opacity={0.8 - pulse * 0.6} />
+                  <circle cx="120" cy="20" r={85 + pulse * 45} fill="none" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="4 4" opacity={0.6 - pulse * 0.5} />
+                </g>
+              </g>
+
+              {/* Multi-Tier Organic Crowd Silhouettes (Zero Stick Figures) */}
+              <g transform="translate(40, 420)">
+                {/* Layer 1: Distant Background Masses */}
+                <path
+                  d="M 0 100 Q 40 75 80 95 Q 130 65 180 90 Q 230 60 280 85 Q 330 70 380 90 Q 430 60 480 85 Q 530 65 580 90 Q 630 60 680 85 Q 730 70 770 90 Q 790 75 800 95 L 800 240 L 0 240 Z"
+                  fill="#0e1726"
+                  opacity="0.8"
+                />
+
+                {/* Layer 2: Mid-Ground Masses with Banners & Placards */}
+                <path
+                  d="M 0 140 Q 30 105 60 130 Q 100 95 145 125 Q 190 90 235 120 Q 280 100 325 130 Q 370 95 415 125 Q 460 100 505 130 Q 550 90 595 125 Q 640 100 685 130 Q 730 95 770 125 Q 790 110 800 135 L 800 260 L 0 260 Z"
+                  fill="#080d1a"
+                />
+
+                {/* Authentic Historical Placards Held High */}
+                {[
+                  { x: 140, label: 'WIR SIND DAS VOLK', rot: -5 },
+                  { x: 380, label: stampText || 'KEBEBASAN', rot: 3 },
+                  { x: 620, label: 'TOR AUF! (BUKA GERBANG)', rot: -2 },
+                ].map((banner, bIdx) => {
+                  const bBob = Math.sin(frame * 0.12 + bIdx * 2) * 6;
                   return (
-                    <g key={i} transform={`translate(${px}, ${py})`}>
-                      <circle cx="0" cy="0" r="13" fill="#05070a" />
-                      <path d="M -8 12 L 8 12 L 12 120 L -12 120 Z" fill="#05070a" />
-                      {hasPlacard && (
-                        <g transform="translate(0, -60)">
-                          <line x1="0" y1="60" x2="0" y2="0" stroke="#05070a" strokeWidth="4" />
-                          <rect x="-24" y="-30" width="48" height="30" fill="#e2e8f0" stroke="#05070a" strokeWidth="2" />
-                          <line x1="-16" y1="-15" x2="16" y2="-15" stroke="#ef4444" strokeWidth="3" />
-                        </g>
-                      )}
+                    <g key={bIdx} transform={`translate(${banner.x}, ${80 + bBob}) rotate(${banner.rot})`}>
+                      <line x1="0" y1="50" x2="0" y2="0" stroke="#050811" strokeWidth="5" />
+                      <rect x="-80" y="-38" width="160" height="38" fill="#f8fafc" stroke="#0f172a" strokeWidth="3" rx="3" />
+                      <line x1="-75" y1="-5" x2="75" y2="-5" stroke="#dc2626" strokeWidth="2" />
+                      <text x="0" y="-14" fill="#0f172a" fontSize="12" fontWeight="900" fontFamily="'Montserrat', sans-serif" textAnchor="middle">
+                        {banner.label}
+                      </text>
+                    </g>
+                  );
+                })}
+
+                {/* Layer 3: Forefront High-Contrast Silhouettes with Raised Fists */}
+                <path
+                  d="M 0 180 Q 35 140 70 170 Q 115 135 160 165 Q 210 130 260 165 Q 310 140 360 170 Q 410 135 460 165 Q 510 130 560 165 Q 610 140 660 170 Q 710 135 755 165 Q 785 150 800 180 L 800 280 L 0 280 Z"
+                  fill="#03050a"
+                />
+
+                {/* Raised Hands & Fists */}
+                {[90, 230, 340, 480, 580, 710].map((hx, idx) => {
+                  const hBob = Math.sin(frame * 0.2 + idx) * 7;
+                  return (
+                    <g key={idx} transform={`translate(${hx}, ${150 + hBob})`}>
+                      <line x1="0" y1="25" x2="0" y2="-15" stroke="#03050a" strokeWidth="8" strokeLinecap="round" />
+                      <circle cx="0" cy="-18" r="6" fill="#03050a" />
                     </g>
                   );
                 })}
               </g>
 
-              <g transform="translate(440, 260)">
-                <circle cx="0" cy="0" r="28" fill="#ef4444" />
-                <polygon points="0,0 60,-35 60,35" fill="#ef4444" opacity="0.8" />
-                <text x="80" y="10" fill="#FFE600" fontSize="24" fontWeight="900" fontFamily="'Montserrat', sans-serif">
-                  {stampText || 'SUARA RAKYAT'}
+              {/* Urgent Situation Telemetry Badge */}
+              <g transform="translate(420, 220)" style={{ filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.9))' }}>
+                <rect x="0" y="0" width="360" height="70" fill="rgba(15, 23, 42, 0.95)" stroke="#ef4444" strokeWidth="2.5" rx="6" />
+                <rect x="0" y="0" width="8" height="70" fill="#ef4444" />
+                <text x="24" y="28" fill="#ef4444" fontSize="11" fontWeight="900" fontFamily="monospace" letterSpacing="1.5">
+                  ESKALASI MASSA // TAK TERBENDUNG
+                </text>
+                <text x="24" y="52" fill="#f8fafc" fontSize="16" fontWeight="900" fontFamily="'Montserrat', sans-serif">
+                  {primaryText || 'PULUHAN RIBU WARGA DI JALANAN'}
                 </text>
               </g>
             </g>
@@ -1470,8 +1661,8 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
           left: 0,
           right: 0,
           bottom: 0,
-          height: '520px',
-          background: 'linear-gradient(to top, rgba(5, 7, 12, 0.98) 0%, rgba(5, 7, 12, 0.6) 60%, transparent 100%)',
+          height: '360px',
+          background: 'linear-gradient(to top, rgba(5, 7, 12, 0.72) 0%, rgba(5, 7, 12, 0.22) 60%, transparent 100%)',
           pointerEvents: 'none',
         }}
       />
@@ -1491,14 +1682,20 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
         {locationTag && (
           <div
             style={{
+              display: 'inline-block',
               fontFamily: "'Space Grotesk', -apple-system, sans-serif",
-              fontSize: '15px',
+              fontSize: '14px',
               fontWeight: 800,
-              color: accentColor || '#ef4444',
+              color: accentColor || '#fbbf24',
+              backgroundColor: 'rgba(15, 23, 42, 0.85)',
+              border: `1px solid ${accentColor || '#fbbf24'}66`,
+              padding: '4px 14px',
+              borderRadius: '4px',
               letterSpacing: '2.5px',
               textTransform: 'uppercase',
-              marginBottom: '8px',
+              marginBottom: '10px',
               textShadow: '0 2px 10px rgba(0, 0, 0, 0.9)',
+              backdropFilter: 'blur(4px)',
             }}
           >
             {locationTag}
@@ -1521,6 +1718,22 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
         >
           {title}
         </h2>
+
+        {subtitle && (
+          <p
+            style={{
+              fontFamily: "'Space Grotesk', -apple-system, sans-serif",
+              fontSize: '18px',
+              fontWeight: 600,
+              color: '#cbd5e1',
+              margin: '8px 0 0 0',
+              textShadow: '0 2px 12px rgba(0, 0, 0, 0.95)',
+              maxWidth: '920px',
+            }}
+          >
+            {subtitle}
+          </p>
+        )}
       </div>
     </div>
   );
