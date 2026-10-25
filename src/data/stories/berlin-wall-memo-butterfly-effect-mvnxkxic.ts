@@ -173,5 +173,8 @@ export const CURRENT_STORY: ButterflyStoryData = {
     "narration": "Dan itu bermula dari 9 November 1989. Pria ini salah membaca satu lembar catatan...",
     "question": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah jalan hidupmu 5 tahun lagi?",
     "durationFrames": 185
-  }
+  },
+  "wordTimestamps": [],
+  "audioUrl": "butterfly/audio/berlin-wall-memo-butterfly-effect-mvnxkxic_voiceover.wav",
+  "totalDurationFrames": 1682
 };

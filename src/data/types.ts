@@ -72,6 +72,7 @@ export interface ButterflyNode {
   accentColor?: string | null;
   caption: string;
   sfxTrigger?: string | null;
+  soundEffect?: any;
   startFrame: number;
   durationFrames: number;
 }
@@ -103,6 +104,7 @@ export interface ButterflyStoryData {
     rightSearchQuery?: string | null;
     leftImage?: string | null;
     rightImage?: string | null;
+    soundEffect?: any;
     durationFrames: number;
   };
   nodes: ButterflyNode[];

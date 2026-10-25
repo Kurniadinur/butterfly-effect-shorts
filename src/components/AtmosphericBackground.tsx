@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCurrentFrame, interpolate } from 'remotion';
+import { useCurrentFrame } from 'remotion';
 
 export interface AtmosphericBackgroundProps {
   mood?: string;
@@ -10,7 +10,6 @@ export const AtmosphericBackground: React.FC<AtmosphericBackgroundProps> = ({ mo
 
   // Slow, continuous ambient drift
   const driftY = (frame * 0.25) % 1920;
-  const pulse = (Math.sin(frame * 0.05) + 1) / 2;
 
   // Mood-dependent lighting tones
   let ambientSpot = 'rgba(245, 158, 11, 0.25)'; // Amber / warm archival
