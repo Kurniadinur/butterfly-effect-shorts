@@ -9,6 +9,7 @@ import { KineticSubtitle } from './KineticSubtitle';
 import { OutroScene } from './OutroScene';
 import { FilmEffects } from './effects/FilmEffects';
 import { CameraShake } from './effects/CameraShake';
+import { CinematicOptics } from './effects/CinematicOptics';
 
 export interface ButterflyEffectProps {
   data?: ButterflyStoryData;
@@ -189,6 +190,8 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
 
       {/* 4. Film Effects Overlay (35mm Grain, Light Leak, Vignette, Mood Tint) */}
       <FilmEffects editorialStyle={data.editorialStyle} />
+      {/* 4b. Cinematic Optics (35mm Gate Weave, Optical Halation, Anamorphic Falloff) */}
+      <CinematicOptics intensity="standard" />
 
       {/* 5. Creator Transition Click Sound Effects (Crisp Camera Shutter Snap on Every Cut) */}
       {cutFrames.map((cutF) => (

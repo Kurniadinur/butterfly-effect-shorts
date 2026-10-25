@@ -14,6 +14,15 @@ interface SubtitlePage {
   endFrame: number;
 }
 
+/**
+ * Editorial Master Subtitle Engine (Anti-Template Edition):
+ * Replaces the generic "bouncing yellow Montserrat font" with a prestigious,
+ * bespoke Forensic Archival Dossier layout:
+ * - Razor-sharp Space Grotesk / Mono typography with editorial tracking
+ * - Forensic transcript chassis with declassified timestamp metadata
+ * - Tactile marker underline & ambient phosphor highlight (zero cartoon bounce)
+ * - Cinematic letterboxed readability without cheesy thick strokes
+ */
 export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps }) => {
   const frame = useCurrentFrame();
 
@@ -22,8 +31,6 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
     if (!wordTimestamps || wordTimestamps.length === 0) return [];
 
     const pageMap = new Map<number, WordTimestamp[]>();
-
-    // If words already have pageIndex assigned, group by pageIndex
     const hasPageIndex = wordTimestamps.some((w) => w.pageIndex !== undefined);
 
     if (hasPageIndex) {
@@ -35,7 +42,6 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
         pageMap.get(pIdx)!.push(w);
       });
     } else {
-      // Fallback: partition every 2 to 3 words
       let i = 0;
       let pIdx = 0;
       while (i < wordTimestamps.length) {
@@ -66,14 +72,10 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
     return null;
   }
 
-  // Find currently active page:
-  // Subtitles only stay visible while words are actively spoken or during microscopic word transitions (<= 6 frames).
-  // During natural breath pauses or scene cuts, subtitles cleanly disappear so visuals can breathe!
+  // Find currently active page
   const activePageIndex = pages.findIndex((page, idx) => {
     const nextStart = pages[idx + 1]?.startFrame ?? page.endFrame;
     const gap = nextStart - page.endFrame;
-    // If the gap to the next page is small (<= 6 frames / 0.2s), hold smoothly.
-    // If there is a breath pause (> 6 frames) or silence, strictly cut off at page.endFrame!
     const holdUntil = gap <= 6 ? nextStart : page.endFrame;
     return frame >= page.startFrame && frame < holdUntil;
   });
@@ -89,72 +91,127 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
     (w) => frame >= w.startFrame && frame < w.endFrame
   );
 
-  // If between adjacent words on the same page, keep the last spoken word active
   if (activeWordIndex === -1 && frame >= activePage.endFrame) {
     activeWordIndex = activePage.words.length - 1;
   }
+
+  // Blinking forensic recording dot (15-frame cycle)
+  const isDotBlink = Math.floor(frame / 12) % 2 === 0;
 
   return (
     <div
       style={{
         position: 'absolute',
-        bottom: '260px',
-        left: '40px',
-        right: '40px',
+        bottom: '240px',
+        left: '48px',
+        right: '48px',
         zIndex: 50,
         display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
         pointerEvents: 'none',
-        textAlign: 'center',
       }}
     >
       {/* 
-        Stationary phrase container:
-        The words remain firmly in place across the entire page duration.
-        Zero horizontal drift, zero eye fatigue.
+        A. Forensic Archival Transcript Chassis
+        Distinguishes our look immediately from floating generic templates
       */}
       <div
         style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
+          display: 'inline-flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          gap: '12px 20px',
-          maxWidth: '960px',
+          backgroundColor: 'rgba(5, 8, 14, 0.72)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          border: '1px solid rgba(255, 255, 255, 0.12)',
+          borderRadius: '16px',
+          padding: '12px 28px 18px 28px',
+          boxShadow:
+            '0 20px 40px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
+          maxWidth: '920px',
+          position: 'relative',
         }}
       >
-        {activePage.words.map((w, idx) => {
-          const cleanWord = cleanSubtitleWord(w.word);
-          if (!cleanWord) return null;
+        {/* Archival Metadata Header Line */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            marginBottom: '8px',
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: '13px',
+            fontWeight: 700,
+            letterSpacing: '1.5px',
+            textTransform: 'uppercase',
+            color: 'rgba(255, 255, 255, 0.55)',
+          }}
+        >
+          <span
+            style={{
+              width: '7px',
+              height: '7px',
+              borderRadius: '50%',
+              backgroundColor: isDotBlink ? '#ef4444' : '#7f1d1d',
+              boxShadow: isDotBlink ? '0 0 8px #ef4444' : 'none',
+              display: 'inline-block',
+              transition: 'background-color 0.1s',
+            }}
+          />
+          <span>TRANSCRIPT // EVIDENCE ARCHIVE</span>
+        </div>
 
-          const isActive = idx === activeWordIndex;
+        {/* 
+          B. Clean Stationary Words Container 
+          Space Grotesk + subtle highlight marker
+        */}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '10px 16px',
+            textAlign: 'center',
+          }}
+        >
+          {activePage.words.map((w, idx) => {
+            const cleanWord = cleanSubtitleWord(w.word);
+            if (!cleanWord) return null;
 
-          return (
-            <span
-              key={`${cleanWord}-${w.startFrame}-${idx}`}
-              style={{
-                fontFamily: "'Montserrat', -apple-system, sans-serif",
-                fontSize: '54px',
-                fontWeight: 900,
-                color: isActive ? '#FFE600' : '#FFFFFF',
-                textTransform: 'uppercase',
-                letterSpacing: '-0.5px',
-                lineHeight: 1.15,
-                // Bold multi-directional stroke & shadow for effortless legibility on any background
-                textShadow: isActive
-                  ? '0 0 25px rgba(255, 230, 0, 0.9), -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 0 6px 15px rgba(0, 0, 0, 0.95)'
-                  : '-3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 0 6px 15px rgba(0, 0, 0, 0.95)',
-                display: 'inline-block',
-                transform: isActive ? 'scale(1.08)' : 'scale(1)',
-                transformOrigin: 'center center',
-                transition: 'transform 0.06s ease-out, color 0.06s ease-out',
-              }}
-            >
-              {cleanWord}
-            </span>
-          );
-        })}
+            const isActive = idx === activeWordIndex;
+
+            return (
+              <span
+                key={`${cleanWord}-${w.startFrame}-${idx}`}
+                style={{
+                  fontFamily: "'Space Grotesk', -apple-system, sans-serif",
+                  fontSize: '48px',
+                  fontWeight: 800,
+                  color: isActive ? '#FFFFFF' : 'rgba(255, 255, 255, 0.65)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.2px',
+                  lineHeight: 1.2,
+                  position: 'relative',
+                  display: 'inline-block',
+                  padding: '2px 8px',
+                  borderRadius: '6px',
+                  backgroundColor: isActive ? 'rgba(245, 158, 11, 0.22)' : 'transparent',
+                  borderBottom: isActive ? '3px solid #F59E0B' : '3px solid transparent',
+                  boxShadow: isActive ? '0 0 20px rgba(245, 158, 11, 0.35)' : 'none',
+                  textShadow: isActive
+                    ? '0 0 16px rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0,0,0,0.9)'
+                    : '0 2px 6px rgba(0, 0, 0, 0.8)',
+                  transition: 'background-color 0.08s ease, color 0.08s ease',
+                }}
+              >
+                {cleanWord}
+              </span>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
