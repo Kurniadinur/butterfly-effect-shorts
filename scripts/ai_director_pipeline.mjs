@@ -7,7 +7,7 @@ import { GoogleGenAI } from '@google/genai';
 import { transcribeWithGroq } from './align_groq.mjs';
 import { searchAndDownloadImage } from './fetch_scene_media.mjs';
 import { loadLearningMemory, auditAndRefineStory } from './learning_manager.mjs';
-import { runVisualQASupervisor } from './ai_visual_inspector.mjs';
+import { runAutonomousRemotionEditor } from './ai_visual_inspector.mjs';
 import { generatePublishingPack } from './generate_publishing_pack.mjs';
 import { rpmGovernor } from './gemini_rpm_governor.mjs';
 
@@ -1257,11 +1257,11 @@ async function main() {
     const whisperData = await runWhisperAlignment(wavPath, storyData.id);
     buildSynchronizedStory(storyData, whisperData, relAudioUrl);
 
-    // 5. Automated AI Visual QA Supervisor (Vision Inspection & Safe-Zone Quality Gate)
+    // 5. Autonomous AI Remotion Video Editor Engine (Multi-Checkpoint Screening & Self-Healing Loop)
     try {
-      await runVisualQASupervisor(storyData);
+      await runAutonomousRemotionEditor(storyData);
     } catch (qaErr) {
-      console.warn('      ⚠ [Visual QA Skip]', qaErr.message);
+      console.warn('      ⚠ [Autonomous AI Editor Skip]', qaErr.message);
     }
 
     // 6. Automated YouTube Shorts Viral Publishing Pack (Titles, Description, Hashtags, Pinned Comment)

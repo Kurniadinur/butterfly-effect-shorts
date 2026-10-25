@@ -628,23 +628,21 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                   <line key={x} x1={x} y1="0" x2={x} y2="330" stroke="#111827" strokeWidth="5" />
                 ))}
 
-                {/* Dramatic Action Typography on Barrier */}
-                <text x="180" y="160" fill="#ef4444" fontSize="38" fontWeight="900" fontFamily="'Montserrat', sans-serif" transform="rotate(-6 180 160)" opacity="0.9">
-                  {stampText || 'COLLAPSE'}
-                </text>
-                {(() => {
-                  const barrierText = secondaryText || title || 'SYSTEM BREACH';
-                  const fontSize = barrierText.length > 20 ? 22 : barrierText.length > 14 ? 26 : 32;
-                  return (
-                    <text x="560" y="180" textAnchor="middle" fill="#38bdf8" fontSize={fontSize} fontWeight="900" fontFamily="monospace" transform="rotate(4 560 180)" opacity="0.9">
-                      {barrierText}
-                    </text>
-                  );
-                })()}
-                <circle cx="380" cy="190" r="32" fill="none" stroke="#FFE600" strokeWidth="5" opacity="0.8" />
-                <line x1="380" y1="158" x2="380" y2="222" stroke="#FFE600" strokeWidth="4" opacity="0.8" />
-                <line x1="348" y1="190" x2="380" y2="190" stroke="#FFE600" strokeWidth="4" opacity="0.8" />
-                <line x1="412" y1="190" x2="380" y2="190" stroke="#FFE600" strokeWidth="4" opacity="0.8" />
+                {/* Concrete Texture & Graffiti Stencil on Wall */}
+                <g transform="translate(60, 40)">
+                  <rect x="0" y="0" width="160" height="40" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" strokeWidth="2" strokeDasharray="4 2" rx="4" />
+                  <text x="80" y="26" fill="#ef4444" fontSize="16" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                    {stampText || 'RUNTUH'}
+                  </text>
+                </g>
+
+                {/* Status Telemetry Badge on Right */}
+                <g transform="translate(480, 40)">
+                  <rect x="0" y="0" width="260" height="40" fill="rgba(15, 23, 42, 0.85)" stroke="#38bdf8" strokeWidth="2" rx="4" />
+                  <text x="130" y="26" fill="#38bdf8" fontSize="15" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                    {(primaryText || title || 'STRUKTUR JEBOL').slice(0, 24)}
+                  </text>
+                </g>
 
                 {/* Expanding Fissures and Glowing Cracks */}
                 {(() => {

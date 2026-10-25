@@ -98,9 +98,9 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
     <div
       style={{
         position: 'absolute',
-        bottom: '260px',
+        bottom: '330px',
         left: '40px',
-        right: '40px',
+        right: '120px',
         zIndex: 50,
         display: 'flex',
         justifyContent: 'center',
@@ -121,7 +121,7 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
           justifyContent: 'center',
           alignItems: 'center',
           gap: '12px 20px',
-          maxWidth: '960px',
+          maxWidth: '820px',
         }}
       >
         {activePage.words.map((w, idx) => {
@@ -135,7 +135,7 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
               key={`${cleanWord}-${w.startFrame}-${idx}`}
               style={{
                 fontFamily: "'Montserrat', -apple-system, sans-serif",
-                fontSize: '54px',
+                fontSize: '48px',
                 fontWeight: 900,
                 color: isActive ? '#FFE600' : '#FFFFFF',
                 textTransform: 'uppercase',

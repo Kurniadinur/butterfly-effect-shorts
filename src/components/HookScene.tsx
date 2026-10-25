@@ -60,7 +60,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: '#05070a',
+          backgroundColor: 'transparent',
           overflow: 'hidden',
         }}
       >
@@ -151,9 +151,9 @@ export const HookScene: React.FC<HookSceneProps> = ({
             left: 0,
             right: 0,
             bottom: 0,
-            height: '560px',
+            height: '380px',
             background:
-              'linear-gradient(to top, rgba(3, 5, 8, 0.98) 0%, rgba(3, 5, 8, 0.75) 55%, transparent 100%)',
+              'linear-gradient(to top, rgba(3, 5, 8, 0.75) 0%, rgba(3, 5, 8, 0.25) 55%, transparent 100%)',
             pointerEvents: 'none',
           }}
         />
