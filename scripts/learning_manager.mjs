@@ -161,6 +161,10 @@ KRITERIA AUDIT KETAT:
    - DILARANG KERAS 1 sketsa diam terlalu lama (>6 detik) untuk banyak penjelasan!
    - Wajib memecah alur menjadi 8 hingga 12 babak visual dinamis ('nodes'), dengan pergantian sketsa animasi tiap 3-5 detik.
    - Setiap kali suara narasi menyebut aksi, objek, atau subjek baru (kunci, dokumen, pos jaga, radar, lonceng, benturan), sketsa visual WAJIB berganti menyesuaikan hal tersebut agar penonton tidak mengalami kelelahan visual!
+10. SUPERVISI DETAIL BUKTI HISTORIS KONKRET (ANTI-MEMBINGUNGKAN PENONTON):
+    - DILARANG membiarkan narasi hanya berbicara secara abstrak/umum (misal: 'ia membaca memo keliru' tanpa menjelaskan apa isi memonya).
+    - Periksa: Apakah narasi atau teks visual sudah membeberkan ISI SPESIFIK / KLAUSUL ASLI dari dokumen, kutipan kata blunder fatal, atau identitas objek/pos penting?
+    - JIKA MASIH KABUR: Supervisor WAJIB menyempurnakan narasi dan field teks grafis ('primaryText' / 'secondaryText') agar membeberkan klausul asli dokumen atau kutipan kata bersejarahnya secara gamblang (misal: izin baru berlaku besok jam 4 pagi dengan visa, tapi diumumkan berlaku segera tanpa syarat)!
 
 FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
 {

@@ -45,36 +45,45 @@ const TransitionShutterFlash: React.FC<{ cutFrames: number[] }> = ({ cutFrames }
 /**
  * AI Audio Supervisor Map:
  * Maps each forensic vector sketch archetype to its subtle, non-distracting
- * tactile Foley sound effect. Volumes strictly clamped between 0.20 and 0.30
- * so speech (volume 1.0) remains 100% crystal clear.
+ * tactile Foley sound effect with intelligent rhythmic cadence (repeated hits/rings).
+ * Volumes strictly clamped between 0.20 and 0.32 so speech (volume 1.0) remains 100% crystal clear.
  */
 const SKETCH_FOLEY_SFX: Record<
   string,
-  { sfx: string; volume: number; offsetFrames: number; durationFrames: number }
+  {
+    sfx: string;
+    volume: number;
+    offsetFrames: number;
+    durationFrames: number;
+    repeatIntervalFrames?: number;
+    maxRepeats?: number;
+  }
 > = {
   'key-lockbox': { sfx: 'butterfly/sfx/lock_click.wav', volume: 0.28, offsetFrames: 14, durationFrames: 12 },
-  'maritime-disaster': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.20, offsetFrames: 18, durationFrames: 33 },
-  'courtroom-gavel': { sfx: 'butterfly/sfx/gavel_strike.wav', volume: 0.30, offsetFrames: 15, durationFrames: 16 },
-  'memo-investigation': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.26, offsetFrames: 12, durationFrames: 12 },
-  'bureaucracy-draft': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.24, offsetFrames: 12, durationFrames: 12 },
-  'forensic-dossier': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.26, offsetFrames: 14, durationFrames: 12 },
-  'tactical-map': { sfx: 'butterfly/sfx/radar_ping.wav', volume: 0.20, offsetFrames: 16, durationFrames: 25 },
-  'radiation-hazard': { sfx: 'butterfly/sfx/geiger_tick.wav', volume: 0.24, offsetFrames: 10, durationFrames: 30 },
-  'reactor-meltdown': { sfx: 'butterfly/sfx/geiger_tick.wav', volume: 0.24, offsetFrames: 10, durationFrames: 30 },
-  'clock-countdown': { sfx: 'butterfly/sfx/clock_tick.wav', volume: 0.20, offsetFrames: 10, durationFrames: 20 },
-  'wall-demolition': { sfx: 'butterfly/sfx/hammer_hit.wav', volume: 0.30, offsetFrames: 14, durationFrames: 18 },
-  'gate-breach': { sfx: 'butterfly/sfx/gate_creak.wav', volume: 0.26, offsetFrames: 12, durationFrames: 25 },
-  'valve-failure': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.24, offsetFrames: 12, durationFrames: 22 },
-  'critical-gauge': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.22, offsetFrames: 12, durationFrames: 22 },
-  'telegraph-wire': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.20, offsetFrames: 15, durationFrames: 33 },
-  'press-podium': { sfx: 'butterfly/sfx/camera_blitz.wav', volume: 0.28, offsetFrames: 14, durationFrames: 15 },
-  'press-question': { sfx: 'butterfly/sfx/camera_blitz.wav', volume: 0.28, offsetFrames: 14, durationFrames: 15 },
-  'panic-phone': { sfx: 'butterfly/sfx/phone_ring.wav', volume: 0.26, offsetFrames: 12, durationFrames: 25 },
+  'maritime-disaster': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.20, offsetFrames: 18, durationFrames: 33, repeatIntervalFrames: 45, maxRepeats: 3 },
+  'courtroom-gavel': { sfx: 'butterfly/sfx/gavel_strike.wav', volume: 0.30, offsetFrames: 15, durationFrames: 16, repeatIntervalFrames: 16, maxRepeats: 3 },
+  'memo-investigation': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.26, offsetFrames: 12, durationFrames: 12, repeatIntervalFrames: 45, maxRepeats: 2 },
+  'bureaucracy-draft': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.24, offsetFrames: 12, durationFrames: 12, repeatIntervalFrames: 45, maxRepeats: 2 },
+  'forensic-dossier': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.26, offsetFrames: 14, durationFrames: 12, repeatIntervalFrames: 45, maxRepeats: 2 },
+  'tactical-map': { sfx: 'butterfly/sfx/radar_ping.wav', volume: 0.20, offsetFrames: 16, durationFrames: 25, repeatIntervalFrames: 40, maxRepeats: 3 },
+  'radiation-hazard': { sfx: 'butterfly/sfx/geiger_tick.wav', volume: 0.24, offsetFrames: 10, durationFrames: 30, repeatIntervalFrames: 25, maxRepeats: 5 },
+  'reactor-meltdown': { sfx: 'butterfly/sfx/geiger_tick.wav', volume: 0.24, offsetFrames: 10, durationFrames: 30, repeatIntervalFrames: 25, maxRepeats: 5 },
+  'clock-countdown': { sfx: 'butterfly/sfx/clock_tick.wav', volume: 0.20, offsetFrames: 10, durationFrames: 20, repeatIntervalFrames: 30, maxRepeats: 5 },
+  'wall-demolition': { sfx: 'butterfly/sfx/hammer_hit.wav', volume: 0.32, offsetFrames: 14, durationFrames: 18, repeatIntervalFrames: 34, maxRepeats: 4 },
+  'gate-breach': { sfx: 'butterfly/sfx/gate_creak.wav', volume: 0.26, offsetFrames: 12, durationFrames: 25, repeatIntervalFrames: 48, maxRepeats: 2 },
+  'valve-failure': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.24, offsetFrames: 12, durationFrames: 22, repeatIntervalFrames: 38, maxRepeats: 3 },
+  'critical-gauge': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.22, offsetFrames: 12, durationFrames: 22, repeatIntervalFrames: 38, maxRepeats: 3 },
+  'telegraph-wire': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.20, offsetFrames: 15, durationFrames: 33, repeatIntervalFrames: 45, maxRepeats: 3 },
+  'press-podium': { sfx: 'butterfly/sfx/camera_blitz.wav', volume: 0.28, offsetFrames: 14, durationFrames: 15, repeatIntervalFrames: 28, maxRepeats: 4 },
+  'press-question': { sfx: 'butterfly/sfx/camera_blitz.wav', volume: 0.28, offsetFrames: 14, durationFrames: 15, repeatIntervalFrames: 26, maxRepeats: 4 },
+  'panic-phone': { sfx: 'butterfly/sfx/phone_ring.wav', volume: 0.28, offsetFrames: 12, durationFrames: 25, repeatIntervalFrames: 42, maxRepeats: 3 },
   'domino-collapse': { sfx: 'butterfly/sfx/domino_click.wav', volume: 0.28, offsetFrames: 10, durationFrames: 22 },
-  'laboratory-discovery': { sfx: 'butterfly/sfx/beaker_clink.wav', volume: 0.25, offsetFrames: 14, durationFrames: 20 },
+  'laboratory-discovery': { sfx: 'butterfly/sfx/beaker_clink.wav', volume: 0.25, offsetFrames: 14, durationFrames: 20, repeatIntervalFrames: 42, maxRepeats: 2 },
   'car-route': { sfx: 'butterfly/sfx/car_skid.wav', volume: 0.26, offsetFrames: 12, durationFrames: 24 },
-  'breaking-news': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.24, offsetFrames: 10, durationFrames: 26 },
-  'breaking-ticker': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.24, offsetFrames: 10, durationFrames: 26 },
+  'breaking-news': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.24, offsetFrames: 10, durationFrames: 26, repeatIntervalFrames: 45, maxRepeats: 2 },
+  'breaking-ticker': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.24, offsetFrames: 10, durationFrames: 26, repeatIntervalFrames: 45, maxRepeats: 2 },
+  'crowd-protest': { sfx: 'butterfly/sfx/crowd_cheer.wav', volume: 0.24, offsetFrames: 10, durationFrames: 42, repeatIntervalFrames: 45, maxRepeats: 3 },
+  'soviet-collapse': { sfx: 'butterfly/sfx/alarm_siren.wav', volume: 0.20, offsetFrames: 12, durationFrames: 36, repeatIntervalFrames: 42, maxRepeats: 3 },
 };
 
 export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT_STORY }) => {
@@ -250,19 +259,35 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         </Sequence>
       )}
 
-      {/* Nodes Forensic Sketch Foley */}
+      {/* Nodes Forensic Sketch Foley (Intelligent Rhythmic Cadence Engine) */}
       {data.nodes.map((node) => {
         if (!node.directorType || !SKETCH_FOLEY_SFX[node.directorType]) return null;
         const foley = SKETCH_FOLEY_SFX[node.directorType];
-        return (
-          <Sequence
-            key={`sfx-sketch-${node.step}`}
-            from={node.startFrame + foley.offsetFrames}
-            durationInFrames={foley.durationFrames}
-          >
-            <Audio src={staticFile(foley.sfx)} volume={foley.volume} />
-          </Sequence>
-        );
+        const interval = foley.repeatIntervalFrames || 0;
+        const maxReps = foley.maxRepeats || 1;
+        const effectiveRepeats =
+          interval > 0
+            ? Math.min(
+                maxReps,
+                Math.max(1, Math.floor((node.durationFrames - foley.offsetFrames - 6) / interval) + 1)
+              )
+            : 1;
+
+        return Array.from({ length: effectiveRepeats }).map((_, repIdx) => {
+          const fromFrame = node.startFrame + foley.offsetFrames + repIdx * interval;
+          if (fromFrame >= node.startFrame + node.durationFrames - 4) return null;
+          // Subtle natural dynamic decay on secondary strikes (0.92x, 0.85x)
+          const volScale = repIdx === 0 ? 1.0 : repIdx === 1 ? 0.92 : 0.85;
+          return (
+            <Sequence
+              key={`sfx-sketch-${node.step}-${repIdx}`}
+              from={fromFrame}
+              durationInFrames={foley.durationFrames}
+            >
+              <Audio src={staticFile(foley.sfx)} volume={foley.volume * volScale} />
+            </Sequence>
+          );
+        });
       })}
     </div>
   );

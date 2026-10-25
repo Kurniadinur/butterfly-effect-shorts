@@ -13,6 +13,23 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "berlin-wall-memo-butterfly-effect-mvnysj5h",
+      "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "9 November 1989. Seorang pejabat tinggi Jerman Timur salah membaca secarik catatan di siaran langsung televisi... dan malam itu juga, negara adidaya tamat.",
+      "scenes": [
+        "memo-investigation",
+        "press-question",
+        "press-podium",
+        "panic-phone",
+        "crowd-protest",
+        "gate-breach",
+        "wall-demolition",
+        "soviet-collapse"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "berlin-wall-butterfly-effect-mvnxqat9",
       "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
       "hookStyle": "fullscreen-dramatic",
@@ -90,20 +107,6 @@
         "domino-collapse"
       ],
       "why_successful": "Benchmark YouTube 18M+ views: Kontras ekstrem detik mikro vs korban 20 juta jiwa dengan visual rute peta mobil dan efek domino."
-    },
-    {
-      "id": "titanic-missing-locker-key",
-      "title": "TENGGELAMNYA TITANIC: KUNCI LOKER YANG TERTINGGAL DI KANTONG",
-      "hookStyle": "forensic-dossier",
-      "hookNarration": "14 April 1912. Kapal termewah di dunia tenggelam ke dasar samudera... hanya karena sebutir anak kunci loker tertinggal di kantong pelaut yang cuti.",
-      "scenes": [
-        "key-lockbox",
-        "telegraph-wire",
-        "clock-countdown",
-        "maritime-disaster",
-        "courtroom-gavel"
-      ],
-      "why_successful": "Benchmark YouTube 12M+ views: Misteri kunci teropong binokular yang tertinggal di darat memicu tabrakan gunung es di malam tanpa bulan."
     }
   ],
   "blacklisted_patterns": [
@@ -138,6 +141,13 @@
     {
       "id": "berlin-wall-butterfly-effect-mvnxqat9",
       "timestamp": "2026-10-25T14:43:14.636Z",
+      "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "berlin-wall-memo-butterfly-effect-mvnysj5h",
+      "timestamp": "2026-10-25T15:12:32.234Z",
       "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."

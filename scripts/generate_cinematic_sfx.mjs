@@ -407,6 +407,44 @@ function generateBroadcastBeeps() {
   return createWavBuffer(sampleRate, 1, samples);
 }
 
+// 19. Distant Crowd Clamor & Cheering Surge (Crowd protest / Historical revolution)
+function generateCrowdCheer() {
+  const sampleRate = 44100;
+  const durationSec = 1.4;
+  const totalSamples = Math.round(sampleRate * durationSec);
+  const samples = new Float32Array(totalSamples);
+  for (let i = 0; i < totalSamples; i++) {
+    const t = i / sampleRate;
+    // Layered resonant vocal formants (140Hz, 280Hz, 450Hz) modulated randomly
+    const mod1 = 0.5 + 0.5 * Math.sin(2 * Math.PI * 4.5 * t);
+    const mod2 = 0.5 + 0.5 * Math.cos(2 * Math.PI * 6.2 * t);
+    const lowRumble = Math.sin(2 * Math.PI * 130 * t) * 0.3 * mod1;
+    const midRoar = Math.sin(2 * Math.PI * 290 * t + mod1 * 0.5) * 0.25 * mod2;
+    const crowdNoise = (Math.random() * 2 - 1) * 0.25 * (mod1 + mod2) * 0.5;
+    // Swell envelope: rises in middle, gently decays
+    const env = Math.sin((Math.PI * t) / durationSec);
+    samples[i] = (lowRumble + midRoar + crowdNoise) * env * 0.65;
+  }
+  return createWavBuffer(sampleRate, 1, samples);
+}
+
+// 20. Distant Crisis Emergency Siren (Panic border / Tactical alert)
+function generateAlarmSiren() {
+  const sampleRate = 44100;
+  const durationSec = 1.2;
+  const totalSamples = Math.round(sampleRate * durationSec);
+  const samples = new Float32Array(totalSamples);
+  for (let i = 0; i < totalSamples; i++) {
+    const t = i / sampleRate;
+    // Oscillating siren pitch between 520Hz and 780Hz
+    const pitch = 650 + 130 * Math.sin(2 * Math.PI * 1.8 * t);
+    const tone = Math.sin(2 * Math.PI * pitch * t);
+    const env = t < 0.1 ? t / 0.1 : t > durationSec - 0.15 ? (durationSec - t) / 0.15 : 1.0;
+    samples[i] = tone * env * 0.35;
+  }
+  return createWavBuffer(sampleRate, 1, samples);
+}
+
 // Run synthesis
 fs.mkdirSync(SFX_DIR, { recursive: true });
 
@@ -429,6 +467,8 @@ const sfxList = [
   { name: 'beaker_clink.wav', gen: generateBeakerClink },
   { name: 'car_skid.wav', gen: generateCarSkid },
   { name: 'broadcast_beeps.wav', gen: generateBroadcastBeeps },
+  { name: 'crowd_cheer.wav', gen: generateCrowdCheer },
+  { name: 'alarm_siren.wav', gen: generateAlarmSiren },
 ];
 
 for (const sfx of sfxList) {

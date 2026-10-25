@@ -153,7 +153,7 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                 </text>
                 <line x1="50" y1="125" x2="650" y2="125" stroke="#cbd5e1" strokeWidth="3" />
 
-                {[165, 205, 245, 285, 325, 365, 415, 455, 495, 535].map((y, idx) => (
+                {[165, 205, 245, 335, 375, 415, 455, 495, 535].map((y, idx) => (
                   <line
                     key={idx}
                     x1="50"
@@ -165,6 +165,14 @@ export const DirectorGraphicScene: React.FC<DirectorGraphicSceneProps> = ({
                     strokeLinecap="round"
                   />
                 ))}
+
+                {/* Highlighted Evidence / Key Clause Banner */}
+                <g transform="translate(45, 272)">
+                  <rect x="0" y="0" width="610" height="42" fill="#fde047" opacity="0.9" rx="4" />
+                  <text x="15" y="27" fill="#0f172a" fontSize="16" fontWeight="900" fontFamily="monospace">
+                    {`KLAUSUL DRAF: "${(secondaryText || primaryText || 'BERLAKU BESOK 04:00 PAGI').slice(0, 36)}"`}
+                  </text>
+                </g>
 
                 <g transform="translate(340, 560) rotate(-8)">
                   <rect x="0" y="0" width="310" height="80" fill="rgba(220, 38, 38, 0.15)" stroke="#dc2626" strokeWidth="4" strokeDasharray="8 4" rx="6" />

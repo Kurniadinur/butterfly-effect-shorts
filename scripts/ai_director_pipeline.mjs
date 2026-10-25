@@ -185,6 +185,20 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
      * BAGAIMANA ESKALASI LAPANGAN BERJALAN? (bukan sulap instan; jelaskan pos perbatasan kebingungan, telepon darurat ke atasan tidak diangkat, komandan jaga terisolasi hingga terpaksa mengambil keputusan sendiri).
    - Rantai kausalitas harus logis, bertahap, dan memuaskan rasa ingin tahu penonton. Manfaatkan durasi optimal 1.5 hingga 2.5 menit (aman di bawah batas 3 menit YouTube Shorts) untuk menyajikan rekonstruksi sebab-akibat yang utuh dan berbobot!
 
+9. ATURAN EMAS BUKTI HISTORIS KONKRET (ANTI-MEMBINGUNGKAN PENONTON):
+   - JANGAN PERNAH MEMBIARKAN PENONTON BINGUNG: "MEMANGNYA APA PERSISNYA ISI MEMO/BENDA ITU?"
+     * Jika alur cerita tentang MEMO / DOKUMEN / KEPUTUSAN KELIRU:
+       WAJIB BONGKAR DAN JELASKAN APA PERSISNYA ISI DRAF/INSTRUKSI TERSEBUT!
+       Contoh: "Memo itu aslinya draf uji coba: izin keluar negeri baru dibuka besok jam 04:00 pagi dengan visa resmi di kantor polisi. Tapi Schabowski melewatkan catatan itu dan membaca baris pertama saja..."
+     * Jika alur cerita tentang KUTIPAN KATA FATAL (BLUNDER):
+       WAJIB SEBUTKAN KUTIPAN KATA ASLI BERSEJARAH!
+       Contoh: Saat wartawan Riccardo Ehrman bertanya kapan berlaku, Schabowski gugup menjawab: "Das tritt nach meiner Kenntnis... sofort, unverzüglich! (Setahu saya... segera, tanpa penundaan!)"
+     * Jika alur cerita tentang BENDA / KUNCI / TOMBOL / PERSIMPANGAN:
+       WAJIB SEBUTKAN IDENTITAS SPESIFIKNYA (Nomor loker 4 kabin C, tombol darurat AZ-5 berujung grafit, tikungan jalan Franz Josef di depan toko roti Schiller, atau pos Bornholmer Straße komandan Harald Jäger).
+   - BUKTI TEKSTUAL DI LAYAR HP (EVIDENTIARY TYPOGRAPHY):
+     * Cantumkan klausul dokumen asli atau kutipan kata kunci fatal tersebut ke dalam 'primaryText' atau 'secondaryText' (misal: 'KLAUSUL: BESOK 04:00 PAGI' atau 'KATA FATAL: SOFORT').
+     * Penonton DAPAT MELIHAT DAN MEMBACA BUKTI NYATA langsung di layar ponsel, membuat dokumenter terasa sangat otentik, memuaskan rasa ingin tahu, dan berbobot!
+
 FORMAT JSON WAJIB:
 {
   "id": "slug-id",
@@ -396,7 +410,12 @@ Outro: "${storyData.outro?.narration || ''}"
 TUGAS MUTLAK:
 Pecah dan kembangkan alur di atas menjadi MINIMAL 10 HINGGA 14 ADEGAN VISUAL GRANULAR ('nodes')!
 DILARANG MERINGKAS ATAU MENGURANGI!
-Setiap adegan harus fokus pada 1 aksi/objek spesifik (durasi 3-5 detik, 12-20 kata narasi per node) dengan pilihan 'directorType' yang tepat:
+Setiap adegan harus fokus pada 1 aksi/objek spesifik (durasi 3-5 detik, 12-20 kata narasi per node) dengan pilihan 'directorType' yang tepat.
+WAJIB MEMBEBERKAN BUKTI HISTORIS KONKRET (ANTI-MEMBINGUNGKAN PENONTON):
+- Jika ada memo/dokumen: JELASKAN APA PERSISNYA ISI DOKUMEN ITU! (contoh: izin baru buka besok jam 4 subuh dengan visa, tapi Schabowski tidak membacanya).
+- Jika ada ucapan fatal: SEBUTKAN KUTIPAN KATA ASLI BERSEJARAH (contoh: "Sofort, unverzüglich!").
+- Jika ada objek/pos/tombol: SEBUTKAN NAMA ATAU NOMOR SPESIFIKNYA (Bornholmer Straße, AZ-5, Loker no. 4).
+- Cantumkan klausul atau kutipan tersebut pada field 'primaryText' / 'secondaryText'.
 Pilihan directorType: memo-handoff, memo-investigation, press-podium, press-question, breaking-news, panic-phone, crowd-protest, gate-breach, wall-demolition, domino-collapse, key-lockbox, telegram-wire, courtroom-gavel, tactical-map, valve-failure, clock-countdown.
 
 FORMAT JSON MURNI:
