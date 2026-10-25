@@ -232,47 +232,29 @@ export const HookScene: React.FC<HookSceneProps> = ({
   }
 
   // =========================================================================
-  // STYLE 2: FORENSIC DOSSIER (Investigative True Crime & Classified Memo style)
+  // STYLE 2: FORENSIC DOSSIER (Investigative True Crime & Documentary Archive style)
   // =========================================================================
   if (hookStyle === 'forensic-dossier') {
-    const scanLine = interpolate(frame, [0, durationFrames], [200, 1600]);
     return (
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: '#0c0f17',
+          backgroundColor: '#05070c',
           overflow: 'hidden',
         }}
       >
-        {/* Tactical blueprint grid */}
+        {/* Soft Warm Desk-Lamp Spotlight (Cinematic Documentary Lighting - Zero Sci-Fi Grids) */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            opacity: 0.2,
-            backgroundImage:
-              'linear-gradient(rgba(56,189,248,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.2) 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
+            background:
+              'radial-gradient(ellipse 80% 60% at 50% 38%, rgba(245, 158, 11, 0.08) 0%, rgba(15, 23, 42, 0.4) 50%, #030508 100%)',
           }}
         />
 
-        {/* Laser Scanning Line */}
-        <div
-          style={{
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: `${scanLine}px`,
-            height: '3px',
-            backgroundColor: '#38bdf8',
-            boxShadow: '0 0 15px #38bdf8, 0 0 30px #38bdf8',
-            opacity: 0.8,
-            zIndex: 10,
-          }}
-        />
-
-        {/* Central Classified Folder Graphic */}
+        {/* Central Archival Dossier Folder with Organic Physical Drop Shadow */}
         <div
           style={{
             position: 'absolute',
@@ -280,23 +262,23 @@ export const HookScene: React.FC<HookSceneProps> = ({
             left: '50px',
             right: '50px',
             bottom: '450px',
-            backgroundColor: '#161e2e',
-            border: '2px solid rgba(255,255,255,0.1)',
-            borderRadius: '16px',
-            padding: '50px 40px',
+            backgroundColor: '#0f141f',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            borderRadius: '12px',
+            padding: '50px 42px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            boxShadow: '0 25px 60px rgba(0,0,0,0.8)',
+            boxShadow: '0 30px 70px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
           }}
         >
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ color: '#ef4444', fontWeight: 900, fontFamily: 'monospace', fontSize: '18px', letterSpacing: '4px' }}>
+              <span style={{ color: '#dc2626', fontWeight: 900, fontFamily: "'Montserrat', sans-serif", fontSize: '16px', letterSpacing: '3px' }}>
                 CONFIDENTIAL // TOP SECRET
               </span>
-              <span style={{ color: '#64748b', fontFamily: 'monospace', fontSize: '14px' }}>
-                FILE_REF-{frame * 7}
+              <span style={{ color: '#94a3b8', fontFamily: "'Space Grotesk', sans-serif", fontSize: '13px', fontWeight: 700 }}>
+                {kicker || 'BERKAS DOKUMENTER'}
               </span>
             </div>
 
@@ -305,10 +287,11 @@ export const HookScene: React.FC<HookSceneProps> = ({
                 color: '#ffffff',
                 fontSize: '48px',
                 fontWeight: 900,
-                fontFamily: "'Space Grotesk', sans-serif",
+                fontFamily: "'Montserrat', -apple-system, sans-serif",
                 lineHeight: 1.15,
                 marginTop: '30px',
                 textTransform: 'uppercase',
+                textShadow: '0 4px 16px rgba(0,0,0,0.8)',
               }}
             >
               {headline}
@@ -317,12 +300,14 @@ export const HookScene: React.FC<HookSceneProps> = ({
             <div
               style={{
                 marginTop: '25px',
-                padding: '20px',
-                backgroundColor: 'rgba(255,255,255,0.03)',
+                padding: '20px 24px',
+                backgroundColor: 'rgba(255, 255, 255, 0.03)',
                 borderLeft: '4px solid #FFE600',
-                color: '#cbd5e1',
-                fontSize: '18px',
-                lineHeight: 1.5,
+                color: '#e2e8f0',
+                fontSize: '20px',
+                fontWeight: 700,
+                lineHeight: 1.45,
+                fontFamily: "'Space Grotesk', sans-serif",
               }}
             >
               {leftPrimaryText || leftTitle}

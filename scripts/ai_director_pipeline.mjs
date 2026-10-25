@@ -141,13 +141,16 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
    - 'editorialStyle.shakeSensitivity': 'subtle' atau 'moderate'.
    - 'editorialStyle.shakeThresholdChaos': Level chaos (60-75) saat guncangan kamera mulai aktif pada momen tegang.
 
-7. RAHASIA YOUTUBE SHORTS VIRAL MILLION-VIEWS (RETENSI TINGGI & SEAMLESS LOOP):
+7. RAHASIA YOUTUBE SHORTS VIRAL MILLION-VIEWS (RETENSI TINGGI & STORYTELLING MENDALAM):
    Berdasarkan studi analitik video Butterfly Effect dengan view tertinggi di YouTube (10M - 20M+ views):
-   - ATURAN 3 DETIK PERTAMA (STOP-THE-SCROLL): Kalimat pembuka pada 'hook.narration' WAJIB mengandung formula:
-     [Waktu/Tokoh Spesifik] + [Aksi Mikro Sepele] + [Bencana/Dampak Global Kolosal]
-     Contoh: "9 November 1989. Pria ini salah membaca satu lembar memo... dan malam itu juga, negara adidaya tamat."
-   - TEKNIK SEAMLESS INFINITE LOOP (RETENSI > 100%): Rancang kalimat terakhir pada 'outro.narration' agar kata-kata terakhirnya mengalir secara halus dan menyambung kembali ke kata pertama pada kalimat pembuka ('hook.narration'). Penonton tidak akan sadar video sudah mengulang, melipatgandakan rata-rata durasi tonton (APV)!
-   - KLIMAKS IMPACT SFX: Pada adegan puncak bencana (chaosLevel >= 75), tentukan 'sfxTrigger': 'impact' agar sistem memicu getaran sub-bass boom dan guncangan kamera sinematik.
+   - DILARANG KERAS MEMBUAT NASKAH PENDEK, DANGKAL, ATAU ASAL JADI!
+   - Setiap adegan (node) WAJIB memiliki narasi yang kaya, mendalam, dan mencekam (30 - 55 kata per adegan).
+   - Ceritakan detail psikologis dan suasana nyata: kepanikan operator, ruang kendali yang dingin, perintah yang diabaikan, keraguan di mata saksi, dan detik-detik kritis saat kesalahan kecil merambat jadi bencana tak terbendung.
+   - ATURAN 3 DETIK PERTAMA (STOP-THE-SCROLL): Kalimat pembuka pada 'hook.narration' (25 - 40 kata) WAJIB mengandung formula:
+     [Waktu/Tokoh Spesifik] + [Aksi Mikro Sepele] + [Bencana/Dampak Global Kolosal yang Mencekam]
+     Contoh: "14 April 1912, pukul 23:40 di tengah laut es yang gelap gulita. Hanya karena sebuah kunci loker kecil tertinggal di pelabuhan Southampton, 1.500 nyawa di kapal termewah di dunia harus ditelan samudra Atlantik."
+   - TEKNIK SEAMLESS INFINITE LOOP (RETENSI > 100%): Rancang kalimat terakhir pada 'outro.narration' agar kata-kata terakhirnya mengalir secara halus dan menyambung kembali ke kata pertama pada kalimat pembuka ('hook.narration').
+   - Total narasi keseluruhan berkisar antara 180 - 260 kata (durasi video ~50-70 detik) agar penonton puas dengan detail ceritanya.
 
 FORMAT JSON WAJIB:
 {
@@ -162,9 +165,9 @@ FORMAT JSON WAJIB:
   },
   "hook": {
     "hookStyle": "fullscreen-dramatic ATAU forensic-dossier ATAU breaking-transmission ATAU split-contrast",
-    "kicker": "BADGE SINGKAT EDITORIAL (misal: '9 NOVEMBER 1989', 'KESALAHAN FATAL')",
-    "headline": "JUDUL PANCINGAN BESAR (misal: 'SATU MEMO MEROBOHKAN TEMBOK')",
-    "narration": "Kalimat pembuka menggigit dan segar tanpa kalimat klise...",
+    "kicker": "BADGE SINGKAT EDITORIAL (misal: '14 APRIL 1912', 'KESALAHAN FATAL')",
+    "headline": "JUDUL PANCINGAN BESAR (misal: 'KUNCI LOKER YANG MENENGGELAMKAN TITANIC')",
+    "narration": "Kalimat pembuka menggigit, detail, dan mencekam (25-40 kata) tanpa kalimat klise...",
     "leftTitle": "Hal Sepele",
     "rightTitle": "Dampak Global",
     "leftBadge": "AWAL MULA SEPELE",
@@ -172,14 +175,14 @@ FORMAT JSON WAJIB:
     "leftPrimaryText": "Teks judul dokumen awal",
     "leftStampText": "BUKTI AWAL",
     "leftSearchQuery": "English search keyword for Cause archival photo/sketch",
-    "rightSearchQuery": "Specific varied English keyword for Catastrophe archival photo (misal: 'Bornholmer Strasse border opening crowd 1989')"
+    "rightSearchQuery": "Specific varied English keyword for Catastrophe archival photo (misal: 'Titanic iceberg sinking disaster 1912')"
   },
   "nodes": [
     {
       "step": 1,
-      "timeOrYear": "LOKASI / TAHUN • JAM",
-      "headline": "JUDUL ADEGAN SINGKAT BESAR",
-      "narration": "Naskah narasi suara 10-25 kata yang dramatis dan otentik secara sejarah...",
+      "timeOrYear": "LOKASI / TAHUN • JAM SPESIFIK",
+      "headline": "JUDUL ADEGAN DRAMATIS",
+      "narration": "Narasi mendalam dan detail (30-55 kata). Jelaskan fakta sejarah nyata, ketegangan tokoh, dan bagaimana langkah ini memperparah keadaan. DILARANG SINGKAT ATAU DANGKAL!",
       "chaosLevel": 20,
       "mediaType": "graphic (utama) ATAU photo (hanya untuk nama tokoh/objek asli)",
       "directorType": "salah satu arketipe yang 100% RELEVAN DENGAN SEJARAHNYA",
