@@ -107,28 +107,49 @@ OUTPUT JSON MURNI (TANPA PREAMBLE/BACKTICKS):
 }
 
 /**
- * Saves polished storyboard data back to disk
+ * Saves polished storyboard data back to disk, preserving audio timestamps & duration
  */
 export function saveUpdatedStory(storyData) {
   const outStoryTs = path.join(ROOT_DIR, 'src', 'data', 'currentStory.ts');
+  let existing = null;
+  try {
+    if (fs.existsSync(outStoryTs)) {
+      const raw = fs.readFileSync(outStoryTs, 'utf8');
+      const marker = 'CURRENT_STORY: ButterflyStoryData =';
+      const idx = raw.indexOf(marker);
+      if (idx !== -1) {
+        const sub = raw.slice(idx + marker.length).trim().replace(/;$/, '');
+        existing = JSON.parse(sub);
+      }
+    }
+  } catch {}
+
+  const merged = {
+    ...(existing || {}),
+    ...storyData,
+    totalDurationFrames: storyData.totalDurationFrames || existing?.totalDurationFrames || 1800,
+    wordTimestamps: storyData.wordTimestamps || existing?.wordTimestamps || [],
+    audioUrl: storyData.audioUrl || existing?.audioUrl || '',
+  };
+
   const fileContent = `// Automatically generated & polished by AI Director & Autonomous Remotion Editor
 import { ButterflyStoryData } from './types';
 export { cleanSubtitleWord } from '../utils/textUtils';
 
-export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(storyData, null, 2)};
+export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(merged, null, 2)};
 `;
   fs.writeFileSync(outStoryTs, fileContent, 'utf-8');
 
   // Also update archive
-  if (storyData.id) {
+  if (merged.id) {
     const storiesDir = path.join(ROOT_DIR, 'src', 'data', 'stories');
     fs.mkdirSync(storiesDir, { recursive: true });
-    const archivePath = path.join(storiesDir, `${storyData.id}.ts`);
+    const archivePath = path.join(storiesDir, `${merged.id}.ts`);
     const archiveContent = `// Automatically generated & polished by AI Director & Autonomous Remotion Editor
 import { ButterflyStoryData } from '../types';
 export { cleanSubtitleWord } from '../../utils/textUtils';
 
-export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(storyData, null, 2)};
+export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(merged, null, 2)};
 `;
     fs.writeFileSync(archivePath, archiveContent, 'utf-8');
   }

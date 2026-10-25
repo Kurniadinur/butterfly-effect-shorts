@@ -1206,6 +1206,10 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
     }
   }
 
+  storyData.wordTimestamps = wordTimestamps;
+  storyData.audioUrl = relAudioUrl;
+  storyData.totalDurationFrames = totalFrames;
+
   const fullStory = {
     id: storyData.id,
     title: storyData.title,

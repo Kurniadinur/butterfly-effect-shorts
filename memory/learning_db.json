@@ -13,6 +13,40 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "berlin-wall-butterfly-effect-mvnxqat9",
+      "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "9 November 1989. Seorang pejabat tinggi salah membaca secarik catatan di siaran langsung televisi... dan malam itu juga, negara adidaya tamat.",
+      "scenes": [
+        "memo-investigation",
+        "press-question",
+        "press-podium",
+        "panic-phone",
+        "crowd-protest",
+        "gate-breach",
+        "wall-demolition",
+        "soviet-collapse"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "berlin-wall-memo-butterfly-effect-mvnxkxic",
+      "title": "SATU LEMBAR MEMO MERUNTUHKAN DUNIA",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "9 November 1989. Pria ini salah membaca satu lembar catatan di siaran langsung TV... dan malam itu juga, negara adidaya tamat.",
+      "scenes": [
+        "memo-investigation",
+        "press-podium",
+        "press-question",
+        "memo-handoff",
+        "breaking-news",
+        "panic-phone",
+        "gate-breach",
+        "wall-demolition"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "berlin-wall-1989-butterfly-effect-mvnx7nh1",
       "title": "SATU LEMBAR MEMO MERUNTUHKAN DUNIA",
       "hookStyle": "fullscreen-dramatic",
@@ -70,34 +104,6 @@
         "courtroom-gavel"
       ],
       "why_successful": "Benchmark YouTube 12M+ views: Misteri kunci teropong binokular yang tertinggal di darat memicu tabrakan gunung es di malam tanpa bulan."
-    },
-    {
-      "id": "chernobyl-az5-control-rod-blunder",
-      "title": "TRAGEDI CHERNOBYL: TOMBOL DARURAT YANG MELEDAKKAN REAKTOR",
-      "hookStyle": "breaking-transmission",
-      "hookNarration": "26 April 1986. Pria ini menekan tombol paling aman di ruang kendali nuklir... tapi tombol itulah yang meledakkan seluruh reaktor.",
-      "scenes": [
-        "critical-gauge",
-        "valve-failure",
-        "reactor-meltdown",
-        "radiation-hazard",
-        "soviet-collapse"
-      ],
-      "why_successful": "Benchmark YouTube 9M+ views: Ironi tombol penghenti darurat AZ-5 berujung grafit yang justru memicu lonjakan reaktivitas mematikan."
-    },
-    {
-      "id": "penicillin-alexander-fleming-unwashed-dish",
-      "title": "PENEMUAN PENISILIN: PIRING LABORATORIUM YANG LUPA DICUCI",
-      "hookStyle": "fullscreen-dramatic",
-      "hookNarration": "Ilmuwan ini terkenal pemalas dan jorok. Tapi karena dia lupa mencuci piring laboratorium sebelum liburan... 200 juta nyawa manusia terselamatkan.",
-      "scenes": [
-        "bureaucracy-draft",
-        "laboratory-discovery",
-        "critical-gauge",
-        "domino-collapse",
-        "courtroom-gavel"
-      ],
-      "why_successful": "Benchmark YouTube 15M+ views: Keberuntungan saintifik terbesar dunia dari kelalaian higienitas sepele."
     }
   ],
   "blacklisted_patterns": [
@@ -121,6 +127,20 @@
       "title": "SATU LEMBAR MEMO MERUNTUHKAN DUNIA",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "berlin-wall-memo-butterfly-effect-mvnxkxic",
+      "timestamp": "2026-10-25T14:38:45.256Z",
+      "title": "SATU LEMBAR MEMO MERUNTUHKAN DUNIA",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "berlin-wall-butterfly-effect-mvnxqat9",
+      "timestamp": "2026-10-25T14:43:14.636Z",
+      "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ]
 }

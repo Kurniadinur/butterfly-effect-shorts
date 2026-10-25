@@ -33,7 +33,7 @@ async function searchWikipediaAll(query, lang = 'en') {
   const matches = [];
   try {
     const url = `https://${lang}.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrnamespace=0&gsrlimit=6&prop=pageimages&pithumbsize=1280&format=json&origin=*`;
-    const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
+    const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(6000) });
     if (!res.ok) return matches;
     const data = await res.json();
     const pages = data.query ? Object.values(data.query.pages) : [];
@@ -57,7 +57,7 @@ async function searchCommonsAll(query) {
   const matches = [];
   try {
     const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query + ' filetype:bitmap')}&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url|mime|size&iiurlwidth=1280&format=json&origin=*`;
-    const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
+    const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(6000) });
     if (!res.ok) return matches;
     const data = await res.json();
     const pages = data.query ? Object.values(data.query.pages) : [];
@@ -84,7 +84,7 @@ async function searchOpenverseAll(query) {
   const matches = [];
   try {
     const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&page_size=6`;
-    const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
+    const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(6000) });
     if (!res.ok) return matches;
     const data = await res.json();
     if (data.results && data.results.length > 0) {
