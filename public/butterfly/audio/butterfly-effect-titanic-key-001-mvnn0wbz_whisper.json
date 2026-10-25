@@ -1,0 +1,1858 @@
+{
+  "model": "whisper-large-v3",
+  "engine": "Groq Cloud LPU",
+  "totalDurationSec": 77.44,
+  "allWords": [
+    {
+      "word": "14",
+      "start": 0.1,
+      "end": 0.7
+    },
+    {
+      "word": "April",
+      "start": 0.7,
+      "end": 1.1
+    },
+    {
+      "word": "1912,",
+      "start": 1.1,
+      "end": 3.12
+    },
+    {
+      "word": "kapal",
+      "start": 3.12,
+      "end": 3.44
+    },
+    {
+      "word": "paling",
+      "start": 3.44,
+      "end": 3.68
+    },
+    {
+      "word": "mewah",
+      "start": 3.68,
+      "end": 3.92
+    },
+    {
+      "word": "di",
+      "start": 3.92,
+      "end": 4.08
+    },
+    {
+      "word": "dunia",
+      "start": 4.08,
+      "end": 4.32
+    },
+    {
+      "word": "ini",
+      "start": 4.32,
+      "end": 4.56
+    },
+    {
+      "word": "menemui",
+      "start": 4.56,
+      "end": 5.22
+    },
+    {
+      "word": "ajalnya",
+      "start": 5.22,
+      "end": 5.72
+    },
+    {
+      "word": "di",
+      "start": 5.72,
+      "end": 5.96
+    },
+    {
+      "word": "tengah",
+      "start": 5.96,
+      "end": 6.18
+    },
+    {
+      "word": "samudera",
+      "start": 6.18,
+      "end": 6.64
+    },
+    {
+      "word": "beku,",
+      "start": 6.64,
+      "end": 7.38
+    },
+    {
+      "word": "hanya",
+      "start": 7.4,
+      "end": 7.64
+    },
+    {
+      "word": "karena",
+      "start": 7.64,
+      "end": 8
+    },
+    {
+      "word": "sebutir",
+      "start": 8,
+      "end": 8.6
+    },
+    {
+      "word": "kunci",
+      "start": 8.6,
+      "end": 8.94
+    },
+    {
+      "word": "loker",
+      "start": 8.94,
+      "end": 9.22
+    },
+    {
+      "word": "logam",
+      "start": 9.22,
+      "end": 9.62
+    },
+    {
+      "word": "yang",
+      "start": 9.62,
+      "end": 9.82
+    },
+    {
+      "word": "tertinggal",
+      "start": 9.82,
+      "end": 10.4
+    },
+    {
+      "word": "di",
+      "start": 10.4,
+      "end": 10.58
+    },
+    {
+      "word": "kantong",
+      "start": 10.58,
+      "end": 10.88
+    },
+    {
+      "word": "seorang",
+      "start": 10.88,
+      "end": 11.22
+    },
+    {
+      "word": "pelaut.",
+      "start": 11.22,
+      "end": 11.54
+    },
+    {
+      "word": "David",
+      "start": 12.44,
+      "end": 12.76
+    },
+    {
+      "word": "Blair,",
+      "start": 12.76,
+      "end": 13.24
+    },
+    {
+      "word": "perwira",
+      "start": 13.24,
+      "end": 13.54
+    },
+    {
+      "word": "kedua",
+      "start": 13.54,
+      "end": 13.86
+    },
+    {
+      "word": "yang",
+      "start": 13.86,
+      "end": 14.08
+    },
+    {
+      "word": "sedianya",
+      "start": 14.08,
+      "end": 14.46
+    },
+    {
+      "word": "bertugas,",
+      "start": 14.46,
+      "end": 15.46
+    },
+    {
+      "word": "mendadak",
+      "start": 15.34,
+      "end": 15.72
+    },
+    {
+      "word": "dipindahkan",
+      "start": 15.72,
+      "end": 16.28
+    },
+    {
+      "word": "dari",
+      "start": 16.28,
+      "end": 16.46
+    },
+    {
+      "word": "kapal",
+      "start": 16.46,
+      "end": 16.82
+    },
+    {
+      "word": "beberapa",
+      "start": 16.82,
+      "end": 17.32
+    },
+    {
+      "word": "jam",
+      "start": 17.32,
+      "end": 17.56
+    },
+    {
+      "word": "sebelum",
+      "start": 17.56,
+      "end": 17.98
+    },
+    {
+      "word": "keberangkatan.",
+      "start": 17.98,
+      "end": 18.62
+    },
+    {
+      "word": "Dalam",
+      "start": 19.48,
+      "end": 19.68
+    },
+    {
+      "word": "ketergesaan,",
+      "start": 19.68,
+      "end": 20.72
+    },
+    {
+      "word": "Blair",
+      "start": 20.72,
+      "end": 20.94
+    },
+    {
+      "word": "lupa",
+      "start": 20.94,
+      "end": 21.24
+    },
+    {
+      "word": "menyerahkan",
+      "start": 21.24,
+      "end": 21.76
+    },
+    {
+      "word": "kunci",
+      "start": 21.76,
+      "end": 22
+    },
+    {
+      "word": "loker",
+      "start": 22,
+      "end": 22.26
+    },
+    {
+      "word": "penyimpanan",
+      "start": 22.26,
+      "end": 22.88
+    },
+    {
+      "word": "teropong",
+      "start": 22.88,
+      "end": 23.2
+    },
+    {
+      "word": "binokular",
+      "start": 23.2,
+      "end": 23.68
+    },
+    {
+      "word": "kepada",
+      "start": 23.68,
+      "end": 24.2
+    },
+    {
+      "word": "penggantinya.",
+      "start": 24.2,
+      "end": 25.34
+    },
+    {
+      "word": "Tanpa",
+      "start": 25.5,
+      "end": 25.78
+    },
+    {
+      "word": "binokular,",
+      "start": 25.78,
+      "end": 26.86
+    },
+    {
+      "word": "pengintai",
+      "start": 26.86,
+      "end": 27.18
+    },
+    {
+      "word": "di",
+      "start": 27.18,
+      "end": 27.38
+    },
+    {
+      "word": "sarang",
+      "start": 27.38,
+      "end": 27.56
+    },
+    {
+      "word": "gagak",
+      "start": 27.56,
+      "end": 27.9
+    },
+    {
+      "word": "hanya",
+      "start": 27.9,
+      "end": 28.32
+    },
+    {
+      "word": "mengandalkan",
+      "start": 28.32,
+      "end": 29.02
+    },
+    {
+      "word": "mata",
+      "start": 29.02,
+      "end": 29.32
+    },
+    {
+      "word": "telanjang",
+      "start": 29.32,
+      "end": 29.76
+    },
+    {
+      "word": "untuk",
+      "start": 29.76,
+      "end": 30.16
+    },
+    {
+      "word": "menembus",
+      "start": 30.16,
+      "end": 30.62
+    },
+    {
+      "word": "kegelapan",
+      "start": 30.62,
+      "end": 31.06
+    },
+    {
+      "word": "malam",
+      "start": 31.06,
+      "end": 31.42
+    },
+    {
+      "word": "yang",
+      "start": 31.42,
+      "end": 31.56
+    },
+    {
+      "word": "pekat.",
+      "start": 31.56,
+      "end": 32.3
+    },
+    {
+      "word": "Gunung",
+      "start": 32.9,
+      "end": 33.14
+    },
+    {
+      "word": "es",
+      "start": 33.14,
+      "end": 33.26
+    },
+    {
+      "word": "raksasa",
+      "start": 33.26,
+      "end": 33.66
+    },
+    {
+      "word": "muncul",
+      "start": 33.66,
+      "end": 34.06
+    },
+    {
+      "word": "dari",
+      "start": 34.06,
+      "end": 34.26
+    },
+    {
+      "word": "kegelapan",
+      "start": 34.26,
+      "end": 34.76
+    },
+    {
+      "word": "tepat",
+      "start": 34.76,
+      "end": 35.2
+    },
+    {
+      "word": "di",
+      "start": 35.2,
+      "end": 35.38
+    },
+    {
+      "word": "depan",
+      "start": 35.38,
+      "end": 35.58
+    },
+    {
+      "word": "haluan,",
+      "start": 35.58,
+      "end": 36.38
+    },
+    {
+      "word": "terlalu",
+      "start": 36.38,
+      "end": 36.7
+    },
+    {
+      "word": "dekat",
+      "start": 36.7,
+      "end": 36.94
+    },
+    {
+      "word": "untuk",
+      "start": 36.94,
+      "end": 37.18
+    },
+    {
+      "word": "menghindar",
+      "start": 37.18,
+      "end": 37.68
+    },
+    {
+      "word": "dengan",
+      "start": 37.68,
+      "end": 38.04
+    },
+    {
+      "word": "kecepatan",
+      "start": 38.04,
+      "end": 38.58
+    },
+    {
+      "word": "penuh.",
+      "start": 38.58,
+      "end": 38.84
+    },
+    {
+      "word": "Lonceng",
+      "start": 39.74,
+      "end": 39.98
+    },
+    {
+      "word": "darurat",
+      "start": 39.98,
+      "end": 40.4
+    },
+    {
+      "word": "berdentang",
+      "start": 40.4,
+      "end": 40.98
+    },
+    {
+      "word": "tiga",
+      "start": 40.98,
+      "end": 41.22
+    },
+    {
+      "word": "kali,",
+      "start": 41.22,
+      "end": 41.94
+    },
+    {
+      "word": "kemudian",
+      "start": 41.94,
+      "end": 42.18
+    },
+    {
+      "word": "dibanting",
+      "start": 42.18,
+      "end": 42.56
+    },
+    {
+      "word": "keras,",
+      "start": 42.56,
+      "end": 43.46
+    },
+    {
+      "word": "namun",
+      "start": 43.46,
+      "end": 43.64
+    },
+    {
+      "word": "mementung",
+      "start": 43.64,
+      "end": 44.06
+    },
+    {
+      "word": "baja",
+      "start": 44.06,
+      "end": 44.32
+    },
+    {
+      "word": "raksasa",
+      "start": 44.32,
+      "end": 44.68
+    },
+    {
+      "word": "itu",
+      "start": 44.68,
+      "end": 44.9
+    },
+    {
+      "word": "tak",
+      "start": 44.9,
+      "end": 45.16
+    },
+    {
+      "word": "bisa",
+      "start": 45.16,
+      "end": 45.44
+    },
+    {
+      "word": "dihentikan.",
+      "start": 45.44,
+      "end": 46.42
+    },
+    {
+      "word": "Dining",
+      "start": 46.5,
+      "end": 46.68
+    },
+    {
+      "word": "baja",
+      "start": 46.68,
+      "end": 46.96
+    },
+    {
+      "word": "yang",
+      "start": 46.96,
+      "end": 47.14
+    },
+    {
+      "word": "kokoh",
+      "start": 47.14,
+      "end": 47.5
+    },
+    {
+      "word": "robek",
+      "start": 47.5,
+      "end": 47.96
+    },
+    {
+      "word": "sepanjang",
+      "start": 47.96,
+      "end": 48.42
+    },
+    {
+      "word": "90",
+      "start": 48.42,
+      "end": 49
+    },
+    {
+      "word": "meter.",
+      "start": 49,
+      "end": 49.34
+    },
+    {
+      "word": "Air",
+      "start": 50.08,
+      "end": 50.24
+    },
+    {
+      "word": "es",
+      "start": 50.24,
+      "end": 50.42
+    },
+    {
+      "word": "mulai",
+      "start": 50.42,
+      "end": 50.74
+    },
+    {
+      "word": "membanjirin",
+      "start": 50.74,
+      "end": 51.28
+    },
+    {
+      "word": "kompartemen",
+      "start": 51.28,
+      "end": 51.8
+    },
+    {
+      "word": "kedap",
+      "start": 51.8,
+      "end": 52.08
+    },
+    {
+      "word": "udara",
+      "start": 52.08,
+      "end": 52.42
+    },
+    {
+      "word": "secara",
+      "start": 52.42,
+      "end": 52.94
+    },
+    {
+      "word": "beruntun.",
+      "start": 52.94,
+      "end": 53.9
+    },
+    {
+      "word": "Operator",
+      "start": 54.2,
+      "end": 54.58
+    },
+    {
+      "word": "radio",
+      "start": 54.58,
+      "end": 54.88
+    },
+    {
+      "word": "mengirimkan",
+      "start": 54.88,
+      "end": 55.42
+    },
+    {
+      "word": "pesan",
+      "start": 55.42,
+      "end": 55.74
+    },
+    {
+      "word": "QD",
+      "start": 55.74,
+      "end": 56.24
+    },
+    {
+      "word": "putus",
+      "start": 56.24,
+      "end": 56.78
+    },
+    {
+      "word": "asa",
+      "start": 56.78,
+      "end": 57.02
+    },
+    {
+      "word": "ke",
+      "start": 57.02,
+      "end": 57.22
+    },
+    {
+      "word": "tengah",
+      "start": 57.22,
+      "end": 57.44
+    },
+    {
+      "word": "samudera",
+      "start": 57.44,
+      "end": 57.86
+    },
+    {
+      "word": "Memohon",
+      "start": 58.26,
+      "end": 58.68
+    },
+    {
+      "word": "bantuan",
+      "start": 58.68,
+      "end": 59.1
+    },
+    {
+      "word": "yang",
+      "start": 59.1,
+      "end": 59.34
+    },
+    {
+      "word": "tak",
+      "start": 59.34,
+      "end": 59.54
+    },
+    {
+      "word": "mungkin",
+      "start": 59.54,
+      "end": 59.9
+    },
+    {
+      "word": "tiba",
+      "start": 59.9,
+      "end": 60.24
+    },
+    {
+      "word": "tepat",
+      "start": 60.24,
+      "end": 60.48
+    },
+    {
+      "word": "waktu",
+      "start": 60.48,
+      "end": 60.82
+    },
+    {
+      "word": "Dalam",
+      "start": 61.42,
+      "end": 61.7
+    },
+    {
+      "word": "penyelidikan",
+      "start": 61.7,
+      "end": 62.22
+    },
+    {
+      "word": "resmi,",
+      "start": 62.22,
+      "end": 63.06
+    },
+    {
+      "word": "terungkap",
+      "start": 63.06,
+      "end": 63.36
+    },
+    {
+      "word": "bahwa",
+      "start": 63.36,
+      "end": 63.64
+    },
+    {
+      "word": "binokular",
+      "start": 63.64,
+      "end": 64.1
+    },
+    {
+      "word": "itu",
+      "start": 64.1,
+      "end": 64.32
+    },
+    {
+      "word": "bisa",
+      "start": 64.32,
+      "end": 64.72
+    },
+    {
+      "word": "menyelamatkan",
+      "start": 64.72,
+      "end": 65.46
+    },
+    {
+      "word": "1500",
+      "start": 65.46,
+      "end": 66.1
+    },
+    {
+      "word": "jiwa",
+      "start": 66.1,
+      "end": 66.68
+    },
+    {
+      "word": "Jika",
+      "start": 67.02,
+      "end": 67.32
+    },
+    {
+      "word": "saja",
+      "start": 67.32,
+      "end": 67.6
+    },
+    {
+      "word": "kuncinya",
+      "start": 67.6,
+      "end": 68.04
+    },
+    {
+      "word": "tak",
+      "start": 68.04,
+      "end": 68.22
+    },
+    {
+      "word": "tertinggal",
+      "start": 68.22,
+      "end": 68.72
+    },
+    {
+      "word": "di",
+      "start": 68.72,
+      "end": 68.88
+    },
+    {
+      "word": "kantong",
+      "start": 68.88,
+      "end": 69.18
+    },
+    {
+      "word": "Menurutmu,",
+      "start": 69.06,
+      "end": 71.02
+    },
+    {
+      "word": "apa",
+      "start": 71.02,
+      "end": 71.12
+    },
+    {
+      "word": "keputusan",
+      "start": 71.12,
+      "end": 71.6
+    },
+    {
+      "word": "sepele",
+      "start": 71.6,
+      "end": 71.98
+    },
+    {
+      "word": "yang",
+      "start": 71.98,
+      "end": 72.2
+    },
+    {
+      "word": "kamu",
+      "start": 72.2,
+      "end": 72.6
+    },
+    {
+      "word": "ambil",
+      "start": 72.6,
+      "end": 72.9
+    },
+    {
+      "word": "hari",
+      "start": 72.9,
+      "end": 73.14
+    },
+    {
+      "word": "ini",
+      "start": 73.14,
+      "end": 73.36
+    },
+    {
+      "word": "Yang",
+      "start": 73,
+      "end": 73.82
+    },
+    {
+      "word": "tanpa",
+      "start": 73.82,
+      "end": 74.2
+    },
+    {
+      "word": "kamu",
+      "start": 74.2,
+      "end": 74.44
+    },
+    {
+      "word": "sadari",
+      "start": 74.44,
+      "end": 74.88
+    },
+    {
+      "word": "akan",
+      "start": 74.88,
+      "end": 75.36
+    },
+    {
+      "word": "mengubah",
+      "start": 75.36,
+      "end": 75.76
+    },
+    {
+      "word": "jalan",
+      "start": 75.76,
+      "end": 75.98
+    },
+    {
+      "word": "hidupmu",
+      "start": 75.98,
+      "end": 76.38
+    },
+    {
+      "word": "5",
+      "start": 76.38,
+      "end": 76.52
+    },
+    {
+      "word": "tahun",
+      "start": 76.52,
+      "end": 76.78
+    },
+    {
+      "word": "lagi?",
+      "start": 76.78,
+      "end": 77.06
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 6.9,
+      "text": "14 April 1912, kapal paling mewah di dunia ini menemui ajalnya di tengah samudera beku,",
+      "words": [
+        {
+          "word": "14",
+          "start": 0.1,
+          "end": 0.7
+        },
+        {
+          "word": "April",
+          "start": 0.7,
+          "end": 1.1
+        },
+        {
+          "word": "1912,",
+          "start": 1.1,
+          "end": 3.12
+        },
+        {
+          "word": "kapal",
+          "start": 3.12,
+          "end": 3.44
+        },
+        {
+          "word": "paling",
+          "start": 3.44,
+          "end": 3.68
+        },
+        {
+          "word": "mewah",
+          "start": 3.68,
+          "end": 3.92
+        },
+        {
+          "word": "di",
+          "start": 3.92,
+          "end": 4.08
+        },
+        {
+          "word": "dunia",
+          "start": 4.08,
+          "end": 4.32
+        },
+        {
+          "word": "ini",
+          "start": 4.32,
+          "end": 4.56
+        },
+        {
+          "word": "menemui",
+          "start": 4.56,
+          "end": 5.22
+        },
+        {
+          "word": "ajalnya",
+          "start": 5.22,
+          "end": 5.72
+        },
+        {
+          "word": "di",
+          "start": 5.72,
+          "end": 5.96
+        },
+        {
+          "word": "tengah",
+          "start": 5.96,
+          "end": 6.18
+        },
+        {
+          "word": "samudera",
+          "start": 6.18,
+          "end": 6.64
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 7.4,
+      "end": 11.54,
+      "text": "hanya karena sebutir kunci loker logam yang tertinggal di kantong seorang pelaut.",
+      "words": [
+        {
+          "word": "hanya",
+          "start": 7.4,
+          "end": 7.64
+        },
+        {
+          "word": "karena",
+          "start": 7.64,
+          "end": 8
+        },
+        {
+          "word": "sebutir",
+          "start": 8,
+          "end": 8.6
+        },
+        {
+          "word": "kunci",
+          "start": 8.6,
+          "end": 8.94
+        },
+        {
+          "word": "loker",
+          "start": 8.94,
+          "end": 9.22
+        },
+        {
+          "word": "logam",
+          "start": 9.22,
+          "end": 9.62
+        },
+        {
+          "word": "yang",
+          "start": 9.62,
+          "end": 9.82
+        },
+        {
+          "word": "tertinggal",
+          "start": 9.82,
+          "end": 10.4
+        },
+        {
+          "word": "di",
+          "start": 10.4,
+          "end": 10.58
+        },
+        {
+          "word": "kantong",
+          "start": 10.58,
+          "end": 10.88
+        },
+        {
+          "word": "seorang",
+          "start": 10.88,
+          "end": 11.22
+        },
+        {
+          "word": "pelaut.",
+          "start": 11.22,
+          "end": 11.54
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 12.4,
+      "end": 14.98,
+      "text": "David Blair, perwira kedua yang sedianya bertugas,",
+      "words": [
+        {
+          "word": "David",
+          "start": 12.44,
+          "end": 12.76
+        },
+        {
+          "word": "Blair,",
+          "start": 12.76,
+          "end": 13.24
+        },
+        {
+          "word": "perwira",
+          "start": 13.24,
+          "end": 13.54
+        },
+        {
+          "word": "kedua",
+          "start": 13.54,
+          "end": 13.86
+        },
+        {
+          "word": "yang",
+          "start": 13.86,
+          "end": 14.08
+        },
+        {
+          "word": "sedianya",
+          "start": 14.08,
+          "end": 14.46
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 15.26,
+      "end": 18.66,
+      "text": "mendadak dipindahkan dari kapal beberapa jam sebelum keberangkatan.",
+      "words": [
+        {
+          "word": "mendadak",
+          "start": 15.34,
+          "end": 15.72
+        },
+        {
+          "word": "dipindahkan",
+          "start": 15.72,
+          "end": 16.28
+        },
+        {
+          "word": "dari",
+          "start": 16.28,
+          "end": 16.46
+        },
+        {
+          "word": "kapal",
+          "start": 16.46,
+          "end": 16.82
+        },
+        {
+          "word": "beberapa",
+          "start": 16.82,
+          "end": 17.32
+        },
+        {
+          "word": "jam",
+          "start": 17.32,
+          "end": 17.56
+        },
+        {
+          "word": "sebelum",
+          "start": 17.56,
+          "end": 17.98
+        },
+        {
+          "word": "keberangkatan.",
+          "start": 17.98,
+          "end": 18.62
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 19.44,
+      "end": 24.88,
+      "text": "Dalam ketergesaan, Blair lupa menyerahkan kunci loker penyimpanan teropong binokular kepada penggantinya.",
+      "words": [
+        {
+          "word": "Dalam",
+          "start": 19.48,
+          "end": 19.68
+        },
+        {
+          "word": "ketergesaan,",
+          "start": 19.68,
+          "end": 20.72
+        },
+        {
+          "word": "Blair",
+          "start": 20.72,
+          "end": 20.94
+        },
+        {
+          "word": "lupa",
+          "start": 20.94,
+          "end": 21.24
+        },
+        {
+          "word": "menyerahkan",
+          "start": 21.24,
+          "end": 21.76
+        },
+        {
+          "word": "kunci",
+          "start": 21.76,
+          "end": 22
+        },
+        {
+          "word": "loker",
+          "start": 22,
+          "end": 22.26
+        },
+        {
+          "word": "penyimpanan",
+          "start": 22.26,
+          "end": 22.88
+        },
+        {
+          "word": "teropong",
+          "start": 22.88,
+          "end": 23.2
+        },
+        {
+          "word": "binokular",
+          "start": 23.2,
+          "end": 23.68
+        },
+        {
+          "word": "kepada",
+          "start": 23.68,
+          "end": 24.2
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 25.54,
+      "end": 31.86,
+      "text": "Tanpa binokular, pengintai di sarang gagak hanya mengandalkan mata telanjang untuk menembus kegelapan malam yang pekat.",
+      "words": [
+        {
+          "word": "Tanpa",
+          "start": 25.5,
+          "end": 25.78
+        },
+        {
+          "word": "binokular,",
+          "start": 25.78,
+          "end": 26.86
+        },
+        {
+          "word": "pengintai",
+          "start": 26.86,
+          "end": 27.18
+        },
+        {
+          "word": "di",
+          "start": 27.18,
+          "end": 27.38
+        },
+        {
+          "word": "sarang",
+          "start": 27.38,
+          "end": 27.56
+        },
+        {
+          "word": "gagak",
+          "start": 27.56,
+          "end": 27.9
+        },
+        {
+          "word": "hanya",
+          "start": 27.9,
+          "end": 28.32
+        },
+        {
+          "word": "mengandalkan",
+          "start": 28.32,
+          "end": 29.02
+        },
+        {
+          "word": "mata",
+          "start": 29.02,
+          "end": 29.32
+        },
+        {
+          "word": "telanjang",
+          "start": 29.32,
+          "end": 29.76
+        },
+        {
+          "word": "untuk",
+          "start": 29.76,
+          "end": 30.16
+        },
+        {
+          "word": "menembus",
+          "start": 30.16,
+          "end": 30.62
+        },
+        {
+          "word": "kegelapan",
+          "start": 30.62,
+          "end": 31.06
+        },
+        {
+          "word": "malam",
+          "start": 31.06,
+          "end": 31.42
+        },
+        {
+          "word": "yang",
+          "start": 31.42,
+          "end": 31.56
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 32.88,
+      "end": 38.86,
+      "text": "Gunung es raksasa muncul dari kegelapan tepat di depan haluan, terlalu dekat untuk menghindar dengan kecepatan penuh.",
+      "words": [
+        {
+          "word": "Gunung",
+          "start": 32.9,
+          "end": 33.14
+        },
+        {
+          "word": "es",
+          "start": 33.14,
+          "end": 33.26
+        },
+        {
+          "word": "raksasa",
+          "start": 33.26,
+          "end": 33.66
+        },
+        {
+          "word": "muncul",
+          "start": 33.66,
+          "end": 34.06
+        },
+        {
+          "word": "dari",
+          "start": 34.06,
+          "end": 34.26
+        },
+        {
+          "word": "kegelapan",
+          "start": 34.26,
+          "end": 34.76
+        },
+        {
+          "word": "tepat",
+          "start": 34.76,
+          "end": 35.2
+        },
+        {
+          "word": "di",
+          "start": 35.2,
+          "end": 35.38
+        },
+        {
+          "word": "depan",
+          "start": 35.38,
+          "end": 35.58
+        },
+        {
+          "word": "haluan,",
+          "start": 35.58,
+          "end": 36.38
+        },
+        {
+          "word": "terlalu",
+          "start": 36.38,
+          "end": 36.7
+        },
+        {
+          "word": "dekat",
+          "start": 36.7,
+          "end": 36.94
+        },
+        {
+          "word": "untuk",
+          "start": 36.94,
+          "end": 37.18
+        },
+        {
+          "word": "menghindar",
+          "start": 37.18,
+          "end": 37.68
+        },
+        {
+          "word": "dengan",
+          "start": 37.68,
+          "end": 38.04
+        },
+        {
+          "word": "kecepatan",
+          "start": 38.04,
+          "end": 38.58
+        },
+        {
+          "word": "penuh.",
+          "start": 38.58,
+          "end": 38.84
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 39.7,
+      "end": 45.94,
+      "text": "Lonceng darurat berdentang tiga kali, kemudian dibanting keras, namun mementung baja raksasa itu tak bisa dihentikan.",
+      "words": [
+        {
+          "word": "Lonceng",
+          "start": 39.74,
+          "end": 39.98
+        },
+        {
+          "word": "darurat",
+          "start": 39.98,
+          "end": 40.4
+        },
+        {
+          "word": "berdentang",
+          "start": 40.4,
+          "end": 40.98
+        },
+        {
+          "word": "tiga",
+          "start": 40.98,
+          "end": 41.22
+        },
+        {
+          "word": "kali,",
+          "start": 41.22,
+          "end": 41.94
+        },
+        {
+          "word": "kemudian",
+          "start": 41.94,
+          "end": 42.18
+        },
+        {
+          "word": "dibanting",
+          "start": 42.18,
+          "end": 42.56
+        },
+        {
+          "word": "keras,",
+          "start": 42.56,
+          "end": 43.46
+        },
+        {
+          "word": "namun",
+          "start": 43.46,
+          "end": 43.64
+        },
+        {
+          "word": "mementung",
+          "start": 43.64,
+          "end": 44.06
+        },
+        {
+          "word": "baja",
+          "start": 44.06,
+          "end": 44.32
+        },
+        {
+          "word": "raksasa",
+          "start": 44.32,
+          "end": 44.68
+        },
+        {
+          "word": "itu",
+          "start": 44.68,
+          "end": 44.9
+        },
+        {
+          "word": "tak",
+          "start": 44.9,
+          "end": 45.16
+        },
+        {
+          "word": "bisa",
+          "start": 45.16,
+          "end": 45.44
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 45.94,
+      "end": 49.36,
+      "text": "Dining baja yang kokoh robek sepanjang 90 meter.",
+      "words": [
+        {
+          "word": "Dining",
+          "start": 46.5,
+          "end": 46.68
+        },
+        {
+          "word": "baja",
+          "start": 46.68,
+          "end": 46.96
+        },
+        {
+          "word": "yang",
+          "start": 46.96,
+          "end": 47.14
+        },
+        {
+          "word": "kokoh",
+          "start": 47.14,
+          "end": 47.5
+        },
+        {
+          "word": "robek",
+          "start": 47.5,
+          "end": 47.96
+        },
+        {
+          "word": "sepanjang",
+          "start": 47.96,
+          "end": 48.42
+        },
+        {
+          "word": "90",
+          "start": 48.42,
+          "end": 49
+        },
+        {
+          "word": "meter.",
+          "start": 49,
+          "end": 49.34
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 50.04,
+      "end": 53.42,
+      "text": "Air es mulai membanjirin kompartemen kedap udara secara beruntun.",
+      "words": [
+        {
+          "word": "Air",
+          "start": 50.08,
+          "end": 50.24
+        },
+        {
+          "word": "es",
+          "start": 50.24,
+          "end": 50.42
+        },
+        {
+          "word": "mulai",
+          "start": 50.42,
+          "end": 50.74
+        },
+        {
+          "word": "membanjirin",
+          "start": 50.74,
+          "end": 51.28
+        },
+        {
+          "word": "kompartemen",
+          "start": 51.28,
+          "end": 51.8
+        },
+        {
+          "word": "kedap",
+          "start": 51.8,
+          "end": 52.08
+        },
+        {
+          "word": "udara",
+          "start": 52.08,
+          "end": 52.42
+        },
+        {
+          "word": "secara",
+          "start": 52.42,
+          "end": 52.94
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 53.42,
+      "end": 57.88,
+      "text": "Operator radio mengirimkan pesan QD putus asa ke tengah samudera",
+      "words": [
+        {
+          "word": "Operator",
+          "start": 54.2,
+          "end": 54.58
+        },
+        {
+          "word": "radio",
+          "start": 54.58,
+          "end": 54.88
+        },
+        {
+          "word": "mengirimkan",
+          "start": 54.88,
+          "end": 55.42
+        },
+        {
+          "word": "pesan",
+          "start": 55.42,
+          "end": 55.74
+        },
+        {
+          "word": "QD",
+          "start": 55.74,
+          "end": 56.24
+        },
+        {
+          "word": "putus",
+          "start": 56.24,
+          "end": 56.78
+        },
+        {
+          "word": "asa",
+          "start": 56.78,
+          "end": 57.02
+        },
+        {
+          "word": "ke",
+          "start": 57.02,
+          "end": 57.22
+        },
+        {
+          "word": "tengah",
+          "start": 57.22,
+          "end": 57.44
+        },
+        {
+          "word": "samudera",
+          "start": 57.44,
+          "end": 57.86
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 57.88,
+      "end": 60.84,
+      "text": "Memohon bantuan yang tak mungkin tiba tepat waktu",
+      "words": [
+        {
+          "word": "Memohon",
+          "start": 58.26,
+          "end": 58.68
+        },
+        {
+          "word": "bantuan",
+          "start": 58.68,
+          "end": 59.1
+        },
+        {
+          "word": "yang",
+          "start": 59.1,
+          "end": 59.34
+        },
+        {
+          "word": "tak",
+          "start": 59.34,
+          "end": 59.54
+        },
+        {
+          "word": "mungkin",
+          "start": 59.54,
+          "end": 59.9
+        },
+        {
+          "word": "tiba",
+          "start": 59.9,
+          "end": 60.24
+        },
+        {
+          "word": "tepat",
+          "start": 60.24,
+          "end": 60.48
+        },
+        {
+          "word": "waktu",
+          "start": 60.48,
+          "end": 60.82
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 60.84,
+      "end": 66.74,
+      "text": "Dalam penyelidikan resmi, terungkap bahwa binokular itu bisa menyelamatkan 1500 jiwa",
+      "words": [
+        {
+          "word": "Dalam",
+          "start": 61.42,
+          "end": 61.7
+        },
+        {
+          "word": "penyelidikan",
+          "start": 61.7,
+          "end": 62.22
+        },
+        {
+          "word": "resmi,",
+          "start": 62.22,
+          "end": 63.06
+        },
+        {
+          "word": "terungkap",
+          "start": 63.06,
+          "end": 63.36
+        },
+        {
+          "word": "bahwa",
+          "start": 63.36,
+          "end": 63.64
+        },
+        {
+          "word": "binokular",
+          "start": 63.64,
+          "end": 64.1
+        },
+        {
+          "word": "itu",
+          "start": 64.1,
+          "end": 64.32
+        },
+        {
+          "word": "bisa",
+          "start": 64.32,
+          "end": 64.72
+        },
+        {
+          "word": "menyelamatkan",
+          "start": 64.72,
+          "end": 65.46
+        },
+        {
+          "word": "1500",
+          "start": 65.46,
+          "end": 66.1
+        },
+        {
+          "word": "jiwa",
+          "start": 66.1,
+          "end": 66.68
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 66.74,
+      "end": 69.56,
+      "text": "Jika saja kuncinya tak tertinggal di kantong",
+      "words": [
+        {
+          "word": "Jika",
+          "start": 67.02,
+          "end": 67.32
+        },
+        {
+          "word": "saja",
+          "start": 67.32,
+          "end": 67.6
+        },
+        {
+          "word": "kuncinya",
+          "start": 67.6,
+          "end": 68.04
+        },
+        {
+          "word": "tak",
+          "start": 68.04,
+          "end": 68.22
+        },
+        {
+          "word": "tertinggal",
+          "start": 68.22,
+          "end": 68.72
+        },
+        {
+          "word": "di",
+          "start": 68.72,
+          "end": 68.88
+        },
+        {
+          "word": "kantong",
+          "start": 68.88,
+          "end": 69.18
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 69.56,
+      "end": 73.4,
+      "text": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini",
+      "words": [
+        {
+          "word": "apa",
+          "start": 71.02,
+          "end": 71.12
+        },
+        {
+          "word": "keputusan",
+          "start": 71.12,
+          "end": 71.6
+        },
+        {
+          "word": "sepele",
+          "start": 71.6,
+          "end": 71.98
+        },
+        {
+          "word": "yang",
+          "start": 71.98,
+          "end": 72.2
+        },
+        {
+          "word": "kamu",
+          "start": 72.2,
+          "end": 72.6
+        },
+        {
+          "word": "ambil",
+          "start": 72.6,
+          "end": 72.9
+        },
+        {
+          "word": "hari",
+          "start": 72.9,
+          "end": 73.14
+        },
+        {
+          "word": "ini",
+          "start": 73.14,
+          "end": 73.36
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 73.4,
+      "end": 77.04,
+      "text": "Yang tanpa kamu sadari akan mengubah jalan hidupmu 5 tahun lagi?",
+      "words": [
+        {
+          "word": "tanpa",
+          "start": 73.82,
+          "end": 74.2
+        },
+        {
+          "word": "kamu",
+          "start": 74.2,
+          "end": 74.44
+        },
+        {
+          "word": "sadari",
+          "start": 74.44,
+          "end": 74.88
+        },
+        {
+          "word": "akan",
+          "start": 74.88,
+          "end": 75.36
+        },
+        {
+          "word": "mengubah",
+          "start": 75.36,
+          "end": 75.76
+        },
+        {
+          "word": "jalan",
+          "start": 75.76,
+          "end": 75.98
+        },
+        {
+          "word": "hidupmu",
+          "start": 75.98,
+          "end": 76.38
+        },
+        {
+          "word": "5",
+          "start": 76.38,
+          "end": 76.52
+        },
+        {
+          "word": "tahun",
+          "start": 76.52,
+          "end": 76.78
+        },
+        {
+          "word": "lagi?",
+          "start": 76.78,
+          "end": 77.06
+        }
+      ]
+    }
+  ],
+  "text": " 14 April 1912, kapal paling mewah di dunia ini menemui ajalnya di tengah samudera beku, hanya karena sebutir kunci loker logam yang tertinggal di kantong seorang pelaut. David Blair, perwira kedua yang sedianya bertugas, mendadak dipindahkan dari kapal beberapa jam sebelum keberangkatan. Dalam ketergesaan, Blair lupa menyerahkan kunci loker penyimpanan teropong binokular kepada penggantinya. Tanpa binokular, pengintai di sarang gagak hanya mengandalkan mata telanjang untuk menembus kegelapan malam yang pekat. Gunung es raksasa muncul dari kegelapan tepat di depan haluan, terlalu dekat untuk menghindar dengan kecepatan penuh. Lonceng darurat berdentang tiga kali, kemudian dibanting keras, namun mementung baja raksasa itu tak bisa dihentikan. Dining baja yang kokoh robek sepanjang 90 meter. Air es mulai membanjirin kompartemen kedap udara secara beruntun. Operator radio mengirimkan pesan QD putus asa ke tengah samudera Memohon bantuan yang tak mungkin tiba tepat waktu Dalam penyelidikan resmi, terungkap bahwa binokular itu bisa menyelamatkan 1500 jiwa Jika saja kuncinya tak tertinggal di kantong Menurutmu, apa keputusan sepele yang kamu ambil hari ini Yang tanpa kamu sadari akan mengubah jalan hidupmu 5 tahun lagi?"
+}

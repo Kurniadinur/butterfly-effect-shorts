@@ -156,6 +156,10 @@ KRITERIA AUDIT KETAT:
 8. SUPERVISI SOUND DESIGN SKETSA (FOLEY MATCHING & ANTI-DISTRACTION GUARANTEE):
    - Efek suara sketsa harus relevan dengan arketipe visualnya (misal: lock_click untuk key-lockbox, morse_code untuk maritime/telegraph, gavel_strike untuk courtroom, paper_stamp untuk memo).
    - Menjamin volume berada pada rentang halus (0.20 - 0.30) dan diputar dengan jeda ~12 frame setelah cut agar suara narasi (1.0) tetap jernih dan fokus penonton tidak terganggu.
+9. SUPERVISI DENSITAS MULTI-SKETSA (ANTI-PELIT SKETSA & AKSI TEPAT SASARAN):
+   - DILARANG KERAS 1 sketsa diam terlalu lama (>6 detik) untuk banyak penjelasan!
+   - Wajib memecah alur menjadi 8 hingga 12 babak visual dinamis ('nodes'), dengan pergantian sketsa animasi tiap 3-5 detik.
+   - Setiap kali suara narasi menyebut aksi, objek, atau subjek baru (kunci, dokumen, pos jaga, radar, lonceng, benturan), sketsa visual WAJIB berganti menyesuaikan hal tersebut agar penonton tidak mengalami kelelahan visual!
 
 FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
 {

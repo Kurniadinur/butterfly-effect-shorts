@@ -141,16 +141,26 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
    - 'editorialStyle.shakeSensitivity': 'subtle' atau 'moderate'.
    - 'editorialStyle.shakeThresholdChaos': Level chaos (60-75) saat guncangan kamera mulai aktif pada momen tegang.
 
-7. RAHASIA YOUTUBE SHORTS VIRAL MILLION-VIEWS (RETENSI TINGGI & STORYTELLING MENDALAM):
-   Berdasarkan studi analitik video Butterfly Effect dengan view tertinggi di YouTube (10M - 20M+ views):
-   - DILARANG KERAS MEMBUAT NASKAH PENDEK, DANGKAL, ATAU ASAL JADI!
-   - Setiap adegan (node) WAJIB memiliki narasi yang kaya, mendalam, dan mencekam (30 - 55 kata per adegan).
-   - Ceritakan detail psikologis dan suasana nyata: kepanikan operator, ruang kendali yang dingin, perintah yang diabaikan, keraguan di mata saksi, dan detik-detik kritis saat kesalahan kecil merambat jadi bencana tak terbendung.
-   - ATURAN 3 DETIK PERTAMA (STOP-THE-SCROLL): Kalimat pembuka pada 'hook.narration' (25 - 40 kata) WAJIB mengandung formula:
-     [Waktu/Tokoh Spesifik] + [Aksi Mikro Sepele] + [Bencana/Dampak Global Kolosal yang Mencekam]
-     Contoh: "14 April 1912, pukul 23:40 di tengah laut es yang gelap gulita. Hanya karena sebuah kunci loker kecil tertinggal di pelabuhan Southampton, 1.500 nyawa di kapal termewah di dunia harus ditelan samudra Atlantik."
-   - TEKNIK SEAMLESS INFINITE LOOP (RETENSI > 100%): Rancang kalimat terakhir pada 'outro.narration' agar kata-kata terakhirnya mengalir secara halus dan menyambung kembali ke kata pertama pada kalimat pembuka ('hook.narration').
-   - Total narasi keseluruhan berkisar antara 180 - 260 kata (durasi video ~50-70 detik) agar penonton puas dengan detail ceritanya.
+7. RAHASIA YOUTUBE SHORTS VIRAL MILLION-VIEWS (DENSITAS MULTI-SKETSA CEPAT & ALUR INTENSIF):
+   - JANGAN PELIT SKETSA! DILARANG KERAS 1 SKETSA DIAM LAMA UNTUK BANYAK PENJELASAN! (Jika 1 sketsa diam 15 detik sementara voiceover menjelaskan banyak hal, penonton bosan dan visual tidak nyambung!).
+   - BEDAH DAN PECAH ALUR CERITA MENJADI 8 HINGGA 12 BABAK VISUAL DINAMIS ('nodes').
+   - Setiap adegan (node) berdurasi SINGKAT & INTENSIF (3 sampai 5 detik, sekitar 12 - 20 kata narasi per adegan).
+   - SETIAP KALI VOICEOVER BERGANTI TINDAKAN, TOKOH, ATAU OBJEK: GANTI SKETSA VISUALNYA ('directorType')!
+     * Contoh alur pergantian sketsa dinamis (Titanic):
+       - Node 1 ('memo-handoff')     : Pergantian perwira kapal tergesa-gesa di Southampton.
+       - Node 2 ('key-lockbox')      : Kunci kuningan loker teropong terbawa pulang di saku jas.
+       - Node 3 ('maritime-disaster'): Siluet kapal melaju kencang di laut hitam Atlantik.
+       - Node 4 ('clock-countdown')  : Menara pengawas sarang gagak di malam beku tanpa penerangan.
+       - Node 5 ('key-lockbox')      : Loker nomor 4 terkunci mati, teropong optik tak bisa diambil.
+       - Node 6 ('critical-gauge')   : Meteran jarak pandang mata telanjang drop drastis di tengah kabut.
+       - Node 7 ('tactical-map')     : Siluet gunung es raksasa muncul mendadak 500 meter di depan.
+       - Node 8 ('panic-phone')      : Lonceng darurat berdentang 3 kali, kemudi dibanting panik.
+       - Node 9 ('valve-failure')    : Lambung baja kapal robek 90 meter oleh es bawah air.
+       - Node 10 ('telegraph-wire')  : Sinyal radio morse SOS CQD memancar putus asa ke samudra.
+       - Node 11 ('courtroom-gavel') : Palu sidang penyelidikan maritim membuktikan satu kunci menentukan 1.500 nyawa.
+   - ATURAN 3 DETIK PERTAMA (STOP-THE-SCROLL): Kalimat pembuka pada 'hook.narration' (20 - 30 kata) langsung menyebutkan waktu, objek mikro sepele, dan bencana dahsyat.
+   - TEKNIK SEAMLESS INFINITE LOOP (RETENSI > 100%): Rancang kalimat terakhir pada 'outro.narration' agar kata-kata terakhirnya menyambung kembali ke kata pertama pada kalimat pembuka ('hook.narration').
+   - Total keseluruhan cerita: 8 sampai 12 nodes dinamis, total 180 - 240 kata narasi (durasi total video ~50-70 detik). Video akan terasa sangat kaya, penuh variasi animasi sketsa berganti tiap 3-5 detik, dan setiap penjelasan visualnya 100% tepat sasaran!
 
 FORMAT JSON WAJIB:
 {
@@ -167,7 +177,7 @@ FORMAT JSON WAJIB:
     "hookStyle": "fullscreen-dramatic ATAU forensic-dossier ATAU breaking-transmission ATAU split-contrast",
     "kicker": "BADGE SINGKAT EDITORIAL (misal: '14 APRIL 1912', 'KESALAHAN FATAL')",
     "headline": "JUDUL PANCINGAN BESAR (misal: 'KUNCI LOKER YANG MENENGGELAMKAN TITANIC')",
-    "narration": "Kalimat pembuka menggigit, detail, dan mencekam (25-40 kata) tanpa kalimat klise...",
+    "narration": "Kalimat pembuka menggigit, detail, dan mencekam (20-30 kata) tanpa kalimat klise...",
     "leftTitle": "Hal Sepele",
     "rightTitle": "Dampak Global",
     "leftBadge": "AWAL MULA SEPELE",
@@ -180,20 +190,106 @@ FORMAT JSON WAJIB:
   "nodes": [
     {
       "step": 1,
-      "timeOrYear": "LOKASI / TAHUN • JAM SPESIFIK",
-      "headline": "JUDUL ADEGAN DRAMATIS",
-      "narration": "Narasi mendalam dan detail (30-55 kata). Jelaskan fakta sejarah nyata, ketegangan tokoh, dan bagaimana langkah ini memperparah keadaan. DILARANG SINGKAT ATAU DANGKAL!",
-      "chaosLevel": 20,
-      "mediaType": "graphic (utama) ATAU photo (hanya untuk nama tokoh/objek asli)",
-      "directorType": "salah satu arketipe yang 100% RELEVAN DENGAN SEJARAHNYA",
-      "searchQuery": "Hanya jika photo: nama tokoh atau objek sejarah spesifik",
-      "zoomDirection": "zoomIn / zoomOut / panRight / panLeft",
-      "primaryText": "Teks judul spesifik di dalam grafis",
-      "secondaryText": "Teks subjudul / keterangan grafis",
-      "stampText": "Teks stempel resmi (misal: CONFIDENTIAL, TOP SECRET, LIVE, BREAKING)",
-      "quoteText": "Kutipan ucapan asli jika ada",
-      "metricLabel": "Label indikator",
-      "metricValue": "Nilai indikator",
+      "timeOrYear": "LOKASI • JAM/TAHUN",
+      "headline": "JUDUL AKSI 1",
+      "narration": "Narasi aksi 1 (12-20 kata). Fokus pada satu momen/tindakan spesifik yang sedang terjadi.",
+      "chaosLevel": 15,
+      "mediaType": "graphic",
+      "directorType": "pilihan arketipe sketsa 1 yang 100% cocok dengan aksi ini",
+      "primaryText": "Teks grafis 1",
+      "secondaryText": "Subjudul grafis 1",
+      "stampText": "STATUS 1",
+      "caption": "Keterangan forensik singkat..."
+    },
+    {
+      "step": 2,
+      "timeOrYear": "LOKASI • JAM/TAHUN",
+      "headline": "JUDUL AKSI 2",
+      "narration": "Narasi aksi 2 (12-20 kata). Ganti objek atau aksi berikutnya dalam rantai peristiwa.",
+      "chaosLevel": 25,
+      "mediaType": "graphic",
+      "directorType": "pilihan arketipe sketsa 2 yang berbeda dan cocok dengan aksi 2",
+      "primaryText": "Teks grafis 2",
+      "secondaryText": "Subjudul grafis 2",
+      "stampText": "STATUS 2",
+      "caption": "Keterangan forensik singkat..."
+    },
+    {
+      "step": 3,
+      "timeOrYear": "LOKASI • JAM/TAHUN",
+      "headline": "JUDUL AKSI 3",
+      "narration": "Narasi aksi 3 (12-20 kata). Eskalasi ketegangan berikutnya.",
+      "chaosLevel": 35,
+      "mediaType": "graphic",
+      "directorType": "pilihan arketipe sketsa 3 yang berbeda",
+      "primaryText": "Teks grafis 3",
+      "secondaryText": "Subjudul grafis 3",
+      "stampText": "STATUS 3",
+      "caption": "Keterangan forensik singkat..."
+    },
+    {
+      "step": 4,
+      "timeOrYear": "LOKASI • JAM/TAHUN",
+      "headline": "JUDUL AKSI 4",
+      "narration": "Narasi aksi 4 (12-20 kata). Titik kritis kepanikan.",
+      "chaosLevel": 50,
+      "mediaType": "graphic",
+      "directorType": "pilihan arketipe sketsa 4 yang berbeda",
+      "primaryText": "Teks grafis 4",
+      "secondaryText": "Subjudul grafis 4",
+      "stampText": "STATUS 4",
+      "caption": "Keterangan forensik singkat..."
+    },
+    {
+      "step": 5,
+      "timeOrYear": "LOKASI • JAM/TAHUN",
+      "headline": "JUDUL AKSI 5",
+      "narration": "Narasi aksi 5 (12-20 kata). Kegagalan sistem / penghalang fatal.",
+      "chaosLevel": 65,
+      "mediaType": "graphic",
+      "directorType": "pilihan arketipe sketsa 5 yang berbeda",
+      "primaryText": "Teks grafis 5",
+      "secondaryText": "Subjudul grafis 5",
+      "stampText": "STATUS 5",
+      "caption": "Keterangan forensik singkat..."
+    },
+    {
+      "step": 6,
+      "timeOrYear": "LOKASI • JAM/TAHUN",
+      "headline": "JUDUL AKSI 6",
+      "narration": "Narasi aksi 6 (12-20 kata). Ancaman di depan mata.",
+      "chaosLevel": 75,
+      "mediaType": "graphic",
+      "directorType": "pilihan arketipe sketsa 6 yang berbeda",
+      "primaryText": "Teks grafis 6",
+      "secondaryText": "Subjudul grafis 6",
+      "stampText": "STATUS 6",
+      "caption": "Keterangan forensik singkat..."
+    },
+    {
+      "step": 7,
+      "timeOrYear": "LOKASI • JAM/TAHUN",
+      "headline": "JUDUL AKSI 7 (KLIMAKS)",
+      "narration": "Narasi aksi 7 (12-20 kata). Benturan / malapetaka puncak terjadi!",
+      "chaosLevel": 90,
+      "mediaType": "graphic",
+      "directorType": "pilihan arketipe sketsa 7 (klimaks bencana)",
+      "primaryText": "Teks grafis 7",
+      "secondaryText": "Subjudul grafis 7",
+      "stampText": "KLIMAKS",
+      "caption": "Keterangan forensik singkat..."
+    },
+    {
+      "step": 8,
+      "timeOrYear": "LOKASI • JAM/TAHUN",
+      "headline": "JUDUL AKSI 8 (DAMPAK AKHIR)",
+      "narration": "Narasi aksi 8 (12-20 kata). Dampak kolosal sejarah dan vonis akhir.",
+      "chaosLevel": 85,
+      "mediaType": "graphic",
+      "directorType": "pilihan arketipe sketsa 8 (sidang/kehancuran)",
+      "primaryText": "Teks grafis 8",
+      "secondaryText": "Subjudul grafis 8",
+      "stampText": "VONIS",
       "caption": "Keterangan forensik singkat..."
     }
   ],
