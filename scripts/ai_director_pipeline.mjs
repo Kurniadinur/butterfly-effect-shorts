@@ -46,6 +46,15 @@ console.log('================================================================\n'
 // -----------------------------------------------------------------------------
 export const CREATIVE_PERSPECTIVES = [
   {
+    name: '🌟 MASTER MULTI-PERSPEKTIF (GABUNGAN SEMUA SUDUT PANDANG)',
+    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER LENGKAP BERDURASI 2 - 2.5 MENIT (DI BAWAH 3 MENIT): ' +
+      'Babak 1: Blunder sepele & kelalaian mikro di awal peristiwa. ' +
+      'Babak 2: Ketegangan garis depan & kepanikan operator di titik kritis. ' +
+      'Babak 3: Efek domino kegagalan sistemik berantai & benturan bencana puncak. ' +
+      'Babak 4: Reaksi kaget dunia, transmisi darurat, dan vonis sidang investigasi deklasifikasi sejarah. ' +
+      'Pecah alur menjadi 12 HINGGA 18 ADEGAN SKETSA DINAMIS yang berganti cepat tiap 4-6 detik!',
+  },
+  {
     name: 'BLUNDER SEPELE & KELALAIAN MANUSIAWI',
     angle: 'Fokuskan alur cerita pada momen kelalaian manusiawi paling awal: benda kecil yang terlupakan, memo terburu-buru, salah belok, atau keputusan sepele dalam hitungan detik yang tanpa disadari memicu rangkaian bencana tak terkendali.',
   },
@@ -69,7 +78,7 @@ export const CREATIVE_PERSPECTIVES = [
 
 const DIRECTOR_PROMPT = `
 Kamu adalah Creative Director & Sutradara Dokumenter Papan Atas Dunia sekaligus Storyteller bertaraf Nessie Judge (Nerror).
-Tugasmu adalah menciptakan naskah dan alur visual "Butterfly Effect" (efek domino sebab-akibat ekstrem) berdurasi 60-120 detik untuk YouTube Shorts / TikTok (9:16).
+Tugasmu adalah menciptakan naskah dan alur visual "Butterfly Effect" (efek domino sebab-akibat ekstrem) berdurasi 60 hingga 160 detik (maksimal di bawah 3 menit) untuk YouTube Shorts / TikTok / Reels (9:16).
 
 PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!):
 1. GAYA VISUAL HOOK PEMBUKA (BEBAS DARI TEMPLATE KAKU):
@@ -160,7 +169,7 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
        - Node 11 ('courtroom-gavel') : Palu sidang penyelidikan maritim membuktikan satu kunci menentukan 1.500 nyawa.
    - ATURAN 3 DETIK PERTAMA (STOP-THE-SCROLL): Kalimat pembuka pada 'hook.narration' (20 - 30 kata) langsung menyebutkan waktu, objek mikro sepele, dan bencana dahsyat.
    - TEKNIK SEAMLESS INFINITE LOOP (RETENSI > 100%): Rancang kalimat terakhir pada 'outro.narration' agar kata-kata terakhirnya menyambung kembali ke kata pertama pada kalimat pembuka ('hook.narration').
-   - Total keseluruhan cerita: 8 sampai 12 nodes dinamis, total 180 - 240 kata narasi (durasi total video ~50-70 detik). Video akan terasa sangat kaya, penuh variasi animasi sketsa berganti tiap 3-5 detik, dan setiap penjelasan visualnya 100% tepat sasaran!
+   - Total keseluruhan cerita: 8 sampai 16 nodes dinamis, total 180 - 350 kata narasi (durasi total video 1 - 2.5 menit, aman di bawah batas 3 menit). Video akan terasa sangat kaya, penuh variasi animasi sketsa berganti tiap 3-5 detik, dan setiap penjelasan visualnya 100% tepat sasaran!
 
 FORMAT JSON WAJIB:
 {

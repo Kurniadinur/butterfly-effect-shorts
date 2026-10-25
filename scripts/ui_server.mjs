@@ -16,6 +16,15 @@ const PORT = process.env.UI_PORT || 3333;
 
 const CREATIVE_PERSPECTIVES = [
   {
+    name: '🌟 MASTER MULTI-PERSPEKTIF (GABUNGAN SEMUA SUDUT PANDANG)',
+    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER LENGKAP BERDURASI 2 - 2.5 MENIT (DI BAWAH 3 MENIT): ' +
+      'Babak 1: Blunder sepele & kelalaian mikro di awal peristiwa. ' +
+      'Babak 2: Ketegangan garis depan & kepanikan operator di titik kritis. ' +
+      'Babak 3: Efek domino kegagalan sistemik berantai & benturan bencana puncak. ' +
+      'Babak 4: Reaksi kaget dunia, transmisi darurat, dan vonis sidang investigasi deklasifikasi sejarah. ' +
+      'Pecah alur menjadi 12 HINGGA 18 ADEGAN SKETSA DINAMIS yang berganti cepat tiap 4-6 detik!',
+  },
+  {
     name: 'BLUNDER SEPELE & KELALAIAN MANUSIAWI',
     angle: 'Fokuskan alur cerita pada momen kelalaian manusiawi paling awal: benda kecil yang terlupakan, memo terburu-buru, salah belok, atau keputusan sepele dalam hitungan detik yang tanpa disadari memicu rangkaian bencana tak terkendali.',
   },
