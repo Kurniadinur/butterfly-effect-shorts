@@ -319,7 +319,7 @@ async function generateStoryboard(topic) {
     // Build parallel racing tasks across verified working keys & models
     const tasks = [];
 
-    // Key 1: gemini-2.5-flash (fastest ~2.8s) and gemini-3.5-flash
+    // Key 1: gemini-2.5-flash and gemini-3.5-flash
     if (API_KEYS[0]) {
       const ai1 = new GoogleGenAI({ apiKey: API_KEYS[0] });
       tasks.push(
@@ -338,7 +338,7 @@ async function generateStoryboard(topic) {
       );
     }
 
-    // Keys 2, 3, 4: gemini-3.5-flash in parallel
+    // Keys 2, 3, 4: gemini-3.5-flash + gemini-3.1-flash-lite in parallel
     for (let k = 1; k < API_KEYS.length; k++) {
       const keyIndex = k;
       const ai = new GoogleGenAI({ apiKey: API_KEYS[keyIndex] });
@@ -349,21 +349,28 @@ async function generateStoryboard(topic) {
           config: { temperature: 0.88, topP: 0.95 },
         }).then((res) => ({ provider: `Gemini Key ${keyIndex + 1} (gemini-3.5-flash)`, text: res.text }))
       );
+      tasks.push(
+        ai.models.generateContent({
+          model: 'gemini-3.1-flash-lite-preview',
+          contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
+          config: { temperature: 0.88, topP: 0.95 },
+        }).then((res) => ({ provider: `Gemini Key ${keyIndex + 1} (gemini-3.1-flash-lite)`, text: res.text }))
+      );
     }
 
-    // Groq LPU Turbo Safety Net:
-    // If Gemini is queued or experiencing global 503 spikes past 6.0 seconds,
-    // Groq LPU automatically joins and finishes in ~1.6s so the user never waits or times out!
+    // Groq LPU Emergency Safety Net:
+    // User prioritizes high-quality Gemini storytelling. We give Gemini a generous 30s window.
+    // Groq only steps in if Gemini is down globally past 30 seconds.
     const groqSafetyPromise = new Promise((resolve, reject) => {
       setTimeout(async () => {
         try {
-          console.log(`      ⏱️ [Speed Optimizer] Gemini antre >6s, mengaktifkan Groq LPU (~1.6s) agar tidak menunggu lama...`);
+          console.log(`      ⏱️ [Emergency Safety Net] Gemini antre >30s, mengaktifkan Groq LPU cadangan darurat...`);
           const groqText = await generateStoryboardWithGroq(topic, dynamicPrompt);
-          resolve({ provider: 'Groq Cloud LPU (Turbo Failover)', text: groqText });
+          resolve({ provider: 'Groq Cloud LPU (Emergency Failover)', text: groqText });
         } catch (e) {
           reject(e);
         }
-      }, 6000);
+      }, 30000);
     });
     tasks.push(groqSafetyPromise);
 
