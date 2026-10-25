@@ -160,7 +160,7 @@ STRICT CURATION RULES:
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'openai/gpt-oss-120b',
+        model: 'qwen/qwen3.8-27b',
         messages: [
           { role: 'system', content: 'You are an elite Archival Photo Curator. Return pure valid JSON.' },
           { role: 'user', content: prompt },

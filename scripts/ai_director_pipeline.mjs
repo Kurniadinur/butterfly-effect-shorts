@@ -815,8 +815,48 @@ async function generateStoryboard(topic) {
  * 4. Audits voiceover pacing and word rate (~130-150 words per minute).
  */
 async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
-  const groqApiKey = process.env.GROQ_API_KEY;
+  // 1. Try Gemini via RPM Governor (1M TPM, Flawless Indonesian phonetics)
+  try {
+    const rawResult = await rpmGovernor.executeWithGovernor('Phonetics Supervisor', async (ai, key, keyNum) => {
+      const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
+      const res = await ai.models.generateContent({
+        model,
+        contents: [
+          {
+            role: 'user',
+            parts: [
+              {
+                text:
+                  'You are an elite Voice Director & Phonetics Supervisor for documentary voiceovers.\n' +
+                  'Convert numbers and foreign names into natural Indonesian spoken phonetic text so TTS engines pronounce them flawlessly.\n' +
+                  'Example: "1989" -> "sembilan belas delapan puluh sembilan", "Günter Schabowski" -> "Gunter Syabofski", "Bornholmer Straße" -> "Bornholmer Strase".\n' +
+                  'Return pure valid JSON:\n{\n  "phoneticScript": "...",\n  "wordCount": 150,\n  "estimatedDurationSec": 60\n}\n\n' +
+                  `NASKAH ASLI TOPIK "${topic}":\n"${rawScript}"\n\nOptimalkan naskah di atas untuk narasi suara TTS Indonesia agar pengucapan nama asing dan angka terdengar sangat alami.`,
+              },
+            ],
+          },
+        ],
+        config: { temperature: 0.1, topP: 0.95 },
+      });
+      return res.text;
+    });
 
+    let clean = rawResult.replace(/```json/gi, '').replace(/```/g, '').trim();
+    const fIdx = clean.indexOf('{');
+    const lIdx = clean.lastIndexOf('}');
+    if (fIdx !== -1 && lIdx !== -1) {
+      const parsed = JSON.parse(clean.slice(fIdx, lIdx + 1));
+      if (parsed.phoneticScript && parsed.phoneticScript.length > 20) {
+        console.log(`      ✓ [AI Vocal Director] Naskah dioptimalkan fonetiknya (${parsed.wordCount || parsed.phoneticScript.split(' ').length} kata, est. ~${parsed.estimatedDurationSec || 60}s)`);
+        return parsed.phoneticScript;
+      }
+    }
+  } catch (geminiErr) {
+    console.warn('[AI Vocal Director] Gemini phonetic skipped, mencoba Groq cadangan:', geminiErr.message);
+  }
+
+  // 2. Fallback to Groq LPU (Using token-efficient qwen/qwen3.8-27b)
+  const groqApiKey = process.env.GROQ_API_KEY;
   if (groqApiKey) {
     try {
       const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -826,14 +866,13 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'openai/gpt-oss-120b',
+          model: 'qwen/qwen3.8-27b',
           messages: [
             {
               role: 'system',
               content:
                 'You are an elite Voice Director & Phonetics Supervisor for documentary voiceovers. ' +
                 'Convert numbers and foreign names into natural Indonesian spoken phonetic text so TTS engines pronounce them flawlessly. ' +
-                'Example: "1989" -> "sembilan belas delapan puluh sembilan", "Günter Schabowski" -> "Gunter Syabofski", "Bornholmer Straße" -> "Bornholmer Strase". ' +
                 'Return pure valid JSON: { "phoneticScript": "...", "wordCount": number, "estimatedDurationSec": number }',
             },
             {
@@ -852,7 +891,7 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
         if (content) {
           const parsed = JSON.parse(content);
           if (parsed.phoneticScript && parsed.phoneticScript.length > 20) {
-            console.log(`      ✓ [AI Vocal Director] Naskah dioptimalkan fonetiknya (${parsed.wordCount || parsed.phoneticScript.split(' ').length} kata, est. ~${parsed.estimatedDurationSec || 60}s)`);
+            console.log(`      ✓ [AI Vocal Director Groq] Naskah dioptimalkan fonetiknya (${parsed.wordCount || parsed.phoneticScript.split(' ').length} kata, est. ~${parsed.estimatedDurationSec || 60}s)`);
             return parsed.phoneticScript;
           }
         }
