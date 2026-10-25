@@ -73,15 +73,49 @@ OUTPUT FORMAT JSON MURNI (TANPA PREAMBLE):
   "thumbnailFrameRecommended": "Frame 45 (Hook Reveal)"
 }`;
 
-  const winner = await rpmGovernor.executeWithGovernor('Publishing Pack', async (ai, key, keyNum) => {
-    const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
-    const res = await ai.models.generateContent({
-      model,
-      contents: prompt,
+  let rawOutput = '';
+  try {
+    const winner = await rpmGovernor.executeWithGovernor('Publishing Pack', async (ai, key, keyNum) => {
+      const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
+      const res = await ai.models.generateContent({
+        model,
+        contents: prompt,
+      });
+      return { text: res.text, keyIndex: keyNum, model };
     });
-    return { text: res.text, keyIndex: keyNum, model };
-  });
-  let cleanJson = winner.text.replace(/```json/gi, '').replace(/```/g, '').trim();
+    rawOutput = winner.text;
+  } catch (geminiErr) {
+    console.warn(`      ⚠️ [Publishing Pack] Semua Gemini Key sibuk/limit (${geminiErr.message.slice(0, 70)}). Mengaktifkan Groq LPU cadangan...`);
+    const groqKey = process.env.GROQ_API_KEY;
+    if (!groqKey) throw geminiErr;
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${groqKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'qwen/qwen3.8-27b',
+        messages: [
+          {
+            role: 'system',
+            content: 'You are an elite YouTube Shorts Growth Strategist. Return pure valid JSON only.',
+          },
+          { role: 'user', content: prompt },
+        ],
+        response_format: { type: 'json_object' },
+        temperature: 0.7,
+      }),
+    });
+    const data = await res.json();
+    if (!data.choices?.[0]?.message?.content) {
+      throw new Error(data.error?.message || 'Gagal memanggil Groq');
+    }
+    rawOutput = data.choices[0].message.content;
+    console.log('      ✓ [Groq LPU Cadangan] Paket publikasi viral berhasil disusun!');
+  }
+
+  let cleanJson = rawOutput.replace(/```json/gi, '').replace(/```/g, '').trim();
   const firstBrace = cleanJson.indexOf('{');
   const lastBrace = cleanJson.lastIndexOf('}');
   if (firstBrace !== -1 && lastBrace !== -1) {
