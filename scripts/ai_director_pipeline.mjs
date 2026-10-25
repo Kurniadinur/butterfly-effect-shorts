@@ -48,12 +48,14 @@ console.log('================================================================\n'
 export const CREATIVE_PERSPECTIVES = [
   {
     name: '🌟 MASTER MULTI-PERSPEKTIF (GABUNGAN SEMUA SUDUT PANDANG)',
-    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER LENGKAP BERDURASI 2 - 2.5 MENIT (DI BAWAH 3 MENIT): ' +
-      'Babak 1: Blunder sepele & kelalaian mikro di awal peristiwa. ' +
-      'Babak 2: Ketegangan garis depan & kepanikan operator di titik kritis. ' +
-      'Babak 3: Efek domino kegagalan sistemik berantai & benturan bencana puncak. ' +
-      'Babak 4: Reaksi kaget dunia, transmisi darurat, dan vonis sidang investigasi deklasifikasi sejarah. ' +
-      'Pecah alur menjadi 12 HINGGA 18 ADEGAN SKETSA DINAMIS yang berganti cepat tiap 4-6 detik!',
+    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER LENGKAP BERDURASI 1.5 - 2.5 MENIT (DI BAWAH 3 MENIT): ' +
+      'WAJIB MEMBUAT MINIMAL 10 HINGGA 14 ADEGAN SKETSA BERBEDA DALAM ARRAY "nodes"! DILARANG KERAS MERINGKAS HANYA JADI 4 ADEGAN! ' +
+      'Bagi alur secara granular menjadi 4 fase, di mana SETIAP FASE MEMILIKI 3 SKETSA AKSI DETAIL: ' +
+      '• Fase 1: Blunder Sepele (3 adegan: dokumen tercecer, perwira terburu-buru, instruksi keliru). ' +
+      '• Fase 2: Ketegangan Garis Depan (3 adegan: pos jaga terisolasi, telepon darurat panik, sirine/alarm bahaya). ' +
+      '• Fase 3: Rantai Efek Domino (3 adegan: desas-desus media menyebar, massa membludak, gerbang perbatasan jebol). ' +
+      '• Fase 4: Bencana Puncak & Sidang Sejarah (3 adegan: runtuhnya sistem total, reaksi kaget dunia, vonis akhir). ' +
+      'Total narasi 200 - 320 kata agar video berdurasi 90 - 150 detik dengan pergantian visual dinamis tiap 4-6 detik!',
   },
   {
     name: 'BLUNDER SEPELE & KELALAIAN MANUSIAWI',
@@ -77,7 +79,7 @@ export const CREATIVE_PERSPECTIVES = [
   },
 ];
 
-const DIRECTOR_PROMPT = `
+export const DIRECTOR_PROMPT = `
 Kamu adalah Creative Director & Sutradara Dokumenter Papan Atas Dunia sekaligus Storyteller bertaraf Nessie Judge (Nerror).
 Tugasmu adalah menciptakan naskah dan alur visual "Butterfly Effect" (efek domino sebab-akibat ekstrem) berdurasi 60 hingga 160 detik (maksimal di bawah 3 menit) untuk YouTube Shorts / TikTok / Reels (9:16).
 
@@ -363,6 +365,76 @@ async function generateStoryboardWithGroq(topic, dynamicPrompt) {
   throw lastErr || new Error('Semua model Groq gagal.');
 }
 
+// Guaranteed High Visual Density Guard (Anti-Short Story Safety Gate)
+async function ensureHighVisualDensity(storyData, topic) {
+  if (Array.isArray(storyData.nodes) && storyData.nodes.length >= 8) {
+    return storyData;
+  }
+
+  console.log(`      ⚠️ [Densitas Guard] Naskah awal memiliki ${storyData.nodes?.length || 0} adegan (kurang dari target 8-14 adegan).`);
+  console.log(`      🚀 [AI Multi-Sketch Expander] Membedah setiap babak menjadi sub-sketsa aksi detail agar video kaya & berdurasi ideal...`);
+
+  const expandPrompt = `Kamu adalah Sutradara Film AI Senior.
+Naskah Butterfly Effect berikut terlalu ringkas karena hanya memiliki ${storyData.nodes?.length || 0} adegan:
+Judul: "${storyData.title || topic}"
+Hook: "${storyData.hook?.narration || ''}"
+Adegan Saat Ini:
+${JSON.stringify(storyData.nodes, null, 2)}
+Outro: "${storyData.outro?.narration || ''}"
+
+TUGAS MUTLAK:
+Pecah dan kembangkan alur di atas menjadi MINIMAL 10 HINGGA 14 ADEGAN VISUAL GRANULAR ('nodes')!
+DILARANG MERINGKAS ATAU MENGURANGI!
+Setiap adegan harus fokus pada 1 aksi/objek spesifik (durasi 3-5 detik, 12-20 kata narasi per node) dengan pilihan 'directorType' yang tepat:
+Pilihan directorType: memo-handoff, memo-investigation, press-podium, press-question, breaking-news, panic-phone, crowd-protest, gate-breach, wall-demolition, domino-collapse, key-lockbox, telegram-wire, courtroom-gavel, tactical-map, valve-failure, clock-countdown.
+
+FORMAT JSON MURNI:
+{
+  "nodes": [
+    {
+      "step": 1,
+      "timeOrYear": "LOKASI • JAM/TAHUN",
+      "headline": "JUDUL AKSI 1",
+      "narration": "Narasi aksi 1 (12-20 kata)...",
+      "chaosLevel": 10,
+      "mediaType": "graphic",
+      "directorType": "memo-handoff",
+      "primaryText": "Teks grafis 1",
+      "secondaryText": "Subjudul 1",
+      "stampText": "STATUS 1",
+      "caption": "Keterangan forensik..."
+    }
+  ]
+}`;
+
+  try {
+    const expandedResult = await rpmGovernor.executeWithGovernor('Scene Expander', async (ai, key, keyNum) => {
+      const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
+      const res = await ai.models.generateContent({
+        model,
+        contents: [{ role: 'user', parts: [{ text: expandPrompt }] }],
+        config: { temperature: 0.75, topP: 0.95 },
+      });
+      return res.text;
+    });
+
+    let clean = expandedResult.replace(/```json/gi, '').replace(/```/g, '').trim();
+    const fIdx = clean.indexOf('{');
+    const lIdx = clean.lastIndexOf('}');
+    if (fIdx !== -1 && lIdx !== -1) {
+      const parsed = JSON.parse(clean.slice(fIdx, lIdx + 1));
+      if (Array.isArray(parsed.nodes) && parsed.nodes.length >= 8) {
+        storyData.nodes = parsed.nodes;
+        console.log(`      ✓ [AI Expander Berhasil] Alur berhasil dimekarkan menjadi ${storyData.nodes.length} adegan dinamis!`);
+      }
+    }
+  } catch (err) {
+    console.warn(`      [Expander Warning] Gagal expand otomatis: ${err.message}. Melanjutkan dengan struktur awal.`);
+  }
+
+  return storyData;
+}
+
 // -----------------------------------------------------------------------------
 // STEP 1: Direct Storyboard via Gemini / Groq with High Creativity (Temp 0.88)
 // -----------------------------------------------------------------------------
@@ -484,6 +556,9 @@ async function generateStoryboard(topic) {
     storyData = auditRes.storyData;
   }
   console.log(`      ✓ [AI Supervisor] Skor Kelayakan: ${auditRes.score}/100 | Potensi Retensi Viral: ${auditRes.retentionScore || 92}/100 - ${auditRes.notes}`);
+
+  // Guaranteed High Visual Density Guard (Anti-Short Story Safety Gate)
+  storyData = await ensureHighVisualDensity(storyData, topic);
 
   // Normalize & Supervise Editorial Style (AI-Directed Eye Comfort & Mood Tone)
   if (!storyData.editorialStyle || typeof storyData.editorialStyle !== 'object') {

@@ -18,12 +18,14 @@ const PORT = process.env.UI_PORT || 3333;
 const CREATIVE_PERSPECTIVES = [
   {
     name: '🌟 MASTER MULTI-PERSPEKTIF (GABUNGAN SEMUA SUDUT PANDANG)',
-    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER LENGKAP BERDURASI 2 - 2.5 MENIT (DI BAWAH 3 MENIT): ' +
-      'Babak 1: Blunder sepele & kelalaian mikro di awal peristiwa. ' +
-      'Babak 2: Ketegangan garis depan & kepanikan operator di titik kritis. ' +
-      'Babak 3: Efek domino kegagalan sistemik berantai & benturan bencana puncak. ' +
-      'Babak 4: Reaksi kaget dunia, transmisi darurat, dan vonis sidang investigasi deklasifikasi sejarah. ' +
-      'Pecah alur menjadi 12 HINGGA 18 ADEGAN SKETSA DINAMIS yang berganti cepat tiap 4-6 detik!',
+    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER LENGKAP BERDURASI 1.5 - 2.5 MENIT (DI BAWAH 3 MENIT): ' +
+      'WAJIB MEMBUAT MINIMAL 10 HINGGA 14 ADEGAN SKETSA BERBEDA DALAM ARRAY "nodes"! DILARANG KERAS MERINGKAS HANYA JADI 4 ADEGAN! ' +
+      'Bagi alur secara granular menjadi 4 fase, di mana SETIAP FASE MEMILIKI 3 SKETSA AKSI DETAIL: ' +
+      '• Fase 1: Blunder Sepele (3 adegan: dokumen tercecer, perwira terburu-buru, instruksi keliru). ' +
+      '• Fase 2: Ketegangan Garis Depan (3 adegan: pos jaga terisolasi, telepon darurat panik, sirine/alarm bahaya). ' +
+      '• Fase 3: Rantai Efek Domino (3 adegan: desas-desus media menyebar, massa membludak, gerbang perbatasan jebol). ' +
+      '• Fase 4: Bencana Puncak & Sidang Sejarah (3 adegan: runtuhnya sistem total, reaksi kaget dunia, vonis akhir). ' +
+      'Total narasi 200 - 320 kata agar video berdurasi 90 - 150 detik dengan pergantian visual dinamis tiap 4-6 detik!',
   },
   {
     name: 'BLUNDER SEPELE & KELALAIAN MANUSIAWI',
