@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
+import { rpmGovernor } from './gemini_rpm_governor.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -69,12 +70,11 @@ OUTPUT JSON MURNI (TANPA PREAMBLE/BACKTICKS):
   "recommendedPolish": "Saran perbaikan mikro jika ada (atau 'Siap tayang sempurna' jika sudah ideal)"
 }`;
 
-  // Race across available API keys for instant response
-  const candidates = API_KEYS.map((key, idx) => async () => {
-    const ai = new GoogleGenAI({ apiKey: key });
-    // Try gemini-2.5-flash then fallback
+  // Execute single vision inspection via RPM governor with auto load-balancing & failover
+  const winner = await rpmGovernor.executeWithGovernor('Visual QA Audit', async (ai, key, keyNum) => {
+    const model = rpmGovernor.getBestModelForKey(keyNum, 'vision');
     const res = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model,
       contents: [
         {
           role: 'user',
@@ -90,10 +90,8 @@ OUTPUT JSON MURNI (TANPA PREAMBLE/BACKTICKS):
         },
       ],
     });
-    return { text: res.text, keyIndex: idx + 1 };
+    return { text: res.text, keyIndex: keyNum, model };
   });
-
-  const winner = await Promise.any(candidates.map((fn) => fn()));
   let cleanJson = winner.text.replace(/```json/gi, '').replace(/```/g, '').trim();
   const firstBrace = cleanJson.indexOf('{');
   const lastBrace = cleanJson.lastIndexOf('}');

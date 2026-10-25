@@ -9,6 +9,7 @@ import { searchAndDownloadImage } from './fetch_scene_media.mjs';
 import { loadLearningMemory, auditAndRefineStory } from './learning_manager.mjs';
 import { runVisualQASupervisor } from './ai_visual_inspector.mjs';
 import { generatePublishingPack } from './generate_publishing_pack.mjs';
+import { rpmGovernor } from './gemini_rpm_governor.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -309,20 +310,9 @@ FORMAT JSON WAJIB:
 }
 `;
 
-// Helper: Rotational Gemini Caller
+// Helper: Rotational Gemini Caller with Per-Key RPM Governor & Auto-Cooldown
 async function callGeminiWithRotation(taskFn) {
-  let lastErr = null;
-  for (let i = 0; i < API_KEYS.length; i++) {
-    const key = API_KEYS[i];
-    try {
-      const ai = new GoogleGenAI({ apiKey: key });
-      return await taskFn(ai, key, i + 1);
-    } catch (err) {
-      console.warn(`[Failover] Key ${i + 1} mengalami kendala: ${err.message}. Mencoba key berikutnya...`);
-      lastErr = err;
-    }
-  }
-  throw new Error(`Semua ${API_KEYS.length} API Key gagal dieksekusi. Error terakhir: ${lastErr?.message}`);
+  return await rpmGovernor.executeWithGovernor('Gemini Task', taskFn);
 }
 
 // Groq Cloud LPU Fallback (Zero 503 Spike Guarantee)
@@ -422,47 +412,37 @@ async function generateStoryboard(topic) {
   if (provider === 'groq') {
     result = await generateStoryboardWithGroq(topic, dynamicPrompt);
   } else {
-    console.log(`      ⚡ Menjalankan Parallel Multi-Key Race (${API_KEYS.length} Gemini Keys + Groq LPU Turbo)...`);
+    console.log(`      ⚡ Menjalankan Anti-Burst Parallel Race (${API_KEYS.length} Gemini Keys + Groq LPU Turbo)...`);
+    console.log(`      📊 Status RPM Governor: ${rpmGovernor.getStatusString()}`);
 
-    // Build parallel racing tasks across verified working keys & models
+    // Build anti-burst racing tasks: strictly 1 request per healthy key
+    const availableKeys = rpmGovernor.getAvailableKeysForRace();
     const tasks = [];
 
-    // Key 1: gemini-2.5-flash and gemini-3.5-flash
-    if (API_KEYS[0]) {
-      const ai1 = new GoogleGenAI({ apiKey: API_KEYS[0] });
-      tasks.push(
-        ai1.models.generateContent({
-          model: 'gemini-2.5-flash',
-          contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
-          config: { temperature: 0.88, topP: 0.95 },
-        }).then((res) => ({ provider: 'Gemini Key 1 (gemini-2.5-flash)', text: res.text }))
-      );
-      tasks.push(
-        ai1.models.generateContent({
-          model: 'gemini-3.5-flash',
-          contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
-          config: { temperature: 0.88, topP: 0.95 },
-        }).then((res) => ({ provider: 'Gemini Key 1 (gemini-3.5-flash)', text: res.text }))
-      );
-    }
+    for (const keyState of availableKeys) {
+      const { index, key } = keyState;
+      const model = rpmGovernor.getBestModelForKey(index, 'text');
+      const ai = new GoogleGenAI({ apiKey: key });
 
-    // Keys 2, 3, 4: gemini-3.5-flash + gemini-3.1-flash-lite in parallel
-    for (let k = 1; k < API_KEYS.length; k++) {
-      const keyIndex = k;
-      const ai = new GoogleGenAI({ apiKey: API_KEYS[keyIndex] });
+      rpmGovernor.recordRequest(index);
+
       tasks.push(
-        ai.models.generateContent({
-          model: 'gemini-3.5-flash',
-          contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
-          config: { temperature: 0.88, topP: 0.95 },
-        }).then((res) => ({ provider: `Gemini Key ${keyIndex + 1} (gemini-3.5-flash)`, text: res.text }))
-      );
-      tasks.push(
-        ai.models.generateContent({
-          model: 'gemini-3.1-flash-lite-preview',
-          contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
-          config: { temperature: 0.88, topP: 0.95 },
-        }).then((res) => ({ provider: `Gemini Key ${keyIndex + 1} (gemini-3.1-flash-lite)`, text: res.text }))
+        (async () => {
+          try {
+            const res = await ai.models.generateContent({
+              model,
+              contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
+              config: { temperature: 0.88, topP: 0.95 },
+            });
+            return { provider: `Gemini Key ${index} (${model})`, text: res.text };
+          } catch (err) {
+            const msg = err.message || '';
+            if (msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED') || msg.includes('Quota exceeded')) {
+              rpmGovernor.penalizeKey(index, '429 Rate Limit');
+            }
+            throw err;
+          }
+        })()
       );
     }
 

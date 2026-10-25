@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import { spawn } from 'child_process';
 import dotenv from 'dotenv';
 import { loadLearningMemory, recordFeedback } from './learning_manager.mjs';
+import { rpmGovernor } from './gemini_rpm_governor.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -267,6 +268,28 @@ const server = http.createServer(async (req, res) => {
     const pack = getLatestJsonInDir(path.join(ROOT_DIR, 'out', 'publishing_pack'));
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(pack || { status: 'NO_PACK_YET' }));
+    return;
+  }
+
+  // 4f. API: Get Live Gemini RPM Status
+  if (pathname === '/api/rpm-status') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      statusString: rpmGovernor.getStatusString(),
+      keys: rpmGovernor.keys.map((k) => {
+        rpmGovernor.cleanWindow(k);
+        const now = Date.now();
+        return {
+          index: k.index,
+          currentRpm: k.requestsInWindow.length,
+          maxSafeRpm: rpmGovernor.MAX_SAFE_RPM,
+          isCoolingDown: now < k.cooldownUntil,
+          cooldownRemainingSec: Math.max(0, Math.round((k.cooldownUntil - now) / 1000)),
+          totalSuccess: k.totalSuccess,
+          total429: k.total429,
+        };
+      }),
+    }));
     return;
   }
 

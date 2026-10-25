@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
+import { rpmGovernor } from './gemini_rpm_governor.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -72,16 +73,14 @@ OUTPUT FORMAT JSON MURNI (TANPA PREAMBLE):
   "thumbnailFrameRecommended": "Frame 45 (Hook Reveal)"
 }`;
 
-  const candidates = API_KEYS.map((key, idx) => async () => {
-    const ai = new GoogleGenAI({ apiKey: key });
+  const winner = await rpmGovernor.executeWithGovernor('Publishing Pack', async (ai, key, keyNum) => {
+    const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
     const res = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model,
       contents: prompt,
     });
-    return { text: res.text, keyIndex: idx + 1 };
+    return { text: res.text, keyIndex: keyNum, model };
   });
-
-  const winner = await Promise.any(candidates.map((fn) => fn()));
   let cleanJson = winner.text.replace(/```json/gi, '').replace(/```/g, '').trim();
   const firstBrace = cleanJson.indexOf('{');
   const lastBrace = cleanJson.lastIndexOf('}');
