@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import { rpmGovernor } from './gemini_rpm_governor.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -171,7 +172,45 @@ FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
 }
 `;
 
-  // Call Groq LPU (~1.2 seconds, ultra-fast)
+  // 1. Audit via Gemini via RPM Governor (1M TPM Limit, High Fact-Checking Quality)
+  try {
+    const rawResult = await rpmGovernor.executeWithGovernor('Fact-Check Supervisor', async (ai, key, keyNum) => {
+      const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
+      const res = await ai.models.generateContent({
+        model,
+        contents: [{ role: 'user', parts: [{ text: auditPrompt }] }],
+        config: { temperature: 0.2, topP: 0.95 },
+      });
+      return res.text;
+    });
+
+    let clean = rawResult.replace(/```json/gi, '').replace(/```/g, '').trim();
+    const fIdx = clean.indexOf('{');
+    const lIdx = clean.lastIndexOf('}');
+    if (fIdx !== -1 && lIdx !== -1) {
+      const parsed = JSON.parse(clean.slice(fIdx, lIdx + 1));
+      if (parsed && typeof parsed === 'object') {
+        let finalStory = storyData;
+        if (parsed.refinedStory && Array.isArray(parsed.refinedStory.nodes)) {
+          // Never allow supervisor to shrink the number of scenes
+          if (parsed.refinedStory.nodes.length >= (storyData.nodes?.length || 0)) {
+            finalStory = parsed.refinedStory;
+          }
+        }
+        return {
+          approved: parsed.approved !== false,
+          score: typeof parsed.score === 'number' ? parsed.score : 92,
+          retentionScore: typeof parsed.retentionScore === 'number' ? parsed.retentionScore : 94,
+          notes: parsed.notes || 'Sensor otonom lolos verifikasi.',
+          storyData: sanitizeLayoutDensity(finalStory),
+        };
+      }
+    }
+  } catch (geminiErr) {
+    console.warn('[AI Critic] Gemini audit dialihkan ke Groq cadangan:', geminiErr.message);
+  }
+
+  // 2. Fallback to Groq LPU (Using token-efficient qwen/qwen3.8-27b)
   if (groqApiKey) {
     try {
       const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -181,7 +220,7 @@ FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'openai/gpt-oss-120b',
+          model: 'qwen/qwen3.8-27b',
           messages: [
             {
               role: 'system',
@@ -194,7 +233,7 @@ FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
             },
           ],
           response_format: { type: 'json_object' },
-          temperature: 0.2, // Low temperature for strict factual accuracy
+          temperature: 0.2,
         }),
       });
 
@@ -204,14 +243,17 @@ FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
         if (content) {
           const parsed = JSON.parse(content);
           if (parsed && typeof parsed === 'object') {
-            const finalStory = parsed.refinedStory && Array.isArray(parsed.refinedStory.nodes)
-              ? parsed.refinedStory
-              : storyData;
+            let finalStory = storyData;
+            if (parsed.refinedStory && Array.isArray(parsed.refinedStory.nodes)) {
+              if (parsed.refinedStory.nodes.length >= (storyData.nodes?.length || 0)) {
+                finalStory = parsed.refinedStory;
+              }
+            }
             return {
               approved: parsed.approved !== false,
               score: typeof parsed.score === 'number' ? parsed.score : 90,
               retentionScore: typeof parsed.retentionScore === 'number' ? parsed.retentionScore : 92,
-              notes: parsed.notes || 'Sensor otomatis selesai.',
+              notes: parsed.notes || 'Sensor otomatis Groq selesai.',
               storyData: sanitizeLayoutDensity(finalStory),
             };
           }

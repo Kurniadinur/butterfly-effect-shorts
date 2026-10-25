@@ -322,8 +322,8 @@ async function generateStoryboardWithGroq(topic, dynamicPrompt) {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) throw new Error('GROQ_API_KEY tidak ditemukan di file .env');
 
-  console.log('      [LPU Failover] Mengaktifkan Groq Cloud LPU (0% Spike, Super Cepat)...');
-  const models = ['openai/gpt-oss-120b', 'qwen/qwen3.8-27b'];
+  console.log('      [LPU Failover] Mengaktifkan Groq Cloud LPU (Cadangan Darurat)...');
+  const models = ['qwen/qwen3.8-27b', 'openai/gpt-oss-20b', 'openai/gpt-oss-120b'];
   let lastErr = null;
 
   for (const modelName of models) {
@@ -517,22 +517,6 @@ async function generateStoryboard(topic) {
         })()
       );
     }
-
-    // Groq LPU Emergency Safety Net:
-    // User prioritizes high-quality Gemini storytelling. We give Gemini a generous 30s window.
-    // Groq only steps in if Gemini is down globally past 30 seconds.
-    const groqSafetyPromise = new Promise((resolve, reject) => {
-      setTimeout(async () => {
-        try {
-          console.log(`      ⏱️ [Emergency Safety Net] Gemini antre >30s, mengaktifkan Groq LPU cadangan darurat...`);
-          const groqText = await generateStoryboardWithGroq(topic, dynamicPrompt);
-          resolve({ provider: 'Groq Cloud LPU (Emergency Failover)', text: groqText });
-        } catch (e) {
-          reject(e);
-        }
-      }, 30000);
-    });
-    tasks.push(groqSafetyPromise);
 
     try {
       const winner = await Promise.any(tasks);
