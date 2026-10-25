@@ -174,6 +174,14 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
    - TEKNIK SEAMLESS INFINITE LOOP (RETENSI > 100%): Rancang kalimat terakhir pada 'outro.narration' agar kata-kata terakhirnya menyambung kembali ke kata pertama pada kalimat pembuka ('hook.narration').
    - Total keseluruhan cerita: 8 sampai 16 nodes dinamis, total 180 - 350 kata narasi (durasi total video 1 - 2.5 menit, aman di bawah batas 3 menit). Video akan terasa sangat kaya, penuh variasi animasi sketsa berganti tiap 3-5 detik, dan setiap penjelasan visualnya 100% tepat sasaran!
 
+8. LOGIKA SEBAB-MUSABAB DETAIL (ANTI-LONCAT ALUR & ANTI-MEMBINGUNGKAN):
+   - JANGAN LANGSUNG LONCAT KE KLIMAKS TANPA MENJELASKAN SEBAB-MUSABABNYA!
+   - Penonton cerdas butuh memahami MEKANISME KEGAGALAN OTENTIK (how and why it actually happened):
+     * MENGAPA KESALAHAN AWAL TERJADI? (misal: Schabowski tidak ikut briefing karena baru pulang liburan, memo disodorkan di lorong tanpa penjelasan).
+     * MENGAPA TIDAK ADA YANG MENCEGAH? (misal: wartawan menembak pertanyaan mendesak, Schabowski grogi di depan kamera live, tidak ada staf yang berani mengoreksi).
+     * BAGAIMANA ESKALASI LAPANGAN BERJALAN? (bukan sulap instan; jelaskan pos perbatasan kebingungan, telepon darurat ke atasan tidak diangkat, komandan jaga terisolasi hingga terpaksa mengambil keputusan sendiri).
+   - Rantai kausalitas harus logis, bertahap, dan memuaskan rasa ingin tahu penonton. Manfaatkan durasi optimal 1.5 hingga 2.5 menit (aman di bawah batas 3 menit YouTube Shorts) untuk menyajikan rekonstruksi sebab-akibat yang utuh dan berbobot!
+
 FORMAT JSON WAJIB:
 {
   "id": "slug-id",
