@@ -13,6 +13,23 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "berlin-wall-1989-butterfly-effect-mvnx7nh1",
+      "title": "SATU LEMBAR MEMO MERUNTUHKAN DUNIA",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "9 November 1989. Seorang pejabat Jerman Timur salah membaca catatan di siaran langsung TV... dan malam itu juga, tirai besi yang kokoh selama 28 tahun hancur lebur.",
+      "scenes": [
+        "memo-handoff",
+        "press-question",
+        "press-podium",
+        "panic-phone",
+        "crowd-protest",
+        "gate-breach",
+        "wall-demolition",
+        "soviet-collapse"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "runtuh-tembok-berlin-memo-2024-mvm7w4tc",
       "title": "RUNTUHNYA TEMBOK BERLIN: MEMO YANG SALAH DIBACA",
       "hookStyle": "fullscreen-dramatic",
@@ -97,6 +114,13 @@
       "title": "RUNTUHNYA TEMBOK BERLIN: MEMO YANG SALAH DIBACA",
       "rating": "positive",
       "note": "Suka banget dengan sketsa memo-investigation dan foto Bundesarchiv Schabowski!"
+    },
+    {
+      "id": "berlin-wall-1989-butterfly-effect-mvnx7nh1",
+      "timestamp": "2026-10-25T14:28:48.859Z",
+      "title": "SATU LEMBAR MEMO MERUNTUHKAN DUNIA",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ]
 }
