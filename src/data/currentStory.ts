@@ -26,7 +26,7 @@ export const CURRENT_STORY: ButterflyStoryData = {
     "leftSearchQuery": "Günter Schabowski memo 1989 East German press conference",
     "rightSearchQuery": "Berlin Wall crowd demolition 1989 night",
     "archetype": "wall-demolition",
-    "leftImage": "butterfly/media/berlin-wall-fall-memo-misread-mvowutyg/node_1.jpg",
+    "leftImage": "butterfly/media/berlin-wall-fall-memo-misread-mvowutyg/hero_hook.jpg",
     "rightImage": "butterfly/media/berlin-wall-fall-memo-misread-mvowutyg/node_1.jpg",
     "durationFrames": 422
   },

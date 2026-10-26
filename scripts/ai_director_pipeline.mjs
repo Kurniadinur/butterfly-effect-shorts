@@ -740,9 +740,9 @@ async function generateStoryboard(topic) {
     storyData.hook.leftImage = `butterfly/media/${storySlug}/hero_hook.jpg`;
     console.log(`      ✓ [Reka Adegan AI Hook Selesai] Visual 9:16 tersimpan (${hookRes.source})`);
   } else {
-    storyData.hook.leftImage = `butterfly/media/${storySlug}/node_1.jpg`;
-    storyData.hook.rightImage = `butterfly/media/${storySlug}/node_1.jpg`;
-    console.log(`      ✓ [Hero Hook Sinematik 1080x1920] Menyelaraskan dengan Visual Adegan Pembuka`);
+    storyData.hook.leftImage = `butterfly/media/brandenburg_night.jpg`;
+    storyData.hook.rightImage = `butterfly/media/brandenburg_night.jpg`;
+    console.log(`      ✓ [Hero Hook Sinematik 1080x1920] Menggunakan fallback aman`);
   }
 
   let photoCount = 0;
@@ -805,6 +805,32 @@ async function generateStoryboard(topic) {
     if (!node.zoomDirection) {
       node.zoomDirection = i % 3 === 0 ? 'out' : i % 2 === 0 ? 'in' : 'panRight';
     }
+  }
+
+  // Bulletproof Asset Integrity Check:
+  // Memverifikasi setiap file fisik ada di disk. Jika tidak ada, salin fallback sehingga Remotion 100% bebas dari 404.
+  const defaultFallback = 'butterfly/media/brandenburg_night.jpg';
+  const ensureDiskAsset = (relPath) => {
+    if (!relPath) return defaultFallback;
+    const absPath = path.join(process.cwd(), 'public', relPath);
+    if (fs.existsSync(absPath) && fs.statSync(absPath).size > 1000) {
+      return relPath;
+    }
+    try {
+      const fallbackAbs = path.join(process.cwd(), 'public', defaultFallback);
+      if (fs.existsSync(fallbackAbs)) {
+        fs.mkdirSync(path.dirname(absPath), { recursive: true });
+        fs.copyFileSync(fallbackAbs, absPath);
+        return relPath;
+      }
+    } catch (e) {}
+    return defaultFallback;
+  };
+
+  storyData.hook.leftImage = ensureDiskAsset(storyData.hook.leftImage);
+  storyData.hook.rightImage = ensureDiskAsset(storyData.hook.rightImage);
+  for (const node of storyData.nodes) {
+    node.mediaUrl = ensureDiskAsset(node.mediaUrl);
   }
 
   console.log(`      ✓ Judul: "${storyData.title}"`);
