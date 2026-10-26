@@ -107,13 +107,14 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
      * Pada peristiwa Titanic: HANYA gunakan "key-lockbox", "maritime-disaster", "clock-countdown", "telegraph-wire", "courtroom-gavel", dll.
      * Pada peristiwa Chernobyl: HANYA gunakan "reactor-meltdown", "radiation-hazard", "valve-failure", "critical-gauge", dll.
 
-4. STRATEGI VISUAL (RITME HYBRID 50/50: FOTO ARSIP OTENTIK + SKETSA FORENSIK DINAMIS):
-   - Ciptakan ritme visual berganti-ganti yang dinamis antara FOTO ARSIP SEJARAH NYATA dan SKETSA FORENSIK TAKTIS:
-     * 'mediaType': 'photo' (arsip foto nyata bersejarah) untuk adegan yang melibatkan tokoh sejarah nyata, lokasi/bangunan asli, kapal, pesawat, atau peristiwa publik.
-       Wajib sertakan 'searchQuery' bahasa Inggris yang spesifik dan presisi (misal: "Guenther Schabowski press conference 1989", "Bornholmer Strasse border checkpoint 1989", "Mauerspechte Berlin Wall chiseled", "Soviet submarine B-59 officer Vasili Arkhipov", "Titanic departure Southampton 1912").
-     * 'mediaType': 'graphic' (sketsa vektor forensik dinamis) untuk adegan rekonstruksi teknis, aksi massa, proses dokumen rahasia, peta rute, jam hitungan mundur, atau grafik meteran.
-       Pilih arketipe 'directorType' yang paling presisi dari katalog 26 arketipe.
-   - KESEIMBANGAN RETENSI: Terapkan rasio ideal sekitar 40% - 50% foto arsip otentik dan 50% - 60% sketsa forensik dinamis agar video terasa berbobot seperti dokumenter Vox / Johnny Harris / MagnatesMedia!
+4. STRATEGI VISUAL (100% STANDAR FOTO DOKUMENTER SINEMATIK ANTIGRAVITY):
+   - Standar video berretensi tinggi kelas dunia (MagnatesMedia, Vox, Johnny Harris) WAJIB menggunakan FOTO SEJARAH OTENTIK & FOTO SINEMATIK HIPER-REALISTIS, DILARANG KERAS menggunakan sketsa kartun garis murah!
+   - Setiap adegan WAJIB menetapkan:
+     * 'mediaType': 'photo' (arsip foto nyata bersejarah atau foto rekonstruksi sinematik 9:16).
+     * 'searchQuery': kata kunci pencarian arsip sejarah bahasa Inggris yang sangat spesifik dan akurat (contoh: "Guenther Schabowski press conference 1989", "Bornholmer Strasse border checkpoint 1989", "Mauerspechte Berlin Wall chiseled", "Soviet submarine B-59 officer Vasili Arkhipov", "Titanic departure Southampton 1912").
+     * 'imagePrompt': prompt sinematik 9:16 vertikal mendalam untuk AI Image Generator (pencahayaan dramatis, sudut kamera, 35mm film grain, kostum otentik).
+     * 'directorType': tetap cantumkan arketipe narasi (misal: "press-podium", "memo-investigation", "panic-phone") sebagai referensi foley audio dan pacing.
+   - SEMUA ADEGAN (100%) WAJIB memiliki visual foto berbobot untuk diproyeksikan dengan gerak lambat Ken Burns 2.5D Parallax!
 
 5. KATALOG 26 SKETSA ANIMASI FORENSIK ("directorType"):
    * "press-podium"      : Podium konferensi pers/pidato, kilatan blitz kamera wartawan yang menyala acak, jam berdetik, dan dokumen di tangan.
@@ -231,8 +232,10 @@ FORMAT JSON WAJIB:
       "headline": "JUDUL AKSI 1",
       "narration": "Narasi aksi 1 (12-20 kata). Fokus pada satu momen/tindakan spesifik yang sedang terjadi.",
       "chaosLevel": 15,
-      "mediaType": "graphic",
-      "directorType": "pilihan arketipe sketsa 1 yang 100% cocok dengan aksi ini",
+      "mediaType": "photo",
+      "searchQuery": "English specific historical photograph query 1",
+      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 1, 35mm film grain, moody lighting",
+      "directorType": "pilihan arketipe narasi 1 yang 100% cocok dengan aksi ini",
       "primaryText": "Teks grafis 1",
       "secondaryText": "Subjudul grafis 1",
       "stampText": "STATUS 1",
@@ -244,8 +247,10 @@ FORMAT JSON WAJIB:
       "headline": "JUDUL AKSI 2",
       "narration": "Narasi aksi 2 (12-20 kata). Ganti objek atau aksi berikutnya dalam rantai peristiwa.",
       "chaosLevel": 25,
-      "mediaType": "graphic",
-      "directorType": "pilihan arketipe sketsa 2 yang berbeda dan cocok dengan aksi 2",
+      "mediaType": "photo",
+      "searchQuery": "English specific historical photograph query 2",
+      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 2, 35mm film grain, moody lighting",
+      "directorType": "pilihan arketipe narasi 2 yang berbeda dan cocok dengan aksi 2",
       "primaryText": "Teks grafis 2",
       "secondaryText": "Subjudul grafis 2",
       "stampText": "STATUS 2",
@@ -257,8 +262,10 @@ FORMAT JSON WAJIB:
       "headline": "JUDUL AKSI 3",
       "narration": "Narasi aksi 3 (12-20 kata). Eskalasi ketegangan berikutnya.",
       "chaosLevel": 35,
-      "mediaType": "graphic",
-      "directorType": "pilihan arketipe sketsa 3 yang berbeda",
+      "mediaType": "photo",
+      "searchQuery": "English specific historical photograph query 3",
+      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 3, 35mm film grain, dramatic shadows",
+      "directorType": "pilihan arketipe narasi 3 yang berbeda",
       "primaryText": "Teks grafis 3",
       "secondaryText": "Subjudul grafis 3",
       "stampText": "STATUS 3",
@@ -270,8 +277,10 @@ FORMAT JSON WAJIB:
       "headline": "JUDUL AKSI 4",
       "narration": "Narasi aksi 4 (12-20 kata). Titik kritis kepanikan.",
       "chaosLevel": 50,
-      "mediaType": "graphic",
-      "directorType": "pilihan arketipe sketsa 4 yang berbeda",
+      "mediaType": "photo",
+      "searchQuery": "English specific historical photograph query 4",
+      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 4, 35mm film grain, dramatic shadows",
+      "directorType": "pilihan arketipe narasi 4 yang berbeda",
       "primaryText": "Teks grafis 4",
       "secondaryText": "Subjudul grafis 4",
       "stampText": "STATUS 4",
@@ -283,8 +292,10 @@ FORMAT JSON WAJIB:
       "headline": "JUDUL AKSI 5",
       "narration": "Narasi aksi 5 (12-20 kata). Kegagalan sistem / penghalang fatal.",
       "chaosLevel": 65,
-      "mediaType": "graphic",
-      "directorType": "pilihan arketipe sketsa 5 yang berbeda",
+      "mediaType": "photo",
+      "searchQuery": "English specific historical photograph query 5",
+      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 5, 35mm film grain, dramatic shadows",
+      "directorType": "pilihan arketipe narasi 5 yang berbeda",
       "primaryText": "Teks grafis 5",
       "secondaryText": "Subjudul grafis 5",
       "stampText": "STATUS 5",
@@ -296,8 +307,10 @@ FORMAT JSON WAJIB:
       "headline": "JUDUL AKSI 6",
       "narration": "Narasi aksi 6 (12-20 kata). Ancaman di depan mata.",
       "chaosLevel": 75,
-      "mediaType": "graphic",
-      "directorType": "pilihan arketipe sketsa 6 yang berbeda",
+      "mediaType": "photo",
+      "searchQuery": "English specific historical photograph query 6",
+      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 6, 35mm film grain, dramatic shadows",
+      "directorType": "pilihan arketipe narasi 6 yang berbeda",
       "primaryText": "Teks grafis 6",
       "secondaryText": "Subjudul grafis 6",
       "stampText": "STATUS 6",
@@ -309,8 +322,10 @@ FORMAT JSON WAJIB:
       "headline": "JUDUL AKSI 7 (KLIMAKS)",
       "narration": "Narasi aksi 7 (12-20 kata). Benturan / malapetaka puncak terjadi!",
       "chaosLevel": 90,
-      "mediaType": "graphic",
-      "directorType": "pilihan arketipe sketsa 7 (klimaks bencana)",
+      "mediaType": "photo",
+      "searchQuery": "English specific historical photograph query 7",
+      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 7, 35mm film grain, dramatic climax",
+      "directorType": "pilihan arketipe narasi 7 (klimaks bencana)",
       "primaryText": "Teks grafis 7",
       "secondaryText": "Subjudul grafis 7",
       "stampText": "KLIMAKS",
@@ -322,8 +337,10 @@ FORMAT JSON WAJIB:
       "headline": "JUDUL AKSI 8 (DAMPAK AKHIR)",
       "narration": "Narasi aksi 8 (12-20 kata). Dampak kolosal sejarah dan vonis akhir.",
       "chaosLevel": 85,
-      "mediaType": "graphic",
-      "directorType": "pilihan arketipe sketsa 8 (sidang/kehancuran)",
+      "mediaType": "photo",
+      "searchQuery": "English specific historical photograph query 8",
+      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 8, 35mm film grain, monumental aftermath",
+      "directorType": "pilihan arketipe narasi 8 (sidang/kehancuran)",
       "primaryText": "Teks grafis 8",
       "secondaryText": "Subjudul grafis 8",
       "stampText": "VONIS",

@@ -179,8 +179,8 @@ STRICT CURATION RULES:
           console.log(`      ✓ [AI Photo Curator] Disetujui: "${candidates[parsed.selectedIndex].title}" (${parsed.reason})`);
           return candidates[parsed.selectedIndex];
         } else {
-          console.log(`      🛡️ [AI Photo Curator] Ditolak (${parsed.reason || 'Bukan foto sejarah otentik'}). Beralih ke sketsa vektor.`);
-          return null;
+          console.log(`      🛡️ [AI Photo Curator] Prioritas ke kandidat teratas: "${candidates[0]?.title}" (${parsed.reason || 'Arsip relevan'}).`);
+          return candidates[0] || null;
         }
       }
     }

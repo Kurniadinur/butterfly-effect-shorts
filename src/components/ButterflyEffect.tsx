@@ -187,6 +187,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
                   (node.step % 3 === 0 ? 'out' : node.step % 2 === 0 ? 'in' : 'panRight')
                 }
                 durationFrames={node.durationFrames}
+                mood={data.editorialStyle?.mood}
               />
             </Sequence>
           );

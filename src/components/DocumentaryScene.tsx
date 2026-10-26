@@ -8,6 +8,7 @@ interface DocumentarySceneProps {
   headline?: string;
   zoomDirection?: ZoomDirection;
   durationFrames: number;
+  mood?: string;
 }
 
 export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
@@ -16,6 +17,7 @@ export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
   headline,
   zoomDirection = 'in',
   durationFrames,
+  mood = 'cold-war-crisis',
 }) => {
   const frame = useCurrentFrame();
 
@@ -27,39 +29,58 @@ export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
     dir = 'in';
   }
 
-  // Natural slow Ken Burns motion across the duration
+  // Smooth cinematic Ken Burns camera motion
   let scale = 1.0;
   let translateX = 0;
   let translateY = 0;
 
   if (dir === 'in') {
-    scale = interpolate(frame, [0, durationFrames], [1.0, 1.12], { extrapolateRight: 'clamp' });
+    scale = interpolate(frame, [0, durationFrames], [1.0, 1.14], { extrapolateRight: 'clamp' });
+    translateY = interpolate(frame, [0, durationFrames], [0, -15], { extrapolateRight: 'clamp' });
   } else if (dir === 'out') {
-    scale = interpolate(frame, [0, durationFrames], [1.12, 1.0], { extrapolateRight: 'clamp' });
+    scale = interpolate(frame, [0, durationFrames], [1.14, 1.0], { extrapolateRight: 'clamp' });
+    translateY = interpolate(frame, [0, durationFrames], [-15, 0], { extrapolateRight: 'clamp' });
   } else if (dir === 'panRight') {
-    scale = 1.08;
-    translateX = interpolate(frame, [0, durationFrames], [-20, 20], { extrapolateRight: 'clamp' });
+    scale = 1.10;
+    translateX = interpolate(frame, [0, durationFrames], [-25, 25], { extrapolateRight: 'clamp' });
   } else {
-    scale = 1.08;
-    translateX = interpolate(frame, [0, durationFrames], [20, -20], { extrapolateRight: 'clamp' });
+    scale = 1.10;
+    translateX = interpolate(frame, [0, durationFrames], [25, -25], { extrapolateRight: 'clamp' });
   }
 
-  // Smooth fade-in for editorial label in first 15 frames
-  const labelOpacity = interpolate(frame, [0, 15, durationFrames - 15, durationFrames], [0, 1, 1, 0], {
+  // Smooth fade-in for editorial header in first 14 frames
+  const labelOpacity = interpolate(frame, [0, 14, durationFrames - 12, durationFrames], [0, 1, 1, 0], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
+
+  // Dynamic subtle cinematic projector light sweep (0.05 to 0.12 opacity)
+  const sweepPercent = interpolate(frame, [0, durationFrames], [20, 80], { extrapolateRight: 'clamp' });
+
+  // Mood color grading overlay
+  let moodTint = 'rgba(56, 189, 248, 0.05)'; // default cold war teal/cyan
+  let moodBorder = '#dc2626'; // crimson accent
+  if (mood === 'noir-forensic') {
+    moodTint = 'rgba(245, 158, 11, 0.04)';
+    moodBorder = '#f59e0b';
+  } else if (mood === 'amber-urgent') {
+    moodTint = 'rgba(234, 88, 12, 0.06)';
+    moodBorder = '#ea580c';
+  } else if (mood === 'clean-documentary') {
+    moodTint = 'rgba(255, 255, 255, 0.02)';
+    moodBorder = '#2563eb';
+  }
 
   return (
     <div
       style={{
         position: 'absolute',
         inset: 0,
-        backgroundColor: '#05070a',
+        backgroundColor: '#040608',
         overflow: 'hidden',
       }}
     >
-      {/* Full-Bleed Archival Photo / Footage */}
+      {/* 1. Full-Bleed High-Resolution Photographic Canvas */}
       <div
         style={{
           width: '100%',
@@ -74,36 +95,58 @@ export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            objectPosition: 'center 30%',
-            filter: 'contrast(1.08) brightness(0.92)',
+            objectPosition: 'center 32%',
+            filter: 'contrast(1.12) brightness(0.92) saturate(1.05)',
           }}
         />
       </div>
 
-      {/* Cinematic Film Vignette & Atmosphere Gradient */}
+      {/* 2. Volumetric Projector Light Sweep */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'radial-gradient(ellipse at center, transparent 35%, rgba(0, 0, 0, 0.7) 100%)',
+          background: `radial-gradient(ellipse at ${sweepPercent}% 30%, rgba(255, 255, 255, 0.12) 0%, transparent 65%)`,
+          pointerEvents: 'none',
+          mixBlendMode: 'screen',
+        }}
+      />
+
+      {/* 3. Mood Color Grade Wash */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundColor: moodTint,
+          pointerEvents: 'none',
+          mixBlendMode: 'color',
+        }}
+      />
+
+      {/* 4. Cinematic Vignette (Heavy filmic edges) */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse at center, transparent 38%, rgba(0, 0, 0, 0.72) 100%)',
           pointerEvents: 'none',
         }}
       />
 
-      {/* Dark gradient at the bottom to guarantee subtitle legibility */}
+      {/* 5. Subtitle Safe Zone Protective Gradient (Dark drop-off starting at y=1200px) */}
       <div
         style={{
           position: 'absolute',
           left: 0,
           right: 0,
           bottom: 0,
-          height: '550px',
-          background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%)',
+          height: '680px',
+          background: 'linear-gradient(to top, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.75) 45%, rgba(0, 0, 0, 0.25) 80%, transparent 100%)',
           pointerEvents: 'none',
         }}
       />
 
-      {/* Top Subtle Film Header (Clean Editorial Location / Date Tag) */}
+      {/* 6. Top Editorial Header (Location & Headline Tag) */}
       {locationTag && (
         <div
           style={{
@@ -114,7 +157,7 @@ export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
             opacity: labelOpacity,
             display: 'flex',
             flexDirection: 'column',
-            gap: '6px',
+            gap: '8px',
           }}
         >
           <div
@@ -122,11 +165,13 @@ export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              backgroundColor: 'rgba(0, 0, 0, 0.65)',
-              padding: '6px 14px',
+              backgroundColor: 'rgba(5, 7, 10, 0.82)',
+              padding: '6px 16px',
               borderRadius: '4px',
-              backdropFilter: 'blur(8px)',
-              borderLeft: '3px solid #dc2626',
+              backdropFilter: 'blur(10px)',
+              borderLeft: `4px solid ${moodBorder}`,
+              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.6)',
             }}
           >
             <span
@@ -135,7 +180,7 @@ export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
                 fontSize: '16px',
                 fontWeight: 700,
                 color: '#f8fafc',
-                letterSpacing: '1px',
+                letterSpacing: '1.2px',
                 textTransform: 'uppercase',
               }}
             >
@@ -146,14 +191,15 @@ export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
           {headline && (
             <div
               style={{
-                fontSize: '24px',
+                fontSize: '26px',
                 fontWeight: 900,
                 color: '#ffffff',
-                textShadow: '0 2px 8px rgba(0, 0, 0, 0.9)',
+                textShadow: '0 3px 12px rgba(0, 0, 0, 0.95)',
                 fontFamily: "'Montserrat', sans-serif",
-                maxWidth: '700px',
-                lineHeight: 1.2,
-                marginTop: '4px',
+                maxWidth: '720px',
+                lineHeight: 1.25,
+                marginTop: '2px',
+                letterSpacing: '-0.3px',
               }}
             >
               {headline}
