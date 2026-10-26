@@ -18,14 +18,14 @@ const PORT = process.env.UI_PORT || 3333;
 const CREATIVE_PERSPECTIVES = [
   {
     name: '🌟 MASTER MULTI-PERSPEKTIF (GABUNGAN SEMUA SUDUT PANDANG)',
-    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER LENGKAP BERDURASI 1.5 - 2.5 MENIT (DI BAWAH 3 MENIT): ' +
-      'WAJIB MEMBUAT MINIMAL 10 HINGGA 14 ADEGAN SKETSA BERBEDA DALAM ARRAY "nodes"! DILARANG KERAS MERINGKAS HANYA JADI 4 ADEGAN! ' +
-      'Bagi alur secara granular menjadi 4 fase, di mana SETIAP FASE MEMILIKI 3 SKETSA AKSI DETAIL: ' +
-      '• Fase 1: Blunder Sepele (3 adegan: dokumen tercecer, perwira terburu-buru, instruksi keliru). ' +
-      '• Fase 2: Ketegangan Garis Depan (3 adegan: pos jaga terisolasi, telepon darurat panik, sirine/alarm bahaya). ' +
-      '• Fase 3: Rantai Efek Domino (3 adegan: desas-desus media menyebar, massa membludak, gerbang perbatasan jebol). ' +
-      '• Fase 4: Bencana Puncak & Sidang Sejarah (3 adegan: runtuhnya sistem total, reaksi kaget dunia, vonis akhir). ' +
-      'Total narasi 200 - 320 kata agar video berdurasi 90 - 150 detik dengan pergantian visual dinamis tiap 4-6 detik!',
+    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER LENGKAP BERDURASI HINGGA 3 MENIT: ' +
+      'WAJIB MEMBUAT 15 HINGGA 25+ ADEGAN FOTO DOKUMENTER BERKUALITAS TINGGI DALAM ARRAY "nodes"! DILARANG KERAS MENGGUNAKAN SKETSA 2D ATAU KARTUN! ' +
+      'Bagi alur secara granular dengan foto arsip otentik dan reka adegan sinematik berganti dinamis tiap 3-5 detik: ' +
+      '• Fase 1: Blunder Sepele (dokumen, perwira, instruksi keliru). ' +
+      '• Fase 2: Ketegangan Garis Depan (pos jaga terisolasi, telepon darurat panik, kepanikan lapangan). ' +
+      '• Fase 3: Rantai Efek Domino (desas-desus media menyebar, massa membludak, gerbang perbatasan jebol). ' +
+      '• Fase 4: Bencana Puncak & Sidang Sejarah (runtuhnya sistem total, reaksi kaget dunia, vonis akhir). ' +
+      'Total narasi padat dan dramatis agar penonton terpaku dari detik pertama hingga akhir!',
   },
   {
     name: 'BLUNDER SEPELE & KELALAIAN MANUSIAWI',
@@ -385,7 +385,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   // 7. API: Trigger Cloud Render in GitHub Actions
-  if (pathname === '/api/cloud-render' && req.method === 'POST') {
+  if ((pathname === '/api/cloud-render' || pathname === '/api/trigger-cloud-render') && req.method === 'POST') {
     broadcastLog('[CLOUD] Mengirim pembaruan kode dan memicu GitHub Actions Cloud Render...\n');
 
     // Run git add & commit & push & gh workflow run

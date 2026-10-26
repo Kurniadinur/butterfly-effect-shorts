@@ -3,495 +3,243 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Butterfly Effect Studio — AI Documentary Creator</title>
+  <title>Butterfly Studio • AI Documentary Video Creator</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #060913;
-      color: #f1f5f9;
+      background-color: #070a12;
+      color: #f8fafc;
     }
     .font-space {
       font-family: 'Space Grotesk', sans-serif;
     }
-    .font-mono {
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .glass-panel {
-      background: rgba(13, 19, 33, 0.82);
+    .card-panel {
+      background: rgba(15, 23, 42, 0.75);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    }
-    .glass-card {
-      background: rgba(22, 30, 49, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.2s ease;
-    }
-    .glass-card:hover {
-      border-color: rgba(239, 68, 68, 0.4);
-      transform: translateY(-2px);
-    }
-    .tab-active {
-      background: rgba(220, 38, 38, 0.15);
-      border-color: #ef4444;
-      color: #ffffff;
-      font-weight: 700;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
+<body class="min-h-screen flex flex-col justify-between p-4 sm:p-8">
 
-  <!-- ============================================================ -->
-  <!-- 1. HEADER RINGKAS & BERSIH                                    -->
-  <!-- ============================================================ -->
-  <header class="border-b border-slate-800/80 bg-[#090d1a]/90 backdrop-blur sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+  <!-- TOP HEADER -->
+  <header class="max-w-xl w-full mx-auto flex items-center justify-between pb-5 border-b border-slate-800/80">
     <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 via-rose-500 to-amber-500 flex items-center justify-center text-xl shadow-lg shadow-red-900/30">
-        🦋
+      <div class="w-8 h-8 rounded-lg bg-red-600/20 border border-red-500/30 flex items-center justify-center text-red-500 font-black text-sm">
+        BE
       </div>
       <div>
-        <h1 class="text-base font-black tracking-wider uppercase text-white flex items-center gap-2">
+        <h1 class="text-sm font-black tracking-widest uppercase text-white">
           BUTTERFLY STUDIO
-          <span class="text-[10px] font-space px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">
-            ● AI SUTRADARA SIAP
-          </span>
         </h1>
-        <p class="text-xs text-slate-400">Pembuat Video Dokumenter Sinematik Vertikal 9:16 (Maksimal 3 Menit)</p>
+        <p class="text-[10px] text-slate-500 font-mono tracking-tight">100% FOTO SINEMATIK • TANPA SKETSA 2D</p>
       </div>
     </div>
-
-    <!-- Quick Action Shortcut -->
-    <div class="flex items-center gap-3">
-      <a
-        href="http://localhost:3000"
-        target="_blank"
-        class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-200 transition"
-      >
-        <span>▶</span>
-        <span>Buka Player Remotion</span>
-      </a>
-    </div>
+    <a
+      href="http://localhost:3000"
+      target="_blank"
+      class="text-xs font-bold text-slate-300 hover:text-white px-3.5 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5"
+    >
+      <span>▶</span>
+      <span>Buka Player</span>
+    </a>
   </header>
 
-  <!-- ============================================================ -->
-  <!-- 2. MAIN CONTAINER                                            -->
-  <!-- ============================================================ -->
-  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
+  <!-- MAIN ULTRA-SIMPLE CONTAINER (FOKUS 3 HAL: JUDUL, GENERATE, PREVIEW) -->
+  <main class="max-w-xl w-full mx-auto my-auto space-y-6 py-6">
 
-    <!-- CARD 1: PUSAT PEMBUATAN VIDEO (SUPER SIMPEL) -->
-    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-5 border-t-2 border-t-red-500/50">
+    <!-- 1. INPUT JUDUL & GENERATE BUTTON -->
+    <div class="card-panel rounded-2xl p-6 sm:p-7 space-y-4">
       <div>
-        <h2 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2.5">
-          <span>🎬</span>
-          <span>Buat Video Baru</span>
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-400 mt-1">
-          Ketik topik atau pilih salah satu ide viral di bawah. AI otomatis merancang naskah multi-perspektif, foto sinematik 9:16, dan subtitle sinkron.
-        </p>
+        <label for="input-topic" class="block text-xs font-bold font-space uppercase text-slate-400 tracking-wider mb-2">
+          Topik / Judul Cerita:
+        </label>
+        <input
+          id="input-topic"
+          type="text"
+          class="w-full px-4 py-3.5 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white font-bold text-base focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition shadow-inner placeholder-slate-600"
+          placeholder="Ketik topik... (contoh: Runtuhnya Tembok Berlin Karena Salah Baca Memo)"
+          value="Runtuhnya Tembok Berlin Karena Salah Baca Memo"
+        />
       </div>
 
-      <!-- Input Utama -->
-      <div class="space-y-3">
-        <div class="relative">
-          <input
-            id="input-topic"
-            type="text"
-            class="w-full px-5 py-4 bg-slate-900/90 border border-slate-700 rounded-xl text-white font-semibold text-sm sm:text-base focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition pr-10 shadow-inner"
-            placeholder="Ketik topik cerita... (Contoh: Runtuhnya Tembok Berlin Karena Salah Baca Memo)"
-            value="Runtuhnya Tembok Berlin Karena Salah Baca Memo"
-          />
-          <button
-            onclick="document.getElementById('input-topic').value = ''; document.getElementById('input-topic').focus();"
-            class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white text-xs px-2 py-1 transition"
-          >
-            ✕
-          </button>
-        </div>
+      <!-- Tombol Generate Utama -->
+      <button
+        id="btn-generate"
+        onclick="generateVideo()"
+        class="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-black text-base uppercase tracking-wider shadow-lg shadow-red-950/50 transition active:scale-[0.99] flex items-center justify-center gap-2"
+      >
+        <span>⚡</span>
+        <span id="btn-text">Generate Video</span>
+      </button>
 
-        <!-- Tombol Cepat Topik Populer (1 Klik Langsung Pilih) -->
-        <div class="flex flex-wrap items-center gap-2 pt-1">
-          <span class="text-xs text-slate-400 font-semibold mr-1">Rekomendasi Topik:</span>
-          <button onclick="setTopic('Runtuhnya Tembok Berlin Karena Salah Baca Memo')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60 transition">
-            🏛️ Tembok Berlin & Memo
-          </button>
-          <button onclick="setTopic('Tenggelamnya Kapal Titanic Karena Kunci Teropong Tertinggal')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60 transition">
-            🚢 Titanic & Kunci Teropong
-          </button>
-          <button onclick="setTopic('Meledaknya Reaktor Chernobyl Akibat Uji Coba Tengah Malam')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60 transition">
-            ☢️ Chernobyl Uji Tengah Malam
-          </button>
-          <button onclick="setTopic('Pecahnya Perang Dunia I Karena Sopir Salah Belok')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60 transition">
-            👑 PD I Sopir Salah Belok
-          </button>
-          <button onclick="generateSurpriseTopic()" class="text-xs px-3 py-1.5 rounded-lg bg-amber-950/40 hover:bg-amber-900/60 text-amber-300 border border-amber-800/50 transition flex items-center gap-1 font-bold">
-            <span>🎲</span>
-            <span>Ide Acak Baru</span>
-          </button>
-        </div>
+      <!-- Status Progress Live -->
+      <div id="status-box" class="hidden p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300 flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping shrink-0"></span>
+        <span id="status-text">Sedang memproses...</span>
+      </div>
+    </div>
+
+    <!-- 2. PREVIEW VIDEO HASIL -->
+    <div id="preview-panel" class="card-panel rounded-2xl p-6 sm:p-7 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <span class="text-xs font-space font-bold uppercase text-slate-400 tracking-wider">
+          Preview Video:
+        </span>
+        <span id="story-dur" class="text-xs font-space font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800/80 px-2.5 py-0.5 rounded-full">
+          Memuat...
+        </span>
       </div>
 
-      <!-- Tombol Eksekusi Besar -->
-      <div class="pt-2">
-        <button
-          id="btn-produce"
-          onclick="startProduction()"
-          class="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-black text-base uppercase tracking-wider shadow-lg shadow-red-950/50 transition active:scale-[0.99] flex items-center justify-center gap-3"
-        >
-          <span class="text-xl">🎬</span>
-          <span>Mulai Produksi Video Lengkap</span>
-        </button>
-      </div>
-
-      <!-- Progress Status (Muncul Saat Diproses) -->
-      <div id="progress-box" class="hidden rounded-xl bg-slate-900/90 border border-slate-800 p-4 space-y-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
-            <span id="progress-text" class="text-xs font-bold text-slate-200 uppercase tracking-wide">
-              AI Sutradara Sedang Memproses Naskah & Visual...
-            </span>
-          </div>
-          <button onclick="toggleTerminal()" class="text-[11px] text-slate-400 hover:text-white underline">
-            Lihat Detail Log
-          </button>
-        </div>
-
-        <!-- Terminal Log Ringkas (Default Sembunyi) -->
-        <div id="terminal-box" class="hidden h-40 overflow-y-auto bg-black/90 p-3 rounded-lg font-mono text-[11px] text-emerald-400 border border-slate-800 leading-relaxed">
-          <!-- Live logs -->
-        </div>
-      </div>
-    </section>
-
-    <!-- CARD 2: HASIL VIDEO SAAT INI (PREVIEW & STATUS) -->
-    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
-        <div>
-          <span class="text-[10px] font-space font-bold tracking-widest text-emerald-400 uppercase bg-emerald-950/80 border border-emerald-800/80 px-2.5 py-0.5 rounded-full">
-            HASIL VIDEO TERBARU
-          </span>
-          <h3 id="story-title" class="text-lg sm:text-2xl font-black text-white mt-1.5 leading-snug">
-            Memuat cerita aktif...
-          </h3>
-          <p id="story-meta" class="text-xs text-slate-400 font-medium mt-1">
-            Memeriksa data video...
-          </p>
-        </div>
-
-        <!-- Tombol Aksi Video -->
-        <div class="flex items-center gap-2 shrink-0">
-          <a
-            href="http://localhost:3000"
-            target="_blank"
-            class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white flex items-center gap-2 transition"
-          >
-            <span>▶</span>
-            <span>Player Remotion</span>
-          </a>
-          <button
-            onclick="triggerCloudRender()"
-            class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-700 to-indigo-600 hover:from-purple-600 hover:to-indigo-500 text-xs font-bold text-white flex items-center gap-2 shadow-lg shadow-purple-950/40 transition"
-          >
-            <span>☁</span>
-            <span>Render MP4 di Cloud</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Preview Content Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+      <!-- Preview Layout: Thumbnail 9:16 + Detail + Controls -->
+      <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
         
-        <!-- Kolom Kiri: Visual Still Frame (9:16) -->
-        <div class="relative rounded-xl overflow-hidden border border-slate-800 bg-black aspect-[9/16] max-w-[240px] mx-auto md:mx-0 shadow-2xl">
+        <!-- Thumbnail Vertikal 9:16 -->
+        <div class="relative w-36 sm:w-40 aspect-[9/16] rounded-xl overflow-hidden border border-slate-700 bg-black shrink-0 shadow-xl">
           <img
-            id="story-preview-img"
+            id="preview-img"
             src="/butterfly/preview_reka_adegan.png"
-            onerror="this.src='/butterfly/preview_cinematic_photo.png'"
-            alt="Preview Visual Adegan"
+            onerror="this.src='/butterfly/verify_photo_node3.png'"
+            alt="Preview Visual Sinematik"
             class="w-full h-full object-cover"
           />
-          <!-- Badge Reka Adegan Overlay -->
-          <div class="absolute top-3 right-3 bg-black/80 backdrop-blur px-2 py-0.5 rounded border border-white/20 text-[10px] font-space font-bold text-slate-200 flex items-center gap-1.5 shadow">
+          <div class="absolute top-2 right-2 bg-black/85 backdrop-blur px-1.5 py-0.5 rounded border border-white/20 text-[9px] font-space font-bold text-slate-200 flex items-center gap-1 shadow">
             <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-            <span>REKA ADEGAN</span>
-          </div>
-          <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black via-black/80 to-transparent">
-            <span class="text-[10px] font-mono text-slate-400 block">KEYFRAME PREVIEW</span>
-            <span id="preview-caption" class="text-xs font-bold text-white line-clamp-2">Konferensi Pers Berlin 1989</span>
+            <span>FOTO SINEMATIK</span>
           </div>
         </div>
 
-        <!-- Kolom Kanan: Rangkuman Cerita, Hook & Audio Voiceover -->
-        <div class="md:col-span-2 space-y-4">
-          
-          <!-- Audio Voiceover Player -->
-          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+        <!-- Info Judul, Narasi & Aksi -->
+        <div class="flex-1 space-y-4 w-full">
+          <div>
+            <h2 id="story-title" class="text-base font-black text-white leading-snug">
+              Memuat Judul Cerita...
+            </h2>
+            <p id="story-sub" class="text-xs text-slate-400 mt-1 line-clamp-3 leading-relaxed">
+              Memuat pembuka narasi video...
+            </p>
+          </div>
+
+          <!-- Pemutar Audio Voiceover -->
+          <div class="space-y-1.5">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-slate-300 flex items-center gap-2">
-                <span>🎙️</span>
-                <span>Voiceover Dubbing Narator (Groq Whisper Synced):</span>
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">
+                Voiceover Narasi:
               </span>
-              <span class="text-[11px] font-mono text-emerald-400">Audio Jernih</span>
+              <span class="text-[10px] text-slate-500 font-mono">Audio Sync</span>
             </div>
             <audio id="audio-player" controls class="w-full h-9 rounded-lg"></audio>
           </div>
 
-          <!-- Hook Story Card -->
-          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-            <span class="text-[10px] font-space font-bold text-red-400 uppercase tracking-wider">
-              HOOK AWAL (PENARIK PERHATIAN):
-            </span>
-            <p id="hook-narration" class="text-sm font-semibold text-slate-200 italic leading-relaxed">
-              Memuat hook...
-            </p>
-            <div class="flex items-center gap-3 pt-1 text-xs font-mono">
-              <div class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300">
-                <span class="text-slate-500">Pemicu:</span> <span id="hook-cause" class="text-white font-bold">-</span>
-              </div>
-              <span class="text-red-500">➔</span>
-              <div class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300">
-                <span class="text-slate-500">Bencana:</span> <span id="hook-effect" class="text-amber-400 font-bold">-</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Cloud Render Tracker Box (Otomatis Muncul Saat Render Cloud Dipicu) -->
-          <div id="cloud-tracker-box" class="hidden p-4 rounded-xl bg-purple-950/30 border border-purple-800/50 space-y-2.5 text-xs">
-            <div class="flex items-center justify-between">
-              <span class="font-bold text-purple-300 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-purple-400 animate-ping"></span>
-                <span>Sedang Me-render di GitHub Cloud Actions...</span>
-              </span>
-              <a
-                id="tracker-link"
-                href="https://github.com/Kurniadinur/butterfly-effect-shorts/actions"
-                target="_blank"
-                class="text-[11px] text-purple-300 hover:text-white underline font-mono"
-              >
-                Buka Console GitHub ➔
-              </a>
-            </div>
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-              <div id="cloud-progress-bar" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 transition-all duration-300" style="width: 25%"></div>
-            </div>
-            <p id="tracker-subtitle" class="text-[11px] text-slate-400 font-mono">Menyiapkan runner cloud 16GB RAM...</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CARD 3: TAB RINCIAN (DAPAT DIPILIH TANPA BIKIN PUSING) -->
-    <section class="glass-panel rounded-2xl p-6 space-y-5">
-      <!-- Tab Headers -->
-      <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-semibold">
-        <button onclick="switchTab('scenes')" id="tab-btn-scenes" class="px-4 py-2 rounded-xl border border-slate-700/80 text-slate-300 hover:text-white transition tab-active">
-          📋 Rangkaian Adegan (<span id="scene-count-tab">0</span>)
-        </button>
-        <button onclick="switchTab('publishing')" id="tab-btn-publishing" class="px-4 py-2 rounded-xl border border-slate-700/80 text-slate-300 hover:text-white transition">
-          🚀 Paket Upload Shorts (Judul & Tag)
-        </button>
-        <button onclick="switchTab('feedback')" id="tab-btn-feedback" class="px-4 py-2 rounded-xl border border-slate-700/80 text-slate-300 hover:text-white transition">
-          👍 Nilai Cerita Ini
-        </button>
-      </div>
-
-      <!-- Tab Content 1: Rangkaian Adegan -->
-      <div id="tab-content-scenes" class="space-y-3">
-        <div id="scenes-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-96 overflow-y-auto pr-1">
-          <!-- Rendered dynamically -->
-        </div>
-      </div>
-
-      <!-- Tab Content 2: Paket Upload YouTube / TikTok -->
-      <div id="tab-content-publishing" class="hidden space-y-4">
-        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-purple-400">Judul YouTube Shorts (Tinggi Klik / High-CTR):</span>
-            <button onclick="copyElementText('pub-title', this)" class="px-3 py-1 rounded bg-purple-900/60 hover:bg-purple-800 text-purple-200 text-xs font-mono transition">
-              Salin Judul
+          <!-- Dua Tombol Aksi: Buka Player & Render MP4 -->
+          <div class="flex gap-2.5 pt-1">
+            <a
+              href="http://localhost:3000"
+              target="_blank"
+              class="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white text-center transition flex items-center justify-center gap-1.5 shadow"
+            >
+              <span>▶</span>
+              <span>Buka Player</span>
+            </a>
+            <button
+              onclick="triggerCloudRender()"
+              class="flex-1 py-3 rounded-xl bg-purple-700 hover:bg-purple-600 text-xs font-bold text-white transition flex items-center justify-center gap-1.5 shadow"
+            >
+              <span>☁</span>
+              <span>Render MP4</span>
             </button>
           </div>
-          <p id="pub-title" class="text-sm font-bold text-white">Memuat judul...</p>
-        </div>
 
-        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-amber-400">Pinned Comment (Pemicu Komentar Penonton):</span>
-            <button onclick="copyElementText('pub-pinned', this)" class="px-3 py-1 rounded bg-amber-900/60 hover:bg-amber-800 text-amber-200 text-xs font-mono transition">
-              Salin Komentar
-            </button>
+          <!-- Notifikasi Status Cloud Render -->
+          <div id="cloud-notif" class="hidden text-xs font-semibold text-purple-300 p-2.5 rounded-lg bg-purple-950/60 border border-purple-800">
+            ☁ Memulai render di GitHub Actions. Video MP4 akan otomatis tersedia setelah proses selesai.
           </div>
-          <p id="pub-pinned" class="text-xs text-slate-300 italic">-</p>
         </div>
-
-        <div class="flex gap-3">
-          <button onclick="copyElementText('pub-desc-hidden', this)" class="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-200 transition">
-            📋 Salin Deskripsi Lengkap
-          </button>
-          <button onclick="copyElementText('pub-tags-hidden', this)" class="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-purple-300 transition">
-            #️⃣ Salin 20 Hashtags
-          </button>
-        </div>
-        <div id="pub-desc-hidden" class="hidden"></div>
-        <div id="pub-tags-hidden" class="hidden"></div>
       </div>
-
-      <!-- Tab Content 3: Feedback -->
-      <div id="tab-content-feedback" class="hidden space-y-4">
-        <p class="text-xs text-slate-400">
-          Beri masukan untuk hasil video ini agar AI Sutradara mengingat preferensi Anda di video berikutnya:
-        </p>
-        <div class="flex gap-3">
-          <button onclick="submitFeedback('positive')" class="flex-1 py-3 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-700/60 text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 transition">
-            <span>👍 Suka Banget</span>
-            <span class="text-[10px] opacity-75">(Jadikan Standar)</span>
-          </button>
-          <button onclick="submitFeedback('negative')" class="flex-1 py-3 rounded-xl bg-red-950/60 hover:bg-red-900/60 border border-red-700/60 text-red-300 font-bold text-xs flex items-center justify-center gap-2 transition">
-            <span>👎 Kurang Pas</span>
-            <span class="text-[10px] opacity-75">(Perbaiki di Naskah Baru)</span>
-          </button>
-        </div>
-        <input
-          type="text"
-          id="feedback-note"
-          placeholder="Catatan kecil (opsional)..."
-          class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-red-500 transition"
-        />
-        <div id="feedback-alert" class="hidden text-xs font-mono p-2.5 rounded-lg"></div>
-      </div>
-    </section>
+    </div>
 
   </main>
 
-  <!-- ============================================================ -->
-  <!-- 3. FOOTER MINIMALIS                                          -->
-  <!-- ============================================================ -->
-  <footer class="border-t border-slate-800/80 bg-[#070a13] py-4 text-center text-xs text-slate-500 font-mono">
-    Butterfly Effect Studio • Powered by Google Antigravity & Remotion Engine
+  <!-- FOOTER -->
+  <footer class="text-center text-xs text-slate-600 font-mono py-2">
+    Butterfly Studio • 100% Sinematik Tanpa Sketsa 2D
   </footer>
 
-  <!-- ============================================================ -->
-  <!-- 4. JAVASCRIPT LOGIC                                          -->
-  <!-- ============================================================ -->
+  <!-- SCRIPT LOGIC (MINIMALIS & STABIL) -->
   <script>
-    let currentStoryData = null;
-
-    // Set topic to input box
-    function setTopic(title) {
-      const input = document.getElementById('input-topic');
-      input.value = title;
-      input.focus();
-    }
-
-    // Tab switcher
-    function switchTab(tabId) {
-      ['scenes', 'publishing', 'feedback'].forEach((t) => {
-        const btn = document.getElementById(`tab-btn-${t}`);
-        const content = document.getElementById(`tab-content-${t}`);
-        if (t === tabId) {
-          btn.classList.add('tab-active');
-          content.classList.remove('hidden');
-        } else {
-          btn.classList.remove('tab-active');
-          content.classList.add('hidden');
-        }
-      });
-    }
-
-    function toggleTerminal() {
-      const box = document.getElementById('terminal-box');
-      box.classList.toggle('hidden');
-    }
-
-    // Event Stream for Logs
-    function initEventStream() {
-      const evtSource = new EventSource('/api/stream-logs');
-      evtSource.onmessage = function (e) {
-        try {
-          const data = JSON.parse(e.data);
-          if (data.log) {
-            appendLog(data.log);
-          }
-        } catch (err) {}
-      };
-    }
-
-    function appendLog(text) {
-      const box = document.getElementById('terminal-box');
-      const line = document.createElement('div');
-      line.textContent = text;
-      box.appendChild(line);
-      box.scrollTop = box.scrollHeight;
-    }
-
-    // Fetch Current Story
-    async function fetchCurrentStory() {
+    async function loadCurrentStory() {
       try {
         const res = await fetch('/api/story');
         const data = await res.json();
         if (data.error) return;
-        currentStoryData = data;
 
         document.getElementById('story-title').textContent = data.title;
+        document.getElementById('story-sub').textContent = data.hook?.narration || '';
+        
         const durSec = (data.totalDurationFrames / 30).toFixed(1);
-        const durMin = (durSec / 60).toFixed(1);
-        document.getElementById('story-meta').textContent = `Durasi: ${durMin} Menit (${durSec} dtk) • Total: ${data.nodes.length} Adegan Detail • Format: 9:16 Vertikal`;
-        document.getElementById('scene-count-tab').textContent = data.nodes.length;
+        document.getElementById('story-dur').textContent = `${durSec} Detik (${data.nodes?.length || 0} Adegan)`;
 
-        // Audio
         if (data.audioPath) {
           const audioPlayer = document.getElementById('audio-player');
-          const audioFilename = data.audioPath.split('/').pop().split('\\').pop();
-          audioPlayer.src = `/audio/${audioFilename}`;
+          const filename = data.audioPath.split('/').pop().split('\\').pop();
+          audioPlayer.src = `/audio/${filename}`;
         }
 
-        // Hook Card
-        document.getElementById('hook-narration').textContent = `"${data.hook.narration}"`;
-        document.getElementById('hook-cause').textContent = data.hook.leftTitle || 'Awal Sepele';
-        document.getElementById('hook-effect').textContent = data.hook.rightTitle || 'Bencana Global';
-
-        // Scenes
-        const grid = document.getElementById('scenes-grid');
-        grid.innerHTML = '';
-        data.nodes.forEach((n) => {
-          const card = document.createElement('div');
-          card.className = 'glass-card p-3 rounded-xl space-y-1.5 border border-slate-800';
-          card.innerHTML = `
-            <div class="flex items-center justify-between text-xs font-mono">
-              <span class="font-black px-2 py-0.5 rounded bg-slate-800 text-white">#${n.step}</span>
-              <span class="text-slate-400 text-[11px]">${n.timeOrYear || ''}</span>
-            </div>
-            <h5 class="text-xs font-bold text-white uppercase">${n.headline}</h5>
-            <p class="text-[11px] text-slate-300 line-clamp-2 leading-relaxed">${n.narration}</p>
-          `;
-          grid.appendChild(card);
-        });
-
+        // Refresh preview image cache
+        const img = document.getElementById('preview-img');
+        img.src = `/butterfly/verify_photo_node3.png?t=${Date.now()}`;
       } catch (err) {
-        console.error('Error fetching story:', err);
+        console.warn('Gagal memuat data cerita aktif:', err);
       }
     }
 
-    // Start Production
-    async function startProduction() {
+    async function generateVideo() {
       const topicInput = document.getElementById('input-topic');
       const topic = topicInput.value.trim() || 'Runtuhnya Tembok Berlin Karena Salah Baca Memo';
-      const btn = document.getElementById('btn-produce');
-      const progressBox = document.getElementById('progress-box');
-      const progressText = document.getElementById('progress-text');
-      const terminalBox = document.getElementById('terminal-box');
+      const btn = document.getElementById('btn-generate');
+      const btnText = document.getElementById('btn-text');
+      const statusBox = document.getElementById('status-box');
+      const statusText = document.getElementById('status-text');
 
-      terminalBox.innerHTML = '';
-      progressBox.classList.remove('hidden');
+      statusBox.classList.remove('hidden');
+      statusText.textContent = `Memproses: "${topic}"... (Menyusun cerita & foto sinematik)`;
       btn.disabled = true;
       btn.classList.add('opacity-50', 'cursor-not-allowed');
+      btnText.textContent = 'Sedang Memproses...';
 
-      progressText.textContent = `Memulai produksi: "${topic}"...`;
+      // Connect to SSE for real-time progress
+      let eventSource = null;
+      try {
+        eventSource = new EventSource('/api/stream-logs');
+        eventSource.onmessage = (event) => {
+          try {
+            const payload = JSON.parse(event.data);
+            if (payload.log) {
+              const cleanLog = payload.log.trim();
+              if (cleanLog.includes('[1/4]')) statusText.textContent = '1/4: Merancang alur cerita & 15+ adegan...';
+              else if (cleanLog.includes('[2/4]')) statusText.textContent = '2/4: Menghasilkan suara voiceover...';
+              else if (cleanLog.includes('[3/4]')) statusText.textContent = '3/4: Menyelaraskan teks subtitle...';
+              else if (cleanLog.includes('[4/4]')) statusText.textContent = '4/4: Mengkurasi visual foto arsip & sinematik...';
+              else if (cleanLog.includes('Proses selesai')) {
+                statusText.textContent = '✓ Selesai! Memperbarui pratinjau...';
+                if (eventSource) eventSource.close();
+                setTimeout(() => {
+                  statusBox.classList.add('hidden');
+                  btn.disabled = false;
+                  btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                  btnText.textContent = 'Generate Video';
+                  loadCurrentStory();
+                }, 1500);
+              }
+            }
+          } catch (e) {}
+        };
+      } catch (e) {}
 
       try {
         const res = await fetch('/api/generate', {
@@ -501,117 +249,31 @@
         });
 
         const data = await res.json();
-        if (res.ok) {
-          progressText.textContent = '✓ Produksi Selesai! Memperbarui data video...';
-          setTimeout(() => {
-            fetchCurrentStory();
-            fetchPublishingPack();
-            btn.disabled = false;
-            btn.classList.remove('opacity-50', 'cursor-not-allowed');
-          }, 2000);
-        } else {
-          progressText.textContent = `Error: ${data.error || 'Gagal memproses'}`;
+        if (!res.ok) {
+          statusText.textContent = `Gagal: ${data.error || 'Server sibuk'}`;
           btn.disabled = false;
           btn.classList.remove('opacity-50', 'cursor-not-allowed');
+          btnText.textContent = 'Generate Video';
+          if (eventSource) eventSource.close();
         }
       } catch (err) {
-        progressText.textContent = `Koneksi gagal: ${err.message}`;
+        statusText.textContent = `Error: ${err.message}`;
         btn.disabled = false;
         btn.classList.remove('opacity-50', 'cursor-not-allowed');
+        btnText.textContent = 'Generate Video';
+        if (eventSource) eventSource.close();
       }
     }
 
-    // Generate Surprise Topic
-    async function generateSurpriseTopic() {
-      const input = document.getElementById('input-topic');
-      input.value = 'Mencari ide menarik dari AI...';
-      try {
-        const res = await fetch('/api/brainstorm');
-        const topics = await res.json();
-        if (Array.isArray(topics) && topics.length > 0) {
-          const picked = topics[Math.floor(Math.random() * topics.length)];
-          input.value = picked.title || picked;
-        } else {
-          input.value = 'Tenggelamnya Kapal Titanic Karena Kunci Teropong Tertinggal';
-        }
-      } catch (err) {
-        input.value = 'Meledaknya Reaktor Chernobyl Akibat Uji Coba Tengah Malam';
-      }
-    }
-
-    // Copy to clipboard helper
-    function copyElementText(elementId, btnElement) {
-      const el = document.getElementById(elementId);
-      if (!el) return;
-      const text = el.innerText || el.textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        const oldText = btnElement.innerText;
-        btnElement.innerText = '✓ Tersalin!';
-        setTimeout(() => (btnElement.innerText = oldText), 1800);
-      });
-    }
-
-    // Fetch Publishing Pack
-    async function fetchPublishingPack() {
-      try {
-        const res = await fetch('/api/publishing-pack');
-        const pack = await res.json();
-        if (pack && pack.status !== 'NO_PACK_YET') {
-          if (pack.recommendedTitle) {
-            document.getElementById('pub-title').textContent = pack.recommendedTitle;
-          }
-          if (pack.pinnedComment) {
-            document.getElementById('pub-pinned').textContent = `"${pack.pinnedComment}"`;
-          }
-          if (pack.fullDescription) {
-            document.getElementById('pub-desc-hidden').textContent = pack.fullDescription;
-          }
-          if (pack.hashtags) {
-            document.getElementById('pub-tags-hidden').textContent = pack.hashtags.join(' ');
-          }
-        }
-      } catch (err) {}
-    }
-
-    // Cloud Render Trigger
     async function triggerCloudRender() {
-      const trackerBox = document.getElementById('cloud-tracker-box');
-      trackerBox.classList.remove('hidden');
+      const notif = document.getElementById('cloud-notif');
+      notif.classList.remove('hidden');
       try {
-        const res = await fetch('/api/trigger-cloud-render', { method: 'POST' });
-        const data = await res.json();
-        if (res.ok) {
-          document.getElementById('tracker-subtitle').textContent = 'Pembaruan kode terkirim! Server GitHub Actions sedang merender MP4...';
-        }
-      } catch (err) {
-        document.getElementById('tracker-subtitle').textContent = 'Peringatan: Cek console GitHub Actions secara langsung.';
-      }
-    }
-
-    // Feedback
-    async function submitFeedback(rating) {
-      const note = document.getElementById('feedback-note').value;
-      const alertBox = document.getElementById('feedback-alert');
-      try {
-        const res = await fetch('/api/feedback', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ rating, note }),
-        });
-        if (res.ok) {
-          alertBox.textContent = '✓ Terima kasih! Preferensi Anda telah disimpan ke memori AI.';
-          alertBox.className = 'text-xs font-mono p-2.5 rounded-lg bg-emerald-950/80 border border-emerald-800 text-emerald-300 block';
-          setTimeout(() => alertBox.classList.add('hidden'), 3000);
-        }
+        await fetch('/api/cloud-render', { method: 'POST' });
       } catch (err) {}
     }
 
-    // Init on load
-    window.addEventListener('DOMContentLoaded', () => {
-      initEventStream();
-      fetchCurrentStory();
-      fetchPublishingPack();
-    });
+    window.addEventListener('DOMContentLoaded', loadCurrentStory);
   </script>
 </body>
 </html>

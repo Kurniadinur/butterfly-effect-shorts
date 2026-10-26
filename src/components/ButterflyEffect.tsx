@@ -4,7 +4,6 @@ import { ButterflyStoryData } from '../data/types';
 import { CURRENT_STORY } from '../data/currentStory';
 import { HookScene } from './HookScene';
 import { DocumentaryScene } from './DocumentaryScene';
-import { DirectorGraphicScene } from './DirectorGraphicScene';
 import { KineticSubtitle } from './KineticSubtitle';
 import { OutroScene } from './OutroScene';
 import { FilmEffects } from './effects/FilmEffects';

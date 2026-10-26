@@ -1,6 +1,5 @@
 import React from 'react';
 import { Img, useCurrentFrame, staticFile, interpolate } from 'remotion';
-import { DirectorGraphicScene } from './DirectorGraphicScene';
 
 export interface HookSceneProps {
   hookStyle?: string | null;

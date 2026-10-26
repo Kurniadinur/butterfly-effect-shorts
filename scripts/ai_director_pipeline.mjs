@@ -104,7 +104,7 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
 
 3. AKURASI SEJARAH WAJIB MUTLAK (DILARANG MENGARANG ELEMEN FIKSI!):
    - DILARANG KERAS mengarang elemen fiksi seperti katup pipa gas bocor, kecelakaan mobil, atau tabung meledak pada peristiwa sejarah yang tidak memilikinya!
-   - Pilihlah arketipe sketsa ('directorType') yang 100% SESUAI dengan peristiwa sejarah nyata:
+   - Pilihlah arketipe adegan ('directorType') yang 100% SESUAI dengan peristiwa sejarah nyata:
      * Pada peristiwa Tembok Berlin: HANYA gunakan arketipe nyata seperti "press-podium" (konferensi pers Schabowski), "memo-investigation" (memo salah baca), "breaking-news" (siaran berita TV yang mengguncang Berlin), "panic-phone" (telepon pos jaga perbatasan yang diabaikan markas), "gate-breach" (gerbang pos perbatasan dibuka), "wall-demolition" (warga merobohkan tembok dengan palu), atau "soviet-collapse" (kolaps Uni Soviet). JANGAN PERNAH gunakan 'valve-failure' atau 'car-route' untuk Tembok Berlin!
      * Pada peristiwa Titanic: HANYA gunakan "key-lockbox", "maritime-disaster", "clock-countdown", "telegraph-wire", "courtroom-gavel", dll.
      * Pada peristiwa Chernobyl: HANYA gunakan "reactor-meltdown", "radiation-hazard", "valve-failure", "critical-gauge", dll.
@@ -118,10 +118,10 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
      * 'directorType': tetap cantumkan arketipe narasi (misal: "press-podium", "memo-investigation", "panic-phone") sebagai referensi foley audio dan pacing.
    - SEMUA ADEGAN (100%) WAJIB memiliki visual foto berbobot untuk diproyeksikan dengan gerak lambat Ken Burns 2.5D Parallax!
 
-5. KATALOG 26 SKETSA ANIMASI FORENSIK ("directorType"):
+5. KATALOG 26 ARKETIPE ADEGAN FORENSIK ("directorType"):
    * "press-podium"      : Podium konferensi pers/pidato, kilatan blitz kamera wartawan yang menyala acak, jam berdetik, dan dokumen di tangan.
    * "memo-investigation": Kertas dokumen memo rahasia di bawah sorotan lampu meja dengan kaca pembesar memindai kata fatal berstabilo kuning dan stempel merah.
-   * "memo-handoff"      : Sketsa tangan menyelipkan berkas rahasia di meja gelap.
+   * "memo-handoff"      : Arsip foto/reka adegan berkas rahasia di meja perwira.
    * "panic-phone"       : Pos jaga dengan telepon engkol darurat bergetar merah tanpa instruksi atasan.
    * "gate-breach"       : Palang gerbang perbatasan/pos pemeriksaan terangkat ke atas, sirene merah berputar, warga menerobos maju.
    * "wall-demolition"   : Aksi massa merobohkan dinding/benteng/tembok, siluet mengayunkan palu godam dengan percikan api, retakan beton menjalar.
@@ -159,26 +159,28 @@ PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!)
    - 'editorialStyle.shakeSensitivity': 'subtle' atau 'moderate'.
    - 'editorialStyle.shakeThresholdChaos': Level chaos (60-75) saat guncangan kamera mulai aktif pada momen tegang.
 
-7. RAHASIA YOUTUBE SHORTS VIRAL MILLION-VIEWS (DENSITAS MULTI-SKETSA CEPAT & ALUR INTENSIF):
-   - JANGAN PELIT SKETSA! DILARANG KERAS 1 SKETSA DIAM LAMA UNTUK BANYAK PENJELASAN! (Jika 1 sketsa diam 15 detik sementara voiceover menjelaskan banyak hal, penonton bosan dan visual tidak nyambung!).
-   - BEDAH DAN PECAH ALUR CERITA MENJADI 8 HINGGA 12 BABAK VISUAL DINAMIS ('nodes').
-   - Setiap adegan (node) berdurasi SINGKAT & INTENSIF (3 sampai 5 detik, sekitar 12 - 20 kata narasi per adegan).
-   - SETIAP KALI VOICEOVER BERGANTI TINDAKAN, TOKOH, ATAU OBJEK: GANTI SKETSA VISUALNYA ('directorType')!
-     * Contoh alur pergantian sketsa dinamis (Titanic):
-       - Node 1 ('memo-handoff')     : Pergantian perwira kapal tergesa-gesa di Southampton.
-       - Node 2 ('key-lockbox')      : Kunci kuningan loker teropong terbawa pulang di saku jas.
-       - Node 3 ('maritime-disaster'): Siluet kapal melaju kencang di laut hitam Atlantik.
-       - Node 4 ('clock-countdown')  : Menara pengawas sarang gagak di malam beku tanpa penerangan.
-       - Node 5 ('key-lockbox')      : Loker nomor 4 terkunci mati, teropong optik tak bisa diambil.
-       - Node 6 ('critical-gauge')   : Meteran jarak pandang mata telanjang drop drastis di tengah kabut.
-       - Node 7 ('tactical-map')     : Siluet gunung es raksasa muncul mendadak 500 meter di depan.
-       - Node 8 ('panic-phone')      : Lonceng darurat berdentang 3 kali, kemudi dibanting panik.
-       - Node 9 ('valve-failure')    : Lambung baja kapal robek 90 meter oleh es bawah air.
-       - Node 10 ('telegraph-wire')  : Sinyal radio morse SOS CQD memancar putus asa ke samudra.
-       - Node 11 ('courtroom-gavel') : Palu sidang penyelidikan maritim membuktikan satu kunci menentukan 1.500 nyawa.
+7. RAHASIA YOUTUBE SHORTS VIRAL MILLION-VIEWS (DENSITAS MULTI-VISUAL DOKUMENTER CEPAT & 100% FOTO SINEMATIK):
+   - 100% FOTO SINEMATIK & ARSIP OTENTIK! DILARANG KERAS MENGGUNAKAN SKETSA 2D ATAU KARTUN!
+   - DILARANG 1 FOTO DIAM LAMA UNTUK BANYAK PENJELASAN! (Jika 1 visual diam >5 detik, penonton bosan).
+   - BEDAH DAN PECAH ALUR CERITA SECARA GRANULAR MENJADI 15 HINGGA 25+ BABAK VISUAL DINAMIS ('nodes').
+   - Setiap adegan (node) berdurasi SINGKAT & INTENSIF (3 sampai 5 detik, sekitar 10 - 18 kata narasi per adegan).
+   - SETIAP KALI VOICEOVER BERGANTI TINDAKAN, TOKOH, ATAU OBJEK: GANTI FOTO VISUALNYA DENGAN TEPAT!
+     * Contoh alur pergantian visual dokumenter dinamis (Titanic):
+       - Node 1: Foto perwira David Blair tergesa-gesa meninggalkan Southampton.
+       - Node 2: Foto kunci kuningan loker teropong nomor 4 terbawa di saku jasnya.
+       - Node 3: Foto kapal Titanic membelah laut hitam Atlantik Utara.
+       - Node 4: Foto menara pengawas sarang gagak di malam tanpa penerangan.
+       - Node 5: Foto loker teropong terkunci rapat, pengawas Frederick Fleet mencari di kegelapan.
+       - Node 6: Foto arsip laut beku berkabut tebal.
+       - Node 7: Foto gunung es raksasa di hadapan haluan kapal.
+       - Node 8: Foto lonceng darurat berdentang 3 kali, kepanikan di anjungan.
+       - Node 9: Foto lambung baja robek oleh es bawah air.
+       - Node 10: Foto operator radio Marconi mengirimkan transmisi darurat SOS CQD.
+       - Node 11: Foto sekoci diturunkan di tengah air es laut Arktik.
+       - Node 12: Foto dokumen hasil penyelidikan Senat AS membuktikan ketiadaan teropong akibat kunci tertinggal.
    - ATURAN 3 DETIK PERTAMA (STOP-THE-SCROLL): Kalimat pembuka pada 'hook.narration' (20 - 30 kata) langsung menyebutkan waktu, objek mikro sepele, dan bencana dahsyat.
    - TEKNIK SEAMLESS INFINITE LOOP (RETENSI > 100%): Rancang kalimat terakhir pada 'outro.narration' agar kata-kata terakhirnya menyambung kembali ke kata pertama pada kalimat pembuka ('hook.narration').
-   - Total keseluruhan cerita: 8 sampai 16 nodes dinamis, total 180 - 350 kata narasi (durasi total video 1 - 2.5 menit, aman di bawah batas 3 menit). Video akan terasa sangat kaya, penuh variasi animasi sketsa berganti tiap 3-5 detik, dan setiap penjelasan visualnya 100% tepat sasaran!
+   - Total keseluruhan cerita: 15 sampai 25+ nodes dinamis (durasi video 2 hingga 3 menit penuh). Video akan terasa sangat kaya, berbobot, visual foto berganti tiap 3-5 detik, dan memikat penonton dari awal hingga akhir!
 
 8. LOGIKA SEBAB-MUSABAB DETAIL (ANTI-LONCAT ALUR & ANTI-MEMBINGUNGKAN):
    - JANGAN LANGSUNG LONCAT KE KLIMAKS TANPA MENJELASKAN SEBAB-MUSABABNYA!
@@ -411,12 +413,12 @@ async function generateStoryboardWithGroq(topic, dynamicPrompt) {
 
 // Guaranteed High Visual Density Guard (Anti-Short Story Safety Gate)
 async function ensureHighVisualDensity(storyData, topic) {
-  if (Array.isArray(storyData.nodes) && storyData.nodes.length >= 14) {
+  if (Array.isArray(storyData.nodes) && storyData.nodes.length >= 15) {
     return storyData;
   }
 
-  console.log(`      ⚠️ [Densitas Guard] Naskah awal memiliki ${storyData.nodes?.length || 0} adegan (kurang dari target minimal 14 adegan).`);
-  console.log(`      🚀 [AI Multi-Sketch Expander] Membedah setiap babak menjadi sub-sketsa aksi detail agar video kaya & berdurasi ideal...`);
+  console.log(`      ⚠️ [Densitas Guard] Naskah awal memiliki ${storyData.nodes?.length || 0} adegan (kurang dari target minimal 15 adegan).`);
+  console.log(`      🚀 [AI Documentary Expander] Membedah setiap babak menjadi adegan foto dokumenter detail agar alur kaya & berdurasi ideal...`);
 
   const expandPrompt = `Kamu adalah Sutradara Film AI Senior.
 Naskah Butterfly Effect berikut terlalu ringkas karena hanya memiliki ${storyData.nodes?.length || 0} adegan:
@@ -427,15 +429,14 @@ ${JSON.stringify(storyData.nodes, null, 2)}
 Outro: "${storyData.outro?.narration || ''}"
 
 TUGAS MUTLAK:
-Pecah dan kembangkan alur di atas menjadi MINIMAL 14 HINGGA 25+ ADEGAN VISUAL GRANULAR ('nodes')!
-DILARANG MERINGKAS ATAU MENGURANGI!
-Setiap adegan harus fokus pada 1 aksi/objek spesifik (durasi 3-5 detik, 12-20 kata narasi per node) dengan pilihan 'directorType' yang tepat.
+Pecah dan kembangkan alur di atas menjadi 15 HINGGA 25+ ADEGAN VISUAL GRANULAR ('nodes')!
+DILARANG MERINGKAS ATAU MENGURANGI! FORMAT 100% FOTO DOKUMENTER (DILARANG SKETSA 2D)!
+Setiap adegan harus fokus pada 1 aksi/objek spesifik (durasi 3-5 detik, 10-18 kata narasi per node).
 WAJIB MEMBEBERKAN BUKTI HISTORIS KONKRET (ANTI-MEMBINGUNGKAN PENONTON):
-- Jika ada memo/dokumen: JELASKAN APA PERSISNYA ISI DOKUMEN ITU! (contoh: izin baru buka besok jam 4 subuh dengan visa, tapi Schabowski tidak membacanya).
-- Jika ada ucapan fatal: SEBUTKAN KUTIPAN KATA ASLI BERSEJARAH (contoh: "Sofort, unverzüglich!").
-- Jika ada objek/pos/tombol: SEBUTKAN NAMA ATAU NOMOR SPESIFIKNYA (Bornholmer Straße, AZ-5, Loker no. 4).
+- Jika ada memo/dokumen: JELASKAN APA PERSISNYA ISI DOKUMEN ITU!
+- Jika ada ucapan fatal: SEBUTKAN KUTIPAN KATA ASLI BERSEJARAH.
+- Jika ada objek/pos/tombol: SEBUTKAN NAMA ATAU NOMOR SPESIFIKNYA.
 - Cantumkan klausul atau kutipan tersebut pada field 'primaryText' / 'secondaryText'.
-Pilihan directorType: memo-handoff, memo-investigation, press-podium, press-question, breaking-news, panic-phone, crowd-protest, gate-breach, wall-demolition, domino-collapse, key-lockbox, telegram-wire, courtroom-gavel, tactical-map, valve-failure, clock-countdown.
 
 FORMAT JSON MURNI:
 {
@@ -444,14 +445,14 @@ FORMAT JSON MURNI:
       "step": 1,
       "timeOrYear": "LOKASI • JAM/TAHUN",
       "headline": "JUDUL AKSI 1",
-      "narration": "Narasi aksi 1 (12-20 kata)...",
+      "narration": "Narasi aksi 1 (10-18 kata)...",
       "chaosLevel": 10,
-      "mediaType": "graphic",
-      "directorType": "memo-handoff",
+      "mediaType": "photo",
+      "searchQuery": "historical authentic photo query...",
       "primaryText": "Teks grafis 1",
       "secondaryText": "Subjudul 1",
       "stampText": "STATUS 1",
-      "caption": "Keterangan forensik..."
+      "caption": "Keterangan arsip..."
     }
   ]
 }`;
@@ -473,7 +474,7 @@ FORMAT JSON MURNI:
     if (fIdx !== -1 && lIdx !== -1) {
       const parsed = JSON.parse(clean.slice(fIdx, lIdx + 1));
       if (Array.isArray(parsed.nodes) && parsed.nodes.length >= 8) {
-        storyData.nodes = parsed.nodes;
+        storyData.nodes = parsed.nodes.map(n => ({ ...n, mediaType: 'photo' }));
         console.log(`      ✓ [AI Expander Berhasil] Alur berhasil dimekarkan menjadi ${storyData.nodes.length} adegan dinamis!`);
       }
     }
@@ -740,9 +741,9 @@ async function generateStoryboard(topic) {
     storyData.hook.leftImage = `butterfly/media/${storySlug}/hero_hook.jpg`;
     console.log(`      ✓ [Hero Hook Arsip Otentik] Berhasil dikurasi: "${hookRes.title}" (${hookRes.source})`);
   } else {
-    storyData.hook.leftImage = null;
-    storyData.hook.rightImage = null;
-    console.log(`      ⚙ [Hero Hook Sinematik 1080x1920] Menggunakan Sketsa Vektor Dinamis: "${storyData.hook.archetype}"`);
+    storyData.hook.leftImage = 'butterfly/media/schabowski_press.jpg';
+    storyData.hook.rightImage = 'butterfly/media/schabowski_press.jpg';
+    console.log(`      ✓ [Hero Hook Sinematik 1080x1920] Menggunakan Foto Arsip Bersejarah: "schabowski_press.jpg"`);
   }
 
   let photoCount = 0;
