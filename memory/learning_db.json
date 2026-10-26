@@ -13,6 +13,32 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "berlin-wall-fall-memo-misread-mvowutyg",
+      "title": "RUNTUHNYA TEMBOK BERLIN KARENA SALAH BACA MEMO",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "Berlin, 9 November 1989: a single handwritten note slipped onto Günter Schabowski’s desk during the press conference, and within hours the wall began to crumble.",
+      "scenes": [
+        "Draft Dokumen Rahasia Kuno",
+        "Penyelundupan Memo ke Meja Schabowski",
+        "Konferensi Pers Internasional Dimulai",
+        "Pertanyaan Kritis Riccardo Ehrman",
+        "Schabowski Membaca Klausul Dokumen",
+        "Ucapan Fatal 'Sofort'",
+        "Teletype Mengirimkan Flash News",
+        "Siaran Berita Tagesschau",
+        "Warga Berhamburan ke Jalan",
+        "Ketegangan di Checkpoint Charlie",
+        "Komandan Jäger Menerima Telepon",
+        "Massa Menuntut Paspor Dicap",
+        "Kebuntuan Perintah Atasan",
+        "Keputusan Bersejarah Harald Jäger",
+        "Palang Gerbang Diangkat",
+        "Pelukan Erat di Sisi Barat",
+        "Palu dan Pahat Menghantam Tembok"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "berlin-wall-fall-memo-1989-refined-mvouotah",
       "title": "MEMO SALAH, TEBOK RUNTUH",
       "hookStyle": "fullscreen-dramatic",
@@ -120,23 +146,6 @@
         "soviet-collapse"
       ],
       "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
-    },
-    {
-      "id": "berlin-wall-memo-butterfly-effect-mvnxkxic",
-      "title": "SATU LEMBAR MEMO MERUNTUHKAN DUNIA",
-      "hookStyle": "fullscreen-dramatic",
-      "hookNarration": "9 November 1989. Pria ini salah membaca satu lembar catatan di siaran langsung TV... dan malam itu juga, negara adidaya tamat.",
-      "scenes": [
-        "memo-investigation",
-        "press-podium",
-        "press-question",
-        "memo-handoff",
-        "breaking-news",
-        "panic-phone",
-        "gate-breach",
-        "wall-demolition"
-      ],
-      "why_successful": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ],
   "blacklisted_patterns": [
@@ -207,6 +216,13 @@
       "title": "MEMO SALAH, TEBOK RUNTUH",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "berlin-wall-fall-memo-misread-mvowutyg",
+      "timestamp": "2026-10-26T07:05:40.624Z",
+      "title": "RUNTUHNYA TEMBOK BERLIN KARENA SALAH BACA MEMO",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ]
 }
