@@ -83,55 +83,17 @@ export const HookScene: React.FC<HookSceneProps> = ({
                 filter: 'contrast(1.18) brightness(0.72) saturate(0.9)',
               }}
             />
-          ) : archetype ? (
-            // Fullscreen Animated Forensic Vector Archetype for Hook
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                opacity: 0.9,
-                filter: 'contrast(1.15) brightness(0.8)',
-              }}
-            >
-              <DirectorGraphicScene
-                type={archetype}
-                title={headline}
-                subtitle=""
-                locationTag={kicker || 'DOKUMENTER SEJARAH'}
-                durationFrames={durationFrames}
-                primaryText={leftPrimaryText || leftTitle}
-                stampText={leftStampText || 'BUKTI AWAL'}
-                accentColor="#FFE600"
-              />
-            </div>
           ) : (
-            // Fullscreen Archival Forensic Radar Command Center (when no archetype)
-            <div
+            // Fullscreen High-Resolution Cinematic Historical Photography for Hook
+            <Img
+              src={staticFile('butterfly/media/test_cinematic_schabowski.jpg')}
               style={{
-                position: 'absolute',
-                inset: 0,
-                backgroundColor: '#080d16',
-                backgroundImage:
-                  'radial-gradient(circle at 50% 40%, rgba(30, 58, 138, 0.35) 0%, #030712 100%)',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                filter: 'contrast(1.18) brightness(0.72) saturate(0.9)',
               }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  opacity: 0.15,
-                  backgroundImage:
-                    'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
-                  backgroundSize: '50px 50px',
-                }}
-              />
-              <svg width="100%" height="100%" style={{ position: 'absolute', inset: 0, opacity: 0.3 }}>
-                <circle cx="540" cy="850" r="320" fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="8 8" />
-                <circle cx="540" cy="850" r="180" fill="none" stroke="#FFE600" strokeWidth="2" opacity="0.4" />
-                <line x1="100" y1="850" x2="980" y2="850" stroke="#38bdf8" strokeWidth="1" strokeDasharray="4 4" />
-                <line x1="540" y1="400" x2="540" y2="1300" stroke="#38bdf8" strokeWidth="1" strokeDasharray="4 4" />
-              </svg>
-            </div>
+            />
           )}
         </div>
 

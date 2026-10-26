@@ -86,6 +86,35 @@ const SKETCH_FOLEY_SFX: Record<
   'soviet-collapse': { sfx: 'butterfly/sfx/alarm_siren.wav', volume: 0.20, offsetFrames: 12, durationFrames: 36, repeatIntervalFrames: 42, maxRepeats: 3 },
 };
 
+const ARCHIVAL_FALLBACK_POOL = [
+  'butterfly/media/schabowski_press.jpg',
+  'butterfly/media/test_cinematic_schabowski.jpg',
+  'butterfly/media/memo_document.jpg',
+  'butterfly/media/checkpoint_bornholmer.jpg',
+  'butterfly/media/checkpoint_gate.jpg',
+  'butterfly/media/crowd_brandenburg.jpg',
+  'butterfly/media/berlin_wall_demolition.jpg',
+  'butterfly/media/berlin_wall_fall.jpg',
+  'butterfly/media/brandenburg_night.jpg',
+  'butterfly/media/press_room.jpg',
+  'butterfly/media/schabowski_flustered.jpg',
+  'butterfly/media/berlin_crowd.jpg',
+];
+
+function resolvePhotoUrl(mediaUrl?: string, step: number = 1): string {
+  if (
+    mediaUrl &&
+    (mediaUrl.endsWith('.jpg') ||
+      mediaUrl.endsWith('.png') ||
+      mediaUrl.endsWith('.jpeg') ||
+      mediaUrl.endsWith('.webp') ||
+      mediaUrl.includes('/'))
+  ) {
+    return mediaUrl;
+  }
+  return ARCHIVAL_FALLBACK_POOL[(step - 1) % ARCHIVAL_FALLBACK_POOL.length];
+}
+
 export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT_STORY }) => {
   const frame = useCurrentFrame();
 
@@ -153,33 +182,13 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
           />
         </Sequence>
 
-        {/* 2. Dynamic Director-Orchestrated Scenes */}
+        {/* 2. 100% Cinematic Photographic Documentary Scenes (Strictly Zero 2D SVG Cartoons) */}
         {data.nodes.map((node) => {
-          if (node.mediaType === 'graphic' && node.directorType) {
-            return (
-              <Sequence key={node.step} from={node.startFrame} durationInFrames={node.durationFrames}>
-                <DirectorGraphicScene
-                  type={node.directorType}
-                  title={node.headline}
-                  subtitle={node.caption}
-                  locationTag={node.timeOrYear}
-                  durationFrames={node.durationFrames}
-                  primaryText={node.primaryText}
-                  secondaryText={node.secondaryText}
-                  stampText={node.stampText}
-                  quoteText={node.quoteText}
-                  metricLabel={node.metricLabel}
-                  metricValue={node.metricValue}
-                  accentColor={node.accentColor}
-                />
-              </Sequence>
-            );
-          }
-
+          const finalPhotoUrl = resolvePhotoUrl(node.mediaUrl, node.step);
           return (
             <Sequence key={node.step} from={node.startFrame} durationInFrames={node.durationFrames}>
               <DocumentaryScene
-                mediaUrl={node.mediaUrl}
+                mediaUrl={finalPhotoUrl}
                 locationTag={node.timeOrYear}
                 headline={node.headline}
                 zoomDirection={
@@ -190,7 +199,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
                 mood={data.editorialStyle?.mood}
                 visualSourceTag={
                   node.visualSource ||
-                  (node.mediaUrl?.includes('commons') || node.mediaUrl?.includes('wiki')
+                  (finalPhotoUrl.includes('commons') || finalPhotoUrl.includes('wiki') || finalPhotoUrl.includes('berlin_') || finalPhotoUrl.includes('checkpoint_')
                     ? 'ARSIP SEJARAH'
                     : 'REKA ADEGAN')
                 }
