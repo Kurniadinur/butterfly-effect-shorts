@@ -50,7 +50,7 @@ export const CREATIVE_PERSPECTIVES = [
     name: '🌟 MASTER MULTI-PERSPEKTIF SINEMATIK LENGKAP (GABUNGAN SEMUA SUDUT PANDANG)',
     angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER UTUH, LENGKAP & DETAIL BERDURASI 2 - 2.8 MENIT (MAKSIMAL 3 MENIT): ' +
       'JANGAN PERNAH MEMOTONG ATAU MEMISAHKAN SUDUT PANDANG! Peristiwa sejarah adalah satu rantai domino yang tak terpisahkan: satukan sudut pandang pembuat kebijakan/pejabat, saksi mata/wartawan, petugas lapangan di garis depan, hingga reaksi histeris massa publik! ' +
-      'WAJIB MEMBUAT 10 HINGGA 14 ADEGAN BERBEDA DALAM ARRAY "nodes"! DILARANG KERAS MEMPERSINGKAT ATAU MEMBUANG DETAIL PENTING! ' +
+      'BEBAS TANPA BATASAN KAKU: Buat sebanyak mungkin adegan granular (MINIMAL 14 HINGGA 25+ ADEGAN DALAM ARRAY "nodes") agar visual berganti cepat dan dinamis tiap 3–5 detik, tanpa ada satu pun detail sejarah krusial yang terlewat! DILARANG KERAS MEMPERSINGKAT ATAU MEMBUANG FAKTA PENTING! ' +
       'Rancang alur secara detail & kronologis: ' +
       '• Fase 1: Ruang Rapat & Podium (Blunder memo rahasia, klausul yang terlewat, pertanyaan wartawan Italia Riccardo Ehrman, jawaban fatal Schabowski). ' +
       '• Fase 2: Gelombang Kejut Media (Siaran darurat TV, kabar burung menyebar ke seluruh penjuru kota, ribuan warga keluar ke jalanan). ' +
@@ -411,11 +411,11 @@ async function generateStoryboardWithGroq(topic, dynamicPrompt) {
 
 // Guaranteed High Visual Density Guard (Anti-Short Story Safety Gate)
 async function ensureHighVisualDensity(storyData, topic) {
-  if (Array.isArray(storyData.nodes) && storyData.nodes.length >= 8) {
+  if (Array.isArray(storyData.nodes) && storyData.nodes.length >= 14) {
     return storyData;
   }
 
-  console.log(`      ⚠️ [Densitas Guard] Naskah awal memiliki ${storyData.nodes?.length || 0} adegan (kurang dari target 8-14 adegan).`);
+  console.log(`      ⚠️ [Densitas Guard] Naskah awal memiliki ${storyData.nodes?.length || 0} adegan (kurang dari target minimal 14 adegan).`);
   console.log(`      🚀 [AI Multi-Sketch Expander] Membedah setiap babak menjadi sub-sketsa aksi detail agar video kaya & berdurasi ideal...`);
 
   const expandPrompt = `Kamu adalah Sutradara Film AI Senior.
@@ -427,7 +427,7 @@ ${JSON.stringify(storyData.nodes, null, 2)}
 Outro: "${storyData.outro?.narration || ''}"
 
 TUGAS MUTLAK:
-Pecah dan kembangkan alur di atas menjadi MINIMAL 10 HINGGA 14 ADEGAN VISUAL GRANULAR ('nodes')!
+Pecah dan kembangkan alur di atas menjadi MINIMAL 14 HINGGA 25+ ADEGAN VISUAL GRANULAR ('nodes')!
 DILARANG MERINGKAS ATAU MENGURANGI!
 Setiap adegan harus fokus pada 1 aksi/objek spesifik (durasi 3-5 detik, 12-20 kata narasi per node) dengan pilihan 'directorType' yang tepat.
 WAJIB MEMBEBERKAN BUKTI HISTORIS KONKRET (ANTI-MEMBINGUNGKAN PENONTON):
