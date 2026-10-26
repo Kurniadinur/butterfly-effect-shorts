@@ -196,12 +196,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
                 }
                 durationFrames={node.durationFrames}
                 mood={data.editorialStyle?.mood}
-                visualSourceTag={
-                  node.visualSource ||
-                  (finalPhotoUrl.includes('commons') || finalPhotoUrl.includes('wiki') || finalPhotoUrl.includes('berlin_') || finalPhotoUrl.includes('checkpoint_')
-                    ? 'ARSIP SEJARAH'
-                    : 'REKA ADEGAN')
-                }
+                visualSourceTag={node.visualSource || 'REKA ADEGAN'}
               />
             </Sequence>
           );

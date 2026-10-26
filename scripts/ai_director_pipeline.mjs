@@ -782,6 +782,7 @@ async function generateStoryboard(topic) {
       if (res.success) {
         isPhotoDownloaded = true;
         node.mediaType = 'photo';
+        node.visualSource = 'REKA ADEGAN';
         node.mediaUrl = `butterfly/media/${storySlug}/node_${node.step}.jpg`;
         usedPhotos.add(node.mediaUrl);
         photoCount++;
@@ -806,6 +807,7 @@ async function generateStoryboard(topic) {
         'butterfly/media/berlin_crowd.jpg',
       ];
       node.mediaType = 'photo';
+      node.visualSource = 'REKA ADEGAN';
       node.mediaUrl = FALLBACK_ARCHIVE_PHOTOS[i % FALLBACK_ARCHIVE_PHOTOS.length];
       photoCount++;
       console.log(`      ✓ [Visual Sinematik Adegan ${node.step}] Foto arsip/reka adegan: "${node.mediaUrl}"`);
