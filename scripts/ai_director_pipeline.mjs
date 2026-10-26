@@ -47,15 +47,17 @@ console.log('================================================================\n'
 // -----------------------------------------------------------------------------
 export const CREATIVE_PERSPECTIVES = [
   {
-    name: '🌟 MASTER MULTI-PERSPEKTIF (GABUNGAN SEMUA SUDUT PANDANG)',
-    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER LENGKAP BERDURASI 1.5 - 2.5 MENIT (DI BAWAH 3 MENIT): ' +
-      'WAJIB MEMBUAT MINIMAL 10 HINGGA 14 ADEGAN SKETSA BERBEDA DALAM ARRAY "nodes"! DILARANG KERAS MERINGKAS HANYA JADI 4 ADEGAN! ' +
-      'Bagi alur secara granular menjadi 4 fase, di mana SETIAP FASE MEMILIKI 3 SKETSA AKSI DETAIL: ' +
-      '• Fase 1: Blunder Sepele (3 adegan: dokumen tercecer, perwira terburu-buru, instruksi keliru). ' +
-      '• Fase 2: Ketegangan Garis Depan (3 adegan: pos jaga terisolasi, telepon darurat panik, sirine/alarm bahaya). ' +
-      '• Fase 3: Rantai Efek Domino (3 adegan: desas-desus media menyebar, massa membludak, gerbang perbatasan jebol). ' +
-      '• Fase 4: Bencana Puncak & Sidang Sejarah (3 adegan: runtuhnya sistem total, reaksi kaget dunia, vonis akhir). ' +
-      'Total narasi 200 - 320 kata agar video berdurasi 90 - 150 detik dengan pergantian visual dinamis tiap 4-6 detik!',
+    name: '🌟 MASTER MULTI-PERSPEKTIF SINEMATIK LENGKAP (GABUNGAN SEMUA SUDUT PANDANG)',
+    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER UTUH, LENGKAP & DETAIL BERDURASI 2 - 2.8 MENIT (MAKSIMAL 3 MENIT): ' +
+      'JANGAN PERNAH MEMOTONG ATAU MEMISAHKAN SUDUT PANDANG! Peristiwa sejarah adalah satu rantai domino yang tak terpisahkan: satukan sudut pandang pembuat kebijakan/pejabat, saksi mata/wartawan, petugas lapangan di garis depan, hingga reaksi histeris massa publik! ' +
+      'WAJIB MEMBUAT 10 HINGGA 14 ADEGAN BERBEDA DALAM ARRAY "nodes"! DILARANG KERAS MEMPERSINGKAT ATAU MEMBUANG DETAIL PENTING! ' +
+      'Rancang alur secara detail & kronologis: ' +
+      '• Fase 1: Ruang Rapat & Podium (Blunder memo rahasia, klausul yang terlewat, pertanyaan wartawan Italia Riccardo Ehrman, jawaban fatal Schabowski). ' +
+      '• Fase 2: Gelombang Kejut Media (Siaran darurat TV, kabar burung menyebar ke seluruh penjuru kota, ribuan warga keluar ke jalanan). ' +
+      '• Fase 3: Titik Kritis Garis Depan (Komandan jaga Harald Jäger di pos perbatasan Bornholmer Straße, telepon darurat panik ke markas yang diabaikan). ' +
+      '• Fase 4: Keputusan Berani Melawan Perintah (Gerbang perbatasan dibuka demi mencegah pertumpahan darah, massa tumpah ruah menangis bahagia). ' +
+      '• Fase 5: Dampak Monumental Sejarah (Warga memahat tembok dengan palu godam, robohnya Tirai Besi, dan runtuhnya Uni Soviet). ' +
+      'Total narasi 240 - 360 kata agar video berdurasi 120 - 170 detik (2 hingga 2.8 menit) dengan pergantian visual foto sinematik yang dinamis tiap 4-6 detik!',
   },
   {
     name: 'BLUNDER SEPELE & KELALAIAN MANUSIAWI',
@@ -489,11 +491,11 @@ async function generateStoryboard(topic) {
   console.log('[1/4] Sutradara AI sedang merancang alur cerita & kurasi visual unik...');
   console.log('      (Menganalisa topik & menyusun 8-15 adegan berantai...)');
 
-  // Perspective selection (explicit or random for high variance)
+  // Default to Master Multi-Perspective (Comprehensive & Full Detail)
   const explicitPerspectiveIdx = process.argv[3] !== undefined && !isNaN(Number(process.argv[3])) ? Number(process.argv[3]) : null;
   const selectedPerspective = explicitPerspectiveIdx !== null && CREATIVE_PERSPECTIVES[explicitPerspectiveIdx]
     ? CREATIVE_PERSPECTIVES[explicitPerspectiveIdx]
-    : CREATIVE_PERSPECTIVES[Math.floor(Math.random() * CREATIVE_PERSPECTIVES.length)];
+    : CREATIVE_PERSPECTIVES[0];
   const sessionSalt = Date.now().toString(36);
   console.log(`      ✓ Sudut Pandang Kreatif: ${selectedPerspective.name}`);
   console.log(`      ✓ Arahan Sutradara: "${selectedPerspective.angle}"`);
