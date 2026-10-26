@@ -13,6 +13,32 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "butterfly-effect-berlin-wall-1989-mvoqz1ov",
+      "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "9 November 1989. Seorang pejabat tinggi Jerman Timur salah membaca secarik catatan di siaran langsung televisi... dan malam itu juga, negara adidaya tamat.",
+      "scenes": [
+        "bureaucracy-draft",
+        "memo-investigation",
+        "document-close",
+        "press-question",
+        "press-podium",
+        "tv-broadcast",
+        "breaking-news",
+        "car-convoy",
+        "crowd-protest",
+        "panic-phone",
+        "crowd-pressure",
+        "guard-meeting",
+        "gate-breach",
+        "emotional-reunion",
+        "wall-demolition",
+        "sunrise-wall",
+        "soviet-collapse"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 92/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "dust-mite-empire-collapse-mvonbya2",
       "title": "KUTU DEBU YANG MENGHANCURKAN KEKAISARAN",
       "hookStyle": "forensic-dossier",
@@ -98,20 +124,6 @@
         "soviet-collapse"
       ],
       "why_successful": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
-    },
-    {
-      "id": "runtuh-tembok-berlin-memo-2024-mvm7w4tc",
-      "title": "RUNTUHNYA TEMBOK BERLIN: MEMO YANG SALAH DIBACA",
-      "hookStyle": "fullscreen-dramatic",
-      "hookNarration": "Satu lembar memo berdebu di ruang konferensi itu mengubah peta politik dunia dalam hitungan menit.",
-      "scenes": [
-        "memo-investigation",
-        "press-podium",
-        "breaking-news",
-        "gate-breach",
-        "wall-demolition"
-      ],
-      "why_successful": "Suka banget dengan sketsa memo-investigation dan foto Bundesarchiv Schabowski!"
     }
   ],
   "blacklisted_patterns": [
@@ -161,6 +173,13 @@
       "id": "dust-mite-empire-collapse-mvonbya2",
       "timestamp": "2026-10-26T02:40:02.940Z",
       "title": "KUTU DEBU YANG MENGHANCURKAN KEKAISARAN",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 92/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "butterfly-effect-berlin-wall-1989-mvoqz1ov",
+      "timestamp": "2026-10-26T04:22:46.069Z",
+      "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 92/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
