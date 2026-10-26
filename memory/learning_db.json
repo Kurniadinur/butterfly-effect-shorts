@@ -13,6 +13,25 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "dust-mite-empire-collapse-mvonbya2",
+      "title": "KUTU DEBU YANG MENGHANCURKAN KEKAISARAN",
+      "hookStyle": "forensic-dossier",
+      "hookNarration": "12 Agustus 1914. Seekor tungau debu mikroskopis di kasur pos komandan memicu reaksi alergi fatal... dan dalam beberapa jam, strategi perang benua Eropa lumpuh total.",
+      "scenes": [
+        "laboratory-discovery",
+        "forensic-dossier",
+        "bureaucracy-draft",
+        "panic-phone",
+        "breaking-news",
+        "tactical-map",
+        "crowd-protest",
+        "gate-breach",
+        "wall-demolition",
+        "courtroom-gavel"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 92/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "berlin-wall-memo-butterfly-effect-mvnysj5h",
       "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
       "hookStyle": "fullscreen-dramatic",
@@ -93,20 +112,6 @@
         "wall-demolition"
       ],
       "why_successful": "Suka banget dengan sketsa memo-investigation dan foto Bundesarchiv Schabowski!"
-    },
-    {
-      "id": "ww1-driver-wrong-turn-sarajevo",
-      "title": "PERANG DUNIA 1: SALAH BELOK GANG BUNTU 30 DETIK",
-      "hookStyle": "fullscreen-dramatic",
-      "hookNarration": "28 Juni 1914. Sopir ini hanya salah belok di satu gang kecil... dan karena mobilnya mogok 30 detik, 20 juta manusia tewas.",
-      "scenes": [
-        "clock-countdown",
-        "car-route",
-        "panic-phone",
-        "tactical-map",
-        "domino-collapse"
-      ],
-      "why_successful": "Benchmark YouTube 18M+ views: Kontras ekstrem detik mikro vs korban 20 juta jiwa dengan visual rute peta mobil dan efek domino."
     }
   ],
   "blacklisted_patterns": [
@@ -151,6 +156,13 @@
       "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "dust-mite-empire-collapse-mvonbya2",
+      "timestamp": "2026-10-26T02:40:02.940Z",
+      "title": "KUTU DEBU YANG MENGHANCURKAN KEKAISARAN",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 92/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ]
 }
