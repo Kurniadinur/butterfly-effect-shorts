@@ -9,6 +9,7 @@ interface DocumentarySceneProps {
   zoomDirection?: ZoomDirection;
   durationFrames: number;
   mood?: string;
+  visualSourceTag?: string;
 }
 
 export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
@@ -18,6 +19,7 @@ export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
   zoomDirection = 'in',
   durationFrames,
   mood = 'cold-war-crisis',
+  visualSourceTag = 'REKA ADEGAN',
 }) => {
   const frame = useCurrentFrame();
 
@@ -207,6 +209,48 @@ export const DocumentaryScene: React.FC<DocumentarySceneProps> = ({
           )}
         </div>
       )}
+
+      {/* 7. Journalistic / Ethical Disclaimer Tag (Reka Adegan / Arsip Sejarah) */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '80px',
+          right: '50px',
+          zIndex: 30,
+          opacity: labelOpacity,
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          backgroundColor: 'rgba(5, 7, 10, 0.82)',
+          padding: '6px 14px',
+          borderRadius: '4px',
+          border: '1px solid rgba(255, 255, 255, 0.14)',
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 4px 16px rgba(0, 0, 0, 0.6)',
+        }}
+      >
+        <span
+          style={{
+            width: '6px',
+            height: '6px',
+            borderRadius: '50%',
+            backgroundColor: visualSourceTag === 'ARSIP SEJARAH' ? '#38bdf8' : '#f59e0b',
+            boxShadow: visualSourceTag === 'ARSIP SEJARAH' ? '0 0 8px #38bdf8' : '0 0 8px #f59e0b',
+          }}
+        />
+        <span
+          style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: '12px',
+            fontWeight: 700,
+            color: '#e2e8f0',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+          }}
+        >
+          {visualSourceTag}
+        </span>
+      </div>
     </div>
   );
 };

@@ -188,6 +188,12 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
                 }
                 durationFrames={node.durationFrames}
                 mood={data.editorialStyle?.mood}
+                visualSourceTag={
+                  node.visualSource ||
+                  (node.mediaUrl?.includes('commons') || node.mediaUrl?.includes('wiki')
+                    ? 'ARSIP SEJARAH'
+                    : 'REKA ADEGAN')
+                }
               />
             </Sequence>
           );

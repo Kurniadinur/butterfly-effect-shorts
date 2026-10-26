@@ -71,6 +71,7 @@ export interface ButterflyNode {
   metricValue?: string | null;
   accentColor?: string | null;
   caption: string;
+  visualSource?: 'REKA ADEGAN' | 'ARSIP SEJARAH' | 'ILUSTRASI' | string;
   sfxTrigger?: string | null;
   soundEffect?: any;
   startFrame: number;
