@@ -87,11 +87,9 @@ Tugasmu adalah menciptakan naskah dan alur visual "Butterfly Effect" (efek domin
 
 PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!):
 1. GAYA VISUAL HOOK PEMBUKA (BEBAS DARI TEMPLATE KAKU):
-   - Kamu (AI Sutradara) WAJIB memilih salah satu dari 4 gaya Hook pembuka ('hookStyle') yang paling dramatis untuk topik ini:
-     * "fullscreen-dramatic" : Tampilan layar penuh sinematik (1080x1920) dengan arsip bersejarah otentik atau grafik komando resolusi tinggi, headline editorial raksasa di atas, dan atmosfer dokumenter modern (Vox / Johnny Harris). BUKAN split-screen kaku!
-     * "forensic-dossier"    : Tampilan berkas investigasi deklasifikasi meja gelap, stempel merah rahasia beranimasi, laser scanner, dan dokumen kasus fatal.
-     * "breaking-transmission": Tampilan monitor TV vintage siaran darurat breaking news dengan scanlines analog, glitch siaran mendadak, dan banner peringatan merah.
-     * "split-contrast"      : Tampilan perbandingan kontras dunia mikro vs makro (hanya gunakan jika kamu memang ingin membandingkan dua kutub secara spesifik).
+   - Gunakan gaya Hook pembuka sinematik ("fullscreen-dramatic" sebagai standar utama):
+     * "fullscreen-dramatic" : Tampilan layar penuh sinematik (1080x1920) dengan foto arsip otentik / reka adegan beresolusi tinggi, headline editorial raksasa di atas, dan atmosfer dokumenter modern (Vox / Johnny Harris). BUKAN kartun / bukan split-screen kaku!
+     * "breaking-transmission": Tampilan monitor TV siaran darurat breaking news dengan scanlines analog halus.
    - Tentukan 'kicker' (badge editorial pendek, misal: "9 NOVEMBER 1989", "SIARAN TV LANGSUNG", "KESALAHAN FATAL").
    - Tentukan 'headline' (judul pancingan besar 3-5 kata, misal: "SATU MEMO MEROBOHKAN TEMBOK", "KUNCI LOKER YANG DILUPAKAN").
 
@@ -216,7 +214,7 @@ FORMAT JSON WAJIB:
     "shakeThresholdChaos": 65
   },
   "hook": {
-    "hookStyle": "fullscreen-dramatic ATAU forensic-dossier ATAU breaking-transmission ATAU split-contrast",
+    "hookStyle": "fullscreen-dramatic",
     "kicker": "BADGE SINGKAT EDITORIAL (misal: '14 APRIL 1912', 'KESALAHAN FATAL')",
     "headline": "JUDUL PANCINGAN BESAR (misal: 'KUNCI LOKER YANG MENENGGELAMKAN TITANIC')",
     "narration": "Kalimat pembuka menggigit, detail, dan mencekam (20-30 kata) tanpa kalimat klise...",
@@ -741,9 +739,9 @@ async function generateStoryboard(topic) {
     storyData.hook.leftImage = `butterfly/media/${storySlug}/hero_hook.jpg`;
     console.log(`      ✓ [Hero Hook Arsip Otentik] Berhasil dikurasi: "${hookRes.title}" (${hookRes.source})`);
   } else {
-    storyData.hook.leftImage = 'butterfly/media/schabowski_press.jpg';
-    storyData.hook.rightImage = 'butterfly/media/schabowski_press.jpg';
-    console.log(`      ✓ [Hero Hook Sinematik 1080x1920] Menggunakan Foto Arsip Bersejarah: "schabowski_press.jpg"`);
+    storyData.hook.leftImage = `butterfly/media/${storySlug}/node_1.jpg`;
+    storyData.hook.rightImage = `butterfly/media/${storySlug}/node_1.jpg`;
+    console.log(`      ✓ [Hero Hook Sinematik 1080x1920] Menyelaraskan dengan Visual Adegan Pembuka`);
   }
 
   let photoCount = 0;
@@ -791,26 +789,16 @@ async function generateStoryboard(topic) {
     }
 
     if (!isPhotoDownloaded) {
-      // 100% Guaranteed High-Resolution Photographic Canvas (Zero 2D SVG Cartoons)
-      const FALLBACK_ARCHIVE_PHOTOS = [
-        'butterfly/media/schabowski_press.jpg',
-        'butterfly/media/test_cinematic_schabowski.jpg',
-        'butterfly/media/memo_document.jpg',
-        'butterfly/media/checkpoint_bornholmer.jpg',
-        'butterfly/media/checkpoint_gate.jpg',
-        'butterfly/media/crowd_brandenburg.jpg',
-        'butterfly/media/berlin_wall_demolition.jpg',
-        'butterfly/media/berlin_wall_fall.jpg',
-        'butterfly/media/brandenburg_night.jpg',
-        'butterfly/media/press_room.jpg',
-        'butterfly/media/schabowski_flustered.jpg',
-        'butterfly/media/berlin_crowd.jpg',
-      ];
       node.mediaType = 'photo';
       node.visualSource = 'REKA ADEGAN';
-      node.mediaUrl = FALLBACK_ARCHIVE_PHOTOS[i % FALLBACK_ARCHIVE_PHOTOS.length];
+      if (usedPhotos.size > 0) {
+        const photoArr = Array.from(usedPhotos);
+        node.mediaUrl = photoArr[i % photoArr.length];
+      } else {
+        node.mediaUrl = 'butterfly/media/brandenburg_night.jpg';
+      }
       photoCount++;
-      console.log(`      ✓ [Visual Sinematik Adegan ${node.step}] Foto arsip/reka adegan: "${node.mediaUrl}"`);
+      console.log(`      ✓ [Visual Sinematik Adegan ${node.step}] Reka visual tematik: "${node.mediaUrl}"`);
     }
 
     if (!node.zoomDirection) {

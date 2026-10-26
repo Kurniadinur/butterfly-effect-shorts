@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCurrentFrame } from 'remotion';
+import { useCurrentFrame, random } from 'remotion';
 
 interface CinematicOpticsProps {
   intensity?: 'subtle' | 'standard' | 'heavy';
@@ -27,7 +27,7 @@ export const CinematicOptics: React.FC<CinematicOpticsProps> = ({ intensity = 's
     (Math.cos(frame * 0.35) * 0.4 + Math.sin(frame * 0.95) * 0.2) * mult;
 
   // 2. Optical Shutter Exposure Pulse (1/48s cinema exposure fluctuation: ~1.5% micro-luma flutter)
-  const shutterPulse = 1.0 + (Math.sin(frame * 0.73) * 0.012 + (Math.random() * 0.008 - 0.004)) * mult;
+  const shutterPulse = 1.0 + (Math.sin(frame * 0.73) * 0.012 + (random(frame) * 0.008 - 0.004)) * mult;
 
   // 3. Floating archival dust motes (3 slow-drifting microscopic flecks)
   const dust1Y = (frame * 1.2) % 1920;

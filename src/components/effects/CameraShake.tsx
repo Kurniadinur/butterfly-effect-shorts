@@ -6,7 +6,7 @@ interface CameraShakeProps {
   cutFrames: number[];
   currentChaosLevel: number;
   shakeThresholdChaos?: number;
-  sensitivity?: 'subtle' | 'moderate' | 'dramatic';
+  sensitivity?: 'subtle' | 'moderate' | 'dramatic' | 'high' | string;
 }
 
 /**
@@ -27,7 +27,7 @@ export const CameraShake: React.FC<CameraShakeProps> = ({
 
   // Multiplier based on sensitivity setting
   const sensitivityMultiplier =
-    sensitivity === 'subtle' ? 0.65 : sensitivity === 'dramatic' ? 1.3 : 1.0;
+    sensitivity === 'subtle' ? 0.65 : (sensitivity === 'dramatic' || sensitivity === 'high') ? 1.3 : 1.0;
 
   // 1. Scene Cut Recoil Calculation (First 4 frames after a cut)
   let cutRecoilX = 0;

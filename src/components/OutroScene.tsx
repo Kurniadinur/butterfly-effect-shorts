@@ -66,7 +66,7 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
             letterSpacing: '-0.3px',
           }}
         >
-          Cuma gara-gara salah satu kata.
+          Satu Keputusan Sepele Mengubah Semuanya
         </h3>
 
         <h2

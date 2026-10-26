@@ -83,14 +83,14 @@ export const HookScene: React.FC<HookSceneProps> = ({
               }}
             />
           ) : (
-            // Fullscreen High-Resolution Cinematic Historical Photography for Hook
+            // Fullscreen High-Resolution Cinematic Ambient Background
             <Img
-              src={staticFile('butterfly/media/test_cinematic_schabowski.jpg')}
+              src={staticFile('butterfly/media/brandenburg_night.jpg')}
               style={{
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                filter: 'contrast(1.18) brightness(0.72) saturate(0.9)',
+                filter: 'contrast(1.18) brightness(0.65) saturate(0.8)',
               }}
             />
           )}

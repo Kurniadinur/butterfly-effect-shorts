@@ -100,7 +100,7 @@ const ARCHIVAL_FALLBACK_POOL = [
   'butterfly/media/berlin_crowd.jpg',
 ];
 
-function resolvePhotoUrl(mediaUrl?: string, step: number = 1): string {
+function resolvePhotoUrl(mediaUrl?: string, step: number = 1, storyMediaUrls: string[] = []): string {
   if (
     mediaUrl &&
     (mediaUrl.endsWith('.jpg') ||
@@ -110,6 +110,9 @@ function resolvePhotoUrl(mediaUrl?: string, step: number = 1): string {
       mediaUrl.includes('/'))
   ) {
     return mediaUrl;
+  }
+  if (storyMediaUrls.length > 0) {
+    return storyMediaUrls[(step - 1) % storyMediaUrls.length];
   }
   return ARCHIVAL_FALLBACK_POOL[(step - 1) % ARCHIVAL_FALLBACK_POOL.length];
 }
@@ -130,6 +133,19 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
       cuts.push(outroStart);
     }
     return cuts;
+  }, [data]);
+
+  // Extract all valid image URLs belonging strictly to this current story
+  const validStoryPhotos = useMemo(() => {
+    const list: string[] = [];
+    if (data.hook?.rightImage && data.hook.rightImage.includes('.')) list.push(data.hook.rightImage);
+    if (data.hook?.leftImage && data.hook.leftImage.includes('.')) list.push(data.hook.leftImage);
+    data.nodes?.forEach((n) => {
+      if (n.mediaUrl && n.mediaUrl.includes('.') && n.mediaUrl.includes('/')) {
+        list.push(n.mediaUrl);
+      }
+    });
+    return Array.from(new Set(list));
   }, [data]);
 
   // Determine active chaos level for data-driven camera micro-shake
@@ -175,15 +191,15 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
             rightBadge={data.hook.rightBadge}
             leftPrimaryText={data.hook.leftPrimaryText}
             leftStampText={data.hook.leftStampText}
-            leftImage={data.hook.leftImage}
-            rightImage={data.hook.rightImage}
+            leftImage={data.hook.leftImage || data.nodes?.[0]?.mediaUrl}
+            rightImage={data.hook.rightImage || data.nodes?.[0]?.mediaUrl}
             durationFrames={data.hook.durationFrames}
           />
         </Sequence>
 
         {/* 2. 100% Cinematic Photographic Documentary Scenes (Strictly Zero 2D SVG Cartoons) */}
         {data.nodes.map((node) => {
-          const finalPhotoUrl = resolvePhotoUrl(node.mediaUrl, node.step);
+          const finalPhotoUrl = resolvePhotoUrl(node.mediaUrl, node.step, validStoryPhotos);
           return (
             <Sequence key={node.step} from={node.startFrame} durationInFrames={node.durationFrames}>
               <DocumentaryScene

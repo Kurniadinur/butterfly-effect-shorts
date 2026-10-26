@@ -22,7 +22,7 @@ export const CURRENT_STORY: ButterflyStoryData = {
     "leftBadge": "Kesalahan Fatal",
     "rightBadge": "Revolusi Global",
     "leftPrimaryText": "Dokumen Rahasia",
-    "leftStampText": "Tambahkan efek border tipis pada timestamp agar lebih kontras",
+    "leftStampText": "DEKLASIFIKASI",
     "leftSearchQuery": "Günter Schabowski memo 1989 original document",
     "rightSearchQuery": "Berlin Wall fall 1989 crowd crossing",
     "archetype": "documentary-wide",

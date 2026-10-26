@@ -169,7 +169,8 @@ export function autoHealStoryboard(storyData, repairs, sceneLabel, nodeIndex = -
       storyData.hook.headline = repairs.shorten_headline;
       healed = true;
     }
-    if (repairs.polish_stamp && repairs.polish_stamp !== storyData.hook.leftStampText) {
+    const isValidStamp = repairs.polish_stamp && typeof repairs.polish_stamp === 'string' && repairs.polish_stamp.length <= 18 && !repairs.polish_stamp.includes(' ') && !/[.,?!]/.test(repairs.polish_stamp);
+    if (isValidStamp && repairs.polish_stamp !== storyData.hook.leftStampText) {
       console.log(`      🛠️ [AI Editor Auto-Polish] Memperbaiki stempel Hook: "${repairs.polish_stamp}"`);
       storyData.hook.leftStampText = repairs.polish_stamp;
       healed = true;
@@ -190,7 +191,8 @@ export function autoHealStoryboard(storyData, repairs, sceneLabel, nodeIndex = -
       node.primaryText = repairs.polish_primary_text;
       healed = true;
     }
-    if (repairs.polish_stamp) {
+    const isNodeValidStamp = repairs.polish_stamp && typeof repairs.polish_stamp === 'string' && repairs.polish_stamp.length <= 18 && !repairs.polish_stamp.includes(' ') && !/[.,?!]/.test(repairs.polish_stamp);
+    if (isNodeValidStamp) {
       node.stampText = repairs.polish_stamp;
       healed = true;
     }

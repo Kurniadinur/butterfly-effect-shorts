@@ -109,7 +109,7 @@ async function searchOpenverseAll(query) {
  * Inspects candidate images found in Wikimedia/Wikipedia and verifies
  * whether any candidate is genuinely an authentic archival portrait or real historical photo.
  * If all candidates are non-authentic (tourist signs, modern selfies, maps, plaques, logos),
- * it rejects them so the scene safely falls back to a 100% accurate vector sketch.
+ * it rejects them so the scene safely falls back to a 100% photographic dramatic reconstruction.
  */
 async function auditAndSelectArchivalCandidate(candidates, query, context = {}) {
   const apiKey = process.env.GROQ_API_KEY;
@@ -149,7 +149,7 @@ ${JSON.stringify(candidateSummaries, null, 2)}
 STRICT CURATION RULES:
 1. SELECT ONLY authentic historical photographs or official portraits of the real person, building, or historical event.
 2. REJECT: Modern street signs, commemorative stamps, book covers, tourist checkpoint signs, logos, maps, or unrelated crowds.
-3. If NONE of the candidates are authentic historical photos matching the scene, return "selectedIndex": -1 to fall back to an animated vector sketch.
+3. If NONE of the candidates are authentic historical photos matching the scene, return "selectedIndex": -1 to fall back to a cinematic dramatic reconstruction photo.
 4. Return pure JSON: { "selectedIndex": number, "isAuthentic": boolean, "reason": "brief explanation" }
 `;
 
@@ -231,7 +231,7 @@ export async function searchAndDownloadImage(query, fallbackQuery, destPath, con
   const candidate = await auditAndSelectArchivalCandidate(allCandidates, query, context);
 
   if (!candidate || !candidate.url) {
-    return { success: false, fallbackToGraphic: true };
+    return { success: false };
   }
 
   try {

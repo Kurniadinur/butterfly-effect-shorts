@@ -1,15 +1,15 @@
 {
   "system_principles": [
-    "Sketsa animasi vektor dinamis (DirectorGraphicScene) adalah fondasi visual utama video (80-100%).",
-    "B-roll foto asli dilarang untuk konsep umum/aksi, HANYA diizinkan jika menampilkan wajah tokoh sejarah nyata (portrait) atau objek sejarah otentik dengan bukti arsip yang terverifikasi.",
+    "100% Foto Sinematik & Reka Adegan Hiper-Realistis (9:16 vertikal) adalah fondasi visual mutlak video. DILARANG KERAS menggunakan sketsa kartun garis murah atau 2D vector.",
+    "Setiap adegan wajib memiliki foto beresolusi tinggi dengan pencahayaan dramatis, 35mm film grain, dan subjek berada di atas zona aman subtitle (y < 1200px).",
     "Aturan 3 Detik Pertama (Stop-The-Scroll): Mulai langsung dengan Pattern Interrupt + Kontras Tajam ([Waktu/Tokoh Spesifik] + [Aksi Mikro Sepele] + [Bencana/Konsekuensi Masif Dunia]).",
     "Teknik Seamless Infinite Loop: Kalimat penutup outro dirancang menyambung kembali ke kata pertama pada kalimat pembuka hook agar retensi melonjak > 100%.",
-    "Visual Shift 2.5 Detik: Setiap 2.0-3.0 detik wajib ada pergantian adegan, guncangan kamera data-driven, atau punch tipografi agar penonton tidak mengalami micro-boredom.",
-    "Desain Audio Berlapis (Tactile Soundscape ala MagnatesMedia/Johnny Harris): Voiceover jernih di depan (1.0), Drone tensi atmosfer di latar (0.14), Shutter click transisi (0.65), dan Sub-bass impact pada klimaks (0.55).",
+    "Visual Shift 2.5 - 4 Detik: Setiap 3 hingga 5 detik wajib ada pergantian adegan foto dinamis agar alur granular dan penonton tidak bosan.",
+    "Desain Audio Berlapis: Voiceover jernih di depan (1.0), Drone tensi atmosfer di latar (0.14), Shutter click transisi (0.65), dan Sub-bass impact pada klimaks (0.55).",
     "Hook pembuka dilarang menggunakan kalimat klise 'Kalian bayangin... dari...', gunakan pembuka dramatis variatif (fakta dingin, misteri, kronologis mendadak).",
-    "Hook pembuka menggunakan format fullscreen-dramatic atau arketipe sketsa vektor, bukan split-screen kaku.",
+    "Hook pembuka menggunakan format fullscreen-dramatic dengan foto sinematik resolusi tinggi 1080x1920.",
     "Akurasi sejarah wajib mutlak: dilarang memasukkan elemen fiksi (seperti katup bocor di Tembok Berlin atau mobil belok di Titanic).",
-    "Prinsip Kausalitas & Sebab-Musabab Detail: Dilarang langsung melompat ke klimaks tanpa menjabarkan rantai sebab-musabab yang runtut. Penonton harus paham detail awal mengapa blunder terjadi, mengapa tak tercegah, dan bagaimana situasi lapangan berevolusi bertahap menuju bencana puncak (manfaatkan durasi 1.5 - 2.5 menit Shorts secara utuh)."
+    "Prinsip Kausalitas & Sebab-Musabab Detail: Jabarkan rantai sebab-musabab yang runtut secara granular (15 hingga 25+ adegan foto dinamis) untuk memaksimalkan durasi video hingga 3 menit."
   ],
   "best_story_benchmarks": [
     {
@@ -140,6 +140,11 @@
     }
   ],
   "blacklisted_patterns": [
+    "sketsa 2d",
+    "vektor 2d",
+    "gambar kartun",
+    "gambar garis",
+    "DirectorGraphicScene",
     "Kalian bayangin... dari",
     "US ARMY CHECKPOINT",
     "Margot Robbie",

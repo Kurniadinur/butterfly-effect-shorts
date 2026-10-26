@@ -48,7 +48,7 @@ export interface EditorialStyle {
     color?: string;
     position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
   };
-  shakeSensitivity?: 'subtle' | 'moderate' | 'dramatic';
+  shakeSensitivity?: 'subtle' | 'moderate' | 'dramatic' | 'high' | string;
   shakeThresholdChaos?: number; // Chaos level where camera micro-tremor activates (default 65)
 }
 
@@ -75,6 +75,7 @@ export interface ButterflyNode {
   visualSource?: 'REKA ADEGAN' | 'ARSIP SEJARAH' | 'ILUSTRASI' | string;
   sfxTrigger?: string | null;
   soundEffect?: any;
+  soundDesign?: any;
   startFrame: number;
   durationFrames: number;
 }
