@@ -3,663 +3,433 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Butterfly Effect Studio — Autonomous AI Director</title>
+  <title>Butterfly Effect Studio — AI Documentary Creator</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #060911;
+      background-color: #060913;
       color: #f1f5f9;
+    }
+    .font-space {
+      font-family: 'Space Grotesk', sans-serif;
     }
     .font-mono {
       font-family: 'JetBrains Mono', monospace;
     }
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0b0f19;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #334155;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #ef4444;
-    }
     .glass-panel {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(51, 65, 85, 0.5);
+      background: rgba(13, 19, 33, 0.82);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
     .glass-card {
-      background: rgba(30, 41, 59, 0.5);
-      border: 1px solid rgba(71, 85, 105, 0.35);
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(22, 30, 49, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.2s ease;
     }
     .glass-card:hover {
-      border-color: rgba(239, 68, 68, 0.6);
+      border-color: rgba(239, 68, 68, 0.4);
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.15);
     }
-    .pulse-glow {
-      box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+    .tab-active {
+      background: rgba(220, 38, 38, 0.15);
+      border-color: #ef4444;
+      color: #ffffff;
+      font-weight: 700;
     }
   </style>
 </head>
-<body class="min-h-screen bg-[#070a13] text-slate-100 flex flex-col">
+<body class="min-h-screen flex flex-col antialiased">
 
   <!-- ============================================================ -->
-  <!-- 1. TOP NAVBAR                                                -->
+  <!-- 1. HEADER RINGKAS & BERSIH                                    -->
   <!-- ============================================================ -->
-  <header class="border-b border-slate-800 bg-[#0b0f19]/80 backdrop-blur sticky top-0 z-50 px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+  <header class="border-b border-slate-800/80 bg-[#090d1a]/90 backdrop-blur sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 via-rose-500 to-amber-500 flex items-center justify-center font-black text-xl shadow-lg shadow-red-900/40">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 via-rose-500 to-amber-500 flex items-center justify-center text-xl shadow-lg shadow-red-900/30">
         🦋
       </div>
       <div>
-        <h1 class="text-lg font-black tracking-wider uppercase text-white flex items-center gap-2">
-          BUTTERFLY EFFECT <span class="text-xs px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-800 font-mono">STUDIO v3.0</span>
+        <h1 class="text-base font-black tracking-wider uppercase text-white flex items-center gap-2">
+          BUTTERFLY STUDIO
+          <span class="text-[10px] font-space px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">
+            ● AI SUTRADARA SIAP
+          </span>
         </h1>
-        <p class="text-xs text-slate-400">Autonomous AI Documentary & Video Shorts Director</p>
+        <p class="text-xs text-slate-400">Pembuat Video Dokumenter Sinematik Vertikal 9:16 (Maksimal 3 Menit)</p>
       </div>
     </div>
 
-    <!-- Status Badges -->
-    <div class="flex items-center gap-3 text-xs font-mono">
-      <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-800/80 text-emerald-400">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        Gemini 3.8 / Groq LPU
-      </div>
-      <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/60 border border-blue-800/80 text-blue-400">
-        <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-        Whisper Large V3
-      </div>
-      <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-950/60 border border-purple-800/80 text-purple-400">
-        <span class="w-2 h-2 rounded-full bg-purple-400"></span>
-        GitHub Actions Cloud
-      </div>
+    <!-- Quick Action Shortcut -->
+    <div class="flex items-center gap-3">
+      <a
+        href="http://localhost:3000"
+        target="_blank"
+        class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-200 transition"
+      >
+        <span>▶</span>
+        <span>Buka Player Remotion</span>
+      </a>
     </div>
   </header>
 
   <!-- ============================================================ -->
   <!-- 2. MAIN CONTAINER                                            -->
   <!-- ============================================================ -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-6 space-y-8">
+  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
 
-    <!-- HERO SECTION: BRAINSTORM & INSPIRATION -->
-    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <span class="text-xs font-mono font-bold tracking-widest text-red-400 uppercase bg-red-950/70 border border-red-800/60 px-3 py-1 rounded-full">
-            💡 AI STORY BRAINSTORMER
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-black text-white mt-2">
-            Pilih Ide Cerita Viral atau Buat Baru
-          </h2>
-          <p class="text-sm text-slate-400 mt-1 max-w-2xl">
-            Klik salah satu ide cerita sebab-akibat ekstrem di bawah, atau tekan tombol Acak untuk meminta AI Sutradara menyusun topik baru yang mengejutkan.
-          </p>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <button id="btn-brainstorm" onclick="fetchBrainstormTopics()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sm font-bold flex items-center gap-2 transition">
-            <span>🎲</span>
-            <span>Ide Baru Lainnya (AI)</span>
-          </button>
-          <button id="btn-surprise" onclick="generateSurpriseStory()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-400 hover:to-rose-500 text-sm font-black text-white flex items-center gap-2 shadow-lg shadow-rose-900/30 transition">
-            <span>✨</span>
-            <span>Surprise Me (Otomatis)</span>
-          </button>
-        </div>
+    <!-- CARD 1: PUSAT PEMBUATAN VIDEO (SUPER SIMPEL) -->
+    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-5 border-t-2 border-t-red-500/50">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2.5">
+          <span>🎬</span>
+          <span>Buat Video Baru</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Ketik topik atau pilih salah satu ide viral di bawah. AI otomatis merancang naskah multi-perspektif, foto sinematik 9:16, dan subtitle sinkron.
+        </p>
       </div>
 
-      <!-- Brainstorm Topics Grid -->
-      <div id="topics-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Rendered dynamically via JS -->
-      </div>
-    </section>
-
-    <!-- CONTROL PANEL: CUSTOM TOPIC & PERSPECTIVE -->
-    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
-      <div class="flex items-center justify-between">
-        <div>
-          <span class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase bg-blue-950/70 border border-blue-800/60 px-3 py-1 rounded-full">
-            🎬 KONTROL SUTRADARA
-          </span>
-          <h3 class="text-xl font-black text-white mt-2">Formulir Naskah & Sudut Pandang</h3>
-        </div>
-      </div>
-
-      <div class="space-y-4">
-        <div>
-          <label class="block text-xs font-mono text-slate-300 font-bold uppercase mb-2">
-            Topik Cerita Butterfly Effect (Bebas / Kustom):
-          </label>
-          <div class="flex gap-2">
-            <input
-              id="input-topic"
-              type="text"
-              class="flex-1 px-4 py-3.5 bg-slate-900 border border-slate-700 rounded-xl text-white font-semibold text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition"
-              placeholder="Contoh: Runtuhnya Tembok Berlin Karena Salah Baca Memo"
-              value="Runtuhnya Tembok Berlin Karena Salah Baca Memo"
-            />
-            <button onclick="document.getElementById('input-topic').value = ''" class="px-3 bg-slate-800 border border-slate-700 rounded-xl text-slate-400 hover:text-white transition">
-              ✕
-            </button>
-          </div>
-        </div>
-
-        <!-- Creative Perspectives Selector -->
-        <div>
-          <label class="block text-xs font-mono text-slate-300 font-bold uppercase mb-2">
-            Pilih Sudut Pandang Kreatif Sutradara (Angle Cerita):
-          </label>
-          <div id="perspective-options" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            <!-- Rendered dynamically via JS -->
-          </div>
-        </div>
-
-        <!-- Execute Production Button -->
-        <div class="pt-4">
+      <!-- Input Utama -->
+      <div class="space-y-3">
+        <div class="relative">
+          <input
+            id="input-topic"
+            type="text"
+            class="w-full px-5 py-4 bg-slate-900/90 border border-slate-700 rounded-xl text-white font-semibold text-sm sm:text-base focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition pr-10 shadow-inner"
+            placeholder="Ketik topik cerita... (Contoh: Runtuhnya Tembok Berlin Karena Salah Baca Memo)"
+            value="Runtuhnya Tembok Berlin Karena Salah Baca Memo"
+          />
           <button
-            id="btn-produce"
-            onclick="startProduction()"
-            class="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-black text-base uppercase tracking-wider shadow-xl shadow-red-950/60 transition pulse-glow flex items-center justify-center gap-3"
+            onclick="document.getElementById('input-topic').value = ''; document.getElementById('input-topic').focus();"
+            class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white text-xs px-2 py-1 transition"
           >
-            <span class="text-xl">🎬</span>
-            <span>Mulai Produksi Cerita & Sketsa AI Sekarang</span>
+            ✕
+          </button>
+        </div>
+
+        <!-- Tombol Cepat Topik Populer (1 Klik Langsung Pilih) -->
+        <div class="flex flex-wrap items-center gap-2 pt-1">
+          <span class="text-xs text-slate-400 font-semibold mr-1">Rekomendasi Topik:</span>
+          <button onclick="setTopic('Runtuhnya Tembok Berlin Karena Salah Baca Memo')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60 transition">
+            🏛️ Tembok Berlin & Memo
+          </button>
+          <button onclick="setTopic('Tenggelamnya Kapal Titanic Karena Kunci Teropong Tertinggal')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60 transition">
+            🚢 Titanic & Kunci Teropong
+          </button>
+          <button onclick="setTopic('Meledaknya Reaktor Chernobyl Akibat Uji Coba Tengah Malam')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60 transition">
+            ☢️ Chernobyl Uji Tengah Malam
+          </button>
+          <button onclick="setTopic('Pecahnya Perang Dunia I Karena Sopir Salah Belok')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60 transition">
+            👑 PD I Sopir Salah Belok
+          </button>
+          <button onclick="generateSurpriseTopic()" class="text-xs px-3 py-1.5 rounded-lg bg-amber-950/40 hover:bg-amber-900/60 text-amber-300 border border-amber-800/50 transition flex items-center gap-1 font-bold">
+            <span>🎲</span>
+            <span>Ide Acak Baru</span>
           </button>
         </div>
       </div>
-    </section>
 
-    <!-- LIVE PRODUCTION LOGS TERMINAL -->
-    <section id="terminal-section" class="glass-panel rounded-2xl p-6 space-y-4 hidden">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div class="flex items-center gap-3">
-          <span class="w-3 h-3 rounded-full bg-red-500 animate-ping"></span>
-          <h4 class="text-sm font-mono font-bold uppercase tracking-wider text-slate-200">
-            Live Production Terminal
-          </h4>
+      <!-- Tombol Eksekusi Besar -->
+      <div class="pt-2">
+        <button
+          id="btn-produce"
+          onclick="startProduction()"
+          class="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-black text-base uppercase tracking-wider shadow-lg shadow-red-950/50 transition active:scale-[0.99] flex items-center justify-center gap-3"
+        >
+          <span class="text-xl">🎬</span>
+          <span>Mulai Produksi Video Lengkap</span>
+        </button>
+      </div>
+
+      <!-- Progress Status (Muncul Saat Diproses) -->
+      <div id="progress-box" class="hidden rounded-xl bg-slate-900/90 border border-slate-800 p-4 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+            <span id="progress-text" class="text-xs font-bold text-slate-200 uppercase tracking-wide">
+              AI Sutradara Sedang Memproses Naskah & Visual...
+            </span>
+          </div>
+          <button onclick="toggleTerminal()" class="text-[11px] text-slate-400 hover:text-white underline">
+            Lihat Detail Log
+          </button>
         </div>
-        <span id="production-status-pill" class="text-xs font-mono px-2.5 py-1 rounded bg-yellow-950 text-yellow-400 border border-yellow-800">
-          SEDANG MEMPROSES...
-        </span>
-      </div>
 
-      <div id="terminal-box" class="h-64 overflow-y-auto bg-black/90 p-4 rounded-xl font-mono text-xs text-emerald-400 leading-relaxed border border-slate-800 shadow-inner">
-        <!-- Terminal log stream -->
+        <!-- Terminal Log Ringkas (Default Sembunyi) -->
+        <div id="terminal-box" class="hidden h-40 overflow-y-auto bg-black/90 p-3 rounded-lg font-mono text-[11px] text-emerald-400 border border-slate-800 leading-relaxed">
+          <!-- Live logs -->
+        </div>
       </div>
     </section>
 
-    <!-- CURRENT STORY INSPECTOR & SCENES -->
+    <!-- CARD 2: HASIL VIDEO SAAT INI (PREVIEW & STATUS) -->
     <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
         <div>
-          <span class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase bg-emerald-950/70 border border-emerald-800/60 px-3 py-1 rounded-full">
-            📋 STORYBOARD AKTIF
+          <span class="text-[10px] font-space font-bold tracking-widest text-emerald-400 uppercase bg-emerald-950/80 border border-emerald-800/80 px-2.5 py-0.5 rounded-full">
+            HASIL VIDEO TERBARU
           </span>
-          <h3 id="story-title" class="text-2xl font-black text-white mt-2">
+          <h3 id="story-title" class="text-lg sm:text-2xl font-black text-white mt-1.5 leading-snug">
             Memuat cerita aktif...
           </h3>
-          <p id="story-meta" class="text-xs font-mono text-slate-400 mt-1">
-            Total Frame: - | Durasi: - | Kata: -
+          <p id="story-meta" class="text-xs text-slate-400 font-medium mt-1">
+            Memeriksa data video...
           </p>
         </div>
 
-        <!-- Audio Voiceover Player -->
-        <div class="flex flex-col items-start sm:items-end gap-2">
-          <span class="text-xs font-mono text-slate-400 uppercase">Voiceover Hasil AI TTS:</span>
-          <audio id="audio-player" controls class="h-10 rounded-lg max-w-xs"></audio>
+        <!-- Tombol Aksi Video -->
+        <div class="flex items-center gap-2 shrink-0">
+          <a
+            href="http://localhost:3000"
+            target="_blank"
+            class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white flex items-center gap-2 transition"
+          >
+            <span>▶</span>
+            <span>Player Remotion</span>
+          </a>
+          <button
+            onclick="triggerCloudRender()"
+            class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-700 to-indigo-600 hover:from-purple-600 hover:to-indigo-500 text-xs font-bold text-white flex items-center gap-2 shadow-lg shadow-purple-950/40 transition"
+          >
+            <span>☁</span>
+            <span>Render MP4 di Cloud</span>
+          </button>
         </div>
       </div>
 
-      <!-- AI Cinema & Editorial Style Indicator -->
-      <div id="editorial-style-box" class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-        <!-- Rendered dynamically -->
+      <!-- Preview Content Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+        
+        <!-- Kolom Kiri: Visual Still Frame (9:16) -->
+        <div class="relative rounded-xl overflow-hidden border border-slate-800 bg-black aspect-[9/16] max-w-[240px] mx-auto md:mx-0 shadow-2xl">
+          <img
+            id="story-preview-img"
+            src="/butterfly/preview_reka_adegan.png"
+            onerror="this.src='/butterfly/preview_cinematic_photo.png'"
+            alt="Preview Visual Adegan"
+            class="w-full h-full object-cover"
+          />
+          <!-- Badge Reka Adegan Overlay -->
+          <div class="absolute top-3 right-3 bg-black/80 backdrop-blur px-2 py-0.5 rounded border border-white/20 text-[10px] font-space font-bold text-slate-200 flex items-center gap-1.5 shadow">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            <span>REKA ADEGAN</span>
+          </div>
+          <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black via-black/80 to-transparent">
+            <span class="text-[10px] font-mono text-slate-400 block">KEYFRAME PREVIEW</span>
+            <span id="preview-caption" class="text-xs font-bold text-white line-clamp-2">Konferensi Pers Berlin 1989</span>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Rangkuman Cerita, Hook & Audio Voiceover -->
+        <div class="md:col-span-2 space-y-4">
+          
+          <!-- Audio Voiceover Player -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-300 flex items-center gap-2">
+                <span>🎙️</span>
+                <span>Voiceover Dubbing Narator (Groq Whisper Synced):</span>
+              </span>
+              <span class="text-[11px] font-mono text-emerald-400">Audio Jernih</span>
+            </div>
+            <audio id="audio-player" controls class="w-full h-9 rounded-lg"></audio>
+          </div>
+
+          <!-- Hook Story Card -->
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+            <span class="text-[10px] font-space font-bold text-red-400 uppercase tracking-wider">
+              HOOK AWAL (PENARIK PERHATIAN):
+            </span>
+            <p id="hook-narration" class="text-sm font-semibold text-slate-200 italic leading-relaxed">
+              Memuat hook...
+            </p>
+            <div class="flex items-center gap-3 pt-1 text-xs font-mono">
+              <div class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300">
+                <span class="text-slate-500">Pemicu:</span> <span id="hook-cause" class="text-white font-bold">-</span>
+              </div>
+              <span class="text-red-500">➔</span>
+              <div class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300">
+                <span class="text-slate-500">Bencana:</span> <span id="hook-effect" class="text-amber-400 font-bold">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cloud Render Tracker Box (Otomatis Muncul Saat Render Cloud Dipicu) -->
+          <div id="cloud-tracker-box" class="hidden p-4 rounded-xl bg-purple-950/30 border border-purple-800/50 space-y-2.5 text-xs">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-purple-300 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-purple-400 animate-ping"></span>
+                <span>Sedang Me-render di GitHub Cloud Actions...</span>
+              </span>
+              <a
+                id="tracker-link"
+                href="https://github.com/Kurniadinur/butterfly-effect-shorts/actions"
+                target="_blank"
+                class="text-[11px] text-purple-300 hover:text-white underline font-mono"
+              >
+                Buka Console GitHub ➔
+              </a>
+            </div>
+            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div id="cloud-progress-bar" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 transition-all duration-300" style="width: 25%"></div>
+            </div>
+            <p id="tracker-subtitle" class="text-[11px] text-slate-400 font-mono">Menyiapkan runner cloud 16GB RAM...</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CARD 3: TAB RINCIAN (DAPAT DIPILIH TANPA BIKIN PUSING) -->
+    <section class="glass-panel rounded-2xl p-6 space-y-5">
+      <!-- Tab Headers -->
+      <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-semibold">
+        <button onclick="switchTab('scenes')" id="tab-btn-scenes" class="px-4 py-2 rounded-xl border border-slate-700/80 text-slate-300 hover:text-white transition tab-active">
+          📋 Rangkaian Adegan (<span id="scene-count-tab">0</span>)
+        </button>
+        <button onclick="switchTab('publishing')" id="tab-btn-publishing" class="px-4 py-2 rounded-xl border border-slate-700/80 text-slate-300 hover:text-white transition">
+          🚀 Paket Upload Shorts (Judul & Tag)
+        </button>
+        <button onclick="switchTab('feedback')" id="tab-btn-feedback" class="px-4 py-2 rounded-xl border border-slate-700/80 text-slate-300 hover:text-white transition">
+          👍 Nilai Cerita Ini
+        </button>
       </div>
 
-      <!-- Hook Card Preview -->
-      <div id="hook-card" class="bg-gradient-to-r from-slate-900 to-slate-950 p-5 rounded-xl border border-slate-700/60 flex flex-col md:flex-row gap-6 items-center justify-between">
-        <!-- Hook Details -->
-      </div>
-
-      <!-- Scenes Grid -->
-      <div>
-        <h4 class="text-sm font-mono uppercase tracking-wider text-slate-300 font-bold mb-4 flex items-center justify-between">
-          <span>Alur Rangkaian Adegan Forensik:</span>
-          <span id="scene-count-badge" class="text-xs bg-slate-800 px-2 py-0.5 rounded text-slate-400">0 Adegan</span>
-        </h4>
-        <div id="scenes-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Tab Content 1: Rangkaian Adegan -->
+      <div id="tab-content-scenes" class="space-y-3">
+        <div id="scenes-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-96 overflow-y-auto pr-1">
           <!-- Rendered dynamically -->
         </div>
       </div>
-    </section>
 
-    <!-- AI VISUAL QA SUPERVISOR & VIRAL PUBLISHING PACK -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <!-- 1. AI Visual QA Quality Gate -->
-      <section class="glass-panel rounded-2xl p-6 sm:p-7 space-y-5 border border-cyan-500/30">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/70 border border-cyan-800/60 px-3 py-1 rounded-full">
-              👁️ AI VISUAL QA SUPERVISOR
-            </span>
-          </div>
-          <div id="qa-score-badge" class="text-xs font-mono font-black px-3 py-1 rounded-full bg-cyan-950 border border-cyan-600 text-cyan-300">
-            MEMUAT SKOR...
-          </div>
-        </div>
-
-        <div id="qa-content-box" class="space-y-4 text-xs font-mono">
-          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-slate-400">Status Safe-Zone 9:16 Shorts:</span>
-              <span id="qa-safe-zone" class="font-bold text-white">-</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-slate-400">Keterbacaan Tipografi:</span>
-              <span id="qa-legibility" class="font-bold text-emerald-400">-</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-slate-400">Potensi Retensi 3 Detik Hook:</span>
-              <span id="qa-hook-potency" class="font-bold text-amber-400">-</span>
-            </div>
-          </div>
-
-          <div class="p-4 rounded-xl bg-cyan-950/20 border border-cyan-800/40 text-slate-300 leading-relaxed">
-            <span class="text-cyan-400 font-bold block mb-1">📝 Evaluasi Sutradara Vision AI:</span>
-            <p id="qa-critique" class="italic text-slate-300">Memeriksa keyframe render...</p>
-          </div>
-
-          <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 text-slate-400">
-            <span class="text-amber-400 font-bold block mb-0.5">💡 Rekomendasi Polesan:</span>
-            <p id="qa-polish" class="text-slate-300">-</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 2. Viral Publishing Pack (Ready-to-Post) -->
-      <section class="glass-panel rounded-2xl p-6 sm:p-7 space-y-5 border border-purple-500/30">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-950/70 border border-purple-800/60 px-3 py-1 rounded-full">
-              🚀 PAKET PUBLIKASI SHORTS (SIAP UPLOAD)
-            </span>
-          </div>
-          <span class="text-xs font-mono text-slate-400">1-Klik Salin</span>
-        </div>
-
-        <div id="publishing-pack-box" class="space-y-4 text-xs font-mono">
-          <!-- Recommended Title -->
-          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-purple-400 font-bold">Judul YouTube Shorts (High-CTR):</span>
-              <button onclick="copyElementText('pub-title', this)" class="px-2.5 py-1 rounded bg-purple-900/60 hover:bg-purple-800 text-purple-200 border border-purple-700/60 text-[11px] transition">
-                Salin Judul
-              </button>
-            </div>
-            <p id="pub-title" class="font-bold text-white text-sm">Memuat judul rekomendasi...</p>
-          </div>
-
-          <!-- Pinned Comment -->
-          <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-            <div class="flex items-center justify-between">
-              <span class="text-amber-400 font-bold">Pinned Comment (Pemicu Debat):</span>
-              <button onclick="copyElementText('pub-pinned', this)" class="px-2.5 py-1 rounded bg-amber-900/60 hover:bg-amber-800 text-amber-200 border border-amber-700/60 text-[11px] transition">
-                Salin Komentar
-              </button>
-            </div>
-            <p id="pub-pinned" class="text-slate-300 italic text-[11px] line-clamp-2">-</p>
-          </div>
-
-          <!-- Description & Hashtags -->
-          <div class="grid grid-cols-2 gap-3">
-            <button onclick="copyElementText('pub-desc-hidden', this)" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-850 border border-slate-700 text-slate-200 font-bold flex items-center justify-center gap-2 transition text-center">
-              <span>📋</span>
-              <span>Salin Deskripsi Lengkap</span>
-            </button>
-            <button onclick="copyElementText('pub-tags-hidden', this)" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-850 border border-slate-700 text-purple-300 font-bold flex items-center justify-center gap-2 transition text-center">
-              <span>#️⃣</span>
-              <span>Salin 20 Hashtags Viral</span>
+      <!-- Tab Content 2: Paket Upload YouTube / TikTok -->
+      <div id="tab-content-publishing" class="hidden space-y-4">
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-purple-400">Judul YouTube Shorts (Tinggi Klik / High-CTR):</span>
+            <button onclick="copyElementText('pub-title', this)" class="px-3 py-1 rounded bg-purple-900/60 hover:bg-purple-800 text-purple-200 text-xs font-mono transition">
+              Salin Judul
             </button>
           </div>
-          <div id="pub-desc-hidden" class="hidden"></div>
-          <div id="pub-tags-hidden" class="hidden"></div>
+          <p id="pub-title" class="text-sm font-bold text-white">Memuat judul...</p>
         </div>
-      </section>
-    </div>
 
-    <!-- AUTONOMOUS LEARNING & FEEDBACK LOOP -->
-    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border border-emerald-500/30">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <span class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase bg-emerald-950/70 border border-emerald-800/60 px-3 py-1 rounded-full">
-            🧠 SISTEM PEMBELAJARAN OTONOM AI (AUTONOMOUS LEARNING)
-          </span>
-          <h3 class="text-2xl font-black text-white mt-2">Beri Nilai & Ajari AI Sutradara</h3>
-          <p class="text-xs text-slate-400 mt-1">
-            Setiap penilaian Anda akan disimpan ke database memori pembelajaran permanen. AI Sutradara akan mengingat video terbaik sebagai referensi dan menghindari pola yang Anda beri nilai negatif.
-          </p>
-        </div>
-        <div id="learning-stats-badge" class="text-xs font-mono px-3 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-700/60 text-emerald-300">
-          Memori AI: Memuat...
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
-        <!-- Quick Feedback Buttons -->
-        <div class="lg:col-span-2 space-y-4">
-          <label class="text-xs font-mono text-slate-300 font-bold uppercase tracking-wider block">
-            Evaluasi Produksi Cerita Ini:
-          </label>
-          <div class="flex flex-wrap gap-3">
-            <button
-              id="btn-feedback-positive"
-              onclick="submitFeedback('positive')"
-              class="flex-1 min-w-[180px] px-5 py-3 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/50 text-emerald-200 font-bold text-sm flex items-center justify-center gap-2 transition active:scale-95 shadow-lg shadow-emerald-950/30"
-            >
-              <span>👍 Suka Banget</span>
-              <span class="text-xs font-normal opacity-80">(Jadikan Benchmark)</span>
-            </button>
-            <button
-              id="btn-feedback-negative"
-              onclick="submitFeedback('negative')"
-              class="flex-1 min-w-[180px] px-5 py-3 rounded-xl bg-red-600/20 hover:bg-red-600/30 border border-red-500/50 text-red-200 font-bold text-sm flex items-center justify-center gap-2 transition active:scale-95 shadow-lg shadow-red-950/30"
-            >
-              <span>👎 Kurang Pas</span>
-              <span class="text-xs font-normal opacity-80">(Ajari AI Perbaiki)</span>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-amber-400">Pinned Comment (Pemicu Komentar Penonton):</span>
+            <button onclick="copyElementText('pub-pinned', this)" class="px-3 py-1 rounded bg-amber-900/60 hover:bg-amber-800 text-amber-200 text-xs font-mono transition">
+              Salin Komentar
             </button>
           </div>
-          <div>
-            <input
-              type="text"
-              id="feedback-note"
-              placeholder="Catatan tambahan untuk AI (misal: 'alurnya pas', 'jangan pakai foto itu lagi', 'tempo hook bagus')..."
-              class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"
-            />
-          </div>
-          <div id="feedback-alert" class="hidden text-xs font-mono p-3 rounded-lg"></div>
+          <p id="pub-pinned" class="text-xs text-slate-300 italic">-</p>
         </div>
 
-        <!-- Learning Memory Summary -->
-        <div class="bg-slate-950/60 rounded-xl p-4 border border-slate-800 space-y-3 text-xs font-mono">
-          <div class="text-slate-400 font-bold uppercase flex items-center justify-between border-b border-slate-800 pb-2">
-            <span>Daftar Benchmark Tersimpan:</span>
-            <span id="benchmark-count" class="text-emerald-400">0 Cerita</span>
-          </div>
-          <div id="benchmark-list" class="space-y-2 text-slate-300 max-h-32 overflow-y-auto">
-            <!-- Dynamic benchmarks -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CLOUD RENDER & ACTIONS -->
-    <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border-2 border-red-900/30">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <span class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-950/70 border border-purple-800/60 px-3 py-1 rounded-full">
-            ☁️ CLOUD EXPORT & RENDER
-          </span>
-          <h3 class="text-2xl font-black text-white mt-2">Ekspor Video MP4 (GitHub Cloud)</h3>
-          <p class="text-xs text-slate-400 mt-1">
-            Render video resolusi tinggi tanpa membebani laptop. Server GitHub Actions 16GB RAM akan merender video secara otomatis.
-          </p>
-        </div>
-
-        <div id="cloud-status-badge" class="text-xs font-mono px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">
-          Memeriksa status cloud...
-        </div>
-      </div>
-
-      <!-- LIVE CLOUD PROGRESS TRACKER CONTAINER -->
-      <div id="cloud-tracker-box" class="hidden bg-slate-950/90 border border-purple-800/60 rounded-xl p-5 space-y-4 shadow-xl shadow-purple-950/20">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
-          <div class="flex items-center gap-3">
-            <span id="tracker-spinner" class="w-3 h-3 rounded-full bg-purple-500 animate-ping"></span>
-            <div>
-              <h4 id="tracker-title" class="text-sm font-black text-white uppercase tracking-wider flex items-center gap-2">
-                GitHub Cloud Actions In-Progress
-              </h4>
-              <p id="tracker-subtitle" class="text-xs font-mono text-slate-400 mt-0.5">Menyiapkan runner cloud 16GB RAM...</p>
-            </div>
-          </div>
-          <a
-            id="tracker-link"
-            href="https://github.com/Kurniadinur/butterfly-effect-shorts/actions"
-            target="_blank"
-            class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-mono text-slate-200 flex items-center gap-1.5 transition self-start sm:self-auto hover:text-white"
-          >
-            <span>🔗</span>
-            <span>Buka Live Console GitHub Actions ➔</span>
-          </a>
-        </div>
-
-        <!-- Progress Percentage Bar -->
-        <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-mono">
-            <span id="tracker-step-label" class="text-slate-300 font-bold">Langkah 1/7</span>
-            <span id="tracker-percent-label" class="text-purple-400 font-bold">15%</span>
-          </div>
-          <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
-            <div id="tracker-progress-bar" class="h-full bg-gradient-to-r from-purple-600 via-rose-500 to-amber-500 transition-all duration-500" style="width: 15%"></div>
-          </div>
-        </div>
-
-        <!-- Step-by-Step Checklist -->
-        <div id="tracker-steps-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono pt-2">
-          <!-- Dynamic Steps -->
-        </div>
-
-        <!-- Completion Alert Banner -->
-        <div id="tracker-completion-banner" class="hidden p-4 rounded-xl bg-emerald-950/70 border border-emerald-600/80 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <span class="text-2xl">🎉</span>
-            <div>
-              <div class="font-black text-emerald-300 text-sm">VIDEO MP4 SELESAI DIRENDER DI CLOUD!</div>
-              <div class="text-xs text-emerald-400/80">File artifact MP4 sudah siap diunduh ke folder out/ laptop Anda.</div>
-            </div>
-          </div>
-          <button
-            onclick="downloadArtifact()"
-            class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-emerald-950/50 transition flex items-center gap-2 whitespace-nowrap"
-          >
-            <span>📥</span>
-            <span>Download MP4 Sekarang</span>
+        <div class="flex gap-3">
+          <button onclick="copyElementText('pub-desc-hidden', this)" class="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-200 transition">
+            📋 Salin Deskripsi Lengkap
+          </button>
+          <button onclick="copyElementText('pub-tags-hidden', this)" class="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-purple-300 transition">
+            #️⃣ Salin 20 Hashtags
           </button>
         </div>
+        <div id="pub-desc-hidden" class="hidden"></div>
+        <div id="pub-tags-hidden" class="hidden"></div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-        <button
-          onclick="triggerCloudRender()"
-          id="btn-cloud-render"
-          class="py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-500 font-bold text-white text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-950/40 transition"
-        >
-          <span>🚀</span>
-          <span>Render di Cloud GitHub</span>
-        </button>
-
-        <button
-          onclick="downloadArtifact()"
-          id="btn-download"
-          class="py-3.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 text-sm flex items-center justify-center gap-2 transition"
-        >
-          <span>📥</span>
-          <span>Download Video MP4</span>
-        </button>
-
-        <a
-          href="http://localhost:3000"
-          target="_blank"
-          class="py-3.5 px-4 rounded-xl bg-blue-600/30 hover:bg-blue-600/40 border border-blue-500/40 font-bold text-blue-200 text-sm flex items-center justify-center gap-2 transition"
-        >
-          <span>🎥</span>
-          <span>Buka Remotion Studio (Preview)</span>
-        </a>
+      <!-- Tab Content 3: Feedback -->
+      <div id="tab-content-feedback" class="hidden space-y-4">
+        <p class="text-xs text-slate-400">
+          Beri masukan untuk hasil video ini agar AI Sutradara mengingat preferensi Anda di video berikutnya:
+        </p>
+        <div class="flex gap-3">
+          <button onclick="submitFeedback('positive')" class="flex-1 py-3 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-700/60 text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 transition">
+            <span>👍 Suka Banget</span>
+            <span class="text-[10px] opacity-75">(Jadikan Standar)</span>
+          </button>
+          <button onclick="submitFeedback('negative')" class="flex-1 py-3 rounded-xl bg-red-950/60 hover:bg-red-900/60 border border-red-700/60 text-red-300 font-bold text-xs flex items-center justify-center gap-2 transition">
+            <span>👎 Kurang Pas</span>
+            <span class="text-[10px] opacity-75">(Perbaiki di Naskah Baru)</span>
+          </button>
+        </div>
+        <input
+          type="text"
+          id="feedback-note"
+          placeholder="Catatan kecil (opsional)..."
+          class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-red-500 transition"
+        />
+        <div id="feedback-alert" class="hidden text-xs font-mono p-2.5 rounded-lg"></div>
       </div>
     </section>
 
   </main>
 
-  <footer class="border-t border-slate-800 py-6 text-center text-xs font-mono text-slate-500">
-    Butterfly Effect Shorts Studio • Autonomous Visual Forensic Engine v3.0
+  <!-- ============================================================ -->
+  <!-- 3. FOOTER MINIMALIS                                          -->
+  <!-- ============================================================ -->
+  <footer class="border-t border-slate-800/80 bg-[#070a13] py-4 text-center text-xs text-slate-500 font-mono">
+    Butterfly Effect Studio • Powered by Google Antigravity & Remotion Engine
   </footer>
 
   <!-- ============================================================ -->
-  <!-- 3. JAVASCRIPT APP LOGIC                                      -->
+  <!-- 4. JAVASCRIPT LOGIC                                          -->
   <!-- ============================================================ -->
   <script>
     let currentStoryData = null;
-    let selectedPerspectiveIdx = 0;
-    let eventSource = null;
 
-    // Visual Director Sketch Badges Info
-    const SKETCH_INFO = {
-      'wall-demolition': { name: 'Massa Merobohkan Tembok', icon: '⚡', color: 'border-red-600 text-red-400 bg-red-950/40' },
-      'gate-breach': { name: 'Gerbang Terobos', icon: '🚨', color: 'border-blue-600 text-blue-400 bg-blue-950/40' },
-      'domino-collapse': { name: 'Efek Domino 3D', icon: '💥', color: 'border-amber-600 text-amber-400 bg-amber-950/40' },
-      'maritime-disaster': { name: 'Bencana Kapal & Es', icon: '🚢', color: 'border-cyan-600 text-cyan-400 bg-cyan-950/40' },
-      'reactor-meltdown': { name: 'Reaktor Nuklir Kritis', icon: '☢️', color: 'border-rose-600 text-rose-400 bg-rose-950/40' },
-      'laboratory-discovery': { name: 'Penemuan Laboratorium', icon: '🔬', color: 'border-emerald-600 text-emerald-400 bg-emerald-950/40' },
-      'press-podium': { name: 'Podium Konferensi Pers', icon: '🎙️', color: 'border-purple-600 text-purple-400 bg-purple-950/40' },
-      'memo-investigation': { name: 'Dokumen & Kaca Pembesar', icon: '🔍', color: 'border-yellow-600 text-yellow-400 bg-yellow-950/40' },
-      'panic-phone': { name: 'Telepon Panik Pos Jaga', icon: '☎️', color: 'border-orange-600 text-orange-400 bg-orange-950/40' },
-      'breaking-news': { name: 'TV Breaking News', icon: '📺', color: 'border-red-500 text-red-300 bg-red-950/30' },
-      'tactical-map': { name: 'Radar Taktis', icon: '🎯', color: 'border-blue-500 text-blue-300 bg-blue-950/30' },
-      'critical-gauge': { name: 'Meteran Bahaya', icon: '⚠️', color: 'border-yellow-500 text-yellow-300 bg-yellow-950/30' },
-      'forensic-dossier': { name: 'Berkas Arsip Forensik', icon: '📁', color: 'border-slate-500 text-slate-300 bg-slate-900/40' },
-      'bureaucracy-draft': { name: 'Draf Regulasi', icon: '📜', color: 'border-slate-500 text-slate-300 bg-slate-900/40' },
-      'memo-handoff': { name: 'Tangan Menyelipkan Kertas', icon: '🤝', color: 'border-indigo-500 text-indigo-300 bg-indigo-950/30' },
-    };
+    // Set topic to input box
+    function setTopic(title) {
+      const input = document.getElementById('input-topic');
+      input.value = title;
+      input.focus();
+    }
 
-    // Initialize on load
-    window.addEventListener('DOMContentLoaded', async () => {
-      initEventStream();
-      await fetchBrainstormTopics();
-      await fetchPerspectives();
-      await fetchCurrentStory();
-      await fetchQAReport();
-      await fetchPublishingPack();
-      await fetchLearningMemory();
-      await checkCloudStatus();
-      setInterval(checkCloudStatus, 15000); // Polling status cloud tiap 15 detik
-    });
+    // Tab switcher
+    function switchTab(tabId) {
+      ['scenes', 'publishing', 'feedback'].forEach((t) => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const content = document.getElementById(`tab-content-${t}`);
+        if (t === tabId) {
+          btn.classList.add('tab-active');
+          content.classList.remove('hidden');
+        } else {
+          btn.classList.remove('tab-active');
+          content.classList.add('hidden');
+        }
+      });
+    }
 
-    // 1. Setup Server-Sent Events (SSE) Live Logs
+    function toggleTerminal() {
+      const box = document.getElementById('terminal-box');
+      box.classList.toggle('hidden');
+    }
+
+    // Event Stream for Logs
     function initEventStream() {
-      if (eventSource) eventSource.close();
-      eventSource = new EventSource('/api/stream-logs');
-      eventSource.onmessage = (e) => {
+      const evtSource = new EventSource('/api/stream-logs');
+      evtSource.onmessage = function (e) {
         try {
           const data = JSON.parse(e.data);
           if (data.log) {
-            appendTerminalLog(data.log);
+            appendLog(data.log);
           }
         } catch (err) {}
       };
     }
 
-    function appendTerminalLog(text) {
+    function appendLog(text) {
       const box = document.getElementById('terminal-box');
-      const div = document.createElement('div');
-      div.textContent = text;
-      box.appendChild(div);
+      const line = document.createElement('div');
+      line.textContent = text;
+      box.appendChild(line);
       box.scrollTop = box.scrollHeight;
     }
 
-    // 2. Fetch Curated / AI Brainstorm Topics
-    async function fetchBrainstormTopics() {
-      const grid = document.getElementById('topics-grid');
-      grid.innerHTML = '<div class="col-span-full py-8 text-center text-sm font-mono text-slate-500">Menganalisis ide viral dari AI...</div>';
-
-      try {
-        const res = await fetch('/api/brainstorm');
-        const topics = await res.json();
-        grid.innerHTML = '';
-
-        topics.forEach((t) => {
-          const card = document.createElement('div');
-          card.className = 'glass-card p-4 rounded-xl cursor-pointer flex flex-col justify-between space-y-3';
-          card.onclick = () => selectTopic(t.title);
-          card.innerHTML = `
-            <div class="space-y-1.5">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
-                ${t.category || 'Butterfly Effect'}
-              </span>
-              <h4 class="font-bold text-sm text-white leading-snug hover:text-red-400 transition">${t.title}</h4>
-            </div>
-            <div class="text-xs text-slate-400 space-y-1 border-t border-slate-800 pt-2">
-              <div class="flex items-start gap-1.5">
-                <span class="text-amber-400 font-bold shrink-0">⚡</span>
-                <span class="line-clamp-2">${t.trivialCause || t.hookSnippet || ''}</span>
-              </div>
-            </div>
-            <button class="w-full py-1.5 rounded-lg bg-slate-800/80 hover:bg-red-600 text-[11px] font-bold text-slate-300 hover:text-white transition">
-              Pilih Topik Ini ➔
-            </button>
-          `;
-          grid.appendChild(card);
-        });
-      } catch (err) {
-        grid.innerHTML = '<div class="col-span-full py-4 text-center text-xs text-red-400">Gagal memuat ide. Silakan coba lagi.</div>';
-      }
-    }
-
-    function selectTopic(topicTitle) {
-      const input = document.getElementById('input-topic');
-      input.value = topicTitle;
-      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      input.classList.add('ring-2', 'ring-red-500');
-      setTimeout(() => input.classList.remove('ring-2', 'ring-red-500'), 1500);
-    }
-
-    // 3. Fetch Creative Perspectives
-    async function fetchPerspectives() {
-      const container = document.getElementById('perspective-options');
-      try {
-        const res = await fetch('/api/perspectives');
-        const list = await res.json();
-        container.innerHTML = '';
-
-        // Add "Acak / Random" option
-        const randomCard = createPerspectiveCard('🎲 Acak / Otomatis AI', 'AI bebas memilih sudut pandang paling pas secara otonom.', -1);
-        container.appendChild(randomCard);
-
-        list.forEach((p, idx) => {
-          const card = createPerspectiveCard(p.name, p.angle, idx);
-          container.appendChild(card);
-        });
-      } catch (err) {}
-    }
-
-    function createPerspectiveCard(name, desc, idx) {
-      const div = document.createElement('div');
-      const isSelected = selectedPerspectiveIdx === idx;
-      div.className = `p-3 rounded-xl border text-xs cursor-pointer transition flex flex-col justify-between ${
-        isSelected
-          ? 'bg-red-950/40 border-red-500 text-white shadow-md shadow-red-950/40'
-          : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
-      }`;
-      div.onclick = () => {
-        selectedPerspectiveIdx = idx;
-        fetchPerspectives();
-      };
-      div.innerHTML = `
-        <div class="font-bold uppercase tracking-wider text-[11px] ${isSelected ? 'text-red-400' : 'text-slate-300'}">${name}</div>
-        <p class="mt-1 line-clamp-2 text-[10px] opacity-80">${desc}</p>
-      `;
-      return div;
-    }
-
-    // 4. Fetch and Render Current Story
+    // Fetch Current Story
     async function fetchCurrentStory() {
       try {
         const res = await fetch('/api/story');
@@ -668,100 +438,36 @@
         currentStoryData = data;
 
         document.getElementById('story-title').textContent = data.title;
-        document.getElementById('story-meta').textContent = `Total Frame: ${data.totalDurationFrames} frames | Durasi: ${(data.totalDurationFrames / 30).toFixed(1)} detik | Total Adegan: ${data.nodes.length}`;
-        document.getElementById('scene-count-badge').textContent = `${data.nodes.length} Adegan`;
+        const durSec = (data.totalDurationFrames / 30).toFixed(1);
+        const durMin = (durSec / 60).toFixed(1);
+        document.getElementById('story-meta').textContent = `Durasi: ${durMin} Menit (${durSec} dtk) • Total: ${data.nodes.length} Adegan Detail • Format: 9:16 Vertikal`;
+        document.getElementById('scene-count-tab').textContent = data.nodes.length;
 
-        // Audio Player
+        // Audio
         if (data.audioPath) {
           const audioPlayer = document.getElementById('audio-player');
           const audioFilename = data.audioPath.split('/').pop().split('\\').pop();
           audioPlayer.src = `/audio/${audioFilename}`;
         }
 
-        // Render Editorial Style Indicator (AI Cinema Supervisor)
-        const styleBox = document.getElementById('editorial-style-box');
-        if (data.editorialStyle) {
-          const ed = data.editorialStyle;
-          const moodNames = {
-            'cold-war-crisis': 'Cold War Crisis (Slate-Green)',
-            'noir-forensic': 'Noir Forensic (Slate-Blue)',
-            'amber-urgent': 'Amber Emergency (Tungsten Warm)',
-            'industrial-decay': 'Industrial Decay (Bronze Charcoal)',
-            'clean-documentary': 'Clean Documentary (Crisp Cinema)',
-          };
-          styleBox.innerHTML = `
-            <div class="flex items-center gap-2">
-              <span class="text-lg">🎨</span>
-              <div>
-                <span class="text-[10px] text-slate-400 uppercase">Supervisi AI Editor:</span>
-                <span class="font-bold text-amber-300 ml-1">${moodNames[ed.mood] || ed.mood}</span>
-              </div>
-            </div>
-            <div class="flex flex-wrap items-center gap-2 text-slate-300">
-              <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80">🎞️ Grain: ${(ed.grainIntensity * 100).toFixed(1)}% (Nyaman di Mata)</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80">🌘 Vignette: ${(ed.vignetteStrength * 100).toFixed(0)}%</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80">⚡ Dynamic Shake: Chaos ≥ ${ed.shakeThresholdChaos || 65}</span>
-            </div>
-          `;
-          styleBox.classList.remove('hidden');
-        } else {
-          styleBox.classList.add('hidden');
-        }
+        // Hook Card
+        document.getElementById('hook-narration').textContent = `"${data.hook.narration}"`;
+        document.getElementById('hook-cause').textContent = data.hook.leftTitle || 'Awal Sepele';
+        document.getElementById('hook-effect').textContent = data.hook.rightTitle || 'Bencana Global';
 
-        // Render Hook Card
-        const hookBox = document.getElementById('hook-card');
-        hookBox.innerHTML = `
-          <div class="space-y-1">
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-800">HOOK VIDEO</span>
-            <p class="text-sm font-semibold text-slate-200 mt-1 italic">"${data.hook.narration}"</p>
-          </div>
-          <div class="flex items-center gap-4 shrink-0 font-mono text-xs">
-            <div class="text-center px-3 py-1.5 rounded bg-slate-800 border border-slate-700">
-              <div class="text-[10px] text-slate-400">AWAL SEPELE</div>
-              <div class="font-bold text-white">${data.hook.leftTitle}</div>
-            </div>
-            <span class="text-red-500 font-bold">➔</span>
-            <div class="text-center px-3 py-1.5 rounded bg-slate-800 border border-slate-700">
-              <div class="text-[10px] text-slate-400">BENCANA GLOBAL</div>
-              <div class="font-bold text-amber-400">${data.hook.rightTitle}</div>
-            </div>
-          </div>
-        `;
-
-        // Render Scenes
+        // Scenes
         const grid = document.getElementById('scenes-grid');
         grid.innerHTML = '';
         data.nodes.forEach((n) => {
-          const visual = SKETCH_INFO[n.directorType] || { name: n.directorType || 'Sketsa Arsip', icon: '📁', color: 'border-slate-600 text-slate-400 bg-slate-900/40' };
           const card = document.createElement('div');
-          card.className = 'glass-card p-4 rounded-xl space-y-3';
+          card.className = 'glass-card p-3 rounded-xl space-y-1.5 border border-slate-800';
           card.innerHTML = `
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-mono font-black px-2 py-0.5 rounded bg-slate-800 text-white">#${n.step}</span>
-                <span class="text-[11px] font-mono text-slate-400">${n.timeOrYear || ''}</span>
-              </div>
-              <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full border ${visual.color} flex items-center gap-1.5">
-                <span>${visual.icon}</span>
-                <span>${visual.name}</span>
-              </span>
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="font-black px-2 py-0.5 rounded bg-slate-800 text-white">#${n.step}</span>
+              <span class="text-slate-400 text-[11px]">${n.timeOrYear || ''}</span>
             </div>
-
-            <div>
-              <h5 class="text-sm font-black text-white uppercase">${n.headline}</h5>
-              <p class="text-xs text-slate-300 mt-1 leading-relaxed">${n.narration}</p>
-            </div>
-
-            <!-- Chaos Level Indicator -->
-            <div class="space-y-1">
-              <div class="flex justify-between text-[10px] font-mono text-slate-400">
-                <span>CHAOS LEVEL</span>
-                <span class="font-bold ${n.chaosLevel > 70 ? 'text-red-400' : 'text-amber-400'}">${n.chaosLevel}%</span>
-              </div>
-              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                <div class="h-full ${n.chaosLevel > 70 ? 'bg-gradient-to-r from-amber-500 to-red-600' : 'bg-amber-500'}" style="width: ${n.chaosLevel}%"></div>
-              </div>
-            </div>
+            <h5 class="text-xs font-bold text-white uppercase">${n.headline}</h5>
+            <p class="text-[11px] text-slate-300 line-clamp-2 leading-relaxed">${n.narration}</p>
           `;
           grid.appendChild(card);
         });
@@ -771,401 +477,141 @@
       }
     }
 
-    // 5. Start Autonomous Production
+    // Start Production
     async function startProduction() {
-      const topicInput = document.getElementById('input-topic').value.trim();
-      if (!topicInput) {
-        alert('Harap masukkan atau pilih topik cerita terlebih dahulu!');
-        return;
-      }
-
-      const terminalSec = document.getElementById('terminal-section');
-      const produceBtn = document.getElementById('btn-produce');
+      const topicInput = document.getElementById('input-topic');
+      const topic = topicInput.value.trim() || 'Runtuhnya Tembok Berlin Karena Salah Baca Memo';
+      const btn = document.getElementById('btn-produce');
+      const progressBox = document.getElementById('progress-box');
+      const progressText = document.getElementById('progress-text');
       const terminalBox = document.getElementById('terminal-box');
 
-      terminalSec.classList.remove('hidden');
       terminalBox.innerHTML = '';
-      produceBtn.disabled = true;
-      produceBtn.innerHTML = `<span>⏳</span><span>Sutradara AI Sedang Memproduksi...</span>`;
+      progressBox.classList.remove('hidden');
+      btn.disabled = true;
+      btn.classList.add('opacity-50', 'cursor-not-allowed');
+
+      progressText.textContent = `Memulai produksi: "${topic}"...`;
 
       try {
         const res = await fetch('/api/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            topic: topicInput,
-            perspective: selectedPerspectiveIdx >= 0 ? selectedPerspectiveIdx : undefined,
-          }),
+          body: JSON.stringify({ topic }),
         });
 
         const data = await res.json();
-        if (data.error) {
-          alert(data.error);
-          produceBtn.disabled = false;
-          produceBtn.innerHTML = `<span>🎬</span><span>Mulai Produksi Cerita & Sketsa AI Sekarang</span>`;
-          return;
+        if (res.ok) {
+          progressText.textContent = '✓ Produksi Selesai! Memperbarui data video...';
+          setTimeout(() => {
+            fetchCurrentStory();
+            fetchPublishingPack();
+            btn.disabled = false;
+            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+          }, 2000);
+        } else {
+          progressText.textContent = `Error: ${data.error || 'Gagal memproses'}`;
+          btn.disabled = false;
+          btn.classList.remove('opacity-50', 'cursor-not-allowed');
         }
-
-        // Poll until completion
-        const checkDoneInterval = setInterval(async () => {
-          const terminalText = terminalBox.textContent;
-          if (terminalText.includes('PRODUKSI SUKSES!') || terminalText.includes('kode keluar: 0')) {
-            clearInterval(checkDoneInterval);
-            produceBtn.disabled = false;
-            produceBtn.innerHTML = `<span>🎬</span><span>Mulai Produksi Cerita & Sketsa AI Sekarang</span>`;
-            document.getElementById('production-status-pill').textContent = 'PRODUKSI SELESAI!';
-            document.getElementById('production-status-pill').className = 'text-xs font-mono px-2.5 py-1 rounded bg-emerald-950 text-emerald-400 border border-emerald-800';
-            await fetchCurrentStory();
-            await fetchQAReport();
-            await fetchPublishingPack();
-            alert('🎉 Produksi cerita baru selesai! Storyboard, narasi audio, inspeksi visual AI, dan paket publikasi telah diperbarui.');
-          } else if (terminalText.includes('kode keluar: 1') || terminalText.includes('[ERROR]')) {
-            clearInterval(checkDoneInterval);
-            produceBtn.disabled = false;
-            produceBtn.innerHTML = `<span>🎬</span><span>Mulai Produksi Cerita & Sketsa AI Sekarang</span>`;
-            document.getElementById('production-status-pill').textContent = 'PRODUKSI GAGAL';
-            document.getElementById('production-status-pill').className = 'text-xs font-mono px-2.5 py-1 rounded bg-red-950 text-red-400 border border-red-800';
-          }
-        }, 2000);
-
       } catch (err) {
-        alert('Gagal menghubungi server: ' + err.message);
-        produceBtn.disabled = false;
-        produceBtn.innerHTML = `<span>🎬</span><span>Mulai Produksi Cerita & Sketsa AI Sekarang</span>`;
+        progressText.textContent = `Koneksi gagal: ${err.message}`;
+        btn.disabled = false;
+        btn.classList.remove('opacity-50', 'cursor-not-allowed');
       }
     }
 
-    // 6. Surprise Me: Pick a topic and produce automatically
-    async function generateSurpriseStory() {
-      const res = await fetch('/api/brainstorm');
-      const topics = await res.json();
-      if (topics && topics.length > 0) {
-        const randomTopic = topics[Math.floor(Math.random() * topics.length)];
-        selectTopic(randomTopic.title);
-        selectedPerspectiveIdx = -1; // Random perspective
-        startProduction();
-      }
-    }
-
-    // 6b. Fetch and Render Latest AI Visual QA Report
-    async function fetchQAReport() {
+    // Generate Surprise Topic
+    async function generateSurpriseTopic() {
+      const input = document.getElementById('input-topic');
+      input.value = 'Mencari ide menarik dari AI...';
       try {
-        const res = await fetch('/api/qa-report');
-        const report = await res.json();
-        const badge = document.getElementById('qa-score-badge');
-        if (!report || !report.hookFrameAudit) {
-          badge.textContent = 'BELUM DIAUDIT';
-          badge.className = 'text-xs font-mono font-bold px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-400';
-          return;
+        const res = await fetch('/api/brainstorm');
+        const topics = await res.json();
+        if (Array.isArray(topics) && topics.length > 0) {
+          const picked = topics[Math.floor(Math.random() * topics.length)];
+          input.value = picked.title || picked;
+        } else {
+          input.value = 'Tenggelamnya Kapal Titanic Karena Kunci Teropong Tertinggal';
         }
-
-        const audit = report.hookFrameAudit;
-        badge.textContent = `SKOR VISUAL: ${report.overallScore}/100 [${report.status}]`;
-        badge.className = report.overallScore >= 85
-          ? 'text-xs font-mono font-black px-3 py-1 rounded-full bg-emerald-950 border border-emerald-500 text-emerald-300'
-          : 'text-xs font-mono font-black px-3 py-1 rounded-full bg-amber-950 border border-amber-500 text-amber-300';
-
-        document.getElementById('qa-safe-zone').textContent = audit.safeZoneClear ? 'Aman (100% Sesuai Zona UI)' : 'Perlu Penyesuaian Mikro';
-        document.getElementById('qa-safe-zone').className = audit.safeZoneClear ? 'font-bold text-emerald-400' : 'font-bold text-amber-400';
-        document.getElementById('qa-legibility').textContent = audit.legibilityRating || 'EXCELLENT';
-        document.getElementById('qa-hook-potency').textContent = audit.hookEngagement ? audit.hookEngagement.slice(0, 60) + '...' : '-';
-        document.getElementById('qa-critique').textContent = audit.visualCritique || audit.critique || 'Keyframe tervalidasi.';
-        document.getElementById('qa-polish').textContent = audit.recommendedPolish || audit.recommendedAction || 'Semua elemen siap tayang.';
-      } catch (err) {}
+      } catch (err) {
+        input.value = 'Meledaknya Reaktor Chernobyl Akibat Uji Coba Tengah Malam';
+      }
     }
 
-    // 6c. Fetch and Render Latest Viral Publishing Pack
+    // Copy to clipboard helper
+    function copyElementText(elementId, btnElement) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const text = el.innerText || el.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const oldText = btnElement.innerText;
+        btnElement.innerText = '✓ Tersalin!';
+        setTimeout(() => (btnElement.innerText = oldText), 1800);
+      });
+    }
+
+    // Fetch Publishing Pack
     async function fetchPublishingPack() {
       try {
         const res = await fetch('/api/publishing-pack');
         const pack = await res.json();
-        if (!pack || !pack.recommendedTitle) return;
-
-        document.getElementById('pub-title').textContent = pack.recommendedTitle;
-        document.getElementById('pub-pinned').textContent = pack.pinnedComment || '-';
-        document.getElementById('pub-desc-hidden').textContent = pack.description || '';
-        document.getElementById('pub-tags-hidden').textContent = (pack.hashtags || []).join(' ');
+        if (pack && pack.status !== 'NO_PACK_YET') {
+          if (pack.recommendedTitle) {
+            document.getElementById('pub-title').textContent = pack.recommendedTitle;
+          }
+          if (pack.pinnedComment) {
+            document.getElementById('pub-pinned').textContent = `"${pack.pinnedComment}"`;
+          }
+          if (pack.fullDescription) {
+            document.getElementById('pub-desc-hidden').textContent = pack.fullDescription;
+          }
+          if (pack.hashtags) {
+            document.getElementById('pub-tags-hidden').textContent = pack.hashtags.join(' ');
+          }
+        }
       } catch (err) {}
     }
 
-    function copyElementText(elementId, btnElement) {
-      const el = document.getElementById(elementId);
-      if (!el) return;
-      const text = el.textContent || el.innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const origText = btnElement.innerHTML;
-        btnElement.innerHTML = '✓ Tersalin!';
-        setTimeout(() => {
-          btnElement.innerHTML = origText;
-        }, 2000);
-      });
-    }
-
-    let cloudPollInterval = null;
-
-    // 7. Trigger Cloud Render
+    // Cloud Render Trigger
     async function triggerCloudRender() {
-      const btn = document.getElementById('btn-cloud-render');
       const trackerBox = document.getElementById('cloud-tracker-box');
-      btn.disabled = true;
-      btn.innerHTML = `<span>⏳</span><span>Memicu GitHub Cloud...</span>`;
-
       trackerBox.classList.remove('hidden');
-      trackerBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      document.getElementById('tracker-subtitle').textContent = 'Mengirim pembaruan kode dan memicu GitHub Actions...';
-
       try {
-        const res = await fetch('/api/cloud-render', { method: 'POST' });
+        const res = await fetch('/api/trigger-cloud-render', { method: 'POST' });
         const data = await res.json();
-        if (data.status === 'triggered') {
-          await checkCloudStatus();
-          if (!cloudPollInterval) {
-            cloudPollInterval = setInterval(checkCloudStatus, 3000);
-          }
-        } else {
-          alert('Kendala memicu render cloud. Periksa koneksi git/gh.');
+        if (res.ok) {
+          document.getElementById('tracker-subtitle').textContent = 'Pembaruan kode terkirim! Server GitHub Actions sedang merender MP4...';
         }
       } catch (err) {
-        alert('Error: ' + err.message);
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = `<span>🚀</span><span>Render di Cloud GitHub</span>`;
+        document.getElementById('tracker-subtitle').textContent = 'Peringatan: Cek console GitHub Actions secara langsung.';
       }
     }
 
-    // 8. Check Cloud Status with Step-by-Step UI
-    async function checkCloudStatus() {
-      const badge = document.getElementById('cloud-status-badge');
-      const trackerBox = document.getElementById('cloud-tracker-box');
-      const trackerTitle = document.getElementById('tracker-title');
-      const trackerSubtitle = document.getElementById('tracker-subtitle');
-      const trackerLink = document.getElementById('tracker-link');
-      const trackerStepLabel = document.getElementById('tracker-step-label');
-      const trackerPercentLabel = document.getElementById('tracker-percent-label');
-      const trackerProgressBar = document.getElementById('tracker-progress-bar');
-      const trackerStepsList = document.getElementById('tracker-steps-list');
-      const completionBanner = document.getElementById('tracker-completion-banner');
-      const trackerSpinner = document.getElementById('tracker-spinner');
-
-      try {
-        const res = await fetch('/api/cloud-status');
-        const run = await res.json();
-        if (!run || run.error) {
-          badge.textContent = 'GitHub Actions: Siap';
-          badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300';
-          return;
-        }
-
-        // Set live URL link
-        if (run.url) {
-          trackerLink.href = run.url;
-        }
-
-        if (run.status === 'in_progress' || run.status === 'queued') {
-          trackerBox.classList.remove('hidden');
-          badge.innerHTML = `<span class="inline-block w-2 h-2 rounded-full bg-yellow-400 animate-ping mr-1"></span> Render Cloud: Sedang Berjalan...`;
-          badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-yellow-950 border border-yellow-800 text-yellow-300';
-
-          trackerTitle.innerHTML = `<span class="text-yellow-400">🔄</span> GitHub Cloud Actions: Sedang Berjalan`;
-          trackerSubtitle.textContent = `Langkah aktif: ${run.currentStepName || 'Menjalankan proses...'}`;
-          trackerSpinner.className = 'w-3 h-3 rounded-full bg-yellow-400 animate-ping';
-
-          // Progress calculation based on currentStepNumber (1 to 7)
-          const stepWeights = { 1: 12, 2: 24, 3: 36, 4: 50, 5: 65, 6: 85, 7: 95 };
-          const percent = stepWeights[run.currentStepNumber] || 50;
-          trackerStepLabel.textContent = `Langkah ${run.currentStepNumber || 1} dari ${run.totalSteps || 7}: ${run.currentStepName}`;
-          trackerPercentLabel.textContent = `${percent}%`;
-          trackerProgressBar.style.width = `${percent}%`;
-
-          // Render Checklist
-          if (run.steps && run.steps.length > 0) {
-            trackerStepsList.innerHTML = '';
-            run.steps.forEach((s) => {
-              const isDone = s.status === 'completed' && s.conclusion === 'success';
-              const isRunning = s.status === 'in_progress';
-              const div = document.createElement('div');
-              div.className = `p-2 rounded-lg border flex items-center justify-between ${
-                isDone
-                  ? 'bg-emerald-950/30 border-emerald-800/60 text-emerald-300'
-                  : isRunning
-                  ? 'bg-yellow-950/40 border-yellow-700/80 text-yellow-300 font-bold ring-1 ring-yellow-500'
-                  : 'bg-slate-900/40 border-slate-800/60 text-slate-500'
-              }`;
-              div.innerHTML = `
-                <div class="flex items-center gap-2 truncate">
-                  <span>${isDone ? '✅' : isRunning ? '⏳' : '⚪'}</span>
-                  <span class="truncate">${s.number}. ${s.name}</span>
-                </div>
-                <span class="text-[10px] shrink-0 font-bold uppercase ${isDone ? 'text-emerald-400' : isRunning ? 'text-yellow-400 animate-pulse' : 'text-slate-600'}">
-                  ${isDone ? 'SELESAI' : isRunning ? 'PROSES' : 'MENUNGGU'}
-                </span>
-              `;
-              trackerStepsList.appendChild(div);
-            });
-          }
-
-          completionBanner.classList.add('hidden');
-
-          // Ensure polling is active
-          if (!cloudPollInterval) {
-            cloudPollInterval = setInterval(checkCloudStatus, 3000);
-          }
-
-        } else if (run.status === 'completed') {
-          // Finished!
-          if (run.conclusion === 'success') {
-            badge.innerHTML = `<span class="text-emerald-400 font-bold mr-1">✓</span> Render Cloud Selesai (MP4 Siap Unduh)`;
-            badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-300';
-
-            trackerBox.classList.remove('hidden');
-            trackerTitle.innerHTML = `<span class="text-emerald-400">✅</span> Render Cloud Selesai 100%!`;
-            trackerSubtitle.textContent = `Video MP4 berhasil dikompilasi di server GitHub Actions.`;
-            trackerSpinner.className = 'w-3 h-3 rounded-full bg-emerald-500';
-            trackerStepLabel.textContent = `Seluruh 7 Langkah Selesai`;
-            trackerPercentLabel.textContent = `100%`;
-            trackerProgressBar.style.width = `100%`;
-            completionBanner.classList.remove('hidden');
-
-            // Render all steps as completed
-            if (run.steps && run.steps.length > 0) {
-              trackerStepsList.innerHTML = '';
-              run.steps.forEach((s) => {
-                const div = document.createElement('div');
-                div.className = 'p-2 rounded-lg border bg-emerald-950/30 border-emerald-800/60 text-emerald-300 flex items-center justify-between';
-                div.innerHTML = `
-                  <div class="flex items-center gap-2 truncate">
-                    <span>✅</span>
-                    <span class="truncate">${s.number}. ${s.name}</span>
-                  </div>
-                  <span class="text-[10px] shrink-0 font-bold uppercase text-emerald-400">SELESAI</span>
-                `;
-                trackerStepsList.appendChild(div);
-              });
-            }
-
-            if (cloudPollInterval) {
-              clearInterval(cloudPollInterval);
-              cloudPollInterval = null;
-            }
-          } else {
-            // Failure
-            badge.innerHTML = `Render Cloud Gagal`;
-            badge.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-red-950 border border-red-800 text-red-300';
-
-            trackerBox.classList.remove('hidden');
-            trackerTitle.innerHTML = `<span class="text-red-400">❌</span> Render Cloud Mengalami Kendala`;
-            trackerSubtitle.textContent = `Klik tautan "Buka Live Console" untuk memeriksa log error.`;
-            trackerSpinner.className = 'w-3 h-3 rounded-full bg-red-500';
-
-            if (cloudPollInterval) {
-              clearInterval(cloudPollInterval);
-              cloudPollInterval = null;
-            }
-          }
-        }
-      } catch (e) {
-        console.error('Error checking cloud status:', e);
-      }
-    }
-
-    // 9. Download Artifact
-    async function downloadArtifact() {
-      const btn = document.getElementById('btn-download');
-      btn.innerHTML = `<span>⏳</span><span>Mengunduh...</span>`;
-      try {
-        const res = await fetch('/api/download-artifact', { method: 'POST' });
-        const data = await res.json();
-        if (data.status === 'success') {
-          alert('✓ Video MP4 berhasil diunduh ke folder out/!');
-        } else {
-          alert('Belum ada video MP4 yang siap diunduh dari cloud. Pastikan render cloud sudah selesai.');
-        }
-      } catch (err) {
-        alert('Gagal mengunduh: ' + err.message);
-      } finally {
-        btn.innerHTML = `<span>📥</span><span>Download Video MP4</span>`;
-      }
-    }
-    // 10. Autonomous Learning Memory Fetch & Feedback
-    async function fetchLearningMemory() {
-      try {
-        const res = await fetch('/api/memory');
-        const memory = await res.json();
-        const statsBadge = document.getElementById('learning-stats-badge');
-        const benchmarkCount = document.getElementById('benchmark-count');
-        const benchmarkList = document.getElementById('benchmark-list');
-
-        const benchmarks = memory.best_story_benchmarks || [];
-        const blacklisted = memory.blacklisted_patterns || [];
-        const feedbacks = memory.user_feedbacks || [];
-
-        statsBadge.textContent = `🧠 Memori AI: ${benchmarks.length} Benchmark | ${blacklisted.length} Filter Blacklist | ${feedbacks.length} Feedback`;
-        benchmarkCount.textContent = `${benchmarks.length} Cerita`;
-
-        benchmarkList.innerHTML = '';
-        if (benchmarks.length === 0) {
-          benchmarkList.innerHTML = '<div class="text-slate-500 italic">Belum ada benchmark tersimpan. Beri nilai 👍 untuk menyimpan cerita pertama.</div>';
-        } else {
-          benchmarks.forEach((b) => {
-            const item = document.createElement('div');
-            item.className = 'p-2 rounded bg-slate-900 border border-slate-800 text-[11px] leading-tight';
-            item.innerHTML = `
-              <div class="font-bold text-white flex items-center justify-between">
-                <span>⭐ ${b.title}</span>
-                <span class="text-slate-500 font-normal">[${b.hookStyle}]</span>
-              </div>
-              <div class="text-emerald-400 mt-0.5 text-[10px]">${b.why_successful}</div>
-            `;
-            benchmarkList.appendChild(item);
-          });
-        }
-      } catch (err) {
-        console.error('Error fetching learning memory:', err);
-      }
-    }
-
+    // Feedback
     async function submitFeedback(rating) {
-      const noteInput = document.getElementById('feedback-note');
+      const note = document.getElementById('feedback-note').value;
       const alertBox = document.getElementById('feedback-alert');
-      const note = noteInput.value.trim();
-
-      const btnPos = document.getElementById('btn-feedback-positive');
-      const btnNeg = document.getElementById('btn-feedback-negative');
-      btnPos.disabled = true;
-      btnNeg.disabled = true;
-
       try {
         const res = await fetch('/api/feedback', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            storyId: currentStoryData?.id,
-            title: currentStoryData?.title,
-            rating,
-            note,
-          }),
+          body: JSON.stringify({ rating, note }),
         });
-        const data = await res.json();
-        if (data.success) {
-          alertBox.className = 'text-xs font-mono p-3 rounded-lg bg-emerald-950/80 border border-emerald-700 text-emerald-300 block';
-          alertBox.textContent = rating === 'positive'
-            ? '✓ Terima kasih! Cerita ini telah disimpan sebagai benchmark memori AI untuk video mendatang.'
-            : '✓ Pelajaran dicatat! AI akan mengingat dan menghindari pola/masalah ini pada produksi selanjutnya.';
-          noteInput.value = '';
-          await fetchLearningMemory();
-        } else {
-          alertBox.className = 'text-xs font-mono p-3 rounded-lg bg-red-950/80 border border-red-700 text-red-300 block';
-          alertBox.textContent = 'Gagal menyimpan evaluasi: ' + (data.error || 'Terjadi kesalahan');
+        if (res.ok) {
+          alertBox.textContent = '✓ Terima kasih! Preferensi Anda telah disimpan ke memori AI.';
+          alertBox.className = 'text-xs font-mono p-2.5 rounded-lg bg-emerald-950/80 border border-emerald-800 text-emerald-300 block';
+          setTimeout(() => alertBox.classList.add('hidden'), 3000);
         }
-      } catch (err) {
-        alertBox.className = 'text-xs font-mono p-3 rounded-lg bg-red-950/80 border border-red-700 text-red-300 block';
-        alertBox.textContent = 'Gagal mengirim evaluasi: ' + err.message;
-      } finally {
-        btnPos.disabled = false;
-        btnNeg.disabled = false;
-        setTimeout(() => alertBox.classList.add('hidden'), 5000);
-      }
+      } catch (err) {}
     }
+
+    // Init on load
+    window.addEventListener('DOMContentLoaded', () => {
+      initEventStream();
+      fetchCurrentStory();
+      fetchPublishingPack();
+    });
   </script>
 </body>
 </html>
