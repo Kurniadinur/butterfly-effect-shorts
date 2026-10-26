@@ -13,6 +13,36 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "berlin-wall-fall-memo-1989-refined-mvouotah",
+      "title": "MEMO SALAH, TEBOK RUNTUH",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "Günter Schabowski memegang selembar kertas. Satu kata yang salah diucapkan, 'SOFORT', meruntuhkan tembok 155 kilometer dalam hitungan jam.",
+      "scenes": [
+        "documentary-wide",
+        "bureaucracy-meet",
+        "document-closeup",
+        "courier-delivery",
+        "document-closeup",
+        "character-intro",
+        "tv-broadcast",
+        "press-conference",
+        "journalist-question",
+        "journalist-question",
+        "memo-misread",
+        "fatal-utterance",
+        "journalist-question",
+        "news-broadcast",
+        "crowd-movement",
+        "border-crowd",
+        "guard-confusion",
+        "checkpoint-night",
+        "commander-decision",
+        "border-opening",
+        "wall-climbing"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "butterfly-effect-berlin-wall-1989-mvoqz1ov",
       "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
       "hookStyle": "fullscreen-dramatic",
@@ -107,23 +137,6 @@
         "wall-demolition"
       ],
       "why_successful": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
-    },
-    {
-      "id": "berlin-wall-1989-butterfly-effect-mvnx7nh1",
-      "title": "SATU LEMBAR MEMO MERUNTUHKAN DUNIA",
-      "hookStyle": "fullscreen-dramatic",
-      "hookNarration": "9 November 1989. Seorang pejabat Jerman Timur salah membaca catatan di siaran langsung TV... dan malam itu juga, tirai besi yang kokoh selama 28 tahun hancur lebur.",
-      "scenes": [
-        "memo-handoff",
-        "press-question",
-        "press-podium",
-        "panic-phone",
-        "crowd-protest",
-        "gate-breach",
-        "wall-demolition",
-        "soviet-collapse"
-      ],
-      "why_successful": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ],
   "blacklisted_patterns": [
@@ -182,6 +195,13 @@
       "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 92/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "berlin-wall-fall-memo-1989-refined-mvouotah",
+      "timestamp": "2026-10-26T06:08:16.459Z",
+      "title": "MEMO SALAH, TEBOK RUNTUH",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ]
 }
