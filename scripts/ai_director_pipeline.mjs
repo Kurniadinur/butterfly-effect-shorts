@@ -724,20 +724,21 @@ async function generateStoryboard(topic) {
       : 'memo-investigation';
   }
 
-  // Hook Visual Curation: Cari arsip foto sejarah hero otentik untuk hook pembuka
-  const hookHeroQuery = storyData.hook.rightSearchQuery || storyData.hook.leftSearchQuery || `${topic} historical documentary photograph`;
+  // Hook Visual Generation: Generate reka adegan foto sinematik 9:16 untuk hook pembuka
+  const hookPrompt = storyData.hook.imagePrompt || `${topic} dramatic opening hook scene`;
   const hookDest = path.join(storyMediaDir, 'hero_hook.jpg');
-  console.log(`      [Hook Visual Hunter] Mencari arsip visual otentik untuk hook: "${hookHeroQuery}"...`);
-  const hookRes = await searchAndDownloadImage(hookHeroQuery, `${topic} historical documentary`, hookDest, {
+  console.log(`      🎨 [Reka Adegan AI Hook] Men-generate visual pembuka sinematik: "${storyData.hook.headline || hookPrompt.slice(0, 50)}"...`);
+  const hookRes = await searchAndDownloadImage(hookPrompt, `${topic} opening`, hookDest, {
     topic,
     headline: storyData.hook.headline,
     narration: storyData.hook.narration,
+    imagePrompt: hookPrompt,
   });
 
   if (hookRes.success) {
     storyData.hook.rightImage = `butterfly/media/${storySlug}/hero_hook.jpg`;
     storyData.hook.leftImage = `butterfly/media/${storySlug}/hero_hook.jpg`;
-    console.log(`      ✓ [Hero Hook Arsip Otentik] Berhasil dikurasi: "${hookRes.title}" (${hookRes.source})`);
+    console.log(`      ✓ [Reka Adegan AI Hook Selesai] Visual 9:16 tersimpan (${hookRes.source})`);
   } else {
     storyData.hook.leftImage = `butterfly/media/${storySlug}/node_1.jpg`;
     storyData.hook.rightImage = `butterfly/media/${storySlug}/node_1.jpg`;
@@ -770,12 +771,12 @@ async function generateStoryboard(topic) {
     let isPhotoDownloaded = false;
     if (qualifiesForPhoto) {
       const nodeDest = path.join(storyMediaDir, `node_${node.step}.jpg`);
-      const nodeQuery = node.searchQuery || `${topic} ${node.headline}`;
-      const fallbackNodeQuery = `${topic} ${node.primaryText || ''}`;
-      const res = await searchAndDownloadImage(nodeQuery, fallbackNodeQuery, nodeDest, {
+      const nodePrompt = node.imagePrompt || `${topic} ${node.headline}`;
+      const res = await searchAndDownloadImage(nodePrompt, `${topic} scene`, nodeDest, {
         topic,
         headline: node.headline,
         narration: node.narration,
+        imagePrompt: node.imagePrompt,
       });
       if (res.success) {
         isPhotoDownloaded = true;
@@ -784,7 +785,7 @@ async function generateStoryboard(topic) {
         node.mediaUrl = `butterfly/media/${storySlug}/node_${node.step}.jpg`;
         usedPhotos.add(node.mediaUrl);
         photoCount++;
-        console.log(`      ✓ [Bukti Saksi Nyata Adegan ${node.step}] Arsip tokoh/objek: "${res.title}" (${res.source})`);
+        console.log(`      🎨 [Reka Adegan AI Adegan ${node.step}] Berhasil di-generate: "${node.headline}" (${res.source})`);
       }
     }
 
@@ -808,7 +809,7 @@ async function generateStoryboard(topic) {
 
   console.log(`      ✓ Judul: "${storyData.title}"`);
   console.log(`      ✓ Jumlah Adegan: ${storyData.nodes.length} adegan`);
-  console.log(`      ✓ Visual Kurasi: 100% Foto Sinematik & Arsip Bersejarah (${photoCount} foto)\n`);
+  console.log(`      ✓ Visual Produksi: 100% Reka Adegan Foto Sinematik AI (${photoCount} foto)\n`);
 
   return storyData;
 }
