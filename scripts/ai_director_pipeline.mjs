@@ -37,7 +37,7 @@ console.log('================================================================');
 console.log('       AI DIRECTOR & SUTRADARA VIDEO PIPELINE (AUTONOMOUS)      ');
 console.log('================================================================');
 console.log(`Topik Naskah : "${topic}"`);
-console.log(`Tersedia     : ${API_KEYS.length} API Key (Rotasi Otomatis Failover)`);
+console.log(`AI Engine    : Groq Cloud LPU Turbo (Llama / Qwen High-Speed)`);
 console.log(`Audio Sync   : Groq Cloud LPU (Whisper Large V3)`);
 console.log('================================================================\n');
 
@@ -528,53 +528,40 @@ async function generateStoryboard(topic) {
   const t0 = Date.now();
   let result = '';
 
-  const provider = (process.env.STORY_PROVIDER || 'auto').toLowerCase();
+  const groqKey = (process.env.GROQ_API_KEY || '').trim();
+  if (groqKey) {
+    try {
+      console.log(`      ⚡ Menjalankan AI Storyboard Engine (Groq Cloud LPU Turbo)...`);
+      result = await generateStoryboardWithGroq(topic, dynamicPrompt);
+    } catch (groqErr) {
+      console.warn(`      [Groq Failover] Groq gagal: ${groqErr.message}. Beralih ke Gemini...`);
+    }
+  }
 
-  if (provider === 'groq') {
-    result = await generateStoryboardWithGroq(topic, dynamicPrompt);
-  } else {
-    console.log(`      ⚡ Menjalankan Anti-Burst Parallel Race (${API_KEYS.length} Gemini Keys + Groq LPU Turbo)...`);
-    console.log(`      📊 Status RPM Governor: ${rpmGovernor.getStatusString()}`);
-
-    // Build anti-burst racing tasks: strictly 1 request per healthy key
+  if (!result && API_KEYS.length > 0) {
+    console.log(`      ⚡ Mencoba panggilan cadangan Gemini AI...`);
     const availableKeys = rpmGovernor.getAvailableKeysForRace();
-    const tasks = [];
-
     for (const keyState of availableKeys) {
       const { index, key } = keyState;
       const model = rpmGovernor.getBestModelForKey(index, 'text');
       const ai = new GoogleGenAI({ apiKey: key });
-
-      rpmGovernor.recordRequest(index);
-
-      tasks.push(
-        (async () => {
-          try {
-            const res = await ai.models.generateContent({
-              model,
-              contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
-              config: { temperature: 0.88, topP: 0.95 },
-            });
-            return { provider: `Gemini Key ${index} (${model})`, text: res.text };
-          } catch (err) {
-            const msg = err.message || '';
-            if (msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED') || msg.includes('Quota exceeded')) {
-              rpmGovernor.penalizeKey(index, '429 Rate Limit');
-            }
-            throw err;
-          }
-        })()
-      );
+      try {
+        const res = await ai.models.generateContent({
+          model,
+          contents: [{ role: 'user', parts: [{ text: dynamicPrompt }] }],
+          config: { temperature: 0.88, topP: 0.95 },
+        });
+        result = res.text;
+        console.log(`      ✓ Naskah selesai via Gemini Key ${index}!`);
+        break;
+      } catch (err) {
+        // silently fallback
+      }
     }
+  }
 
-    try {
-      const winner = await Promise.any(tasks);
-      result = winner.text;
-      console.log(`      🎉 [Pemenang Balapan AI] Naskah tercepat selesai oleh: ${winner.provider}!`);
-    } catch (allErr) {
-      console.warn(`[Peringatan] Seluruh kandidat paralel mengalami kendala (${allErr.message}). Mengaktifkan panggilan darurat Groq LPU...`);
-      result = await generateStoryboardWithGroq(topic, dynamicPrompt);
-    }
+  if (!result) {
+    throw new Error('Gagal menghasilkan naskah cerita dari semua provider.');
   }
 
   console.log(`      ✓ Naskah & kurasi visual selesai dalam ${((Date.now() - t0) / 1000).toFixed(1)} detik.`);

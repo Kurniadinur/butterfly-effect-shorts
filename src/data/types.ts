@@ -62,6 +62,7 @@ export interface ButterflyNode {
   mediaUrl: string;
   directorType?: DirectorSceneType | string | null;
   searchQuery?: string | null;
+  imagePrompt?: string | null;
   zoomDirection?: ZoomDirection;
   primaryText?: string | null;
   secondaryText?: string | null;
