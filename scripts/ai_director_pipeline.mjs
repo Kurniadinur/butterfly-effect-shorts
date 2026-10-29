@@ -369,37 +369,52 @@ async function generateStoryboard(topic) {
   // Guaranteed High Visual Density Guard (Anti-Short Story Safety Gate)
   storyData = await ensureHighVisualDensity(storyData, topic);
 
-  // Normalize & Supervise Editorial Style (AI-Directed Eye Comfort & Mood Tone)
+  // Automatically rotate across 5 Human-Crafted Documentary Editorial Themes so every video looks fresh!
+  const EDITORIAL_THEME_ROTATION = [
+    'vox-archival',
+    'johnny-harris-slate',
+    'cleo-abram-studio',
+    'anatomical-atlas',
+    'poster-documentary',
+  ];
+  let nextThemeMood = EDITORIAL_THEME_ROTATION[0];
+  if (explicitPerspectiveIdx && explicitPerspectiveIdx >= 1 && explicitPerspectiveIdx <= EDITORIAL_THEME_ROTATION.length) {
+    nextThemeMood = EDITORIAL_THEME_ROTATION[explicitPerspectiveIdx - 1];
+  } else {
+    try {
+      const prevStoryPath = path.join(ROOT_DIR, 'src', 'data', 'currentStory.ts');
+      if (fs.existsSync(prevStoryPath)) {
+        const prevRaw = fs.readFileSync(prevStoryPath, 'utf8');
+        const prevIdx = EDITORIAL_THEME_ROTATION.findIndex((t) => prevRaw.includes(`"mood": "${t}"`));
+        if (prevIdx !== -1) {
+          nextThemeMood = EDITORIAL_THEME_ROTATION[(prevIdx + 1) % EDITORIAL_THEME_ROTATION.length];
+        } else {
+          nextThemeMood = EDITORIAL_THEME_ROTATION[Math.floor(Math.random() * EDITORIAL_THEME_ROTATION.length)];
+        }
+      }
+    } catch {}
+  }
+
   if (!storyData.editorialStyle || typeof storyData.editorialStyle !== 'object') {
-    const topicLower = topic.toLowerCase();
-    let defaultMood = 'clean-documentary';
-    if (topicLower.includes('berlin') || topicLower.includes('perang') || topicLower.includes('soviet') || topicLower.includes('spionase')) {
-      defaultMood = 'cold-war-crisis';
-    } else if (topicLower.includes('titanic') || topicLower.includes('kapal') || topicLower.includes('misteri') || topicLower.includes('forensik')) {
-      defaultMood = 'noir-forensic';
-    } else if (topicLower.includes('chernobyl') || topicLower.includes('nuklir') || topicLower.includes('radiasi') || topicLower.includes('ledakan')) {
-      defaultMood = 'industrial-decay';
-    } else if (topicLower.includes('darurat') || topicLower.includes('panik') || topicLower.includes('breaking') || topicLower.includes('kebakaran')) {
-      defaultMood = 'amber-urgent';
-    }
     storyData.editorialStyle = {
-      mood: defaultMood,
-      grainIntensity: 0.048,
-      vignetteStrength: 0.35,
-      shakeSensitivity: 'moderate',
-      shakeThresholdChaos: 65,
+      mood: nextThemeMood,
+      grainIntensity: 0.038,
+      vignetteStrength: 0.32,
+      shakeSensitivity: 'subtle',
+      shakeThresholdChaos: 75,
     };
   } else {
-    if (!storyData.editorialStyle.mood) storyData.editorialStyle.mood = 'cold-war-crisis';
-    // Clamp grain intensity for eye comfort (0.025 to 0.065)
-    const rawGrain = typeof storyData.editorialStyle.grainIntensity === 'number' ? storyData.editorialStyle.grainIntensity : 0.048;
+    if (!EDITORIAL_THEME_ROTATION.includes(storyData.editorialStyle.mood)) {
+      storyData.editorialStyle.mood = nextThemeMood;
+    }
+    const rawGrain = typeof storyData.editorialStyle.grainIntensity === 'number' ? storyData.editorialStyle.grainIntensity : 0.038;
     storyData.editorialStyle.grainIntensity = Math.max(0.025, Math.min(0.065, rawGrain));
-    const rawVignette = typeof storyData.editorialStyle.vignetteStrength === 'number' ? storyData.editorialStyle.vignetteStrength : 0.35;
+    const rawVignette = typeof storyData.editorialStyle.vignetteStrength === 'number' ? storyData.editorialStyle.vignetteStrength : 0.32;
     storyData.editorialStyle.vignetteStrength = Math.max(0.2, Math.min(0.5, rawVignette));
-    if (!storyData.editorialStyle.shakeSensitivity) storyData.editorialStyle.shakeSensitivity = 'moderate';
-    if (typeof storyData.editorialStyle.shakeThresholdChaos !== 'number') storyData.editorialStyle.shakeThresholdChaos = 65;
+    if (!storyData.editorialStyle.shakeSensitivity) storyData.editorialStyle.shakeSensitivity = 'subtle';
+    if (typeof storyData.editorialStyle.shakeThresholdChaos !== 'number') storyData.editorialStyle.shakeThresholdChaos = 75;
   }
-  console.log(`      🎨 [AI Editorial Style] Mood: ${storyData.editorialStyle.mood} | Grain: ${storyData.editorialStyle.grainIntensity} | Shake Chaos: ${storyData.editorialStyle.shakeThresholdChaos}`);
+  console.log(`      🎨 [Auto-Rotating Editorial Theme] Gaya Edit Video Ini: ${storyData.editorialStyle.mood}`);
 
   // Normalize Hook (Enforce Natural Human Question Hook!)
   const cleanScenario = topic.replace(/^(Apa yang Terjadi pada Tubuhmu Jika|Apa Jadinya Kalau|Bagaimana Jika)\s*/i, '').replace(/\?+$/, '').trim();
@@ -422,12 +437,12 @@ async function generateStoryboard(topic) {
     if (!storyData.hook.kicker || /INVESTIGASI|EKSPERIMEN|SIMULASI/i.test(storyData.hook.kicker)) {
       storyData.hook.kicker = '30 HARI NON-STOP';
     }
-    // Ensure headline is formatted as an engaging question
-    if (!storyData.hook.headline) {
+    // Ensure headline is formatted as a natural human question (never stiff AI colons)
+    if (!storyData.hook.headline || /:|mengancam nyawamu|eksperimen|bagaimana keadaan tubuhmu/i.test(storyData.hook.headline)) {
       storyData.hook.headline = defaultQuestionHeadline;
     } else if (!storyData.hook.headline.includes('?')) {
       const rawH = storyData.hook.headline.trim();
-      if (/^(bagaimana|apa|benarkah|kenapa|mengapa|kapan)/i.test(rawH)) {
+      if (/^(apa jadinya|bagaimana|apa|benarkah|kenapa|mengapa)/i.test(rawH)) {
         storyData.hook.headline = `${rawH}?`;
       } else {
         storyData.hook.headline = defaultQuestionHeadline;

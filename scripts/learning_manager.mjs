@@ -100,8 +100,19 @@ export function recordFeedback({ storyId, title, rating, note, storyData }) {
 
 function sanitizeLayoutDensity(data) {
   if (!data || !Array.isArray(data.nodes)) return data;
+  if (data.hook) {
+    if (data.hook.kicker && /eksperimen|investigasi|simulasi/i.test(data.hook.kicker)) {
+      data.hook.kicker = '30 HARI NON-STOP';
+    }
+    if (data.hook.headline && /:|mengancam nyawamu|eksperimen/i.test(data.hook.headline)) {
+      const cleaned = data.hook.headline.replace(/:.*$/, '').replace(/\?+$/, '').trim();
+      data.hook.headline = `APA JADINYA KALAU ${cleaned.toUpperCase()}?`;
+    }
+  }
   data.nodes.forEach((n) => {
-    if (n.primaryText && n.primaryText.length > 28) n.primaryText = n.primaryText.slice(0, 28);
+    if (n.primaryText && (/geser|px|ui player|margin|padding/i.test(n.primaryText) || n.primaryText.length > 28)) {
+      n.primaryText = (n.secondaryText || 'REAKSI TUBUH').slice(0, 26).toUpperCase();
+    }
     if (n.secondaryText && n.secondaryText.length > 34) n.secondaryText = n.secondaryText.slice(0, 34);
     if (n.stampText && n.stampText.length > 16) n.stampText = n.stampText.slice(0, 16);
     if (n.metricLabel && n.metricLabel.length > 15) n.metricLabel = n.metricLabel.slice(0, 15);
@@ -113,37 +124,35 @@ function sanitizeLayoutDensity(data) {
 /**
  * Autonomous AI Quality Critic / Auditor (Actor-Critic Self-Refinement Loop)
  * Reviews the drafted storyboard before rendering, detecting hallucinations,
- * inappropriate B-roll queries, or stale template patterns.
+ * robotic AI phrasing, or stale template patterns.
  */
 export async function auditAndRefineStory(storyData, topic, groqApiKey = process.env.GROQ_API_KEY) {
   const memory = loadLearningMemory();
   const blacklisted = memory.blacklisted_patterns || [];
 
   const auditPrompt = `
-Kamu adalah AI Senior Medical & Science Supervisor untuk simulasi anatomi tubuh 3D ("Apa yang Terjadi pada Tubuhmu Jika...").
+Kamu adalah Editor Dokumenter Sains & Medis Manusia Kelas Dunia (gaya Vox, Johnny Harris, Cleo Abram).
 Tugasmu adalah memeriksa dan menyempurnakan naskah storyboard berikut sebelum dirender menjadi video.
 
 TOPIK: "${topic}"
 DRAFT STORYBOARD:
 ${JSON.stringify(storyData, null, 2)}
 
-KRITERIA AUDIT MEDIS & VISUAL:
-1. AKURASI MEDIS & BIOLOGIS:
-   - Pastikan reaksi organ, hormon, dan tahapan waktu masuk akal secara ilmiah (misal: lambung -> pembuluh darah -> jantung -> otak -> ginjal).
+KRITERIA AUDIT MEDIS & BAHASA MANUSIA (ANTI-AI):
+1. AKURASI MEDIS & URUTAN ORGAN:
+   - Pastikan reaksi organ dan tahapan waktu masuk akal secara ilmiah (misal: lambung -> usus -> pembuluh darah -> hati -> jantung -> ginjal -> otak).
 2. KELENGKAPAN TARGET ORGAN ('organTarget'):
-   - Pastikan setiap node memiliki 'organTarget' yang valid ('brain', 'heart', 'lungs', 'stomach', 'liver', 'kidney', 'intestine', 'blood', 'nerves', atau 'muscles') agar pemindai anatomi 3D bergerak luwes antar-organ.
-3. KEPADATAN TEKS LAYAR & HOOK PERTANYAAN:
-   - 'hook.headline': WAJIB berupa kalimat pertanyaan pancingan penasaran (diakhiri tanda tanya "?"), misal: "BAGAIMANA KEADAAN TUBUHMU KETIKA ... ?".
-   - 'hook.narration': WAJIB dimulai dengan kalimat pertanyaan ke penonton sebelum masuk ke penjelasan teknis organ.
-   - 'primaryText': maksimal 25 karakter (indikator reaksi medis singkat).
-   - 'headline': 3 sampai 6 kata yang jelas dan dramatis.
+   - Pastikan setiap node memiliki 'organTarget' yang valid ('brain', 'heart', 'lungs', 'stomach', 'liver', 'kidney', 'intestine', 'blood', 'nerves', atau 'muscles').
+3. BAHASA MANUSIA NATURAL (DILARANG KERAS TEKS KAKU KHAS AI!):
+   - 'hook.headline': WAJIB berupa judul pertanyaan natural seperti manusia, contoh: "APA JADINYA KALAU KAMU MAKAN MIE 30 HARI TERUS-MENERUS?" atau "APA JADINYA KALAU TIDAK TIDUR 72 JAM NON-STOP?". DILARANG memakai kata "EKSPERIMEN", "TARGET UTAMA", atau pola kaku "X: APAKAH MENGANCAM NYAWAMU?".
+   - Pada setiap node, 'headline' dan 'primaryText' WAJIB menggunakan bahasa Indonesia sehari-hari yang mudah dipahami penonton (contoh: "LAMBUNG BEKERJA EKSTRA", "DINDING USUS TERIRITASI", "HATI MULAI KELELAHAN", "ASAM LAMBUNG NAIK", "PENYERAPAN TERGANGGU"). DILARANG memakai jargon medis robotik seperti "HEPATOSIT AKTIF", "DISFUNGSI ENDOTEL", "SISTEMIK KOLLAPS".
 
 FORMAT OUTPUT JSON MURNI:
 {
   "approved": true,
   "score": 95,
   "retentionScore": 96,
-  "notes": "Akurasi medis dan alur pemindaian organ terverifikasi.",
+  "notes": "Bahasa natural manusia dan alur organ terverifikasi.",
   "refinedStory": { objek storyData lengkap yang sudah disempurnakan }
 }
 `;
@@ -164,7 +173,7 @@ FORMAT OUTPUT JSON MURNI:
             {
               role: 'system',
               content:
-                'You are an elite historical documentary Executive Producer & Fact-Checker. Return pure valid JSON.',
+                'You are an elite human documentary Executive Producer & Copy Editor (Vox / Johnny Harris style). Return pure valid JSON.',
             },
             {
               role: 'user',

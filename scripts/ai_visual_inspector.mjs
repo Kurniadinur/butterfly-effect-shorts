@@ -162,9 +162,20 @@ export function autoHealStoryboard(storyData, repairs, sceneLabel, nodeIndex = -
   if (!repairs) return false;
   let healed = false;
 
+  const isCleanContentText = (txt, maxLen = 28) => {
+    if (!txt || typeof txt !== 'string') return false;
+    const t = txt.trim();
+    if (t.length < 3 || t.length > maxLen) return false;
+    if (/geser|px|ui|player|margin|padding|font|warna|kontras|teks bawah|eksperimen|target utama/i.test(t)) return false;
+    return true;
+  };
+
   if (nodeIndex === -1) {
     // Hook scene
-    if (repairs.shorten_headline && repairs.shorten_headline.length < (storyData.hook.headline || '').length) {
+    if (
+      isCleanContentText(repairs.shorten_headline, 68) &&
+      repairs.shorten_headline.length < (storyData.hook.headline || '').length
+    ) {
       console.log(`      🛠️ [AI Editor Auto-Polish] Memperpendek judul Hook: "${storyData.hook.headline}" -> "${repairs.shorten_headline}"`);
       storyData.hook.headline = repairs.shorten_headline;
       healed = true;
@@ -177,7 +188,10 @@ export function autoHealStoryboard(storyData, repairs, sceneLabel, nodeIndex = -
     }
   } else if (storyData.nodes && storyData.nodes[nodeIndex]) {
     const node = storyData.nodes[nodeIndex];
-    if (repairs.shorten_headline && repairs.shorten_headline.length < (node.headline || '').length) {
+    if (
+      isCleanContentText(repairs.shorten_headline, 36) &&
+      repairs.shorten_headline.length < (node.headline || '').length
+    ) {
       console.log(`      🛠️ [AI Editor Auto-Polish] Mengoptimalkan judul Adegan ${node.step}: "${node.headline}" -> "${repairs.shorten_headline}"`);
       node.headline = repairs.shorten_headline;
       healed = true;
@@ -187,8 +201,8 @@ export function autoHealStoryboard(storyData, repairs, sceneLabel, nodeIndex = -
       node.accentColor = repairs.polish_accent_color;
       healed = true;
     }
-    if (repairs.polish_primary_text) {
-      node.primaryText = repairs.polish_primary_text;
+    if (isCleanContentText(repairs.polish_primary_text, 28)) {
+      node.primaryText = repairs.polish_primary_text.toUpperCase();
       healed = true;
     }
     const isNodeValidStamp = repairs.polish_stamp && typeof repairs.polish_stamp === 'string' && repairs.polish_stamp.length <= 18 && !repairs.polish_stamp.includes(' ') && !/[.,?!]/.test(repairs.polish_stamp);

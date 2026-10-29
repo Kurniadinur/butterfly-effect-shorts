@@ -17,35 +17,24 @@ const PORT = process.env.UI_PORT || 3333;
 
 const CREATIVE_PERSPECTIVES = [
   {
-    name: '🌟 MASTER MULTI-PERSPEKTIF (GABUNGAN SEMUA SUDUT PANDANG)',
-    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER LENGKAP BERDURASI HINGGA 3 MENIT: ' +
-      'WAJIB MEMBUAT 15 HINGGA 25+ ADEGAN FOTO DOKUMENTER BERKUALITAS TINGGI DALAM ARRAY "nodes"! DILARANG KERAS MENGGUNAKAN SKETSA 2D ATAU KARTUN! ' +
-      'Bagi alur secara granular dengan foto arsip otentik dan reka adegan sinematik berganti dinamis tiap 3-5 detik: ' +
-      '• Fase 1: Blunder Sepele (dokumen, perwira, instruksi keliru). ' +
-      '• Fase 2: Ketegangan Garis Depan (pos jaga terisolasi, telepon darurat panik, kepanikan lapangan). ' +
-      '• Fase 3: Rantai Efek Domino (desas-desus media menyebar, massa membludak, gerbang perbatasan jebol). ' +
-      '• Fase 4: Bencana Puncak & Sidang Sejarah (runtuhnya sistem total, reaksi kaget dunia, vonis akhir). ' +
-      'Total narasi padat dan dramatis agar penonton terpaku dari detik pertama hingga akhir!',
+    name: '🧬 OTOMATIS: ROTASI 5 GAYA EDITORIAL DOKUMENTER (ANTI-BOSAN)',
+    angle: 'Sistem secara otomatis merotasi 5 gaya edit dokumenter manusia (Vox Archival Yellow, Johnny Harris Slate & Vermilion, Cleo Abram Studio Coral, Institute of Human Anatomy Atlas, dan Poster Documentary) serta membedah reaksi organ tubuh manusia secara kronologis dengan bahasa sehari-hari yang natural.',
   },
   {
-    name: 'BLUNDER SEPELE & KELALAIAN MANUSIAWI',
-    angle: 'Fokuskan alur cerita pada momen kelalaian manusiawi paling awal: benda kecil yang terlupakan, memo terburu-buru, salah belok, atau keputusan sepele dalam hitungan detik yang tanpa disadari memicu rangkaian bencana tak terkendali.',
+    name: '📒 GAYA 1: VOX ARCHIVAL (Kertas Krem & Stabilo Kuning)',
+    angle: 'Gunakan gaya visual Vox Archival dengan kartu kertas krem hangat, stabilo kuning #FFCC00, dan alur kronologis organ dalam yang tajam.',
   },
   {
-    name: 'KETEGANGAN LAPANGAN DI TITIK KRITIS',
-    angle: 'Fokuskan alur cerita pada kepanikan operator lapangan di garis depan: petugas jaga yang terisolasi, alarm darurat yang berbunyi, komunikasi radio yang terputus, dan detik-detik menegangkan saat mereka menyadari bahaya sudah terlambat dihentikan.',
+    name: '📐 GAYA 2: JOHNNY HARRIS SLATE (Blueprint Gelap & Merah Vermilion)',
+    angle: 'Gunakan gaya visual Johnny Harris dengan latar belakang slate arsitektural, kartu tab merah vermilion #E63946, dan tata letak terbalik (karakter 3D di kanan, kartu hitungan di kiri).',
   },
   {
-    name: 'EFEK DOMINO SEBAB-AKIBAT SISTEMIK',
-    angle: 'Fokuskan alur cerita pada eskalasi efek domino ekstrem bertahap: bagaimana 1 kesalahan mikro merusak sistem lapis pertama, merembet ke kekacauan lapis kedua, memicu kegagalan total, hingga menghancurkan seluruh struktur peradaban.',
+    name: '🔥 GAYA 3: CLEO ABRAM STUDIO (Espresso Hangat & Coral Block)',
+    angle: 'Gunakan gaya visual Cleo Abram dengan latar studio espresso hangat, bayangan blok warna coral #FF5A36, dan timecode bar di tengah atas.',
   },
   {
-    name: 'BREAKING NEWS & REAKSI KAGET DUNIA',
-    angle: 'Fokuskan alur cerita pada ledakan kabar mengejutkan: transmisi darurat, kepanikan publik yang meluas, pers internasional yang menyiarkan bencana secara langsung, dan keterkejutan jutaan manusia saat menyadari sejarah berubah dalam semalam.',
-  },
-  {
-    name: 'INVESTIGASI FORENSIK DOKUMENTER & BUKTI KUNCI',
-    angle: 'Fokuskan alur cerita pada rekonstruksi forensik dingin ala Nessie Judge: analisis kronologis jam demi jam, berkas investigasi deklasifikasi, kata-kata terakhir para saksi kunci, dan pengungkapan fakta bahwa tragedi ini bisa dicegah jika satu hal kecil tidak terabaikan.',
+    name: '🌿 GAYA 4: ANATOMICAL ATLAS (Jurnal Medis Klasik & Teal Emas)',
+    angle: 'Gunakan gaya visual Institute of Human Anatomy dengan kartu perkamen gading, aksen hijau teal & emas, serta pil informasi mengambang.',
   },
 ];
 
@@ -331,7 +320,7 @@ const server = http.createServer(async (req, res) => {
         params = {};
       }
 
-      const topic = params.topic || 'Runtuhnya Tembok Berlin Karena Salah Baca Memo';
+      const topic = params.topic || 'Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur Selama 72 Jam';
       const perspective = params.perspective !== undefined ? String(params.perspective) : '';
 
       if (activeGenProcess) {

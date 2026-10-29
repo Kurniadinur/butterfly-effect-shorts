@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useCurrentFrame, useVideoConfig, spring } from 'remotion';
+import { resolveEditorialTheme } from '../utils/editorialThemes';
 
 interface OutroSceneProps {
   question: string;
+  storyId?: string | null;
+  editorialMood?: string | null;
 }
 
-export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
+export const OutroScene: React.FC<OutroSceneProps> = ({ question, storyId, editorialMood }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+
+  const theme = useMemo(
+    () => resolveEditorialTheme(storyId, editorialMood, question),
+    [storyId, editorialMood, question]
+  );
 
   const entrance = spring({
     frame,
@@ -36,29 +44,31 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
     >
       <div
         style={{
-          backgroundColor: '#F4F0EA',
-          borderRadius: '6px',
+          backgroundColor: theme.cardBg,
+          borderRadius: theme.cardRadius,
           padding: '44px 36px',
-          border: '3px solid #111215',
-          boxShadow: '14px 14px 0px #111215, 0 30px 70px rgba(0, 0, 0, 0.85)',
+          border: theme.cardBorder,
+          borderTop: theme.cardTopAccentBar ? `8px solid ${theme.cardTopAccentBar}` : theme.cardBorder,
+          borderLeft: theme.cardLeftAccentSpine ? `9px solid ${theme.cardLeftAccentSpine}` : theme.cardBorder,
+          boxShadow: theme.cardShadow,
           width: '100%',
         }}
       >
         <span
           style={{
             fontSize: '14px',
-            color: '#111215',
+            color: theme.primaryHighlightText,
             fontWeight: 900,
             fontFamily: "'Space Grotesk', monospace",
             letterSpacing: '1.5px',
             textTransform: 'uppercase',
-            backgroundColor: '#FFCC00',
-            border: '2px solid #111215',
+            backgroundColor: theme.primaryHighlight,
+            border: `2px solid ${theme.inkDark}`,
             padding: '5px 16px',
             borderRadius: '3px',
             display: 'inline-block',
             marginBottom: '22px',
-            boxShadow: '4px 4px 0px #111215',
+            boxShadow: `4px 4px 0px ${theme.inkDark}`,
           }}
         >
           PERTANYAAN BUAT KAMU
@@ -68,7 +78,7 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
           style={{
             fontSize: '36px',
             fontWeight: 900,
-            color: '#111215',
+            color: theme.inkDark,
             lineHeight: 1.25,
             margin: '0 0 28px 0',
             fontFamily: "'Montserrat', sans-serif",
@@ -81,8 +91,8 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
         <div
           style={{
             display: 'inline-block',
-            backgroundColor: '#16181D',
-            border: '2px solid #111215',
+            backgroundColor: theme.specimenBg,
+            border: `2px solid ${theme.inkDark}`,
             padding: '12px 28px',
             borderRadius: '3px',
             fontSize: '17px',

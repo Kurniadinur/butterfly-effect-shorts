@@ -1,6 +1,6 @@
 // Automatically generated & polished by AI Director & Autonomous Remotion Editor
-import { ButterflyStoryData } from './types';
-export { cleanSubtitleWord } from '../utils/textUtils';
+import { ButterflyStoryData } from '../types';
+export { cleanSubtitleWord } from '../../utils/textUtils';
 
 export const CURRENT_STORY: ButterflyStoryData = {
   "id": "mie-instan-setiap-hari-mvt8kken",

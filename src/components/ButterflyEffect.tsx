@@ -25,13 +25,16 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
     return 25;
   }, [frame, data]);
 
+  const storyId = data.id;
+  const editorialMood = data.editorialStyle?.mood;
+
   return (
     <div
       style={{
         position: 'relative',
         width: '1080px',
         height: '1920px',
-        backgroundColor: '#050b14',
+        backgroundColor: '#090a0c',
         overflow: 'hidden',
       }}
     >
@@ -41,9 +44,11 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         shakeThresholdChaos={data.editorialStyle?.shakeThresholdChaos ?? 78}
         sensitivity="subtle"
       >
-        {/* 1. 3D Medical X-Ray Hook Scene with Escalating Multiplier / Action Animation */}
+        {/* 1. Dynamic Multi-Style Hook Scene with Escalating Multiplier / Action Animation */}
         <Sequence from={0} durationInFrames={data.hook.durationFrames}>
           <HookScene
+            storyId={storyId}
+            editorialMood={editorialMood}
             hookStyle={data.hook.hookStyle}
             archetype={data.hook.archetype}
             headline={data.hook.headline}
@@ -66,12 +71,14 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
           />
         </Sequence>
 
-        {/* 2. Continuous Unbroken 3D Volumetric Anatomical Journey (Zero Scene Cuts & Zero Flashes!) */}
+        {/* 2. Continuous Unbroken 3D Volumetric Anatomical Journey (Multi-Theme Editorial UI) */}
         <Sequence
           from={data.hook.durationFrames}
           durationInFrames={Math.max(1, data.totalDurationFrames - data.hook.durationFrames - data.outro.durationFrames)}
         >
           <ContinuousBodyJourney
+            storyId={storyId}
+            editorialMood={editorialMood}
             nodes={data.nodes}
             wordTimestamps={data.wordTimestamps}
             hookDurationFrames={data.hook.durationFrames}
@@ -81,12 +88,16 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
           />
         </Sequence>
 
-        {/* 3. Medical Summary Outro Card */}
+        {/* 3. Editorial Outro Card */}
         <Sequence
           from={data.totalDurationFrames - data.outro.durationFrames}
           durationInFrames={data.outro.durationFrames}
         >
-          <OutroScene question={data.outro.question} />
+          <OutroScene
+            question={data.outro.question}
+            storyId={storyId}
+            editorialMood={editorialMood}
+          />
         </Sequence>
       </CameraShake>
 

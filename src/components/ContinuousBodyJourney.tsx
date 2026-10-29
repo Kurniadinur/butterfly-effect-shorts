@@ -2,8 +2,11 @@ import React, { useMemo } from 'react';
 import { Img, useCurrentFrame, useVideoConfig, staticFile, interpolate } from 'remotion';
 import { ButterflyNode, OrganTarget, WordTimestamp } from '../data/types';
 import { detectOrganFromText } from './MedicalScannerScene';
+import { resolveEditorialTheme, humanizeOnScreenText } from '../utils/editorialThemes';
 
 export interface ContinuousBodyJourneyProps {
+  storyId?: string | null;
+  editorialMood?: string | null;
   nodes: ButterflyNode[];
   wordTimestamps?: WordTimestamp[];
   hookDurationFrames: number;
@@ -168,15 +171,21 @@ function easeInOutCubic(t: number): number {
  *   so viewers immediately understand what is happening inside the body!
  */
 export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
+  storyId,
+  editorialMood,
   nodes,
   hookDurationFrames,
   outroDurationFrames,
   totalDurationFrames,
-  baseBodyMediaUrl = 'butterfly/media/medical_body_xray.jpg',
 }) => {
   const relFrame = useCurrentFrame();
   const frame = relFrame + hookDurationFrames; // Absolute timeline frame
   const { fps } = useVideoConfig();
+
+  const theme = useMemo(
+    () => resolveEditorialTheme(storyId, editorialMood, nodes?.[0]?.headline),
+    [storyId, editorialMood, nodes]
+  );
 
   // Build continuous timeline waypoints from nodes (No mid-sentence jumps!)
   const waypoints = useMemo(() => {
@@ -188,10 +197,10 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           endFrame: totalDurationFrames - outroDurationFrames,
           anchor: ORGAN_CAMERA_ANCHORS['full-body'],
           chaosLevel: 35,
-          headline: 'PEMINDAIAN ANATOMI TUBUH',
-          timeTag: 'SIMULASI AKTIF',
-          primaryText: 'REAKSI BIOLOGIS REAL-TIME',
-          secondaryText: 'Pemindaian organ dalam',
+          headline: 'REAKSI ORGAN TUBUH',
+          timeTag: 'TAHAP 1',
+          primaryText: 'REAKSI TUBUH',
+          secondaryText: 'Perubahan di dalam tubuh',
           step: 1,
         },
       ];
@@ -214,9 +223,9 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
         endFrame: eFrame,
         anchor,
         chaosLevel: n.chaosLevel ?? 35,
-        headline: n.headline || anchor.label,
-        timeTag: n.timeOrYear || `TAHAP ${idx + 1}`,
-        primaryText: n.primaryText || 'REAKSI BIOLOGIS AKTIF',
+        headline: humanizeOnScreenText(n.headline, anchor.label),
+        timeTag: (n.timeOrYear || `TAHAP ${idx + 1}`).replace(/eksperimen|simulasi/gi, '').trim(),
+        primaryText: humanizeOnScreenText(n.primaryText, n.secondaryText || 'REAKSI TUBUH'),
         secondaryText: n.secondaryText || n.caption || '',
         step: n.step || idx + 1,
       };
@@ -397,18 +406,18 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(circle at 50% 42%, #1a1b1f 0%, #101114 68%, #090a0c 100%)',
+        background: theme.bgGradient,
         overflow: 'hidden',
         perspective: '1350px',
       }}
     >
-      {/* Subtle Editorial Dot-Matrix Texture (Vox / Johnny Harris human-edited aesthetic, NOT AI sci-fi grid) */}
+      {/* Dynamic Studio Texture (Adapts per Editorial Theme) */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(244, 240, 234, 0.08) 1.5px, transparent 1.5px)',
-          backgroundSize: '36px 36px',
+          backgroundImage: theme.bgPatternImage,
+          backgroundSize: theme.bgPatternSize,
           pointerEvents: 'none',
         }}
       />
@@ -692,8 +701,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       </div>
 
       {/* =====================================================================
-          3. VOX / JOHNNY HARRIS EDITORIAL ATLAS CALLOUT (Physical Cream Paper Card +
-             Architectural Leader Line + Hard Offset Shadow — Zero AI Neon Border!)
+          3. MULTI-THEME EDITORIAL CALLOUT (Physical Paper Card + Leader Line + Hard Shadow)
           ===================================================================== */}
       <svg
         width="1080"
@@ -706,15 +714,15 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             calloutOnRight ? cardLeft - 24 : cardLeft + 444
           },${cardTop + 68} ${calloutOnRight ? cardLeft : cardLeft + 420},${cardTop + 68}`}
           fill="none"
-          stroke="#F4F0EA"
+          stroke={theme.leaderLineColor}
           strokeWidth="2.5"
         />
         <rect
-          x={(calloutOnRight ? cardLeft - 4 : cardLeft + 416)}
+          x={calloutOnRight ? cardLeft - 4 : cardLeft + 416}
           y={cardTop + 62}
           width="8"
           height="12"
-          fill="#FFCC00"
+          fill={theme.primaryHighlight}
         />
       </svg>
 
@@ -725,17 +733,19 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           top: `${cardTop}px`,
           width: '420px',
           zIndex: 25,
-          backgroundColor: '#F4F0EA',
-          borderRadius: '4px',
-          border: '2.5px solid #111215',
-          boxShadow: '10px 10px 0px #111215, 0 18px 36px rgba(0, 0, 0, 0.55)',
+          backgroundColor: theme.cardBg,
+          borderRadius: theme.cardRadius,
+          border: theme.cardBorder,
+          borderTop: theme.cardTopAccentBar ? `7px solid ${theme.cardTopAccentBar}` : theme.cardBorder,
+          borderLeft: theme.cardLeftAccentSpine ? `8px solid ${theme.cardLeftAccentSpine}` : theme.cardBorder,
+          boxShadow: theme.cardShadow,
           padding: '14px 16px',
           display: 'flex',
           alignItems: 'center',
           gap: '16px',
         }}
       >
-        {/* Editorial Specimen Frame (Square Cutout with Charcoal Matte) */}
+        {/* Editorial Specimen Frame */}
         <div
           style={{
             position: 'relative',
@@ -743,8 +753,8 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             height: '104px',
             borderRadius: '3px',
             overflow: 'hidden',
-            border: '2px solid #111215',
-            backgroundColor: '#16181d',
+            border: `2px solid ${theme.inkDark}`,
+            backgroundColor: theme.specimenBg,
             flexShrink: 0,
           }}
         >
@@ -760,17 +770,17 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           />
         </div>
 
-        {/* High-Contrast Print Typography on Warm Cream Paper */}
+        {/* High-Contrast Print Typography */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', minWidth: 0 }}>
           <div
             style={{
               fontFamily: "'Space Grotesk', monospace",
               fontSize: '12px',
               fontWeight: 800,
-              color: '#52525b',
+              color: theme.inkMuted,
               letterSpacing: '1.2px',
               textTransform: 'uppercase',
-              borderBottom: '1.5px solid #d4d0c8',
+              borderBottom: '1.5px solid rgba(0,0,0,0.14)',
               paddingBottom: '3px',
             }}
           >
@@ -782,7 +792,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
               fontFamily: "'Montserrat', sans-serif",
               fontSize: '20px',
               fontWeight: 900,
-              color: '#111215',
+              color: theme.inkDark,
               lineHeight: 1.15,
               letterSpacing: '-0.4px',
               textTransform: 'uppercase',
@@ -791,17 +801,17 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             {activeWp.headline}
           </div>
 
-          {/* Vox Marker Highlighter Strip */}
+          {/* Editorial Marker Highlighter Strip */}
           <div
             style={{
               marginTop: '3px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
-              backgroundColor: smoothChaos >= 65 ? '#FF3B30' : '#FFCC00',
+              backgroundColor: smoothChaos >= 65 ? theme.criticalHighlight : theme.primaryHighlight,
               padding: '3px 9px',
               borderRadius: '2px',
-              border: '1.5px solid #111215',
+              border: `1.5px solid ${theme.inkDark}`,
               width: 'fit-content',
             }}
           >
@@ -810,14 +820,12 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
                 fontFamily: "'Space Grotesk', monospace",
                 fontSize: '11px',
                 fontWeight: 900,
-                color: smoothChaos >= 65 ? '#FFFFFF' : '#111215',
+                color: smoothChaos >= 65 ? theme.criticalHighlightText : theme.primaryHighlightText,
                 letterSpacing: '0.6px',
                 textTransform: 'uppercase',
               }}
             >
-              {activeWp.primaryText && activeWp.primaryText.length <= 32
-                ? activeWp.primaryText
-                : activeWp.secondaryText || 'REAKSI TUBUH'}
+              {activeWp.primaryText}
             </span>
           </div>
         </div>
@@ -841,78 +849,231 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       />
 
       {/* =====================================================================
-          5. EDITORIAL TOP TIMELINE STRIP (Clean Chapter Header — Zero AI Jargon)
+          5. DYNAMIC MULTI-VARIANT TOP TIMELINE HEADER (Changes across themes!)
           ===================================================================== */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '58px',
-          left: '48px',
-          right: '48px',
-          zIndex: 30,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          backgroundColor: '#16181D',
-          padding: '12px 20px',
-          borderRadius: '4px',
-          border: '2px solid #F4F0EA',
-          boxShadow: '6px 6px 0px rgba(0, 0, 0, 0.85)',
-        }}
-      >
-        {/* Left: Highlighted Step & Time Stamp */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+      {theme.topBarVariant === 'floating-pills' ? (
+        /* VARIANT B: Johnny Harris / Atlas Split Floating Pills */
+        <div
+          style={{
+            position: 'absolute',
+            top: '56px',
+            left: '48px',
+            right: '48px',
+            zIndex: 30,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
           <div
             style={{
-              backgroundColor: '#FFCC00',
-              color: '#111215',
-              fontFamily: "'Space Grotesk', monospace",
-              fontSize: '14px',
-              fontWeight: 900,
-              padding: '4px 10px',
-              borderRadius: '2px',
-              letterSpacing: '0.8px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              backgroundColor: theme.cardBg,
+              padding: '10px 18px',
+              borderRadius: '3px',
+              border: `2.5px solid ${theme.inkDark}`,
+              boxShadow: `6px 6px 0px ${theme.inkDark}`,
             }}
           >
-            {activeWp.step < 10 ? `0${activeWp.step}` : activeWp.step}
+            <span
+              style={{
+                backgroundColor: theme.primaryHighlight,
+                color: theme.primaryHighlightText,
+                fontFamily: "'Space Grotesk', monospace",
+                fontSize: '14px',
+                fontWeight: 900,
+                padding: '3px 9px',
+                borderRadius: '2px',
+              }}
+            >
+              {activeWp.step < 10 ? `0${activeWp.step}` : activeWp.step}
+            </span>
+            <span
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '18px',
+                fontWeight: 900,
+                color: theme.inkDark,
+                letterSpacing: '0.4px',
+                textTransform: 'uppercase',
+              }}
+            >
+              {activeWp.timeTag}
+            </span>
           </div>
-          <span
+
+          <div
             style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: '18px',
-              fontWeight: 900,
-              color: '#F4F0EA',
-              letterSpacing: '0.4px',
-              textTransform: 'uppercase',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '14px',
+              backgroundColor: theme.specimenBg,
+              padding: '10px 18px',
+              borderRadius: '3px',
+              border: `2px solid ${theme.paperLight}`,
+              boxShadow: '6px 6px 0px rgba(0,0,0,0.85)',
             }}
           >
-            {activeWp.timeTag}
-          </span>
-        </div>
-
-        {/* Right: Clean Editorial EKG Trace + Heartbeat BPM */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
-          <svg width="135" height="32" viewBox="0 0 220 40" style={{ overflow: 'visible' }}>
-            <path
-              d={ekgPath}
-              fill="none"
-              stroke="#FFCC00"
-              strokeWidth="2.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-            <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '22px', fontWeight: 900, color: '#F4F0EA' }}>
-              {bpm}
-            </span>
-            <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '12px', fontWeight: 800, color: '#FFCC00' }}>
-              BPM
-            </span>
+            <svg width="105" height="28" viewBox="0 0 220 40" style={{ overflow: 'visible' }}>
+              <path
+                d={ekgPath}
+                fill="none"
+                stroke={theme.primaryHighlight}
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '21px', fontWeight: 900, color: '#F4F0EA' }}>
+                {bpm}
+              </span>
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '11px', fontWeight: 800, color: theme.primaryHighlight }}>
+                BPM
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      ) : theme.topBarVariant === 'centered-timecode' ? (
+        /* VARIANT C: Cleo Abram Studio Centered Clapper Timecode Strip */
+        <div
+          style={{
+            position: 'absolute',
+            top: '56px',
+            left: '48px',
+            right: '48px',
+            zIndex: 30,
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '20px',
+              backgroundColor: theme.cardBg,
+              padding: '12px 26px',
+              borderRadius: '6px',
+              border: `3px solid ${theme.inkDark}`,
+              boxShadow: `7px 7px 0px ${theme.primaryHighlight}`,
+            }}
+          >
+            <span
+              style={{
+                backgroundColor: theme.inkDark,
+                color: '#FFFFFF',
+                fontFamily: "'Space Grotesk', monospace",
+                fontSize: '14px',
+                fontWeight: 900,
+                padding: '4px 10px',
+                borderRadius: '3px',
+              }}
+            >
+              #{activeWp.step < 10 ? `0${activeWp.step}` : activeWp.step}
+            </span>
+            <span
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '18px',
+                fontWeight: 900,
+                color: theme.inkDark,
+                textTransform: 'uppercase',
+              }}
+            >
+              {activeWp.timeTag}
+            </span>
+            <div
+              style={{
+                borderLeft: `2px solid ${theme.inkDark}`,
+                paddingLeft: '16px',
+                display: 'flex',
+                alignItems: 'baseline',
+                gap: '4px',
+              }}
+            >
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '20px', fontWeight: 900, color: theme.primaryHighlight }}>
+                {bpm}
+              </span>
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '12px', fontWeight: 900, color: theme.inkDark }}>
+                BPM
+              </span>
+            </div>
+          </div>
+        </div>
+      ) : (
+        /* VARIANT A: Classic Full-Width Documentary Header Bar */
+        <div
+          style={{
+            position: 'absolute',
+            top: '58px',
+            left: '48px',
+            right: '48px',
+            zIndex: 30,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            backgroundColor: theme.specimenBg,
+            padding: '12px 20px',
+            borderRadius: '4px',
+            border: `2px solid ${theme.paperLight}`,
+            boxShadow: '6px 6px 0px rgba(0, 0, 0, 0.85)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div
+              style={{
+                backgroundColor: theme.primaryHighlight,
+                color: theme.primaryHighlightText,
+                fontFamily: "'Space Grotesk', monospace",
+                fontSize: '14px',
+                fontWeight: 900,
+                padding: '4px 10px',
+                borderRadius: '2px',
+                letterSpacing: '0.8px',
+              }}
+            >
+              {activeWp.step < 10 ? `0${activeWp.step}` : activeWp.step}
+            </div>
+            <span
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '18px',
+                fontWeight: 900,
+                color: theme.paperLight,
+                letterSpacing: '0.4px',
+                textTransform: 'uppercase',
+              }}
+            >
+              {activeWp.timeTag}
+            </span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+            <svg width="135" height="32" viewBox="0 0 220 40" style={{ overflow: 'visible' }}>
+              <path
+                d={ekgPath}
+                fill="none"
+                stroke={theme.primaryHighlight}
+                strokeWidth="2.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '22px', fontWeight: 900, color: theme.paperLight }}>
+                {bpm}
+              </span>
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '12px', fontWeight: 800, color: theme.primaryHighlight }}>
+                BPM
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
