@@ -3,1388 +3,1715 @@ import { ButterflyStoryData } from './types';
 export { cleanSubtitleWord } from '../utils/textUtils';
 
 export const CURRENT_STORY: ButterflyStoryData = {
-  "id": "72-jam-tanpa-tidur-simulasi-anatomi-mvt1kw03",
-  "title": "72 JAM TANPA TIDUR",
+  "id": "mie-instan-setiap-hari-mvt8kken",
+  "title": "MIKROPLASTIK DI DARAHMU",
   "editorialStyle": {
-    "mood": "clinical-neon",
-    "grainIntensity": 0.04,
-    "vignetteStrength": 0.35,
-    "shakeSensitivity": "high",
-    "shakeThresholdChaos": 60
+    "mood": "clean-documentary",
+    "grainIntensity": 0.035,
+    "vignetteStrength": 0.3,
+    "shakeSensitivity": "subtle",
+    "shakeThresholdChaos": 75
   },
   "hook": {
     "hookStyle": "fullscreen-dramatic",
-    "kicker": "PERTANYAAN ANATOMI 3D",
-    "headline": "BAGAIMANA KEADAAN TUBUHMU KETIKA TIDAK TIDUR 72 JAM?",
-    "narration": "Detik pertama tanpa tidur, adenosin mulai menumpuk di otak. Dalam 72 jam, tubuhmu berubah menjadi ladang perang biokimia yang menghancurkan kognisi.",
-    "leftTitle": "Penumpukan Adenosin",
-    "rightTitle": "Kegagalan Saraf",
-    "leftBadge": "FASE AWAL",
-    "rightBadge": "KOLAPS SISTEM",
-    "leftPrimaryText": "Adenosin +200%",
-    "leftStampText": "T+0:00",
-    "leftSearchQuery": "3D medical X-ray brain adenosin buildup",
-    "rightSearchQuery": "3D medical X-ray brain neural failure",
-    "imagePrompt": "3D medical anatomical X-ray scan of glowing human brain with cyan adenosin particles accumulating in the cerebral cortex, dark clinical background, high contrast, 9:16 vertical",
-    "archetype": "laboratory-discovery",
+    "kicker": "EKSPERIMEN TUBUH MANUSIA",
+    "headline": "MIE INSTAN SETIAP HARI: APAKAH MENGANCAM NYAWAMU?",
+    "narration": "Pernahkah kamu membayangkan, apa yang sebenarnya terjadi di dalam tubuhmu jika memakan mi instan setiap hari selama sebulan? Kamu mungkin mengira itu hanya karbohidrat biasa... tapi di balik kulitmu, partikel mikroplastik dan zat pengawet sedang merusak ususmu dan mengalir ke jantungmu. Mari kita masuk ke dalam tubuhmu detik demi detik!",
+    "leftTitle": "Kebiasaan Sepele",
+    "rightTitle": "Reaksi Organ",
+    "leftBadge": "PEMICU AWAL",
+    "rightBadge": "DAMPAK BIOLOGIS",
+    "leftPrimaryText": "Konsumsi Harian",
+    "leftStampText": "FASE 0",
+    "leftSearchQuery": "3D medical X-ray human body glowing anatomy",
+    "rightSearchQuery": "3D medical X-ray glowing brain and heart scan",
+    "imagePrompt": "3D medical anatomical X-ray scan of glowing human body with red warning signs around stomach and heart, bioluminescent cyan and red, Zack D Films style, 9:16 vertical",
+    "archetype": "memo-investigation",
     "leftImage": "butterfly/media/medical_body_xray.jpg",
     "rightImage": "butterfly/media/medical_body_xray.jpg",
-    "durationFrames": 283
+    "durationFrames": 632
   },
   "nodes": [
     {
       "step": 1,
-      "timeOrYear": "MENIT KE-15 • OTAK",
-      "organTarget": "brain",
-      "headline": "Penumpukan Adenosin",
-      "narration": "Akumulasi adenosin di korteks mulai menghambat transmisi sinyal saraf pengingat.",
+      "timeOrYear": "MENIT KE-5 • LAMBUNG",
+      "organTarget": "stomach",
+      "headline": "PENCERNAAN CEPAT & ASAM",
+      "narration": "Air panas melarutkan bumbu, namun zat pengawet dan MSG langsung mengiritasi mukosa lambung.",
       "chaosLevel": 15,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray brain adenosin particles",
-      "imagePrompt": "3D medical anatomical X-ray render of glowing human brain with fine cyan adenosin particles accumulating in the frontal lobe, dark background, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "ADENOSIN +15%",
-      "secondaryText": "Sinyal lelah dimulai",
+      "searchQuery": "3D medical X-ray glowing human stomach acid",
+      "imagePrompt": "3D medical anatomical X-ray render of glowing human stomach with swirling red acid waves, dark clinical background, 9:16 vertical",
+      "primaryText": "IRITASI MUKOSA",
+      "secondaryText": "pH Lambung Turun Drastis",
       "stampText": "FASE 1",
-      "caption": "Molekul adenosin menghalangi reseptor saraf.",
+      "caption": "Zat aditif mulai menyentuh dinding lambung.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "out",
-      "startFrame": 283,
-      "durationFrames": 125
+      "startFrame": 632,
+      "durationFrames": 216
     },
     {
       "step": 2,
-      "timeOrYear": "JAM KE-1 • JANTUNG",
-      "organTarget": "heart",
-      "headline": "Kompensasi Adrenalin",
-      "narration": "Jantung berdetak lebih cepat untuk mengkompensasi penurunan efisiensi neuron.",
+      "timeOrYear": "MENIT KE-30 • USUS HALUS",
+      "organTarget": "intestine",
+      "headline": "SINDROM USUS BOCOR",
+      "narration": "Partikel mikroplastik dari kemasan mi menembus celah antar sel epitel usus halus.",
       "chaosLevel": 25,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray heart beating fast",
-      "imagePrompt": "3D medical anatomical X-ray render of a glowing human heart beating rapidly with red energy pulses, dark background, 9:16 vertical",
-      "directorType": "action-tracker",
-      "primaryText": "BPM 95",
-      "secondaryText": "Adrenalin dilepaskan",
-      "stampText": "FASE 2",
-      "caption": "Sistem saraf simpatik aktif memompa darah.",
+      "searchQuery": "3D medical X-ray glowing intestine villi",
+      "imagePrompt": "3D medical anatomical X-ray of small intestine villi with tiny glowing plastic particles slipping through gaps, dark background, 9:16 vertical",
+      "primaryText": "USUS BOCOR",
+      "secondaryText": "Mikroplastik Masuk Darah",
+      "stampText": "FASE 1",
+      "caption": "Sistem pertahanan pertama tubuh berhasil ditembus.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "panRight",
-      "startFrame": 408,
-      "durationFrames": 123
+      "startFrame": 848,
+      "durationFrames": 154
     },
     {
       "step": 3,
-      "timeOrYear": "JAM KE-3 • SARAF",
-      "organTarget": "nerves",
-      "headline": "Penurunan Refleks",
-      "narration": "Kecepatan konduksi saraf motorik melambat, memperpanjang waktu reaksi fisik tubuh.",
-      "chaosLevel": 28,
+      "timeOrYear": "MENIT KE-60 • PEMBULUH DARAH",
+      "organTarget": "blood",
+      "headline": "SIRKULASI TOKSIN DARAH",
+      "narration": "Partikel mikroplastik kini bersirkulasi bebas di dalam aliran darahmu, menuju organ vital.",
+      "chaosLevel": 35,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray nervous system slow signals",
-      "imagePrompt": "3D medical anatomical X-ray render of human nervous system with delayed blue electrical impulses along the spine, dark background, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "REFLEKS -20%",
-      "secondaryText": "Konduksi melambat",
+      "searchQuery": "3D medical X-ray blood vessel particles",
+      "imagePrompt": "3D medical anatomical X-ray of blood vessels with floating micro-plastic particles moving fast, red and blue glow, 9:16 vertical",
+      "primaryText": "EMBOLI MIKROPLASTIK",
+      "secondaryText": "Sirkulasi Racun Sistemik",
       "stampText": "FASE 2",
-      "caption": "Komunikasi saraf tepi mulai terganggu.",
+      "caption": "Partikel asing menyebar ke seluruh tubuh.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "in",
-      "startFrame": 531,
-      "durationFrames": 136
+      "startFrame": 1002,
+      "durationFrames": 171
     },
     {
       "step": 4,
-      "timeOrYear": "JAM KE-4 • HATI",
+      "timeOrYear": "HARI KE-2 • HATI",
       "organTarget": "liver",
-      "headline": "Lonjakan Gula Darah",
-      "narration": "Glukagon meningkat tajam, memecah glikogen hati untuk energi instan.",
-      "chaosLevel": 30,
+      "headline": "ENZIM DETOKSIFIKASI",
+      "narration": "Sel hepatosit bekerja secara masif untuk menetralkan residu kimiawi pengawet makanan.",
+      "chaosLevel": 42,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray liver glucose release",
-      "imagePrompt": "3D medical anatomical X-ray render of a glowing human liver releasing golden glucose molecules into the bloodstream, dark background, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "GLUKOSA +40%",
-      "secondaryText": "Energi instan",
+      "searchQuery": "3D medical X-ray liver detoxification",
+      "imagePrompt": "3D medical anatomical X-ray of human liver filtering toxins with glowing chemical markers, dark background, 9:16 vertical",
+      "primaryText": "HEPATOSIT AKTIF",
+      "secondaryText": "Beban Enzim Meningkat",
       "stampText": "FASE 2",
-      "caption": "Hati melepaskan cadangan energi.",
+      "caption": "Hati menyaring komponen sintetis non-organik.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "out",
-      "startFrame": 667,
-      "durationFrames": 116
+      "startFrame": 1173,
+      "durationFrames": 171
     },
     {
       "step": 5,
-      "timeOrYear": "JAM KE-6 • LAMBUNG",
-      "organTarget": "stomach",
-      "headline": "Iritasi Asam Lambung",
-      "narration": "Stres biokimia memicu produksi asam lambung berlebih, menyebabkan rasa perih.",
-      "chaosLevel": 35,
+      "timeOrYear": "HARI KE-3 • HATI",
+      "organTarget": "liver",
+      "headline": "BEBAN DETOKSIFIKASI HATI",
+      "narration": "Hati bekerja lembur untuk memetabolisme pengawet dan pewarna, memicu peradangan seluler.",
+      "chaosLevel": 55,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray stomach acid increase",
-      "imagePrompt": "3D medical anatomical X-ray render of a human stomach glowing with hot orange corrosive acid zones, dark background, 9:16 vertical",
-      "directorType": "action-tracker",
-      "primaryText": "ASAM LAMBUNG",
-      "secondaryText": "Peningkatan korosif",
+      "searchQuery": "3D medical X-ray glowing liver inflammation",
+      "imagePrompt": "3D medical anatomical X-ray of human liver glowing orange with inflammatory markers, dark background, 9:16 vertical",
+      "primaryText": "ENZIM HATI NAIK",
+      "secondaryText": "Stres Oksidatif Puncak",
       "stampText": "FASE 2",
-      "caption": "Sistem pencernaan merespons stres akut.",
+      "caption": "Hati mulai terbebani oleh beban toksin harian.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "in",
-      "startFrame": 783,
-      "durationFrames": 138
+      "startFrame": 1344,
+      "durationFrames": 168
     },
     {
       "step": 6,
-      "timeOrYear": "JAM KE-8 • OTAK",
-      "organTarget": "brain",
-      "headline": "Mikrosleep Pertama",
-      "narration": "Korteks visual mengalami mikrosleep 3 detik, memutus kesadaran sesaat.",
-      "chaosLevel": 45,
+      "timeOrYear": "HARI KE-5 • PEMBULUH DARAH",
+      "organTarget": "blood",
+      "headline": "AKUMULASI RADIKAL BEBAS",
+      "narration": "Stres oksidatif merusak lapisan endotel pembuluh darah, memicu inflamasi sistemik ringan.",
+      "chaosLevel": 60,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray eye microsleep black",
-      "imagePrompt": "3D medical anatomical X-ray render of a human brain and visual cortex going dark for a split second, static noise effect, dark background, 9:16 vertical",
-      "directorType": "action-tracker",
-      "primaryText": "MIKROSLEEP 3s",
-      "secondaryText": "Keputusan buruk",
+      "searchQuery": "3D medical X-ray blood vessel inflammation",
+      "imagePrompt": "3D medical anatomical X-ray of blood vessel walls showing oxidative stress and cellular friction, 9:16 vertical",
+      "primaryText": "DISFUNGSI ENDOTEL",
+      "secondaryText": "Vaskular Meradang",
       "stampText": "FASE 3",
-      "caption": "Otak 'menyala' sendiri untuk bersantai.",
+      "caption": "Integritas dinding pembuluh darah mulai terganggu.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "panRight",
-      "startFrame": 921,
-      "durationFrames": 123
+      "startFrame": 1512,
+      "durationFrames": 170
     },
     {
       "step": 7,
-      "timeOrYear": "JAM KE-12 • PARU-PARU",
-      "organTarget": "lungs",
-      "headline": "Percepatan Pernapasan",
-      "narration": "Tubuh kekurangan oksigen akibat inefisiensi saraf, napas jadi pendek.",
-      "chaosLevel": 55,
+      "timeOrYear": "HARI KE-7 • JANTUNG",
+      "organTarget": "heart",
+      "headline": "PENYEMPITAN ARTERI KORONARIA",
+      "narration": "Asam lemak trans dari minyak goreng memicu plak awal di arteri koronaria.",
+      "chaosLevel": 65,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray lungs rapid breathing",
-      "imagePrompt": "3D medical anatomical X-ray render of glowing human lungs expanding rapidly with cyan air flow, dark background, 9:16 vertical",
-      "directorType": "action-tracker",
-      "primaryText": "O2 NAIK",
-      "secondaryText": "Ritme napas kacau",
+      "searchQuery": "3D medical X-ray heart artery plaque",
+      "imagePrompt": "3D medical anatomical X-ray of heart with yellow plaque buildup in arteries, red glow, 9:16 vertical",
+      "primaryText": "TEKANAN DARAH NAIK",
+      "secondaryText": "Elastisitas Vaskular Turun",
       "stampText": "FASE 3",
-      "caption": "Sistem pernapasan bekerja ekstra keras.",
+      "caption": "Dinding pembuluh darah mulai kaku dan menebal.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "out",
-      "startFrame": 1044,
-      "durationFrames": 131
+      "startFrame": 1682,
+      "durationFrames": 137
     },
     {
       "step": 8,
-      "timeOrYear": "JAM KE-16 • OTOT",
+      "timeOrYear": "HARI KE-10 • OTOT",
       "organTarget": "muscles",
-      "headline": "Mikro-Spasme Otot",
-      "narration": "Kadar kalsium seluler terganggu, memicu kedutan mikroskopis pada serat otot.",
-      "chaosLevel": 60,
+      "headline": "KELELAHAN SARAF OTOT",
+      "narration": "Ketidakseimbangan elektrolit dan penumpukan asam laktat membuat otot mudah kram dan lelah.",
+      "chaosLevel": 68,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray muscle fiber twitching",
-      "imagePrompt": "3D medical anatomical X-ray render of human arm and leg muscle fibers showing microscopic tension spasms and red stress lines, dark background, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "Geser sedikit teks bawah ke atas untuk margin keamanan ekstra",
-      "secondaryText": "Kelelahan jaringan",
+      "searchQuery": "3D medical X-ray muscle tissue fatigue",
+      "imagePrompt": "3D medical anatomical X-ray of muscle fibers showing micro-tears and fatigue markers, dark background, 9:16 vertical",
+      "primaryText": "Geser teks bawah 30px ke atas untuk keamanan ekstra dari UI player.",
+      "secondaryText": "Kinerja Otot Menurun",
       "stampText": "FASE 3",
-      "caption": "Ketegangan neuromuskular meningkat tajam.",
+      "caption": "Pasokan nutrisi mikro ke otot terhambat.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "panRight",
-      "startFrame": 1175,
-      "durationFrames": 132,
-      "accentColor": "#FFD700"
+      "startFrame": 1819,
+      "durationFrames": 159
     },
     {
       "step": 9,
-      "timeOrYear": "JAM KE-24 • OTAK",
-      "organTarget": "brain",
-      "headline": "Zonasi Kognitif",
-      "narration": "Korteks prefrontal 'offline', amigdala mengambil alih kontrol emosi.",
-      "chaosLevel": 65,
+      "timeOrYear": "HARI KE-14 • GINJAL",
+      "organTarget": "kidney",
+      "headline": "GAGALNYA FILTRASI GINJAL",
+      "narration": "Ginjal kesulitan menyaring mikroplastik dan sisa metabolit, menyebabkan penumpukan kristal.",
+      "chaosLevel": 70,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray brain prefrontal cortex offline",
-      "imagePrompt": "3D medical anatomical X-ray render of human brain with the prefrontal cortex dimmed and the amygdala glowing angry red, dark background, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "LOGIKA OFFLINE",
-      "secondaryText": "Emosi liar",
+      "searchQuery": "3D medical X-ray kidney filtration failure",
+      "imagePrompt": "3D medical anatomical X-ray of kidney with blocked filtration units and crystal buildup, dark background, 9:16 vertical",
+      "primaryText": "KREATININ TINGGI",
+      "secondaryText": "Urin Keruh & Toksik",
       "stampText": "FASE 3",
-      "caption": "Kamu menjadi impulsif dan mudah marah.",
+      "caption": "Sistem ekskresi tubuh mulai kewalahan bekerja.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "in",
-      "startFrame": 1307,
-      "durationFrames": 111
+      "startFrame": 1978,
+      "durationFrames": 176
     },
     {
       "step": 10,
-      "timeOrYear": "JAM KE-32 • GINJAL",
-      "organTarget": "kidney",
-      "headline": "Ketidakseimbangan Elektrolit",
-      "narration": "Ginjal mengurangi filtrasi cairan, memicu retensi hormon stres vasopresin.",
-      "chaosLevel": 70,
+      "timeOrYear": "HARI KE-17 • PARU-PARU",
+      "organTarget": "lungs",
+      "headline": "MIKROPLASTIK DI KAPILER PARU",
+      "narration": "Sebagian partikel mikroplastik terjebak di jaringan kapiler alveoli, mengganggu pertukaran gas.",
+      "chaosLevel": 75,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray kidney electrolyte filtration",
-      "imagePrompt": "3D medical anatomical X-ray render of human kidneys filtering dense, viscous fluids with glowing imbalance markers, dark background, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "FILTRASI DROP",
-      "secondaryText": "Retensi cairan",
+      "searchQuery": "3D medical X-ray lungs microplastics alveoli",
+      "imagePrompt": "3D medical anatomical X-ray of lung alveoli with trapped plastic microfibers, blue and dark background, 9:16 vertical",
+      "primaryText": "KAPASITAS VITAL",
+      "secondaryText": "Oksigen Darah Menurun",
       "stampText": "FASE 4",
-      "caption": "Ginjal berjuang mengatur tekanan darah.",
+      "caption": "Suplai oksigen ke jaringan tubuh mulai berkurang.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "out",
-      "startFrame": 1418,
-      "durationFrames": 134
+      "startFrame": 2154,
+      "durationFrames": 167
     },
     {
       "step": 11,
-      "timeOrYear": "JAM KE-40 • USUS",
-      "organTarget": "intestine",
-      "headline": "Disbiosis Mikrobioma",
-      "narration": "Kurang tidur merusak dinding usus, memicu peradangan pada mikrobioma pencernaan.",
-      "chaosLevel": 75,
+      "timeOrYear": "HARI KE-19 • SARAF",
+      "organTarget": "nerves",
+      "headline": "DEGENERASI MIELIN SARAF",
+      "narration": "Toksin kimia merusak selubung mielin, memperlambat transmisi sinyal listrik antar saraf.",
+      "chaosLevel": 78,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray intestine microbiome inflammation",
-      "imagePrompt": "3D medical anatomical X-ray render of human intestines showing inflamed barrier walls and disturbed bacterial ecosystems, dark background, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "USUS INFLAMASI",
-      "secondaryText": "Barier bocor",
+      "searchQuery": "3D medical X-ray nerve myelin damage",
+      "imagePrompt": "3D medical anatomical X-ray of nerve cells with damaged myelin sheaths and erratic electrical sparks, 9:16 vertical",
+      "primaryText": "DEFISIT NEURAL",
+      "secondaryText": "Refleks Tubuh Melambat",
       "stampText": "FASE 4",
-      "caption": "Sumbu usus-otak mengirim sinyal panik.",
+      "caption": "Komunikasi antar sel saraf mengalami distorsi.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "in",
-      "startFrame": 1552,
-      "durationFrames": 124
+      "startFrame": 2321,
+      "durationFrames": 173
     },
     {
       "step": 12,
-      "timeOrYear": "JAM KE-48 • DARAH",
-      "organTarget": "blood",
-      "headline": "Disfungsi Imun",
-      "narration": "Jumlah sel darah putih penyerang turun drastis, peradangan sistemik meningkat.",
+      "timeOrYear": "HARI KE-21 • OTAK",
+      "organTarget": "brain",
+      "headline": "GANGGUAN KOGNITIF OTAK",
+      "narration": "Partikel mikroplastik menembus sawar darah-otak, mengganggu sinyal neurotransmiter dopamin.",
       "chaosLevel": 80,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray white blood cells decreasing",
-      "imagePrompt": "3D medical anatomical X-ray render of human blood vessels with decreasing white blood cells and glowing red inflammation markers, dark background, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "IMUN DROP",
-      "secondaryText": "Peradangan naik",
+      "searchQuery": "3D medical X-ray brain fog neurons",
+      "imagePrompt": "3D medical anatomical X-ray of brain with fuzzy gray fog and dimmed neural connections, dark background, 9:16 vertical",
+      "primaryText": "NEUROINFLAMASI",
+      "secondaryText": "Fokus Berkurang 40%",
       "stampText": "FASE 4",
-      "caption": "Sistem pertahanan tubuh mulai menyerah.",
+      "caption": "Kognisi mulai tumpul, rasa lelah sulit dijelaskan.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "panRight",
-      "startFrame": 1676,
-      "durationFrames": 121
+      "startFrame": 2494,
+      "durationFrames": 162
     },
     {
       "step": 13,
-      "timeOrYear": "JAM KE-60 • OTAK",
-      "organTarget": "brain",
-      "headline": "Kecelakaan Sinaptik",
-      "narration": "Gagal membersihkan beta-amiloid, sinapsis saraf mulai mengalami korsleting parah.",
+      "timeOrYear": "HARI KE-25 • JANTUNG",
+      "organTarget": "heart",
+      "headline": "HIPERTROFI VENTRIKEL KIRI",
+      "narration": "Tekanan darah yang tinggi secara kronis memaksa otot jantung memompa lebih keras, memicu penebalan dinding.",
       "chaosLevel": 88,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray brain synaptic short circuit",
-      "imagePrompt": "3D medical anatomical X-ray render of human brain synapses sparking erratic electrical shorts and toxic protein plaques, dark background, 9:16 vertical",
-      "directorType": "action-tracker",
-      "primaryText": "KORSLETING",
-      "secondaryText": "Toksin menumpuk",
-      "stampText": "FASE KRITIS",
-      "caption": "Pembersihan limbah otak lumpuh total.",
+      "searchQuery": "3D medical X-ray heart hypertrophy",
+      "imagePrompt": "3D medical anatomical X-ray of human heart with thick left ventricle walls and stress strains, 9:16 vertical",
+      "primaryText": "BEBAN JANTUNG",
+      "secondaryText": "Risiko Aritmia Tinggi",
+      "stampText": "FASE 5",
+      "caption": "Struktur jantung mengalami deformasi akibat beban sistemik.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "out",
-      "startFrame": 1797,
-      "durationFrames": 109
+      "startFrame": 2656,
+      "durationFrames": 199
     },
     {
       "step": 14,
-      "timeOrYear": "JAM KE-72 • OTAK",
-      "organTarget": "brain",
-      "headline": "Halusinasi Total",
-      "narration": "Neuron korteks mengalami misfiring parah, memicu halusinasi visual dan auditori.",
+      "timeOrYear": "HARI KE-30 • SELURUH TUBUH",
+      "organTarget": "blood",
+      "headline": "SISTEMIK Kollaps KRONIS",
+      "narration": "Akumulasi toksin menyeluruh memicu kegagalan fungsi multiorgan dan inflamasi kronis permanen.",
       "chaosLevel": 95,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray brain severe hallucinations",
-      "imagePrompt": "3D medical anatomical X-ray render of a human brain engulfed in chaotic electrical static storms and glowing distortion waves, dark background, 9:16 vertical",
-      "directorType": "action-tracker",
-      "primaryText": "HALUSINASI",
-      "secondaryText": "Kollaps total",
+      "searchQuery": "3D medical X-ray full body systemic inflammation",
+      "imagePrompt": "3D medical anatomical X-ray of full human skeleton and major organs glowing red with critical systemic failure, 9:16 vertical",
+      "primaryText": "GAGAL MULTIORGAN",
+      "secondaryText": "Darurat Toksisitas Total",
       "stampText": "FASE KRITIS",
-      "caption": "Hilangnya kemampuan membedakan realitas.",
+      "caption": "Sistem biologis tubuh mencapai ambang batas kehancuran.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "panRight",
-      "startFrame": 1906,
-      "durationFrames": 151
+      "startFrame": 2855,
+      "durationFrames": 179
     }
   ],
   "outro": {
     "narration": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini, yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?",
     "question": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini, yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?",
-    "durationFrames": 219
+    "durationFrames": 225
   },
   "wordTimestamps": [
     {
-      "word": "Detik",
-      "startFrame": 5,
-      "endFrame": 14,
+      "word": "Pernahkah",
+      "startFrame": 4,
+      "endFrame": 20,
       "pageIndex": 0
     },
     {
-      "word": "pertama",
-      "startFrame": 14,
-      "endFrame": 26,
+      "word": "kamu",
+      "startFrame": 20,
+      "endFrame": 27,
       "pageIndex": 0
     },
     {
-      "word": "tanpa",
-      "startFrame": 26,
-      "endFrame": 33,
+      "word": "membayangkan",
+      "startFrame": 27,
+      "endFrame": 50,
       "pageIndex": 0
     },
     {
-      "word": "tidur",
-      "startFrame": 33,
-      "endFrame": 61,
+      "word": "apa",
+      "startFrame": 50,
+      "endFrame": 68,
       "pageIndex": 1
-    },
-    {
-      "word": "adenosin",
-      "startFrame": 61,
-      "endFrame": 72,
-      "pageIndex": 1
-    },
-    {
-      "word": "mulai",
-      "startFrame": 72,
-      "endFrame": 78,
-      "pageIndex": 1
-    },
-    {
-      "word": "menumpuk",
-      "startFrame": 78,
-      "endFrame": 90,
-      "pageIndex": 2
-    },
-    {
-      "word": "di",
-      "startFrame": 90,
-      "endFrame": 95,
-      "pageIndex": 2
-    },
-    {
-      "word": "otak",
-      "startFrame": 95,
-      "endFrame": 116,
-      "pageIndex": 2
-    },
-    {
-      "word": "Dalam",
-      "startFrame": 118,
-      "endFrame": 122,
-      "pageIndex": 3
-    },
-    {
-      "word": "72",
-      "startFrame": 122,
-      "endFrame": 137,
-      "pageIndex": 3
-    },
-    {
-      "word": "jam",
-      "startFrame": 137,
-      "endFrame": 163,
-      "pageIndex": 3
-    },
-    {
-      "word": "tubuhmu",
-      "startFrame": 163,
-      "endFrame": 172,
-      "pageIndex": 4
-    },
-    {
-      "word": "berubah",
-      "startFrame": 172,
-      "endFrame": 181,
-      "pageIndex": 4
-    },
-    {
-      "word": "menjadi",
-      "startFrame": 181,
-      "endFrame": 189,
-      "pageIndex": 4
-    },
-    {
-      "word": "ladang",
-      "startFrame": 189,
-      "endFrame": 200,
-      "pageIndex": 5
-    },
-    {
-      "word": "perang",
-      "startFrame": 200,
-      "endFrame": 209,
-      "pageIndex": 5
-    },
-    {
-      "word": "biokimia",
-      "startFrame": 209,
-      "endFrame": 226,
-      "pageIndex": 5
     },
     {
       "word": "yang",
-      "startFrame": 226,
-      "endFrame": 236,
-      "pageIndex": 6
+      "startFrame": 68,
+      "endFrame": 73,
+      "pageIndex": 1
     },
     {
-      "word": "menghancurkan",
-      "startFrame": 236,
-      "endFrame": 253,
-      "pageIndex": 6
+      "word": "sebenarnya",
+      "startFrame": 73,
+      "endFrame": 85,
+      "pageIndex": 1
     },
     {
-      "word": "kognisi",
-      "startFrame": 253,
-      "endFrame": 281,
-      "pageIndex": 6
-    },
-    {
-      "word": "Akumulasi",
-      "startFrame": 284,
-      "endFrame": 296,
-      "pageIndex": 7
-    },
-    {
-      "word": "adenosin",
-      "startFrame": 296,
-      "endFrame": 310,
-      "pageIndex": 7
+      "word": "terjadi",
+      "startFrame": 85,
+      "endFrame": 101,
+      "pageIndex": 2
     },
     {
       "word": "di",
-      "startFrame": 310,
-      "endFrame": 314,
+      "startFrame": 101,
+      "endFrame": 106,
+      "pageIndex": 2
+    },
+    {
+      "word": "dalam",
+      "startFrame": 106,
+      "endFrame": 113,
+      "pageIndex": 2
+    },
+    {
+      "word": "tubuhmu",
+      "startFrame": 113,
+      "endFrame": 128,
+      "pageIndex": 3
+    },
+    {
+      "word": "jika",
+      "startFrame": 128,
+      "endFrame": 148,
+      "pageIndex": 3
+    },
+    {
+      "word": "memakan",
+      "startFrame": 148,
+      "endFrame": 159,
+      "pageIndex": 3
+    },
+    {
+      "word": "mie",
+      "startFrame": 159,
+      "endFrame": 163,
+      "pageIndex": 4
+    },
+    {
+      "word": "instan",
+      "startFrame": 163,
+      "endFrame": 175,
+      "pageIndex": 4
+    },
+    {
+      "word": "setiap",
+      "startFrame": 175,
+      "endFrame": 185,
+      "pageIndex": 4
+    },
+    {
+      "word": "hari",
+      "startFrame": 185,
+      "endFrame": 192,
+      "pageIndex": 5
+    },
+    {
+      "word": "selama",
+      "startFrame": 192,
+      "endFrame": 202,
+      "pageIndex": 5
+    },
+    {
+      "word": "sebulan",
+      "startFrame": 202,
+      "endFrame": 223,
+      "pageIndex": 5
+    },
+    {
+      "word": "Kamu",
+      "startFrame": 242,
+      "endFrame": 248,
+      "pageIndex": 6
+    },
+    {
+      "word": "mungkin",
+      "startFrame": 248,
+      "endFrame": 257,
+      "pageIndex": 6
+    },
+    {
+      "word": "mengira",
+      "startFrame": 257,
+      "endFrame": 270,
+      "pageIndex": 6
+    },
+    {
+      "word": "itu",
+      "startFrame": 270,
+      "endFrame": 281,
       "pageIndex": 7
     },
     {
-      "word": "kortex",
-      "startFrame": 314,
-      "endFrame": 324,
+      "word": "hanya",
+      "startFrame": 281,
+      "endFrame": 289,
+      "pageIndex": 7
+    },
+    {
+      "word": "karbohidrat",
+      "startFrame": 289,
+      "endFrame": 306,
+      "pageIndex": 7
+    },
+    {
+      "word": "biasa",
+      "startFrame": 306,
+      "endFrame": 336,
       "pageIndex": 8
     },
     {
-      "word": "mulai",
-      "startFrame": 324,
-      "endFrame": 334,
-      "pageIndex": 8
-    },
-    {
-      "word": "menghambat",
-      "startFrame": 334,
+      "word": "tapi",
+      "startFrame": 336,
       "endFrame": 346,
       "pageIndex": 8
     },
     {
-      "word": "transmisi",
+      "word": "di",
       "startFrame": 346,
-      "endFrame": 362,
+      "endFrame": 355,
+      "pageIndex": 8
+    },
+    {
+      "word": "balik",
+      "startFrame": 355,
+      "endFrame": 358,
       "pageIndex": 9
     },
     {
-      "word": "sinyal",
-      "startFrame": 362,
-      "endFrame": 372,
+      "word": "kulitmu",
+      "startFrame": 358,
+      "endFrame": 374,
       "pageIndex": 9
     },
     {
-      "word": "saraf",
-      "startFrame": 372,
-      "endFrame": 380,
+      "word": "partikel",
+      "startFrame": 374,
+      "endFrame": 398,
+      "pageIndex": 9
+    },
+    {
+      "word": "mikroplastik",
+      "startFrame": 398,
+      "endFrame": 419,
       "pageIndex": 10
     },
     {
-      "word": "pengingat",
-      "startFrame": 380,
-      "endFrame": 407,
-      "pageIndex": 10
-    },
-    {
-      "word": "Jantung",
-      "startFrame": 409,
-      "endFrame": 415,
-      "pageIndex": 11
-    },
-    {
-      "word": "berdetak",
-      "startFrame": 415,
+      "word": "dan",
+      "startFrame": 419,
       "endFrame": 425,
-      "pageIndex": 11
+      "pageIndex": 10
     },
     {
-      "word": "lebih",
+      "word": "zat",
       "startFrame": 425,
       "endFrame": 430,
+      "pageIndex": 10
+    },
+    {
+      "word": "pengawet",
+      "startFrame": 430,
+      "endFrame": 443,
       "pageIndex": 11
     },
     {
-      "word": "cepat",
-      "startFrame": 430,
-      "endFrame": 441,
+      "word": "sedang",
+      "startFrame": 443,
+      "endFrame": 460,
+      "pageIndex": 11
+    },
+    {
+      "word": "merusak",
+      "startFrame": 460,
+      "endFrame": 472,
+      "pageIndex": 11
+    },
+    {
+      "word": "ususmu",
+      "startFrame": 472,
+      "endFrame": 483,
       "pageIndex": 12
     },
     {
-      "word": "untuk",
-      "startFrame": 441,
-      "endFrame": 452,
-      "pageIndex": 12
-    },
-    {
-      "word": "mengkompensasi",
-      "startFrame": 452,
-      "endFrame": 473,
-      "pageIndex": 12
-    },
-    {
-      "word": "penurunan",
-      "startFrame": 473,
+      "word": "dan",
+      "startFrame": 483,
       "endFrame": 489,
-      "pageIndex": 13
+      "pageIndex": 12
     },
     {
-      "word": "efisiensi",
+      "word": "mengalir",
       "startFrame": 489,
+      "endFrame": 501,
+      "pageIndex": 12
+    },
+    {
+      "word": "ke",
+      "startFrame": 501,
       "endFrame": 505,
       "pageIndex": 13
     },
     {
-      "word": "neuron",
+      "word": "jantungmu",
       "startFrame": 505,
-      "endFrame": 528,
+      "endFrame": 520,
       "pageIndex": 13
     },
     {
-      "word": "Kecepatan",
-      "startFrame": 533,
-      "endFrame": 547,
+      "word": "Mari",
+      "startFrame": 546,
+      "endFrame": 550,
       "pageIndex": 14
     },
     {
-      "word": "konduksi",
-      "startFrame": 547,
-      "endFrame": 555,
+      "word": "kita",
+      "startFrame": 550,
+      "endFrame": 557,
       "pageIndex": 14
     },
     {
-      "word": "saraf",
-      "startFrame": 555,
-      "endFrame": 563,
+      "word": "masuk",
+      "startFrame": 557,
+      "endFrame": 568,
       "pageIndex": 14
     },
     {
-      "word": "motorik",
-      "startFrame": 563,
-      "endFrame": 576,
+      "word": "ke",
+      "startFrame": 568,
+      "endFrame": 572,
       "pageIndex": 15
     },
     {
-      "word": "melambat",
-      "startFrame": 576,
-      "endFrame": 603,
+      "word": "dalam",
+      "startFrame": 572,
+      "endFrame": 580,
       "pageIndex": 15
     },
     {
-      "word": "memperpanjang",
-      "startFrame": 603,
-      "endFrame": 617,
+      "word": "tubuhmu",
+      "startFrame": 580,
+      "endFrame": 595,
       "pageIndex": 15
-    },
-    {
-      "word": "waktu",
-      "startFrame": 617,
-      "endFrame": 625,
-      "pageIndex": 16
-    },
-    {
-      "word": "reaksi",
-      "startFrame": 625,
-      "endFrame": 634,
-      "pageIndex": 16
-    },
-    {
-      "word": "fisik",
-      "startFrame": 634,
-      "endFrame": 643,
-      "pageIndex": 17
-    },
-    {
-      "word": "tubuh",
-      "startFrame": 643,
-      "endFrame": 666,
-      "pageIndex": 17
-    },
-    {
-      "word": "Gelukanggun",
-      "startFrame": 668,
-      "endFrame": 680,
-      "pageIndex": 18
-    },
-    {
-      "word": "meningkat",
-      "startFrame": 680,
-      "endFrame": 690,
-      "pageIndex": 18
-    },
-    {
-      "word": "tajam",
-      "startFrame": 690,
-      "endFrame": 710,
-      "pageIndex": 18
-    },
-    {
-      "word": "memecah",
-      "startFrame": 710,
-      "endFrame": 718,
-      "pageIndex": 19
-    },
-    {
-      "word": "glikogen",
-      "startFrame": 718,
-      "endFrame": 729,
-      "pageIndex": 19
-    },
-    {
-      "word": "hati",
-      "startFrame": 729,
-      "endFrame": 738,
-      "pageIndex": 19
-    },
-    {
-      "word": "untuk",
-      "startFrame": 738,
-      "endFrame": 746,
-      "pageIndex": 20
-    },
-    {
-      "word": "energi",
-      "startFrame": 746,
-      "endFrame": 755,
-      "pageIndex": 20
-    },
-    {
-      "word": "instan",
-      "startFrame": 755,
-      "endFrame": 782,
-      "pageIndex": 20
-    },
-    {
-      "word": "Stres",
-      "startFrame": 784,
-      "endFrame": 791,
-      "pageIndex": 21
-    },
-    {
-      "word": "biokimia",
-      "startFrame": 791,
-      "endFrame": 809,
-      "pageIndex": 21
-    },
-    {
-      "word": "memicu",
-      "startFrame": 809,
-      "endFrame": 819,
-      "pageIndex": 21
-    },
-    {
-      "word": "produksi",
-      "startFrame": 819,
-      "endFrame": 832,
-      "pageIndex": 22
-    },
-    {
-      "word": "asam",
-      "startFrame": 832,
-      "endFrame": 840,
-      "pageIndex": 22
-    },
-    {
-      "word": "lambung",
-      "startFrame": 840,
-      "endFrame": 848,
-      "pageIndex": 22
-    },
-    {
-      "word": "berlebih",
-      "startFrame": 848,
-      "endFrame": 878,
-      "pageIndex": 23
-    },
-    {
-      "word": "menyebabkan",
-      "startFrame": 878,
-      "endFrame": 888,
-      "pageIndex": 23
-    },
-    {
-      "word": "rasa",
-      "startFrame": 888,
-      "endFrame": 896,
-      "pageIndex": 24
-    },
-    {
-      "word": "perih",
-      "startFrame": 896,
-      "endFrame": 920,
-      "pageIndex": 24
-    },
-    {
-      "word": "Kortex",
-      "startFrame": 922,
-      "endFrame": 929,
-      "pageIndex": 25
-    },
-    {
-      "word": "visual",
-      "startFrame": 929,
-      "endFrame": 940,
-      "pageIndex": 25
-    },
-    {
-      "word": "mengalami",
-      "startFrame": 940,
-      "endFrame": 952,
-      "pageIndex": 25
-    },
-    {
-      "word": "mikroslip",
-      "startFrame": 952,
-      "endFrame": 968,
-      "pageIndex": 26
-    },
-    {
-      "word": "3",
-      "startFrame": 968,
-      "endFrame": 974,
-      "pageIndex": 26
     },
     {
       "word": "detik",
-      "startFrame": 974,
-      "endFrame": 995,
-      "pageIndex": 26
+      "startFrame": 595,
+      "endFrame": 611,
+      "pageIndex": 16
     },
     {
-      "word": "memutus",
-      "startFrame": 995,
-      "endFrame": 1003,
-      "pageIndex": 27
+      "word": "demi",
+      "startFrame": 611,
+      "endFrame": 619,
+      "pageIndex": 16
     },
     {
-      "word": "kesadaran",
-      "startFrame": 1003,
-      "endFrame": 1018,
-      "pageIndex": 27
+      "word": "detik",
+      "startFrame": 619,
+      "endFrame": 628,
+      "pageIndex": 16
     },
     {
-      "word": "sesaat",
-      "startFrame": 1018,
-      "endFrame": 1043,
-      "pageIndex": 27
+      "word": "Air",
+      "startFrame": 636,
+      "endFrame": 662,
+      "pageIndex": 17
     },
     {
-      "word": "Tubuh",
-      "startFrame": 1045,
-      "endFrame": 1052,
-      "pageIndex": 28
+      "word": "panas",
+      "startFrame": 662,
+      "endFrame": 674,
+      "pageIndex": 17
     },
     {
-      "word": "kekurangan",
-      "startFrame": 1052,
-      "endFrame": 1063,
-      "pageIndex": 28
+      "word": "melarutkan",
+      "startFrame": 674,
+      "endFrame": 690,
+      "pageIndex": 17
     },
     {
-      "word": "oksigen",
-      "startFrame": 1063,
-      "endFrame": 1076,
-      "pageIndex": 28
+      "word": "bumbu",
+      "startFrame": 690,
+      "endFrame": 716,
+      "pageIndex": 18
     },
     {
-      "word": "akibat",
-      "startFrame": 1076,
-      "endFrame": 1091,
-      "pageIndex": 29
+      "word": "namun",
+      "startFrame": 716,
+      "endFrame": 725,
+      "pageIndex": 18
     },
     {
-      "word": "inefisiensi",
-      "startFrame": 1091,
-      "endFrame": 1113,
-      "pageIndex": 29
+      "word": "zat",
+      "startFrame": 725,
+      "endFrame": 732,
+      "pageIndex": 18
     },
     {
-      "word": "saraf",
-      "startFrame": 1113,
-      "endFrame": 1134,
-      "pageIndex": 29
-    },
-    {
-      "word": "nafas",
-      "startFrame": 1134,
-      "endFrame": 1143,
-      "pageIndex": 30
-    },
-    {
-      "word": "jadi",
-      "startFrame": 1143,
-      "endFrame": 1150,
-      "pageIndex": 30
-    },
-    {
-      "word": "pendek",
-      "startFrame": 1150,
-      "endFrame": 1175,
-      "pageIndex": 30
-    },
-    {
-      "word": "Kadar",
-      "startFrame": 1176,
-      "endFrame": 1183,
-      "pageIndex": 31
-    },
-    {
-      "word": "kalsium",
-      "startFrame": 1183,
-      "endFrame": 1192,
-      "pageIndex": 31
-    },
-    {
-      "word": "seluler",
-      "startFrame": 1192,
-      "endFrame": 1202,
-      "pageIndex": 31
-    },
-    {
-      "word": "terganggu",
-      "startFrame": 1202,
-      "endFrame": 1231,
-      "pageIndex": 32
-    },
-    {
-      "word": "memicu",
-      "startFrame": 1231,
-      "endFrame": 1237,
-      "pageIndex": 32
-    },
-    {
-      "word": "kedutan",
-      "startFrame": 1237,
-      "endFrame": 1247,
-      "pageIndex": 32
-    },
-    {
-      "word": "mikroskopis",
-      "startFrame": 1247,
-      "endFrame": 1268,
-      "pageIndex": 33
-    },
-    {
-      "word": "pada",
-      "startFrame": 1268,
-      "endFrame": 1274,
-      "pageIndex": 33
-    },
-    {
-      "word": "serat",
-      "startFrame": 1274,
-      "endFrame": 1282,
-      "pageIndex": 34
-    },
-    {
-      "word": "otot",
-      "startFrame": 1282,
-      "endFrame": 1306,
-      "pageIndex": 34
-    },
-    {
-      "word": "Kortex",
-      "startFrame": 1307,
-      "endFrame": 1313,
-      "pageIndex": 35
-    },
-    {
-      "word": "prefrontal",
-      "startFrame": 1313,
-      "endFrame": 1331,
-      "pageIndex": 35
-    },
-    {
-      "word": "offline",
-      "startFrame": 1331,
-      "endFrame": 1354,
-      "pageIndex": 35
-    },
-    {
-      "word": "amikdala",
-      "startFrame": 1354,
-      "endFrame": 1366,
-      "pageIndex": 36
-    },
-    {
-      "word": "mengambil",
-      "startFrame": 1366,
-      "endFrame": 1377,
-      "pageIndex": 36
-    },
-    {
-      "word": "alih",
-      "startFrame": 1377,
-      "endFrame": 1381,
-      "pageIndex": 36
-    },
-    {
-      "word": "kontrol",
-      "startFrame": 1381,
-      "endFrame": 1390,
-      "pageIndex": 37
-    },
-    {
-      "word": "emosi",
-      "startFrame": 1390,
-      "endFrame": 1416,
-      "pageIndex": 37
-    },
-    {
-      "word": "Ginjal",
-      "startFrame": 1419,
-      "endFrame": 1429,
-      "pageIndex": 38
-    },
-    {
-      "word": "mengurangi",
-      "startFrame": 1429,
-      "endFrame": 1441,
-      "pageIndex": 38
-    },
-    {
-      "word": "filtrasi",
-      "startFrame": 1441,
-      "endFrame": 1454,
-      "pageIndex": 38
-    },
-    {
-      "word": "cairan",
-      "startFrame": 1454,
-      "endFrame": 1478,
-      "pageIndex": 39
-    },
-    {
-      "word": "memicu",
-      "startFrame": 1478,
-      "endFrame": 1485,
-      "pageIndex": 39
-    },
-    {
-      "word": "retensi",
-      "startFrame": 1485,
-      "endFrame": 1496,
-      "pageIndex": 39
-    },
-    {
-      "word": "hormon",
-      "startFrame": 1496,
-      "endFrame": 1504,
-      "pageIndex": 40
-    },
-    {
-      "word": "stres",
-      "startFrame": 1504,
-      "endFrame": 1514,
-      "pageIndex": 40
-    },
-    {
-      "word": "vasopresin",
-      "startFrame": 1514,
-      "endFrame": 1552,
-      "pageIndex": 40
-    },
-    {
-      "word": "Kurang",
-      "startFrame": 1553,
-      "endFrame": 1560,
-      "pageIndex": 41
-    },
-    {
-      "word": "tidur",
-      "startFrame": 1560,
-      "endFrame": 1571,
-      "pageIndex": 41
-    },
-    {
-      "word": "merusak",
-      "startFrame": 1571,
-      "endFrame": 1581,
-      "pageIndex": 41
-    },
-    {
-      "word": "dinding",
-      "startFrame": 1581,
-      "endFrame": 1588,
-      "pageIndex": 42
-    },
-    {
-      "word": "usus",
-      "startFrame": 1588,
-      "endFrame": 1598,
-      "pageIndex": 42
-    },
-    {
-      "word": "Memicu",
-      "startFrame": 1607,
-      "endFrame": 1616,
-      "pageIndex": 43
-    },
-    {
-      "word": "peradangan",
-      "startFrame": 1616,
-      "endFrame": 1628,
-      "pageIndex": 43
-    },
-    {
-      "word": "pada",
-      "startFrame": 1628,
-      "endFrame": 1635,
-      "pageIndex": 43
-    },
-    {
-      "word": "mikrobioma",
-      "startFrame": 1635,
-      "endFrame": 1651,
-      "pageIndex": 44
-    },
-    {
-      "word": "pencernaan",
-      "startFrame": 1651,
-      "endFrame": 1669,
-      "pageIndex": 44
-    },
-    {
-      "word": "Jumlah",
-      "startFrame": 1683,
-      "endFrame": 1692,
-      "pageIndex": 45
-    },
-    {
-      "word": "sel",
-      "startFrame": 1692,
-      "endFrame": 1697,
-      "pageIndex": 45
-    },
-    {
-      "word": "darah",
-      "startFrame": 1697,
-      "endFrame": 1705,
-      "pageIndex": 45
-    },
-    {
-      "word": "putih",
-      "startFrame": 1705,
-      "endFrame": 1711,
-      "pageIndex": 46
-    },
-    {
-      "word": "penyerang",
-      "startFrame": 1711,
-      "endFrame": 1723,
-      "pageIndex": 46
-    },
-    {
-      "word": "turun",
-      "startFrame": 1723,
-      "endFrame": 1730,
-      "pageIndex": 46
-    },
-    {
-      "word": "drastis",
-      "startFrame": 1730,
-      "endFrame": 1745,
-      "pageIndex": 47
-    },
-    {
-      "word": "Peradangan",
-      "startFrame": 1743,
-      "endFrame": 1766,
-      "pageIndex": 47
-    },
-    {
-      "word": "sistemik",
-      "startFrame": 1766,
-      "endFrame": 1780,
-      "pageIndex": 48
-    },
-    {
-      "word": "meningkat",
-      "startFrame": 1780,
-      "endFrame": 1790,
-      "pageIndex": 48
-    },
-    {
-      "word": "Gagal",
-      "startFrame": 1804,
-      "endFrame": 1813,
-      "pageIndex": 49
-    },
-    {
-      "word": "membersihkan",
-      "startFrame": 1813,
-      "endFrame": 1827,
-      "pageIndex": 49
-    },
-    {
-      "word": "beta",
-      "startFrame": 1827,
-      "endFrame": 1837,
-      "pageIndex": 49
-    },
-    {
-      "word": "amiloid",
-      "startFrame": 1837,
-      "endFrame": 1851,
-      "pageIndex": 50
-    },
-    {
-      "word": "Sinapsis",
-      "startFrame": 1852,
-      "endFrame": 1874,
-      "pageIndex": 50
-    },
-    {
-      "word": "saraf",
-      "startFrame": 1874,
-      "endFrame": 1882,
-      "pageIndex": 50
-    },
-    {
-      "word": "mulai",
-      "startFrame": 1882,
-      "endFrame": 1889,
-      "pageIndex": 51
-    },
-    {
-      "word": "mengalami",
-      "startFrame": 1889,
-      "endFrame": 1900,
-      "pageIndex": 51
-    },
-    {
-      "word": "core",
-      "startFrame": 1900,
-      "endFrame": 1906,
-      "pageIndex": 51
-    },
-    {
-      "word": "slating",
-      "startFrame": 1906,
-      "endFrame": 1913,
-      "pageIndex": 52
-    },
-    {
-      "word": "parah",
-      "startFrame": 1913,
-      "endFrame": 1925,
-      "pageIndex": 52
-    },
-    {
-      "word": "Neuron",
-      "startFrame": 1941,
-      "endFrame": 1953,
-      "pageIndex": 53
-    },
-    {
-      "word": "kortex",
-      "startFrame": 1953,
-      "endFrame": 1961,
-      "pageIndex": 53
-    },
-    {
-      "word": "mengalami",
-      "startFrame": 1961,
-      "endFrame": 1975,
-      "pageIndex": 53
-    },
-    {
-      "word": "misfiring",
-      "startFrame": 1975,
-      "endFrame": 1988,
-      "pageIndex": 54
-    },
-    {
-      "word": "parah",
-      "startFrame": 1988,
-      "endFrame": 2002,
-      "pageIndex": 54
-    },
-    {
-      "word": "Memicu",
-      "startFrame": 2009,
-      "endFrame": 2020,
-      "pageIndex": 55
-    },
-    {
-      "word": "halusinasi",
-      "startFrame": 2020,
-      "endFrame": 2035,
-      "pageIndex": 55
-    },
-    {
-      "word": "visual",
-      "startFrame": 2035,
-      "endFrame": 2045,
-      "pageIndex": 55
+      "word": "pengawet",
+      "startFrame": 732,
+      "endFrame": 744,
+      "pageIndex": 19
     },
     {
       "word": "dan",
-      "startFrame": 2045,
-      "endFrame": 2050,
-      "pageIndex": 56
+      "startFrame": 744,
+      "endFrame": 750,
+      "pageIndex": 19
     },
     {
-      "word": "auditory",
-      "startFrame": 2050,
-      "endFrame": 2064,
-      "pageIndex": 56
+      "word": "MSG",
+      "startFrame": 750,
+      "endFrame": 764,
+      "pageIndex": 19
     },
     {
-      "word": "Menurutmu",
-      "startFrame": 2050,
+      "word": "langsung",
+      "startFrame": 764,
+      "endFrame": 786,
+      "pageIndex": 20
+    },
+    {
+      "word": "mengiritasi",
+      "startFrame": 786,
+      "endFrame": 806,
+      "pageIndex": 20
+    },
+    {
+      "word": "mukosa",
+      "startFrame": 806,
+      "endFrame": 818,
+      "pageIndex": 21
+    },
+    {
+      "word": "lambung",
+      "startFrame": 818,
+      "endFrame": 845,
+      "pageIndex": 21
+    },
+    {
+      "word": "Partikel",
+      "startFrame": 851,
+      "endFrame": 859,
+      "pageIndex": 22
+    },
+    {
+      "word": "mikroplastik",
+      "startFrame": 859,
+      "endFrame": 881,
+      "pageIndex": 22
+    },
+    {
+      "word": "dari",
+      "startFrame": 881,
+      "endFrame": 886,
+      "pageIndex": 22
+    },
+    {
+      "word": "kemasan",
+      "startFrame": 886,
+      "endFrame": 902,
+      "pageIndex": 23
+    },
+    {
+      "word": "mie",
+      "startFrame": 902,
+      "endFrame": 905,
+      "pageIndex": 23
+    },
+    {
+      "word": "menembus",
+      "startFrame": 905,
+      "endFrame": 926,
+      "pageIndex": 23
+    },
+    {
+      "word": "celah",
+      "startFrame": 926,
+      "endFrame": 935,
+      "pageIndex": 24
+    },
+    {
+      "word": "antar",
+      "startFrame": 935,
+      "endFrame": 946,
+      "pageIndex": 24
+    },
+    {
+      "word": "sel",
+      "startFrame": 946,
+      "endFrame": 950,
+      "pageIndex": 24
+    },
+    {
+      "word": "epitel",
+      "startFrame": 950,
+      "endFrame": 964,
+      "pageIndex": 25
+    },
+    {
+      "word": "usus",
+      "startFrame": 964,
+      "endFrame": 973,
+      "pageIndex": 25
+    },
+    {
+      "word": "halus",
+      "startFrame": 973,
+      "endFrame": 999,
+      "pageIndex": 25
+    },
+    {
+      "word": "Partikel",
+      "startFrame": 1005,
+      "endFrame": 1013,
+      "pageIndex": 26
+    },
+    {
+      "word": "mikroplastik",
+      "startFrame": 1013,
+      "endFrame": 1035,
+      "pageIndex": 26
+    },
+    {
+      "word": "kini",
+      "startFrame": 1035,
+      "endFrame": 1043,
+      "pageIndex": 26
+    },
+    {
+      "word": "bersirkulasi",
+      "startFrame": 1043,
+      "endFrame": 1062,
+      "pageIndex": 27
+    },
+    {
+      "word": "bebas",
+      "startFrame": 1062,
+      "endFrame": 1073,
+      "pageIndex": 27
+    },
+    {
+      "word": "di",
+      "startFrame": 1073,
+      "endFrame": 1085,
+      "pageIndex": 27
+    },
+    {
+      "word": "dalam",
+      "startFrame": 1085,
+      "endFrame": 1093,
+      "pageIndex": 28
+    },
+    {
+      "word": "aliran",
+      "startFrame": 1093,
+      "endFrame": 1103,
+      "pageIndex": 28
+    },
+    {
+      "word": "darahmu",
+      "startFrame": 1103,
+      "endFrame": 1118,
+      "pageIndex": 28
+    },
+    {
+      "word": "menuju",
+      "startFrame": 1118,
+      "endFrame": 1131,
+      "pageIndex": 29
+    },
+    {
+      "word": "organ",
+      "startFrame": 1131,
+      "endFrame": 1139,
+      "pageIndex": 29
+    },
+    {
+      "word": "vital",
+      "startFrame": 1139,
+      "endFrame": 1164,
+      "pageIndex": 29
+    },
+    {
+      "word": "Sel",
+      "startFrame": 1182,
+      "endFrame": 1187,
+      "pageIndex": 30
+    },
+    {
+      "word": "hepatosid",
+      "startFrame": 1187,
+      "endFrame": 1204,
+      "pageIndex": 30
+    },
+    {
+      "word": "bekerja",
+      "startFrame": 1204,
+      "endFrame": 1216,
+      "pageIndex": 30
+    },
+    {
+      "word": "secara",
+      "startFrame": 1216,
+      "endFrame": 1226,
+      "pageIndex": 31
+    },
+    {
+      "word": "masif",
+      "startFrame": 1226,
+      "endFrame": 1239,
+      "pageIndex": 31
+    },
+    {
+      "word": "untuk",
+      "startFrame": 1239,
+      "endFrame": 1257,
+      "pageIndex": 31
+    },
+    {
+      "word": "menetralkan",
+      "startFrame": 1257,
+      "endFrame": 1276,
+      "pageIndex": 32
+    },
+    {
+      "word": "residu",
+      "startFrame": 1276,
+      "endFrame": 1288,
+      "pageIndex": 32
+    },
+    {
+      "word": "kimiawi",
+      "startFrame": 1288,
+      "endFrame": 1303,
+      "pageIndex": 32
+    },
+    {
+      "word": "pengawet",
+      "startFrame": 1303,
+      "endFrame": 1315,
+      "pageIndex": 33
+    },
+    {
+      "word": "makanan",
+      "startFrame": 1315,
+      "endFrame": 1342,
+      "pageIndex": 33
+    },
+    {
+      "word": "Hati",
+      "startFrame": 1346,
+      "endFrame": 1355,
+      "pageIndex": 34
+    },
+    {
+      "word": "bekerja",
+      "startFrame": 1355,
+      "endFrame": 1369,
+      "pageIndex": 34
+    },
+    {
+      "word": "lembur",
+      "startFrame": 1369,
+      "endFrame": 1377,
+      "pageIndex": 34
+    },
+    {
+      "word": "untuk",
+      "startFrame": 1377,
+      "endFrame": 1386,
+      "pageIndex": 35
+    },
+    {
+      "word": "memetabolisme",
+      "startFrame": 1386,
+      "endFrame": 1407,
+      "pageIndex": 35
+    },
+    {
+      "word": "pengawet",
+      "startFrame": 1407,
+      "endFrame": 1421,
+      "pageIndex": 35
+    },
+    {
+      "word": "dan",
+      "startFrame": 1421,
+      "endFrame": 1426,
+      "pageIndex": 36
+    },
+    {
+      "word": "pewarna",
+      "startFrame": 1426,
+      "endFrame": 1455,
+      "pageIndex": 36
+    },
+    {
+      "word": "memicu",
+      "startFrame": 1455,
+      "endFrame": 1464,
+      "pageIndex": 36
+    },
+    {
+      "word": "peradangan",
+      "startFrame": 1464,
+      "endFrame": 1477,
+      "pageIndex": 37
+    },
+    {
+      "word": "seluler",
+      "startFrame": 1477,
+      "endFrame": 1505,
+      "pageIndex": 37
+    },
+    {
+      "word": "Stres",
+      "startFrame": 1519,
+      "endFrame": 1527,
+      "pageIndex": 38
+    },
+    {
+      "word": "oksidatif",
+      "startFrame": 1527,
+      "endFrame": 1545,
+      "pageIndex": 38
+    },
+    {
+      "word": "merusak",
+      "startFrame": 1545,
+      "endFrame": 1557,
+      "pageIndex": 38
+    },
+    {
+      "word": "lapisan",
+      "startFrame": 1557,
+      "endFrame": 1568,
+      "pageIndex": 39
+    },
+    {
+      "word": "endotel",
+      "startFrame": 1568,
+      "endFrame": 1581,
+      "pageIndex": 39
+    },
+    {
+      "word": "pembuluh",
+      "startFrame": 1581,
+      "endFrame": 1591,
+      "pageIndex": 39
+    },
+    {
+      "word": "darah",
+      "startFrame": 1591,
+      "endFrame": 1616,
+      "pageIndex": 40
+    },
+    {
+      "word": "memicu",
+      "startFrame": 1616,
+      "endFrame": 1625,
+      "pageIndex": 40
+    },
+    {
+      "word": "inflamasi",
+      "startFrame": 1625,
+      "endFrame": 1643,
+      "pageIndex": 40
+    },
+    {
+      "word": "sistemik",
+      "startFrame": 1643,
+      "endFrame": 1657,
+      "pageIndex": 41
+    },
+    {
+      "word": "ringan",
+      "startFrame": 1657,
+      "endFrame": 1680,
+      "pageIndex": 41
+    },
+    {
+      "word": "Asam",
+      "startFrame": 1684,
+      "endFrame": 1689,
+      "pageIndex": 42
+    },
+    {
+      "word": "lemak",
+      "startFrame": 1689,
+      "endFrame": 1698,
+      "pageIndex": 42
+    },
+    {
+      "word": "trans",
+      "startFrame": 1698,
+      "endFrame": 1705,
+      "pageIndex": 42
+    },
+    {
+      "word": "dari",
+      "startFrame": 1705,
+      "endFrame": 1712,
+      "pageIndex": 43
+    },
+    {
+      "word": "minyak",
+      "startFrame": 1712,
+      "endFrame": 1720,
+      "pageIndex": 43
+    },
+    {
+      "word": "goreng",
+      "startFrame": 1720,
+      "endFrame": 1747,
+      "pageIndex": 43
+    },
+    {
+      "word": "memicu",
+      "startFrame": 1744,
+      "endFrame": 1751,
+      "pageIndex": 44
+    },
+    {
+      "word": "plak",
+      "startFrame": 1751,
+      "endFrame": 1759,
+      "pageIndex": 44
+    },
+    {
+      "word": "awal",
+      "startFrame": 1759,
+      "endFrame": 1769,
+      "pageIndex": 44
+    },
+    {
+      "word": "di",
+      "startFrame": 1769,
+      "endFrame": 1774,
+      "pageIndex": 45
+    },
+    {
+      "word": "arteri",
+      "startFrame": 1774,
+      "endFrame": 1786,
+      "pageIndex": 45
+    },
+    {
+      "word": "koronaria",
+      "startFrame": 1786,
+      "endFrame": 1811,
+      "pageIndex": 45
+    },
+    {
+      "word": "Ketidakseimbangan",
+      "startFrame": 1826,
+      "endFrame": 1849,
+      "pageIndex": 46
+    },
+    {
+      "word": "elektrolit",
+      "startFrame": 1849,
+      "endFrame": 1867,
+      "pageIndex": 46
+    },
+    {
+      "word": "dan",
+      "startFrame": 1867,
+      "endFrame": 1873,
+      "pageIndex": 46
+    },
+    {
+      "word": "penumpukan",
+      "startFrame": 1873,
+      "endFrame": 1886,
+      "pageIndex": 47
+    },
+    {
+      "word": "asam",
+      "startFrame": 1886,
+      "endFrame": 1894,
+      "pageIndex": 47
+    },
+    {
+      "word": "laktat",
+      "startFrame": 1894,
+      "endFrame": 1906,
+      "pageIndex": 47
+    },
+    {
+      "word": "membuat",
+      "startFrame": 1904,
+      "endFrame": 1925,
+      "pageIndex": 48
+    },
+    {
+      "word": "otot",
+      "startFrame": 1925,
+      "endFrame": 1936,
+      "pageIndex": 48
+    },
+    {
+      "word": "mudah",
+      "startFrame": 1936,
+      "endFrame": 1946,
+      "pageIndex": 48
+    },
+    {
+      "word": "kram",
+      "startFrame": 1946,
+      "endFrame": 1951,
+      "pageIndex": 49
+    },
+    {
+      "word": "dan",
+      "startFrame": 1951,
+      "endFrame": 1956,
+      "pageIndex": 49
+    },
+    {
+      "word": "lelah",
+      "startFrame": 1956,
+      "endFrame": 1966,
+      "pageIndex": 49
+    },
+    {
+      "word": "Ginjal",
+      "startFrame": 1990,
+      "endFrame": 2000,
+      "pageIndex": 50
+    },
+    {
+      "word": "kesulitan",
+      "startFrame": 2000,
+      "endFrame": 2015,
+      "pageIndex": 50
+    },
+    {
+      "word": "menyaring",
+      "startFrame": 2015,
+      "endFrame": 2026,
+      "pageIndex": 50
+    },
+    {
+      "word": "mikroplastik",
+      "startFrame": 2026,
+      "endFrame": 2046,
+      "pageIndex": 51
+    },
+    {
+      "word": "dan",
+      "startFrame": 2046,
+      "endFrame": 2052,
+      "pageIndex": 51
+    },
+    {
+      "word": "sisa",
+      "startFrame": 2052,
+      "endFrame": 2059,
+      "pageIndex": 51
+    },
+    {
+      "word": "metabolit",
+      "startFrame": 2059,
+      "endFrame": 2077,
+      "pageIndex": 52
+    },
+    {
+      "word": "menyebabkan",
+      "startFrame": 2073,
       "endFrame": 2104,
-      "pageIndex": 57
+      "pageIndex": 52
     },
     {
-      "word": "apa",
+      "word": "penumpukan",
       "startFrame": 2104,
-      "endFrame": 2107,
+      "endFrame": 2118,
+      "pageIndex": 53
+    },
+    {
+      "word": "kristal",
+      "startFrame": 2118,
+      "endFrame": 2149,
+      "pageIndex": 53
+    },
+    {
+      "word": "Sebagian",
+      "startFrame": 2159,
+      "endFrame": 2170,
+      "pageIndex": 54
+    },
+    {
+      "word": "partikel",
+      "startFrame": 2170,
+      "endFrame": 2180,
+      "pageIndex": 54
+    },
+    {
+      "word": "mikroplastik",
+      "startFrame": 2180,
+      "endFrame": 2201,
+      "pageIndex": 54
+    },
+    {
+      "word": "terjebak",
+      "startFrame": 2201,
+      "endFrame": 2216,
+      "pageIndex": 55
+    },
+    {
+      "word": "di",
+      "startFrame": 2216,
+      "endFrame": 2222,
+      "pageIndex": 55
+    },
+    {
+      "word": "jaringan",
+      "startFrame": 2222,
+      "endFrame": 2232,
+      "pageIndex": 55
+    },
+    {
+      "word": "kapiler",
+      "startFrame": 2232,
+      "endFrame": 2242,
+      "pageIndex": 56
+    },
+    {
+      "word": "alveoli",
+      "startFrame": 2242,
+      "endFrame": 2260,
+      "pageIndex": 56
+    },
+    {
+      "word": "mengganggu",
+      "startFrame": 2258,
+      "endFrame": 2285,
+      "pageIndex": 56
+    },
+    {
+      "word": "pertukaran",
+      "startFrame": 2285,
+      "endFrame": 2300,
       "pageIndex": 57
     },
     {
-      "word": "keputusan",
-      "startFrame": 2107,
-      "endFrame": 2120,
+      "word": "gas",
+      "startFrame": 2300,
+      "endFrame": 2323,
       "pageIndex": 57
     },
     {
-      "word": "sepele",
-      "startFrame": 2120,
-      "endFrame": 2132,
+      "word": "Toksin",
+      "startFrame": 2320,
+      "endFrame": 2344,
       "pageIndex": 58
+    },
+    {
+      "word": "kimia",
+      "startFrame": 2344,
+      "endFrame": 2357,
+      "pageIndex": 58
+    },
+    {
+      "word": "merusak",
+      "startFrame": 2357,
+      "endFrame": 2369,
+      "pageIndex": 58
+    },
+    {
+      "word": "selubung",
+      "startFrame": 2369,
+      "endFrame": 2380,
+      "pageIndex": 59
+    },
+    {
+      "word": "mielin",
+      "startFrame": 2380,
+      "endFrame": 2406,
+      "pageIndex": 59
+    },
+    {
+      "word": "memperlambat",
+      "startFrame": 2406,
+      "endFrame": 2420,
+      "pageIndex": 59
+    },
+    {
+      "word": "transmisi",
+      "startFrame": 2420,
+      "endFrame": 2435,
+      "pageIndex": 60
+    },
+    {
+      "word": "sinyal",
+      "startFrame": 2435,
+      "endFrame": 2444,
+      "pageIndex": 60
+    },
+    {
+      "word": "listrik",
+      "startFrame": 2444,
+      "endFrame": 2454,
+      "pageIndex": 61
+    },
+    {
+      "word": "antarsaraf",
+      "startFrame": 2454,
+      "endFrame": 2489,
+      "pageIndex": 61
+    },
+    {
+      "word": "Partikel",
+      "startFrame": 2498,
+      "endFrame": 2507,
+      "pageIndex": 62
+    },
+    {
+      "word": "mikroplastik",
+      "startFrame": 2507,
+      "endFrame": 2528,
+      "pageIndex": 62
+    },
+    {
+      "word": "menembus",
+      "startFrame": 2528,
+      "endFrame": 2540,
+      "pageIndex": 62
+    },
+    {
+      "word": "sawar",
+      "startFrame": 2540,
+      "endFrame": 2549,
+      "pageIndex": 63
+    },
+    {
+      "word": "darah",
+      "startFrame": 2549,
+      "endFrame": 2556,
+      "pageIndex": 63
+    },
+    {
+      "word": "otak",
+      "startFrame": 2556,
+      "endFrame": 2579,
+      "pageIndex": 63
+    },
+    {
+      "word": "mengganggu",
+      "startFrame": 2579,
+      "endFrame": 2589,
+      "pageIndex": 64
+    },
+    {
+      "word": "sinyal",
+      "startFrame": 2589,
+      "endFrame": 2600,
+      "pageIndex": 64
+    },
+    {
+      "word": "neurotransmitter",
+      "startFrame": 2600,
+      "endFrame": 2624,
+      "pageIndex": 65
+    },
+    {
+      "word": "dopamin",
+      "startFrame": 2624,
+      "endFrame": 2651,
+      "pageIndex": 65
+    },
+    {
+      "word": "Tekanan",
+      "startFrame": 2662,
+      "endFrame": 2670,
+      "pageIndex": 66
+    },
+    {
+      "word": "darah",
+      "startFrame": 2670,
+      "endFrame": 2680,
+      "pageIndex": 66
     },
     {
       "word": "yang",
-      "startFrame": 2132,
-      "endFrame": 2137,
-      "pageIndex": 58
+      "startFrame": 2680,
+      "endFrame": 2685,
+      "pageIndex": 66
+    },
+    {
+      "word": "tinggi",
+      "startFrame": 2685,
+      "endFrame": 2693,
+      "pageIndex": 67
+    },
+    {
+      "word": "secara",
+      "startFrame": 2693,
+      "endFrame": 2702,
+      "pageIndex": 67
+    },
+    {
+      "word": "kronis",
+      "startFrame": 2702,
+      "endFrame": 2717,
+      "pageIndex": 67
+    },
+    {
+      "word": "memaksa",
+      "startFrame": 2717,
+      "endFrame": 2738,
+      "pageIndex": 68
+    },
+    {
+      "word": "otot",
+      "startFrame": 2738,
+      "endFrame": 2747,
+      "pageIndex": 68
+    },
+    {
+      "word": "jantung",
+      "startFrame": 2747,
+      "endFrame": 2757,
+      "pageIndex": 68
+    },
+    {
+      "word": "memongpa",
+      "startFrame": 2757,
+      "endFrame": 2768,
+      "pageIndex": 69
+    },
+    {
+      "word": "lebih",
+      "startFrame": 2768,
+      "endFrame": 2774,
+      "pageIndex": 69
+    },
+    {
+      "word": "keras",
+      "startFrame": 2774,
+      "endFrame": 2798,
+      "pageIndex": 69
+    },
+    {
+      "word": "memicu",
+      "startFrame": 2798,
+      "endFrame": 2808,
+      "pageIndex": 70
+    },
+    {
+      "word": "penebalan",
+      "startFrame": 2808,
+      "endFrame": 2824,
+      "pageIndex": 70
+    },
+    {
+      "word": "dinding",
+      "startFrame": 2824,
+      "endFrame": 2847,
+      "pageIndex": 70
+    },
+    {
+      "word": "Akumulasi",
+      "startFrame": 2862,
+      "endFrame": 2876,
+      "pageIndex": 71
+    },
+    {
+      "word": "toksin",
+      "startFrame": 2876,
+      "endFrame": 2886,
+      "pageIndex": 71
+    },
+    {
+      "word": "menyeluruh",
+      "startFrame": 2886,
+      "endFrame": 2903,
+      "pageIndex": 71
+    },
+    {
+      "word": "memicu",
+      "startFrame": 2903,
+      "endFrame": 2921,
+      "pageIndex": 72
+    },
+    {
+      "word": "kegagalan",
+      "startFrame": 2921,
+      "endFrame": 2936,
+      "pageIndex": 72
+    },
+    {
+      "word": "fungsi",
+      "startFrame": 2936,
+      "endFrame": 2946,
+      "pageIndex": 72
+    },
+    {
+      "word": "multi",
+      "startFrame": 2946,
+      "endFrame": 2955,
+      "pageIndex": 73
+    },
+    {
+      "word": "organ",
+      "startFrame": 2955,
+      "endFrame": 2964,
+      "pageIndex": 73
+    },
+    {
+      "word": "dan",
+      "startFrame": 2964,
+      "endFrame": 2980,
+      "pageIndex": 73
+    },
+    {
+      "word": "inflamasi",
+      "startFrame": 2980,
+      "endFrame": 2996,
+      "pageIndex": 74
+    },
+    {
+      "word": "kronis",
+      "startFrame": 2996,
+      "endFrame": 3007,
+      "pageIndex": 74
+    },
+    {
+      "word": "permanen",
+      "startFrame": 3007,
+      "endFrame": 3022,
+      "pageIndex": 74
+    },
+    {
+      "word": "Menurutmu",
+      "startFrame": 3047,
+      "endFrame": 3076,
+      "pageIndex": 75
+    },
+    {
+      "word": "apa",
+      "startFrame": 3076,
+      "endFrame": 3080,
+      "pageIndex": 75
+    },
+    {
+      "word": "keputusan",
+      "startFrame": 3080,
+      "endFrame": 3094,
+      "pageIndex": 75
+    },
+    {
+      "word": "sepele",
+      "startFrame": 3094,
+      "endFrame": 3104,
+      "pageIndex": 76
+    },
+    {
+      "word": "yang",
+      "startFrame": 3104,
+      "endFrame": 3109,
+      "pageIndex": 76
     },
     {
       "word": "kamu",
-      "startFrame": 2137,
-      "endFrame": 2143,
-      "pageIndex": 58
+      "startFrame": 3109,
+      "endFrame": 3115,
+      "pageIndex": 76
     },
     {
       "word": "ambil",
-      "startFrame": 2143,
-      "endFrame": 2149,
-      "pageIndex": 59
+      "startFrame": 3115,
+      "endFrame": 3122,
+      "pageIndex": 77
     },
     {
       "word": "hari",
-      "startFrame": 2149,
-      "endFrame": 2156,
-      "pageIndex": 59
+      "startFrame": 3122,
+      "endFrame": 3130,
+      "pageIndex": 77
     },
     {
       "word": "ini",
-      "startFrame": 2156,
-      "endFrame": 2161,
-      "pageIndex": 59
+      "startFrame": 3130,
+      "endFrame": 3136,
+      "pageIndex": 77
     },
     {
-      "word": "Yang",
-      "startFrame": 2152,
-      "endFrame": 2177,
-      "pageIndex": 60
+      "word": "yang",
+      "startFrame": 3134,
+      "endFrame": 3151,
+      "pageIndex": 78
     },
     {
       "word": "tanpa",
-      "startFrame": 2177,
-      "endFrame": 2187,
-      "pageIndex": 60
+      "startFrame": 3151,
+      "endFrame": 3160,
+      "pageIndex": 78
     },
     {
       "word": "kamu",
-      "startFrame": 2187,
-      "endFrame": 2194,
-      "pageIndex": 60
+      "startFrame": 3160,
+      "endFrame": 3166,
+      "pageIndex": 78
     },
     {
       "word": "sadari",
-      "startFrame": 2194,
-      "endFrame": 2206,
-      "pageIndex": 61
+      "startFrame": 3166,
+      "endFrame": 3179,
+      "pageIndex": 79
     },
     {
-      "word": "Bakal",
-      "startFrame": 2204,
-      "endFrame": 2222,
-      "pageIndex": 61
+      "word": "bakal",
+      "startFrame": 3179,
+      "endFrame": 3200,
+      "pageIndex": 79
     },
     {
       "word": "mengubah",
-      "startFrame": 2222,
-      "endFrame": 2232,
-      "pageIndex": 61
+      "startFrame": 3200,
+      "endFrame": 3211,
+      "pageIndex": 79
     },
     {
       "word": "jalan",
-      "startFrame": 2232,
-      "endFrame": 2238,
-      "pageIndex": 62
+      "startFrame": 3211,
+      "endFrame": 3219,
+      "pageIndex": 80
     },
     {
       "word": "hidupmu",
-      "startFrame": 2238,
-      "endFrame": 2248,
-      "pageIndex": 62
+      "startFrame": 3219,
+      "endFrame": 3230,
+      "pageIndex": 80
     },
     {
       "word": "5",
-      "startFrame": 2248,
-      "endFrame": 2254,
-      "pageIndex": 62
+      "startFrame": 3230,
+      "endFrame": 3236,
+      "pageIndex": 80
     },
     {
       "word": "tahun",
-      "startFrame": 2254,
-      "endFrame": 2261,
-      "pageIndex": 63
+      "startFrame": 3236,
+      "endFrame": 3243,
+      "pageIndex": 81
     },
     {
       "word": "lagi",
-      "startFrame": 2261,
-      "endFrame": 2269,
-      "pageIndex": 63
+      "startFrame": 3243,
+      "endFrame": 3266,
+      "pageIndex": 81
     }
   ],
-  "audioUrl": "butterfly/audio/72-jam-tanpa-tidur-simulasi-anatomi-mvt1kw03_voiceover.wav",
-  "totalDurationFrames": 2276
+  "audioUrl": "butterfly/audio/mie-instan-setiap-hari-mvt8kken_voiceover.wav",
+  "totalDurationFrames": 3259
 };

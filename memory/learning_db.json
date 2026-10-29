@@ -13,6 +13,29 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "mie-instan-setiap-hari-mvt8kken",
+      "title": "MIKROPLASTIK DI DARAHMU",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "Pernahkah kamu membayangkan, apa yang sebenarnya terjadi di dalam tubuhmu jika memakan mi instan setiap hari selama sebulan? Kamu mungkin mengira itu hanya karbohidrat biasa... tapi di balik kulitmu, partikel mikroplastik dan zat pengawet sedang merusak ususmu dan mengalir ke jantungmu. Mari kita masuk ke dalam tubuhmu detik demi detik!",
+      "scenes": [
+        "PENCERNAAN CEPAT & ASAM",
+        "SINDROM USUS BOCOR",
+        "SIRKULASI TOKSIN DARAH",
+        "ENZIM DETOKSIFIKASI",
+        "BEBAN DETOKSIFIKASI HATI",
+        "AKUMULASI RADIKAL BEBAS",
+        "PENYEMPITAN ARTERI KORONARIA",
+        "KELELAHAN SARAF OTOT",
+        "GAGALNYA FILTRASI GINJAL",
+        "MIKROPLASTIK DI KAPILER PARU",
+        "DEGENERASI MIELIN SARAF",
+        "GANGGUAN KOGNITIF OTAK",
+        "HIPERTROFI VENTRIKEL KIRI",
+        "SISTEMIK Kollaps KRONIS"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "72-jam-tanpa-tidur-simulasi-anatomi-mvt1kw03",
       "title": "72 JAM TANPA TIDUR",
       "hookStyle": "fullscreen-dramatic",
@@ -137,25 +160,6 @@
         "soviet-collapse"
       ],
       "why_successful": "Tersertifikasi AI Editor dengan skor 92/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
-    },
-    {
-      "id": "dust-mite-empire-collapse-mvonbya2",
-      "title": "KUTU DEBU YANG MENGHANCURKAN KEKAISARAN",
-      "hookStyle": "forensic-dossier",
-      "hookNarration": "12 Agustus 1914. Seekor tungau debu mikroskopis di kasur pos komandan memicu reaksi alergi fatal... dan dalam beberapa jam, strategi perang benua Eropa lumpuh total.",
-      "scenes": [
-        "laboratory-discovery",
-        "forensic-dossier",
-        "bureaucracy-draft",
-        "panic-phone",
-        "breaking-news",
-        "tactical-map",
-        "crowd-protest",
-        "gate-breach",
-        "wall-demolition",
-        "courtroom-gavel"
-      ],
-      "why_successful": "Tersertifikasi AI Editor dengan skor 92/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ],
   "blacklisted_patterns": [
@@ -247,6 +251,13 @@
       "title": "72 JAM TANPA TIDUR",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "mie-instan-setiap-hari-mvt8kken",
+      "timestamp": "2026-10-29T07:44:37.149Z",
+      "title": "MIKROPLASTIK DI DARAHMU",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ]
 }

@@ -1,0 +1,2417 @@
+{
+  "model": "whisper-large-v3",
+  "engine": "Groq Cloud LPU",
+  "totalDurationSec": 108.64,
+  "allWords": [
+    {
+      "word": "Pernahkah",
+      "start": 0.14,
+      "end": 0.68
+    },
+    {
+      "word": "kamu",
+      "start": 0.68,
+      "end": 0.9
+    },
+    {
+      "word": "membayangkan",
+      "start": 0.9,
+      "end": 1.66
+    },
+    {
+      "word": "apa",
+      "start": 1.66,
+      "end": 2.26
+    },
+    {
+      "word": "yang",
+      "start": 2.26,
+      "end": 2.42
+    },
+    {
+      "word": "sebenarnya",
+      "start": 2.42,
+      "end": 2.84
+    },
+    {
+      "word": "terjadi",
+      "start": 2.84,
+      "end": 3.38
+    },
+    {
+      "word": "di",
+      "start": 3.38,
+      "end": 3.52
+    },
+    {
+      "word": "dalam",
+      "start": 3.52,
+      "end": 3.76
+    },
+    {
+      "word": "tubuhmu",
+      "start": 3.76,
+      "end": 4.26
+    },
+    {
+      "word": "jika",
+      "start": 4.26,
+      "end": 4.92
+    },
+    {
+      "word": "memakan",
+      "start": 4.92,
+      "end": 5.3
+    },
+    {
+      "word": "mie",
+      "start": 5.3,
+      "end": 5.44
+    },
+    {
+      "word": "instan",
+      "start": 5.44,
+      "end": 5.84
+    },
+    {
+      "word": "setiap",
+      "start": 5.84,
+      "end": 6.16
+    },
+    {
+      "word": "hari",
+      "start": 6.16,
+      "end": 6.4
+    },
+    {
+      "word": "selama",
+      "start": 6.4,
+      "end": 6.72
+    },
+    {
+      "word": "sebulan?",
+      "start": 6.72,
+      "end": 7.44
+    },
+    {
+      "word": "Kamu",
+      "start": 8.08,
+      "end": 8.26
+    },
+    {
+      "word": "mungkin",
+      "start": 8.26,
+      "end": 8.56
+    },
+    {
+      "word": "mengira",
+      "start": 8.56,
+      "end": 9
+    },
+    {
+      "word": "itu",
+      "start": 9,
+      "end": 9.36
+    },
+    {
+      "word": "hanya",
+      "start": 9.36,
+      "end": 9.62
+    },
+    {
+      "word": "karbohidrat",
+      "start": 9.62,
+      "end": 10.2
+    },
+    {
+      "word": "biasa,",
+      "start": 10.2,
+      "end": 11.2
+    },
+    {
+      "word": "tapi",
+      "start": 11.2,
+      "end": 11.52
+    },
+    {
+      "word": "di",
+      "start": 11.52,
+      "end": 11.82
+    },
+    {
+      "word": "balik",
+      "start": 11.82,
+      "end": 11.94
+    },
+    {
+      "word": "kulitmu,",
+      "start": 11.94,
+      "end": 12.48
+    },
+    {
+      "word": "partikel",
+      "start": 12.48,
+      "end": 13.28
+    },
+    {
+      "word": "mikroplastik",
+      "start": 13.28,
+      "end": 13.98
+    },
+    {
+      "word": "dan",
+      "start": 13.98,
+      "end": 14.18
+    },
+    {
+      "word": "zat",
+      "start": 14.18,
+      "end": 14.34
+    },
+    {
+      "word": "pengawet",
+      "start": 14.34,
+      "end": 14.78
+    },
+    {
+      "word": "sedang",
+      "start": 14.78,
+      "end": 15.32
+    },
+    {
+      "word": "merusak",
+      "start": 15.32,
+      "end": 15.72
+    },
+    {
+      "word": "ususmu",
+      "start": 15.72,
+      "end": 16.1
+    },
+    {
+      "word": "dan",
+      "start": 16.1,
+      "end": 16.3
+    },
+    {
+      "word": "mengalir",
+      "start": 16.3,
+      "end": 16.7
+    },
+    {
+      "word": "ke",
+      "start": 16.7,
+      "end": 16.84
+    },
+    {
+      "word": "jantungmu.",
+      "start": 16.84,
+      "end": 17.34
+    },
+    {
+      "word": "Mari",
+      "start": 18.2,
+      "end": 18.34
+    },
+    {
+      "word": "kita",
+      "start": 18.34,
+      "end": 18.58
+    },
+    {
+      "word": "masuk",
+      "start": 18.58,
+      "end": 18.94
+    },
+    {
+      "word": "ke",
+      "start": 18.94,
+      "end": 19.06
+    },
+    {
+      "word": "dalam",
+      "start": 19.06,
+      "end": 19.34
+    },
+    {
+      "word": "tubuhmu",
+      "start": 19.34,
+      "end": 19.84
+    },
+    {
+      "word": "detik",
+      "start": 19.84,
+      "end": 20.36
+    },
+    {
+      "word": "demi",
+      "start": 20.36,
+      "end": 20.64
+    },
+    {
+      "word": "detik.",
+      "start": 20.64,
+      "end": 20.94
+    },
+    {
+      "word": "Air",
+      "start": 21.2,
+      "end": 22.08
+    },
+    {
+      "word": "panas",
+      "start": 22.08,
+      "end": 22.48
+    },
+    {
+      "word": "melarutkan",
+      "start": 22.48,
+      "end": 23
+    },
+    {
+      "word": "bumbu,",
+      "start": 23,
+      "end": 23.86
+    },
+    {
+      "word": "namun",
+      "start": 23.86,
+      "end": 24.18
+    },
+    {
+      "word": "zat",
+      "start": 24.18,
+      "end": 24.4
+    },
+    {
+      "word": "pengawet",
+      "start": 24.4,
+      "end": 24.8
+    },
+    {
+      "word": "dan",
+      "start": 24.8,
+      "end": 25
+    },
+    {
+      "word": "MSG",
+      "start": 25,
+      "end": 25.48
+    },
+    {
+      "word": "langsung",
+      "start": 25.48,
+      "end": 26.2
+    },
+    {
+      "word": "mengiritasi",
+      "start": 26.2,
+      "end": 26.88
+    },
+    {
+      "word": "mukosa",
+      "start": 26.88,
+      "end": 27.28
+    },
+    {
+      "word": "lambung.",
+      "start": 27.28,
+      "end": 28.16
+    },
+    {
+      "word": "Partikel",
+      "start": 28.38,
+      "end": 28.64
+    },
+    {
+      "word": "mikroplastik",
+      "start": 28.64,
+      "end": 29.36
+    },
+    {
+      "word": "dari",
+      "start": 29.36,
+      "end": 29.54
+    },
+    {
+      "word": "kemasan",
+      "start": 29.54,
+      "end": 30.06
+    },
+    {
+      "word": "mie",
+      "start": 30.06,
+      "end": 30.18
+    },
+    {
+      "word": "menembus",
+      "start": 30.18,
+      "end": 30.88
+    },
+    {
+      "word": "celah",
+      "start": 30.88,
+      "end": 31.16
+    },
+    {
+      "word": "antar",
+      "start": 31.16,
+      "end": 31.54
+    },
+    {
+      "word": "sel",
+      "start": 31.54,
+      "end": 31.66
+    },
+    {
+      "word": "epitel",
+      "start": 31.66,
+      "end": 32.12
+    },
+    {
+      "word": "usus",
+      "start": 32.12,
+      "end": 32.42
+    },
+    {
+      "word": "halus.",
+      "start": 32.42,
+      "end": 33.3
+    },
+    {
+      "word": "Partikel",
+      "start": 33.5,
+      "end": 33.78
+    },
+    {
+      "word": "mikroplastik",
+      "start": 33.78,
+      "end": 34.5
+    },
+    {
+      "word": "kini",
+      "start": 34.5,
+      "end": 34.76
+    },
+    {
+      "word": "bersirkulasi",
+      "start": 34.76,
+      "end": 35.4
+    },
+    {
+      "word": "bebas",
+      "start": 35.4,
+      "end": 35.78
+    },
+    {
+      "word": "di",
+      "start": 35.78,
+      "end": 36.18
+    },
+    {
+      "word": "dalam",
+      "start": 36.18,
+      "end": 36.44
+    },
+    {
+      "word": "aliran",
+      "start": 36.44,
+      "end": 36.78
+    },
+    {
+      "word": "darahmu",
+      "start": 36.78,
+      "end": 37.26
+    },
+    {
+      "word": "menuju",
+      "start": 37.26,
+      "end": 37.7
+    },
+    {
+      "word": "organ",
+      "start": 37.7,
+      "end": 37.98
+    },
+    {
+      "word": "vital.",
+      "start": 37.98,
+      "end": 38.8
+    },
+    {
+      "word": "Sel",
+      "start": 39.4,
+      "end": 39.56
+    },
+    {
+      "word": "hepatosid",
+      "start": 39.56,
+      "end": 40.14
+    },
+    {
+      "word": "bekerja",
+      "start": 40.14,
+      "end": 40.54
+    },
+    {
+      "word": "secara",
+      "start": 40.54,
+      "end": 40.86
+    },
+    {
+      "word": "masif",
+      "start": 40.86,
+      "end": 41.3
+    },
+    {
+      "word": "untuk",
+      "start": 41.3,
+      "end": 41.9
+    },
+    {
+      "word": "menetralkan",
+      "start": 41.9,
+      "end": 42.52
+    },
+    {
+      "word": "residu",
+      "start": 42.52,
+      "end": 42.94
+    },
+    {
+      "word": "kimiawi",
+      "start": 42.94,
+      "end": 43.44
+    },
+    {
+      "word": "pengawet",
+      "start": 43.44,
+      "end": 43.84
+    },
+    {
+      "word": "makanan.",
+      "start": 43.84,
+      "end": 44.74
+    },
+    {
+      "word": "Hati",
+      "start": 44.86,
+      "end": 45.16
+    },
+    {
+      "word": "bekerja",
+      "start": 45.16,
+      "end": 45.62
+    },
+    {
+      "word": "lembur",
+      "start": 45.62,
+      "end": 45.9
+    },
+    {
+      "word": "untuk",
+      "start": 45.9,
+      "end": 46.2
+    },
+    {
+      "word": "memetabolisme",
+      "start": 46.2,
+      "end": 46.9
+    },
+    {
+      "word": "pengawet",
+      "start": 46.9,
+      "end": 47.36
+    },
+    {
+      "word": "dan",
+      "start": 47.36,
+      "end": 47.54
+    },
+    {
+      "word": "pewarna,",
+      "start": 47.54,
+      "end": 48.5
+    },
+    {
+      "word": "memicu",
+      "start": 48.5,
+      "end": 48.8
+    },
+    {
+      "word": "peradangan",
+      "start": 48.8,
+      "end": 49.24
+    },
+    {
+      "word": "seluler.",
+      "start": 49.24,
+      "end": 50.18
+    },
+    {
+      "word": "Stres",
+      "start": 50.64,
+      "end": 50.9
+    },
+    {
+      "word": "oksidatif",
+      "start": 50.9,
+      "end": 51.5
+    },
+    {
+      "word": "merusak",
+      "start": 51.5,
+      "end": 51.9
+    },
+    {
+      "word": "lapisan",
+      "start": 51.9,
+      "end": 52.28
+    },
+    {
+      "word": "endotel",
+      "start": 52.28,
+      "end": 52.7
+    },
+    {
+      "word": "pembuluh",
+      "start": 52.7,
+      "end": 53.02
+    },
+    {
+      "word": "darah,",
+      "start": 53.02,
+      "end": 53.88
+    },
+    {
+      "word": "memicu",
+      "start": 53.88,
+      "end": 54.16
+    },
+    {
+      "word": "inflamasi",
+      "start": 54.16,
+      "end": 54.76
+    },
+    {
+      "word": "sistemik",
+      "start": 54.76,
+      "end": 55.22
+    },
+    {
+      "word": "ringan.",
+      "start": 55.22,
+      "end": 56
+    },
+    {
+      "word": "Asam",
+      "start": 56.12,
+      "end": 56.3
+    },
+    {
+      "word": "lemak",
+      "start": 56.3,
+      "end": 56.6
+    },
+    {
+      "word": "trans",
+      "start": 56.6,
+      "end": 56.84
+    },
+    {
+      "word": "dari",
+      "start": 56.84,
+      "end": 57.08
+    },
+    {
+      "word": "minyak",
+      "start": 57.08,
+      "end": 57.34
+    },
+    {
+      "word": "goreng,",
+      "start": 57.34,
+      "end": 58.22
+    },
+    {
+      "word": "memicu",
+      "start": 58.12,
+      "end": 58.38
+    },
+    {
+      "word": "plak",
+      "start": 58.38,
+      "end": 58.62
+    },
+    {
+      "word": "awal",
+      "start": 58.62,
+      "end": 58.98
+    },
+    {
+      "word": "di",
+      "start": 58.98,
+      "end": 59.14
+    },
+    {
+      "word": "arteri",
+      "start": 59.14,
+      "end": 59.54
+    },
+    {
+      "word": "koronaria.",
+      "start": 59.54,
+      "end": 60.38
+    },
+    {
+      "word": "Ketidakseimbangan",
+      "start": 60.88,
+      "end": 61.64
+    },
+    {
+      "word": "elektrolit",
+      "start": 61.64,
+      "end": 62.22
+    },
+    {
+      "word": "dan",
+      "start": 62.22,
+      "end": 62.42
+    },
+    {
+      "word": "penumpukan",
+      "start": 62.42,
+      "end": 62.86
+    },
+    {
+      "word": "asam",
+      "start": 62.86,
+      "end": 63.14
+    },
+    {
+      "word": "laktat",
+      "start": 63.14,
+      "end": 63.54
+    },
+    {
+      "word": "membuat",
+      "start": 63.48,
+      "end": 64.18
+    },
+    {
+      "word": "otot",
+      "start": 64.18,
+      "end": 64.52
+    },
+    {
+      "word": "mudah",
+      "start": 64.52,
+      "end": 64.86
+    },
+    {
+      "word": "kram",
+      "start": 64.86,
+      "end": 65.02
+    },
+    {
+      "word": "dan",
+      "start": 65.02,
+      "end": 65.2
+    },
+    {
+      "word": "lelah.",
+      "start": 65.2,
+      "end": 65.52
+    },
+    {
+      "word": "Ginjal",
+      "start": 66.32,
+      "end": 66.68
+    },
+    {
+      "word": "kesulitan",
+      "start": 66.68,
+      "end": 67.18
+    },
+    {
+      "word": "menyaring",
+      "start": 67.18,
+      "end": 67.54
+    },
+    {
+      "word": "mikroplastik",
+      "start": 67.54,
+      "end": 68.2
+    },
+    {
+      "word": "dan",
+      "start": 68.2,
+      "end": 68.4
+    },
+    {
+      "word": "sisa",
+      "start": 68.4,
+      "end": 68.64
+    },
+    {
+      "word": "metabolit",
+      "start": 68.64,
+      "end": 69.24
+    },
+    {
+      "word": "menyebabkan",
+      "start": 69.1,
+      "end": 70.14
+    },
+    {
+      "word": "penumpukan",
+      "start": 70.14,
+      "end": 70.6
+    },
+    {
+      "word": "kristal.",
+      "start": 70.6,
+      "end": 71.62
+    },
+    {
+      "word": "Sebagian",
+      "start": 71.96,
+      "end": 72.34
+    },
+    {
+      "word": "partikel",
+      "start": 72.34,
+      "end": 72.68
+    },
+    {
+      "word": "mikroplastik",
+      "start": 72.68,
+      "end": 73.36
+    },
+    {
+      "word": "terjebak",
+      "start": 73.36,
+      "end": 73.88
+    },
+    {
+      "word": "di",
+      "start": 73.88,
+      "end": 74.06
+    },
+    {
+      "word": "jaringan",
+      "start": 74.06,
+      "end": 74.4
+    },
+    {
+      "word": "kapiler",
+      "start": 74.4,
+      "end": 74.74
+    },
+    {
+      "word": "alveoli",
+      "start": 74.74,
+      "end": 75.34
+    },
+    {
+      "word": "mengganggu",
+      "start": 75.26,
+      "end": 76.16
+    },
+    {
+      "word": "pertukaran",
+      "start": 76.16,
+      "end": 76.66
+    },
+    {
+      "word": "gas.",
+      "start": 76.66,
+      "end": 77.44
+    },
+    {
+      "word": "Toksin",
+      "start": 77.32,
+      "end": 78.14
+    },
+    {
+      "word": "kimia",
+      "start": 78.14,
+      "end": 78.56
+    },
+    {
+      "word": "merusak",
+      "start": 78.56,
+      "end": 78.98
+    },
+    {
+      "word": "selubung",
+      "start": 78.98,
+      "end": 79.32
+    },
+    {
+      "word": "mielin,",
+      "start": 79.32,
+      "end": 80.2
+    },
+    {
+      "word": "memperlambat",
+      "start": 80.2,
+      "end": 80.66
+    },
+    {
+      "word": "transmisi",
+      "start": 80.66,
+      "end": 81.16
+    },
+    {
+      "word": "sinyal",
+      "start": 81.16,
+      "end": 81.46
+    },
+    {
+      "word": "listrik",
+      "start": 81.46,
+      "end": 81.8
+    },
+    {
+      "word": "antarsaraf.",
+      "start": 81.8,
+      "end": 82.96
+    },
+    {
+      "word": "Partikel",
+      "start": 83.28,
+      "end": 83.56
+    },
+    {
+      "word": "mikroplastik",
+      "start": 83.56,
+      "end": 84.26
+    },
+    {
+      "word": "menembus",
+      "start": 84.26,
+      "end": 84.68
+    },
+    {
+      "word": "sawar",
+      "start": 84.68,
+      "end": 84.98
+    },
+    {
+      "word": "darah",
+      "start": 84.98,
+      "end": 85.2
+    },
+    {
+      "word": "otak,",
+      "start": 85.2,
+      "end": 85.96
+    },
+    {
+      "word": "mengganggu",
+      "start": 85.96,
+      "end": 86.3
+    },
+    {
+      "word": "sinyal",
+      "start": 86.3,
+      "end": 86.66
+    },
+    {
+      "word": "neurotransmitter",
+      "start": 86.66,
+      "end": 87.48
+    },
+    {
+      "word": "dopamin.",
+      "start": 87.48,
+      "end": 88.36
+    },
+    {
+      "word": "Tekanan",
+      "start": 88.72,
+      "end": 89
+    },
+    {
+      "word": "darah",
+      "start": 89,
+      "end": 89.32
+    },
+    {
+      "word": "yang",
+      "start": 89.32,
+      "end": 89.5
+    },
+    {
+      "word": "tinggi",
+      "start": 89.5,
+      "end": 89.78
+    },
+    {
+      "word": "secara",
+      "start": 89.78,
+      "end": 90.08
+    },
+    {
+      "word": "kronis",
+      "start": 90.08,
+      "end": 90.56
+    },
+    {
+      "word": "memaksa",
+      "start": 90.56,
+      "end": 91.26
+    },
+    {
+      "word": "otot",
+      "start": 91.26,
+      "end": 91.56
+    },
+    {
+      "word": "jantung",
+      "start": 91.56,
+      "end": 91.9
+    },
+    {
+      "word": "memongpa",
+      "start": 91.9,
+      "end": 92.28
+    },
+    {
+      "word": "lebih",
+      "start": 92.28,
+      "end": 92.48
+    },
+    {
+      "word": "keras,",
+      "start": 92.48,
+      "end": 93.26
+    },
+    {
+      "word": "memicu",
+      "start": 93.26,
+      "end": 93.6
+    },
+    {
+      "word": "penebalan",
+      "start": 93.6,
+      "end": 94.12
+    },
+    {
+      "word": "dinding.",
+      "start": 94.12,
+      "end": 94.9
+    },
+    {
+      "word": "Akumulasi",
+      "start": 95.4,
+      "end": 95.86
+    },
+    {
+      "word": "toksin",
+      "start": 95.86,
+      "end": 96.2
+    },
+    {
+      "word": "menyeluruh",
+      "start": 96.2,
+      "end": 96.78
+    },
+    {
+      "word": "memicu",
+      "start": 96.78,
+      "end": 97.38
+    },
+    {
+      "word": "kegagalan",
+      "start": 97.38,
+      "end": 97.88
+    },
+    {
+      "word": "fungsi",
+      "start": 97.88,
+      "end": 98.2
+    },
+    {
+      "word": "multi",
+      "start": 98.2,
+      "end": 98.5
+    },
+    {
+      "word": "organ",
+      "start": 98.5,
+      "end": 98.8
+    },
+    {
+      "word": "dan",
+      "start": 98.8,
+      "end": 99.32
+    },
+    {
+      "word": "inflamasi",
+      "start": 99.32,
+      "end": 99.88
+    },
+    {
+      "word": "kronis",
+      "start": 99.88,
+      "end": 100.24
+    },
+    {
+      "word": "permanen.",
+      "start": 100.24,
+      "end": 100.72
+    },
+    {
+      "word": "Menurutmu,",
+      "start": 101.56,
+      "end": 102.54
+    },
+    {
+      "word": "apa",
+      "start": 102.54,
+      "end": 102.68
+    },
+    {
+      "word": "keputusan",
+      "start": 102.68,
+      "end": 103.12
+    },
+    {
+      "word": "sepele",
+      "start": 103.12,
+      "end": 103.48
+    },
+    {
+      "word": "yang",
+      "start": 103.48,
+      "end": 103.62
+    },
+    {
+      "word": "kamu",
+      "start": 103.62,
+      "end": 103.82
+    },
+    {
+      "word": "ambil",
+      "start": 103.82,
+      "end": 104.08
+    },
+    {
+      "word": "hari",
+      "start": 104.08,
+      "end": 104.32
+    },
+    {
+      "word": "ini",
+      "start": 104.32,
+      "end": 104.54
+    },
+    {
+      "word": "yang",
+      "start": 104.46,
+      "end": 105.04
+    },
+    {
+      "word": "tanpa",
+      "start": 105.04,
+      "end": 105.34
+    },
+    {
+      "word": "kamu",
+      "start": 105.34,
+      "end": 105.54
+    },
+    {
+      "word": "sadari",
+      "start": 105.54,
+      "end": 105.98
+    },
+    {
+      "word": "bakal",
+      "start": 105.98,
+      "end": 106.66
+    },
+    {
+      "word": "mengubah",
+      "start": 106.66,
+      "end": 107.02
+    },
+    {
+      "word": "jalan",
+      "start": 107.02,
+      "end": 107.3
+    },
+    {
+      "word": "hidupmu",
+      "start": 107.3,
+      "end": 107.68
+    },
+    {
+      "word": "5",
+      "start": 107.68,
+      "end": 107.86
+    },
+    {
+      "word": "tahun",
+      "start": 107.86,
+      "end": 108.1
+    },
+    {
+      "word": "lagi?",
+      "start": 108.1,
+      "end": 108.88
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 7.08,
+      "text": "Pernahkah kamu membayangkan apa yang sebenarnya terjadi di dalam tubuhmu jika memakan mie instan setiap hari selama sebulan?",
+      "words": [
+        {
+          "word": "Pernahkah",
+          "start": 0.14,
+          "end": 0.68
+        },
+        {
+          "word": "kamu",
+          "start": 0.68,
+          "end": 0.9
+        },
+        {
+          "word": "membayangkan",
+          "start": 0.9,
+          "end": 1.66
+        },
+        {
+          "word": "apa",
+          "start": 1.66,
+          "end": 2.26
+        },
+        {
+          "word": "yang",
+          "start": 2.26,
+          "end": 2.42
+        },
+        {
+          "word": "sebenarnya",
+          "start": 2.42,
+          "end": 2.84
+        },
+        {
+          "word": "terjadi",
+          "start": 2.84,
+          "end": 3.38
+        },
+        {
+          "word": "di",
+          "start": 3.38,
+          "end": 3.52
+        },
+        {
+          "word": "dalam",
+          "start": 3.52,
+          "end": 3.76
+        },
+        {
+          "word": "tubuhmu",
+          "start": 3.76,
+          "end": 4.26
+        },
+        {
+          "word": "jika",
+          "start": 4.26,
+          "end": 4.92
+        },
+        {
+          "word": "memakan",
+          "start": 4.92,
+          "end": 5.3
+        },
+        {
+          "word": "mie",
+          "start": 5.3,
+          "end": 5.44
+        },
+        {
+          "word": "instan",
+          "start": 5.44,
+          "end": 5.84
+        },
+        {
+          "word": "setiap",
+          "start": 5.84,
+          "end": 6.16
+        },
+        {
+          "word": "hari",
+          "start": 6.16,
+          "end": 6.4
+        },
+        {
+          "word": "selama",
+          "start": 6.4,
+          "end": 6.72
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 7.82,
+      "end": 17.36,
+      "text": "Kamu mungkin mengira itu hanya karbohidrat biasa, tapi di balik kulitmu, partikel mikroplastik dan zat pengawet sedang merusak ususmu dan mengalir ke jantungmu.",
+      "words": [
+        {
+          "word": "Kamu",
+          "start": 8.08,
+          "end": 8.26
+        },
+        {
+          "word": "mungkin",
+          "start": 8.26,
+          "end": 8.56
+        },
+        {
+          "word": "mengira",
+          "start": 8.56,
+          "end": 9
+        },
+        {
+          "word": "itu",
+          "start": 9,
+          "end": 9.36
+        },
+        {
+          "word": "hanya",
+          "start": 9.36,
+          "end": 9.62
+        },
+        {
+          "word": "karbohidrat",
+          "start": 9.62,
+          "end": 10.2
+        },
+        {
+          "word": "biasa,",
+          "start": 10.2,
+          "end": 11.2
+        },
+        {
+          "word": "tapi",
+          "start": 11.2,
+          "end": 11.52
+        },
+        {
+          "word": "di",
+          "start": 11.52,
+          "end": 11.82
+        },
+        {
+          "word": "balik",
+          "start": 11.82,
+          "end": 11.94
+        },
+        {
+          "word": "kulitmu,",
+          "start": 11.94,
+          "end": 12.48
+        },
+        {
+          "word": "partikel",
+          "start": 12.48,
+          "end": 13.28
+        },
+        {
+          "word": "mikroplastik",
+          "start": 13.28,
+          "end": 13.98
+        },
+        {
+          "word": "dan",
+          "start": 13.98,
+          "end": 14.18
+        },
+        {
+          "word": "zat",
+          "start": 14.18,
+          "end": 14.34
+        },
+        {
+          "word": "pengawet",
+          "start": 14.34,
+          "end": 14.78
+        },
+        {
+          "word": "sedang",
+          "start": 14.78,
+          "end": 15.32
+        },
+        {
+          "word": "merusak",
+          "start": 15.32,
+          "end": 15.72
+        },
+        {
+          "word": "ususmu",
+          "start": 15.72,
+          "end": 16.1
+        },
+        {
+          "word": "dan",
+          "start": 16.1,
+          "end": 16.3
+        },
+        {
+          "word": "mengalir",
+          "start": 16.3,
+          "end": 16.7
+        },
+        {
+          "word": "ke",
+          "start": 16.7,
+          "end": 16.84
+        },
+        {
+          "word": "jantungmu.",
+          "start": 16.84,
+          "end": 17.34
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 18.14,
+      "end": 21.1,
+      "text": "Mari kita masuk ke dalam tubuhmu detik demi detik.",
+      "words": [
+        {
+          "word": "Mari",
+          "start": 18.2,
+          "end": 18.34
+        },
+        {
+          "word": "kita",
+          "start": 18.34,
+          "end": 18.58
+        },
+        {
+          "word": "masuk",
+          "start": 18.58,
+          "end": 18.94
+        },
+        {
+          "word": "ke",
+          "start": 18.94,
+          "end": 19.06
+        },
+        {
+          "word": "dalam",
+          "start": 19.06,
+          "end": 19.34
+        },
+        {
+          "word": "tubuhmu",
+          "start": 19.34,
+          "end": 19.84
+        },
+        {
+          "word": "detik",
+          "start": 19.84,
+          "end": 20.36
+        },
+        {
+          "word": "demi",
+          "start": 20.36,
+          "end": 20.64
+        },
+        {
+          "word": "detik.",
+          "start": 20.64,
+          "end": 20.94
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 21.1,
+      "end": 27.7,
+      "text": "Air panas melarutkan bumbu, namun zat pengawet dan MSG langsung mengiritasi mukosa lambung.",
+      "words": [
+        {
+          "word": "Air",
+          "start": 21.2,
+          "end": 22.08
+        },
+        {
+          "word": "panas",
+          "start": 22.08,
+          "end": 22.48
+        },
+        {
+          "word": "melarutkan",
+          "start": 22.48,
+          "end": 23
+        },
+        {
+          "word": "bumbu,",
+          "start": 23,
+          "end": 23.86
+        },
+        {
+          "word": "namun",
+          "start": 23.86,
+          "end": 24.18
+        },
+        {
+          "word": "zat",
+          "start": 24.18,
+          "end": 24.4
+        },
+        {
+          "word": "pengawet",
+          "start": 24.4,
+          "end": 24.8
+        },
+        {
+          "word": "dan",
+          "start": 24.8,
+          "end": 25
+        },
+        {
+          "word": "MSG",
+          "start": 25,
+          "end": 25.48
+        },
+        {
+          "word": "langsung",
+          "start": 25.48,
+          "end": 26.2
+        },
+        {
+          "word": "mengiritasi",
+          "start": 26.2,
+          "end": 26.88
+        },
+        {
+          "word": "mukosa",
+          "start": 26.88,
+          "end": 27.28
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 28.26,
+      "end": 32.82,
+      "text": "Partikel mikroplastik dari kemasan mie menembus celah antar sel epitel usus halus.",
+      "words": [
+        {
+          "word": "Partikel",
+          "start": 28.38,
+          "end": 28.64
+        },
+        {
+          "word": "mikroplastik",
+          "start": 28.64,
+          "end": 29.36
+        },
+        {
+          "word": "dari",
+          "start": 29.36,
+          "end": 29.54
+        },
+        {
+          "word": "kemasan",
+          "start": 29.54,
+          "end": 30.06
+        },
+        {
+          "word": "mie",
+          "start": 30.06,
+          "end": 30.18
+        },
+        {
+          "word": "menembus",
+          "start": 30.18,
+          "end": 30.88
+        },
+        {
+          "word": "celah",
+          "start": 30.88,
+          "end": 31.16
+        },
+        {
+          "word": "antar",
+          "start": 31.16,
+          "end": 31.54
+        },
+        {
+          "word": "sel",
+          "start": 31.54,
+          "end": 31.66
+        },
+        {
+          "word": "epitel",
+          "start": 31.66,
+          "end": 32.12
+        },
+        {
+          "word": "usus",
+          "start": 32.12,
+          "end": 32.42
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 33.4,
+      "end": 38.32,
+      "text": "Partikel mikroplastik kini bersirkulasi bebas di dalam aliran darahmu menuju organ vital.",
+      "words": [
+        {
+          "word": "Partikel",
+          "start": 33.5,
+          "end": 33.78
+        },
+        {
+          "word": "mikroplastik",
+          "start": 33.78,
+          "end": 34.5
+        },
+        {
+          "word": "kini",
+          "start": 34.5,
+          "end": 34.76
+        },
+        {
+          "word": "bersirkulasi",
+          "start": 34.76,
+          "end": 35.4
+        },
+        {
+          "word": "bebas",
+          "start": 35.4,
+          "end": 35.78
+        },
+        {
+          "word": "di",
+          "start": 35.78,
+          "end": 36.18
+        },
+        {
+          "word": "dalam",
+          "start": 36.18,
+          "end": 36.44
+        },
+        {
+          "word": "aliran",
+          "start": 36.44,
+          "end": 36.78
+        },
+        {
+          "word": "darahmu",
+          "start": 36.78,
+          "end": 37.26
+        },
+        {
+          "word": "menuju",
+          "start": 37.26,
+          "end": 37.7
+        },
+        {
+          "word": "organ",
+          "start": 37.7,
+          "end": 37.98
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 39.38,
+      "end": 44.26,
+      "text": "Sel hepatosid bekerja secara masif untuk menetralkan residu kimiawi pengawet makanan.",
+      "words": [
+        {
+          "word": "Sel",
+          "start": 39.4,
+          "end": 39.56
+        },
+        {
+          "word": "hepatosid",
+          "start": 39.56,
+          "end": 40.14
+        },
+        {
+          "word": "bekerja",
+          "start": 40.14,
+          "end": 40.54
+        },
+        {
+          "word": "secara",
+          "start": 40.54,
+          "end": 40.86
+        },
+        {
+          "word": "masif",
+          "start": 40.86,
+          "end": 41.3
+        },
+        {
+          "word": "untuk",
+          "start": 41.3,
+          "end": 41.9
+        },
+        {
+          "word": "menetralkan",
+          "start": 41.9,
+          "end": 42.52
+        },
+        {
+          "word": "residu",
+          "start": 42.52,
+          "end": 42.94
+        },
+        {
+          "word": "kimiawi",
+          "start": 42.94,
+          "end": 43.44
+        },
+        {
+          "word": "pengawet",
+          "start": 43.44,
+          "end": 43.84
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 44.84,
+      "end": 49.7,
+      "text": "Hati bekerja lembur untuk memetabolisme pengawet dan pewarna, memicu peradangan seluler.",
+      "words": [
+        {
+          "word": "Hati",
+          "start": 44.86,
+          "end": 45.16
+        },
+        {
+          "word": "bekerja",
+          "start": 45.16,
+          "end": 45.62
+        },
+        {
+          "word": "lembur",
+          "start": 45.62,
+          "end": 45.9
+        },
+        {
+          "word": "untuk",
+          "start": 45.9,
+          "end": 46.2
+        },
+        {
+          "word": "memetabolisme",
+          "start": 46.2,
+          "end": 46.9
+        },
+        {
+          "word": "pengawet",
+          "start": 46.9,
+          "end": 47.36
+        },
+        {
+          "word": "dan",
+          "start": 47.36,
+          "end": 47.54
+        },
+        {
+          "word": "pewarna,",
+          "start": 47.54,
+          "end": 48.5
+        },
+        {
+          "word": "memicu",
+          "start": 48.5,
+          "end": 48.8
+        },
+        {
+          "word": "peradangan",
+          "start": 48.8,
+          "end": 49.24
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 50.62,
+      "end": 53.44,
+      "text": "Stres oksidatif merusak lapisan endotel pembuluh darah,",
+      "words": [
+        {
+          "word": "Stres",
+          "start": 50.64,
+          "end": 50.9
+        },
+        {
+          "word": "oksidatif",
+          "start": 50.9,
+          "end": 51.5
+        },
+        {
+          "word": "merusak",
+          "start": 51.5,
+          "end": 51.9
+        },
+        {
+          "word": "lapisan",
+          "start": 51.9,
+          "end": 52.28
+        },
+        {
+          "word": "endotel",
+          "start": 52.28,
+          "end": 52.7
+        },
+        {
+          "word": "pembuluh",
+          "start": 52.7,
+          "end": 53.02
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 53.8,
+      "end": 55.52,
+      "text": "memicu inflamasi sistemik ringan.",
+      "words": [
+        {
+          "word": "memicu",
+          "start": 53.88,
+          "end": 54.16
+        },
+        {
+          "word": "inflamasi",
+          "start": 54.16,
+          "end": 54.76
+        },
+        {
+          "word": "sistemik",
+          "start": 54.76,
+          "end": 55.22
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 56.06,
+      "end": 57.74,
+      "text": "Asam lemak trans dari minyak goreng,",
+      "words": [
+        {
+          "word": "Asam",
+          "start": 56.12,
+          "end": 56.3
+        },
+        {
+          "word": "lemak",
+          "start": 56.3,
+          "end": 56.6
+        },
+        {
+          "word": "trans",
+          "start": 56.6,
+          "end": 56.84
+        },
+        {
+          "word": "dari",
+          "start": 56.84,
+          "end": 57.08
+        },
+        {
+          "word": "minyak",
+          "start": 57.08,
+          "end": 57.34
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 58.04,
+      "end": 60.08,
+      "text": "memicu plak awal di arteri koronaria.",
+      "words": [
+        {
+          "word": "memicu",
+          "start": 58.12,
+          "end": 58.38
+        },
+        {
+          "word": "plak",
+          "start": 58.38,
+          "end": 58.62
+        },
+        {
+          "word": "awal",
+          "start": 58.62,
+          "end": 58.98
+        },
+        {
+          "word": "di",
+          "start": 58.98,
+          "end": 59.14
+        },
+        {
+          "word": "arteri",
+          "start": 59.14,
+          "end": 59.54
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 60.84,
+      "end": 63.54,
+      "text": "Ketidakseimbangan elektrolit dan penumpukan asam laktat",
+      "words": [
+        {
+          "word": "Ketidakseimbangan",
+          "start": 60.88,
+          "end": 61.64
+        },
+        {
+          "word": "elektrolit",
+          "start": 61.64,
+          "end": 62.22
+        },
+        {
+          "word": "dan",
+          "start": 62.22,
+          "end": 62.42
+        },
+        {
+          "word": "penumpukan",
+          "start": 62.42,
+          "end": 62.86
+        },
+        {
+          "word": "asam",
+          "start": 62.86,
+          "end": 63.14
+        },
+        {
+          "word": "laktat",
+          "start": 63.14,
+          "end": 63.54
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 63.54,
+      "end": 65.54,
+      "text": "membuat otot mudah kram dan lelah.",
+      "words": [
+        {
+          "word": "otot",
+          "start": 64.18,
+          "end": 64.52
+        },
+        {
+          "word": "mudah",
+          "start": 64.52,
+          "end": 64.86
+        },
+        {
+          "word": "kram",
+          "start": 64.86,
+          "end": 65.02
+        },
+        {
+          "word": "dan",
+          "start": 65.02,
+          "end": 65.2
+        },
+        {
+          "word": "lelah.",
+          "start": 65.2,
+          "end": 65.52
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 66.28,
+      "end": 69.26,
+      "text": "Ginjal kesulitan menyaring mikroplastik dan sisa metabolit",
+      "words": [
+        {
+          "word": "Ginjal",
+          "start": 66.32,
+          "end": 66.68
+        },
+        {
+          "word": "kesulitan",
+          "start": 66.68,
+          "end": 67.18
+        },
+        {
+          "word": "menyaring",
+          "start": 67.18,
+          "end": 67.54
+        },
+        {
+          "word": "mikroplastik",
+          "start": 67.54,
+          "end": 68.2
+        },
+        {
+          "word": "dan",
+          "start": 68.2,
+          "end": 68.4
+        },
+        {
+          "word": "sisa",
+          "start": 68.4,
+          "end": 68.64
+        },
+        {
+          "word": "metabolit",
+          "start": 68.64,
+          "end": 69.24
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 69.26,
+      "end": 71.14,
+      "text": "menyebabkan penumpukan kristal.",
+      "words": [
+        {
+          "word": "penumpukan",
+          "start": 70.14,
+          "end": 70.6
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 71.92,
+      "end": 75.36,
+      "text": "Sebagian partikel mikroplastik terjebak di jaringan kapiler alveoli",
+      "words": [
+        {
+          "word": "Sebagian",
+          "start": 71.96,
+          "end": 72.34
+        },
+        {
+          "word": "partikel",
+          "start": 72.34,
+          "end": 72.68
+        },
+        {
+          "word": "mikroplastik",
+          "start": 72.68,
+          "end": 73.36
+        },
+        {
+          "word": "terjebak",
+          "start": 73.36,
+          "end": 73.88
+        },
+        {
+          "word": "di",
+          "start": 73.88,
+          "end": 74.06
+        },
+        {
+          "word": "jaringan",
+          "start": 74.06,
+          "end": 74.4
+        },
+        {
+          "word": "kapiler",
+          "start": 74.4,
+          "end": 74.74
+        },
+        {
+          "word": "alveoli",
+          "start": 74.74,
+          "end": 75.34
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "start": 75.36,
+      "end": 76.96,
+      "text": "mengganggu pertukaran gas.",
+      "words": [
+        {
+          "word": "pertukaran",
+          "start": 76.16,
+          "end": 76.66
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 77.82,
+      "end": 82.48,
+      "text": "Toksin kimia merusak selubung mielin, memperlambat transmisi sinyal listrik antarsaraf.",
+      "words": [
+        {
+          "word": "kimia",
+          "start": 78.14,
+          "end": 78.56
+        },
+        {
+          "word": "merusak",
+          "start": 78.56,
+          "end": 78.98
+        },
+        {
+          "word": "selubung",
+          "start": 78.98,
+          "end": 79.32
+        },
+        {
+          "word": "mielin,",
+          "start": 79.32,
+          "end": 80.2
+        },
+        {
+          "word": "memperlambat",
+          "start": 80.2,
+          "end": 80.66
+        },
+        {
+          "word": "transmisi",
+          "start": 80.66,
+          "end": 81.16
+        },
+        {
+          "word": "sinyal",
+          "start": 81.16,
+          "end": 81.46
+        },
+        {
+          "word": "listrik",
+          "start": 81.46,
+          "end": 81.8
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 83.2,
+      "end": 87.88,
+      "text": "Partikel mikroplastik menembus sawar darah otak, mengganggu sinyal neurotransmitter dopamin.",
+      "words": [
+        {
+          "word": "Partikel",
+          "start": 83.28,
+          "end": 83.56
+        },
+        {
+          "word": "mikroplastik",
+          "start": 83.56,
+          "end": 84.26
+        },
+        {
+          "word": "menembus",
+          "start": 84.26,
+          "end": 84.68
+        },
+        {
+          "word": "sawar",
+          "start": 84.68,
+          "end": 84.98
+        },
+        {
+          "word": "darah",
+          "start": 84.98,
+          "end": 85.2
+        },
+        {
+          "word": "otak,",
+          "start": 85.2,
+          "end": 85.96
+        },
+        {
+          "word": "mengganggu",
+          "start": 85.96,
+          "end": 86.3
+        },
+        {
+          "word": "sinyal",
+          "start": 86.3,
+          "end": 86.66
+        },
+        {
+          "word": "neurotransmitter",
+          "start": 86.66,
+          "end": 87.48
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "start": 88.66,
+      "end": 94.42,
+      "text": "Tekanan darah yang tinggi secara kronis memaksa otot jantung memongpa lebih keras, memicu penebalan dinding.",
+      "words": [
+        {
+          "word": "Tekanan",
+          "start": 88.72,
+          "end": 89
+        },
+        {
+          "word": "darah",
+          "start": 89,
+          "end": 89.32
+        },
+        {
+          "word": "yang",
+          "start": 89.32,
+          "end": 89.5
+        },
+        {
+          "word": "tinggi",
+          "start": 89.5,
+          "end": 89.78
+        },
+        {
+          "word": "secara",
+          "start": 89.78,
+          "end": 90.08
+        },
+        {
+          "word": "kronis",
+          "start": 90.08,
+          "end": 90.56
+        },
+        {
+          "word": "memaksa",
+          "start": 90.56,
+          "end": 91.26
+        },
+        {
+          "word": "otot",
+          "start": 91.26,
+          "end": 91.56
+        },
+        {
+          "word": "jantung",
+          "start": 91.56,
+          "end": 91.9
+        },
+        {
+          "word": "memongpa",
+          "start": 91.9,
+          "end": 92.28
+        },
+        {
+          "word": "lebih",
+          "start": 92.28,
+          "end": 92.48
+        },
+        {
+          "word": "keras,",
+          "start": 92.48,
+          "end": 93.26
+        },
+        {
+          "word": "memicu",
+          "start": 93.26,
+          "end": 93.6
+        },
+        {
+          "word": "penebalan",
+          "start": 93.6,
+          "end": 94.12
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "start": 95.08,
+      "end": 100.8,
+      "text": "Akumulasi toksin menyeluruh memicu kegagalan fungsi multi organ dan inflamasi kronis permanen.",
+      "words": [
+        {
+          "word": "Akumulasi",
+          "start": 95.4,
+          "end": 95.86
+        },
+        {
+          "word": "toksin",
+          "start": 95.86,
+          "end": 96.2
+        },
+        {
+          "word": "menyeluruh",
+          "start": 96.2,
+          "end": 96.78
+        },
+        {
+          "word": "memicu",
+          "start": 96.78,
+          "end": 97.38
+        },
+        {
+          "word": "kegagalan",
+          "start": 97.38,
+          "end": 97.88
+        },
+        {
+          "word": "fungsi",
+          "start": 97.88,
+          "end": 98.2
+        },
+        {
+          "word": "multi",
+          "start": 98.2,
+          "end": 98.5
+        },
+        {
+          "word": "organ",
+          "start": 98.5,
+          "end": 98.8
+        },
+        {
+          "word": "dan",
+          "start": 98.8,
+          "end": 99.32
+        },
+        {
+          "word": "inflamasi",
+          "start": 99.32,
+          "end": 99.88
+        },
+        {
+          "word": "kronis",
+          "start": 99.88,
+          "end": 100.24
+        },
+        {
+          "word": "permanen.",
+          "start": 100.24,
+          "end": 100.72
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "start": 100.8,
+      "end": 104.6,
+      "text": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini",
+      "words": [
+        {
+          "word": "Menurutmu,",
+          "start": 101.56,
+          "end": 102.54
+        },
+        {
+          "word": "apa",
+          "start": 102.54,
+          "end": 102.68
+        },
+        {
+          "word": "keputusan",
+          "start": 102.68,
+          "end": 103.12
+        },
+        {
+          "word": "sepele",
+          "start": 103.12,
+          "end": 103.48
+        },
+        {
+          "word": "yang",
+          "start": 103.48,
+          "end": 103.62
+        },
+        {
+          "word": "kamu",
+          "start": 103.62,
+          "end": 103.82
+        },
+        {
+          "word": "ambil",
+          "start": 103.82,
+          "end": 104.08
+        },
+        {
+          "word": "hari",
+          "start": 104.08,
+          "end": 104.32
+        },
+        {
+          "word": "ini",
+          "start": 104.32,
+          "end": 104.54
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "start": 104.6,
+      "end": 108.4,
+      "text": "yang tanpa kamu sadari bakal mengubah jalan hidupmu 5 tahun lagi?",
+      "words": [
+        {
+          "word": "tanpa",
+          "start": 105.04,
+          "end": 105.34
+        },
+        {
+          "word": "kamu",
+          "start": 105.34,
+          "end": 105.54
+        },
+        {
+          "word": "sadari",
+          "start": 105.54,
+          "end": 105.98
+        },
+        {
+          "word": "bakal",
+          "start": 105.98,
+          "end": 106.66
+        },
+        {
+          "word": "mengubah",
+          "start": 106.66,
+          "end": 107.02
+        },
+        {
+          "word": "jalan",
+          "start": 107.02,
+          "end": 107.3
+        },
+        {
+          "word": "hidupmu",
+          "start": 107.3,
+          "end": 107.68
+        },
+        {
+          "word": "5",
+          "start": 107.68,
+          "end": 107.86
+        },
+        {
+          "word": "tahun",
+          "start": 107.86,
+          "end": 108.1
+        }
+      ]
+    }
+  ],
+  "text": " Pernahkah kamu membayangkan apa yang sebenarnya terjadi di dalam tubuhmu jika memakan mie instan setiap hari selama sebulan? Kamu mungkin mengira itu hanya karbohidrat biasa, tapi di balik kulitmu, partikel mikroplastik dan zat pengawet sedang merusak ususmu dan mengalir ke jantungmu. Mari kita masuk ke dalam tubuhmu detik demi detik. Air panas melarutkan bumbu, namun zat pengawet dan MSG langsung mengiritasi mukosa lambung. Partikel mikroplastik dari kemasan mie menembus celah antar sel epitel usus halus. Partikel mikroplastik kini bersirkulasi bebas di dalam aliran darahmu menuju organ vital. Sel hepatosid bekerja secara masif untuk menetralkan residu kimiawi pengawet makanan. Hati bekerja lembur untuk memetabolisme pengawet dan pewarna, memicu peradangan seluler. Stres oksidatif merusak lapisan endotel pembuluh darah, memicu inflamasi sistemik ringan. Asam lemak trans dari minyak goreng, memicu plak awal di arteri koronaria. Ketidakseimbangan elektrolit dan penumpukan asam laktat membuat otot mudah kram dan lelah. Ginjal kesulitan menyaring mikroplastik dan sisa metabolit menyebabkan penumpukan kristal. Sebagian partikel mikroplastik terjebak di jaringan kapiler alveoli mengganggu pertukaran gas. Toksin kimia merusak selubung mielin, memperlambat transmisi sinyal listrik antarsaraf. Partikel mikroplastik menembus sawar darah otak, mengganggu sinyal neurotransmitter dopamin. Tekanan darah yang tinggi secara kronis memaksa otot jantung memongpa lebih keras, memicu penebalan dinding. Akumulasi toksin menyeluruh memicu kegagalan fungsi multi organ dan inflamasi kronis permanen. Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang tanpa kamu sadari bakal mengubah jalan hidupmu 5 tahun lagi?"
+}
