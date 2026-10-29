@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Img, useCurrentFrame, useVideoConfig, staticFile, interpolate, spring } from 'remotion';
+import { Img, useCurrentFrame, useVideoConfig, staticFile, interpolate } from 'remotion';
 import { ButterflyNode, OrganTarget, WordTimestamp } from '../data/types';
 import { detectOrganFromText } from './MedicalScannerScene';
 
@@ -19,120 +19,121 @@ interface OrganCameraAnchor {
   stageY: number;
   zoomScale: number;
   color: string;
-  bgToneTop: string;
-  bgToneCenter: string;
+  organMediaUrl: string;
+  // Direction for the 3D Callout Card relative to organ center ('left' or 'right')
+  calloutSide: 'left' | 'right';
 }
 
 export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   'full-body': {
     id: 'full-body',
-    label: 'PEMINDAIAN ANATOMI UTUH',
+    label: 'SISTEM ANATOMI TUBUH',
     stageX: 50,
     stageY: 74,
     zoomScale: 1.05,
     color: '#38bdf8',
-    bgToneTop: '#0b1528',
-    bgToneCenter: '#132847',
+    organMediaUrl: 'butterfly/media/medical_body_xray.jpg',
+    calloutSide: 'right',
   },
   brain: {
     id: 'brain',
     label: 'OTAK & SARAF PUSAT',
     stageX: 50,
     stageY: 22,
-    zoomScale: 1.56,
+    zoomScale: 1.48,
     color: '#38bdf8',
-    bgToneTop: '#0b162c',
-    bgToneCenter: '#152c52',
+    organMediaUrl: 'butterfly/media/medical_brain_xray.jpg',
+    calloutSide: 'right',
   },
   nerves: {
     id: 'nerves',
     label: 'JARINGAN SARAF & NEURON',
     stageX: 50,
     stageY: 36,
-    zoomScale: 1.44,
+    zoomScale: 1.38,
     color: '#818cf8',
-    bgToneTop: '#0f142e',
-    bgToneCenter: '#1d2554',
+    organMediaUrl: 'butterfly/media/medical_brain_xray.jpg',
+    calloutSide: 'left',
   },
   lungs: {
     id: 'lungs',
     label: 'PARU-PARU & RESPIRASI',
     stageX: 50,
-    stageY: 64,
-    zoomScale: 1.40,
+    stageY: 63,
+    zoomScale: 1.36,
     color: '#2dd4bf',
-    bgToneTop: '#081c26',
-    bgToneCenter: '#0f3342',
+    organMediaUrl: 'butterfly/media/medical_heart_xray.jpg',
+    calloutSide: 'left',
   },
   heart: {
     id: 'heart',
-    label: 'JANTUNG & KARDIOVASKULAR',
+    label: 'JANTUNG & PEMBULUH DARAH',
     stageX: 54,
-    stageY: 70,
-    zoomScale: 1.54,
+    stageY: 69,
+    zoomScale: 1.46,
     color: '#f43f5e',
-    bgToneTop: '#0c1629',
-    bgToneCenter: '#172542',
+    organMediaUrl: 'butterfly/media/medical_heart_xray.jpg',
+    calloutSide: 'right',
   },
   blood: {
     id: 'blood',
-    label: 'SIRKULASI PEMBULUH DARAH',
+    label: 'SIRKULASI ALIRAN DARAH',
     stageX: 52,
-    stageY: 76,
-    zoomScale: 1.42,
+    stageY: 74,
+    zoomScale: 1.38,
     color: '#ef4444',
-    bgToneTop: '#0c1629',
-    bgToneCenter: '#172542',
+    organMediaUrl: 'butterfly/media/medical_heart_xray.jpg',
+    calloutSide: 'left',
   },
   liver: {
     id: 'liver',
-    label: 'HATI (LIVER) & DETOKSIFIKASI',
+    label: 'HATI (LIVER) & DETOKS',
     stageX: 42,
-    stageY: 87,
-    zoomScale: 1.50,
+    stageY: 86,
+    zoomScale: 1.44,
     color: '#f59e0b',
-    bgToneTop: '#0b1628',
-    bgToneCenter: '#162744',
+    organMediaUrl: 'butterfly/media/medical_stomach_xray.jpg',
+    calloutSide: 'left',
   },
   stomach: {
     id: 'stomach',
     label: 'LAMBUNG & ASAM PENCERNAAN',
     stageX: 57,
-    stageY: 91,
-    zoomScale: 1.52,
+    stageY: 90,
+    zoomScale: 1.46,
     color: '#fb923c',
-    bgToneTop: '#0b1628',
-    bgToneCenter: '#162744',
+    organMediaUrl: 'butterfly/media/medical_stomach_xray.jpg',
+    calloutSide: 'right',
   },
   kidney: {
     id: 'kidney',
-    label: 'GINJAL & FILTRASI CAIRAN',
+    label: 'GINJAL & KELENJAR ADRENAL',
     stageX: 50,
     stageY: 104,
-    zoomScale: 1.50,
+    zoomScale: 1.44,
     color: '#a855f7',
-    bgToneTop: '#0d142b',
-    bgToneCenter: '#1a234a',
+    organMediaUrl: 'butterfly/media/medical_stomach_xray.jpg',
+    calloutSide: 'right',
   },
   intestine: {
     id: 'intestine',
     label: 'USUS & METABOLISME SEL',
     stageX: 50,
     stageY: 118,
-    zoomScale: 1.44,
+    zoomScale: 1.38,
     color: '#eab308',
-    bgToneTop: '#0b1628',
-    bgToneCenter: '#162744',
+    organMediaUrl: 'butterfly/media/medical_stomach_xray.jpg',
+    calloutSide: 'left',
   },
   muscles: {
     id: 'muscles',
     label: 'JARINGAN OTOT & ENERGI',
-    stageX: 35,
-    stageY: 82,
-    zoomScale: 1.36,
+    stageX: 36,
+    stageY: 80,
+    zoomScale: 1.32,
     color: '#fb7185',
-    bgToneTop: '#0c1629',
-    bgToneCenter: '#172542',
+    organMediaUrl: 'butterfly/media/medical_body_xray.jpg',
+    calloutSide: 'left',
   },
 };
 
@@ -152,86 +153,45 @@ function interpolateHexColor(colorA: string, colorB: string, t: number): string 
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-/**
- * Real-Time Spoken Word Organ Detector:
- * Scans the currently spoken 6-word window in `wordTimestamps` so if the narrator
- * says "jantung", "otak", "lambung", "ginjal", "paru", etc. mid-sentence,
- * the camera and biological reaction respond immediately to the exact spoken word!
- */
-function detectLiveSpokenReaction(spokenWindow: string): {
-  organOverride: OrganTarget | null;
-  microAction: 'vasoconstrict' | 'hormone-surge' | 'acid-wave' | 'microsleep' | 'hypoxia' | 'toxin-buildup' | 'muscle-spasm' | 'normal';
-} {
-  const txt = spokenWindow.toLowerCase();
-  let organOverride: OrganTarget | null = null;
-
-  if (/otak|neuron|kognisi|memori|halusinasi|tidur|korteks|kepala|mata/.test(txt)) organOverride = 'brain';
-  else if (/saraf|adrenalin|impuls|reseptor|sinyal/.test(txt)) organOverride = 'nerves';
-  else if (/jantung|detak|kardio|nadi|tensi|pompa/.test(txt)) organOverride = 'heart';
-  else if (/pembuluh|darah|arteri|sirkulasi|oksigen darah/.test(txt)) organOverride = 'blood';
-  else if (/paru|napas|oksigen|alveoli|sesak|udara/.test(txt)) organOverride = 'lungs';
-  else if (/lambung|asam|perut|ghrelin|lapar|mual|maag/.test(txt)) organOverride = 'stomach';
-  else if (/hati|liver|empedu|racun|detoks|glikogen/.test(txt)) organOverride = 'liver';
-  else if (/ginjal|urin|kencing|dehidrasi|filtrasi|cairan/.test(txt)) organOverride = 'kidney';
-  else if (/usus|cerna|nutrisi|kalori|bakteri/.test(txt)) organOverride = 'intestine';
-  else if (/otot|laktat|nyeri|sendi|kejang|lemas/.test(txt)) organOverride = 'muscles';
-
-  let microAction: 'vasoconstrict' | 'hormone-surge' | 'acid-wave' | 'microsleep' | 'hypoxia' | 'toxin-buildup' | 'muscle-spasm' | 'normal' = 'normal';
-  if (/menyempit|tekanan|tensi|keras|overdrive|cepat|kencang/.test(txt)) microAction = 'vasoconstrict';
-  else if (/adrenalin|hormon|kortisol|dopamin|memompa|lonjakan/.test(txt)) microAction = 'hormone-surge';
-  else if (/asam|lambung|lapar|kontraksi|perih|mual/.test(txt)) microAction = 'acid-wave';
-  else if (/offline|kedip|microsleep|halusinasi|gelap|kantuk|adenosin/.test(txt)) microAction = 'microsleep';
-  else if (/napas|oksigen|turun|sesak|alveoli|melambat/.test(txt)) microAction = 'hypoxia';
-  else if (/menumpuk|racun|kritis|rusak|hancur|limbah/.test(txt)) microAction = 'toxin-buildup';
-  else if (/laktat|mikrotrauma|nyeri|kejang|gemetar/.test(txt)) microAction = 'muscle-spasm';
-
-  return { organOverride, microAction };
+// Smooth cubic ease-in-out for continuous non-jerky camera curve
+function easeInOutCubic(t: number): number {
+  const c = Math.max(0, Math.min(1, t));
+  return c < 0.5 ? 4 * c * c * c : 1 - Math.pow(-2 * c + 2, 3) / 2;
 }
 
 /**
- * CONTINUOUS 1-BODY JOURNEY ENGINE (Luminous Bioluminescent Teal-Cyan Edition)
- * - Zero hard cuts: continuous smooth camera glide across a living 3D anatomical rig.
- * - Real-time spoken word synchronization: reacts directly to the narrator's exact words.
- * - High-retention luminous medical studio palette (deep teal & cyan surgical light, never pitch-black).
- *
- * NOTE: Because ContinuousBodyJourney is mounted inside <Sequence from={hookDurationFrames}>,
- * `useCurrentFrame()` returns relative frames (0 at hook end). We add `hookDurationFrames`
- * to get `absoluteFrame` so `node.startFrame` and `wordTimestamps` match 100% accurately!
+ * CONTINUOUS 3D VOLUMETRIC ANATOMICAL JOURNEY
+ * - Zero hard cuts, zero flashes, zero recoil shakes.
+ * - Multi-plane 3D CSS perspective (`perspective: 1300px`, `rotateX`, `rotateY`, `translateZ`)
+ *   with shaded 3D volumetric organ meshes AND real 3D X-Ray anatomical close-up windows.
+ * - Direct in-situ 3D Organ Callout Card with pointer line directly attached to the active organ
+ *   so viewers immediately understand what is happening inside the body!
  */
 export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
   nodes,
-  wordTimestamps = [],
   hookDurationFrames,
   outroDurationFrames,
   totalDurationFrames,
   baseBodyMediaUrl = 'butterfly/media/medical_body_xray.jpg',
 }) => {
   const relFrame = useCurrentFrame();
-  const frame = relFrame + hookDurationFrames; // Absolute timeline frame!
+  const frame = relFrame + hookDurationFrames; // Absolute timeline frame
   const { fps } = useVideoConfig();
 
-  // 1. Extract currently spoken words around `frame` for word-accurate biological reactions
-  const spokenContext = useMemo(() => {
-    if (!wordTimestamps || wordTimestamps.length === 0) return '';
-    const nearby = wordTimestamps.filter(
-      (w) => w.startFrame <= frame + 15 && w.endFrame >= frame - 25
-    );
-    return nearby.map((w) => w.word).join(' ');
-  }, [frame, wordTimestamps]);
-
-  // 2. Resolve each node's target organ anchor & narrative metadata
-  const resolvedWaypoints = useMemo(() => {
+  // Build continuous timeline waypoints from nodes (No mid-sentence jumps!)
+  const waypoints = useMemo(() => {
     if (!nodes || nodes.length === 0) {
       return [
         {
+          centerFrame: hookDurationFrames + 60,
           startFrame: hookDurationFrames,
           endFrame: totalDurationFrames - outroDurationFrames,
           anchor: ORGAN_CAMERA_ANCHORS['full-body'],
           chaosLevel: 35,
-          headline: 'PEMINDAIAN SISTEM TUBUH MANUSIA',
-          timeTag: 'FASE AKTIF',
-          primaryText: 'PEMINDAIAN REAL-TIME',
-          narration: '',
+          headline: 'PEMINDAIAN ANATOMI TUBUH',
+          timeTag: 'SIMULASI AKTIF',
+          primaryText: 'REAKSI BIOLOGIS REAL-TIME',
+          secondaryText: 'Pemindaian organ dalam',
           step: 1,
         },
       ];
@@ -246,237 +206,198 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
         n.step || idx + 1
       );
       const anchor = ORGAN_CAMERA_ANCHORS[detected.id] || ORGAN_CAMERA_ANCHORS['full-body'];
+      const sFrame = n.startFrame;
+      const eFrame = n.startFrame + n.durationFrames;
       return {
-        startFrame: n.startFrame,
-        endFrame: n.startFrame + n.durationFrames,
+        centerFrame: sFrame + Math.min(42, n.durationFrames * 0.35),
+        startFrame: sFrame,
+        endFrame: eFrame,
         anchor,
         chaosLevel: n.chaosLevel ?? 35,
-        headline: n.headline || '',
-        timeTag: n.timeOrYear || `FASE ${idx + 1}`,
-        primaryText: n.primaryText || null,
-        narration: n.narration || '',
+        headline: n.headline || anchor.label,
+        timeTag: n.timeOrYear || `TAHAP ${idx + 1}`,
+        primaryText: n.primaryText || 'REAKSI BIOLOGIS AKTIF',
+        secondaryText: n.secondaryText || n.caption || '',
         step: n.step || idx + 1,
       };
     });
   }, [nodes, hookDurationFrames, outroDurationFrames, totalDurationFrames]);
 
+  // Find current active waypoint index
   const currentIdx = useMemo(() => {
-    const found = resolvedWaypoints.findIndex(
-      (wp) => frame >= wp.startFrame && frame < wp.endFrame
-    );
+    const found = waypoints.findIndex((wp) => frame >= wp.startFrame && frame < wp.endFrame);
     if (found !== -1) return found;
-    if (frame < resolvedWaypoints[0].startFrame) return 0;
-    return resolvedWaypoints.length - 1;
-  }, [frame, resolvedWaypoints]);
+    if (frame < waypoints[0].startFrame) return 0;
+    return waypoints.length - 1;
+  }, [frame, waypoints]);
 
-  const activeWp = resolvedWaypoints[currentIdx];
-  const prevWp = currentIdx > 0 ? resolvedWaypoints[currentIdx - 1] : {
+  const activeWp = waypoints[currentIdx];
+  const prevWp = currentIdx > 0 ? waypoints[currentIdx - 1] : {
     ...activeWp,
     anchor: ORGAN_CAMERA_ANCHORS['full-body'],
     chaosLevel: 20,
   };
 
-  // Combine current node text + live spoken words to trigger micro-animations AND live organ lock!
-  const liveReaction = useMemo(
-    () => detectLiveSpokenReaction(`${spokenContext} ${activeWp.headline} ${activeWp.primaryText || ''}`),
-    [spokenContext, activeWp]
-  );
+  // Continuous, butter-smooth camera glide over 48 frames (1.6 seconds) using cubic easing
+  // Never teleports or snaps!
+  const glideRaw = (frame - activeWp.startFrame) / 48;
+  const glideProgress = easeInOutCubic(glideRaw);
 
-  // If the narrator explicitly pronounces a specific organ word right now (e.g. "kelenjar adrenal" -> kidney, "detak jantung" -> heart),
-  // lock the active camera anchor directly onto that spoken organ!
-  const effectiveAnchor = useMemo(() => {
-    const spokenCheck = detectLiveSpokenReaction(spokenContext);
-    if (spokenCheck.organOverride && ORGAN_CAMERA_ANCHORS[spokenCheck.organOverride]) {
-      return ORGAN_CAMERA_ANCHORS[spokenCheck.organOverride];
-    }
-    return activeWp.anchor;
-  }, [spokenContext, activeWp.anchor]);
+  const camStageX = interpolate(glideProgress, [0, 1], [prevWp.anchor.stageX, activeWp.anchor.stageX]);
+  const camStageY = interpolate(glideProgress, [0, 1], [prevWp.anchor.stageY, activeWp.anchor.stageY]);
+  const camZoomBase = interpolate(glideProgress, [0, 1], [prevWp.anchor.zoomScale, activeWp.anchor.zoomScale]);
+  const smoothChaos = interpolate(glideProgress, [0, 1], [prevWp.chaosLevel, activeWp.chaosLevel]);
 
-  // Smooth spring progress (0 -> 1) whenever narrative shifts attention to a new organ
-  const framesIntoWaypoint = Math.max(0, frame - activeWp.startFrame);
-  const cameraGlide = spring({
-    frame: framesIntoWaypoint,
-    fps,
-    config: { damping: 22, stiffness: 36, mass: 1.35 },
-  });
-
-  // Interpolated continuous camera target on the 100x185 anatomical canvas
-  const camStageX = interpolate(cameraGlide, [0, 1], [prevWp.anchor.stageX, effectiveAnchor.stageX]);
-  const camStageY = interpolate(cameraGlide, [0, 1], [prevWp.anchor.stageY, effectiveAnchor.stageY]);
-  const camZoomBase = interpolate(cameraGlide, [0, 1], [prevWp.anchor.zoomScale, effectiveAnchor.zoomScale]);
-
-  // Continuous chaosLevel & BPM interpolation
-  const smoothChaos = interpolate(cameraGlide, [0, 1], [prevWp.chaosLevel, activeWp.chaosLevel]);
+  // Physiological Heartbeat & Breathing
   const bpm = Math.round(68 + (Math.min(100, Math.max(5, smoothChaos)) / 100) * 98);
-
-  // Continuous physiological heartbeat phase
   const beatPhase = (frame / fps) * (bpm / 60) * Math.PI * 2;
   const systolicBeat = Math.pow(Math.max(0, Math.sin(beatPhase)), 8);
   const diastolicBeat = Math.pow(Math.max(0, Math.sin(beatPhase - 0.65)), 12) * 0.45;
   const heartPulse = systolicBeat + diastolicBeat;
 
-  // Continuous respiratory breathing expansion
   const breathRate = 14 + (smoothChaos / 100) * 14;
   const breathCycle = (Math.sin((frame / fps) * (breathRate / 60) * Math.PI * 2) + 1) * 0.5;
 
-  // Subtle organic floating drift
-  const floatX = Math.sin(frame * 0.028) * 14;
-  const floatY = Math.cos(frame * 0.022) * 10;
-  const subtleZoomBreath = Math.sin(frame * 0.018) * 0.04 + heartPulse * 0.015;
+  // True 3D Parallax & Orbital Rotation Angles (Makes the anatomy feel like a 3D hologram!)
+  const orbitRotateY = Math.sin(frame * 0.022) * 8 + (50 - camStageX) * 0.25;
+  const orbitRotateX = Math.cos(frame * 0.018) * 4 + (74 - camStageY) * 0.08;
+  const floatX = Math.sin(frame * 0.024) * 10;
+  const floatY = Math.cos(frame * 0.02) * 8;
 
-  const finalScale = camZoomBase + subtleZoomBreath;
-  const offsetX = (50 - camStageX) * 6.5 + floatX;
-  const offsetY = (74 - camStageY) * 6.2 + floatY;
+  const finalScale = camZoomBase + Math.sin(frame * 0.016) * 0.03 + heartPulse * 0.012;
+  const offsetX = (50 - camStageX) * 6.2 + floatX;
+  const offsetY = (74 - camStageY) * 5.8 + floatY;
 
-  // Smooth color interpolation across severity & organ palette
-  const targetAccent =
-    smoothChaos >= 72 ? '#fb7185' : smoothChaos >= 45 ? '#fbbf24' : effectiveAnchor.color;
-  const prevAccent =
-    prevWp.chaosLevel >= 72 ? '#fb7185' : prevWp.chaosLevel >= 45 ? '#fbbf24' : prevWp.anchor.color;
-  const accentColor = interpolateHexColor(prevAccent, targetAccent, cameraGlide);
+  const accentColor = interpolateHexColor(prevWp.anchor.color, activeWp.anchor.color, glideProgress);
 
-  // Dynamic Neutral Clinical Slate-Navy Background (Clean, Calm, Never Clashes with Organs!)
-  const bgTopColor = interpolateHexColor(prevWp.anchor.bgToneTop, effectiveAnchor.bgToneTop, cameraGlide);
-  const bgCenterColor = interpolateHexColor(prevWp.anchor.bgToneCenter, effectiveAnchor.bgToneCenter, cameraGlide);
+  // Highlight intensity for each 3D organ based on active focus
+  const getOrganGlow = (organId: OrganTarget, ox: number, oy: number) => {
+    const dist = Math.hypot(camStageX - ox, camStageY - oy);
+    const prox = Math.max(0, 1 - dist / 28);
+    return activeWp.anchor.id === organId ? 1 : Math.max(0.32, prox * 0.75);
+  };
 
-  // Continuous 24 biological bloodstream & neural particles
-  const particles = useMemo(() => {
-    return Array.from({ length: 24 }).map((_, idx) => {
-      const s1 = ((idx * 67 + 19) % 100) / 100;
-      const s2 = ((idx * 43 + 37) % 100) / 100;
-      const depth = idx % 3;
-      return {
-        id: idx,
-        baseX: 90 + s1 * 900,
-        baseY: 140 + s2 * 1160,
-        size: depth === 2 ? 22 + (idx % 10) : depth === 1 ? 11 + (idx % 6) : 6 + (idx % 4),
-        speedY: -1.2 - s2 * 2.1,
-        waveAmp: 18 + (idx % 5) * 9,
-        waveFreq: 0.028 + (idx % 4) * 0.01,
-        blur: depth === 2 ? 4 : depth === 1 ? 1 : 0,
-        opacity: depth === 2 ? 0.36 : depth === 1 ? 0.65 : 0.42,
-      };
-    });
-  }, []);
-
-  // Continuous live scrolling EKG waveform
+  // Live EKG Path
   const ekgPath = useMemo(() => {
-    const width = 340;
+    const width = 220;
     const points: string[] = [];
-    const speed = 3.2 + (smoothChaos / 100) * 3.6;
+    const speed = 3.2 + (smoothChaos / 100) * 3.4;
     const scroll = frame * speed;
-    const cycleWidth = Math.max(48, Math.round(115 - (smoothChaos / 100) * 50));
+    const cycleWidth = Math.max(46, Math.round(110 - (smoothChaos / 100) * 48));
 
     for (let x = 0; x <= width; x += 3) {
       const pos = (x + scroll) % cycleWidth;
       const norm = pos / cycleWidth;
-      let y = 26;
+      let y = 20;
       if (norm > 0.18 && norm < 0.28) {
-        y -= Math.sin(((norm - 0.18) / 0.1) * Math.PI) * 5;
+        y -= Math.sin(((norm - 0.18) / 0.1) * Math.PI) * 4;
       } else if (norm >= 0.34 && norm < 0.38) {
-        y += 5;
+        y += 4;
       } else if (norm >= 0.38 && norm < 0.45) {
         const spike = 1 - Math.abs((norm - 0.415) / 0.035);
-        y -= spike * (19 + (smoothChaos / 100) * 6);
+        y -= spike * (15 + (smoothChaos / 100) * 5);
       } else if (norm >= 0.45 && norm < 0.50) {
-        y += 8;
+        y += 6;
       } else if (norm >= 0.58 && norm < 0.72) {
-        y -= Math.sin(((norm - 0.58) / 0.14) * Math.PI) * 7;
+        y -= Math.sin(((norm - 0.58) / 0.14) * Math.PI) * 5;
       }
       points.push(`${x === 0 ? 'M' : 'L'} ${x} ${y.toFixed(1)}`);
     }
     return points.join(' ');
   }, [frame, smoothChaos]);
 
-  const scanlineY = interpolate(frame % 135, [0, 135], [100, 1360]);
+  // 18 Depth-Layered 3D Particles
+  const particles = useMemo(() => {
+    return Array.from({ length: 18 }).map((_, idx) => {
+      const s1 = ((idx * 67 + 19) % 100) / 100;
+      const s2 = ((idx * 43 + 37) % 100) / 100;
+      const depth = idx % 3;
+      return {
+        id: idx,
+        baseX: 110 + s1 * 860,
+        baseY: 160 + s2 * 1120,
+        size: depth === 2 ? 18 + (idx % 8) : depth === 1 ? 10 + (idx % 5) : 5 + (idx % 4),
+        speedY: -1.1 - s2 * 1.8,
+        waveAmp: 15 + (idx % 5) * 7,
+        waveFreq: 0.025 + (idx % 4) * 0.01,
+        blur: depth === 2 ? 3 : 0,
+        opacity: depth === 2 ? 0.32 : depth === 1 ? 0.58 : 0.38,
+      };
+    });
+  }, []);
 
-  const textTransition = interpolate(framesIntoWaypoint, [0, 14], [0, 1], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
-  const textSlideY = interpolate(framesIntoWaypoint, [0, 14], [12, 0], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
+  // Screen pixel coordinates where the active organ sits after camera transform,
+  // so our 3D Callout Card points directly to the exact center of the organ!
+  const baseScreenX = activeWp.anchor.stageX * 10.8;
+  const baseScreenY = activeWp.anchor.stageY * 10.38;
+  const organScreenX = 540 + (baseScreenX - 540) * finalScale + offsetX;
+  const organScreenY = 806.4 + (baseScreenY - 806.4) * finalScale + offsetY;
+  const clampedTargetX = Math.max(240, Math.min(840, organScreenX));
+  const clampedTargetY = Math.max(250, Math.min(1140, organScreenY));
 
-  const getOrganHighlight = (organId: OrganTarget, organX: number, organY: number) => {
-    const dist = Math.hypot(camStageX - organX, camStageY - organY);
-    const proximity = Math.max(0, 1 - dist / 26);
-    const isDirect = activeWp.anchor.id === organId || liveReaction.organOverride === organId;
-    return isDirect ? Math.max(0.88, proximity) : Math.max(0.35, proximity * 0.75);
-  };
-
-  // Specific visual micro-reaction multipliers driven by narration keywords
-  const isVasoconstrict = liveReaction.microAction === 'vasoconstrict';
-  const isHormoneSurge = liveReaction.microAction === 'hormone-surge';
-  const isAcidWave = liveReaction.microAction === 'acid-wave';
-  const isMicrosleep = liveReaction.microAction === 'microsleep';
+  const calloutOnRight = activeWp.anchor.calloutSide === 'right';
+  const cardLeft = calloutOnRight ? Math.min(540, clampedTargetX + 55) : Math.max(48, clampedTargetX - 490);
+  const cardTop = Math.max(280, Math.min(930, clampedTargetY - 95));
 
   return (
     <div
       style={{
         position: 'absolute',
         inset: 0,
-        // LUMINOUS MEDICAL STUDIO GRADIENT (Zack D. Films / Kurzgesagt High-Contrast Bioluminescent Teal-Blue)
-        background: `radial-gradient(circle at 50% 38%, ${bgCenterColor} 0%, ${bgTopColor} 58%, #07192e 100%)`,
+        background: 'radial-gradient(circle at 50% 40%, #152a4a 0%, #0a1526 62%, #050b14 100%)',
         overflow: 'hidden',
+        perspective: '1350px',
       }}
     >
-      {/* Subtle Neutral Studio Backlight Behind the 3D Body */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: `
-            radial-gradient(ellipse 62% 48% at 50% 42%, rgba(56, 189, 248, 0.14) 0%, rgba(15, 23, 42, 0.08) 55%, transparent 80%)
-          `,
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Crisp Medical Blueprint Grid */}
+      {/* Subtle 3D Medical Grid Floor & Backdrop */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           backgroundImage: `
-            linear-gradient(to right, rgba(125, 211, 252, 0.09) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(125, 211, 252, 0.09) 1px, transparent 1px)
+            linear-gradient(to right, rgba(125, 211, 252, 0.06) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(125, 211, 252, 0.06) 1px, transparent 1px)
           `,
-          backgroundSize: '54px 54px',
+          backgroundSize: '60px 60px',
           pointerEvents: 'none',
         }}
       />
 
       {/* =====================================================================
-          1. UNBROKEN CONTINUOUS 3D ANATOMICAL BODY STAGE (Pan & Zoom Camera Rig)
+          1. TRUE 3D MULTI-PLANE PARALLAX ANATOMICAL RIG (rotateX + rotateY + translateZ)
           ===================================================================== */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          transform: `translate(${offsetX}px, ${offsetY}px) scale(${finalScale})`,
+          transformStyle: 'preserve-3d',
+          transform: `translate3d(${offsetX}px, ${offsetY}px, 0px) scale(${finalScale}) rotateY(${orbitRotateY.toFixed(2)}deg) rotateX(${orbitRotateX.toFixed(2)}deg)`,
           transformOrigin: '50% 42%',
-          willChange: 'transform',
         }}
       >
-        {/* Base 3D X-Ray Body Backdrop (Neutralized & Desaturated so Organs Pop Clearly!) */}
-        <Img
-          src={staticFile(baseBodyMediaUrl)}
+        {/* PLANE -80px (DEEP BACKGROUND): 3D X-Ray Skeletal & Body Depth Layer */}
+        <div
           style={{
             position: 'absolute',
             inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center 30%',
-            opacity: 0.24,
-            mixBlendMode: 'screen',
-            filter: 'grayscale(85%) contrast(1.15) brightness(0.82)',
+            transform: 'translateZ(-80px) scale(1.06)',
           }}
-        />
+        >
+          <Img
+            src={staticFile(baseBodyMediaUrl)}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center 30%',
+              opacity: 0.28,
+              mixBlendMode: 'screen',
+              filter: 'grayscale(75%) contrast(1.2) brightness(0.88)',
+            }}
+          />
+        </div>
 
-        {/* High-Precision Interactive Living Anatomical Rig SVG */}
+        {/* PLANE 0px (MIDGROUND): VOLUMETRIC 3D SHADED ANATOMICAL ORGANS SVG */}
         <svg
           width="1080"
           height="1920"
@@ -485,342 +406,265 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             position: 'absolute',
             inset: 0,
             overflow: 'visible',
+            transform: 'translateZ(20px)',
+            filter: 'drop-shadow(0 18px 28px rgba(0, 0, 0, 0.75))',
           }}
         >
           <defs>
-            <radialGradient id="organGlowBrain" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#7dd3fc" stopOpacity="1" />
-              <stop offset="55%" stopColor="#0ea5e9" stopOpacity="0.65" />
-              <stop offset="100%" stopColor="#0284c7" stopOpacity="0" />
+            {/* 3D Volumetric Spherical & Cylindrical Gradients with Specular Highlights (cx=32%, cy=28%) */}
+            <radialGradient id="vol3DBrain" cx="35%" cy="30%" r="65%">
+              <stop offset="0%" stopColor="#e0f2fe" />
+              <stop offset="28%" stopColor="#38bdf8" />
+              <stop offset="72%" stopColor="#0284c7" />
+              <stop offset="100%" stopColor="#082f49" />
             </radialGradient>
-            <radialGradient id="organGlowHeart" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#fda4af" stopOpacity="1" />
-              <stop offset="55%" stopColor="#f43f5e" stopOpacity="0.75" />
-              <stop offset="100%" stopColor="#e11d48" stopOpacity="0" />
+
+            <radialGradient id="vol3DLung" cx="32%" cy="28%" r="70%">
+              <stop offset="0%" stopColor="#ccfbf1" />
+              <stop offset="30%" stopColor="#2dd4bf" />
+              <stop offset="75%" stopColor="#0f766e" />
+              <stop offset="100%" stopColor="#042f2e" />
             </radialGradient>
-            <radialGradient id="organGlowLungs" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#5eead4" stopOpacity="0.95" />
-              <stop offset="65%" stopColor="#14b8a6" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#0d9488" stopOpacity="0" />
+
+            <radialGradient id="vol3DHeart" cx="32%" cy="28%" r="65%">
+              <stop offset="0%" stopColor="#ffe4e6" />
+              <stop offset="25%" stopColor="#fb7185" />
+              <stop offset="68%" stopColor="#e11d48" />
+              <stop offset="100%" stopColor="#4c0519" />
             </radialGradient>
-            <radialGradient id="organGlowStomach" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#fdba74" stopOpacity="1" />
-              <stop offset="60%" stopColor="#f97316" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#ea580c" stopOpacity="0" />
+
+            <radialGradient id="vol3DLiver" cx="32%" cy="28%" r="68%">
+              <stop offset="0%" stopColor="#fef3c7" />
+              <stop offset="28%" stopColor="#f59e0b" />
+              <stop offset="72%" stopColor="#b45309" />
+              <stop offset="100%" stopColor="#451a03" />
             </radialGradient>
-            <radialGradient id="organGlowLiver" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#fde047" stopOpacity="0.95" />
-              <stop offset="60%" stopColor="#f59e0b" stopOpacity="0.55" />
-              <stop offset="100%" stopColor="#d97706" stopOpacity="0" />
+
+            <radialGradient id="vol3DStomach" cx="34%" cy="28%" r="68%">
+              <stop offset="0%" stopColor="#ffedd5" />
+              <stop offset="28%" stopColor="#fb923c" />
+              <stop offset="72%" stopColor="#c2410c" />
+              <stop offset="100%" stopColor="#431407" />
             </radialGradient>
-            <radialGradient id="organGlowKidney" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#e9d5ff" stopOpacity="1" />
-              <stop offset="60%" stopColor="#a855f7" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#7e22ce" stopOpacity="0" />
+
+            <radialGradient id="vol3DKidney" cx="32%" cy="28%" r="65%">
+              <stop offset="0%" stopColor="#f3e8ff" />
+              <stop offset="28%" stopColor="#c084fc" />
+              <stop offset="72%" stopColor="#7e22ce" />
+              <stop offset="100%" stopColor="#3b0764" />
             </radialGradient>
+
+            <radialGradient id="vol3DIntestine" cx="35%" cy="28%" r="70%">
+              <stop offset="0%" stopColor="#fef9c3" />
+              <stop offset="30%" stopColor="#eab308" />
+              <stop offset="75%" stopColor="#a16207" />
+              <stop offset="100%" stopColor="#422006" />
+            </radialGradient>
+
+            <linearGradient id="glassBodyRim" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(125, 211, 252, 0.32)" />
+              <stop offset="20%" stopColor="rgba(56, 189, 248, 0.04)" />
+              <stop offset="80%" stopColor="rgba(56, 189, 248, 0.04)" />
+              <stop offset="100%" stopColor="rgba(125, 211, 252, 0.32)" />
+            </linearGradient>
           </defs>
 
-          {/* Luminous 3D Glass Human Body Silhouette & Ribcage */}
+          {/* 3D Translucent Glass Torso Shell with Rim Lighting */}
           <path
             d="M50 6 C58 6 63 12 63 21 C63 28 59 33 56 36 L60 42 C72 44 80 50 82 62 L85 104 C85 108 80 109 78 105 L73 66 L68 66 L70 118 L67 178 C67 183 59 183 58 178 L54 128 L46 128 L42 178 C41 183 33 183 33 178 L30 118 L32 66 L27 66 L22 105 C20 109 15 108 15 104 L18 62 C20 50 28 44 40 42 L44 36 C41 33 37 28 37 21 C37 12 42 6 50 6 Z"
-            fill="rgba(56, 189, 248, 0.12)"
-            stroke="#7dd3fc"
-            strokeWidth="0.65"
+            fill="url(#glassBodyRim)"
+            stroke="rgba(125, 211, 252, 0.45)"
+            strokeWidth="0.55"
           />
 
-          {/* Subtle Anatomical Ribcage Arcs for 3D Medical Realism */}
-          <g stroke="rgba(186, 230, 253, 0.22)" strokeWidth="0.45" fill="none">
-            <path d="M48 53 Q39 54 36 60 M52 53 Q61 54 64 60" />
-            <path d="M48 58 Q38 59 35 66 M52 58 Q62 59 65 66" />
-            <path d="M48 63 Q38 64 35 72 M52 63 Q62 64 65 72" />
-            <path d="M48 68 Q39 69 37 77 M52 68 Q61 69 63 77" />
+          {/* 3D Ribcage & Spine Depth Structure */}
+          <g stroke="rgba(186, 230, 253, 0.18)" strokeWidth="0.55" fill="none">
+            <line x1="50" y1="28" x2="50" y2="124" stroke="rgba(165, 180, 252, 0.4)" strokeWidth="1.2" strokeDasharray="1.6 1.2" />
+            <path d="M48 52 Q38 53 35 60 M52 52 Q62 53 65 60" />
+            <path d="M48 57 Q37 58 34 66 M52 57 Q63 58 66 66" />
+            <path d="M48 62 Q37 63 34 72 M52 62 Q63 63 66 72" />
+            <path d="M48 67 Q38 68 36 77 M52 67 Q62 68 64 77" />
           </g>
 
-          {/* Central Spinal Cord & Animated Neural Impulse Highway */}
-          <line
-            x1="50"
-            y1="28"
-            x2="50"
-            y2="124"
-            stroke="#a5b4fc"
-            strokeWidth="0.95"
-            strokeDasharray="1.5 1.5"
-            strokeDashoffset={-(frame * 0.5)}
-          />
-
-          {/* Arterial & Venous Vascular Network (Reacts to Vasoconstriction / Blood Pressure!) */}
-          <g
-            stroke={isVasoconstrict || smoothChaos >= 65 ? '#fb7185' : '#38bdf8'}
-            strokeWidth={isVasoconstrict ? 0.65 + systolicBeat * 0.35 : 0.55}
-            fill="none"
-            opacity="0.85"
-            strokeDasharray="2 2.5"
-            strokeDashoffset={-(frame * (0.55 + (smoothChaos / 100) * 0.85))}
-          >
-            <path d="M52 68 Q53 45 50 24" />
-            <path d="M48 68 Q47 45 50 24" />
-            <path d="M52 66 Q65 55 77 95" />
-            <path d="M48 66 Q35 55 23 95" />
-            <path d="M53 72 L50 104 L43 160" />
-            <path d="M53 72 L50 104 L57 160" />
-            <path d="M51 86 L42 88" />
-            <path d="M52 88 L57 92" />
+          {/* 3D Arterial & Venous Bloodstream Highway */}
+          <g fill="none" strokeLinecap="round">
+            {/* Outer Vessel Tube */}
+            <path
+              d="M52 68 Q53 45 50 24 M48 68 Q47 45 50 24 M52 66 Q65 55 77 95 M48 66 Q35 55 23 95 M53 72 L50 104 L43 160 M53 72 L50 104 L57 160 M51 86 L42 88 M52 88 L57 92"
+              stroke="rgba(244, 63, 94, 0.35)"
+              strokeWidth="1.1"
+            />
+            {/* Flowing Blood Cells Pulse Inside Vessels */}
+            <path
+              d="M52 68 Q53 45 50 24 M48 68 Q47 45 50 24 M52 66 Q65 55 77 95 M48 66 Q35 55 23 95 M53 72 L50 104 L43 160 M53 72 L50 104 L57 160 M51 86 L42 88 M52 88 L57 92"
+              stroke="#fda4af"
+              strokeWidth="0.55"
+              strokeDasharray="1.8 2.8"
+              strokeDashoffset={-(frame * (0.5 + (smoothChaos / 100) * 0.7))}
+            />
           </g>
 
-          {/* Vasoconstriction / Blood Vessel Compression Rings (Active when narrator mentions pembuluh darah menyempit / tekanan darah) */}
-          {(isVasoconstrict || activeWp.anchor.id === 'blood' || activeWp.anchor.id === 'heart') && (
-            <g transform="translate(50, 46)">
-              <ellipse
-                cx="0"
-                cy="0"
-                rx={4.2 - systolicBeat * 1.4}
-                ry="1.6"
-                fill="none"
-                stroke="#fda4af"
-                strokeWidth="0.55"
-              />
-              <ellipse
-                cx="0"
-                cy="36"
-                rx={4.5 - systolicBeat * 1.5}
-                ry="1.6"
-                fill="none"
-                stroke="#fda4af"
-                strokeWidth="0.55"
-              />
-            </g>
-          )}
-
-          {/* 1. BRAIN & CENTRAL NERVOUS CORTEX (Stage Y: 22) */}
+          {/* 1. 3D VOLUMETRIC BRAIN (Stage Y: 22) */}
           <g
-            transform={`translate(50, 21) scale(${1 + Math.sin(frame * 0.08) * 0.03})`}
-            opacity={0.75 + getOrganHighlight('brain', 50, 22) * 0.25}
+            transform={`translate(50, 21) scale(${1 + Math.sin(frame * 0.08) * 0.025})`}
+            opacity={getOrganGlow('brain', 50, 22)}
           >
-            <circle r="14" fill="url(#organGlowBrain)" opacity={0.75 + getOrganHighlight('brain', 50, 22) * 0.25} />
+            {/* Left & Right 3D Cerebral Lobes */}
             <path
-              d="M-0.5 -7.5 C-6.5 -7.5 -10 -3.5 -10 1 C-10 5.5 -6.5 8 -1 8 Z"
-              fill="#0ea5e9"
-              stroke="#e0f2fe"
-              strokeWidth="0.6"
+              d="M-0.4 -7.8 C-6.8 -7.8 -10.2 -3.8 -10.2 1.2 C-10.2 5.8 -6.5 8.2 -0.8 8.2 Z"
+              fill="url(#vol3DBrain)"
+              stroke="#bae6fd"
+              strokeWidth="0.4"
             />
             <path
-              d="M0.5 -7.5 C6.5 -7.5 10 -3.5 10 1 C10 5.5 6.5 8 1 8 Z"
-              fill={isMicrosleep && frame % 30 < 12 ? '#1e293b' : '#0ea5e9'}
-              stroke="#e0f2fe"
-              strokeWidth="0.6"
+              d="M0.4 -7.8 C6.8 -7.8 10.2 -3.8 10.2 1.2 C10.2 5.8 6.5 8.2 0.8 8.2 Z"
+              fill="url(#vol3DBrain)"
+              stroke="#bae6fd"
+              strokeWidth="0.4"
             />
-            {/* Neural Gyri Folds */}
+            {/* 3D Cortical Sulci Highlights */}
             <path
-              d="M-7 -2 Q-4 -4 -2 -1 M-8 2 Q-5 0 -2 3 M7 -2 Q4 -4 2 -1 M8 2 Q5 0 2 3"
-              stroke="#ffffff"
+              d="M-7.5 -2.5 Q-4.5 -4.5 -1.8 -1.2 M-8.2 2 Q-5 0 -1.8 3.2 M7.5 -2.5 Q4.5 -4.5 1.8 -1.2 M8.2 2 Q5 0 1.8 3.2"
+              stroke="rgba(224, 242, 254, 0.75)"
               strokeWidth="0.45"
               fill="none"
+              strokeLinecap="round"
             />
-            {/* Firing Neural Synapses & Adenosine Molecules */}
-            <circle cx={Math.sin(frame * 0.17) * 5.5} cy={Math.cos(frame * 0.23) * 3.8} r="1.2" fill="#ffffff" />
-            <circle cx={Math.cos(frame * 0.14) * -4.8} cy={Math.sin(frame * 0.19) * 3.2} r="1.0" fill="#bae6fd" />
-            <circle cx={Math.sin(frame * 0.11 + 2) * 4} cy={Math.cos(frame * 0.15 + 1) * -3} r="0.9" fill="#fde047" />
+            {/* Active Neural Synapse Sparks */}
+            <circle cx={Math.sin(frame * 0.16) * 5.2} cy={Math.cos(frame * 0.22) * 3.5} r="1.1" fill="#ffffff" />
+            <circle cx={Math.cos(frame * 0.14) * -4.6} cy={Math.sin(frame * 0.19) * 3} r="0.95" fill="#fde047" />
           </g>
 
-          {/* 2. NERVOUS GANGLIA & ADRENAL SIGNAL SPARKS (Stage Y: 36) */}
+          {/* 2. 3D VOLUMETRIC LUNGS (Stage Y: 63 — Expands with Breathing) */}
           <g
-            transform="translate(50, 36)"
-            opacity={0.7 + getOrganHighlight('nerves', 50, 36) * 0.3}
+            transform={`translate(50, 63) scale(${1 + breathCycle * 0.05}, ${1 + breathCycle * 0.04})`}
+            opacity={getOrganGlow('lungs', 50, 63)}
           >
+            {/* Trachea & Bronchial Stem */}
+            <path d="M0 -16 L0 -6 M0 -6 L-6 1 M0 -6 L6 1" stroke="#ccfbf1" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+            {/* Right & Left 3D Shaded Lung Lobes */}
             <path
-              d="M0 -6 L-9 2 M0 -2 L-11 6 M0 -6 L9 2 M0 -2 L11 6"
-              stroke="#a5b4fc"
-              strokeWidth="0.55"
-              fill="none"
+              d="M-2.8 -11.5 C-10.8 -10.5 -15.8 -2 -15.8 9.5 C-15.8 13.8 -8.2 14.5 -2.8 10.2 Z"
+              fill="url(#vol3DLung)"
+              stroke="#99f6e4"
+              strokeWidth="0.4"
             />
-            <circle cx={Math.sin(frame * 0.22) * 7} cy={Math.abs(Math.sin(frame * 0.22)) * 4 - 2} r="1.1" fill="#ffffff" />
+            <path
+              d="M2.8 -11.5 C10.8 -10.5 15.8 -2 15.8 9.5 C15.8 13.8 8.2 14.5 2.8 10.2 Z"
+              fill="url(#vol3DLung)"
+              stroke="#99f6e4"
+              strokeWidth="0.4"
+            />
+            {/* Specular 3D Highlight on Lungs */}
+            <ellipse cx="-8.5" cy="-2" rx="2.2" ry="4.5" fill="rgba(255,255,255,0.22)" transform="rotate(-12 -8.5 -2)" />
+            <ellipse cx="7.5" cy="-2" rx="2.2" ry="4.5" fill="rgba(255,255,255,0.18)" transform="rotate(12 7.5 -2)" />
           </g>
 
-          {/* 3. LUNGS & BRONCHIAL TREE (Stage Y: 64 — Expands & Contracts with Breathing) */}
+          {/* 3. 3D VOLUMETRIC BEATING HEART (Stage X: 54, Y: 69) */}
           <g
-            transform={`translate(50, 64) scale(${1 + breathCycle * 0.05}, ${1 + breathCycle * 0.04})`}
-            opacity={0.72 + getOrganHighlight('lungs', 50, 64) * 0.28}
+            transform={`translate(54, 69) scale(${1 + heartPulse * 0.18})`}
+            opacity={Math.max(0.85, getOrganGlow('heart', 54, 69))}
           >
-            <circle r="19" fill="url(#organGlowLungs)" opacity={0.6 + getOrganHighlight('lungs', 50, 64) * 0.4} />
+            {/* Aortic Arch */}
+            <path d="M-1 -4.5 C-1 -7.5 2.5 -7.5 2.5 -4.2" stroke="#f43f5e" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+            {/* 3D Shaded Ventricles */}
             <path
-              d="M-3 -11.5 C-10.5 -10.5 -15.5 -2 -15.5 9.5 C-15.5 13.5 -8 14.5 -3 10.5 Z"
-              fill="rgba(20, 184, 166, 0.72)"
-              stroke="#ccfbf1"
-              strokeWidth="0.6"
-            />
-            <path
-              d="M3 -11.5 C10.5 -10.5 15.5 -2 15.5 9.5 C15.5 13.5 8 14.5 3 10.5 Z"
-              fill="rgba(20, 184, 166, 0.72)"
-              stroke="#ccfbf1"
-              strokeWidth="0.6"
-            />
-            <path
-              d="M0 -15 L0 -6 M0 -6 L-7 2 M0 -6 L7 2 M-4 -1 L-9 6 M4 -1 L9 6"
-              stroke="#ffffff"
-              strokeWidth="0.55"
-              fill="none"
-              opacity="0.95"
-            />
-          </g>
-
-          {/* 4. BEATING HEART (Stage X: 54, Y: 70 — Systolic & Diastolic Real-Time Thump) */}
-          <g
-            transform={`translate(54, 70) scale(${1 + heartPulse * 0.18})`}
-            opacity={0.9 + getOrganHighlight('heart', 54, 70) * 0.1}
-          >
-            <circle r="13" fill="url(#organGlowHeart)" opacity={0.85 + systolicBeat * 0.15} />
-            {/*Systolic Shockwave Ring when beating hard */}
-            <circle
-              r={5 + ((frame % 22) / 22) * 9}
-              fill="none"
+              d="M0 -4.2 C-3 -6.8 -6.8 -4.2 -6.8 -0.5 C-6.8 3.8 -1.8 6.5 0 8.4 C1.8 6.5 6.8 3.8 6.8 -0.5 C6.8 -4.2 3 -6.8 0 -4.2 Z"
+              fill="url(#vol3DHeart)"
               stroke="#fecdd3"
               strokeWidth="0.45"
-              opacity={1 - (frame % 22) / 22}
             />
-            <path
-              d="M0 -4.5 C-2.8 -6.8 -6.5 -4.5 -6.5 -0.8 C-6.5 3.5 -1.6 6.2 0 8 C1.6 6.2 6.5 3.5 6.5 -0.8 C6.5 -4.5 2.8 -6.8 0 -4.5 Z"
-              fill="#f43f5e"
-              stroke="#ffffff"
-              strokeWidth="0.65"
-            />
+            {/* 3D Specular Gloss on Heart */}
+            <ellipse cx="-2.2" cy="-1.5" rx="1.6" ry="2.4" fill="rgba(255,255,255,0.38)" transform="rotate(-20 -2.2 -1.5)" />
           </g>
 
-          {/* 5. LIVER / HEPATIC SYSTEM (Stage X: 42, Y: 87) */}
+          {/* 4. 3D VOLUMETRIC LIVER (Stage X: 42, Y: 86) */}
           <g
             transform="translate(43, 86)"
-            opacity={0.75 + getOrganHighlight('liver', 42, 87) * 0.25}
+            opacity={getOrganGlow('liver', 42, 86)}
           >
-            <circle r="12.5" fill="url(#organGlowLiver)" opacity={0.65 + getOrganHighlight('liver', 42, 87) * 0.35} />
             <path
-              d="M-7.5 -3.2 C0 -5.5 6.5 -3.2 8.5 2.2 C3.2 6.5 -5.5 6.5 -7.5 2.2 Z"
-              fill="#d97706"
-              stroke="#fef08a"
-              strokeWidth="0.6"
+              d="M-8 -3.5 C0 -6 6.8 -3.5 8.8 2.2 C3.5 6.8 -5.8 6.8 -8 2.2 Z"
+              fill="url(#vol3DLiver)"
+              stroke="#fde68a"
+              strokeWidth="0.4"
             />
+            <ellipse cx="-2.5" cy="-1.2" rx="3" ry="1.3" fill="rgba(255,255,255,0.25)" transform="rotate(-10 -2.5 -1.2)" />
           </g>
 
-          {/* 6. STOMACH & GASTRIC ACID WAVE (Stage X: 57, Y: 91) */}
+          {/* 5. 3D VOLUMETRIC STOMACH (Stage X: 57, Y: 90) */}
           <g
-            transform={`translate(56, 91) scale(${1 + Math.sin(frame * (isAcidWave ? 0.14 : 0.06)) * (isAcidWave ? 0.065 : 0.03)})`}
-            opacity={0.75 + getOrganHighlight('stomach', 57, 91) * 0.25}
+            transform={`translate(56, 90) scale(${1 + Math.sin(frame * 0.08) * 0.035})`}
+            opacity={getOrganGlow('stomach', 57, 90)}
           >
-            <circle r="13" fill="url(#organGlowStomach)" opacity={0.65 + getOrganHighlight('stomach', 57, 91) * 0.35} />
             <path
-              d="M-3.2 -5.2 C3.2 -6.2 7.5 -2.2 6.5 3.2 C5.5 7.5 -2.2 7.5 -5.5 4.2 C-6.5 1.2 -2.2 -1 -3.2 -5.2 Z"
-              fill="#ea580c"
-              stroke="#ffedd5"
-              strokeWidth="0.6"
+              d="M-3.2 -5.5 C3.5 -6.5 7.8 -2.2 6.8 3.5 C5.8 7.8 -2.2 7.8 -5.8 4.4 C-6.8 1.2 -2.2 -1 -3.2 -5.5 Z"
+              fill="url(#vol3DStomach)"
+              stroke="#fed7aa"
+              strokeWidth="0.4"
             />
-            {/* Bubbling Gastric Acid Level inside Stomach */}
-            <circle cx={Math.sin(frame * 0.15) * 2} cy={1.8 + Math.cos(frame * 0.2) * 1} r="0.9" fill="#fef08a" />
-            <circle cx={Math.cos(frame * 0.18) * -1.5} cy={2.4 + Math.sin(frame * 0.22) * 0.8} r="0.7" fill="#ffffff" />
+            <ellipse cx="1.8" cy="-1.5" rx="1.6" ry="2.8" fill="rgba(255,255,255,0.28)" transform="rotate(15 1.8 -1.5)" />
           </g>
 
-          {/* 7. KIDNEYS & ADRENAL GLANDS (Stage X: 50, Y: 104) */}
+          {/* 6. 3D VOLUMETRIC KIDNEYS & ADRENAL GLANDS (Stage X: 50, Y: 104) */}
           <g
             transform="translate(50, 104)"
-            opacity={0.75 + getOrganHighlight('kidney', 50, 104) * 0.25}
+            opacity={getOrganGlow('kidney', 50, 104)}
           >
-            <circle r="13.5" fill="url(#organGlowKidney)" opacity={0.65 + getOrganHighlight('kidney', 50, 104) * 0.35} />
-            <ellipse cx="-6.5" cy="0" rx="3.4" ry="5" fill="#9333ea" stroke="#f3e8ff" strokeWidth="0.55" />
-            <ellipse cx="6.5" cy="0" rx="3.4" ry="5" fill="#9333ea" stroke="#f3e8ff" strokeWidth="0.55" />
-            {/* Adrenal Caps on top of Kidneys */}
-            <polygon
-              points="-8.5,-4.5 -4.5,-4.5 -6.5,-7.2"
-              fill={isHormoneSurge ? '#fb7185' : '#fbbf24'}
-              stroke="#ffffff"
-              strokeWidth="0.35"
-            />
-            <polygon
-              points="4.5,-4.5 8.5,-4.5 6.5,-7.2"
-              fill={isHormoneSurge ? '#fb7185' : '#fbbf24'}
-              stroke="#ffffff"
-              strokeWidth="0.35"
-            />
+            <ellipse cx="-6.5" cy="0" rx="3.5" ry="5.2" fill="url(#vol3DKidney)" stroke="#e9d5ff" strokeWidth="0.4" />
+            <ellipse cx="6.5" cy="0" rx="3.5" ry="5.2" fill="url(#vol3DKidney)" stroke="#e9d5ff" strokeWidth="0.4" />
+            <ellipse cx="-7.3" cy="-1.5" rx="1" ry="2" fill="rgba(255,255,255,0.3)" />
+            <ellipse cx="5.7" cy="-1.5" rx="1" ry="2" fill="rgba(255,255,255,0.3)" />
+            {/* Adrenal Caps */}
+            <polygon points="-8.5,-4.6 -4.5,-4.6 -6.5,-7.4" fill="#fbbf24" stroke="#fef08a" strokeWidth="0.3" />
+            <polygon points="4.5,-4.6 8.5,-4.6 6.5,-7.4" fill="#fbbf24" stroke="#fef08a" strokeWidth="0.3" />
           </g>
 
-          {/* 8. INTESTINES & METABOLIC TRACT (Stage X: 50, Y: 118) */}
+          {/* 7. 3D VOLUMETRIC INTESTINES (Stage X: 50, Y: 118) */}
           <g
             transform="translate(50, 117)"
-            opacity={0.72 + getOrganHighlight('intestine', 50, 118) * 0.28}
+            opacity={getOrganGlow('intestine', 50, 118)}
           >
             <rect
               x="-9.5"
               y="-6.5"
               width="19"
               height="13"
-              rx="3.5"
-              fill="rgba(202, 138, 4, 0.72)"
+              rx="4"
+              fill="url(#vol3DIntestine)"
               stroke="#fef08a"
-              strokeWidth="0.55"
+              strokeWidth="0.4"
             />
             <path
               d="M-6 -3 Q0 -5 6 -3 Q-5 0 6 3 Q0 5 -6 3"
-              stroke="#ffffff"
-              strokeWidth="0.55"
+              stroke="rgba(255,255,255,0.55)"
+              strokeWidth="0.6"
               fill="none"
-              opacity="0.9"
+              strokeLinecap="round"
             />
           </g>
 
-          {/* CONTINUOUS GLIDING TARGET LOCK RETICLE + IN-SITU ORGAN CALLOUT */}
+          {/* Subtle Glowing Ring Around Active Organ */}
           <g transform={`translate(${camStageX}, ${camStageY})`}>
             <circle
-              r={8.5 + systolicBeat * 2.5}
-              fill="none"
-              stroke="#ffffff"
-              strokeWidth="0.45"
-              strokeDasharray="2 1.5"
-              opacity="0.9"
-            />
-            <circle
-              r={5.2 + systolicBeat * 1.2}
+              r={7 + systolicBeat * 2}
               fill="none"
               stroke={accentColor}
               strokeWidth="0.55"
-              opacity="0.95"
+              opacity="0.85"
             />
-            <circle r="1.6" fill="#ffffff" />
+            <circle r="1.4" fill="#ffffff" />
           </g>
         </svg>
       </div>
 
       {/* =====================================================================
-          2. SOFT LUMINOUS VIGNETTE & LASER SWEEP (Keeps Center Bright & Vibrant!)
-          ===================================================================== */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'radial-gradient(circle at 50% 42%, transparent 46%, rgba(4, 15, 32, 0.55) 82%, rgba(2, 8, 20, 0.85) 100%)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Horizontal Bioluminescent X-Ray Scan Laser */}
-      <div
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: `${scanlineY}px`,
-          height: '2.5px',
-          background: `linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%)`,
-          boxShadow: `0 0 20px ${accentColor}`,
-          opacity: 0.42,
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* =====================================================================
-          3. CONTINUOUS FLOWING BIOLOGICAL PARTICLES
+          2. FOREGROUND 3D FLOATING CELLULAR PARTICLES
           ===================================================================== */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 12 }}>
         {particles.map((p) => {
           const curY = ((p.baseY + frame * p.speedY) % 1250 + 1250) % 1250 + 120;
           const curX = p.baseX + Math.sin(frame * p.waveFreq + p.id) * p.waveAmp;
-          const pulseScale = 1 + systolicBeat * 0.22;
           return (
             <div
               key={p.id}
@@ -831,11 +675,10 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
                 width: `${p.size}px`,
                 height: `${p.size}px`,
                 borderRadius: '50%',
-                background: `radial-gradient(circle at 35% 35%, #ffffff 0%, ${accentColor} 60%, transparent 100%)`,
-                boxShadow: `0 0 ${p.size * 1.2}px ${accentColor}`,
+                background: `radial-gradient(circle at 32% 32%, #ffffff 0%, ${accentColor} 65%, transparent 100%)`,
+                boxShadow: `0 0 ${p.size}px ${accentColor}`,
                 opacity: p.opacity,
                 filter: p.blur > 0 ? `blur(${p.blur}px)` : undefined,
-                transform: `scale(${pulseScale})`,
               }}
             />
           );
@@ -843,7 +686,131 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       </div>
 
       {/* =====================================================================
-          4. SUBTITLE SAFE ZONE PROTECTIVE GRADIENT (Deep Navy-Teal, Not Pitch Black)
+          3. IN-SITU 3D ORGAN CALLOUT CARD + POINTER LINE (Crystal-Clear Visual Explanation!)
+          Directly connects the active organ on the body to a 3D X-Ray Magnifier + plain-Indonesian explanation
+          ===================================================================== */}
+      <svg
+        width="1080"
+        height="1920"
+        style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 24 }}
+      >
+        <line
+          x1={clampedTargetX}
+          y1={clampedTargetY}
+          x2={calloutOnRight ? cardLeft + 20 : cardLeft + 420}
+          y2={cardTop + 85}
+          stroke={accentColor}
+          strokeWidth="2.5"
+          strokeDasharray="6 4"
+        />
+        <circle cx={clampedTargetX} cy={clampedTargetY} r="7" fill={accentColor} />
+        <circle cx={clampedTargetX} cy={clampedTargetY} r="14" fill="none" stroke="#ffffff" strokeWidth="2" opacity="0.8" />
+      </svg>
+
+      <div
+        style={{
+          position: 'absolute',
+          left: `${cardLeft}px`,
+          top: `${cardTop}px`,
+          width: '440px',
+          zIndex: 25,
+          backgroundColor: 'rgba(8, 18, 36, 0.92)',
+          borderRadius: '18px',
+          border: `2px solid ${accentColor}`,
+          boxShadow: `0 20px 50px rgba(0, 0, 0, 0.8), 0 0 28px ${accentColor}44`,
+          backdropFilter: 'blur(16px)',
+          padding: '16px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px',
+          transform: `translateY(${Math.sin(frame * 0.05) * 4}px)`,
+        }}
+      >
+        {/* 3D Organ Close-Up X-Ray Sphere Magnifier */}
+        <div
+          style={{
+            position: 'relative',
+            width: '112px',
+            height: '112px',
+            borderRadius: '50%',
+            overflow: 'hidden',
+            border: `2.5px solid ${accentColor}`,
+            boxShadow: `inset 0 0 20px ${accentColor}, 0 0 18px ${accentColor}66`,
+            flexShrink: 0,
+            backgroundColor: '#040b16',
+          }}
+        >
+          <Img
+            src={staticFile(activeWp.anchor.organMediaUrl)}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              transform: `scale(${1.18 + systolicBeat * 0.08})`,
+              filter: 'contrast(1.25) saturate(1.3)',
+            }}
+          />
+          {/* 3D Glass Sphere Highlight Overlay */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'radial-gradient(circle at 30% 25%, rgba(255,255,255,0.35) 0%, transparent 45%, rgba(0,0,0,0.55) 100%)',
+            }}
+          />
+        </div>
+
+        {/* Clear, Instant-Understanding Explanation Text */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', minWidth: 0 }}>
+          <div
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: '12px',
+              fontWeight: 800,
+              color: accentColor,
+              letterSpacing: '1.2px',
+              textTransform: 'uppercase',
+            }}
+          >
+            📍 {activeWp.anchor.label}
+          </div>
+
+          <div
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: '21px',
+              fontWeight: 900,
+              color: '#ffffff',
+              lineHeight: 1.18,
+            }}
+          >
+            {activeWp.headline}
+          </div>
+
+          <div
+            style={{
+              marginTop: '2px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              backgroundColor: 'rgba(15, 23, 42, 0.95)',
+              padding: '4px 10px',
+              borderRadius: '6px',
+              border: `1px solid ${accentColor}66`,
+              width: 'fit-content',
+            }}
+          >
+            <span style={{ fontSize: '12px', fontWeight: 800, color: '#fde047' }}>⚡ EFEK:</span>
+            <span style={{ fontSize: '12px', fontWeight: 700, color: '#f8fafc' }}>
+              {activeWp.primaryText}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* =====================================================================
+          4. SUBTITLE SAFE ZONE PROTECTIVE GRADIENT (Strictly protects y >= 1200px)
           ===================================================================== */}
       <div
         style={{
@@ -851,313 +818,124 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           left: 0,
           right: 0,
           bottom: 0,
-          height: '680px',
+          height: '660px',
           background:
-            'linear-gradient(to top, rgba(4, 14, 28, 0.96) 0%, rgba(6, 22, 42, 0.78) 46%, rgba(8, 28, 52, 0.22) 82%, transparent 100%)',
+            'linear-gradient(to top, rgba(4, 12, 24, 0.96) 0%, rgba(6, 18, 36, 0.78) 46%, transparent 100%)',
           pointerEvents: 'none',
           zIndex: 18,
         }}
       />
 
       {/* =====================================================================
-          5. PERSISTENT TOP-LEFT MEDICAL TELEMETRY & LIVE EKG MONITOR
+          5. CLEAN TOP-CENTER COMPACT STATUS BAR (Chronological Time + Live EKG + BPM)
+          Replaces the old cluttered multi-box HUD & duplicate mini-map!
           ===================================================================== */}
       <div
         style={{
           position: 'absolute',
-          top: '68px',
-          left: '44px',
-          maxWidth: '680px',
+          top: '64px',
+          left: '48px',
+          right: '48px',
           zIndex: 30,
           display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          backgroundColor: 'rgba(7, 18, 36, 0.88)',
+          padding: '12px 22px',
+          borderRadius: '16px',
+          border: '1.5px solid rgba(125, 211, 252, 0.28)',
+          boxShadow: '0 12px 32px rgba(0, 0, 0, 0.55)',
+          backdropFilter: 'blur(14px)',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-          <div
+        {/* Left: Chronological Time & Phase */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              backgroundColor: 'rgba(7, 22, 44, 0.88)',
-              padding: '7px 16px',
-              borderRadius: '8px',
-              borderLeft: `4px solid ${accentColor}`,
-              borderTop: '1px solid rgba(125, 211, 252, 0.25)',
-              borderRight: '1px solid rgba(125, 211, 252, 0.15)',
-              borderBottom: '1px solid rgba(125, 211, 252, 0.15)',
-              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.45)',
-              backdropFilter: 'blur(12px)',
+              width: '11px',
+              height: '11px',
+              borderRadius: '50%',
+              backgroundColor: accentColor,
+              boxShadow: `0 0 12px ${accentColor}`,
+              transform: `scale(${1 + systolicBeat * 0.45})`,
             }}
-          >
-            <span
-              style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                backgroundColor: accentColor,
-                boxShadow: `0 0 10px ${accentColor}`,
-                transform: `scale(${1 + systolicBeat * 0.45})`,
-              }}
-            />
+          />
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: '15px',
+                fontSize: '11px',
                 fontWeight: 700,
-                color: '#f8fafc',
-                letterSpacing: '1.5px',
-                textTransform: 'uppercase',
+                color: '#94a3b8',
+                letterSpacing: '1.2px',
               }}
             >
-              {activeWp.timeTag}
-            </span>
-          </div>
-
-          <div
-            style={{
-              backgroundColor: 'rgba(7, 22, 44, 0.85)',
-              padding: '6px 13px',
-              borderRadius: '8px',
-              border: '1px solid rgba(125, 211, 252, 0.28)',
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: '13px',
-              fontWeight: 700,
-              color: '#7dd3fc',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-            }}
-          >
-            {effectiveAnchor.label}
-          </div>
-        </div>
-
-        {/* Smoothly Morphing Organ Status Headline */}
-        {activeWp.headline && (
-          <div
-            style={{
-              fontSize: '29px',
-              fontWeight: 900,
-              color: '#ffffff',
-              textShadow: '0 4px 18px rgba(2, 8, 20, 0.9)',
-              fontFamily: "'Montserrat', sans-serif",
-              lineHeight: 1.22,
-              letterSpacing: '-0.4px',
-              opacity: textTransition,
-              transform: `translateY(${textSlideY}px)`,
-            }}
-          >
-            {activeWp.headline}
-          </div>
-        )}
-
-        {/* Persistent Live EKG Heartbeat Monitor */}
-        <div
-          style={{
-            marginTop: '4px',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '14px',
-            backgroundColor: 'rgba(7, 22, 44, 0.86)',
-            padding: '8px 16px',
-            borderRadius: '10px',
-            border: '1px solid rgba(125, 211, 252, 0.22)',
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
-            backdropFilter: 'blur(12px)',
-            width: 'fit-content',
-          }}
-        >
-          <svg width="180" height="38" viewBox="0 0 340 48" style={{ overflow: 'visible' }}>
-            <path
-              d={ekgPath}
-              fill="none"
-              stroke={accentColor}
-              strokeWidth="3.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ filter: `drop-shadow(0 0 6px ${accentColor})` }}
-            />
-          </svg>
-
-          <div style={{ display: 'flex', flexDirection: 'column', minWidth: '78px' }}>
-            <span
-              style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: '10px',
-                fontWeight: 700,
-                color: '#bae6fd',
-                letterSpacing: '1px',
-              }}
-            >
-              DETAK JANTUNG
-            </span>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-              <span
-                style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: '21px',
-                  fontWeight: 800,
-                  color: '#ffffff',
-                }}
-              >
-                {bpm}
-              </span>
-              <span style={{ fontSize: '11px', fontWeight: 700, color: '#7dd3fc' }}>BPM</span>
-            </div>
-          </div>
-
-          <div
-            style={{
-              borderLeft: '1px solid rgba(125, 211, 252, 0.22)',
-              paddingLeft: '12px',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: '10px',
-                fontWeight: 700,
-                color: '#bae6fd',
-                letterSpacing: '1px',
-              }}
-            >
-              STRES SEL
+              WAKTU & ORGAN TARGET
             </span>
             <span
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: '18px',
                 fontWeight: 800,
+                color: '#ffffff',
+                letterSpacing: '0.8px',
+                textTransform: 'uppercase',
+              }}
+            >
+              {activeWp.timeTag}
+            </span>
+          </div>
+        </div>
+
+        {/* Center: Live EKG Waveform */}
+        <svg width="160" height="34" viewBox="0 0 220 40" style={{ overflow: 'visible' }}>
+          <path
+            d={ekgPath}
+            fill="none"
+            stroke={accentColor}
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ filter: `drop-shadow(0 0 6px ${accentColor})` }}
+          />
+        </svg>
+
+        {/* Right: BPM & Cell Stress */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+            <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '10px', fontWeight: 700, color: '#94a3b8' }}>
+              DETAK JANTUNG
+            </span>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '22px', fontWeight: 800, color: '#ffffff' }}>
+                {bpm}
+              </span>
+              <span style={{ fontSize: '11px', fontWeight: 700, color: accentColor }}>BPM</span>
+            </div>
+          </div>
+
+          <div
+            style={{
+              borderLeft: '1px solid rgba(148, 163, 184, 0.25)',
+              paddingLeft: '16px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-end',
+            }}
+          >
+            <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '10px', fontWeight: 700, color: '#94a3b8' }}>
+              STRES SEL
+            </span>
+            <span
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '20px',
+                fontWeight: 800,
                 color: smoothChaos >= 70 ? '#fb7185' : smoothChaos >= 45 ? '#fde047' : '#38bdf8',
               }}
             >
               {Math.round(smoothChaos)}%
             </span>
-          </div>
-        </div>
-
-        {/* Biological Evidence Fact Callout Pill */}
-        {activeWp.primaryText && (
-          <div
-            style={{
-              marginTop: '2px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              backgroundColor: 'rgba(12, 34, 64, 0.9)',
-              padding: '6px 14px',
-              borderRadius: '6px',
-              border: '1px solid rgba(125, 211, 252, 0.3)',
-              width: 'fit-content',
-              opacity: textTransition,
-            }}
-          >
-            <span style={{ fontSize: '13px', fontWeight: 800, color: '#fde047' }}>⚡ REAKSI MEDIS:</span>
-            <span style={{ fontSize: '13px', fontWeight: 700, color: '#ffffff' }}>{activeWp.primaryText}</span>
-          </div>
-        )}
-      </div>
-
-      {/* =====================================================================
-          6. PERSISTENT TOP-RIGHT FULL-BODY MINI-MAP RADAR
-          ===================================================================== */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '68px',
-          right: '40px',
-          width: '175px',
-          height: '330px',
-          zIndex: 30,
-          backgroundColor: 'rgba(7, 22, 44, 0.86)',
-          borderRadius: '14px',
-          border: '1.5px solid rgba(125, 211, 252, 0.42)',
-          boxShadow: '0 12px 32px rgba(0, 0, 0, 0.55)',
-          backdropFilter: 'blur(12px)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          padding: '10px 8px',
-        }}
-      >
-        <div
-          style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: '10px',
-            fontWeight: 700,
-            color: '#bae6fd',
-            letterSpacing: '1.4px',
-            textTransform: 'uppercase',
-            marginBottom: '4px',
-          }}
-        >
-          KAMERA ANATOMI
-        </div>
-
-        <svg width="135" height="255" viewBox="0 0 100 200" style={{ overflow: 'visible' }}>
-          <path
-            d="M50 6 C58 6 63 12 63 21 C63 28 59 33 56 36 L60 42 C72 44 80 50 82 62 L85 104 C85 108 80 109 78 105 L73 66 L68 66 L70 118 L67 186 C67 191 59 191 58 186 L54 128 L46 128 L42 186 C41 191 33 191 33 186 L30 118 L32 66 L27 66 L22 105 C20 109 15 108 15 104 L18 62 C20 50 28 44 40 42 L44 36 C41 33 37 28 37 21 C37 12 42 6 50 6 Z"
-            fill="rgba(56, 189, 248, 0.16)"
-            stroke="#7dd3fc"
-            strokeWidth="1.5"
-          />
-          <ellipse cx="50" cy="20" rx="9" ry="7.5" fill="rgba(56, 189, 248, 0.5)" />
-          <path
-            d="M47 54 C40 54 36 62 36 74 C36 78 42 79 47 76 Z M53 54 C60 54 64 62 64 74 C64 78 58 79 53 76 Z"
-            fill="rgba(45, 212, 191, 0.45)"
-          />
-          <circle cx="54" cy="70" r="5.2" fill="rgba(244, 63, 94, 0.75)" />
-          <path d="M37 83 C43 81 49 83 51 88 C46 92 39 92 37 88 Z" fill="rgba(245, 158, 11, 0.5)" />
-          <ellipse cx="56" cy="91" rx="6.5" ry="5" fill="rgba(251, 146, 60, 0.5)" />
-          <circle cx="44" cy="104" r="3.5" fill="rgba(168, 85, 247, 0.55)" />
-          <circle cx="56" cy="104" r="3.5" fill="rgba(168, 85, 247, 0.55)" />
-          <rect x="40" y="111" width="20" height="13" rx="4" fill="rgba(234, 179, 8, 0.45)" />
-
-          {/* Gliding Reticle on Mini-Map */}
-          <g transform={`translate(${camStageX}, ${camStageY})`}>
-            <circle
-              r={12 + systolicBeat * 5}
-              fill="none"
-              stroke={accentColor}
-              strokeWidth="1.6"
-              opacity={0.85}
-            />
-            <circle r="5.5" fill={accentColor} />
-            <line x1="-15" y1="0" x2="-7" y2="0" stroke="#ffffff" strokeWidth="1.5" />
-            <line x1="7" y1="0" x2="15" y2="0" stroke="#ffffff" strokeWidth="1.5" />
-            <line x1="0" y1="-15" x2="0" y2="-7" stroke="#ffffff" strokeWidth="1.5" />
-            <line x1="0" y1="7" x2="0" y2="15" stroke="#ffffff" strokeWidth="1.5" />
-          </g>
-        </svg>
-
-        <div
-          style={{
-            marginTop: 'auto',
-            width: '100%',
-            textAlign: 'center',
-            backgroundColor: 'rgba(12, 34, 64, 0.92)',
-            padding: '4px 6px',
-            borderRadius: '6px',
-            border: '1px solid rgba(125, 211, 252, 0.3)',
-          }}
-        >
-          <div
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: '9px',
-              fontWeight: 700,
-              color: '#7dd3fc',
-              letterSpacing: '0.8px',
-              textTransform: 'uppercase',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-          >
-            ZOOM {finalScale.toFixed(1)}X • {effectiveAnchor.id.toUpperCase()}
           </div>
         </div>
       </div>
