@@ -13,6 +13,29 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "72-jam-tanpa-tidur-simulasi-anatomi-mvt1kw03",
+      "title": "72 JAM TANPA TIDUR",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "Detik pertama tanpa tidur, adenosin mulai menumpuk di otak. Dalam 72 jam, tubuhmu berubah menjadi ladang perang biokimia yang menghancurkan kognisi.",
+      "scenes": [
+        "laboratory-discovery",
+        "action-tracker",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "action-tracker",
+        "action-tracker",
+        "action-tracker",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "action-tracker",
+        "action-tracker"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "72-jam-tanpa-tidur-simulation-mvsymx33",
       "title": "72 JAM TANPA TIDUR",
       "hookStyle": "fullscreen-dramatic",
@@ -133,23 +156,6 @@
         "courtroom-gavel"
       ],
       "why_successful": "Tersertifikasi AI Editor dengan skor 92/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
-    },
-    {
-      "id": "berlin-wall-memo-butterfly-effect-mvnysj5h",
-      "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
-      "hookStyle": "fullscreen-dramatic",
-      "hookNarration": "9 November 1989. Seorang pejabat tinggi Jerman Timur salah membaca secarik catatan di siaran langsung televisi... dan malam itu juga, negara adidaya tamat.",
-      "scenes": [
-        "memo-investigation",
-        "press-question",
-        "press-podium",
-        "panic-phone",
-        "crowd-protest",
-        "gate-breach",
-        "wall-demolition",
-        "soviet-collapse"
-      ],
-      "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ],
   "blacklisted_patterns": [
@@ -234,6 +240,13 @@
       "title": "72 JAM TANPA TIDUR",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "72-jam-tanpa-tidur-simulasi-anatomi-mvt1kw03",
+      "timestamp": "2026-10-29T04:30:21.212Z",
+      "title": "72 JAM TANPA TIDUR",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ]
 }
