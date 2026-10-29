@@ -6,10 +6,7 @@ import { HookScene } from './HookScene';
 import { ContinuousBodyJourney } from './ContinuousBodyJourney';
 import { KineticSubtitle } from './KineticSubtitle';
 import { OutroScene } from './OutroScene';
-import { FilmEffects } from './effects/FilmEffects';
 import { CameraShake } from './effects/CameraShake';
-import { CinematicOptics } from './effects/CinematicOptics';
-import { AtmosphericBackground } from './AtmosphericBackground';
 
 export interface ButterflyEffectProps {
   data?: ButterflyStoryData;
@@ -114,7 +111,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         position: 'relative',
         width: '1080px',
         height: '1920px',
-        backgroundColor: '#02060d',
+        backgroundColor: '#07192e',
         overflow: 'hidden',
       }}
     >
@@ -124,8 +121,6 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         shakeThresholdChaos={data.editorialStyle?.shakeThresholdChaos ?? 72}
         sensitivity={data.editorialStyle?.shakeSensitivity ?? 'subtle'}
       >
-        <AtmosphericBackground mood={data.editorialStyle?.mood} />
-
         {/* 1. 3D Medical X-Ray Hook Scene */}
         <Sequence from={0} durationInFrames={data.hook.durationFrames}>
           <HookScene
@@ -145,13 +140,14 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
           />
         </Sequence>
 
-        {/* 2. Continuous Unbroken 1-Body Anatomical Journey (Zero Scene Cuts!) */}
+        {/* 2. Continuous Unbroken 1-Body Anatomical Journey (Word-Synchronized & Luminous) */}
         <Sequence
           from={data.hook.durationFrames}
           durationInFrames={Math.max(1, data.totalDurationFrames - data.hook.durationFrames - data.outro.durationFrames)}
         >
           <ContinuousBodyJourney
             nodes={data.nodes}
+            wordTimestamps={data.wordTimestamps}
             hookDurationFrames={data.hook.durationFrames}
             outroDurationFrames={data.outro.durationFrames}
             totalDurationFrames={data.totalDurationFrames}
@@ -168,11 +164,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         </Sequence>
       </CameraShake>
 
-      {/* 4. Film & Optical Finish */}
-      <FilmEffects editorialStyle={data.editorialStyle} />
-      <CinematicOptics intensity="standard" />
-
-      {/* 5. Subtle Medical Scanner Radar Ping on Organ Transitions */}
+      {/* 4. Subtle Medical Scanner Radar Ping on Organ Transitions */}
       {cutFrames.map((cutF) => (
         <Sequence key={`sfx-cut-${cutF}`} from={cutF} durationInFrames={20}>
           <Audio src={staticFile('butterfly/sfx/radar_ping.wav')} volume={0.22} />

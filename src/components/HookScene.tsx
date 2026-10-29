@@ -56,7 +56,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
       style={{
         position: 'absolute',
         inset: 0,
-        backgroundColor: '#02060d',
+        background: 'radial-gradient(circle at 50% 38%, #0284c7 0%, #0b2545 58%, #07192e 100%)',
         overflow: 'hidden',
       }}
     >
@@ -75,7 +75,9 @@ export const HookScene: React.FC<HookSceneProps> = ({
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            filter: 'contrast(1.2) brightness(0.84) saturate(1.2)',
+            opacity: 0.72,
+            mixBlendMode: 'screen',
+            filter: 'contrast(1.22) brightness(1.12) saturate(1.3)',
           }}
         />
       </div>
@@ -86,8 +88,8 @@ export const HookScene: React.FC<HookSceneProps> = ({
           position: 'absolute',
           inset: 0,
           backgroundImage: `
-            linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px)
+            linear-gradient(to right, rgba(125, 211, 252, 0.09) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(125, 211, 252, 0.09) 1px, transparent 1px)
           `,
           backgroundSize: '54px 54px',
           pointerEvents: 'none',
@@ -101,20 +103,20 @@ export const HookScene: React.FC<HookSceneProps> = ({
           left: 0,
           right: 0,
           top: `${laserY}px`,
-          height: '4px',
-          background: 'linear-gradient(90deg, transparent 0%, #38bdf8 50%, transparent 100%)',
+          height: '3px',
+          background: 'linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%)',
           boxShadow: '0 0 24px #38bdf8',
           opacity: 0.55,
           pointerEvents: 'none',
         }}
       />
 
-      {/* 4. Vignette & Subtitle Safe Zone Gradient */}
+      {/* 4. Soft Luminous Vignette & Subtitle Safe Zone Gradient */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'radial-gradient(ellipse at center, transparent 32%, rgba(2, 6, 13, 0.88) 100%)',
+          background: 'radial-gradient(ellipse at center, transparent 45%, rgba(4, 15, 32, 0.78) 100%)',
           pointerEvents: 'none',
         }}
       />
@@ -126,7 +128,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
           bottom: 0,
           height: '680px',
           background:
-            'linear-gradient(to top, rgba(2, 6, 13, 0.96) 0%, rgba(2, 6, 13, 0.72) 48%, transparent 100%)',
+            'linear-gradient(to top, rgba(4, 14, 28, 0.96) 0%, rgba(6, 22, 42, 0.72) 48%, transparent 100%)',
           pointerEvents: 'none',
         }}
       />
