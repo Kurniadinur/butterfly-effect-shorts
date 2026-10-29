@@ -397,24 +397,37 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(circle at 50% 40%, #152a4a 0%, #0a1526 62%, #050b14 100%)',
+        background: 'radial-gradient(circle at 50% 42%, #1a1b1f 0%, #101114 68%, #090a0c 100%)',
         overflow: 'hidden',
         perspective: '1350px',
       }}
     >
-      {/* Subtle 3D Medical Grid Floor & Backdrop */}
+      {/* Subtle Editorial Dot-Matrix Texture (Vox / Johnny Harris human-edited aesthetic, NOT AI sci-fi grid) */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: `
-            linear-gradient(to right, rgba(125, 211, 252, 0.06) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(125, 211, 252, 0.06) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
+          backgroundImage: 'radial-gradient(rgba(244, 240, 234, 0.08) 1.5px, transparent 1.5px)',
+          backgroundSize: '36px 36px',
           pointerEvents: 'none',
         }}
       />
+
+      {/* Minimalist Architectural Corner Registration Marks */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '36px',
+          left: '36px',
+          right: '36px',
+          bottom: '36px',
+          pointerEvents: 'none',
+          zIndex: 15,
+        }}
+      >
+        <div style={{ position: 'absolute', top: 0, left: 0, width: 16, height: 16, borderTop: '2px solid rgba(244,240,234,0.28)', borderLeft: '2px solid rgba(244,240,234,0.28)' }} />
+        <div style={{ position: 'absolute', top: 0, right: 0, width: 16, height: 16, borderTop: '2px solid rgba(244,240,234,0.28)', borderRight: '2px solid rgba(244,240,234,0.28)' }} />
+      </div>
 
       {/* =====================================================================
           1. TRUE 3D MULTI-PLANE PARALLAX ANATOMICAL RIG (rotateX + rotateY + translateZ)
@@ -428,13 +441,13 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           transformOrigin: '50% 42%',
         }}
       >
-        {/* PLANE -60px (DEEP AMBIENT BACKDROP): Subtle Atmospheric Depth Aura */}
+        {/* PLANE -60px (DEEP AMBIENT BACKDROP): Subtle Studio Spotlight */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             transform: 'translateZ(-60px)',
-            background: `radial-gradient(circle at 50% 45%, ${accentColor}1f 0%, transparent 62%)`,
+            background: 'radial-gradient(circle at 50% 44%, rgba(244, 240, 234, 0.06) 0%, transparent 58%)',
           }}
         />
 
@@ -679,28 +692,29 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       </div>
 
       {/* =====================================================================
-          3. IN-SITU 3D ORGAN CALLOUT CARD (No ugly white dot/circle on organ —
-             the active organ itself glows with golden/accent bioluminescence!)
+          3. VOX / JOHNNY HARRIS EDITORIAL ATLAS CALLOUT (Physical Cream Paper Card +
+             Architectural Leader Line + Hard Offset Shadow — Zero AI Neon Border!)
           ===================================================================== */}
       <svg
         width="1080"
         height="1920"
         style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 24 }}
       >
-        <defs>
-          <linearGradient id="calloutBeam" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor={accentColor} stopOpacity={calloutOnRight ? 0.15 : 0.75} />
-            <stop offset="100%" stopColor="#fde047" stopOpacity={calloutOnRight ? 0.75 : 0.15} />
-          </linearGradient>
-        </defs>
-        <line
-          x1={clampedTargetX}
-          y1={clampedTargetY}
-          x2={calloutOnRight ? cardLeft + 10 : cardLeft + 430}
-          y2={cardTop + 72}
-          stroke="url(#calloutBeam)"
-          strokeWidth="2"
-          strokeDasharray="4 4"
+        {/* Clean L-Shaped Architectural Leader Line */}
+        <polyline
+          points={`${clampedTargetX},${clampedTargetY} ${
+            calloutOnRight ? cardLeft - 24 : cardLeft + 444
+          },${cardTop + 68} ${calloutOnRight ? cardLeft : cardLeft + 420},${cardTop + 68}`}
+          fill="none"
+          stroke="#F4F0EA"
+          strokeWidth="2.5"
+        />
+        <rect
+          x={(calloutOnRight ? cardLeft - 4 : cardLeft + 416)}
+          y={cardTop + 62}
+          width="8"
+          height="12"
+          fill="#FFCC00"
         />
       </svg>
 
@@ -709,99 +723,115 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           position: 'absolute',
           left: `${cardLeft}px`,
           top: `${cardTop}px`,
-          width: '440px',
+          width: '420px',
           zIndex: 25,
-          backgroundColor: 'rgba(8, 18, 36, 0.92)',
-          borderRadius: '18px',
-          border: `2px solid ${accentColor}`,
-          boxShadow: `0 20px 50px rgba(0, 0, 0, 0.8), 0 0 28px ${accentColor}44`,
-          backdropFilter: 'blur(16px)',
-          padding: '16px',
+          backgroundColor: '#F4F0EA',
+          borderRadius: '4px',
+          border: '2.5px solid #111215',
+          boxShadow: '10px 10px 0px #111215, 0 18px 36px rgba(0, 0, 0, 0.55)',
+          padding: '14px 16px',
           display: 'flex',
           alignItems: 'center',
           gap: '16px',
-          transform: `translateY(${Math.sin(frame * 0.05) * 4}px)`,
         }}
       >
-        {/* 3D Organ Close-Up X-Ray Sphere Magnifier */}
+        {/* Editorial Specimen Frame (Square Cutout with Charcoal Matte) */}
         <div
           style={{
             position: 'relative',
-            width: '112px',
-            height: '112px',
-            borderRadius: '50%',
+            width: '104px',
+            height: '104px',
+            borderRadius: '3px',
             overflow: 'hidden',
-            border: `2.5px solid ${accentColor}`,
-            boxShadow: `inset 0 0 20px ${accentColor}, 0 0 18px ${accentColor}66`,
+            border: '2px solid #111215',
+            backgroundColor: '#16181d',
             flexShrink: 0,
-            backgroundColor: '#040b16',
           }}
         >
           <Img
             src={staticFile(activeWp.anchor.organMediaUrl)}
             style={{
-              width: '84%',
-              height: '84%',
-              margin: '8%',
+              width: '86%',
+              height: '86%',
+              margin: '7%',
               objectFit: 'contain',
-              transform: `scale(${1.05 + systolicBeat * 0.08})`,
-              filter: `drop-shadow(0 0 10px ${accentColor}88) contrast(1.15) saturate(1.2)`,
+              transform: `scale(${1.04 + systolicBeat * 0.06})`,
             }}
           />
-          {/* 3D Glass Sphere Highlight Overlay */}
+          {/* Tiny Fig. Stamp in Corner */}
           <div
             style={{
               position: 'absolute',
-              inset: 0,
-              background:
-                'radial-gradient(circle at 30% 25%, rgba(255,255,255,0.35) 0%, transparent 45%, rgba(0,0,0,0.55) 100%)',
+              top: '4px',
+              left: '5px',
+              fontFamily: "'Space Grotesk', monospace",
+              fontSize: '9px',
+              fontWeight: 800,
+              color: '#F4F0EA',
+              opacity: 0.75,
+              letterSpacing: '0.5px',
             }}
-          />
+          >
+            FIG.0{activeWp.step}
+          </div>
         </div>
 
-        {/* Clear, Instant-Understanding Explanation Text */}
+        {/* High-Contrast Print Typography on Warm Cream Paper */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', minWidth: 0 }}>
           <div
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: '12px',
+              fontFamily: "'Space Grotesk', monospace",
+              fontSize: '11px',
               fontWeight: 800,
-              color: accentColor,
-              letterSpacing: '1.2px',
+              color: '#52525b',
+              letterSpacing: '1.4px',
               textTransform: 'uppercase',
+              borderBottom: '1.5px solid #d4d0c8',
+              paddingBottom: '3px',
             }}
           >
-            📍 {activeWp.anchor.label}
+            {activeWp.anchor.label}
           </div>
 
           <div
             style={{
               fontFamily: "'Montserrat', sans-serif",
-              fontSize: '21px',
+              fontSize: '20px',
               fontWeight: 900,
-              color: '#ffffff',
-              lineHeight: 1.18,
+              color: '#111215',
+              lineHeight: 1.15,
+              letterSpacing: '-0.4px',
+              textTransform: 'uppercase',
             }}
           >
             {activeWp.headline}
           </div>
 
+          {/* Vox Marker Highlighter Strip */}
           <div
             style={{
-              marginTop: '2px',
+              marginTop: '3px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
-              backgroundColor: 'rgba(15, 23, 42, 0.95)',
-              padding: '4px 10px',
-              borderRadius: '6px',
-              border: `1px solid ${accentColor}66`,
+              backgroundColor: smoothChaos >= 65 ? '#FF3B30' : '#FFCC00',
+              padding: '3px 9px',
+              borderRadius: '2px',
+              border: '1.5px solid #111215',
               width: 'fit-content',
             }}
           >
-            <span style={{ fontSize: '12px', fontWeight: 800, color: '#fde047' }}>⚡ EFEK:</span>
-            <span style={{ fontSize: '12px', fontWeight: 700, color: '#f8fafc' }}>
-              {activeWp.primaryText}
+            <span
+              style={{
+                fontFamily: "'Space Grotesk', monospace",
+                fontSize: '11px',
+                fontWeight: 900,
+                color: smoothChaos >= 65 ? '#FFFFFF' : '#111215',
+                letterSpacing: '0.6px',
+                textTransform: 'uppercase',
+              }}
+            >
+              DAMPAK: {activeWp.primaryText}
             </span>
           </div>
         </div>
@@ -818,65 +848,67 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           bottom: 0,
           height: '660px',
           background:
-            'linear-gradient(to top, rgba(4, 12, 24, 0.96) 0%, rgba(6, 18, 36, 0.78) 46%, transparent 100%)',
+            'linear-gradient(to top, rgba(9, 10, 12, 0.96) 0%, rgba(14, 15, 18, 0.78) 46%, transparent 100%)',
           pointerEvents: 'none',
           zIndex: 18,
         }}
       />
 
       {/* =====================================================================
-          5. CLEAN TOP-CENTER COMPACT STATUS BAR (Chronological Time + Live EKG + BPM)
-          Replaces the old cluttered multi-box HUD & duplicate mini-map!
+          5. EDITORIAL TOP TIMELINE STRIP (Vox / Documentary Chapter Header)
           ===================================================================== */}
       <div
         style={{
           position: 'absolute',
-          top: '64px',
+          top: '58px',
           left: '48px',
           right: '48px',
           zIndex: 30,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          backgroundColor: 'rgba(7, 18, 36, 0.88)',
-          padding: '12px 22px',
-          borderRadius: '16px',
-          border: '1.5px solid rgba(125, 211, 252, 0.28)',
-          boxShadow: '0 12px 32px rgba(0, 0, 0, 0.55)',
-          backdropFilter: 'blur(14px)',
+          backgroundColor: '#16181D',
+          padding: '12px 20px',
+          borderRadius: '4px',
+          border: '2px solid #F4F0EA',
+          boxShadow: '6px 6px 0px rgba(0, 0, 0, 0.85)',
         }}
       >
-        {/* Left: Chronological Time & Phase */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span
+        {/* Left: Highlighted Time Stamp Tag */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div
             style={{
-              width: '11px',
-              height: '11px',
-              borderRadius: '50%',
-              backgroundColor: accentColor,
-              boxShadow: `0 0 12px ${accentColor}`,
-              transform: `scale(${1 + systolicBeat * 0.45})`,
+              backgroundColor: '#FFCC00',
+              color: '#111215',
+              fontFamily: "'Space Grotesk', monospace",
+              fontSize: '13px',
+              fontWeight: 900,
+              padding: '4px 10px',
+              borderRadius: '2px',
+              letterSpacing: '1px',
             }}
-          />
+          >
+            0{activeWp.step}
+          </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: '11px',
+                fontFamily: "'Space Grotesk', monospace",
+                fontSize: '10px',
                 fontWeight: 700,
-                color: '#94a3b8',
-                letterSpacing: '1.2px',
+                color: '#a1a1aa',
+                letterSpacing: '1.5px',
               }}
             >
-              WAKTU & ORGAN TARGET
+              KRONOLOGI ANATOMI
             </span>
             <span
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: '18px',
-                fontWeight: 800,
-                color: '#ffffff',
-                letterSpacing: '0.8px',
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '17px',
+                fontWeight: 900,
+                color: '#F4F0EA',
+                letterSpacing: '0.4px',
                 textTransform: 'uppercase',
               }}
             >
@@ -885,51 +917,52 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           </div>
         </div>
 
-        {/* Center: Live EKG Waveform */}
-        <svg width="160" height="34" viewBox="0 0 220 40" style={{ overflow: 'visible' }}>
+        {/* Center: Clean Editorial EKG Trace */}
+        <svg width="145" height="32" viewBox="0 0 220 40" style={{ overflow: 'visible' }}>
           <path
             d={ekgPath}
             fill="none"
-            stroke={accentColor}
-            strokeWidth="3"
+            stroke="#FFCC00"
+            strokeWidth="2.8"
             strokeLinecap="round"
             strokeLinejoin="round"
-            style={{ filter: `drop-shadow(0 0 6px ${accentColor})` }}
           />
         </svg>
 
-        {/* Right: BPM & Cell Stress */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+        {/* Right: Monospace Biometric Readout */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-            <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '10px', fontWeight: 700, color: '#94a3b8' }}>
-              DETAK JANTUNG
+            <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '10px', fontWeight: 700, color: '#a1a1aa' }}>
+              DETAK
             </span>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '22px', fontWeight: 800, color: '#ffffff' }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '3px' }}>
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '21px', fontWeight: 900, color: '#F4F0EA' }}>
                 {bpm}
               </span>
-              <span style={{ fontSize: '11px', fontWeight: 700, color: accentColor }}>BPM</span>
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '11px', fontWeight: 800, color: '#FFCC00' }}>
+                BPM
+              </span>
             </div>
           </div>
 
           <div
             style={{
-              borderLeft: '1px solid rgba(148, 163, 184, 0.25)',
-              paddingLeft: '16px',
+              borderLeft: '1.5px solid rgba(244, 240, 234, 0.22)',
+              paddingLeft: '14px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-end',
             }}
           >
-            <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '10px', fontWeight: 700, color: '#94a3b8' }}>
-              STRES SEL
+            <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '10px', fontWeight: 700, color: '#a1a1aa' }}>
+              BEBAN SEL
             </span>
             <span
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
+                fontFamily: "'Space Grotesk', monospace",
                 fontSize: '20px',
-                fontWeight: 800,
-                color: smoothChaos >= 70 ? '#fb7185' : smoothChaos >= 45 ? '#fde047' : '#38bdf8',
+                fontWeight: 900,
+                color: smoothChaos >= 65 ? '#FF3B30' : '#FFCC00',
               }}
             >
               {Math.round(smoothChaos)}%

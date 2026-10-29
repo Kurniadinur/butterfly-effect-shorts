@@ -239,32 +239,45 @@ export const HookScene: React.FC<HookSceneProps> = ({
       style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(circle at 50% 42%, #162d54 0%, #091528 62%, #040a14 100%)',
+        background: 'radial-gradient(circle at 50% 42%, #1a1b1f 0%, #101114 68%, #090a0c 100%)',
         overflow: 'hidden',
         perspective: '1200px',
       }}
     >
-      {/* 1. Holographic 3D Medical Grid Floor */}
+      {/* 1. Editorial Dot-Matrix Texture (Vox / Johnny Harris human-crafted documentary look) */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: `
-            linear-gradient(to right, rgba(125, 211, 252, 0.07) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(125, 211, 252, 0.07) 1px, transparent 1px)
-          `,
-          backgroundSize: '56px 56px',
+          backgroundImage: 'radial-gradient(rgba(244, 240, 234, 0.08) 1.5px, transparent 1.5px)',
+          backgroundSize: '36px 36px',
           pointerEvents: 'none',
         }}
       />
 
+      {/* Minimalist Architectural Corner Registration Marks */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '36px',
+          left: '36px',
+          right: '36px',
+          bottom: '36px',
+          pointerEvents: 'none',
+          zIndex: 15,
+        }}
+      >
+        <div style={{ position: 'absolute', top: 0, left: 0, width: 16, height: 16, borderTop: '2px solid rgba(244,240,234,0.28)', borderLeft: '2px solid rgba(244,240,234,0.28)' }} />
+        <div style={{ position: 'absolute', top: 0, right: 0, width: 16, height: 16, borderTop: '2px solid rgba(244,240,234,0.28)', borderRight: '2px solid rgba(244,240,234,0.28)' }} />
+      </div>
+
       {/* =====================================================================
-          2. TOP QUESTION HOOK BANNER (Clean & Punchy)
+          2. TOP EDITORIAL QUESTION HOOK BANNER (Vox Highlighter + Print Typography)
           ===================================================================== */}
       <div
         style={{
           position: 'absolute',
-          top: '68px',
+          top: '64px',
           left: '48px',
           right: '48px',
           zIndex: 35,
@@ -272,40 +285,40 @@ export const HookScene: React.FC<HookSceneProps> = ({
           opacity: introSpring,
         }}
       >
+        {/* Solid Vox Yellow Marker Tag */}
         <div
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '10px',
-            padding: '6px 16px',
-            backgroundColor: 'rgba(7, 15, 30, 0.9)',
-            border: `1.5px solid ${stressColor}`,
-            borderRadius: '999px',
+            padding: '5px 14px',
+            backgroundColor: '#FFCC00',
+            border: '2px solid #111215',
+            borderRadius: '3px',
             marginBottom: '14px',
-            boxShadow: `0 0 18px ${stressColor}44`,
+            boxShadow: '4px 4px 0px #111215',
           }}
         >
           <span
             style={{
-              width: '9px',
-              height: '9px',
+              width: '8px',
+              height: '8px',
               borderRadius: '50%',
-              backgroundColor: stressColor,
-              boxShadow: `0 0 10px ${stressColor}`,
-              transform: `scale(${1 + systolicBeat * 0.45})`,
+              backgroundColor: '#111215',
+              transform: `scale(${1 + systolicBeat * 0.35})`,
             }}
           />
           <span
             style={{
-              color: '#f8fafc',
+              color: '#111215',
               fontSize: '13px',
-              fontWeight: 800,
-              fontFamily: "'Space Grotesk', sans-serif",
-              letterSpacing: '1.8px',
+              fontWeight: 900,
+              fontFamily: "'Space Grotesk', monospace",
+              letterSpacing: '1.6px',
               textTransform: 'uppercase',
             }}
           >
-            {kicker} • DETAK {dynamicBpm} BPM
+            {kicker} • {dynamicBpm} BPM
           </span>
         </div>
 
@@ -313,13 +326,13 @@ export const HookScene: React.FC<HookSceneProps> = ({
           style={{
             fontSize: headline.length > 42 ? '38px' : '44px',
             fontWeight: 900,
-            color: '#ffffff',
+            color: '#F4F0EA',
             lineHeight: 1.15,
             letterSpacing: '-0.8px',
             fontFamily: "'Montserrat', sans-serif",
             textTransform: 'uppercase',
             margin: 0,
-            textShadow: '0 6px 24px rgba(0, 0, 0, 0.95)',
+            textShadow: '0 4px 18px rgba(0, 0, 0, 0.85)',
           }}
         >
           {headline}
@@ -329,7 +342,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
       {/* =====================================================================
           3. CENTER STAGE: 3D HUMAN ANATOMY RECEIVING RAPID-FIRE MULTIPLIER IMPACT
           Left Side: 3D Translucent Human Body + Target Organ Glowing & Reacting
-          Right Side: Escalating Multiplier Counter (×1, ×2, ×3 ... ×30) + 30-Day Grid
+          Right Side: Editorial Cream Paper Dossier (×1, ×2, ×3 ... ×30)
           ===================================================================== */}
       <div
         style={{
@@ -357,14 +370,14 @@ export const HookScene: React.FC<HookSceneProps> = ({
             transform: `scale(${0.96 + curvedProgress * 0.06 + systolicBeat * 0.015})`,
           }}
         >
-          {/* Glowing Warning Aura Behind 3D Body */}
+          {/* Subtle Studio Spotlight Behind 3D Body */}
           <div
             style={{
               position: 'absolute',
-              width: '380px',
-              height: '580px',
+              width: '360px',
+              height: '560px',
               borderRadius: '50%',
-              background: `radial-gradient(circle, ${stressColor}38 0%, transparent 70%)`,
+              background: 'radial-gradient(circle, rgba(244, 240, 234, 0.1) 0%, transparent 70%)',
               filter: 'blur(20px)',
             }}
           />
@@ -398,7 +411,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              filter: `drop-shadow(0 0 ${10 + curvedProgress * 22}px ${stressColor}) drop-shadow(0 0 8px #fde047) saturate(${1.1 + curvedProgress * 0.45})`,
+              filter: `drop-shadow(0 0 ${10 + curvedProgress * 22}px #FFCC00) saturate(${1.1 + curvedProgress * 0.45})`,
             }}
           >
             <Img
@@ -423,8 +436,6 @@ export const HookScene: React.FC<HookSceneProps> = ({
                 ? 305
                 : 405;
 
-            // Phase 1 (0..0.6): Flies from Right Counter Card into the 3D Character's Mouth!
-            // Phase 2 (0.6..1.0): Travels down the throat/esophagus into the glowing target organ!
             const curX =
               cycle < 0.6
                 ? interpolate(cycle, [0, 0.6], [450, mouthX])
@@ -450,7 +461,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
                   fontSize: '38px',
                   transform: `translate(-50%, -50%) scale(${itemScale}) rotate(${cycle < 0.6 ? cycle * 180 : 0}deg)`,
                   opacity: itemOpacity,
-                  filter: `drop-shadow(0 0 12px ${stressColor})`,
+                  filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.65))',
                   pointerEvents: 'none',
                 }}
               >
@@ -459,38 +470,38 @@ export const HookScene: React.FC<HookSceneProps> = ({
             );
           })}
 
-          {/* Organ Impact Status Pill under the 3D Body */}
+          {/* Editorial Label Strip under the 3D Body (Cream Paper + Hard Shadow) */}
           <div
             style={{
               position: 'absolute',
               bottom: '32px',
               left: '24px',
               right: '24px',
-              backgroundColor: 'rgba(7, 16, 32, 0.92)',
-              border: `1.5px solid ${stressColor}`,
-              borderRadius: '14px',
+              backgroundColor: '#F4F0EA',
+              border: '2.5px solid #111215',
+              borderRadius: '4px',
               padding: '10px 14px',
               textAlign: 'center',
-              boxShadow: `0 10px 28px rgba(0,0,0,0.75), 0 0 18px ${stressColor}33`,
+              boxShadow: '7px 7px 0px #111215',
             }}
           >
             <div
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
+                fontFamily: "'Space Grotesk', monospace",
                 fontSize: '11px',
-                fontWeight: 800,
-                color: stressColor,
+                fontWeight: 900,
+                color: '#FF3B30',
                 letterSpacing: '1.2px',
               }}
             >
-              🎯 TARGET UTAMA: {scenario.targetOrganName}
+              TARGET UTAMA: {scenario.targetOrganName}
             </div>
             <div
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: '14px',
+                fontSize: '13px',
                 fontWeight: 900,
-                color: '#ffffff',
+                color: '#111215',
                 marginTop: '3px',
               }}
             >
@@ -499,38 +510,36 @@ export const HookScene: React.FC<HookSceneProps> = ({
           </div>
         </div>
 
-        {/* RIGHT COLUMN: ESCALATING ×1, ×2, ×3 ... ×30 MULTIPLIER CASCADE CARD */}
+        {/* RIGHT COLUMN: EDITORIAL PRINT DOSSIER CARD (×1, ×2, ×3 ... ×30) */}
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '16px',
-            backgroundColor: 'rgba(8, 18, 36, 0.9)',
-            border: `2px solid ${stressColor}`,
-            borderRadius: '24px',
-            padding: '22px 20px',
-            boxShadow: `0 24px 60px rgba(0,0,0,0.85), 0 0 32px ${stressColor}33`,
-            backdropFilter: 'blur(16px)',
+            backgroundColor: '#F4F0EA',
+            border: '3px solid #111215',
+            borderRadius: '6px',
+            padding: '20px 18px',
+            boxShadow: '12px 12px 0px #111215, 0 24px 50px rgba(0,0,0,0.65)',
           }}
         >
-          {/* Giant Multiplier Badge: Emoji + ×1 -> ×30 */}
+          {/* Giant Multiplier Header: Dark Charcoal Block on Cream Paper */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              backgroundColor: 'rgba(15, 23, 42, 0.95)',
+              backgroundColor: '#16181D',
               padding: '16px 18px',
-              borderRadius: '18px',
-              border: `1.5px solid ${stressColor}66`,
+              borderRadius: '4px',
+              border: '2px solid #111215',
             }}
           >
             <div
               style={{
-                fontSize: '68px',
+                fontSize: '64px',
                 lineHeight: 1,
-                transform: `scale(${1 + Math.sin(frame * 0.35) * 0.14}) rotate(${Math.sin(frame * 0.25) * 8}deg)`,
-                filter: `drop-shadow(0 0 18px ${stressColor})`,
+                transform: `scale(${1 + Math.sin(frame * 0.35) * 0.12}) rotate(${Math.sin(frame * 0.25) * 6}deg)`,
               }}
             >
               {scenario.emoji}
@@ -539,11 +548,11 @@ export const HookScene: React.FC<HookSceneProps> = ({
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
               <span
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: '12px',
+                  fontFamily: "'Space Grotesk', monospace",
+                  fontSize: '11px',
                   fontWeight: 800,
-                  color: '#94a3b8',
-                  letterSpacing: '1.4px',
+                  color: '#a1a1aa',
+                  letterSpacing: '1.5px',
                 }}
               >
                 AKUMULASI EKSPERIMEN
@@ -553,20 +562,19 @@ export const HookScene: React.FC<HookSceneProps> = ({
                   fontFamily: "'Montserrat', sans-serif",
                   fontSize: '64px',
                   fontWeight: 900,
-                  color: stressColor,
+                  color: curvedProgress >= 0.72 ? '#FF3B30' : '#FFCC00',
                   lineHeight: 1.0,
-                  textShadow: `0 0 24px ${stressColor}88`,
-                  transform: `scale(${1 + (frame % 6 === 0 && rawProgress < 1 ? 0.08 : 0)})`,
+                  transform: `scale(${1 + (frame % 6 === 0 && rawProgress < 1 ? 0.07 : 0)})`,
                 }}
               >
                 ×{currentCount}
               </div>
               <span
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: '13px',
-                  fontWeight: 800,
-                  color: '#fef08a',
+                  fontFamily: "'Space Grotesk', monospace",
+                  fontSize: '12px',
+                  fontWeight: 900,
+                  color: '#F4F0EA',
                   letterSpacing: '1px',
                   marginTop: '4px',
                 }}
@@ -576,7 +584,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
             </div>
           </div>
 
-          {/* 30-Slot Visual Multiplier Grid (Populates 1, 2, 3 ... 30 rapidly!) */}
+          {/* 30-Slot Editorial Stamp Grid (Populates #1, #2, #3 ... #30 rapidly!) */}
           <div>
             <div
               style={{
@@ -584,25 +592,30 @@ export const HookScene: React.FC<HookSceneProps> = ({
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 marginBottom: '10px',
+                borderBottom: '2px solid #111215',
+                paddingBottom: '6px',
               }}
             >
               <span
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontFamily: "'Space Grotesk', monospace",
                   fontSize: '12px',
-                  fontWeight: 800,
-                  color: '#cbd5e1',
+                  fontWeight: 900,
+                  color: '#111215',
                   letterSpacing: '1px',
                 }}
               >
-                SIMULASI {scenario.itemLabel}
+                LOG {scenario.itemLabel}
               </span>
               <span
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontFamily: "'Space Grotesk', monospace",
                   fontSize: '13px',
                   fontWeight: 900,
-                  color: stressColor,
+                  color: '#FFFFFF',
+                  backgroundColor: '#111215',
+                  padding: '2px 8px',
+                  borderRadius: '2px',
                 }}
               >
                 {currentCount} / {scenario.targetCount}
@@ -613,7 +626,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(6, 1fr)',
-                gap: '8px',
+                gap: '7px',
               }}
             >
               {Array.from({ length: totalGridSlots }).map((_, idx) => {
@@ -623,32 +636,30 @@ export const HookScene: React.FC<HookSceneProps> = ({
                   <div
                     key={idx}
                     style={{
-                      height: '58px',
-                      borderRadius: '10px',
+                      height: '56px',
+                      borderRadius: '3px',
                       backgroundColor: isLit
                         ? isNewest
-                          ? `${stressColor}44`
-                          : 'rgba(30, 41, 59, 0.92)'
-                        : 'rgba(15, 23, 42, 0.45)',
-                      border: isLit
-                        ? `1.5px solid ${isNewest ? '#fde047' : stressColor}`
-                        : '1px solid rgba(148, 163, 184, 0.16)',
+                          ? '#FFCC00'
+                          : '#16181D'
+                        : '#E5E0D5',
+                      border: '2px solid #111215',
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      transform: isNewest ? 'scale(1.12)' : isLit ? 'scale(1)' : 'scale(0.92)',
-                      opacity: isLit ? 1 : 0.3,
-                      boxShadow: isNewest ? `0 0 14px ${stressColor}` : 'none',
+                      transform: isNewest ? 'scale(1.08)' : 'scale(1)',
+                      opacity: isLit ? 1 : 0.45,
+                      boxShadow: isNewest ? '3px 3px 0px #111215' : 'none',
                     }}
                   >
-                    <span style={{ fontSize: '24px', lineHeight: 1 }}>{scenario.emoji}</span>
+                    <span style={{ fontSize: '22px', lineHeight: 1 }}>{scenario.emoji}</span>
                     <span
                       style={{
-                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontFamily: "'Space Grotesk', monospace",
                         fontSize: '10px',
-                        fontWeight: 800,
-                        color: isLit ? '#ffffff' : '#64748b',
+                        fontWeight: 900,
+                        color: isLit ? (isNewest ? '#111215' : '#F4F0EA') : '#71717a',
                         marginTop: '2px',
                       }}
                     >
@@ -660,34 +671,35 @@ export const HookScene: React.FC<HookSceneProps> = ({
             </div>
           </div>
 
-          {/* Escalating Toxicity / Biological Overload Bar */}
+          {/* Escalating Biological Overload Bar (Editorial Print Meter) */}
           <div
             style={{
-              backgroundColor: 'rgba(15, 23, 42, 0.9)',
-              borderRadius: '14px',
-              padding: '12px 14px',
-              border: '1px solid rgba(148, 163, 184, 0.2)',
+              backgroundColor: '#E5E0D5',
+              borderRadius: '4px',
+              padding: '10px 12px',
+              border: '2px solid #111215',
             }}
           >
             <div
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                fontFamily: "'Space Grotesk', sans-serif",
+                fontFamily: "'Space Grotesk', monospace",
                 fontSize: '12px',
-                fontWeight: 800,
-                marginBottom: '8px',
+                fontWeight: 900,
+                marginBottom: '6px',
               }}
             >
-              <span style={{ color: '#fde047' }}>⚠️ BEBAN KERJA ORGAN</span>
-              <span style={{ color: stressColor }}>{Math.round(15 + curvedProgress * 82)}% KRITIS</span>
+              <span style={{ color: '#111215' }}>BEBAN KERJA ORGAN</span>
+              <span style={{ color: '#FF3B30' }}>{Math.round(15 + curvedProgress * 82)}% KRITIS</span>
             </div>
             <div
               style={{
                 width: '100%',
-                height: '12px',
-                backgroundColor: 'rgba(2, 6, 23, 0.9)',
-                borderRadius: '999px',
+                height: '14px',
+                backgroundColor: '#16181D',
+                borderRadius: '2px',
+                border: '1.5px solid #111215',
                 overflow: 'hidden',
               }}
             >
@@ -695,9 +707,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
                 style={{
                   width: `${Math.round(15 + curvedProgress * 82)}%`,
                   height: '100%',
-                  background: 'linear-gradient(90deg, #38bdf8 0%, #fbbf24 55%, #f43f5e 100%)',
-                  boxShadow: `0 0 12px ${stressColor}`,
-                  borderRadius: '999px',
+                  background: curvedProgress >= 0.7 ? '#FF3B30' : '#FFCC00',
                 }}
               />
             </div>
@@ -716,7 +726,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
           bottom: 0,
           height: '660px',
           background:
-            'linear-gradient(to top, rgba(4, 12, 24, 0.96) 0%, rgba(6, 18, 36, 0.76) 46%, transparent 100%)',
+            'linear-gradient(to top, rgba(9, 10, 12, 0.96) 0%, rgba(14, 15, 18, 0.76) 46%, transparent 100%)',
           pointerEvents: 'none',
           zIndex: 18,
         }}
