@@ -13,6 +13,50 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "kopi-perut-kosong-mvu5mpm1",
+      "title": "APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "Pernahkah kamu membayangkan, apa yang sebenarnya terjadi di dalam tubuhmu ketika setiap pagi kamu menyeruput kopi saat perutmu kosong? Kamu mungkin merasa segar, tapi di dalam tubuhmu, organ-organmu sedang bereaksi keras. Mari kita lihat detik demi detik!",
+      "scenes": [
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "minum-kopi-perut-kosong-dampak-orga-mvu5io6r",
+      "title": "APA JADINYA KALAU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "Pernahkah kamu bertanya-tanya, apa yang sebenarnya terjadi di dalam lambungmu saat tegukan pertama kopi menyentuh dinding perut yang kosong? Kamu mungkin merasa langsung segar, tapi di balik itu, tubuhmu sedang merespons sebuah kejutan mendadak. Mari kita bedah apa yang terjadi di dalam tubuhmu!",
+      "scenes": [
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "action-tracker",
+        "action-tracker",
+        "laboratory-discovery",
+        "action-tracker",
+        "laboratory-discovery",
+        "action-tracker",
+        "laboratory-discovery",
+        "action-tracker",
+        "action-tracker",
+        "laboratory-discovery",
+        "laboratory-discovery"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "mie-instan-setiap-hari-mvt8kken",
       "title": "MIKROPLASTIK DI DARAHMU",
       "hookStyle": "fullscreen-dramatic",
@@ -104,62 +148,6 @@
         "Palu dan Pahat Menghantam Tembok"
       ],
       "why_successful": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
-    },
-    {
-      "id": "berlin-wall-fall-memo-1989-refined-mvouotah",
-      "title": "MEMO SALAH, TEBOK RUNTUH",
-      "hookStyle": "fullscreen-dramatic",
-      "hookNarration": "Günter Schabowski memegang selembar kertas. Satu kata yang salah diucapkan, 'SOFORT', meruntuhkan tembok 155 kilometer dalam hitungan jam.",
-      "scenes": [
-        "documentary-wide",
-        "bureaucracy-meet",
-        "document-closeup",
-        "courier-delivery",
-        "document-closeup",
-        "character-intro",
-        "tv-broadcast",
-        "press-conference",
-        "journalist-question",
-        "journalist-question",
-        "memo-misread",
-        "fatal-utterance",
-        "journalist-question",
-        "news-broadcast",
-        "crowd-movement",
-        "border-crowd",
-        "guard-confusion",
-        "checkpoint-night",
-        "commander-decision",
-        "border-opening",
-        "wall-climbing"
-      ],
-      "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
-    },
-    {
-      "id": "butterfly-effect-berlin-wall-1989-mvoqz1ov",
-      "title": "SATU SALAH BACA, TEMBOK DUNIA RUNTUH",
-      "hookStyle": "fullscreen-dramatic",
-      "hookNarration": "9 November 1989. Seorang pejabat tinggi Jerman Timur salah membaca secarik catatan di siaran langsung televisi... dan malam itu juga, negara adidaya tamat.",
-      "scenes": [
-        "bureaucracy-draft",
-        "memo-investigation",
-        "document-close",
-        "press-question",
-        "press-podium",
-        "tv-broadcast",
-        "breaking-news",
-        "car-convoy",
-        "crowd-protest",
-        "panic-phone",
-        "crowd-pressure",
-        "guard-meeting",
-        "gate-breach",
-        "emotional-reunion",
-        "wall-demolition",
-        "sunrise-wall",
-        "soviet-collapse"
-      ],
-      "why_successful": "Tersertifikasi AI Editor dengan skor 92/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ],
   "blacklisted_patterns": [
@@ -256,6 +244,20 @@
       "id": "mie-instan-setiap-hari-mvt8kken",
       "timestamp": "2026-10-29T07:44:37.149Z",
       "title": "MIKROPLASTIK DI DARAHMU",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "minum-kopi-perut-kosong-dampak-orga-mvu5io6r",
+      "timestamp": "2026-10-29T23:06:34.233Z",
+      "title": "APA JADINYA KALAU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "kopi-perut-kosong-mvu5mpm1",
+      "timestamp": "2026-10-29T23:09:37.407Z",
+      "title": "APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }

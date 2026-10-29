@@ -1,0 +1,2670 @@
+{
+  "model": "whisper-large-v3",
+  "engine": "Groq Cloud LPU",
+  "totalDurationSec": 95.84,
+  "allWords": [
+    {
+      "word": "Pernahkah",
+      "start": 0,
+      "end": 0.46
+    },
+    {
+      "word": "kamu",
+      "start": 0.46,
+      "end": 0.72
+    },
+    {
+      "word": "bertanya-tanya,",
+      "start": 0.72,
+      "end": 2.2
+    },
+    {
+      "word": "apa",
+      "start": 2.2,
+      "end": 2.22
+    },
+    {
+      "word": "yang",
+      "start": 2.22,
+      "end": 2.44
+    },
+    {
+      "word": "sebenarnya",
+      "start": 2.44,
+      "end": 2.96
+    },
+    {
+      "word": "terjadi",
+      "start": 2.96,
+      "end": 3.52
+    },
+    {
+      "word": "di",
+      "start": 3.52,
+      "end": 3.66
+    },
+    {
+      "word": "dalam",
+      "start": 3.66,
+      "end": 3.92
+    },
+    {
+      "word": "lambungmu",
+      "start": 3.92,
+      "end": 4.34
+    },
+    {
+      "word": "saat",
+      "start": 4.34,
+      "end": 4.62
+    },
+    {
+      "word": "tegukan",
+      "start": 4.62,
+      "end": 4.98
+    },
+    {
+      "word": "pertama",
+      "start": 4.98,
+      "end": 5.4
+    },
+    {
+      "word": "kopi",
+      "start": 5.4,
+      "end": 5.7
+    },
+    {
+      "word": "menyentuh",
+      "start": 5.7,
+      "end": 6.1
+    },
+    {
+      "word": "dinding",
+      "start": 6.1,
+      "end": 6.4
+    },
+    {
+      "word": "perut",
+      "start": 6.4,
+      "end": 6.7
+    },
+    {
+      "word": "yang",
+      "start": 6.7,
+      "end": 6.84
+    },
+    {
+      "word": "kosong?",
+      "start": 6.84,
+      "end": 7.6
+    },
+    {
+      "word": "Kamu",
+      "start": 7.76,
+      "end": 7.94
+    },
+    {
+      "word": "mungkin",
+      "start": 7.94,
+      "end": 8.22
+    },
+    {
+      "word": "merasa",
+      "start": 8.22,
+      "end": 8.6
+    },
+    {
+      "word": "langsung",
+      "start": 8.6,
+      "end": 8.9
+    },
+    {
+      "word": "segar,",
+      "start": 8.9,
+      "end": 9.74
+    },
+    {
+      "word": "tapi",
+      "start": 9.74,
+      "end": 9.9
+    },
+    {
+      "word": "di",
+      "start": 9.9,
+      "end": 10.14
+    },
+    {
+      "word": "balik",
+      "start": 10.14,
+      "end": 10.28
+    },
+    {
+      "word": "itu,",
+      "start": 10.28,
+      "end": 11.04
+    },
+    {
+      "word": "tubuhmu",
+      "start": 11.04,
+      "end": 11.32
+    },
+    {
+      "word": "sedang",
+      "start": 11.32,
+      "end": 11.62
+    },
+    {
+      "word": "merespon",
+      "start": 11.62,
+      "end": 11.98
+    },
+    {
+      "word": "sebuah",
+      "start": 11.98,
+      "end": 12.32
+    },
+    {
+      "word": "kejutan",
+      "start": 12.32,
+      "end": 12.66
+    },
+    {
+      "word": "mendadak.",
+      "start": 12.66,
+      "end": 13.08
+    },
+    {
+      "word": "Mari",
+      "start": 13.56,
+      "end": 13.7
+    },
+    {
+      "word": "kita",
+      "start": 13.7,
+      "end": 13.98
+    },
+    {
+      "word": "bedah",
+      "start": 13.98,
+      "end": 14.22
+    },
+    {
+      "word": "apa",
+      "start": 14.22,
+      "end": 14.44
+    },
+    {
+      "word": "yang",
+      "start": 14.44,
+      "end": 14.54
+    },
+    {
+      "word": "terjadi",
+      "start": 14.54,
+      "end": 15
+    },
+    {
+      "word": "di",
+      "start": 15,
+      "end": 15.22
+    },
+    {
+      "word": "dalam",
+      "start": 15.22,
+      "end": 15.38
+    },
+    {
+      "word": "tubuhmu.",
+      "start": 15.38,
+      "end": 15.78
+    },
+    {
+      "word": "Tegukan",
+      "start": 16.16,
+      "end": 16.4
+    },
+    {
+      "word": "pertama",
+      "start": 16.4,
+      "end": 16.78
+    },
+    {
+      "word": "langsung",
+      "start": 16.78,
+      "end": 17.22
+    },
+    {
+      "word": "memicu",
+      "start": 17.22,
+      "end": 17.58
+    },
+    {
+      "word": "reseptor",
+      "start": 17.58,
+      "end": 18.08
+    },
+    {
+      "word": "rasa",
+      "start": 18.08,
+      "end": 18.32
+    },
+    {
+      "word": "pahit",
+      "start": 18.32,
+      "end": 18.5
+    },
+    {
+      "word": "di",
+      "start": 18.5,
+      "end": 18.66
+    },
+    {
+      "word": "lidah,",
+      "start": 18.66,
+      "end": 19.26
+    },
+    {
+      "word": "mengirim",
+      "start": 19.26,
+      "end": 19.56
+    },
+    {
+      "word": "sinyal",
+      "start": 19.56,
+      "end": 19.84
+    },
+    {
+      "word": "cepat",
+      "start": 19.84,
+      "end": 20.18
+    },
+    {
+      "word": "ke",
+      "start": 20.18,
+      "end": 20.34
+    },
+    {
+      "word": "sistem",
+      "start": 20.34,
+      "end": 20.62
+    },
+    {
+      "word": "saraf",
+      "start": 20.62,
+      "end": 20.9
+    },
+    {
+      "word": "pusat.",
+      "start": 20.9,
+      "end": 21.7
+    },
+    {
+      "word": "Tanpa",
+      "start": 21.6,
+      "end": 21.76
+    },
+    {
+      "word": "ada",
+      "start": 21.76,
+      "end": 22
+    },
+    {
+      "word": "makanan",
+      "start": 22,
+      "end": 22.34
+    },
+    {
+      "word": "yang",
+      "start": 22.34,
+      "end": 22.54
+    },
+    {
+      "word": "masuk",
+      "start": 22.54,
+      "end": 22.84
+    },
+    {
+      "word": "sebagai",
+      "start": 22.84,
+      "end": 23.16
+    },
+    {
+      "word": "pelindung,",
+      "start": 23.16,
+      "end": 24.06
+    },
+    {
+      "word": "kafein",
+      "start": 24.06,
+      "end": 24.4
+    },
+    {
+      "word": "langsung",
+      "start": 24.4,
+      "end": 24.78
+    },
+    {
+      "word": "memicu",
+      "start": 24.78,
+      "end": 25.18
+    },
+    {
+      "word": "kelenjar",
+      "start": 25.18,
+      "end": 25.52
+    },
+    {
+      "word": "lambung",
+      "start": 25.52,
+      "end": 25.78
+    },
+    {
+      "word": "memproduksi",
+      "start": 25.78,
+      "end": 26.38
+    },
+    {
+      "word": "asam",
+      "start": 26.38,
+      "end": 26.68
+    },
+    {
+      "word": "berlebih.",
+      "start": 26.68,
+      "end": 27.58
+    },
+    {
+      "word": "Konsentrasi",
+      "start": 27.48,
+      "end": 28.04
+    },
+    {
+      "word": "asam",
+      "start": 28.04,
+      "end": 28.32
+    },
+    {
+      "word": "klorida",
+      "start": 28.32,
+      "end": 28.68
+    },
+    {
+      "word": "yang",
+      "start": 28.68,
+      "end": 28.88
+    },
+    {
+      "word": "tinggi",
+      "start": 28.88,
+      "end": 29.18
+    },
+    {
+      "word": "mulai",
+      "start": 29.18,
+      "end": 29.54
+    },
+    {
+      "word": "mengiritasi",
+      "start": 29.54,
+      "end": 30.08
+    },
+    {
+      "word": "lapisan",
+      "start": 30.08,
+      "end": 30.46
+    },
+    {
+      "word": "mukosa",
+      "start": 30.46,
+      "end": 30.8
+    },
+    {
+      "word": "lambung",
+      "start": 30.8,
+      "end": 31.1
+    },
+    {
+      "word": "yang",
+      "start": 31.1,
+      "end": 31.28
+    },
+    {
+      "word": "sedang",
+      "start": 31.28,
+      "end": 31.52
+    },
+    {
+      "word": "kosong.",
+      "start": 31.52,
+      "end": 32.2
+    },
+    {
+      "word": "Kafein",
+      "start": 32.34,
+      "end": 32.54
+    },
+    {
+      "word": "merangsang",
+      "start": 32.54,
+      "end": 33.08
+    },
+    {
+      "word": "kontraksi",
+      "start": 33.08,
+      "end": 33.52
+    },
+    {
+      "word": "usus",
+      "start": 33.52,
+      "end": 33.72
+    },
+    {
+      "word": "secara",
+      "start": 33.72,
+      "end": 34.02
+    },
+    {
+      "word": "instan,",
+      "start": 34.02,
+      "end": 34.76
+    },
+    {
+      "word": "membuat",
+      "start": 34.78,
+      "end": 34.98
+    },
+    {
+      "word": "saluran",
+      "start": 34.98,
+      "end": 35.36
+    },
+    {
+      "word": "pencernaan",
+      "start": 35.36,
+      "end": 35.86
+    },
+    {
+      "word": "bergerak",
+      "start": 35.86,
+      "end": 36.28
+    },
+    {
+      "word": "terlalu",
+      "start": 36.28,
+      "end": 36.62
+    },
+    {
+      "word": "cepat",
+      "start": 36.62,
+      "end": 36.92
+    },
+    {
+      "word": "dan",
+      "start": 36.92,
+      "end": 37.08
+    },
+    {
+      "word": "tidak",
+      "start": 37.08,
+      "end": 37.34
+    },
+    {
+      "word": "beraturan.",
+      "start": 37.34,
+      "end": 38.3
+    },
+    {
+      "word": "Peristaltik",
+      "start": 38.22,
+      "end": 38.7
+    },
+    {
+      "word": "yang",
+      "start": 38.7,
+      "end": 38.82
+    },
+    {
+      "word": "terlalu",
+      "start": 38.82,
+      "end": 39.12
+    },
+    {
+      "word": "cepat",
+      "start": 39.12,
+      "end": 39.44
+    },
+    {
+      "word": "membuat",
+      "start": 39.44,
+      "end": 39.74
+    },
+    {
+      "word": "usus",
+      "start": 39.74,
+      "end": 40.1
+    },
+    {
+      "word": "halus",
+      "start": 40.1,
+      "end": 40.4
+    },
+    {
+      "word": "gagal",
+      "start": 40.4,
+      "end": 40.84
+    },
+    {
+      "word": "menyerap",
+      "start": 40.84,
+      "end": 41.18
+    },
+    {
+      "word": "elektrolit",
+      "start": 41.18,
+      "end": 41.72
+    },
+    {
+      "word": "dan",
+      "start": 41.72,
+      "end": 41.88
+    },
+    {
+      "word": "air",
+      "start": 41.88,
+      "end": 42.14
+    },
+    {
+      "word": "secara",
+      "start": 42.14,
+      "end": 42.46
+    },
+    {
+      "word": "optimal.",
+      "start": 42.46,
+      "end": 43.32
+    },
+    {
+      "word": "Karena",
+      "start": 43.3,
+      "end": 43.5
+    },
+    {
+      "word": "tidak",
+      "start": 43.5,
+      "end": 43.8
+    },
+    {
+      "word": "ada",
+      "start": 43.8,
+      "end": 44.04
+    },
+    {
+      "word": "makanan",
+      "start": 44.04,
+      "end": 44.44
+    },
+    {
+      "word": "yang",
+      "start": 44.44,
+      "end": 44.64
+    },
+    {
+      "word": "memperlambat",
+      "start": 44.64,
+      "end": 45.12
+    },
+    {
+      "word": "penyerapan,",
+      "start": 45.12,
+      "end": 46
+    },
+    {
+      "word": "molekul",
+      "start": 46.14,
+      "end": 46.36
+    },
+    {
+      "word": "kafein",
+      "start": 46.36,
+      "end": 46.72
+    },
+    {
+      "word": "langsung",
+      "start": 46.72,
+      "end": 47.08
+    },
+    {
+      "word": "merasuk",
+      "start": 47.08,
+      "end": 47.4
+    },
+    {
+      "word": "cepat",
+      "start": 47.4,
+      "end": 47.76
+    },
+    {
+      "word": "ke",
+      "start": 47.76,
+      "end": 47.96
+    },
+    {
+      "word": "aliran",
+      "start": 47.96,
+      "end": 48.22
+    },
+    {
+      "word": "darah.",
+      "start": 48.22,
+      "end": 49.02
+    },
+    {
+      "word": "Kafein",
+      "start": 48.92,
+      "end": 49.2
+    },
+    {
+      "word": "meniru",
+      "start": 49.2,
+      "end": 49.56
+    },
+    {
+      "word": "struktur",
+      "start": 49.56,
+      "end": 49.88
+    },
+    {
+      "word": "adenosin,",
+      "start": 49.88,
+      "end": 50.78
+    },
+    {
+      "word": "mengikat",
+      "start": 50.78,
+      "end": 51.06
+    },
+    {
+      "word": "reseptornya",
+      "start": 51.06,
+      "end": 51.6
+    },
+    {
+      "word": "di",
+      "start": 51.6,
+      "end": 51.76
+    },
+    {
+      "word": "otak",
+      "start": 51.76,
+      "end": 51.98
+    },
+    {
+      "word": "untuk",
+      "start": 51.98,
+      "end": 52.28
+    },
+    {
+      "word": "menghentikan",
+      "start": 52.28,
+      "end": 52.76
+    },
+    {
+      "word": "rasa",
+      "start": 52.76,
+      "end": 53.1
+    },
+    {
+      "word": "mengantuk",
+      "start": 53.1,
+      "end": 53.54
+    },
+    {
+      "word": "secara",
+      "start": 53.54,
+      "end": 53.84
+    },
+    {
+      "word": "paksa.",
+      "start": 53.84,
+      "end": 54.7
+    },
+    {
+      "word": "Otak",
+      "start": 54.24,
+      "end": 54.76
+    },
+    {
+      "word": "memicu",
+      "start": 54.76,
+      "end": 55.1
+    },
+    {
+      "word": "kelenjar",
+      "start": 55.1,
+      "end": 55.46
+    },
+    {
+      "word": "adrenal",
+      "start": 55.46,
+      "end": 55.88
+    },
+    {
+      "word": "memproduksi",
+      "start": 55.88,
+      "end": 56.44
+    },
+    {
+      "word": "kortisol",
+      "start": 56.44,
+      "end": 56.9
+    },
+    {
+      "word": "dan",
+      "start": 56.9,
+      "end": 57.16
+    },
+    {
+      "word": "adrenalin,",
+      "start": 57.16,
+      "end": 58.08
+    },
+    {
+      "word": "menciptakan",
+      "start": 58.08,
+      "end": 58.48
+    },
+    {
+      "word": "sensasi",
+      "start": 58.48,
+      "end": 58.88
+    },
+    {
+      "word": "siaga",
+      "start": 58.88,
+      "end": 59.24
+    },
+    {
+      "word": "palsu",
+      "start": 59.24,
+      "end": 59.64
+    },
+    {
+      "word": "atau",
+      "start": 59.64,
+      "end": 59.92
+    },
+    {
+      "word": "fight",
+      "start": 59.92,
+      "end": 60.18
+    },
+    {
+      "word": "or",
+      "start": 60.18,
+      "end": 60.34
+    },
+    {
+      "word": "flight.",
+      "start": 60.34,
+      "end": 60.92
+    },
+    {
+      "word": "Hati",
+      "start": 60.98,
+      "end": 61.18
+    },
+    {
+      "word": "harus",
+      "start": 61.18,
+      "end": 61.5
+    },
+    {
+      "word": "langsung",
+      "start": 61.5,
+      "end": 61.76
+    },
+    {
+      "word": "bekerja",
+      "start": 61.76,
+      "end": 62.18
+    },
+    {
+      "word": "memproses",
+      "start": 62.18,
+      "end": 62.62
+    },
+    {
+      "word": "kafein",
+      "start": 62.62,
+      "end": 63.04
+    },
+    {
+      "word": "dosis",
+      "start": 63.04,
+      "end": 63.3
+    },
+    {
+      "word": "tinggi",
+      "start": 63.3,
+      "end": 63.56
+    },
+    {
+      "word": "tanpa",
+      "start": 63.56,
+      "end": 63.88
+    },
+    {
+      "word": "jeda",
+      "start": 63.88,
+      "end": 64.1
+    },
+    {
+      "word": "nutrisi,",
+      "start": 64.1,
+      "end": 64.9
+    },
+    {
+      "word": "membuat",
+      "start": 64.9,
+      "end": 65.12
+    },
+    {
+      "word": "organ",
+      "start": 65.12,
+      "end": 65.36
+    },
+    {
+      "word": "ini",
+      "start": 65.36,
+      "end": 65.6
+    },
+    {
+      "word": "cepat",
+      "start": 65.6,
+      "end": 65.92
+    },
+    {
+      "word": "lelah.",
+      "start": 65.92,
+      "end": 66.2
+    },
+    {
+      "word": "Efek",
+      "start": 66.62,
+      "end": 66.8
+    },
+    {
+      "word": "diuretik",
+      "start": 66.8,
+      "end": 67.26
+    },
+    {
+      "word": "ringan",
+      "start": 67.26,
+      "end": 67.52
+    },
+    {
+      "word": "dari",
+      "start": 67.52,
+      "end": 67.74
+    },
+    {
+      "word": "kafein",
+      "start": 67.74,
+      "end": 68.16
+    },
+    {
+      "word": "memaksa",
+      "start": 68.16,
+      "end": 68.66
+    },
+    {
+      "word": "ginjal",
+      "start": 68.66,
+      "end": 69
+    },
+    {
+      "word": "menyaring",
+      "start": 69,
+      "end": 69.42
+    },
+    {
+      "word": "cairan",
+      "start": 69.42,
+      "end": 69.8
+    },
+    {
+      "word": "lebih",
+      "start": 69.8,
+      "end": 69.96
+    },
+    {
+      "word": "cepat,",
+      "start": 69.96,
+      "end": 70.64
+    },
+    {
+      "word": "memicu",
+      "start": 70.64,
+      "end": 70.9
+    },
+    {
+      "word": "rasa",
+      "start": 70.9,
+      "end": 71.14
+    },
+    {
+      "word": "ingin",
+      "start": 71.14,
+      "end": 71.4
+    },
+    {
+      "word": "buang",
+      "start": 71.4,
+      "end": 71.6
+    },
+    {
+      "word": "air",
+      "start": 71.6,
+      "end": 71.74
+    },
+    {
+      "word": "kecil.",
+      "start": 71.74,
+      "end": 72.5
+    },
+    {
+      "word": "Lonjakan",
+      "start": 72.4,
+      "end": 72.7
+    },
+    {
+      "word": "hormon",
+      "start": 72.7,
+      "end": 73.04
+    },
+    {
+      "word": "stres",
+      "start": 73.04,
+      "end": 73.28
+    },
+    {
+      "word": "mengirim",
+      "start": 73.28,
+      "end": 73.66
+    },
+    {
+      "word": "sinyal",
+      "start": 73.66,
+      "end": 73.94
+    },
+    {
+      "word": "ke",
+      "start": 73.94,
+      "end": 74.1
+    },
+    {
+      "word": "jantung",
+      "start": 74.1,
+      "end": 74.42
+    },
+    {
+      "word": "untuk",
+      "start": 74.42,
+      "end": 74.64
+    },
+    {
+      "word": "memompah",
+      "start": 74.64,
+      "end": 75.08
+    },
+    {
+      "word": "darah",
+      "start": 75.08,
+      "end": 75.3
+    },
+    {
+      "word": "lebih",
+      "start": 75.3,
+      "end": 75.5
+    },
+    {
+      "word": "cepat,",
+      "start": 75.5,
+      "end": 76.14
+    },
+    {
+      "word": "memicu",
+      "start": 76.14,
+      "end": 76.38
+    },
+    {
+      "word": "rasa",
+      "start": 76.38,
+      "end": 76.64
+    },
+    {
+      "word": "gelisah",
+      "start": 76.64,
+      "end": 77.04
+    },
+    {
+      "word": "atau",
+      "start": 77.04,
+      "end": 77.3
+    },
+    {
+      "word": "cemas.",
+      "start": 77.3,
+      "end": 78.1
+    },
+    {
+      "word": "Adrenalin",
+      "start": 78.1,
+      "end": 78.58
+    },
+    {
+      "word": "yang",
+      "start": 78.58,
+      "end": 78.7
+    },
+    {
+      "word": "bersirkulasi",
+      "start": 78.7,
+      "end": 79.22
+    },
+    {
+      "word": "tinggi",
+      "start": 79.22,
+      "end": 79.5
+    },
+    {
+      "word": "membuat",
+      "start": 79.5,
+      "end": 79.86
+    },
+    {
+      "word": "serat-serat",
+      "start": 79.86,
+      "end": 80.36
+    },
+    {
+      "word": "otot",
+      "start": 80.36,
+      "end": 80.66
+    },
+    {
+      "word": "menegang,",
+      "start": 80.66,
+      "end": 81.42
+    },
+    {
+      "word": "memicu",
+      "start": 81.42,
+      "end": 81.7
+    },
+    {
+      "word": "tremor",
+      "start": 81.7,
+      "end": 81.98
+    },
+    {
+      "word": "ringan",
+      "start": 81.98,
+      "end": 82.22
+    },
+    {
+      "word": "pada",
+      "start": 82.22,
+      "end": 82.4
+    },
+    {
+      "word": "tangan.",
+      "start": 82.4,
+      "end": 83.16
+    },
+    {
+      "word": "Setelah",
+      "start": 82.96,
+      "end": 83.3
+    },
+    {
+      "word": "lonjakan",
+      "start": 83.3,
+      "end": 83.66
+    },
+    {
+      "word": "energi",
+      "start": 83.66,
+      "end": 84.02
+    },
+    {
+      "word": "sesaat",
+      "start": 84.02,
+      "end": 84.4
+    },
+    {
+      "word": "akibat",
+      "start": 84.4,
+      "end": 84.84
+    },
+    {
+      "word": "adrenalin,",
+      "start": 84.84,
+      "end": 85.84
+    },
+    {
+      "word": "otakmu",
+      "start": 85.84,
+      "end": 86.16
+    },
+    {
+      "word": "mengalami",
+      "start": 86.16,
+      "end": 86.6
+    },
+    {
+      "word": "penurunan",
+      "start": 86.6,
+      "end": 87.1
+    },
+    {
+      "word": "drastis",
+      "start": 87.1,
+      "end": 87.44
+    },
+    {
+      "word": "atau",
+      "start": 87.44,
+      "end": 87.66
+    },
+    {
+      "word": "crash",
+      "start": 87.66,
+      "end": 88.1
+    },
+    {
+      "word": "menjelang",
+      "start": 88.1,
+      "end": 88.5
+    },
+    {
+      "word": "siang.",
+      "start": 88.5,
+      "end": 88.82
+    },
+    {
+      "word": "Menurutmu,",
+      "start": 89.08,
+      "end": 90.06
+    },
+    {
+      "word": "apa",
+      "start": 90.06,
+      "end": 90.2
+    },
+    {
+      "word": "keputusan",
+      "start": 90.2,
+      "end": 90.7
+    },
+    {
+      "word": "sepele",
+      "start": 90.7,
+      "end": 91.04
+    },
+    {
+      "word": "yang",
+      "start": 91.04,
+      "end": 91.2
+    },
+    {
+      "word": "kamu",
+      "start": 91.2,
+      "end": 91.38
+    },
+    {
+      "word": "amil",
+      "start": 91.38,
+      "end": 91.6
+    },
+    {
+      "word": "hari",
+      "start": 91.6,
+      "end": 91.8
+    },
+    {
+      "word": "ini",
+      "start": 91.8,
+      "end": 92.06
+    },
+    {
+      "word": "yang",
+      "start": 92.06,
+      "end": 92.32
+    },
+    {
+      "word": "tanpa",
+      "start": 92.32,
+      "end": 92.68
+    },
+    {
+      "word": "kamu",
+      "start": 92.68,
+      "end": 92.9
+    },
+    {
+      "word": "sadari",
+      "start": 92.9,
+      "end": 93.3
+    },
+    {
+      "word": "bakal",
+      "start": 93.3,
+      "end": 93.94
+    },
+    {
+      "word": "mengubah",
+      "start": 93.94,
+      "end": 94.3
+    },
+    {
+      "word": "jalan",
+      "start": 94.3,
+      "end": 94.54
+    },
+    {
+      "word": "hidupmu",
+      "start": 94.54,
+      "end": 94.92
+    },
+    {
+      "word": "5",
+      "start": 94.92,
+      "end": 95.04
+    },
+    {
+      "word": "tahun",
+      "start": 95.04,
+      "end": 95.24
+    },
+    {
+      "word": "lagi?",
+      "start": 95.24,
+      "end": 95.82
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 7.12,
+      "text": "Pernahkah kamu bertanya-tanya, apa yang sebenarnya terjadi di dalam lambungmu saat tegukan pertama kopi menyentuh dinding perut yang kosong?",
+      "words": [
+        {
+          "word": "Pernahkah",
+          "start": 0,
+          "end": 0.46
+        },
+        {
+          "word": "kamu",
+          "start": 0.46,
+          "end": 0.72
+        },
+        {
+          "word": "bertanya-tanya,",
+          "start": 0.72,
+          "end": 2.2
+        },
+        {
+          "word": "apa",
+          "start": 2.2,
+          "end": 2.22
+        },
+        {
+          "word": "yang",
+          "start": 2.22,
+          "end": 2.44
+        },
+        {
+          "word": "sebenarnya",
+          "start": 2.44,
+          "end": 2.96
+        },
+        {
+          "word": "terjadi",
+          "start": 2.96,
+          "end": 3.52
+        },
+        {
+          "word": "di",
+          "start": 3.52,
+          "end": 3.66
+        },
+        {
+          "word": "dalam",
+          "start": 3.66,
+          "end": 3.92
+        },
+        {
+          "word": "lambungmu",
+          "start": 3.92,
+          "end": 4.34
+        },
+        {
+          "word": "saat",
+          "start": 4.34,
+          "end": 4.62
+        },
+        {
+          "word": "tegukan",
+          "start": 4.62,
+          "end": 4.98
+        },
+        {
+          "word": "pertama",
+          "start": 4.98,
+          "end": 5.4
+        },
+        {
+          "word": "kopi",
+          "start": 5.4,
+          "end": 5.7
+        },
+        {
+          "word": "menyentuh",
+          "start": 5.7,
+          "end": 6.1
+        },
+        {
+          "word": "dinding",
+          "start": 6.1,
+          "end": 6.4
+        },
+        {
+          "word": "perut",
+          "start": 6.4,
+          "end": 6.7
+        },
+        {
+          "word": "yang",
+          "start": 6.7,
+          "end": 6.84
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 7.68,
+      "end": 13.14,
+      "text": "Kamu mungkin merasa langsung segar, tapi di balik itu, tubuhmu sedang merespon sebuah kejutan mendadak.",
+      "words": [
+        {
+          "word": "Kamu",
+          "start": 7.76,
+          "end": 7.94
+        },
+        {
+          "word": "mungkin",
+          "start": 7.94,
+          "end": 8.22
+        },
+        {
+          "word": "merasa",
+          "start": 8.22,
+          "end": 8.6
+        },
+        {
+          "word": "langsung",
+          "start": 8.6,
+          "end": 8.9
+        },
+        {
+          "word": "segar,",
+          "start": 8.9,
+          "end": 9.74
+        },
+        {
+          "word": "tapi",
+          "start": 9.74,
+          "end": 9.9
+        },
+        {
+          "word": "di",
+          "start": 9.9,
+          "end": 10.14
+        },
+        {
+          "word": "balik",
+          "start": 10.14,
+          "end": 10.28
+        },
+        {
+          "word": "itu,",
+          "start": 10.28,
+          "end": 11.04
+        },
+        {
+          "word": "tubuhmu",
+          "start": 11.04,
+          "end": 11.32
+        },
+        {
+          "word": "sedang",
+          "start": 11.32,
+          "end": 11.62
+        },
+        {
+          "word": "merespon",
+          "start": 11.62,
+          "end": 11.98
+        },
+        {
+          "word": "sebuah",
+          "start": 11.98,
+          "end": 12.32
+        },
+        {
+          "word": "kejutan",
+          "start": 12.32,
+          "end": 12.66
+        },
+        {
+          "word": "mendadak.",
+          "start": 12.66,
+          "end": 13.08
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 13.52,
+      "end": 15.78,
+      "text": "Mari kita bedah apa yang terjadi di dalam tubuhmu.",
+      "words": [
+        {
+          "word": "Mari",
+          "start": 13.56,
+          "end": 13.7
+        },
+        {
+          "word": "kita",
+          "start": 13.7,
+          "end": 13.98
+        },
+        {
+          "word": "bedah",
+          "start": 13.98,
+          "end": 14.22
+        },
+        {
+          "word": "apa",
+          "start": 14.22,
+          "end": 14.44
+        },
+        {
+          "word": "yang",
+          "start": 14.44,
+          "end": 14.54
+        },
+        {
+          "word": "terjadi",
+          "start": 14.54,
+          "end": 15
+        },
+        {
+          "word": "di",
+          "start": 15,
+          "end": 15.22
+        },
+        {
+          "word": "dalam",
+          "start": 15.22,
+          "end": 15.38
+        },
+        {
+          "word": "tubuhmu.",
+          "start": 15.38,
+          "end": 15.78
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 16.08,
+      "end": 21.22,
+      "text": "Tegukan pertama langsung memicu reseptor rasa pahit di lidah, mengirim sinyal cepat ke sistem saraf pusat.",
+      "words": [
+        {
+          "word": "Tegukan",
+          "start": 16.16,
+          "end": 16.4
+        },
+        {
+          "word": "pertama",
+          "start": 16.4,
+          "end": 16.78
+        },
+        {
+          "word": "langsung",
+          "start": 16.78,
+          "end": 17.22
+        },
+        {
+          "word": "memicu",
+          "start": 17.22,
+          "end": 17.58
+        },
+        {
+          "word": "reseptor",
+          "start": 17.58,
+          "end": 18.08
+        },
+        {
+          "word": "rasa",
+          "start": 18.08,
+          "end": 18.32
+        },
+        {
+          "word": "pahit",
+          "start": 18.32,
+          "end": 18.5
+        },
+        {
+          "word": "di",
+          "start": 18.5,
+          "end": 18.66
+        },
+        {
+          "word": "lidah,",
+          "start": 18.66,
+          "end": 19.26
+        },
+        {
+          "word": "mengirim",
+          "start": 19.26,
+          "end": 19.56
+        },
+        {
+          "word": "sinyal",
+          "start": 19.56,
+          "end": 19.84
+        },
+        {
+          "word": "cepat",
+          "start": 19.84,
+          "end": 20.18
+        },
+        {
+          "word": "ke",
+          "start": 20.18,
+          "end": 20.34
+        },
+        {
+          "word": "sistem",
+          "start": 20.34,
+          "end": 20.62
+        },
+        {
+          "word": "saraf",
+          "start": 20.62,
+          "end": 20.9
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 21.54,
+      "end": 27.1,
+      "text": "Tanpa ada makanan yang masuk sebagai pelindung, kafein langsung memicu kelenjar lambung memproduksi asam berlebih.",
+      "words": [
+        {
+          "word": "Tanpa",
+          "start": 21.6,
+          "end": 21.76
+        },
+        {
+          "word": "ada",
+          "start": 21.76,
+          "end": 22
+        },
+        {
+          "word": "makanan",
+          "start": 22,
+          "end": 22.34
+        },
+        {
+          "word": "yang",
+          "start": 22.34,
+          "end": 22.54
+        },
+        {
+          "word": "masuk",
+          "start": 22.54,
+          "end": 22.84
+        },
+        {
+          "word": "sebagai",
+          "start": 22.84,
+          "end": 23.16
+        },
+        {
+          "word": "pelindung,",
+          "start": 23.16,
+          "end": 24.06
+        },
+        {
+          "word": "kafein",
+          "start": 24.06,
+          "end": 24.4
+        },
+        {
+          "word": "langsung",
+          "start": 24.4,
+          "end": 24.78
+        },
+        {
+          "word": "memicu",
+          "start": 24.78,
+          "end": 25.18
+        },
+        {
+          "word": "kelenjar",
+          "start": 25.18,
+          "end": 25.52
+        },
+        {
+          "word": "lambung",
+          "start": 25.52,
+          "end": 25.78
+        },
+        {
+          "word": "memproduksi",
+          "start": 25.78,
+          "end": 26.38
+        },
+        {
+          "word": "asam",
+          "start": 26.38,
+          "end": 26.68
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 27.52,
+      "end": 31.86,
+      "text": "Konsentrasi asam klorida yang tinggi mulai mengiritasi lapisan mukosa lambung yang sedang kosong.",
+      "words": [
+        {
+          "word": "Konsentrasi",
+          "start": 27.48,
+          "end": 28.04
+        },
+        {
+          "word": "asam",
+          "start": 28.04,
+          "end": 28.32
+        },
+        {
+          "word": "klorida",
+          "start": 28.32,
+          "end": 28.68
+        },
+        {
+          "word": "yang",
+          "start": 28.68,
+          "end": 28.88
+        },
+        {
+          "word": "tinggi",
+          "start": 28.88,
+          "end": 29.18
+        },
+        {
+          "word": "mulai",
+          "start": 29.18,
+          "end": 29.54
+        },
+        {
+          "word": "mengiritasi",
+          "start": 29.54,
+          "end": 30.08
+        },
+        {
+          "word": "lapisan",
+          "start": 30.08,
+          "end": 30.46
+        },
+        {
+          "word": "mukosa",
+          "start": 30.46,
+          "end": 30.8
+        },
+        {
+          "word": "lambung",
+          "start": 30.8,
+          "end": 31.1
+        },
+        {
+          "word": "yang",
+          "start": 31.1,
+          "end": 31.28
+        },
+        {
+          "word": "sedang",
+          "start": 31.28,
+          "end": 31.52
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 32.22,
+      "end": 34.4,
+      "text": "Kafein merangsang kontraksi usus secara instan,",
+      "words": [
+        {
+          "word": "Kafein",
+          "start": 32.34,
+          "end": 32.54
+        },
+        {
+          "word": "merangsang",
+          "start": 32.54,
+          "end": 33.08
+        },
+        {
+          "word": "kontraksi",
+          "start": 33.08,
+          "end": 33.52
+        },
+        {
+          "word": "usus",
+          "start": 33.52,
+          "end": 33.72
+        },
+        {
+          "word": "secara",
+          "start": 33.72,
+          "end": 34.02
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 34.72,
+      "end": 37.82,
+      "text": "membuat saluran pencernaan bergerak terlalu cepat dan tidak beraturan.",
+      "words": [
+        {
+          "word": "membuat",
+          "start": 34.78,
+          "end": 34.98
+        },
+        {
+          "word": "saluran",
+          "start": 34.98,
+          "end": 35.36
+        },
+        {
+          "word": "pencernaan",
+          "start": 35.36,
+          "end": 35.86
+        },
+        {
+          "word": "bergerak",
+          "start": 35.86,
+          "end": 36.28
+        },
+        {
+          "word": "terlalu",
+          "start": 36.28,
+          "end": 36.62
+        },
+        {
+          "word": "cepat",
+          "start": 36.62,
+          "end": 36.92
+        },
+        {
+          "word": "dan",
+          "start": 36.92,
+          "end": 37.08
+        },
+        {
+          "word": "tidak",
+          "start": 37.08,
+          "end": 37.34
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 38.16,
+      "end": 42.84,
+      "text": "Peristaltik yang terlalu cepat membuat usus halus gagal menyerap elektrolit dan air secara optimal.",
+      "words": [
+        {
+          "word": "Peristaltik",
+          "start": 38.22,
+          "end": 38.7
+        },
+        {
+          "word": "yang",
+          "start": 38.7,
+          "end": 38.82
+        },
+        {
+          "word": "terlalu",
+          "start": 38.82,
+          "end": 39.12
+        },
+        {
+          "word": "cepat",
+          "start": 39.12,
+          "end": 39.44
+        },
+        {
+          "word": "membuat",
+          "start": 39.44,
+          "end": 39.74
+        },
+        {
+          "word": "usus",
+          "start": 39.74,
+          "end": 40.1
+        },
+        {
+          "word": "halus",
+          "start": 40.1,
+          "end": 40.4
+        },
+        {
+          "word": "gagal",
+          "start": 40.4,
+          "end": 40.84
+        },
+        {
+          "word": "menyerap",
+          "start": 40.84,
+          "end": 41.18
+        },
+        {
+          "word": "elektrolit",
+          "start": 41.18,
+          "end": 41.72
+        },
+        {
+          "word": "dan",
+          "start": 41.72,
+          "end": 41.88
+        },
+        {
+          "word": "air",
+          "start": 41.88,
+          "end": 42.14
+        },
+        {
+          "word": "secara",
+          "start": 42.14,
+          "end": 42.46
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 43.28,
+      "end": 45.66,
+      "text": "Karena tidak ada makanan yang memperlambat penyerapan,",
+      "words": [
+        {
+          "word": "Karena",
+          "start": 43.3,
+          "end": 43.5
+        },
+        {
+          "word": "tidak",
+          "start": 43.5,
+          "end": 43.8
+        },
+        {
+          "word": "ada",
+          "start": 43.8,
+          "end": 44.04
+        },
+        {
+          "word": "makanan",
+          "start": 44.04,
+          "end": 44.44
+        },
+        {
+          "word": "yang",
+          "start": 44.44,
+          "end": 44.64
+        },
+        {
+          "word": "memperlambat",
+          "start": 44.64,
+          "end": 45.12
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 46.06,
+      "end": 48.54,
+      "text": "molekul kafein langsung merasuk cepat ke aliran darah.",
+      "words": [
+        {
+          "word": "molekul",
+          "start": 46.14,
+          "end": 46.36
+        },
+        {
+          "word": "kafein",
+          "start": 46.36,
+          "end": 46.72
+        },
+        {
+          "word": "langsung",
+          "start": 46.72,
+          "end": 47.08
+        },
+        {
+          "word": "merasuk",
+          "start": 47.08,
+          "end": 47.4
+        },
+        {
+          "word": "cepat",
+          "start": 47.4,
+          "end": 47.76
+        },
+        {
+          "word": "ke",
+          "start": 47.76,
+          "end": 47.96
+        },
+        {
+          "word": "aliran",
+          "start": 47.96,
+          "end": 48.22
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 48.54,
+      "end": 50.46,
+      "text": "Kafein meniru struktur adenosin,",
+      "words": [
+        {
+          "word": "Kafein",
+          "start": 48.92,
+          "end": 49.2
+        },
+        {
+          "word": "meniru",
+          "start": 49.2,
+          "end": 49.56
+        },
+        {
+          "word": "struktur",
+          "start": 49.56,
+          "end": 49.88
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 50.76,
+      "end": 54.22,
+      "text": "mengikat reseptornya di otak untuk menghentikan rasa mengantuk secara paksa.",
+      "words": [
+        {
+          "word": "mengikat",
+          "start": 50.78,
+          "end": 51.06
+        },
+        {
+          "word": "reseptornya",
+          "start": 51.06,
+          "end": 51.6
+        },
+        {
+          "word": "di",
+          "start": 51.6,
+          "end": 51.76
+        },
+        {
+          "word": "otak",
+          "start": 51.76,
+          "end": 51.98
+        },
+        {
+          "word": "untuk",
+          "start": 51.98,
+          "end": 52.28
+        },
+        {
+          "word": "menghentikan",
+          "start": 52.28,
+          "end": 52.76
+        },
+        {
+          "word": "rasa",
+          "start": 52.76,
+          "end": 53.1
+        },
+        {
+          "word": "mengantuk",
+          "start": 53.1,
+          "end": 53.54
+        },
+        {
+          "word": "secara",
+          "start": 53.54,
+          "end": 53.84
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 54.22,
+      "end": 60.66,
+      "text": "Otak memicu kelenjar adrenal memproduksi kortisol dan adrenalin, menciptakan sensasi siaga palsu atau fight or flight.",
+      "words": [
+        {
+          "word": "Otak",
+          "start": 54.24,
+          "end": 54.76
+        },
+        {
+          "word": "memicu",
+          "start": 54.76,
+          "end": 55.1
+        },
+        {
+          "word": "kelenjar",
+          "start": 55.1,
+          "end": 55.46
+        },
+        {
+          "word": "adrenal",
+          "start": 55.46,
+          "end": 55.88
+        },
+        {
+          "word": "memproduksi",
+          "start": 55.88,
+          "end": 56.44
+        },
+        {
+          "word": "kortisol",
+          "start": 56.44,
+          "end": 56.9
+        },
+        {
+          "word": "dan",
+          "start": 56.9,
+          "end": 57.16
+        },
+        {
+          "word": "adrenalin,",
+          "start": 57.16,
+          "end": 58.08
+        },
+        {
+          "word": "menciptakan",
+          "start": 58.08,
+          "end": 58.48
+        },
+        {
+          "word": "sensasi",
+          "start": 58.48,
+          "end": 58.88
+        },
+        {
+          "word": "siaga",
+          "start": 58.88,
+          "end": 59.24
+        },
+        {
+          "word": "palsu",
+          "start": 59.24,
+          "end": 59.64
+        },
+        {
+          "word": "atau",
+          "start": 59.64,
+          "end": 59.92
+        },
+        {
+          "word": "fight",
+          "start": 59.92,
+          "end": 60.18
+        },
+        {
+          "word": "or",
+          "start": 60.18,
+          "end": 60.34
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 60.92,
+      "end": 66.26,
+      "text": "Hati harus langsung bekerja memproses kafein dosis tinggi tanpa jeda nutrisi, membuat organ ini cepat lelah.",
+      "words": [
+        {
+          "word": "Hati",
+          "start": 60.98,
+          "end": 61.18
+        },
+        {
+          "word": "harus",
+          "start": 61.18,
+          "end": 61.5
+        },
+        {
+          "word": "langsung",
+          "start": 61.5,
+          "end": 61.76
+        },
+        {
+          "word": "bekerja",
+          "start": 61.76,
+          "end": 62.18
+        },
+        {
+          "word": "memproses",
+          "start": 62.18,
+          "end": 62.62
+        },
+        {
+          "word": "kafein",
+          "start": 62.62,
+          "end": 63.04
+        },
+        {
+          "word": "dosis",
+          "start": 63.04,
+          "end": 63.3
+        },
+        {
+          "word": "tinggi",
+          "start": 63.3,
+          "end": 63.56
+        },
+        {
+          "word": "tanpa",
+          "start": 63.56,
+          "end": 63.88
+        },
+        {
+          "word": "jeda",
+          "start": 63.88,
+          "end": 64.1
+        },
+        {
+          "word": "nutrisi,",
+          "start": 64.1,
+          "end": 64.9
+        },
+        {
+          "word": "membuat",
+          "start": 64.9,
+          "end": 65.12
+        },
+        {
+          "word": "organ",
+          "start": 65.12,
+          "end": 65.36
+        },
+        {
+          "word": "ini",
+          "start": 65.36,
+          "end": 65.6
+        },
+        {
+          "word": "cepat",
+          "start": 65.6,
+          "end": 65.92
+        },
+        {
+          "word": "lelah.",
+          "start": 65.92,
+          "end": 66.2
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 66.54,
+      "end": 72.02,
+      "text": "Efek diuretik ringan dari kafein memaksa ginjal menyaring cairan lebih cepat, memicu rasa ingin buang air kecil.",
+      "words": [
+        {
+          "word": "Efek",
+          "start": 66.62,
+          "end": 66.8
+        },
+        {
+          "word": "diuretik",
+          "start": 66.8,
+          "end": 67.26
+        },
+        {
+          "word": "ringan",
+          "start": 67.26,
+          "end": 67.52
+        },
+        {
+          "word": "dari",
+          "start": 67.52,
+          "end": 67.74
+        },
+        {
+          "word": "kafein",
+          "start": 67.74,
+          "end": 68.16
+        },
+        {
+          "word": "memaksa",
+          "start": 68.16,
+          "end": 68.66
+        },
+        {
+          "word": "ginjal",
+          "start": 68.66,
+          "end": 69
+        },
+        {
+          "word": "menyaring",
+          "start": 69,
+          "end": 69.42
+        },
+        {
+          "word": "cairan",
+          "start": 69.42,
+          "end": 69.8
+        },
+        {
+          "word": "lebih",
+          "start": 69.8,
+          "end": 69.96
+        },
+        {
+          "word": "cepat,",
+          "start": 69.96,
+          "end": 70.64
+        },
+        {
+          "word": "memicu",
+          "start": 70.64,
+          "end": 70.9
+        },
+        {
+          "word": "rasa",
+          "start": 70.9,
+          "end": 71.14
+        },
+        {
+          "word": "ingin",
+          "start": 71.14,
+          "end": 71.4
+        },
+        {
+          "word": "buang",
+          "start": 71.4,
+          "end": 71.6
+        },
+        {
+          "word": "air",
+          "start": 71.6,
+          "end": 71.74
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 72.34,
+      "end": 77.62,
+      "text": "Lonjakan hormon stres mengirim sinyal ke jantung untuk memompah darah lebih cepat, memicu rasa gelisah atau cemas.",
+      "words": [
+        {
+          "word": "Lonjakan",
+          "start": 72.4,
+          "end": 72.7
+        },
+        {
+          "word": "hormon",
+          "start": 72.7,
+          "end": 73.04
+        },
+        {
+          "word": "stres",
+          "start": 73.04,
+          "end": 73.28
+        },
+        {
+          "word": "mengirim",
+          "start": 73.28,
+          "end": 73.66
+        },
+        {
+          "word": "sinyal",
+          "start": 73.66,
+          "end": 73.94
+        },
+        {
+          "word": "ke",
+          "start": 73.94,
+          "end": 74.1
+        },
+        {
+          "word": "jantung",
+          "start": 74.1,
+          "end": 74.42
+        },
+        {
+          "word": "untuk",
+          "start": 74.42,
+          "end": 74.64
+        },
+        {
+          "word": "memompah",
+          "start": 74.64,
+          "end": 75.08
+        },
+        {
+          "word": "darah",
+          "start": 75.08,
+          "end": 75.3
+        },
+        {
+          "word": "lebih",
+          "start": 75.3,
+          "end": 75.5
+        },
+        {
+          "word": "cepat,",
+          "start": 75.5,
+          "end": 76.14
+        },
+        {
+          "word": "memicu",
+          "start": 76.14,
+          "end": 76.38
+        },
+        {
+          "word": "rasa",
+          "start": 76.38,
+          "end": 76.64
+        },
+        {
+          "word": "gelisah",
+          "start": 76.64,
+          "end": 77.04
+        },
+        {
+          "word": "atau",
+          "start": 77.04,
+          "end": 77.3
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "start": 78.02,
+      "end": 82.68,
+      "text": "Adrenalin yang bersirkulasi tinggi membuat serat-serat otot menegang, memicu tremor ringan pada tangan.",
+      "words": [
+        {
+          "word": "Adrenalin",
+          "start": 78.1,
+          "end": 78.58
+        },
+        {
+          "word": "yang",
+          "start": 78.58,
+          "end": 78.7
+        },
+        {
+          "word": "bersirkulasi",
+          "start": 78.7,
+          "end": 79.22
+        },
+        {
+          "word": "tinggi",
+          "start": 79.22,
+          "end": 79.5
+        },
+        {
+          "word": "membuat",
+          "start": 79.5,
+          "end": 79.86
+        },
+        {
+          "word": "serat-serat",
+          "start": 79.86,
+          "end": 80.36
+        },
+        {
+          "word": "otot",
+          "start": 80.36,
+          "end": 80.66
+        },
+        {
+          "word": "menegang,",
+          "start": 80.66,
+          "end": 81.42
+        },
+        {
+          "word": "memicu",
+          "start": 81.42,
+          "end": 81.7
+        },
+        {
+          "word": "tremor",
+          "start": 81.7,
+          "end": 81.98
+        },
+        {
+          "word": "ringan",
+          "start": 81.98,
+          "end": 82.22
+        },
+        {
+          "word": "pada",
+          "start": 82.22,
+          "end": 82.4
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 82.68,
+      "end": 88.78,
+      "text": "Setelah lonjakan energi sesaat akibat adrenalin, otakmu mengalami penurunan drastis atau crash menjelang siang.",
+      "words": [
+        {
+          "word": "Setelah",
+          "start": 82.96,
+          "end": 83.3
+        },
+        {
+          "word": "lonjakan",
+          "start": 83.3,
+          "end": 83.66
+        },
+        {
+          "word": "energi",
+          "start": 83.66,
+          "end": 84.02
+        },
+        {
+          "word": "sesaat",
+          "start": 84.02,
+          "end": 84.4
+        },
+        {
+          "word": "akibat",
+          "start": 84.4,
+          "end": 84.84
+        },
+        {
+          "word": "adrenalin,",
+          "start": 84.84,
+          "end": 85.84
+        },
+        {
+          "word": "otakmu",
+          "start": 85.84,
+          "end": 86.16
+        },
+        {
+          "word": "mengalami",
+          "start": 86.16,
+          "end": 86.6
+        },
+        {
+          "word": "penurunan",
+          "start": 86.6,
+          "end": 87.1
+        },
+        {
+          "word": "drastis",
+          "start": 87.1,
+          "end": 87.44
+        },
+        {
+          "word": "atau",
+          "start": 87.44,
+          "end": 87.66
+        },
+        {
+          "word": "crash",
+          "start": 87.66,
+          "end": 88.1
+        },
+        {
+          "word": "menjelang",
+          "start": 88.1,
+          "end": 88.5
+        },
+        {
+          "word": "siang.",
+          "start": 88.5,
+          "end": 88.82
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 89.04,
+      "end": 95.46,
+      "text": "Menurutmu, apa keputusan sepele yang kamu amil hari ini yang tanpa kamu sadari bakal mengubah jalan hidupmu 5 tahun lagi?",
+      "words": [
+        {
+          "word": "Menurutmu,",
+          "start": 89.08,
+          "end": 90.06
+        },
+        {
+          "word": "apa",
+          "start": 90.06,
+          "end": 90.2
+        },
+        {
+          "word": "keputusan",
+          "start": 90.2,
+          "end": 90.7
+        },
+        {
+          "word": "sepele",
+          "start": 90.7,
+          "end": 91.04
+        },
+        {
+          "word": "yang",
+          "start": 91.04,
+          "end": 91.2
+        },
+        {
+          "word": "kamu",
+          "start": 91.2,
+          "end": 91.38
+        },
+        {
+          "word": "amil",
+          "start": 91.38,
+          "end": 91.6
+        },
+        {
+          "word": "hari",
+          "start": 91.6,
+          "end": 91.8
+        },
+        {
+          "word": "ini",
+          "start": 91.8,
+          "end": 92.06
+        },
+        {
+          "word": "yang",
+          "start": 92.06,
+          "end": 92.32
+        },
+        {
+          "word": "tanpa",
+          "start": 92.32,
+          "end": 92.68
+        },
+        {
+          "word": "kamu",
+          "start": 92.68,
+          "end": 92.9
+        },
+        {
+          "word": "sadari",
+          "start": 92.9,
+          "end": 93.3
+        },
+        {
+          "word": "bakal",
+          "start": 93.3,
+          "end": 93.94
+        },
+        {
+          "word": "mengubah",
+          "start": 93.94,
+          "end": 94.3
+        },
+        {
+          "word": "jalan",
+          "start": 94.3,
+          "end": 94.54
+        },
+        {
+          "word": "hidupmu",
+          "start": 94.54,
+          "end": 94.92
+        },
+        {
+          "word": "5",
+          "start": 94.92,
+          "end": 95.04
+        },
+        {
+          "word": "tahun",
+          "start": 95.04,
+          "end": 95.24
+        }
+      ]
+    }
+  ],
+  "text": " Pernahkah kamu bertanya-tanya, apa yang sebenarnya terjadi di dalam lambungmu saat tegukan pertama kopi menyentuh dinding perut yang kosong? Kamu mungkin merasa langsung segar, tapi di balik itu, tubuhmu sedang merespon sebuah kejutan mendadak. Mari kita bedah apa yang terjadi di dalam tubuhmu. Tegukan pertama langsung memicu reseptor rasa pahit di lidah, mengirim sinyal cepat ke sistem saraf pusat. Tanpa ada makanan yang masuk sebagai pelindung, kafein langsung memicu kelenjar lambung memproduksi asam berlebih. Konsentrasi asam klorida yang tinggi mulai mengiritasi lapisan mukosa lambung yang sedang kosong. Kafein merangsang kontraksi usus secara instan, membuat saluran pencernaan bergerak terlalu cepat dan tidak beraturan. Peristaltik yang terlalu cepat membuat usus halus gagal menyerap elektrolit dan air secara optimal. Karena tidak ada makanan yang memperlambat penyerapan, molekul kafein langsung merasuk cepat ke aliran darah. Kafein meniru struktur adenosin, mengikat reseptornya di otak untuk menghentikan rasa mengantuk secara paksa. Otak memicu kelenjar adrenal memproduksi kortisol dan adrenalin, menciptakan sensasi siaga palsu atau fight or flight. Hati harus langsung bekerja memproses kafein dosis tinggi tanpa jeda nutrisi, membuat organ ini cepat lelah. Efek diuretik ringan dari kafein memaksa ginjal menyaring cairan lebih cepat, memicu rasa ingin buang air kecil. Lonjakan hormon stres mengirim sinyal ke jantung untuk memompah darah lebih cepat, memicu rasa gelisah atau cemas. Adrenalin yang bersirkulasi tinggi membuat serat-serat otot menegang, memicu tremor ringan pada tangan. Setelah lonjakan energi sesaat akibat adrenalin, otakmu mengalami penurunan drastis atau crash menjelang siang. Menurutmu, apa keputusan sepele yang kamu amil hari ini yang tanpa kamu sadari bakal mengubah jalan hidupmu 5 tahun lagi?"
+}
