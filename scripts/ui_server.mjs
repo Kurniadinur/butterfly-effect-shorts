@@ -425,11 +425,33 @@ const server = http.createServer(async (req, res) => {
             const job = detail.jobs?.[0];
             const steps = job?.steps || [];
 
-            // Filter primary pipeline steps (1 to 7)
             const mainSteps = steps.filter((s) => s.number <= 7);
             const currentStep =
               mainSteps.find((s) => s.status === 'in_progress') ||
               (detail.status === 'completed' ? mainSteps[mainSteps.length - 1] : mainSteps[0]);
+
+            // Calculate elapsed time & dynamic ETA
+            const createdMs = detail.createdAt ? new Date(detail.createdAt).getTime() : Date.now();
+            const elapsedSec = Math.max(1, Math.round((Date.now() - createdMs) / 1000));
+            const TYPICAL_TOTAL_SEC = 105; // ~1m 45s typical GitHub Actions render time
+            const stepNum = currentStep?.number || 1;
+            const totalStepsCount = Math.max(6, mainSteps.length || 6);
+
+            let progressPct = Math.round(((stepNum - 1) / totalStepsCount) * 85);
+            if (detail.status === 'completed') {
+              progressPct = 100;
+            } else if (stepNum >= 5) {
+              // Step 5 is Remotion Render (takes ~60% of the time)
+              const stepStartedMs = currentStep?.startedAt ? new Date(currentStep.startedAt).getTime() : Date.now();
+              const stepElapsed = Math.max(0, (Date.now() - stepStartedMs) / 1000);
+              progressPct = Math.min(96, 55 + Math.round((stepElapsed / 65) * 40));
+            } else {
+              progressPct = Math.min(54, Math.max(8, Math.round((elapsedSec / TYPICAL_TOTAL_SEC) * 80)));
+            }
+
+            const estRemainingSec = detail.status === 'completed'
+              ? 0
+              : Math.max(5, Math.round(TYPICAL_TOTAL_SEC - elapsedSec));
 
             const responseData = {
               databaseId: detail.databaseId,
@@ -438,17 +460,24 @@ const server = http.createServer(async (req, res) => {
               url: detail.url,
               displayTitle: detail.displayTitle,
               createdAt: detail.createdAt,
+              elapsedSec,
+              estRemainingSec,
+              progressPct,
               currentStepName: currentStep?.name || 'Menyiapkan runner cloud...',
-              currentStepNumber: currentStep?.number || 1,
-              totalSteps: mainSteps.length || 7,
-              steps: mainSteps.map((s) => ({
-                number: s.number,
-                name: s.name,
-                status: s.status, // 'completed', 'in_progress', 'pending'
-                conclusion: s.conclusion, // 'success', 'failure', null
-                startedAt: s.startedAt,
-                completedAt: s.completedAt,
-              })),
+              currentStepNumber: stepNum,
+              totalSteps: totalStepsCount,
+              steps: mainSteps.map((s) => {
+                const sStart = s.startedAt ? new Date(s.startedAt).getTime() : null;
+                const sEnd = s.completedAt ? new Date(s.completedAt).getTime() : (s.status === 'in_progress' ? Date.now() : null);
+                const durationSec = sStart && sEnd ? Math.max(1, Math.round((sEnd - sStart) / 1000)) : null;
+                return {
+                  number: s.number,
+                  name: s.name,
+                  status: s.status, // 'completed', 'in_progress', 'pending'
+                  conclusion: s.conclusion, // 'success', 'failure', null
+                  durationSec,
+                };
+              }),
             };
 
             res.writeHead(200, { 'Content-Type': 'application/json' });
