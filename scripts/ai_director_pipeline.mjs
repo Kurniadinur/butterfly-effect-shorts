@@ -505,84 +505,22 @@ async function generateStoryboard(topic) {
       : 'memo-investigation';
   }
 
-  // Hook Visual Generation: Generate reka adegan foto sinematik 9:16 untuk hook pembuka
-  const hookPrompt = storyData.hook.imagePrompt || `${topic} dramatic opening hook scene`;
-  const hookDest = path.join(storyMediaDir, 'hero_hook.jpg');
-  console.log(`      🎨 [Reka Adegan AI Hook] Men-generate visual pembuka sinematik: "${storyData.hook.headline || hookPrompt.slice(0, 50)}"...`);
-  const hookRes = await searchAndDownloadImage(hookPrompt, `${topic} opening`, hookDest, {
-    topic,
-    headline: storyData.hook.headline,
-    narration: storyData.hook.narration,
-    imagePrompt: hookPrompt,
-  });
-
-  if (hookRes.success) {
-    storyData.hook.rightImage = `butterfly/media/${storySlug}/hero_hook.jpg`;
-    storyData.hook.leftImage = `butterfly/media/${storySlug}/hero_hook.jpg`;
-    console.log(`      ✓ [Reka Adegan AI Hook Selesai] Visual 9:16 tersimpan (${hookRes.source})`);
-  } else {
-    storyData.hook.leftImage = `butterfly/media/medical_body_xray.jpg`;
-    storyData.hook.rightImage = `butterfly/media/medical_body_xray.jpg`;
-    console.log(`      ✓ [Hero Hook Sinematik 1080x1920] Menggunakan fallback anatomi 3D`);
-  }
+  // Continuous 1-Body Anatomical Journey Mode:
+  // Tidak perlu lagi mengunduh 15 foto terpisah yang menyebabkan pergantian slide patah-patah.
+  // Seluruh perjalanan kamera menggunakan 1 Kanvas Tubuh 3D X-Ray Utuh + Rig Organ Hidup secara kontinu!
+  const continuousBodyAsset = 'butterfly/media/medical_body_xray.jpg';
+  storyData.hook.leftImage = continuousBodyAsset;
+  storyData.hook.rightImage = continuousBodyAsset;
+  console.log(`      ✓ [Continuous Body Journey] Menggunakan Kanvas Anatomi 3D Utuh (Tanpa Potongan Slide/Frame)`);
 
   let photoCount = 0;
-  let graphicCount = 0;
-  const usedPhotos = new Set();
-
-  const VALID_DIRECTOR_TYPES = new Set([
-    'wall-demolition', 'gate-breach', 'domino-collapse', 'maritime-disaster',
-    'reactor-meltdown', 'laboratory-discovery', 'press-podium', 'memo-investigation',
-    'panic-phone', 'breaking-news', 'soviet-collapse', 'tactical-map',
-    'critical-gauge', 'forensic-dossier', 'bureaucracy-draft', 'memo-handoff',
-    'breaking-ticker', 'press-question', 'schabowski-slip',
-    'clock-countdown', 'key-lockbox', 'car-route', 'radiation-hazard',
-    'valve-failure', 'telegraph-wire', 'crowd-protest', 'courtroom-gavel'
-  ]);
-
   for (let i = 0; i < storyData.nodes.length; i++) {
     const node = storyData.nodes[i];
     node.step = i + 1;
-    const txt = (node.headline + ' ' + node.narration + ' ' + (node.caption || '')).toLowerCase();
-
-    // Universal Archival Qualification:
-    // Setiap adegan yang ditandai foto atau memiliki searchQuery berhak mencari foto sejarah otentik
-    const qualifiesForPhoto = node.mediaType === 'photo' || Boolean(node.searchQuery);
-
-    let isPhotoDownloaded = false;
-    if (qualifiesForPhoto) {
-      const nodeDest = path.join(storyMediaDir, `node_${node.step}.jpg`);
-      const nodePrompt = node.imagePrompt || `${topic} ${node.headline}`;
-      const res = await searchAndDownloadImage(nodePrompt, `${topic} scene`, nodeDest, {
-        topic,
-        headline: node.headline,
-        narration: node.narration,
-        imagePrompt: node.imagePrompt,
-      });
-      if (res.success) {
-        isPhotoDownloaded = true;
-        node.mediaType = 'photo';
-        node.visualSource = 'REKA ADEGAN';
-        node.mediaUrl = `butterfly/media/${storySlug}/node_${node.step}.jpg`;
-        usedPhotos.add(node.mediaUrl);
-        photoCount++;
-        console.log(`      🎨 [Reka Adegan AI Adegan ${node.step}] Berhasil di-generate: "${node.headline}" (${res.source})`);
-      }
-    }
-
-    if (!isPhotoDownloaded) {
-      node.mediaType = 'photo';
-      node.visualSource = 'PEMINDAIAN 3D';
-      if (usedPhotos.size > 0) {
-        const photoArr = Array.from(usedPhotos);
-        node.mediaUrl = photoArr[i % photoArr.length];
-      } else {
-        node.mediaUrl = 'butterfly/media/medical_body_xray.jpg';
-      }
-      photoCount++;
-      console.log(`      ✓ [Visual Sinematik Adegan ${node.step}] Reka visual tematik: "${node.mediaUrl}"`);
-    }
-
+    node.mediaType = 'photo';
+    node.visualSource = 'PEMINDAIAN 3D KONTINU';
+    node.mediaUrl = continuousBodyAsset;
+    photoCount++;
     if (!node.zoomDirection) {
       node.zoomDirection = i % 3 === 0 ? 'out' : i % 2 === 0 ? 'in' : 'panRight';
     }

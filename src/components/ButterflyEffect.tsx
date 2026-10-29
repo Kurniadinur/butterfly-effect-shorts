@@ -3,7 +3,7 @@ import { Sequence, Audio, staticFile, useCurrentFrame } from 'remotion';
 import { ButterflyStoryData } from '../data/types';
 import { CURRENT_STORY } from '../data/currentStory';
 import { HookScene } from './HookScene';
-import { MedicalScannerScene, detectOrganFromText } from './MedicalScannerScene';
+import { ContinuousBodyJourney } from './ContinuousBodyJourney';
 import { KineticSubtitle } from './KineticSubtitle';
 import { OutroScene } from './OutroScene';
 import { FilmEffects } from './effects/FilmEffects';
@@ -80,30 +80,6 @@ const SKETCH_FOLEY_SFX: Record<
   'soviet-collapse': { sfx: 'butterfly/sfx/alarm_siren.wav', volume: 0.20, offsetFrames: 12, durationFrames: 36, repeatIntervalFrames: 42, maxRepeats: 3 },
 };
 
-const ARCHIVAL_FALLBACK_POOL = [
-  'butterfly/media/medical_brain_xray.jpg',
-  'butterfly/media/medical_heart_xray.jpg',
-  'butterfly/media/medical_stomach_xray.jpg',
-  'butterfly/media/medical_body_xray.jpg',
-];
-
-function resolvePhotoUrl(mediaUrl?: string, step: number = 1, storyMediaUrls: string[] = []): string {
-  if (
-    mediaUrl &&
-    (mediaUrl.endsWith('.jpg') ||
-      mediaUrl.endsWith('.png') ||
-      mediaUrl.endsWith('.jpeg') ||
-      mediaUrl.endsWith('.webp') ||
-      mediaUrl.includes('/'))
-  ) {
-    return mediaUrl;
-  }
-  if (storyMediaUrls.length > 0) {
-    return storyMediaUrls[(step - 1) % storyMediaUrls.length];
-  }
-  return ARCHIVAL_FALLBACK_POOL[(step - 1) % ARCHIVAL_FALLBACK_POOL.length];
-}
-
 export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT_STORY }) => {
   const frame = useCurrentFrame();
 
@@ -120,19 +96,6 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
       cuts.push(outroStart);
     }
     return cuts;
-  }, [data]);
-
-  // Extract all valid image URLs belonging strictly to this current story
-  const validStoryPhotos = useMemo(() => {
-    const list: string[] = [];
-    if (data.hook?.rightImage && data.hook.rightImage.includes('.')) list.push(data.hook.rightImage);
-    if (data.hook?.leftImage && data.hook.leftImage.includes('.')) list.push(data.hook.leftImage);
-    data.nodes?.forEach((n) => {
-      if (n.mediaUrl && n.mediaUrl.includes('.') && n.mediaUrl.includes('/')) {
-        list.push(n.mediaUrl);
-      }
-    });
-    return Array.from(new Set(list));
   }, [data]);
 
   // Determine active biological stress level for subtle tremor when critical
@@ -182,41 +145,19 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
           />
         </Sequence>
 
-        {/* 2. Fluid 3D Medical X-Ray & Body Scanner Scenes */}
-        {data.nodes.map((node, idx) => {
-          const finalPhotoUrl = resolvePhotoUrl(node.mediaUrl, node.step, validStoryPhotos);
-          const prevNode = idx > 0 ? data.nodes[idx - 1] : null;
-          const prevPhotoUrl = prevNode
-            ? resolvePhotoUrl(prevNode.mediaUrl, prevNode.step, validStoryPhotos)
-            : data.hook.rightImage || data.hook.leftImage || undefined;
-          const prevOrgan = prevNode
-            ? detectOrganFromText(prevNode.organTarget, prevNode.headline, prevNode.timeOrYear, prevNode.primaryText, prevNode.step).id
-            : 'full-body';
-
-          return (
-            <Sequence key={node.step} from={node.startFrame} durationInFrames={node.durationFrames}>
-              <MedicalScannerScene
-                mediaUrl={finalPhotoUrl}
-                prevMediaUrl={prevPhotoUrl}
-                step={node.step}
-                locationTag={node.timeOrYear}
-                headline={node.headline}
-                primaryText={node.primaryText}
-                secondaryText={node.secondaryText}
-                organTarget={node.organTarget}
-                prevOrganTarget={prevOrgan}
-                chaosLevel={node.chaosLevel}
-                zoomDirection={
-                  node.zoomDirection ||
-                  (node.step % 3 === 0 ? 'out' : node.step % 2 === 0 ? 'in' : 'panRight')
-                }
-                durationFrames={node.durationFrames}
-                mood={data.editorialStyle?.mood}
-                visualSourceTag={node.visualSource || 'PEMINDAIAN 3D'}
-              />
-            </Sequence>
-          );
-        })}
+        {/* 2. Continuous Unbroken 1-Body Anatomical Journey (Zero Scene Cuts!) */}
+        <Sequence
+          from={data.hook.durationFrames}
+          durationInFrames={Math.max(1, data.totalDurationFrames - data.hook.durationFrames - data.outro.durationFrames)}
+        >
+          <ContinuousBodyJourney
+            nodes={data.nodes}
+            hookDurationFrames={data.hook.durationFrames}
+            outroDurationFrames={data.outro.durationFrames}
+            totalDurationFrames={data.totalDurationFrames}
+            baseBodyMediaUrl="butterfly/media/medical_body_xray.jpg"
+          />
+        </Sequence>
 
         {/* 3. Medical Summary Outro Card */}
         <Sequence

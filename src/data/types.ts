@@ -123,6 +123,7 @@ export interface ButterflyStoryData {
     rightSearchQuery?: string | null;
     leftImage?: string | null;
     rightImage?: string | null;
+    imagePrompt?: string | null;
     soundEffect?: any;
     durationFrames: number;
   };
