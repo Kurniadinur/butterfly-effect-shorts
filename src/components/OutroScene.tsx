@@ -22,7 +22,7 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
     <div
       style={{
         position: 'absolute',
-        top: '290px',
+        top: '310px',
         left: '56px',
         right: '56px',
         zIndex: 30,
@@ -50,33 +50,19 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
             color: '#111215',
             fontWeight: 900,
             fontFamily: "'Space Grotesk', monospace",
-            letterSpacing: '2px',
+            letterSpacing: '1.5px',
             textTransform: 'uppercase',
             backgroundColor: '#FFCC00',
             border: '2px solid #111215',
             padding: '5px 16px',
             borderRadius: '3px',
             display: 'inline-block',
-            marginBottom: '18px',
+            marginBottom: '22px',
             boxShadow: '4px 4px 0px #111215',
           }}
         >
-          CATATAN MEDIS & ANATOMI
+          PERTANYAAN BUAT KAMU
         </span>
-
-        <h3
-          style={{
-            fontSize: '22px',
-            color: '#52525b',
-            fontWeight: 800,
-            fontFamily: "'Space Grotesk', monospace",
-            margin: '0 0 14px 0',
-            letterSpacing: '0.5px',
-            textTransform: 'uppercase',
-          }}
-        >
-          Tubuhmu Selalu Memberi Sinyal Peringatan
-        </h3>
 
         <h2
           style={{
@@ -106,7 +92,7 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question }) => {
             letterSpacing: '1px',
           }}
         >
-          TULIS PENGALAMANMU DI KOLOM KOMENTAR 👇
+          TULIS DI KOLOM KOMENTAR 👇
         </div>
       </div>
     </div>

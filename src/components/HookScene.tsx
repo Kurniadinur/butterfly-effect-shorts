@@ -30,14 +30,13 @@ interface ParsedHookScenario {
   targetCount: number;
   unitLabel: string;
   targetOrganPng: string;
-  targetOrganName: string;
-  accentColor: string;
-  dangerText: string;
+  naturalHeadline: string;
+  highlightPhrase: string;
 }
 
 /**
- * Automatically extracts the trigger item, multiplier number (×1..×30 / 72 Jam / 7 Hari),
- * and target organ from ANY Indonesian medical hook headline or narration!
+ * Extracts the trigger item, multiplier number (×1..×30 / 72 Jam / 7 Hari),
+ * and generates a natural, human-written title (never stiff AI phrasing).
  */
 function parseHookScenarioFromTopic(
   headline: string,
@@ -49,104 +48,86 @@ function parseHookScenarioFromTopic(
 ): ParsedHookScenario {
   const combined = `${headline} ${narration}`.toLowerCase();
 
-  // 1. Detect Number & Unit (e.g. "30 hari", "sebulan", "72 jam", "seminggu", "10 gelas")
+  // 1. Detect Number & Unit (e.g. "30 hari", "sebulan", "72 jam", "seminggu")
   let targetCount = overrideCount || 30;
-  let unitLabel = overrideUnit || 'HARI BERTURUT-TURUT';
+  let unitLabel = overrideUnit || '30 HARI NON-STOP';
 
   if (!overrideCount) {
     const numMatch = combined.match(/(\d+)\s*(hari|jam|minggu|bulan|tahun|bungkus|gelas|kaleng|cangkir|kali|batang)/i);
     if (numMatch) {
       targetCount = Math.max(2, Math.min(365, parseInt(numMatch[1], 10)));
       const rawUnit = numMatch[2].toUpperCase();
-      unitLabel = `${rawUnit} NON-STOP`;
+      unitLabel = `${targetCount} ${rawUnit} NON-STOP`;
     } else if (/sebulan|satu bulan|setiap hari/i.test(combined)) {
       targetCount = 30;
-      unitLabel = 'HARI BERTURUT-TURUT';
+      unitLabel = '30 HARI NON-STOP';
     } else if (/seminggu|satu minggu/i.test(combined)) {
       targetCount = 7;
-      unitLabel = 'HARI NON-STOP';
+      unitLabel = '7 HARI NON-STOP';
     } else if (/seharian|24 jam/i.test(combined)) {
       targetCount = 24;
-      unitLabel = 'JAM BERTURUT-TURUT';
+      unitLabel = '24 JAM NON-STOP';
     }
   }
 
-  // 2. Detect Trigger Subject (Noodles, Sleep, Coffee, Smoking, Sugar, Water, Soda, Spicy, etc.)
+  // 2. Detect Trigger Subject with natural everyday Indonesian labels
   let emoji = overrideEmoji || '🍜';
-  let itemLabel = overrideLabel || 'KONSUMSI BERUNTUN';
-  let targetOrganPng = 'butterfly/organs/intestines.png';
-  let targetOrganName = 'LAMBUNG & USUS';
-  let accentColor = '#f59e0b';
-  let dangerText = 'AKUMULASI ZAT ADITIF & MIKROPLASTIK';
+  let itemLabel = overrideLabel || 'BUNGKUS MIE';
+  let targetOrganPng = 'butterfly/organs/stomach.png';
+  let naturalHeadline = headline;
+  let highlightPhrase = `${targetCount} HARI`;
 
   if (/mie|mi instan|indomie|ramen/i.test(combined)) {
     emoji = overrideEmoji || '🍜';
-    itemLabel = overrideLabel || 'BUNGKUS MIE INSTAN';
-    targetOrganPng = 'butterfly/organs/intestines.png';
-    targetOrganName = 'LAMBUNG & USUS HALUS';
-    accentColor = '#f59e0b';
-    dangerText = 'LONJAKAN NATRIUM, PENGAWET & MIKROPLASTIK';
+    itemLabel = overrideLabel || 'BUNGKUS MIE';
+    targetOrganPng = 'butterfly/organs/stomach.png';
+    naturalHeadline = `APA JADINYA KALAU KAMU MAKAN MIE ${targetCount} HARI TERUS-MENERUS?`;
+    highlightPhrase = `${targetCount} HARI TERUS-MENERUS?`;
   } else if (/tidur|begadang|insomnia/i.test(combined)) {
     emoji = overrideEmoji || '🪫';
-    itemLabel = overrideLabel || 'JAM TANPA TIDUR';
     if (!overrideCount && targetCount === 30) {
       targetCount = 72;
-      unitLabel = 'JAM TANPA TIDUR';
+      unitLabel = '72 JAM NON-STOP';
     }
+    itemLabel = overrideLabel || 'JAM BEGADANG';
     targetOrganPng = 'butterfly/organs/brain.png';
-    targetOrganName = 'OTAK & SARAF PUSAT';
-    accentColor = '#38bdf8';
-    dangerText = 'PENUMPUKAN RACun BETA-AMILOID DI OTAK';
+    naturalHeadline = `APA JADINYA KALAU KAMU TIDAK TIDUR ${targetCount} JAM NON-STOP?`;
+    highlightPhrase = `${targetCount} JAM NON-STOP?`;
   } else if (/rokok|merokok|vape|nikotin|asap/i.test(combined)) {
     emoji = overrideEmoji || '🚬';
-    itemLabel = overrideLabel || 'PAPARAN NIKOTIN & TAR';
+    itemLabel = overrideLabel || 'BATANG ROKOK';
     targetOrganPng = 'butterfly/organs/lungs.png';
-    targetOrganName = 'PARU-PARU & ALVEOLI';
-    accentColor = '#fb7185';
-    dangerText = 'ENDAPAN TAR & KERUSAKAN JARINGAN PARU';
+    naturalHeadline = `APA JADINYA KALAU KAMU MEROKOK ${targetCount} HARI TERUS-MENERUS?`;
+    highlightPhrase = `${targetCount} HARI TERUS-MENERUS?`;
   } else if (/kopi|kafein|energy drink|minuman energi/i.test(combined)) {
     emoji = overrideEmoji || '☕';
-    itemLabel = overrideLabel || 'DOSIS KAFEIN BERLEBIH';
+    itemLabel = overrideLabel || 'GELAS KOPI';
     targetOrganPng = 'butterfly/organs/heart.png';
-    targetOrganName = 'JANTUNG & PEMBULUH DARAH';
-    accentColor = '#f43f5e';
-    dangerText = 'LONJAKAN ADRENALIN & DETAK JANTUNG EKSTREM';
+    naturalHeadline = `APA JADINYA KALAU KAMU MINUM KOPI ${targetCount} HARI BERTURUT-TURUT?`;
+    highlightPhrase = `${targetCount} HARI BERTURUT-TURUT?`;
   } else if (/gula|manis|boba|soda|minuman kemasan/i.test(combined)) {
     emoji = overrideEmoji || '🥤';
-    itemLabel = overrideLabel || 'LONJAKAN GULA DARAH';
+    itemLabel = overrideLabel || 'MINUMAN MANIS';
     targetOrganPng = 'butterfly/organs/liver.png';
-    targetOrganName = 'HATI (LIVER) & PANKREAS';
-    accentColor = '#ec4899';
-    dangerText = 'RESISTENSI INSULIN & PERLEMAKAN HATI';
+    naturalHeadline = `APA JADINYA KALAU MINUM MANIS ${targetCount} HARI TERUS-MENERUS?`;
+    highlightPhrase = `${targetCount} HARI TERUS-MENERUS?`;
   } else if (/air putih|dehidrasi|kurang minum|haus/i.test(combined)) {
     emoji = overrideEmoji || '💧';
-    itemLabel = overrideLabel || 'DEFISIT CAIRAN TUBUH';
+    itemLabel = overrideLabel || 'HARI KURANG MINUM';
     targetOrganPng = 'butterfly/organs/kidneys.png';
-    targetOrganName = 'GINJAL & FILTRASI DARAH';
-    accentColor = '#a855f7';
-    dangerText = 'PENGGUMPALAN DARAH & GAGAL FILTRASI GINJAL';
+    naturalHeadline = `APA JADINYA KALAU JARANG MINUM AIR PUTIH SELAMA ${targetCount} HARI?`;
+    highlightPhrase = `SELAMA ${targetCount} HARI?`;
   } else if (/pedas|cabai|sambal|seblak/i.test(combined)) {
     emoji = overrideEmoji || '🌶️';
-    itemLabel = overrideLabel || 'SERANGAN SENYAWA CAPSAICIN';
+    itemLabel = overrideLabel || 'PORSI PEDAS';
     targetOrganPng = 'butterfly/organs/stomach.png';
-    targetOrganName = 'DINDING MUKOSA LAMBUNG';
-    accentColor = '#ef4444';
-    dangerText = 'IRITASI AKUT & EROSI DINDING LAMBUNG';
-  } else if (/alkohol|miras/i.test(combined)) {
-    emoji = overrideEmoji || '🍺';
-    itemLabel = overrideLabel || 'AKUMULASI ETANOL';
-    targetOrganPng = 'butterfly/organs/liver.png';
-    targetOrganName = 'SEL HEPATOSIT HATI';
-    accentColor = '#f97316';
-    dangerText = 'KERUSAKAN SEL HATI & INFLAMASI SISTEMIK';
-  } else if (/tahan kencing|menahan buang air/i.test(combined)) {
-    emoji = overrideEmoji || '⚠️';
-    itemLabel = overrideLabel || 'TEKANAN KANDUNG KEMIH';
-    targetOrganPng = 'butterfly/organs/kidneys.png';
-    targetOrganName = 'GINJAL & SALURAN KEMIH';
-    accentColor = '#eab308';
-    dangerText = 'REFLUKS URIN & INFEKSI GINJAL AKUT';
+    naturalHeadline = `APA JADINYA KALAU MAKAN PEDAS ${targetCount} HARI TERUS-MENERUS?`;
+    highlightPhrase = `${targetCount} HARI TERUS-MENERUS?`;
   }
+
+  // If the provided headline already uses natural phrasing ("APA JADINYA...") without stiff AI colons ("SETIAP HARI: APAKAH..."), keep it
+  const isStiffAiHeadline = /:|mengancam nyawamu|eksperimen|setiap hari/i.test(headline);
+  const finalHeadline = isStiffAiHeadline ? naturalHeadline : headline;
 
   return {
     emoji,
@@ -154,15 +135,13 @@ function parseHookScenarioFromTopic(
     targetCount,
     unitLabel,
     targetOrganPng,
-    targetOrganName,
-    accentColor,
-    dangerText,
+    naturalHeadline: finalHeadline,
+    highlightPhrase,
   };
 }
 
 export const HookScene: React.FC<HookSceneProps> = ({
   headline: rawHeadline,
-  kicker: rawKicker,
   narration: rawNarration,
   leftTitle,
   rightTitle,
@@ -175,22 +154,21 @@ export const HookScene: React.FC<HookSceneProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const kicker = rawKicker || 'EKSPERIMEN SIMULASI TUBUH 3D';
-  const rawH = rawHeadline || rightTitle || leftTitle || 'BAGAIMANA KEADAAN TUBUHMU?';
-  const headline = rawH.trim().endsWith('?') ? rawH.trim() : `${rawH.trim()}?`;
+  const rawH = rawHeadline || rightTitle || leftTitle || 'APA JADINYA KALAU KAMU MAKAN MIE 30 HARI TERUS-MENERUS?';
+  const headlineInput = rawH.trim().endsWith('?') ? rawH.trim() : `${rawH.trim()}?`;
   const narration = rawNarration || '';
 
   const scenario = useMemo(
     () =>
       parseHookScenarioFromTopic(
-        headline,
+        headlineInput,
         narration,
         hookItemEmoji,
         hookItemLabel,
         hookTargetCount,
         hookUnitLabel
       ),
-    [headline, narration, hookItemEmoji, hookItemLabel, hookTargetCount, hookUnitLabel]
+    [headlineInput, narration, hookItemEmoji, hookItemLabel, hookTargetCount, hookUnitLabel]
   );
 
   // Smooth spring entrance
@@ -204,28 +182,19 @@ export const HookScene: React.FC<HookSceneProps> = ({
   // so viewers watch the multiplier climb ×1, ×2, ×3 ... up to ×30!
   const rampEndFrame = Math.max(90, Math.round(durationFrames * 0.68));
   const rawProgress = Math.min(1, Math.max(0, frame / rampEndFrame));
-  // Ease-out curve that starts fast (×1, ×2, ×3) and locks dramatically onto targetCount
   const curvedProgress = 1 - Math.pow(1 - rawProgress, 1.85);
   const currentCount = Math.max(1, Math.round(1 + curvedProgress * (scenario.targetCount - 1)));
 
-  // Dynamic physiological stress & heartbeat accelerating as the multiplier climbs!
-  const dynamicBpm = Math.round(72 + curvedProgress * 76);
+  // Subtle physiological pulse as the multiplier climbs
+  const dynamicBpm = Math.round(72 + curvedProgress * 65);
   const beatPhase = (frame / fps) * (dynamicBpm / 60) * Math.PI * 2;
   const systolicBeat = Math.pow(Math.max(0, Math.sin(beatPhase)), 8);
 
-  // Color shifts from cyan -> amber -> crimson red as count approaches targetCount
-  const stressColor =
-    curvedProgress < 0.35
-      ? '#38bdf8'
-      : curvedProgress < 0.72
-      ? '#fbbf24'
-      : '#f43f5e';
-
-  // Generate a 30-slot visual grid (6 columns x 5 rows) of rapid-fire multiplying items!
+  // Generate a 30-slot visual grid (5 columns x 6 rows) of rapid-fire multiplying items!
   const totalGridSlots = Math.min(30, Math.max(12, scenario.targetCount > 30 ? 30 : scenario.targetCount));
   const activeGridSlots = Math.max(1, Math.round(curvedProgress * totalGridSlots));
 
-  // Rapid-fire flying items streaming from the multiplier counter into the 3D human body's stomach/organ!
+  // Rapid-fire flying items streaming into the 3D human body's mouth & down the esophagus!
   const streamItems = useMemo(() => {
     return Array.from({ length: 6 }).map((_, i) => ({
       id: i,
@@ -233,6 +202,20 @@ export const HookScene: React.FC<HookSceneProps> = ({
       curveX: (i % 2 === 0 ? 1 : -1) * (25 + (i % 3) * 18),
     }));
   }, []);
+
+  // Split headline to highlight the bottom/key phrase in Vox Yellow
+  const headlineParts = useMemo(() => {
+    const full = scenario.naturalHeadline.toUpperCase();
+    const target = scenario.highlightPhrase.toUpperCase();
+    const idx = full.indexOf(target);
+    if (idx !== -1 && idx > 0) {
+      return {
+        before: full.slice(0, idx).trim(),
+        highlighted: full.slice(idx).trim(),
+      };
+    }
+    return { before: full, highlighted: '' };
+  }, [scenario.naturalHeadline, scenario.highlightPhrase]);
 
   return (
     <div
@@ -244,7 +227,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
         perspective: '1200px',
       }}
     >
-      {/* 1. Editorial Dot-Matrix Texture (Vox / Johnny Harris human-crafted documentary look) */}
+      {/* 1. Editorial Dot-Matrix Texture */}
       <div
         style={{
           position: 'absolute',
@@ -255,79 +238,26 @@ export const HookScene: React.FC<HookSceneProps> = ({
         }}
       />
 
-      {/* Minimalist Architectural Corner Registration Marks */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '36px',
-          left: '36px',
-          right: '36px',
-          bottom: '36px',
-          pointerEvents: 'none',
-          zIndex: 15,
-        }}
-      >
-        <div style={{ position: 'absolute', top: 0, left: 0, width: 16, height: 16, borderTop: '2px solid rgba(244,240,234,0.28)', borderLeft: '2px solid rgba(244,240,234,0.28)' }} />
-        <div style={{ position: 'absolute', top: 0, right: 0, width: 16, height: 16, borderTop: '2px solid rgba(244,240,234,0.28)', borderRight: '2px solid rgba(244,240,234,0.28)' }} />
-      </div>
-
       {/* =====================================================================
-          2. TOP EDITORIAL QUESTION HOOK BANNER (Vox Highlighter + Print Typography)
+          2. CLEAN HUMAN-EDITED TITLE (No "EKSPERIMEN" badge, natural question!)
           ===================================================================== */}
       <div
         style={{
           position: 'absolute',
-          top: '64px',
+          top: '68px',
           left: '48px',
           right: '48px',
           zIndex: 35,
-          transform: `translateY(${interpolate(introSpring, [0, 1], [-30, 0])}px)`,
+          transform: `translateY(${interpolate(introSpring, [0, 1], [-24, 0])}px)`,
           opacity: introSpring,
         }}
       >
-        {/* Solid Vox Yellow Marker Tag */}
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '10px',
-            padding: '5px 14px',
-            backgroundColor: '#FFCC00',
-            border: '2px solid #111215',
-            borderRadius: '3px',
-            marginBottom: '14px',
-            boxShadow: '4px 4px 0px #111215',
-          }}
-        >
-          <span
-            style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              backgroundColor: '#111215',
-              transform: `scale(${1 + systolicBeat * 0.35})`,
-            }}
-          />
-          <span
-            style={{
-              color: '#111215',
-              fontSize: '13px',
-              fontWeight: 900,
-              fontFamily: "'Space Grotesk', monospace",
-              letterSpacing: '1.6px',
-              textTransform: 'uppercase',
-            }}
-          >
-            {kicker} • {dynamicBpm} BPM
-          </span>
-        </div>
-
         <h1
           style={{
-            fontSize: headline.length > 42 ? '38px' : '44px',
+            fontSize: '42px',
             fontWeight: 900,
             color: '#F4F0EA',
-            lineHeight: 1.15,
+            lineHeight: 1.22,
             letterSpacing: '-0.8px',
             fontFamily: "'Montserrat', sans-serif",
             textTransform: 'uppercase',
@@ -335,39 +265,54 @@ export const HookScene: React.FC<HookSceneProps> = ({
             textShadow: '0 4px 18px rgba(0, 0, 0, 0.85)',
           }}
         >
-          {headline}
+          {headlineParts.before}{' '}
+          {headlineParts.highlighted && (
+            <span
+              style={{
+                backgroundColor: '#FFCC00',
+                color: '#111215',
+                padding: '2px 12px',
+                borderRadius: '3px',
+                border: '2px solid #111215',
+                boxShadow: '4px 4px 0px #111215',
+                display: 'inline-block',
+                marginTop: '6px',
+              }}
+            >
+              {headlineParts.highlighted}
+            </span>
+          )}
         </h1>
       </div>
 
       {/* =====================================================================
-          3. CENTER STAGE: 3D HUMAN ANATOMY RECEIVING RAPID-FIRE MULTIPLIER IMPACT
-          Left Side: 3D Translucent Human Body + Target Organ Glowing & Reacting
-          Right Side: Editorial Cream Paper Dossier (×1, ×2, ×3 ... ×30)
+          3. CENTER STAGE: 3D HUMAN EATING NOODLES + ×1..×30 MULTIPLIER CARD
+             (Zero spoilers about organs/diseases — pure Hook animation!)
           ===================================================================== */}
       <div
         style={{
           position: 'absolute',
-          top: '310px',
+          top: '290px',
           left: '36px',
           right: '36px',
           height: '870px',
           zIndex: 20,
           display: 'grid',
-          gridTemplateColumns: '480px 1fr',
+          gridTemplateColumns: '470px 1fr',
           gap: '20px',
           alignItems: 'center',
         }}
       >
-        {/* LEFT COLUMN: 3D Translucent Human Body + Target Organ Overloaded in Real Time */}
+        {/* LEFT COLUMN: Clean 3D Translucent Human Body Eating the Item (No spoiler text box!) */}
         <div
           style={{
             position: 'relative',
-            width: '480px',
+            width: '470px',
             height: '850px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            transform: `scale(${0.96 + curvedProgress * 0.06 + systolicBeat * 0.015})`,
+            transform: `scale(${0.97 + curvedProgress * 0.05 + systolicBeat * 0.012})`,
           }}
         >
           {/* Subtle Studio Spotlight Behind 3D Body */}
@@ -389,29 +334,29 @@ export const HookScene: React.FC<HookSceneProps> = ({
               width: '470px',
               height: '830px',
               objectFit: 'contain',
-              opacity: 0.85,
+              opacity: 0.88,
               mixBlendMode: 'screen',
             }}
           />
 
-          {/* 3D Target Organ Inside Body — Proportionally Fitted Inside the Torso & Glowing as Multiplier Climbs */}
+          {/* 3D Organ Inside Body Glowing Gently as Food Enters */}
           <div
             style={{
               position: 'absolute',
               top:
                 scenario.targetOrganPng.includes('brain')
-                  ? '145px'
+                  ? '128px'
                   : scenario.targetOrganPng.includes('lungs') || scenario.targetOrganPng.includes('heart')
-                  ? '265px'
-                  : '365px',
-              left: '50%',
-              transform: `translateX(-50%) scale(${0.86 + curvedProgress * 0.14 + systolicBeat * 0.08})`,
-              width: '96px',
-              height: '96px',
+                  ? '255px'
+                  : '318px',
+              left: scenario.targetOrganPng.includes('stomach') ? '53.5%' : '50%',
+              transform: `translateX(-50%) scale(${0.88 + curvedProgress * 0.12 + systolicBeat * 0.05})`,
+              width: '74px',
+              height: '74px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              filter: `drop-shadow(0 0 ${10 + curvedProgress * 22}px #FFCC00) saturate(${1.1 + curvedProgress * 0.45})`,
+              filter: `drop-shadow(0 0 ${8 + curvedProgress * 16}px #FFCC00) saturate(${1.1 + curvedProgress * 0.35})`,
             }}
           >
             <Img
@@ -424,21 +369,21 @@ export const HookScene: React.FC<HookSceneProps> = ({
             />
           </div>
 
-          {/* Rapid-Fire Ingestion Stream: Items Flying into the Mouth (x=240, y=205) -> Down Esophagus -> Organ! */}
+          {/* Rapid-Fire Ingestion Stream: Items Flying into the Mouth -> Down Esophagus -> Stomach! */}
           {streamItems.map((item) => {
             const cycle = ((frame + item.offset) % 48) / 48;
-            const mouthX = 240;
+            const mouthX = 235;
             const mouthY = 205;
             const organY =
               scenario.targetOrganPng.includes('brain')
                 ? 175
                 : scenario.targetOrganPng.includes('lungs') || scenario.targetOrganPng.includes('heart')
                 ? 305
-                : 405;
+                : 395;
 
             const curX =
               cycle < 0.6
-                ? interpolate(cycle, [0, 0.6], [450, mouthX])
+                ? interpolate(cycle, [0, 0.6], [445, mouthX])
                 : mouthX + Math.sin(cycle * Math.PI * 4) * 4;
             const curY =
               cycle < 0.6
@@ -458,7 +403,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
                   position: 'absolute',
                   left: `${curX}px`,
                   top: `${curY}px`,
-                  fontSize: '38px',
+                  fontSize: '40px',
                   transform: `translate(-50%, -50%) scale(${itemScale}) rotate(${cycle < 0.6 ? cycle * 180 : 0}deg)`,
                   opacity: itemOpacity,
                   filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.65))',
@@ -469,75 +414,36 @@ export const HookScene: React.FC<HookSceneProps> = ({
               </div>
             );
           })}
-
-          {/* Editorial Label Strip under the 3D Body (Cream Paper + Hard Shadow) */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '32px',
-              left: '24px',
-              right: '24px',
-              backgroundColor: '#F4F0EA',
-              border: '2.5px solid #111215',
-              borderRadius: '4px',
-              padding: '10px 14px',
-              textAlign: 'center',
-              boxShadow: '7px 7px 0px #111215',
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "'Space Grotesk', monospace",
-                fontSize: '11px',
-                fontWeight: 900,
-                color: '#FF3B30',
-                letterSpacing: '1.2px',
-              }}
-            >
-              TARGET UTAMA: {scenario.targetOrganName}
-            </div>
-            <div
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: '13px',
-                fontWeight: 900,
-                color: '#111215',
-                marginTop: '3px',
-              }}
-            >
-              {scenario.dangerText}
-            </div>
-          </div>
         </div>
 
-        {/* RIGHT COLUMN: EDITORIAL PRINT DOSSIER CARD (×1, ×2, ×3 ... ×30) */}
+        {/* RIGHT COLUMN: CLEAN ×1 TO ×30 COUNTER & 30-DAY CALENDAR GRID */}
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '16px',
+            gap: '18px',
             backgroundColor: '#F4F0EA',
             border: '3px solid #111215',
             borderRadius: '6px',
-            padding: '20px 18px',
+            padding: '22px 18px',
             boxShadow: '12px 12px 0px #111215, 0 24px 50px rgba(0,0,0,0.65)',
           }}
         >
-          {/* Giant Multiplier Header: Dark Charcoal Block on Cream Paper */}
+          {/* Giant Multiplier Counter: ×1, ×2, ×3 ... ×30 */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               backgroundColor: '#16181D',
-              padding: '16px 18px',
+              padding: '18px 20px',
               borderRadius: '4px',
               border: '2px solid #111215',
             }}
           >
             <div
               style={{
-                fontSize: '64px',
+                fontSize: '68px',
                 lineHeight: 1,
                 transform: `scale(${1 + Math.sin(frame * 0.35) * 0.12}) rotate(${Math.sin(frame * 0.25) * 6}deg)`,
               }}
@@ -546,23 +452,12 @@ export const HookScene: React.FC<HookSceneProps> = ({
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-              <span
-                style={{
-                  fontFamily: "'Space Grotesk', monospace",
-                  fontSize: '11px',
-                  fontWeight: 800,
-                  color: '#a1a1aa',
-                  letterSpacing: '1.5px',
-                }}
-              >
-                AKUMULASI EKSPERIMEN
-              </span>
               <div
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontSize: '64px',
+                  fontSize: '68px',
                   fontWeight: 900,
-                  color: curvedProgress >= 0.72 ? '#FF3B30' : '#FFCC00',
+                  color: curvedProgress >= 0.75 ? '#FF3B30' : '#FFCC00',
                   lineHeight: 1.0,
                   transform: `scale(${1 + (frame % 6 === 0 && rawProgress < 1 ? 0.07 : 0)})`,
                 }}
@@ -572,53 +467,54 @@ export const HookScene: React.FC<HookSceneProps> = ({
               <span
                 style={{
                   fontFamily: "'Space Grotesk', monospace",
-                  fontSize: '12px',
+                  fontSize: '13px',
                   fontWeight: 900,
                   color: '#F4F0EA',
                   letterSpacing: '1px',
-                  marginTop: '4px',
+                  marginTop: '6px',
                 }}
               >
-                {scenario.unitLabel}
+                {scenario.itemLabel}
               </span>
             </div>
           </div>
 
-          {/* 30-Slot Editorial Stamp Grid (Populates #1, #2, #3 ... #30 rapidly!) */}
+          {/* 30-Slot Stamp Grid (#1, #2, #3 ... #30) */}
           <div>
             <div
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                marginBottom: '10px',
+                marginBottom: '12px',
                 borderBottom: '2px solid #111215',
-                paddingBottom: '6px',
+                paddingBottom: '8px',
               }}
             >
               <span
                 style={{
                   fontFamily: "'Space Grotesk', monospace",
-                  fontSize: '12px',
+                  fontSize: '13px',
                   fontWeight: 900,
                   color: '#111215',
-                  letterSpacing: '1px',
+                  letterSpacing: '0.8px',
                 }}
               >
-                LOG {scenario.itemLabel}
+                {scenario.unitLabel}
               </span>
               <span
                 style={{
                   fontFamily: "'Space Grotesk', monospace",
                   fontSize: '13px',
                   fontWeight: 900,
-                  color: '#FFFFFF',
-                  backgroundColor: '#111215',
-                  padding: '2px 8px',
+                  color: '#111215',
+                  backgroundColor: '#FFCC00',
+                  border: '1.5px solid #111215',
+                  padding: '2px 10px',
                   borderRadius: '2px',
                 }}
               >
-                {currentCount} / {scenario.targetCount}
+                HARI {currentCount}/{scenario.targetCount}
               </span>
             </div>
 
@@ -626,7 +522,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(6, 1fr)',
-                gap: '7px',
+                gap: '8px',
               }}
             >
               {Array.from({ length: totalGridSlots }).map((_, idx) => {
@@ -636,7 +532,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
                   <div
                     key={idx}
                     style={{
-                      height: '56px',
+                      height: '62px',
                       borderRadius: '3px',
                       backgroundColor: isLit
                         ? isNewest
@@ -653,14 +549,14 @@ export const HookScene: React.FC<HookSceneProps> = ({
                       boxShadow: isNewest ? '3px 3px 0px #111215' : 'none',
                     }}
                   >
-                    <span style={{ fontSize: '22px', lineHeight: 1 }}>{scenario.emoji}</span>
+                    <span style={{ fontSize: '24px', lineHeight: 1 }}>{scenario.emoji}</span>
                     <span
                       style={{
                         fontFamily: "'Space Grotesk', monospace",
-                        fontSize: '10px',
+                        fontSize: '11px',
                         fontWeight: 900,
                         color: isLit ? (isNewest ? '#111215' : '#F4F0EA') : '#71717a',
-                        marginTop: '2px',
+                        marginTop: '3px',
                       }}
                     >
                       #{idx + 1}
@@ -668,48 +564,6 @@ export const HookScene: React.FC<HookSceneProps> = ({
                   </div>
                 );
               })}
-            </div>
-          </div>
-
-          {/* Escalating Biological Overload Bar (Editorial Print Meter) */}
-          <div
-            style={{
-              backgroundColor: '#E5E0D5',
-              borderRadius: '4px',
-              padding: '10px 12px',
-              border: '2px solid #111215',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                fontFamily: "'Space Grotesk', monospace",
-                fontSize: '12px',
-                fontWeight: 900,
-                marginBottom: '6px',
-              }}
-            >
-              <span style={{ color: '#111215' }}>BEBAN KERJA ORGAN</span>
-              <span style={{ color: '#FF3B30' }}>{Math.round(15 + curvedProgress * 82)}% KRITIS</span>
-            </div>
-            <div
-              style={{
-                width: '100%',
-                height: '14px',
-                backgroundColor: '#16181D',
-                borderRadius: '2px',
-                border: '1.5px solid #111215',
-                overflow: 'hidden',
-              }}
-            >
-              <div
-                style={{
-                  width: `${Math.round(15 + curvedProgress * 82)}%`,
-                  height: '100%',
-                  background: curvedProgress >= 0.7 ? '#FF3B30' : '#FFCC00',
-                }}
-              />
             </div>
           </div>
         </div>

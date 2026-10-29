@@ -63,15 +63,17 @@ Kamu adalah Sutradara Sains & Medis Kelas Dunia (setara kreator Zack D. Films, K
 Tugasmu adalah menciptakan naskah dan alur visual simulasi anatomi 3D "Apa yang Terjadi pada Tubuhmu Jika..." berdurasi 60 hingga 140 detik untuk YouTube Shorts / TikTok / Reels (9:16).
 
 PRINSIP WAJIB SUTRADARA MEDIS 3D:
-1. GAYA HOOK PEMBUKA ("fullscreen-dramatic" — WAJIB HOOK PERTANYAAN PENASARAN!):
-   - DILARANG KERAS langsung memulai pembahasan teknis di detik pertama!
-   - Mulailah video dengan HOOK PERTANYAAN PSIKOLOGIS yang langsung memancing rasa penasaran penonton tentang tubuh mereka sendiri (*Curiosity Gap*), baru kemudian berikan pratinjau taruhan medisnya!
-   - 'kicker': Badge pemicu rasa penasaran (misal: "PERTANYAAN MEDIS", "EKSPERIMEN TUBUH MANUSIA", "SIMULASI BIOLOGIS").
-   - 'headline': Kalimat tanya singkat, menohok, dan wajib diakhiri tanda tanya "?" (maksimal 6-9 kata, contoh: "BAGAIMANA KEADAAN TUBUHMU JIKA TIDAK TIDUR 72 JAM?", "APA YANG TERJADI JIKA MENAHAN KENCING TERLALU LAMA?", "BENARKAH KOPI SAAT PERUT KOSONG MERUSAK LAMBUNG?").
-   - 'narration': WAJIB dibuka dengan kalimat pertanyaan langsung ke penonton (contoh: "Pernahkah kamu membayangkan, bagaimana keadaan di dalam tubuhmu jika kamu memaksa tidak tidur selama 72 jam penuh? Kamu mungkin mengira hanya akan merasa mengantuk biasa... tapi di balik kulitmu, organ-organ vitalmu sedang berjuang melewati batas kritis. Mari kita masuk ke dalam tubuhmu detik demi detik!").
+1. GAYA HOOK PEMBUKA ("fullscreen-dramatic" — WAJIB JUDUL MANUSIAWI & NATURAL!):
+   - DILARANG KERAS memakai kata-kata khas AI seperti "EKSPERIMEN TUBUH MANUSIA", "SIMULASI BIOLOGIS", "TARGET UTAMA", atau judul kaku berpola "X: APAKAH MENGANCAM NYAWAMU?".
+   - Buat 'headline' persis seperti judul video manusia yang natural dan sesuai durasi topik (contoh: "APA JADINYA KALAU KAMU MAKAN MIE 30 HARI TERUS-MENERUS?", "APA JADINYA KALAU TIDAK TIDUR 72 JAM NON-STOP?", "APA JADINYA MINUM KOPI SAAT PERUT KOSONG 30 HARI?").
+   - 'kicker': Cukup durasi singkat seperti "30 HARI NON-STOP" atau "72 JAM NON-STOP" (jangan pakai kata "EKSPERIMEN").
+   - 'narration': WAJIB dibuka dengan kalimat pertanyaan langsung ke penonton tanpa bocoran teknis yang berlebihan di awal.
 
-2. AKURASI MEDIS & BIOLOGIS NYATA:
-   - Jelaskan mekanisme biologis yang nyata: nama hormon (kortisol, adrenalin, dopamin, adenosin, insulin), nama bagian organ (korteks prefrontal, amigdala, alveoli, nefron ginjal, mukosa lambung), dan angka medis konkret (misal: detak jantung 130 BPM, pH asam lambung 1.5, tekanan darah melonjak).
+2. TEKS KARTU ORGAN YANG NATURAL & MUDAH DIPAHAMI (BUKAN BAHASA ROBOT/AI):
+   - Di dalam narasi suara ('narration'), jelaskan proses biologis secara ilmiah namun mengalir.
+   - Namun untuk teks di layar ('headline' dan 'primaryText' pada setiap 'node'), DILARANG memakai istilah medis rumit/kaku khas AI (seperti "HEPATOSIT AKTIF", "DISFUNGSI ENDOTEL", "DEGENERASI MIELIN", "SISTEMIK KOLLAPS"). Gunakan bahasa sehari-hari yang langsung dipahami penonton:
+     * Contoh 'headline' yang bagus: "LAMBUNG BEKERJA EKSTRA", "DINDING USUS TERIRITASI", "HATI MULAI KELELAHAN", "PEMBULUH DARAH MENYEMPIT", "GINJAL KEWALAHAN MENYARING", "SULIT FOKUS & MUDAH LELAH".
+     * Contoh 'primaryText' yang bagus: "ASAM LAMBUNG NAIK", "PENYERAPAN TERGANGGU", "KERJA HATI MENINGKAT", "ALIRAN DARAH MELAMBAT", "TEKANAN DARAH NAIK".
    - Setiap adegan ('node') WAJIB memiliki:
      * 'timeOrYear': Tahap waktu kronologis & organ (contoh: "MENIT KE-15 • LAMBUNG", "JAM KE-24 • KORTEKS OTAK", "JAM KE-48 • SISTEM SARAF", "HARI KE-3 • JANTUNG").
      * 'organTarget': Pilih SATU kode organ yang sedang disorot kamera pemindai:
@@ -399,26 +401,26 @@ async function generateStoryboard(topic) {
   }
   console.log(`      🎨 [AI Editorial Style] Mood: ${storyData.editorialStyle.mood} | Grain: ${storyData.editorialStyle.grainIntensity} | Shake Chaos: ${storyData.editorialStyle.shakeThresholdChaos}`);
 
-  // Normalize Hook (Enforce Curiosity-Gap Question Hook!)
-  const cleanScenario = topic.replace(/^(Apa yang Terjadi pada Tubuhmu Jika|Bagaimana Jika)\s*/i, '').replace(/\?+$/, '').trim();
-  const defaultQuestionHeadline = `BAGAIMANA KEADAAN TUBUHMU KETIKA ${cleanScenario.toUpperCase()}?`;
-  const defaultQuestionNarration = `Pernahkah kamu bertanya-tanya, bagaimana keadaan tubuhmu ketika ${cleanScenario.toLowerCase()}? Kamu mungkin mengira efeknya sepele, namun dalam hitungan menit, organ dalammu langsung memicu reaksi darurat. Mari kita lihat apa yang terjadi di dalam tubuhmu!`;
+  // Normalize Hook (Enforce Natural Human Question Hook!)
+  const cleanScenario = topic.replace(/^(Apa yang Terjadi pada Tubuhmu Jika|Apa Jadinya Kalau|Bagaimana Jika)\s*/i, '').replace(/\?+$/, '').trim();
+  const defaultQuestionHeadline = `APA JADINYA KALAU ${cleanScenario.toUpperCase()}?`;
+  const defaultQuestionNarration = `Pernahkah kamu bertanya-tanya, apa jadinya kalau ${cleanScenario.toLowerCase()}? Kamu mungkin mengira efeknya sepele, namun di dalam tubuhmu, organ-organmu langsung bereaksi. Mari kita lihat apa yang terjadi di dalam tubuhmu!`;
 
   if (!storyData.hook || typeof storyData.hook !== 'object') {
     storyData.hook = {
       hookStyle: 'fullscreen-dramatic',
-      kicker: 'PERTANYAAN ANATOMI 3D',
+      kicker: '30 HARI NON-STOP',
       headline: defaultQuestionHeadline,
       narration: defaultQuestionNarration,
-      leftTitle: 'Pemicu Awal',
-      rightTitle: 'Reaksi Organ',
-      leftBadge: 'PEMICU AWAL',
-      rightBadge: 'REAKSI ORGAN',
+      leftTitle: 'Kebiasaan Harian',
+      rightTitle: 'Reaksi Tubuh',
+      leftBadge: 'HARI 1',
+      rightBadge: 'HARI 30',
     };
   } else {
     if (!storyData.hook.hookStyle) storyData.hook.hookStyle = 'fullscreen-dramatic';
-    if (!storyData.hook.kicker || storyData.hook.kicker.includes('INVESTIGASI')) {
-      storyData.hook.kicker = 'PERTANYAAN ANATOMI 3D';
+    if (!storyData.hook.kicker || /INVESTIGASI|EKSPERIMEN|SIMULASI/i.test(storyData.hook.kicker)) {
+      storyData.hook.kicker = '30 HARI NON-STOP';
     }
     // Ensure headline is formatted as an engaging question
     if (!storyData.hook.headline) {

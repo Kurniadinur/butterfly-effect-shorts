@@ -27,7 +27,7 @@ interface OrganCameraAnchor {
 export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   'full-body': {
     id: 'full-body',
-    label: 'SISTEM ANATOMI TUBUH',
+    label: 'SELURUH TUBUH',
     stageX: 50,
     stageY: 74,
     zoomScale: 1.05,
@@ -37,7 +37,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   brain: {
     id: 'brain',
-    label: 'OTAK & SARAF PUSAT',
+    label: 'BAGIAN OTAK',
     stageX: 50,
     stageY: 12,
     zoomScale: 1.48,
@@ -47,7 +47,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   nerves: {
     id: 'nerves',
-    label: 'JARINGAN SARAF & NEURON',
+    label: 'SISTEM SARAF',
     stageX: 50,
     stageY: 22,
     zoomScale: 1.38,
@@ -57,7 +57,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   lungs: {
     id: 'lungs',
-    label: 'PARU-PARU & RESPIRASI',
+    label: 'PARU-PARU',
     stageX: 50,
     stageY: 47,
     zoomScale: 1.36,
@@ -67,7 +67,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   heart: {
     id: 'heart',
-    label: 'JANTUNG & PEMBULUH DARAH',
+    label: 'JANTUNG',
     stageX: 52,
     stageY: 49,
     zoomScale: 1.46,
@@ -77,7 +77,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   blood: {
     id: 'blood',
-    label: 'SIRKULASI ALIRAN DARAH',
+    label: 'PEMBULUH DARAH',
     stageX: 52,
     stageY: 49,
     zoomScale: 1.38,
@@ -87,7 +87,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   liver: {
     id: 'liver',
-    label: 'HATI (LIVER) & DETOKS',
+    label: 'ORGAN HATI',
     stageX: 45,
     stageY: 62,
     zoomScale: 1.44,
@@ -97,7 +97,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   stomach: {
     id: 'stomach',
-    label: 'LAMBUNG & ASAM PENCERNAAN',
+    label: 'LAMBUNG',
     stageX: 55,
     stageY: 63,
     zoomScale: 1.46,
@@ -107,7 +107,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   kidney: {
     id: 'kidney',
-    label: 'GINJAL & KELENJAR ADRENAL',
+    label: 'GINJAL',
     stageX: 50,
     stageY: 70,
     zoomScale: 1.44,
@@ -117,7 +117,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   intestine: {
     id: 'intestine',
-    label: 'USUS & METABOLISME SEL',
+    label: 'USUS HALUS',
     stageX: 50,
     stageY: 79,
     zoomScale: 1.38,
@@ -127,7 +127,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   muscles: {
     id: 'muscles',
-    label: 'JARINGAN OTOT & ENERGI',
+    label: 'OTOT TUBUH',
     stageX: 36,
     stageY: 80,
     zoomScale: 1.32,
@@ -758,22 +758,6 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
               transform: `scale(${1.04 + systolicBeat * 0.06})`,
             }}
           />
-          {/* Tiny Fig. Stamp in Corner */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '4px',
-              left: '5px',
-              fontFamily: "'Space Grotesk', monospace",
-              fontSize: '9px',
-              fontWeight: 800,
-              color: '#F4F0EA',
-              opacity: 0.75,
-              letterSpacing: '0.5px',
-            }}
-          >
-            FIG.0{activeWp.step}
-          </div>
         </div>
 
         {/* High-Contrast Print Typography on Warm Cream Paper */}
@@ -781,10 +765,10 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           <div
             style={{
               fontFamily: "'Space Grotesk', monospace",
-              fontSize: '11px',
+              fontSize: '12px',
               fontWeight: 800,
               color: '#52525b',
-              letterSpacing: '1.4px',
+              letterSpacing: '1.2px',
               textTransform: 'uppercase',
               borderBottom: '1.5px solid #d4d0c8',
               paddingBottom: '3px',
@@ -831,7 +815,9 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
                 textTransform: 'uppercase',
               }}
             >
-              DAMPAK: {activeWp.primaryText}
+              {activeWp.primaryText && activeWp.primaryText.length <= 32
+                ? activeWp.primaryText
+                : activeWp.secondaryText || 'REAKSI TUBUH'}
             </span>
           </div>
         </div>
@@ -855,7 +841,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       />
 
       {/* =====================================================================
-          5. EDITORIAL TOP TIMELINE STRIP (Vox / Documentary Chapter Header)
+          5. EDITORIAL TOP TIMELINE STRIP (Clean Chapter Header — Zero AI Jargon)
           ===================================================================== */}
       <div
         style={{
@@ -874,98 +860,55 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           boxShadow: '6px 6px 0px rgba(0, 0, 0, 0.85)',
         }}
       >
-        {/* Left: Highlighted Time Stamp Tag */}
+        {/* Left: Highlighted Step & Time Stamp */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
           <div
             style={{
               backgroundColor: '#FFCC00',
               color: '#111215',
               fontFamily: "'Space Grotesk', monospace",
-              fontSize: '13px',
+              fontSize: '14px',
               fontWeight: 900,
               padding: '4px 10px',
               borderRadius: '2px',
-              letterSpacing: '1px',
+              letterSpacing: '0.8px',
             }}
           >
-            0{activeWp.step}
+            {activeWp.step < 10 ? `0${activeWp.step}` : activeWp.step}
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span
-              style={{
-                fontFamily: "'Space Grotesk', monospace",
-                fontSize: '10px',
-                fontWeight: 700,
-                color: '#a1a1aa',
-                letterSpacing: '1.5px',
-              }}
-            >
-              KRONOLOGI ANATOMI
-            </span>
-            <span
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: '17px',
-                fontWeight: 900,
-                color: '#F4F0EA',
-                letterSpacing: '0.4px',
-                textTransform: 'uppercase',
-              }}
-            >
-              {activeWp.timeTag}
-            </span>
-          </div>
+          <span
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: '18px',
+              fontWeight: 900,
+              color: '#F4F0EA',
+              letterSpacing: '0.4px',
+              textTransform: 'uppercase',
+            }}
+          >
+            {activeWp.timeTag}
+          </span>
         </div>
 
-        {/* Center: Clean Editorial EKG Trace */}
-        <svg width="145" height="32" viewBox="0 0 220 40" style={{ overflow: 'visible' }}>
-          <path
-            d={ekgPath}
-            fill="none"
-            stroke="#FFCC00"
-            strokeWidth="2.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        {/* Right: Clean Editorial EKG Trace + Heartbeat BPM */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+          <svg width="135" height="32" viewBox="0 0 220 40" style={{ overflow: 'visible' }}>
+            <path
+              d={ekgPath}
+              fill="none"
+              stroke="#FFCC00"
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
 
-        {/* Right: Monospace Biometric Readout */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-            <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '10px', fontWeight: 700, color: '#a1a1aa' }}>
-              DETAK
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+            <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '22px', fontWeight: 900, color: '#F4F0EA' }}>
+              {bpm}
             </span>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '3px' }}>
-              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '21px', fontWeight: 900, color: '#F4F0EA' }}>
-                {bpm}
-              </span>
-              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '11px', fontWeight: 800, color: '#FFCC00' }}>
-                BPM
-              </span>
-            </div>
-          </div>
-
-          <div
-            style={{
-              borderLeft: '1.5px solid rgba(244, 240, 234, 0.22)',
-              paddingLeft: '14px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-end',
-            }}
-          >
-            <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '10px', fontWeight: 700, color: '#a1a1aa' }}>
-              BEBAN SEL
-            </span>
-            <span
-              style={{
-                fontFamily: "'Space Grotesk', monospace",
-                fontSize: '20px',
-                fontWeight: 900,
-                color: smoothChaos >= 65 ? '#FF3B30' : '#FFCC00',
-              }}
-            >
-              {Math.round(smoothChaos)}%
+            <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '12px', fontWeight: 800, color: '#FFCC00' }}>
+              BPM
             </span>
           </div>
         </div>
