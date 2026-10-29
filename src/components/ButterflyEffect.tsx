@@ -41,13 +41,14 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         shakeThresholdChaos={data.editorialStyle?.shakeThresholdChaos ?? 78}
         sensitivity="subtle"
       >
-        {/* 1. 3D Medical X-Ray Hook Scene */}
+        {/* 1. 3D Medical X-Ray Hook Scene with Escalating Multiplier / Action Animation */}
         <Sequence from={0} durationInFrames={data.hook.durationFrames}>
           <HookScene
             hookStyle={data.hook.hookStyle}
             archetype={data.hook.archetype}
             headline={data.hook.headline}
             kicker={data.hook.kicker}
+            narration={data.hook.narration}
             leftTitle={data.hook.leftTitle}
             rightTitle={data.hook.rightTitle}
             leftBadge={data.hook.leftBadge}
@@ -56,6 +57,11 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
             leftStampText={data.hook.leftStampText}
             leftImage={data.hook.leftImage || data.nodes?.[0]?.mediaUrl}
             rightImage={data.hook.rightImage || data.nodes?.[0]?.mediaUrl}
+            hookAnimationType={data.hook.hookAnimationType}
+            hookItemEmoji={data.hook.hookItemEmoji}
+            hookItemLabel={data.hook.hookItemLabel}
+            hookTargetCount={data.hook.hookTargetCount}
+            hookUnitLabel={data.hook.hookUnitLabel}
             durationFrames={data.hook.durationFrames}
           />
         </Sequence>

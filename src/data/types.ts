@@ -124,6 +124,11 @@ export interface ButterflyStoryData {
     leftImage?: string | null;
     rightImage?: string | null;
     imagePrompt?: string | null;
+    hookAnimationType?: 'multiplier-cascade' | 'countdown-depletion' | 'rapid-ingestion' | string | null;
+    hookItemEmoji?: string | null;
+    hookItemLabel?: string | null;
+    hookTargetCount?: number | null;
+    hookUnitLabel?: string | null;
     soundEffect?: any;
     durationFrames: number;
   };

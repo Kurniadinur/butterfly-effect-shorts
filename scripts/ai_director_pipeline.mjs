@@ -117,7 +117,12 @@ FORMAT JSON WAJIB:
     "leftStampText": "FASE 0",
     "leftSearchQuery": "3D medical X-ray human body glowing anatomy",
     "rightSearchQuery": "3D medical X-ray glowing brain and heart scan",
-    "imagePrompt": "3D medical anatomical X-ray scan of glowing human body brain and heart, bioluminescent cyan and red, Zack D Films style, 9:16 vertical"
+    "imagePrompt": "3D medical anatomical X-ray scan of glowing human body brain and heart, bioluminescent cyan and red, Zack D Films style, 9:16 vertical",
+    "hookAnimationType": "multiplier-cascade",
+    "hookItemEmoji": "🍜 (atau emoji objek pemicu seperti ☕, 🚬, 🪫, 🥤, 🌶️, 💧)",
+    "hookItemLabel": "BUNGKUS MIE INSTAN (atau nama objek yang dikalikan)",
+    "hookTargetCount": 30,
+    "hookUnitLabel": "HARI BERTURUT-TURUT (atau JAM TANPA TIDUR / GELAS PER HARI)"
   },
   "nodes": [
     {
