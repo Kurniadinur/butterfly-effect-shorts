@@ -52,12 +52,28 @@ export interface EditorialStyle {
   shakeThresholdChaos?: number; // Chaos level where camera micro-tremor activates (default 65)
 }
 
+export type OrganTarget =
+  | 'brain'
+  | 'heart'
+  | 'lungs'
+  | 'stomach'
+  | 'liver'
+  | 'kidney'
+  | 'intestine'
+  | 'blood'
+  | 'nerves'
+  | 'muscles'
+  | 'full-body'
+  | string;
+
 export interface ButterflyNode {
   step: number;
   timeOrYear: string;
   headline: string;
   narration: string;
-  chaosLevel: number; // 0 to 100
+  chaosLevel: number; // 0 to 100 (Biological Stress / Severity Level)
+  organTarget?: OrganTarget | null;
+  vitalStatus?: string | null;
   mediaType: 'photo' | 'broll' | 'graphic';
   mediaUrl: string;
   directorType?: DirectorSceneType | string | null;

@@ -120,58 +120,28 @@ export async function auditAndRefineStory(storyData, topic, groqApiKey = process
   const blacklisted = memory.blacklisted_patterns || [];
 
   const auditPrompt = `
-Kamu adalah AI Senior Executive Producer & Fact-Checking Supervisor Dokumenter Sejarah Tingkat Dunia.
-Tugasmu adalah menguji dan mengaudit naskah storyboard Butterfly Effect berikut sebelum dirender menjadi video.
+Kamu adalah AI Senior Medical & Science Supervisor untuk simulasi anatomi tubuh 3D ("Apa yang Terjadi pada Tubuhmu Jika...").
+Tugasmu adalah memeriksa dan menyempurnakan naskah storyboard berikut sebelum dirender menjadi video.
 
 TOPIK: "${topic}"
 DRAFT STORYBOARD:
 ${JSON.stringify(storyData, null, 2)}
 
-DAFTAR HITAM POLA TERLARANG:
-${JSON.stringify(blacklisted)}
+KRITERIA AUDIT MEDIS & VISUAL:
+1. AKURASI MEDIS & BIOLOGIS:
+   - Pastikan reaksi organ, hormon, dan tahapan waktu masuk akal secara ilmiah (misal: lambung -> pembuluh darah -> jantung -> otak -> ginjal).
+2. KELENGKAPAN TARGET ORGAN ('organTarget'):
+   - Pastikan setiap node memiliki 'organTarget' yang valid ('brain', 'heart', 'lungs', 'stomach', 'liver', 'kidney', 'intestine', 'blood', 'nerves', atau 'muscles') agar pemindai anatomi 3D bergerak luwes antar-organ.
+3. KEPADATAN TEKS LAYAR:
+   - 'primaryText': maksimal 25 karakter (indikator reaksi medis singkat).
+   - 'headline': 3 sampai 6 kata yang jelas dan dramatis.
 
-KRITERIA AUDIT KETAT:
-1. AKURASI SEJARAH WAJIB MUTLAK:
-   - Apakah ada elemen fiksi / halusinasi aneh yang tidak ada dalam sejarah aslinya? (Misal: katup pipa bocor di Tembok Berlin, kecelakaan mobil di Titanic).
-   - JIKA ADA ELEMEN FIKSI: Ganti adegan tersebut dengan adegan sejarah yang benar-benar terjadi!
-2. HOOK BERSIH & MENGGIGIT:
-   - DILARANG menggunakan kalimat klise 'Kalian bayangin... dari...'.
-   - Kalimat pembuka harus dramatis, segar, dan alami.
-3. VISUAL COHERENCE:
-   - Pilihan 'directorType' harus 100% masuk akal dengan apa yang dinarasikan.
-4. ZERO WEIRD B-ROLL:
-   - Pastikan tidak ada pencarian foto bebas yang berpotensi menarik gambar salah (seperti Checkpoint Charlie atau foto modern).
-5. MONITOR GAYA EDITING & KENYAMANAN MATA (EYE COMFORT & ATMOSPHERE):
-   - Pastikan 'editorialStyle' ada dan sesuai dengan topik ('cold-war-crisis', 'noir-forensic', 'industrial-decay', 'amber-urgent', atau 'clean-documentary').
-   - Pastikan 'grainIntensity' berada di ambang aman (0.03 - 0.065), tidak menyilaukan dan nyaman di mata penonton.
-   - Pastikan 'shakeThresholdChaos' proporsional (60-75) agar kamera berguncang halus hanya saat momen tegang puncak.
-6. SUPERVISI TIPOGRAFI & DENSITAS TEKS VECTOR SKETCH:
-   - Pastikan teks grafis tidak kepanjangan agar tidak terpotong di layar HP:
-     * 'primaryText': maksimal 25 karakter.
-     * 'secondaryText': maksimal 30 karakter.
-     * 'stampText': maksimal 16 karakter (huruf kapital singkat & padat).
-     * 'headline': 3 sampai 6 kata.
-7. SUPERVISI RETENSI VIRAL YOUTUBE SHORTS (VIRAL RETENTION ARC & SEAMLESS LOOP):
-   - Hook 3 Detik (Stop-The-Scroll): Kalimat pembuka harus langsung menyebutkan waktu/tokoh spesifik dan kontras sepele vs masif.
-   - Seamless Infinite Loop: Pastikan bagian penutup outro dapat menyambung kembali secara halus ke awal hook agar retensi melebihi 100%.
-8. SUPERVISI SOUND DESIGN DOKUMENTER (FOLEY MATCHING & ANTI-DISTRACTION GUARANTEE):
-   - Efek suara harus relevan dengan momen visualnya (misal: lock_click untuk kunci/brankas, morse_code untuk telegraf, gavel_strike untuk vonis, paper_stamp untuk memo).
-   - Menjamin volume berada pada rentang halus (0.20 - 0.30) dan diputar dengan jeda ~12 frame setelah cut agar suara narasi (1.0) tetap jernih dan fokus penonton tidak terganggu.
-9. SUPERVISI DENSITAS MULTI-VISUAL DOKUMENTER (100% FOTO SINEMATIK, DILARANG SKETSA 2D):
-   - DILARANG KERAS 1 visual diam terlalu lama (>5 detik) untuk banyak penjelasan!
-   - Wajib memecah alur menjadi 15 hingga 25+ babak visual dinamis ('nodes'), dengan pergantian foto arsip otentik / reka adegan sinematik tiap 3-5 detik.
-   - Setiap kali suara narasi menyebut aksi, objek, atau subjek baru (kunci, dokumen, pos jaga, radar, lonceng, benturan), visual WAJIB berganti menyesuaikan hal tersebut agar penonton tidak mengalami kelelahan visual!
-10. SUPERVISI DETAIL BUKTI HISTORIS KONKRET (ANTI-MEMBINGUNGKAN PENONTON):
-    - DILARANG membiarkan narasi hanya berbicara secara abstrak/umum (misal: 'ia membaca memo keliru' tanpa menjelaskan apa isi memonya).
-    - Periksa: Apakah narasi atau teks visual sudah membeberkan ISI SPESIFIK / KLAUSUL ASLI dari dokumen, kutipan kata blunder fatal, atau identitas objek/pos penting?
-    - JIKA MASIH KABUR: Supervisor WAJIB menyempurnakan narasi dan field teks grafis ('primaryText' / 'secondaryText') agar membeberkan klausul asli dokumen atau kutipan kata bersejarahnya secara gamblang (misal: izin baru berlaku besok jam 4 pagi dengan visa, tapi diumumkan berlaku segera tanpa syarat)!
-
-FORMAT OUTPUT JSON MURNI (TANPA KATA PENGANTAR):
+FORMAT OUTPUT JSON MURNI:
 {
-  "approved": true / false,
-  "score": 0-100,
-  "retentionScore": 0-100,
-  "notes": "Penjelasan singkat audit & retensi...",
+  "approved": true,
+  "score": 95,
+  "retentionScore": 96,
+  "notes": "Akurasi medis dan alur pemindaian organ terverifikasi.",
   "refinedStory": { objek storyData lengkap yang sudah disempurnakan }
 }
 `;

@@ -3,7 +3,7 @@ import { Sequence, Audio, staticFile, useCurrentFrame } from 'remotion';
 import { ButterflyStoryData } from '../data/types';
 import { CURRENT_STORY } from '../data/currentStory';
 import { HookScene } from './HookScene';
-import { DocumentaryScene } from './DocumentaryScene';
+import { MedicalScannerScene, detectOrganFromText } from './MedicalScannerScene';
 import { KineticSubtitle } from './KineticSubtitle';
 import { OutroScene } from './OutroScene';
 import { FilmEffects } from './effects/FilmEffects';
@@ -16,22 +16,23 @@ export interface ButterflyEffectProps {
 }
 
 /**
- * Editorial shutter transition flash:
- * Produces a subtle, crisp 3-frame film-gate flash when a new scene cuts,
- * synchronized perfectly with the mechanical camera shutter click.
+ * Smooth Bioluminescent Scanner Pulse on Scene Transition:
+ * Instead of a harsh white camera flash, emits a gentle cyan/medical scanner glow
+ * when gliding from one organ/phase to the next.
  */
-const TransitionShutterFlash: React.FC<{ cutFrames: number[] }> = ({ cutFrames }) => {
+const MedicalScannerTransition: React.FC<{ cutFrames: number[] }> = ({ cutFrames }) => {
   const frame = useCurrentFrame();
-  const activeCut = cutFrames.find((f) => frame >= f && frame < f + 3);
+  const activeCut = cutFrames.find((f) => frame >= f && frame < f + 10);
   if (activeCut === undefined) return null;
   const elapsed = frame - activeCut;
-  const opacity = elapsed === 0 ? 0.32 : elapsed === 1 ? 0.12 : 0.03;
+  const progress = elapsed / 10;
+  const opacity = Math.sin(progress * Math.PI) * 0.22;
   return (
     <div
       style={{
         position: 'absolute',
         inset: 0,
-        backgroundColor: '#ffffff',
+        background: 'radial-gradient(circle at 50% 45%, rgba(56, 189, 248, 0.55) 0%, transparent 75%)',
         opacity,
         mixBlendMode: 'screen',
         pointerEvents: 'none',
@@ -41,12 +42,6 @@ const TransitionShutterFlash: React.FC<{ cutFrames: number[] }> = ({ cutFrames }
   );
 };
 
-/**
- * AI Audio Supervisor Map:
- * Maps each forensic vector sketch archetype to its subtle, non-distracting
- * tactile Foley sound effect with intelligent rhythmic cadence (repeated hits/rings).
- * Volumes strictly clamped between 0.20 and 0.32 so speech (volume 1.0) remains 100% crystal clear.
- */
 const SKETCH_FOLEY_SFX: Record<
   string,
   {
@@ -58,46 +53,38 @@ const SKETCH_FOLEY_SFX: Record<
     maxRepeats?: number;
   }
 > = {
-  'key-lockbox': { sfx: 'butterfly/sfx/lock_click.wav', volume: 0.28, offsetFrames: 14, durationFrames: 12 },
-  'maritime-disaster': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.20, offsetFrames: 18, durationFrames: 33, repeatIntervalFrames: 45, maxRepeats: 3 },
-  'courtroom-gavel': { sfx: 'butterfly/sfx/gavel_strike.wav', volume: 0.30, offsetFrames: 15, durationFrames: 16, repeatIntervalFrames: 16, maxRepeats: 3 },
-  'memo-investigation': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.26, offsetFrames: 12, durationFrames: 12, repeatIntervalFrames: 45, maxRepeats: 2 },
-  'bureaucracy-draft': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.24, offsetFrames: 12, durationFrames: 12, repeatIntervalFrames: 45, maxRepeats: 2 },
-  'forensic-dossier': { sfx: 'butterfly/sfx/paper_stamp.wav', volume: 0.26, offsetFrames: 14, durationFrames: 12, repeatIntervalFrames: 45, maxRepeats: 2 },
+  'key-lockbox': { sfx: 'butterfly/sfx/lock_click.wav', volume: 0.22, offsetFrames: 14, durationFrames: 12 },
+  'maritime-disaster': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.18, offsetFrames: 18, durationFrames: 33, repeatIntervalFrames: 45, maxRepeats: 3 },
+  'courtroom-gavel': { sfx: 'butterfly/sfx/gavel_strike.wav', volume: 0.24, offsetFrames: 15, durationFrames: 16, repeatIntervalFrames: 16, maxRepeats: 3 },
+  'memo-investigation': { sfx: 'butterfly/sfx/radar_ping.wav', volume: 0.20, offsetFrames: 12, durationFrames: 25, repeatIntervalFrames: 45, maxRepeats: 2 },
+  'bureaucracy-draft': { sfx: 'butterfly/sfx/radar_ping.wav', volume: 0.20, offsetFrames: 12, durationFrames: 25, repeatIntervalFrames: 45, maxRepeats: 2 },
+  'forensic-dossier': { sfx: 'butterfly/sfx/radar_ping.wav', volume: 0.20, offsetFrames: 14, durationFrames: 25, repeatIntervalFrames: 45, maxRepeats: 2 },
   'tactical-map': { sfx: 'butterfly/sfx/radar_ping.wav', volume: 0.20, offsetFrames: 16, durationFrames: 25, repeatIntervalFrames: 40, maxRepeats: 3 },
-  'radiation-hazard': { sfx: 'butterfly/sfx/geiger_tick.wav', volume: 0.24, offsetFrames: 10, durationFrames: 30, repeatIntervalFrames: 25, maxRepeats: 5 },
-  'reactor-meltdown': { sfx: 'butterfly/sfx/geiger_tick.wav', volume: 0.24, offsetFrames: 10, durationFrames: 30, repeatIntervalFrames: 25, maxRepeats: 5 },
+  'radiation-hazard': { sfx: 'butterfly/sfx/geiger_tick.wav', volume: 0.22, offsetFrames: 10, durationFrames: 30, repeatIntervalFrames: 25, maxRepeats: 5 },
+  'reactor-meltdown': { sfx: 'butterfly/sfx/geiger_tick.wav', volume: 0.22, offsetFrames: 10, durationFrames: 30, repeatIntervalFrames: 25, maxRepeats: 5 },
   'clock-countdown': { sfx: 'butterfly/sfx/clock_tick.wav', volume: 0.20, offsetFrames: 10, durationFrames: 20, repeatIntervalFrames: 30, maxRepeats: 5 },
-  'wall-demolition': { sfx: 'butterfly/sfx/hammer_hit.wav', volume: 0.32, offsetFrames: 14, durationFrames: 18, repeatIntervalFrames: 34, maxRepeats: 4 },
-  'gate-breach': { sfx: 'butterfly/sfx/gate_creak.wav', volume: 0.26, offsetFrames: 12, durationFrames: 25, repeatIntervalFrames: 48, maxRepeats: 2 },
-  'valve-failure': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.24, offsetFrames: 12, durationFrames: 22, repeatIntervalFrames: 38, maxRepeats: 3 },
+  'wall-demolition': { sfx: 'butterfly/sfx/hammer_hit.wav', volume: 0.26, offsetFrames: 14, durationFrames: 18, repeatIntervalFrames: 34, maxRepeats: 4 },
+  'gate-breach': { sfx: 'butterfly/sfx/gate_creak.wav', volume: 0.22, offsetFrames: 12, durationFrames: 25, repeatIntervalFrames: 48, maxRepeats: 2 },
+  'valve-failure': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.22, offsetFrames: 12, durationFrames: 22, repeatIntervalFrames: 38, maxRepeats: 3 },
   'critical-gauge': { sfx: 'butterfly/sfx/steam_hiss.wav', volume: 0.22, offsetFrames: 12, durationFrames: 22, repeatIntervalFrames: 38, maxRepeats: 3 },
-  'telegraph-wire': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.20, offsetFrames: 15, durationFrames: 33, repeatIntervalFrames: 45, maxRepeats: 3 },
-  'press-podium': { sfx: 'butterfly/sfx/camera_blitz.wav', volume: 0.28, offsetFrames: 14, durationFrames: 15, repeatIntervalFrames: 28, maxRepeats: 4 },
-  'press-question': { sfx: 'butterfly/sfx/camera_blitz.wav', volume: 0.28, offsetFrames: 14, durationFrames: 15, repeatIntervalFrames: 26, maxRepeats: 4 },
-  'panic-phone': { sfx: 'butterfly/sfx/phone_ring.wav', volume: 0.28, offsetFrames: 12, durationFrames: 25, repeatIntervalFrames: 42, maxRepeats: 3 },
-  'domino-collapse': { sfx: 'butterfly/sfx/domino_click.wav', volume: 0.28, offsetFrames: 10, durationFrames: 22 },
-  'laboratory-discovery': { sfx: 'butterfly/sfx/beaker_clink.wav', volume: 0.25, offsetFrames: 14, durationFrames: 20, repeatIntervalFrames: 42, maxRepeats: 2 },
-  'car-route': { sfx: 'butterfly/sfx/car_skid.wav', volume: 0.26, offsetFrames: 12, durationFrames: 24 },
-  'breaking-news': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.24, offsetFrames: 10, durationFrames: 26, repeatIntervalFrames: 45, maxRepeats: 2 },
-  'breaking-ticker': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.24, offsetFrames: 10, durationFrames: 26, repeatIntervalFrames: 45, maxRepeats: 2 },
-  'crowd-protest': { sfx: 'butterfly/sfx/crowd_cheer.wav', volume: 0.24, offsetFrames: 10, durationFrames: 42, repeatIntervalFrames: 45, maxRepeats: 3 },
+  'telegraph-wire': { sfx: 'butterfly/sfx/morse_code.wav', volume: 0.18, offsetFrames: 15, durationFrames: 33, repeatIntervalFrames: 45, maxRepeats: 3 },
+  'press-podium': { sfx: 'butterfly/sfx/radar_ping.wav', volume: 0.20, offsetFrames: 14, durationFrames: 25, repeatIntervalFrames: 36, maxRepeats: 3 },
+  'press-question': { sfx: 'butterfly/sfx/radar_ping.wav', volume: 0.20, offsetFrames: 14, durationFrames: 25, repeatIntervalFrames: 36, maxRepeats: 3 },
+  'panic-phone': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.22, offsetFrames: 12, durationFrames: 25, repeatIntervalFrames: 42, maxRepeats: 3 },
+  'domino-collapse': { sfx: 'butterfly/sfx/domino_click.wav', volume: 0.24, offsetFrames: 10, durationFrames: 22 },
+  'laboratory-discovery': { sfx: 'butterfly/sfx/beaker_clink.wav', volume: 0.24, offsetFrames: 14, durationFrames: 20, repeatIntervalFrames: 42, maxRepeats: 2 },
+  'car-route': { sfx: 'butterfly/sfx/radar_ping.wav', volume: 0.20, offsetFrames: 12, durationFrames: 24 },
+  'breaking-news': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.22, offsetFrames: 10, durationFrames: 26, repeatIntervalFrames: 45, maxRepeats: 2 },
+  'breaking-ticker': { sfx: 'butterfly/sfx/broadcast_beeps.wav', volume: 0.22, offsetFrames: 10, durationFrames: 26, repeatIntervalFrames: 45, maxRepeats: 2 },
+  'crowd-protest': { sfx: 'butterfly/sfx/alarm_siren.wav', volume: 0.18, offsetFrames: 10, durationFrames: 36, repeatIntervalFrames: 45, maxRepeats: 2 },
   'soviet-collapse': { sfx: 'butterfly/sfx/alarm_siren.wav', volume: 0.20, offsetFrames: 12, durationFrames: 36, repeatIntervalFrames: 42, maxRepeats: 3 },
 };
 
 const ARCHIVAL_FALLBACK_POOL = [
-  'butterfly/media/schabowski_press.jpg',
-  'butterfly/media/test_cinematic_schabowski.jpg',
-  'butterfly/media/memo_document.jpg',
-  'butterfly/media/checkpoint_bornholmer.jpg',
-  'butterfly/media/checkpoint_gate.jpg',
-  'butterfly/media/crowd_brandenburg.jpg',
-  'butterfly/media/berlin_wall_demolition.jpg',
-  'butterfly/media/berlin_wall_fall.jpg',
-  'butterfly/media/brandenburg_night.jpg',
-  'butterfly/media/press_room.jpg',
-  'butterfly/media/schabowski_flustered.jpg',
-  'butterfly/media/berlin_crowd.jpg',
+  'butterfly/media/medical_brain_xray.jpg',
+  'butterfly/media/medical_heart_xray.jpg',
+  'butterfly/media/medical_stomach_xray.jpg',
+  'butterfly/media/medical_body_xray.jpg',
 ];
 
 function resolvePhotoUrl(mediaUrl?: string, step: number = 1, storyMediaUrls: string[] = []): string {
@@ -120,7 +107,7 @@ function resolvePhotoUrl(mediaUrl?: string, step: number = 1, storyMediaUrls: st
 export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT_STORY }) => {
   const frame = useCurrentFrame();
 
-  // Collect all cut frames for click SFX, shutter flashes, and camera cut recoil
+  // Collect all transition frames
   const cutFrames = useMemo(() => {
     const cuts = [data.hook.durationFrames];
     data.nodes.forEach((n) => {
@@ -148,7 +135,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
     return Array.from(new Set(list));
   }, [data]);
 
-  // Determine active chaos level for data-driven camera micro-shake
+  // Determine active biological stress level for subtle tremor when critical
   const activeChaosLevel = useMemo(() => {
     if (frame < data.hook.durationFrames) return 15;
     const activeNode = data.nodes.find(
@@ -164,21 +151,19 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         position: 'relative',
         width: '1080px',
         height: '1920px',
-        backgroundColor: '#000000',
+        backgroundColor: '#02060d',
         overflow: 'hidden',
       }}
     >
-      {/* Visual Canvas wrapped in Data-Driven Dynamic Camera Shake */}
       <CameraShake
         cutFrames={cutFrames}
         currentChaosLevel={activeChaosLevel}
-        shakeThresholdChaos={data.editorialStyle?.shakeThresholdChaos ?? 65}
-        sensitivity={data.editorialStyle?.shakeSensitivity ?? 'moderate'}
+        shakeThresholdChaos={data.editorialStyle?.shakeThresholdChaos ?? 72}
+        sensitivity={data.editorialStyle?.shakeSensitivity ?? 'subtle'}
       >
-        {/* 0. Permanent Investigation Canvas (Rich Desk Surface, Blueprint Grid, Margin Ticks, Lamp Pool) */}
         <AtmosphericBackground mood={data.editorialStyle?.mood} />
 
-        {/* 1. Cinematic Hook (Frames 0 -> hook.durationFrames) */}
+        {/* 1. 3D Medical X-Ray Hook Scene */}
         <Sequence from={0} durationInFrames={data.hook.durationFrames}>
           <HookScene
             hookStyle={data.hook.hookStyle}
@@ -197,28 +182,43 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
           />
         </Sequence>
 
-        {/* 2. 100% Cinematic Photographic Documentary Scenes (Strictly Zero 2D SVG Cartoons) */}
-        {data.nodes.map((node) => {
+        {/* 2. Fluid 3D Medical X-Ray & Body Scanner Scenes */}
+        {data.nodes.map((node, idx) => {
           const finalPhotoUrl = resolvePhotoUrl(node.mediaUrl, node.step, validStoryPhotos);
+          const prevNode = idx > 0 ? data.nodes[idx - 1] : null;
+          const prevPhotoUrl = prevNode
+            ? resolvePhotoUrl(prevNode.mediaUrl, prevNode.step, validStoryPhotos)
+            : data.hook.rightImage || data.hook.leftImage || undefined;
+          const prevOrgan = prevNode
+            ? detectOrganFromText(prevNode.organTarget, prevNode.headline, prevNode.timeOrYear, prevNode.primaryText, prevNode.step).id
+            : 'full-body';
+
           return (
             <Sequence key={node.step} from={node.startFrame} durationInFrames={node.durationFrames}>
-              <DocumentaryScene
+              <MedicalScannerScene
                 mediaUrl={finalPhotoUrl}
+                prevMediaUrl={prevPhotoUrl}
+                step={node.step}
                 locationTag={node.timeOrYear}
                 headline={node.headline}
+                primaryText={node.primaryText}
+                secondaryText={node.secondaryText}
+                organTarget={node.organTarget}
+                prevOrganTarget={prevOrgan}
+                chaosLevel={node.chaosLevel}
                 zoomDirection={
                   node.zoomDirection ||
                   (node.step % 3 === 0 ? 'out' : node.step % 2 === 0 ? 'in' : 'panRight')
                 }
                 durationFrames={node.durationFrames}
                 mood={data.editorialStyle?.mood}
-                visualSourceTag={node.visualSource || 'REKA ADEGAN'}
+                visualSourceTag={node.visualSource || 'PEMINDAIAN 3D'}
               />
             </Sequence>
           );
         })}
 
-        {/* 3. Outro Debate Card */}
+        {/* 3. Medical Summary Outro Card */}
         <Sequence
           from={data.totalDurationFrames - data.outro.durationFrames}
           durationInFrames={data.outro.durationFrames}
@@ -227,30 +227,29 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         </Sequence>
       </CameraShake>
 
-      {/* 4. Film Effects Overlay (35mm Grain, Light Leak, Vignette, Mood Tint) */}
+      {/* 4. Film & Optical Finish */}
       <FilmEffects editorialStyle={data.editorialStyle} />
-      {/* 4b. Cinematic Optics (35mm Gate Weave, Optical Halation, Anamorphic Falloff) */}
       <CinematicOptics intensity="standard" />
 
-      {/* 5. Creator Transition Click Sound Effects (Crisp Camera Shutter Snap on Every Cut) */}
+      {/* 5. Subtle Medical Scanner Radar Ping on Organ Transitions */}
       {cutFrames.map((cutF) => (
-        <Sequence key={`sfx-cut-${cutF}`} from={cutF} durationInFrames={8}>
-          <Audio src={staticFile('butterfly/sfx/camera_click.wav')} volume={0.65} />
+        <Sequence key={`sfx-cut-${cutF}`} from={cutF} durationInFrames={20}>
+          <Audio src={staticFile('butterfly/sfx/radar_ping.wav')} volume={0.22} />
         </Sequence>
       ))}
 
-      {/* 6. Editorial Shutter Transition Flash Overlay */}
-      <TransitionShutterFlash cutFrames={cutFrames} />
+      {/* 6. Smooth Bioluminescent Transition Glow */}
+      <MedicalScannerTransition cutFrames={cutFrames} />
 
-      {/* 7. Synchronized Floating Kinetic Subtitle (Stationary Phrase Paging) */}
+      {/* 7. Synchronized Floating Kinetic Subtitle (Protected Safe Zone y >= 1200px) */}
       <KineticSubtitle wordTimestamps={data.wordTimestamps} />
 
-      {/* 8. Voice Over Audio Track (127.96s) */}
+      {/* 8. Voice Over Audio Track */}
       {data.audioUrl && (
         <Audio src={staticFile(data.audioUrl)} volume={1.0} />
       )}
 
-      {/* 9. Continuous Ambient Tension Drone (Deep Cinematic Bed, Volume 0.14) */}
+      {/* 9. Continuous Ambient Medical Tension Drone */}
       {Array.from({ length: Math.ceil(data.totalDurationFrames / 360) }).map((_, idx) => (
         <Sequence
           key={`sfx-drone-${idx}`}
@@ -261,31 +260,16 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         </Sequence>
       ))}
 
-      {/* 10. Climax Sub-Bass Impact Boom (Triggered automatically when chaosLevel >= 75) */}
+      {/* 10. Critical Biological Phase Impact Boom (chaosLevel >= 75) */}
       {data.nodes
         .filter((n) => n.chaosLevel >= 75)
         .map((n) => (
           <Sequence key={`sfx-climax-${n.step}`} from={n.startFrame} durationInFrames={45}>
-            <Audio src={staticFile('butterfly/sfx/cinematic_impact.wav')} volume={0.55} />
+            <Audio src={staticFile('butterfly/sfx/cinematic_impact.wav')} volume={0.50} />
           </Sequence>
         ))}
 
-      {/* 11. Subtle Action-Matched Sketch Foley SFX (Non-Distracting, Volume 0.20 - 0.30) */}
-      {/* Hook Archetype Foley */}
-      {data.hook.archetype && SKETCH_FOLEY_SFX[data.hook.archetype] && (
-        <Sequence
-          key="sfx-hook-foley"
-          from={SKETCH_FOLEY_SFX[data.hook.archetype].offsetFrames}
-          durationInFrames={SKETCH_FOLEY_SFX[data.hook.archetype].durationFrames}
-        >
-          <Audio
-            src={staticFile(SKETCH_FOLEY_SFX[data.hook.archetype].sfx)}
-            volume={SKETCH_FOLEY_SFX[data.hook.archetype].volume}
-          />
-        </Sequence>
-      )}
-
-      {/* Nodes Forensic Sketch Foley (Intelligent Rhythmic Cadence Engine) */}
+      {/* 11. Subtle Action-Matched Medical Telemetry & Organ SFX */}
       {data.nodes.map((node) => {
         if (!node.directorType || !SKETCH_FOLEY_SFX[node.directorType]) return null;
         const foley = SKETCH_FOLEY_SFX[node.directorType];
@@ -302,7 +286,6 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         return Array.from({ length: effectiveRepeats }).map((_, repIdx) => {
           const fromFrame = node.startFrame + foley.offsetFrames + repIdx * interval;
           if (fromFrame >= node.startFrame + node.durationFrames - 4) return null;
-          // Subtle natural dynamic decay on secondary strikes (0.92x, 0.85x)
           const volScale = repIdx === 0 ? 1.0 : repIdx === 1 ? 0.92 : 0.85;
           return (
             <Sequence

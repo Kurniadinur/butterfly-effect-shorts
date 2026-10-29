@@ -30,11 +30,11 @@ if (API_KEYS.length === 0) {
   process.exit(1);
 }
 
-const DEFAULT_TOPIC = 'Runtuhnya Tembok Berlin Karena Salah Baca Memo';
+const DEFAULT_TOPIC = 'Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur Selama 72 Jam';
 const topic = process.argv[2] || DEFAULT_TOPIC;
 
 console.log('================================================================');
-console.log('       AI DIRECTOR & SUTRADARA VIDEO PIPELINE (AUTONOMOUS)      ');
+console.log('    AI 3D MEDICAL X-RAY & BODY SCANNER PIPELINE (AUTONOMOUS)    ');
 console.log('================================================================');
 console.log(`Topik Naskah : "${topic}"`);
 console.log(`AI Engine    : Groq Cloud LPU Turbo (Llama / Qwen High-Speed)`);
@@ -42,316 +42,102 @@ console.log(`Audio Sync   : Groq Cloud LPU (Whisper Large V3)`);
 console.log('================================================================\n');
 
 // -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// 1. MASTER SUTRADARA & CREATIVE DIRECTOR PROMPT
+// 1. MASTER SUTRADARA MEDIS & ANATOMI ("APA YANG TERJADI PADA TUBUHMU JIKA...")
 // -----------------------------------------------------------------------------
 export const CREATIVE_PERSPECTIVES = [
   {
-    name: '🌟 MASTER MULTI-PERSPEKTIF SINEMATIK LENGKAP (GABUNGAN SEMUA SUDUT PANDANG)',
-    angle: 'GABUNGKAN SEMUA SUDUT PANDANG MENJADI SATU KARYA DOKUMENTER UTUH, LENGKAP & DETAIL BERDURASI 2 - 2.8 MENIT (MAKSIMAL 3 MENIT): ' +
-      'JANGAN PERNAH MEMOTONG ATAU MEMISAHKAN SUDUT PANDANG! Peristiwa sejarah adalah satu rantai domino yang tak terpisahkan: satukan sudut pandang pembuat kebijakan/pejabat, saksi mata/wartawan, petugas lapangan di garis depan, hingga reaksi histeris massa publik! ' +
-      'BEBAS TANPA BATASAN KAKU: Buat sebanyak mungkin adegan granular (MINIMAL 14 HINGGA 25+ ADEGAN DALAM ARRAY "nodes") agar visual berganti cepat dan dinamis tiap 3–5 detik, tanpa ada satu pun detail sejarah krusial yang terlewat! DILARANG KERAS MEMPERSINGKAT ATAU MEMBUANG FAKTA PENTING! ' +
-      'Rancang alur secara detail & kronologis: ' +
-      '• Fase 1: Ruang Rapat & Podium (Blunder memo rahasia, klausul yang terlewat, pertanyaan wartawan Italia Riccardo Ehrman, jawaban fatal Schabowski). ' +
-      '• Fase 2: Gelombang Kejut Media (Siaran darurat TV, kabar burung menyebar ke seluruh penjuru kota, ribuan warga keluar ke jalanan). ' +
-      '• Fase 3: Titik Kritis Garis Depan (Komandan jaga Harald Jäger di pos perbatasan Bornholmer Straße, telepon darurat panik ke markas yang diabaikan). ' +
-      '• Fase 4: Keputusan Berani Melawan Perintah (Gerbang perbatasan dibuka demi mencegah pertumpahan darah, massa tumpah ruah menangis bahagia). ' +
-      '• Fase 5: Dampak Monumental Sejarah (Warga memahat tembok dengan palu godam, robohnya Tirai Besi, dan runtuhnya Uni Soviet). ' +
-      'Total narasi 240 - 360 kata agar video berdurasi 120 - 170 detik (2 hingga 2.8 menit) dengan pergantian visual foto sinematik yang dinamis tiap 4-6 detik!',
-  },
-  {
-    name: 'BLUNDER SEPELE & KELALAIAN MANUSIAWI',
-    angle: 'Fokuskan alur cerita pada momen kelalaian manusiawi paling awal: benda kecil yang terlupakan, memo terburu-buru, salah belok, atau keputusan sepele dalam hitungan detik yang tanpa disadari memicu rangkaian bencana tak terkendali.',
-  },
-  {
-    name: 'KETEGANGAN LAPANGAN DI TITIK KRITIS',
-    angle: 'Fokuskan alur cerita pada kepanikan operator lapangan di garis depan: petugas jaga yang terisolasi, alarm darurat yang berbunyi, komunikasi radio yang terputus, dan detik-detik menegangkan saat mereka menyadari bahaya sudah terlambat dihentikan.',
-  },
-  {
-    name: 'EFEK DOMINO SEBAB-AKIBAT SISTEMIK',
-    angle: 'Fokuskan alur cerita pada eskalasi efek domino ekstrem bertahap: bagaimana 1 kesalahan mikro merusak sistem lapis pertama, merembet ke kekacauan lapis kedua, memicu kegagalan total, hingga menghancurkan seluruh struktur peradaban.',
-  },
-  {
-    name: 'BREAKING NEWS & REAKSI KAGET DUNIA',
-    angle: 'Fokuskan alur cerita pada ledakan kabar mengejutkan: transmisi darurat, kepanikan publik yang meluas, pers internasional yang menyiarkan bencana secara langsung, dan keterkejutan jutaan manusia saat menyadari sejarah berubah dalam semalam.',
-  },
-  {
-    name: 'INVESTIGASI FORENSIK DOKUMENTER & BUKTI KUNCI',
-    angle: 'Fokuskan alur cerita pada rekonstruksi forensik dingin ala Nessie Judge: analisis kronologis jam demi jam, berkas investigasi deklasifikasi, kata-kata terakhir para saksi kunci, dan pengungkapan fakta bahwa tragedi ini bisa dicegah jika satu hal kecil tidak terabaikan.',
+    name: '🧬 MASTER SIMULASI ANATOMI & ORGAN KRONOLOGIS LENGKAP',
+    angle: 'BEDAH REAKSI BIOLOGIS DAN ANATOMI TUBUH MANUSIA SECARA KRONOLOGIS DETIK DEMI DETIK, MENIT DEMI MENIT, HINGGA JAM/HARI KRITIS! ' +
+      'Buat 12 hingga 20 adegan granular dalam array "nodes" agar visual 3D Medical X-Ray berganti dinamis setiap 3–5 detik mengikuti pergerakan kamera pemindai dari satu organ ke organ lain (Otak, Jantung, Paru-paru, Lambung, Hati, Ginjal, Pembuluh Darah, Sistem Saraf)! ' +
+      'Jelaskan secara ilmiah namun dramatis dan mudah dipahami: ' +
+      '• Fase 1: Reaksi Awal (Menit Pertama - Perubahan hormon, reseptor saraf, atau pencernaan). ' +
+      '• Fase 2: Kompensasi Organ (Jam-Jam Awal - Detak jantung meningkat, lonjakan kortisol/adrenalin, penyempitan pembuluh darah). ' +
+      '• Fase 3: Stres Seluler & Kerusakan Jaringan (Otak mulai kehilangan fokus/mikrosleep, akumulasi racun/asam, dehidrasi sel). ' +
+      '• Fase 4: Ambang Kritis Medis (Halusinasi, kegagalan fungsi organ, alarm darurat sistem imun/saraf pusat). ' +
+      '• Fase 5: Dampak Jangka Panjang & Kesimpulan Medis (Bagaimana tubuh memulihkan diri atau batas maksimal ketahanan manusia).',
   },
 ];
 
 export const DIRECTOR_PROMPT = `
-Kamu adalah Creative Director & Sutradara Dokumenter Papan Atas Dunia sekaligus Storyteller bertaraf Nessie Judge (Nerror).
-Tugasmu adalah menciptakan naskah dan alur visual "Butterfly Effect" (efek domino sebab-akibat ekstrem) berdurasi 60 hingga 160 detik (maksimal di bawah 3 menit) untuk YouTube Shorts / TikTok / Reels (9:16).
+Kamu adalah Sutradara Sains & Medis Kelas Dunia (setara kreator Zack D. Films, Kurzgesagt, dan Institute of Human Anatomy).
+Tugasmu adalah menciptakan naskah dan alur visual simulasi anatomi 3D "Apa yang Terjadi pada Tubuhmu Jika..." berdurasi 60 hingga 140 detik untuk YouTube Shorts / TikTok / Reels (9:16).
 
-PRINSIP WAJIB SUTRADARA KELAS DUNIA (JANGAN PERNAH MENGGUNAKAN TEMPLATE STATIS!):
-1. GAYA VISUAL HOOK PEMBUKA (BEBAS DARI TEMPLATE KAKU):
-   - Gunakan gaya Hook pembuka sinematik ("fullscreen-dramatic" sebagai standar utama):
-     * "fullscreen-dramatic" : Tampilan layar penuh sinematik (1080x1920) dengan foto arsip otentik / reka adegan beresolusi tinggi, headline editorial raksasa di atas, dan atmosfer dokumenter modern (Vox / Johnny Harris). BUKAN kartun / bukan split-screen kaku!
-     * "breaking-transmission": Tampilan monitor TV siaran darurat breaking news dengan scanlines analog halus.
-   - Tentukan 'kicker' (badge editorial pendek, misal: "9 NOVEMBER 1989", "SIARAN TV LANGSUNG", "KESALAHAN FATAL").
-   - Tentukan 'headline' (judul pancingan besar 3-5 kata, misal: "SATU MEMO MEROBOHKAN TEMBOK", "KUNCI LOKER YANG DILUPAKAN").
+PRINSIP WAJIB SUTRADARA MEDIS 3D:
+1. GAYA HOOK PEMBUKA ("fullscreen-dramatic"):
+   - 'kicker': Badge singkat medis (misal: "SIMULASI MEDIS 72 JAM", "PERINGATAN ANATOMI", "EKSPERIMEN BIOLOGIS").
+   - 'headline': Judul pancingan besar 3-6 kata (misal: "72 JAM TANPA TIDUR", "MENAHAN KENCING TERLALU LAMA", "MINUM KOPI SAAT PERUT KOSONG").
+   - 'narration': Kalimat pembuka yang langsung membawa penonton masuk ke dalam tubuh mereka sendiri pada detik/jam pertama!
 
-2. VARIASI KALIMAT PEMBUKA (DILARANG KERAS MENGGUNAKAN SATU TEMPLATE KALIMAT!):
-   - DILARANG SELALU MENGGUNAKAN: "Kalian bayangin... dari X, Y terjadi dalam satu malam?". Kalimat ini sudah basi!
-   - Ciptakan variasi kalimat pembuka yang selalu segar, mengejutkan, dan alami seperti kreator manusia papan atas:
-     * Contoh Gaya Fakta Dingin: "9 November 1989. Pria ini salah membaca satu lembar catatan di siaran langsung TV... dan malam itu juga, negara adidaya tamat."
-     * Contoh Gaya Misteri Saksi: "Tidak ada yang menyangka, tenggelamnya kapal termewah di dunia berawal dari kelalaian sepele: kunci loker yang tertinggal di darat."
-     * Contoh Gaya Kronologi Mendadak: "Dalam 4 jam, ribuan massa bersenjata palu merobohkan benteng beton paling ketat di dunia... hanya karena sebuah memo tanpa briefing."
+2. AKURASI MEDIS & BIOLOGIS NYATA:
+   - Jelaskan mekanisme biologis yang nyata: nama hormon (kortisol, adrenalin, dopamin, adenosin, insulin), nama bagian organ (korteks prefrontal, amigdala, alveoli, nefron ginjal, mukosa lambung), dan angka medis konkret (misal: detak jantung 130 BPM, pH asam lambung 1.5, tekanan darah melonjak).
+   - Setiap adegan ('node') WAJIB memiliki:
+     * 'timeOrYear': Tahap waktu kronologis & organ (contoh: "MENIT KE-15 • LAMBUNG", "JAM KE-24 • KORTEKS OTAK", "JAM KE-48 • SISTEM SARAF", "HARI KE-3 • JANTUNG").
+     * 'organTarget': Pilih SATU kode organ yang sedang disorot kamera pemindai:
+       - "brain" (Otak / Kepala / Pikiran / Mata / Saraf Pusat)
+       - "heart" (Jantung / Kardiovaskular)
+       - "lungs" (Paru-paru / Pernapasan / Tenggorokan)
+       - "stomach" (Lambung / Kerongkongan / Asam Lambung)
+       - "liver" (Hati / Detoksifikasi / Metabolisme)
+       - "kidney" (Ginjal / Kandung Kemih / Cairan Urin)
+       - "intestine" (Usus Halus / Usus Besar / Penyerapan)
+       - "blood" (Pembuluh Darah / Sel Darah Merah / Imun)
+       - "nerves" (Jaringan Saraf / Reseptor Rasa Sakit)
+       - "muscles" (Otot / Sendi / Kulit / Suhu Tubuh)
+     * 'chaosLevel': Angka 10 sampai 95 yang menunjukkan tingkat stres biologis / bahaya medis pada tahap tersebut (mengatur kecepatan detak jantung BPM dan warna indikator di layar).
+     * 'primaryText': Indikator reaksi medis singkat di layar (contoh: "HORMON KORTISOL +200%", "MIKROSLEEP 3 DETIK", "TEKANAN DARAH NAIK").
+     * 'imagePrompt': Deskripsi bahasa Inggris untuk 3D Medical X-Ray Generator (contoh: "3D medical anatomical X-ray visualization of glowing human brain neurons firing electric blue synapses, dark clinical background, 9:16 vertical").
 
-3. AKURASI SEJARAH WAJIB MUTLAK (DILARANG MENGARANG ELEMEN FIKSI!):
-   - DILARANG KERAS mengarang elemen fiksi seperti katup pipa gas bocor, kecelakaan mobil, atau tabung meledak pada peristiwa sejarah yang tidak memilikinya!
-   - Pilihlah arketipe adegan ('directorType') yang 100% SESUAI dengan peristiwa sejarah nyata:
-     * Pada peristiwa Tembok Berlin: HANYA gunakan arketipe nyata seperti "press-podium" (konferensi pers Schabowski), "memo-investigation" (memo salah baca), "breaking-news" (siaran berita TV yang mengguncang Berlin), "panic-phone" (telepon pos jaga perbatasan yang diabaikan markas), "gate-breach" (gerbang pos perbatasan dibuka), "wall-demolition" (warga merobohkan tembok dengan palu), atau "soviet-collapse" (kolaps Uni Soviet). JANGAN PERNAH gunakan 'valve-failure' atau 'car-route' untuk Tembok Berlin!
-     * Pada peristiwa Titanic: HANYA gunakan "key-lockbox", "maritime-disaster", "clock-countdown", "telegraph-wire", "courtroom-gavel", dll.
-     * Pada peristiwa Chernobyl: HANYA gunakan "reactor-meltdown", "radiation-hazard", "valve-failure", "critical-gauge", dll.
-
-4. STRATEGI VISUAL (100% STANDAR FOTO DOKUMENTER SINEMATIK ANTIGRAVITY):
-   - Standar video berretensi tinggi kelas dunia (MagnatesMedia, Vox, Johnny Harris) WAJIB menggunakan FOTO SEJARAH OTENTIK & FOTO SINEMATIK HIPER-REALISTIS, DILARANG KERAS menggunakan sketsa kartun garis murah!
-   - Setiap adegan WAJIB menetapkan:
-     * 'mediaType': 'photo' (arsip foto nyata bersejarah atau foto rekonstruksi sinematik 9:16).
-     * 'searchQuery': kata kunci pencarian arsip sejarah bahasa Inggris yang sangat spesifik dan akurat (contoh: "Guenther Schabowski press conference 1989", "Bornholmer Strasse border checkpoint 1989", "Mauerspechte Berlin Wall chiseled", "Soviet submarine B-59 officer Vasili Arkhipov", "Titanic departure Southampton 1912").
-     * 'imagePrompt': prompt sinematik 9:16 vertikal mendalam untuk AI Image Generator (pencahayaan dramatis, sudut kamera, 35mm film grain, kostum otentik).
-     * 'directorType': tetap cantumkan arketipe narasi (misal: "press-podium", "memo-investigation", "panic-phone") sebagai referensi foley audio dan pacing.
-   - SEMUA ADEGAN (100%) WAJIB memiliki visual foto berbobot untuk diproyeksikan dengan gerak lambat Ken Burns 2.5D Parallax!
-
-5. KATALOG 26 ARKETIPE ADEGAN FORENSIK ("directorType"):
-   * "press-podium"      : Podium konferensi pers/pidato, kilatan blitz kamera wartawan yang menyala acak, jam berdetik, dan dokumen di tangan.
-   * "memo-investigation": Kertas dokumen memo rahasia di bawah sorotan lampu meja dengan kaca pembesar memindai kata fatal berstabilo kuning dan stempel merah.
-   * "memo-handoff"      : Arsip foto/reka adegan berkas rahasia di meja perwira.
-   * "panic-phone"       : Pos jaga dengan telepon engkol darurat bergetar merah tanpa instruksi atasan.
-   * "gate-breach"       : Palang gerbang perbatasan/pos pemeriksaan terangkat ke atas, sirene merah berputar, warga menerobos maju.
-   * "wall-demolition"   : Aksi massa merobohkan dinding/benteng/tembok, siluet mengayunkan palu godam dengan percikan api, retakan beton menjalar.
-   * "breaking-news"     : Monitor TV tabung vintage dengan ticker darurat breaking news siaran langsung.
-   * "crowd-protest"     : Lautan siluet ribuan massa mengangkat plakat dan megafon di bawah sorotan lampu jalan.
-   * "soviet-collapse"   : Peta wilayah geopolitik retak & terpecah belah jadi negara-negara merdeka.
-   * "domino-collapse"   : Balok domino 3D beruntun saling bertumbukan dan tumbang ke depan (tuliskan 5 tahap dipisahkan koma pada 'secondaryText').
-   * "clock-countdown"   : Jam analog vintage berdetik cepat, hitungan mundur digital milidetik, zona bahaya merah.
-   * "key-lockbox"       : Loker/brankas baja dengan siluet kunci hilang bertanda tanya kuning, gembok darurat, stempel KUNCI TERTINGGAL.
-   * "car-route"         : Peta jalan taktis dengan mobil bergerak di jalur rute, panah belokan salah merah. (Hanya untuk konvoi mobil/sopir!).
-   * "radiation-hazard"  : Lambang radiasi trefoil nuklir berputar, gelombang awan racun/radiasi konsentris melingkar, dosimeter roentgen.
-   * "valve-failure"     : Pipa industri tekanan tinggi dengan katup roda berputar cepat, semburan uap/gas bocor membahana. (Hanya untuk pabrik/pipa/reaktor!).
-   * "telegraph-wire"    : Tiang radio komunikasi telegraf dengan pita kode morse SOS CQD berdenyut dan gelombang radio.
-   * "courtroom-gavel"   : Palu hakim kayu menghantam balok suara dengan gelombang kejut cincin emas, vonis investigasi resmi.
-   * "maritime-disaster" : Siluet kapal laut miring tenggelam di laut gelap bersalju, gunung es tajam, dan sinyal radio darurat memancar.
-   * "reactor-meltdown"  : Penampang reaktor nuklir dengan batang kendali membara merah berdenyut, indikator suhu/radiasi kritis.
-   * "laboratory-discovery": Cawan petri laboratorium di bawah mikroskop, biakan bakteri dengan cincin inhibisi antibiotik.
-   * "tactical-map"      : Radar taktis melingkar & titik koordinat target pergerakan.
-   * "critical-gauge"    : Indikator meteran bahaya, tekanan overload, atau suhu kritis.
-   * "forensic-dossier"  : Berkas penyelidikan deklasifikasi dengan stempel merah TOP SECRET.
-   * "bureaucracy-draft" : Meja birokrasi dengan tumpukan draf regulasi formal.
-   * "breaking-ticker"   : Ticker darurat telegraf teks berjalan.
-   * "press-question"    : Mikrofon wartawan mengajukan pertanyaan mendesak.
-
-6. SUPERVISI GAYA EDITING & WARNA DINAMIS (EDITORIAL STYLE OTONOM):
-   AI Sutradara WAJIB menentukan 'editorialStyle' secara mandiri sesuai tema cerita agar video memiliki mood visual unik dan tidak monoton:
-   - 'editorialStyle.mood': Tentukan preset visual paling cocok:
-     * 'cold-war-crisis'  : Spionase, Perang Dingin, krisis politik, memo rahasia, tembok pembatas.
-     * 'noir-forensic'     : Bencana laut, deklasifikasi arsip misteri, kapal karam, investigasi kematian.
-     * 'amber-urgent'     : Breaking news mendadak, alarm pos jaga, kepanikan massa, kebakaran/ledakan.
-     * 'industrial-decay' : Bencana reaktor nuklir, kebocoran radiasi, kegagalan turbin industri pabrik.
-     * 'clean-documentary': Penemuan sains & laboratorium, era modern, birokrasi, penemuan obat.
-   - 'editorialStyle.grainIntensity': 0.03 hingga 0.06 (butiran film 35mm yang nyaman di mata penonton, dilarang berlebihan!).
-   - 'editorialStyle.vignetteStrength': 0.25 hingga 0.45 (bayangan tepi sinematik lembut).
-   - 'editorialStyle.shakeSensitivity': 'subtle' atau 'moderate'.
-   - 'editorialStyle.shakeThresholdChaos': Level chaos (60-75) saat guncangan kamera mulai aktif pada momen tegang.
-
-7. RAHASIA YOUTUBE SHORTS VIRAL MILLION-VIEWS (DENSITAS MULTI-VISUAL DOKUMENTER CEPAT & 100% FOTO SINEMATIK):
-   - 100% FOTO SINEMATIK & ARSIP OTENTIK! DILARANG KERAS MENGGUNAKAN SKETSA 2D ATAU KARTUN!
-   - DILARANG 1 FOTO DIAM LAMA UNTUK BANYAK PENJELASAN! (Jika 1 visual diam >5 detik, penonton bosan).
-   - BEDAH DAN PECAH ALUR CERITA SECARA GRANULAR MENJADI 15 HINGGA 25+ BABAK VISUAL DINAMIS ('nodes').
-   - Setiap adegan (node) berdurasi SINGKAT & INTENSIF (3 sampai 5 detik, sekitar 10 - 18 kata narasi per adegan).
-   - SETIAP KALI VOICEOVER BERGANTI TINDAKAN, TOKOH, ATAU OBJEK: GANTI FOTO VISUALNYA DENGAN TEPAT!
-     * Contoh alur pergantian visual dokumenter dinamis (Titanic):
-       - Node 1: Foto perwira David Blair tergesa-gesa meninggalkan Southampton.
-       - Node 2: Foto kunci kuningan loker teropong nomor 4 terbawa di saku jasnya.
-       - Node 3: Foto kapal Titanic membelah laut hitam Atlantik Utara.
-       - Node 4: Foto menara pengawas sarang gagak di malam tanpa penerangan.
-       - Node 5: Foto loker teropong terkunci rapat, pengawas Frederick Fleet mencari di kegelapan.
-       - Node 6: Foto arsip laut beku berkabut tebal.
-       - Node 7: Foto gunung es raksasa di hadapan haluan kapal.
-       - Node 8: Foto lonceng darurat berdentang 3 kali, kepanikan di anjungan.
-       - Node 9: Foto lambung baja robek oleh es bawah air.
-       - Node 10: Foto operator radio Marconi mengirimkan transmisi darurat SOS CQD.
-       - Node 11: Foto sekoci diturunkan di tengah air es laut Arktik.
-       - Node 12: Foto dokumen hasil penyelidikan Senat AS membuktikan ketiadaan teropong akibat kunci tertinggal.
-   - ATURAN 3 DETIK PERTAMA (STOP-THE-SCROLL): Kalimat pembuka pada 'hook.narration' (20 - 30 kata) langsung menyebutkan waktu, objek mikro sepele, dan bencana dahsyat.
-   - TEKNIK SEAMLESS INFINITE LOOP (RETENSI > 100%): Rancang kalimat terakhir pada 'outro.narration' agar kata-kata terakhirnya menyambung kembali ke kata pertama pada kalimat pembuka ('hook.narration').
-   - Total keseluruhan cerita: 15 sampai 25+ nodes dinamis (durasi video 2 hingga 3 menit penuh). Video akan terasa sangat kaya, berbobot, visual foto berganti tiap 3-5 detik, dan memikat penonton dari awal hingga akhir!
-
-8. LOGIKA SEBAB-MUSABAB DETAIL (ANTI-LONCAT ALUR & ANTI-MEMBINGUNGKAN):
-   - JANGAN LANGSUNG LONCAT KE KLIMAKS TANPA MENJELASKAN SEBAB-MUSABABNYA!
-   - Penonton cerdas butuh memahami MEKANISME KEGAGALAN OTENTIK (how and why it actually happened):
-     * MENGAPA KESALAHAN AWAL TERJADI? (misal: Schabowski tidak ikut briefing karena baru pulang liburan, memo disodorkan di lorong tanpa penjelasan).
-     * MENGAPA TIDAK ADA YANG MENCEGAH? (misal: wartawan menembak pertanyaan mendesak, Schabowski grogi di depan kamera live, tidak ada staf yang berani mengoreksi).
-     * BAGAIMANA ESKALASI LAPANGAN BERJALAN? (bukan sulap instan; jelaskan pos perbatasan kebingungan, telepon darurat ke atasan tidak diangkat, komandan jaga terisolasi hingga terpaksa mengambil keputusan sendiri).
-   - Rantai kausalitas harus logis, bertahap, dan memuaskan rasa ingin tahu penonton. Manfaatkan durasi optimal 1.5 hingga 2.5 menit (aman di bawah batas 3 menit YouTube Shorts) untuk menyajikan rekonstruksi sebab-akibat yang utuh dan berbobot!
-
-9. ATURAN EMAS BUKTI HISTORIS KONKRET (ANTI-MEMBINGUNGKAN PENONTON):
-   - JANGAN PERNAH MEMBIARKAN PENONTON BINGUNG: "MEMANGNYA APA PERSISNYA ISI MEMO/BENDA ITU?"
-     * Jika alur cerita tentang MEMO / DOKUMEN / KEPUTUSAN KELIRU:
-       WAJIB BONGKAR DAN JELASKAN APA PERSISNYA ISI DRAF/INSTRUKSI TERSEBUT!
-       Contoh: "Memo itu aslinya draf uji coba: izin keluar negeri baru dibuka besok jam 04:00 pagi dengan visa resmi di kantor polisi. Tapi Schabowski melewatkan catatan itu dan membaca baris pertama saja..."
-     * Jika alur cerita tentang KUTIPAN KATA FATAL (BLUNDER):
-       WAJIB SEBUTKAN KUTIPAN KATA ASLI BERSEJARAH!
-       Contoh: Saat wartawan Riccardo Ehrman bertanya kapan berlaku, Schabowski gugup menjawab: "Das tritt nach meiner Kenntnis... sofort, unverzüglich! (Setahu saya... segera, tanpa penundaan!)"
-     * Jika alur cerita tentang BENDA / KUNCI / TOMBOL / PERSIMPANGAN:
-       WAJIB SEBUTKAN IDENTITAS SPESIFIKNYA (Nomor loker 4 kabin C, tombol darurat AZ-5 berujung grafit, tikungan jalan Franz Josef di depan toko roti Schiller, atau pos Bornholmer Straße komandan Harald Jäger).
-   - BUKTI TEKSTUAL DI LAYAR HP (EVIDENTIARY TYPOGRAPHY):
-     * Cantumkan klausul dokumen asli atau kutipan kata kunci fatal tersebut ke dalam 'primaryText' atau 'secondaryText' (misal: 'KLAUSUL: BESOK 04:00 PAGI' atau 'KATA FATAL: SOFORT').
-     * Penonton DAPAT MELIHAT DAN MEMBACA BUKTI NYATA langsung di layar ponsel, membuat dokumenter terasa sangat otentik, memuaskan rasa ingin tahu, dan berbobot!
+3. ALUR PERGERAKAN ANTAR-ORGAN YANG LUWES:
+   - Buat 12 sampai 18 adegan ('nodes') yang mengalir secara kronologis.
+   - Berpindahlah secara logis dari satu organ ke organ lain (misal: dari Lambung -> masuk ke Aliran Darah -> memicu Jantung -> mempengaruhi Otak -> disaring Ginjal) agar peta pemindai tubuh 3D di layar meluncur mulus antar-organ!
 
 FORMAT JSON WAJIB:
 {
-  "id": "slug-id",
-  "title": "JUDUL DRAMATIS HURUF BESAR",
+  "id": "slug-topik-medis",
+  "title": "JUDUL UTAMA HURUF BESAR",
   "editorialStyle": {
-    "mood": "cold-war-crisis ATAU noir-forensic ATAU amber-urgent ATAU industrial-decay ATAU clean-documentary",
-    "grainIntensity": 0.048,
-    "vignetteStrength": 0.35,
-    "shakeSensitivity": "moderate",
-    "shakeThresholdChaos": 65
+    "mood": "clean-documentary",
+    "grainIntensity": 0.035,
+    "vignetteStrength": 0.30,
+    "shakeSensitivity": "subtle",
+    "shakeThresholdChaos": 75
   },
   "hook": {
     "hookStyle": "fullscreen-dramatic",
-    "kicker": "BADGE SINGKAT EDITORIAL (misal: '14 APRIL 1912', 'KESALAHAN FATAL')",
-    "headline": "JUDUL PANCINGAN BESAR (misal: 'KUNCI LOKER YANG MENENGGELAMKAN TITANIC')",
-    "narration": "Kalimat pembuka menggigit, detail, dan mencekam (20-30 kata) tanpa kalimat klise...",
-    "leftTitle": "Hal Sepele",
-    "rightTitle": "Dampak Global",
-    "leftBadge": "AWAL MULA SEPELE",
-    "rightBadge": "BENCANA GLOBAL",
-    "leftPrimaryText": "Teks judul dokumen awal",
-    "leftStampText": "BUKTI AWAL",
-    "leftSearchQuery": "English search keyword for Cause archival photo/sketch",
-    "rightSearchQuery": "Specific varied English keyword for Catastrophe archival photo (misal: 'Titanic iceberg sinking disaster 1912')"
+    "kicker": "SIMULASI ANATOMI 3D",
+    "headline": "JUDUL HOOK SINGKAT & MENohok",
+    "narration": "Kalimat pembuka menggigit dan ilmiah (20-28 kata)...",
+    "leftTitle": "Kebiasaan Sepele",
+    "rightTitle": "Reaksi Organ",
+    "leftBadge": "PEMICU AWAL",
+    "rightBadge": "DAMPAK BIOLOGIS",
+    "leftPrimaryText": "Fakta Medis Utama",
+    "leftStampText": "FASE 0",
+    "leftSearchQuery": "3D medical X-ray human body glowing anatomy",
+    "rightSearchQuery": "3D medical X-ray glowing brain and heart scan",
+    "imagePrompt": "3D medical anatomical X-ray scan of glowing human body brain and heart, bioluminescent cyan and red, Zack D Films style, 9:16 vertical"
   },
   "nodes": [
     {
       "step": 1,
-      "timeOrYear": "LOKASI • JAM/TAHUN",
-      "headline": "JUDUL AKSI 1",
-      "narration": "Narasi aksi 1 (12-20 kata). Fokus pada satu momen/tindakan spesifik yang sedang terjadi.",
-      "chaosLevel": 15,
+      "timeOrYear": "MENIT KE-15 • LAMBUNG",
+      "organTarget": "stomach",
+      "headline": "JUDUL REAKSI ORGAN 1",
+      "narration": "Narasi ilmiah & dramatis tahap 1 (12-18 kata)...",
+      "chaosLevel": 20,
       "mediaType": "photo",
-      "searchQuery": "English specific historical photograph query 1",
-      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 1, 35mm film grain, moody lighting",
-      "directorType": "pilihan arketipe narasi 1 yang 100% cocok dengan aksi ini",
-      "primaryText": "Teks grafis 1",
-      "secondaryText": "Subjudul grafis 1",
-      "stampText": "STATUS 1",
-      "caption": "Keterangan forensik singkat..."
-    },
-    {
-      "step": 2,
-      "timeOrYear": "LOKASI • JAM/TAHUN",
-      "headline": "JUDUL AKSI 2",
-      "narration": "Narasi aksi 2 (12-20 kata). Ganti objek atau aksi berikutnya dalam rantai peristiwa.",
-      "chaosLevel": 25,
-      "mediaType": "photo",
-      "searchQuery": "English specific historical photograph query 2",
-      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 2, 35mm film grain, moody lighting",
-      "directorType": "pilihan arketipe narasi 2 yang berbeda dan cocok dengan aksi 2",
-      "primaryText": "Teks grafis 2",
-      "secondaryText": "Subjudul grafis 2",
-      "stampText": "STATUS 2",
-      "caption": "Keterangan forensik singkat..."
-    },
-    {
-      "step": 3,
-      "timeOrYear": "LOKASI • JAM/TAHUN",
-      "headline": "JUDUL AKSI 3",
-      "narration": "Narasi aksi 3 (12-20 kata). Eskalasi ketegangan berikutnya.",
-      "chaosLevel": 35,
-      "mediaType": "photo",
-      "searchQuery": "English specific historical photograph query 3",
-      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 3, 35mm film grain, dramatic shadows",
-      "directorType": "pilihan arketipe narasi 3 yang berbeda",
-      "primaryText": "Teks grafis 3",
-      "secondaryText": "Subjudul grafis 3",
-      "stampText": "STATUS 3",
-      "caption": "Keterangan forensik singkat..."
-    },
-    {
-      "step": 4,
-      "timeOrYear": "LOKASI • JAM/TAHUN",
-      "headline": "JUDUL AKSI 4",
-      "narration": "Narasi aksi 4 (12-20 kata). Titik kritis kepanikan.",
-      "chaosLevel": 50,
-      "mediaType": "photo",
-      "searchQuery": "English specific historical photograph query 4",
-      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 4, 35mm film grain, dramatic shadows",
-      "directorType": "pilihan arketipe narasi 4 yang berbeda",
-      "primaryText": "Teks grafis 4",
-      "secondaryText": "Subjudul grafis 4",
-      "stampText": "STATUS 4",
-      "caption": "Keterangan forensik singkat..."
-    },
-    {
-      "step": 5,
-      "timeOrYear": "LOKASI • JAM/TAHUN",
-      "headline": "JUDUL AKSI 5",
-      "narration": "Narasi aksi 5 (12-20 kata). Kegagalan sistem / penghalang fatal.",
-      "chaosLevel": 65,
-      "mediaType": "photo",
-      "searchQuery": "English specific historical photograph query 5",
-      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 5, 35mm film grain, dramatic shadows",
-      "directorType": "pilihan arketipe narasi 5 yang berbeda",
-      "primaryText": "Teks grafis 5",
-      "secondaryText": "Subjudul grafis 5",
-      "stampText": "STATUS 5",
-      "caption": "Keterangan forensik singkat..."
-    },
-    {
-      "step": 6,
-      "timeOrYear": "LOKASI • JAM/TAHUN",
-      "headline": "JUDUL AKSI 6",
-      "narration": "Narasi aksi 6 (12-20 kata). Ancaman di depan mata.",
-      "chaosLevel": 75,
-      "mediaType": "photo",
-      "searchQuery": "English specific historical photograph query 6",
-      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 6, 35mm film grain, dramatic shadows",
-      "directorType": "pilihan arketipe narasi 6 yang berbeda",
-      "primaryText": "Teks grafis 6",
-      "secondaryText": "Subjudul grafis 6",
-      "stampText": "STATUS 6",
-      "caption": "Keterangan forensik singkat..."
-    },
-    {
-      "step": 7,
-      "timeOrYear": "LOKASI • JAM/TAHUN",
-      "headline": "JUDUL AKSI 7 (KLIMAKS)",
-      "narration": "Narasi aksi 7 (12-20 kata). Benturan / malapetaka puncak terjadi!",
-      "chaosLevel": 90,
-      "mediaType": "photo",
-      "searchQuery": "English specific historical photograph query 7",
-      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 7, 35mm film grain, dramatic climax",
-      "directorType": "pilihan arketipe narasi 7 (klimaks bencana)",
-      "primaryText": "Teks grafis 7",
-      "secondaryText": "Subjudul grafis 7",
-      "stampText": "KLIMAKS",
-      "caption": "Keterangan forensik singkat..."
-    },
-    {
-      "step": 8,
-      "timeOrYear": "LOKASI • JAM/TAHUN",
-      "headline": "JUDUL AKSI 8 (DAMPAK AKHIR)",
-      "narration": "Narasi aksi 8 (12-20 kata). Dampak kolosal sejarah dan vonis akhir.",
-      "chaosLevel": 85,
-      "mediaType": "photo",
-      "searchQuery": "English specific historical photograph query 8",
-      "imagePrompt": "Cinematic historical documentary 9:16 vertical photograph of scene 8, 35mm film grain, monumental aftermath",
-      "directorType": "pilihan arketipe narasi 8 (sidang/kehancuran)",
-      "primaryText": "Teks grafis 8",
-      "secondaryText": "Subjudul grafis 8",
-      "stampText": "VONIS",
-      "caption": "Keterangan forensik singkat..."
+      "searchQuery": "3D medical X-ray glowing human stomach acid",
+      "imagePrompt": "3D medical anatomical X-ray render of glowing human stomach with glowing gastric acid, dark background, 9:16 vertical",
+      "directorType": "laboratory-discovery",
+      "primaryText": "ASAM LAMBUNG NAIK",
+      "secondaryText": "Mukosa mulai teriritasi",
+      "stampText": "FASE 1",
+      "caption": "Keterangan medis singkat..."
     }
   ],
   "outro": {
-    "narration": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini, yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?",
-    "question": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah jalan hidupmu 5 tahun lagi?"
+    "narration": "Tubuhmu selalu memberikan sinyal peringatan sebelum terlambat. Kebiasaan mana yang paling sering kamu abaikan setiap hari?",
+    "question": "Kebiasaan mana yang paling sering kamu lakukan tanpa sadar setiap hari?"
   }
 }
 `;
@@ -383,7 +169,7 @@ async function generateStoryboardWithGroq(topic, dynamicPrompt) {
           messages: [
             {
               role: 'system',
-              content: 'You are an autonomous AI Film Director specializing in dramatic Butterfly Effect short videos. You must output pure valid JSON with NO markdown formatting and NO conversational text.',
+              content: 'You are an autonomous AI Medical & Science Director specializing in "What Happens to Your Body If..." 3D anatomical simulation videos. Output pure valid JSON only.',
             },
             {
               role: 'user',
@@ -391,7 +177,7 @@ async function generateStoryboardWithGroq(topic, dynamicPrompt) {
             },
           ],
           response_format: { type: 'json_object' },
-          temperature: 0.88,
+          temperature: 0.82,
         }),
       });
 
@@ -409,48 +195,43 @@ async function generateStoryboardWithGroq(topic, dynamicPrompt) {
   throw lastErr || new Error('Semua model Groq gagal.');
 }
 
-// Guaranteed High Visual Density Guard (Anti-Short Story Safety Gate)
+// Guaranteed High Visual Density Guard
 async function ensureHighVisualDensity(storyData, topic) {
-  if (Array.isArray(storyData.nodes) && storyData.nodes.length >= 15) {
+  if (Array.isArray(storyData.nodes) && storyData.nodes.length >= 10) {
     return storyData;
   }
 
-  console.log(`      ⚠️ [Densitas Guard] Naskah awal memiliki ${storyData.nodes?.length || 0} adegan (kurang dari target minimal 15 adegan).`);
-  console.log(`      🚀 [AI Documentary Expander] Membedah setiap babak menjadi adegan foto dokumenter detail agar alur kaya & berdurasi ideal...`);
+  console.log(`      ⚠️ [Densitas Guard] Naskah awal memiliki ${storyData.nodes?.length || 0} adegan (kurang dari target minimal 10 adegan).`);
+  console.log(`      🚀 [AI Anatomy Expander] Membedah tahapan reaksi organ secara detail...`);
 
-  const expandPrompt = `Kamu adalah Sutradara Film AI Senior.
-Naskah Butterfly Effect berikut terlalu ringkas karena hanya memiliki ${storyData.nodes?.length || 0} adegan:
+  const expandPrompt = `Kamu adalah Sutradara Medis & Sains AI Senior.
+Naskah "Apa yang Terjadi pada Tubuhmu Jika..." berikut terlalu singkat (${storyData.nodes?.length || 0} adegan):
 Judul: "${storyData.title || topic}"
 Hook: "${storyData.hook?.narration || ''}"
 Adegan Saat Ini:
 ${JSON.stringify(storyData.nodes, null, 2)}
-Outro: "${storyData.outro?.narration || ''}"
 
 TUGAS MUTLAK:
-Pecah dan kembangkan alur di atas menjadi 15 HINGGA 25+ ADEGAN VISUAL GRANULAR ('nodes')!
-DILARANG MERINGKAS ATAU MENGURANGI! FORMAT 100% FOTO DOKUMENTER (DILARANG SKETSA 2D)!
-Setiap adegan harus fokus pada 1 aksi/objek spesifik (durasi 3-5 detik, 10-18 kata narasi per node).
-WAJIB MEMBEBERKAN BUKTI HISTORIS KONKRET (ANTI-MEMBINGUNGKAN PENONTON):
-- Jika ada memo/dokumen: JELASKAN APA PERSISNYA ISI DOKUMEN ITU!
-- Jika ada ucapan fatal: SEBUTKAN KUTIPAN KATA ASLI BERSEJARAH.
-- Jika ada objek/pos/tombol: SEBUTKAN NAMA ATAU NOMOR SPESIFIKNYA.
-- Cantumkan klausul atau kutipan tersebut pada field 'primaryText' / 'secondaryText'.
+Pecah dan kembangkan menjadi 12 HINGGA 16 ADEGAN ANATOMI GRANULAR ('nodes')!
+Setiap adegan harus menyoroti reaksi spesifik pada organ ('organTarget': 'brain' | 'heart' | 'lungs' | 'stomach' | 'liver' | 'kidney' | 'intestine' | 'blood' | 'nerves' | 'muscles'), memiliki 'timeOrYear' kronologis (misal "JAM KE-6 • JANTUNG"), 'primaryText' fakta medis singkat, dan 'imagePrompt' 3D medical X-ray render dalam bahasa Inggris.
 
 FORMAT JSON MURNI:
 {
   "nodes": [
     {
       "step": 1,
-      "timeOrYear": "LOKASI • JAM/TAHUN",
-      "headline": "JUDUL AKSI 1",
-      "narration": "Narasi aksi 1 (10-18 kata)...",
-      "chaosLevel": 10,
+      "timeOrYear": "MENIT KE-10 • OTAK",
+      "organTarget": "brain",
+      "headline": "JUDUL REAKSI ORGAN 1",
+      "narration": "Narasi ilmiah 12-18 kata...",
+      "chaosLevel": 15,
       "mediaType": "photo",
-      "searchQuery": "historical authentic photo query...",
-      "primaryText": "Teks grafis 1",
-      "secondaryText": "Subjudul 1",
-      "stampText": "STATUS 1",
-      "caption": "Keterangan arsip..."
+      "searchQuery": "3D medical X-ray glowing brain",
+      "imagePrompt": "3D medical anatomical X-ray visualization of glowing human brain, 9:16 vertical",
+      "primaryText": "LONJAKAN DOPAMIN",
+      "secondaryText": "Saraf pusat aktif",
+      "stampText": "FASE 1",
+      "caption": "Keterangan medis..."
     }
   ]
 }`;
@@ -740,9 +521,9 @@ async function generateStoryboard(topic) {
     storyData.hook.leftImage = `butterfly/media/${storySlug}/hero_hook.jpg`;
     console.log(`      ✓ [Reka Adegan AI Hook Selesai] Visual 9:16 tersimpan (${hookRes.source})`);
   } else {
-    storyData.hook.leftImage = `butterfly/media/brandenburg_night.jpg`;
-    storyData.hook.rightImage = `butterfly/media/brandenburg_night.jpg`;
-    console.log(`      ✓ [Hero Hook Sinematik 1080x1920] Menggunakan fallback aman`);
+    storyData.hook.leftImage = `butterfly/media/medical_body_xray.jpg`;
+    storyData.hook.rightImage = `butterfly/media/medical_body_xray.jpg`;
+    console.log(`      ✓ [Hero Hook Sinematik 1080x1920] Menggunakan fallback anatomi 3D`);
   }
 
   let photoCount = 0;
@@ -791,12 +572,12 @@ async function generateStoryboard(topic) {
 
     if (!isPhotoDownloaded) {
       node.mediaType = 'photo';
-      node.visualSource = 'REKA ADEGAN';
+      node.visualSource = 'PEMINDAIAN 3D';
       if (usedPhotos.size > 0) {
         const photoArr = Array.from(usedPhotos);
         node.mediaUrl = photoArr[i % photoArr.length];
       } else {
-        node.mediaUrl = 'butterfly/media/brandenburg_night.jpg';
+        node.mediaUrl = 'butterfly/media/medical_body_xray.jpg';
       }
       photoCount++;
       console.log(`      ✓ [Visual Sinematik Adegan ${node.step}] Reka visual tematik: "${node.mediaUrl}"`);
@@ -809,7 +590,7 @@ async function generateStoryboard(topic) {
 
   // Bulletproof Asset Integrity Check:
   // Memverifikasi setiap file fisik ada di disk. Jika tidak ada, salin fallback sehingga Remotion 100% bebas dari 404.
-  const defaultFallback = 'butterfly/media/brandenburg_night.jpg';
+  const defaultFallback = 'butterfly/media/medical_body_xray.jpg';
   const ensureDiskAsset = (relPath) => {
     if (!relPath) return defaultFallback;
     const absPath = path.join(process.cwd(), 'public', relPath);

@@ -2,11 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 const THEMATIC_MAP = [
-  { keywords: ['memo', 'catatan', 'draft', 'dokumen', 'surat', 'kertas', 'tulisan', 'document'], file: 'memo_document.jpg' },
-  { keywords: ['press', 'konferensi', 'schabowski', 'podium', 'jurnalis', 'wartawan', 'meja', 'flustered'], file: 'schabowski_flustered.jpg' },
-  { keywords: ['tembok', 'wall', 'beton', 'hancur', 'roboh', 'demolition', 'runtuh', 'sledgehammer'], file: 'wall_demolition.jpg' },
-  { keywords: ['massa', 'crowd', 'warga', 'rakyat', 'demo', 'berkumpul', 'sorak', 'celebrat'], file: 'crowd_brandenburg.jpg' },
-  { keywords: ['gate', 'gerbang', 'checkpoint', 'perbatasan', 'bornholmer', 'penjaga', 'border'], file: 'checkpoint_bornholmer.jpg' }
+  { keywords: ['otak', 'saraf', 'brain', 'neuron', 'tidur', 'kepala', 'pikiran', 'halusinasi', 'mata'], file: 'medical_brain_xray.jpg' },
+  { keywords: ['jantung', 'darah', 'heart', 'blood', 'detak', 'pembuluh', 'nadi', 'paru', 'oksigen', 'lungs'], file: 'medical_heart_xray.jpg' },
+  { keywords: ['lambung', 'perut', 'stomach', 'makan', 'kopi', 'asam', 'usus', 'ginjal', 'urin', 'kencing', 'hati', 'liver'], file: 'medical_stomach_xray.jpg' },
 ];
 
 function selectThematicFallback(promptText) {
@@ -16,7 +14,7 @@ function selectThematicFallback(promptText) {
       return entry.file;
     }
   }
-  return 'brandenburg_night.jpg';
+  return 'medical_body_xray.jpg';
 }
 
 function applyThematicFallback(promptText, destPath) {
@@ -24,7 +22,7 @@ function applyThematicFallback(promptText, destPath) {
   const fallbackFileName = selectThematicFallback(promptText);
   let srcPath = path.join(baseDir, fallbackFileName);
   if (!fs.existsSync(srcPath)) {
-    srcPath = path.join(baseDir, 'brandenburg_night.jpg');
+    srcPath = path.join(baseDir, 'medical_body_xray.jpg');
   }
 
   const destDir = path.dirname(destPath);
@@ -38,7 +36,7 @@ function applyThematicFallback(promptText, destPath) {
     return {
       success: true,
       title: (promptText || '').slice(0, 50),
-      source: 'Arsip Rekonstruksi Fallback',
+      source: 'Visual Anatomi 3D Fallback',
       destPath,
       sizeBytes: stat.size,
     };
@@ -51,9 +49,9 @@ async function generateWithHorde(promptText, destPath) {
   const cleanPrompt = (promptText || '')
     .replace(/[^\w\s,.-]/gi, ' ')
     .trim()
-    .slice(0, 280);
+    .slice(0, 260);
 
-  const fullPrompt = `${cleanPrompt}, cinematic historical documentary photograph, 9:16 vertical, dramatic noir lighting, 35mm film grain realism ### cartoon, anime, 3d, sketch, watermark, text, low quality`;
+  const fullPrompt = `3D medical anatomical X-ray render, glowing bioluminescent human internal organ visualization, ${cleanPrompt}, Zack D Films style 3D medical illustration, glowing cells and blood vessels, dark clinical background, 9:16 vertical, hyper-detailed ### cartoon, anime, text, watermark, blurry, deformed`;
 
   const destDir = path.dirname(destPath);
   if (!fs.existsSync(destDir)) {
@@ -66,7 +64,7 @@ async function generateWithHorde(promptText, destPath) {
       headers: {
         'Content-Type': 'application/json',
         'apikey': '0000000000',
-        'Client-Agent': 'butterfly-shorts:1.0:production'
+        'Client-Agent': 'body-scanner-shorts:2.0:production'
       },
       body: JSON.stringify({
         prompt: fullPrompt,
@@ -105,7 +103,7 @@ async function generateWithHorde(promptText, destPath) {
               return {
                 success: true,
                 title: cleanPrompt.slice(0, 50),
-                source: 'AI Horde Stable Diffusion (9:16 Vertikal)',
+                source: 'AI 3D Medical X-Ray (9:16 Vertikal)',
                 destPath,
                 sizeBytes: buf.length
               };
@@ -125,9 +123,9 @@ async function generateWithPollinations(promptText, destPath, seed = 42) {
   const cleanPrompt = (promptText || '')
     .replace(/[^\w\s,.-]/gi, ' ')
     .trim()
-    .slice(0, 280);
+    .slice(0, 260);
 
-  const fullPrompt = `cinematic historical documentary photograph, 9:16 vertical, ${cleanPrompt}, 35mm film grain, moody dramatic lighting, documentary realism`;
+  const fullPrompt = `3D medical anatomical X-ray visualization, glowing bioluminescent internal human organ, ${cleanPrompt}, Zack D Films style 3D medical render, glowing cells, dark background, 9:16 vertical`;
   const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?width=720&height=1280&seed=${seed}`;
 
   try {
@@ -139,7 +137,7 @@ async function generateWithPollinations(promptText, destPath, seed = 42) {
         return {
           success: true,
           title: cleanPrompt.slice(0, 50),
-          source: 'Pollinations AI (9:16 Vertikal)',
+          source: 'Pollinations 3D Medical X-Ray',
           destPath,
           sizeBytes: buf.length
         };
@@ -152,35 +150,28 @@ async function generateWithPollinations(promptText, destPath, seed = 42) {
 }
 
 /**
- * AI Documentary Scene Image Generator (Multi-Tier Resilient Pipeline):
- * Tier 1: AI Horde Stable Diffusion (Vertikal 9:16, bebas kuota 45s, ~3-6 detik)
- * Tier 2: Pollinations AI Image (Vertikal 9:16)
- * Tier 3: Guaranteed Thematic Historical Anchor (Zero 404, file disk selalu ada)
+ * AI 3D Medical X-Ray & Anatomy Image Generator:
+ * Tier 1: AI Horde Stable Diffusion (Vertikal 9:16, 3D Medical X-Ray Render)
+ * Tier 2: Pollinations AI 3D Medical Render
+ * Tier 3: Guaranteed Thematic Anchor (Zero 404, file fisik selalu ada)
  */
 export async function generateAiDocumentaryImage(promptText, destPath, seed = 42) {
-  // Tier 1: Coba AI Horde
   const hordeRes = await generateWithHorde(promptText, destPath);
   if (hordeRes && hordeRes.success) {
     return hordeRes;
   }
 
-  // Tier 2: Coba Pollinations AI
   const polliRes = await generateWithPollinations(promptText, destPath, seed);
   if (polliRes && polliRes.success) {
     return polliRes;
   }
 
-  // Tier 3: Guaranteed Safe Anchor (Menjamin file fisik selalu tercipta dan tidak pernah 404)
-  console.log(`      ⚓ [Safety Anchor] Menyalin reka visual tematik ke: ${path.basename(destPath)}`);
+  console.log(`      ⚓ [Safety Anchor] Menyalin visual anatomi cadangan ke: ${path.basename(destPath)}`);
   return applyThematicFallback(promptText, destPath);
 }
 
-/**
- * Antarmuka Utama Kurasi Visual:
- * Menghasilkan visual reka adegan sinematik dengan jaminan 100% file fisik selalu tercipta di disk.
- */
 export async function searchAndDownloadImage(query, fallbackQuery, destPath, context = {}) {
-  const prompt = context.imagePrompt || context.headline || query || fallbackQuery || 'cinematic documentary scene';
+  const prompt = context.imagePrompt || context.searchQuery || context.headline || query || fallbackQuery || '3D human anatomy glowing brain and heart X-ray';
   const seed = Math.abs(Array.from(prompt).reduce((acc, char) => acc + char.charCodeAt(0), 0)) % 10000;
   return await generateAiDocumentaryImage(prompt, destPath, seed);
 }

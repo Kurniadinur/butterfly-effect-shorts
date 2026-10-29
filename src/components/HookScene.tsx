@@ -1,5 +1,5 @@
 import React from 'react';
-import { Img, useCurrentFrame, staticFile, interpolate } from 'remotion';
+import { Img, useCurrentFrame, useVideoConfig, staticFile, interpolate, spring } from 'remotion';
 
 export interface HookSceneProps {
   hookStyle?: string | null;
@@ -19,465 +19,206 @@ export interface HookSceneProps {
 }
 
 export const HookScene: React.FC<HookSceneProps> = ({
-  hookStyle = 'fullscreen-dramatic',
-  archetype,
   headline: rawHeadline,
   kicker: rawKicker,
   leftTitle,
   rightTitle,
-  leftBadge: rawLeftBadge,
-  rightBadge: rawRightBadge,
-  leftPrimaryText,
-  leftStampText: rawLeftStampText,
   leftImage,
   rightImage,
   durationFrames = 250,
 }) => {
   const frame = useCurrentFrame();
-  const leftBadge = rawLeftBadge || 'AWAL MULA SEPELE';
-  const rightBadge = rawRightBadge || 'BENCANA GLOBAL';
-  const leftStampText = rawLeftStampText || 'BUKTI AWAL';
-  const kicker = rawKicker || 'DOKUMENTER SEJARAH';
-  const headline = rawHeadline || rightTitle || leftTitle || 'TRAGEDI BESAR DUNIA';
-  const heroImage = rightImage || leftImage;
+  const { fps } = useVideoConfig();
 
-  // Unbroken continuous Ken Burns motion drift
-  const masterScale = interpolate(frame, [0, durationFrames], [1.02, 1.15], {
-    extrapolateRight: 'clamp',
-  });
-  const panY = interpolate(frame, [0, durationFrames], [0, -25], {
-    extrapolateRight: 'clamp',
+  const kicker = rawKicker || 'SIMULASI MEDIS & BIOLOGIS';
+  const headline = rawHeadline || rightTitle || leftTitle || 'APA YANG TERJADI PADA TUBUHMU?';
+  const heroImage = rightImage || leftImage || 'butterfly/media/medical_body_xray.jpg';
+
+  // Fluid spring zoom-in + organic heartbeat thump
+  const introSpring = spring({
+    frame,
+    fps,
+    config: { damping: 14, stiffness: 55, mass: 1.0 },
   });
 
-  // =========================================================================
-  // STYLE 1: FULLSCREEN DRAMATIC (Default Modern YouTube Shorts / TikTok style)
-  // Single, full-canvas 1080x1920 cinematic immersion (NO split screen boxes!)
-  // =========================================================================
-  if (hookStyle === 'fullscreen-dramatic' || !hookStyle) {
-    return (
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'transparent',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Fullscreen Hero Background */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: -40,
-            transform: `scale(${masterScale}) translateY(${panY}px)`,
-            transformOrigin: 'center 40%',
-          }}
-        >
-          {heroImage ? (
-            <Img
-              src={staticFile(heroImage)}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                filter: 'contrast(1.18) brightness(0.72) saturate(0.9)',
-              }}
-            />
-          ) : (
-            // Fullscreen High-Resolution Cinematic Ambient Background
-            <Img
-              src={staticFile('butterfly/media/brandenburg_night.jpg')}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                filter: 'contrast(1.18) brightness(0.65) saturate(0.8)',
-              }}
-            />
-          )}
-        </div>
+  const beatPhase = (frame / fps) * (88 / 60) * Math.PI * 2;
+  const systolicBeat = Math.pow(Math.max(0, Math.sin(beatPhase)), 8);
 
-        {/* Cinematic Film Vignette & Heavy Bottom Gradient for Subtitles */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'radial-gradient(ellipse at center, transparent 35%, rgba(3, 5, 8, 0.85) 100%)',
-            pointerEvents: 'none',
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: '380px',
-            background:
-              'linear-gradient(to top, rgba(3, 5, 8, 0.75) 0%, rgba(3, 5, 8, 0.25) 55%, transparent 100%)',
-            pointerEvents: 'none',
-          }}
-        />
+  const scale = interpolate(introSpring, [0, 1], [1.18, 1.05]) + systolicBeat * 0.018;
+  const driftX = Math.sin(frame * 0.04) * 14;
+  const driftY = Math.cos(frame * 0.035) * 10;
 
-        {/* Top Editorial Kicker & Dynamic Documentary Headline */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '120px',
-            left: '60px',
-            right: '60px',
-            zIndex: 30,
-          }}
-        >
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '6px 14px',
-              backgroundColor: 'rgba(239, 68, 68, 0.25)',
-              border: '1px solid rgba(239, 68, 68, 0.5)',
-              borderRadius: '4px',
-              marginBottom: '14px',
-            }}
-          >
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#ef4444' }} />
-            <span
-              style={{
-                color: '#fca5a5',
-                fontSize: '15px',
-                fontWeight: 900,
-                fontFamily: 'monospace',
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-              }}
-            >
-              {kicker}
-            </span>
-          </div>
-
-          <h1
-            style={{
-              fontSize: '52px',
-              fontWeight: 900,
-              color: '#ffffff',
-              lineHeight: 1.1,
-              letterSpacing: '-1.5px',
-              fontFamily: "'Space Grotesk', -apple-system, sans-serif",
-              textTransform: 'uppercase',
-              margin: 0,
-              textShadow: '0 4px 24px rgba(0,0,0,0.9)',
-            }}
-          >
-            {headline}
-          </h1>
-
-          <div
-            style={{
-              marginTop: '16px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              color: '#94a3b8',
-              fontSize: '14px',
-              fontWeight: 700,
-              fontFamily: 'monospace',
-            }}
-          >
-            <span style={{ color: '#FFE600' }}>[ KASUS #{Math.abs(durationFrames % 99) + 1} ]</span>
-            <span>REKONSTRUKSI FAKTA DEKLASIFIKASI</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // =========================================================================
-  // STYLE 2: FORENSIC DOSSIER (Investigative True Crime & Documentary Archive style)
-  // =========================================================================
-  if (hookStyle === 'forensic-dossier') {
-    return (
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: '#05070c',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Soft Warm Desk-Lamp Spotlight (Cinematic Documentary Lighting - Zero Sci-Fi Grids) */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'radial-gradient(ellipse 80% 60% at 50% 38%, rgba(245, 158, 11, 0.08) 0%, rgba(15, 23, 42, 0.4) 50%, #030508 100%)',
-          }}
-        />
-
-        {/* Central Archival Dossier Folder with Organic Physical Drop Shadow */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '200px',
-            left: '50px',
-            right: '50px',
-            bottom: '450px',
-            backgroundColor: '#0f141f',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: '12px',
-            padding: '50px 42px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            boxShadow: '0 30px 70px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-          }}
-        >
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ color: '#dc2626', fontWeight: 900, fontFamily: "'Montserrat', sans-serif", fontSize: '16px', letterSpacing: '3px' }}>
-                CONFIDENTIAL // TOP SECRET
-              </span>
-              <span style={{ color: '#94a3b8', fontFamily: "'Space Grotesk', sans-serif", fontSize: '13px', fontWeight: 700 }}>
-                {kicker || 'BERKAS DOKUMENTER'}
-              </span>
-            </div>
-
-            <h1
-              style={{
-                color: '#ffffff',
-                fontSize: '48px',
-                fontWeight: 900,
-                fontFamily: "'Montserrat', -apple-system, sans-serif",
-                lineHeight: 1.15,
-                marginTop: '30px',
-                textTransform: 'uppercase',
-                textShadow: '0 4px 16px rgba(0,0,0,0.8)',
-              }}
-            >
-              {headline}
-            </h1>
-
-            <div
-              style={{
-                marginTop: '25px',
-                padding: '20px 24px',
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                borderLeft: '4px solid #FFE600',
-                color: '#e2e8f0',
-                fontSize: '20px',
-                fontWeight: 700,
-                lineHeight: 1.45,
-                fontFamily: "'Space Grotesk', sans-serif",
-              }}
-            >
-              {leftPrimaryText || leftTitle}
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-            <div style={{ color: '#94a3b8', fontSize: '13px', fontFamily: 'monospace' }}>
-              STATUS: DEKLASIFIKASI DOKUMENTER
-            </div>
-            {/* Red Forensic Stamp */}
-            <div
-              style={{
-                border: '4px solid #ef4444',
-                color: '#ef4444',
-                padding: '8px 16px',
-                fontSize: '28px',
-                fontWeight: 900,
-                fontFamily: 'monospace',
-                letterSpacing: '4px',
-                transform: 'rotate(-8deg)',
-                opacity: 0.9,
-              }}
-            >
-              {leftStampText || 'VERIFIED'}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Subtitle Shadow */}
-        <div
-          style={{
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: '480px',
-            background: 'linear-gradient(to top, rgba(3, 5, 8, 0.98) 0%, transparent 100%)',
-            pointerEvents: 'none',
-          }}
-        />
-      </div>
-    );
-  }
-
-  // =========================================================================
-  // STYLE 3: BREAKING TRANSMISSION (Emergency TV Broadcast Glitch style)
-  // =========================================================================
-  if (hookStyle === 'breaking-transmission') {
-    return (
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: '#0a0a0f',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Analog Scanlines */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: 'repeating-linear-gradient(0deg, rgba(0,0,0,0.5) 0px, rgba(0,0,0,0.5) 2px, transparent 2px, transparent 4px)',
-            pointerEvents: 'none',
-            zIndex: 15,
-            opacity: 0.6,
-          }}
-        />
-
-        {/* Background Image or Static Noise */}
-        {heroImage && (
-          <Img
-            src={staticFile(heroImage)}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              filter: 'contrast(1.3) brightness(0.65) grayscale(0.2)',
-              transform: `scale(${masterScale})`,
-            }}
-          />
-        )}
-
-        {/* Emergency Alert Header Banner */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '80px',
-            left: 0,
-            right: 0,
-            backgroundColor: '#dc2626',
-            color: '#ffffff',
-            padding: '12px 30px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            fontWeight: 900,
-            fontFamily: 'monospace',
-            letterSpacing: '3px',
-            fontSize: '18px',
-            zIndex: 25,
-            boxShadow: '0 4px 20px rgba(220, 38, 38, 0.5)',
-          }}
-        >
-          <span>🚨 SPECIAL BULLETIN // TRANSMISI DARURAT</span>
-          <span style={{ backgroundColor: '#ffffff', color: '#dc2626', padding: '2px 8px', borderRadius: '2px' }}>LIVE</span>
-        </div>
-
-        {/* Headline */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '180px',
-            left: '60px',
-            right: '60px',
-            zIndex: 25,
-          }}
-        >
-          <h1
-            style={{
-              fontSize: '56px',
-              fontWeight: 900,
-              color: '#ffffff',
-              lineHeight: 1.1,
-              letterSpacing: '-2px',
-              textTransform: 'uppercase',
-              fontFamily: "'Space Grotesk', sans-serif",
-              textShadow: '0 4px 25px rgba(0,0,0,0.9)',
-            }}
-          >
-            {headline}
-          </h1>
-        </div>
-
-        {/* Bottom Subtitle Shadow */}
-        <div
-          style={{
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: '480px',
-            background: 'linear-gradient(to top, rgba(5, 7, 10, 0.98) 0%, transparent 100%)',
-            pointerEvents: 'none',
-          }}
-        />
-      </div>
-    );
-  }
-
-  // =========================================================================
-  // STYLE 4: SPLIT CONTRAST (Classic Upper/Lower Contrast when chosen)
-  // =========================================================================
-  const switchPoint = Math.round(durationFrames * 0.48);
-  const isSecondHalf = frame >= switchPoint;
-  const panX = interpolate(frame, [0, durationFrames], [-15, 15], { extrapolateRight: 'clamp' });
-  const leftOpacity = interpolate(frame, [0, switchPoint - 15, switchPoint, durationFrames], [1.0, 1.0, 0.25, 0.15], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const rightOpacity = interpolate(frame, [0, switchPoint - 10, switchPoint + 10, durationFrames], [0.2, 0.35, 1.0, 1.0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  // Vertical X-Ray Laser Sweep
+  const laserY = interpolate(frame % 90, [0, 90], [80, 1450]);
 
   return (
-    <div style={{ position: 'absolute', inset: 0, backgroundColor: '#05070a', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', inset: 0, transform: `scale(${masterScale}) translateX(${panX}px)`, transformOrigin: 'center center' }}>
-        {/* Upper Panel */}
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '52%', overflow: 'hidden', opacity: leftOpacity, transition: 'opacity 0.2s ease-out' }}>
-          {leftImage ? (
-            <Img src={staticFile(leftImage)} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.15) brightness(0.85)' }} />
-          ) : (
-            <div style={{ position: 'absolute', inset: 0, backgroundColor: '#0a0f18', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px' }}>
-              <div style={{ color: '#FFE600', fontWeight: 900, fontFamily: 'monospace', fontSize: '15px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '10px' }}>
-                ⚡ {leftStampText}
-              </div>
-              <div style={{ color: '#ffffff', fontSize: '36px', fontWeight: 900, fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-1px', lineHeight: 1.15, textTransform: 'uppercase', textAlign: 'center' }}>
-                {leftPrimaryText || leftTitle}
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Lower Panel */}
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '52%', overflow: 'hidden', opacity: rightOpacity, transition: 'opacity 0.2s ease-out' }}>
-          {rightImage ? (
-            <Img src={staticFile(rightImage)} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.15) brightness(0.85)' }} />
-          ) : (
-            <div style={{ position: 'absolute', inset: 0, backgroundColor: '#160505', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px' }}>
-              <div style={{ color: '#ef4444', fontWeight: 900, fontFamily: 'monospace', fontSize: '15px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '10px' }}>
-                🚨 {rightBadge}
-              </div>
-              <div style={{ color: '#ffffff', fontSize: '36px', fontWeight: 900, fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-1px', lineHeight: 1.15, textTransform: 'uppercase', textAlign: 'center' }}>
-                {rightTitle}
-              </div>
-            </div>
-          )}
-        </div>
+    <div
+      style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundColor: '#02060d',
+        overflow: 'hidden',
+      }}
+    >
+      {/* 1. Fullscreen 3D Medical X-Ray Hero Background with Spring Glide & Heartbeat */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: -40,
+          transform: `scale(${scale}) translate(${driftX}px, ${driftY}px)`,
+          transformOrigin: 'center 42%',
+        }}
+      >
+        <Img
+          src={staticFile(heroImage)}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            filter: 'contrast(1.2) brightness(0.84) saturate(1.2)',
+          }}
+        />
       </div>
 
-      {/* Top Editorial Headline */}
-      <div style={{ position: 'absolute', top: '90px', left: '50px', right: '50px', zIndex: 35 }}>
-        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '15px', fontWeight: 800, color: isSecondHalf ? '#ef4444' : '#FFE600', letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '8px' }}>
-          {isSecondHalf ? rightBadge : leftBadge}
+      {/* 2. Holographic Medical Grid Overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `
+            linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: '54px 54px',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* 3. Bioluminescent X-Ray Scanner Laser */}
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: `${laserY}px`,
+          height: '4px',
+          background: 'linear-gradient(90deg, transparent 0%, #38bdf8 50%, transparent 100%)',
+          boxShadow: '0 0 24px #38bdf8',
+          opacity: 0.55,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* 4. Vignette & Subtitle Safe Zone Gradient */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse at center, transparent 32%, rgba(2, 6, 13, 0.88) 100%)',
+          pointerEvents: 'none',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: '680px',
+          background:
+            'linear-gradient(to top, rgba(2, 6, 13, 0.96) 0%, rgba(2, 6, 13, 0.72) 48%, transparent 100%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* 5. Top Medical Hook Header */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '96px',
+          left: '54px',
+          right: '54px',
+          zIndex: 30,
+          transform: `translateY(${interpolate(introSpring, [0, 1], [-35, 0])}px)`,
+          opacity: introSpring,
+        }}
+      >
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '7px 16px',
+            backgroundColor: 'rgba(6, 12, 24, 0.88)',
+            border: '1px solid rgba(56, 189, 248, 0.55)',
+            borderLeft: '4px solid #38bdf8',
+            borderRadius: '8px',
+            marginBottom: '16px',
+            boxShadow: '0 0 20px rgba(56, 189, 248, 0.25)',
+            backdropFilter: 'blur(12px)',
+          }}
+        >
+          <div
+            style={{
+              width: '9px',
+              height: '9px',
+              borderRadius: '50%',
+              backgroundColor: '#38bdf8',
+              boxShadow: '0 0 10px #38bdf8',
+              transform: `scale(${1 + systolicBeat * 0.45})`,
+            }}
+          />
+          <span
+            style={{
+              color: '#38bdf8',
+              fontSize: '15px',
+              fontWeight: 800,
+              fontFamily: "'Space Grotesk', sans-serif",
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+            }}
+          >
+            {kicker}
+          </span>
         </div>
-        <h1 style={{ fontSize: '44px', fontWeight: 900, color: '#ffffff', margin: 0, lineHeight: 1.15, textTransform: 'uppercase' }}>
-          {isSecondHalf ? rightTitle : leftTitle}
+
+        <h1
+          style={{
+            fontSize: '50px',
+            fontWeight: 900,
+            color: '#ffffff',
+            lineHeight: 1.12,
+            letterSpacing: '-1.2px',
+            fontFamily: "'Montserrat', sans-serif",
+            textTransform: 'uppercase',
+            margin: 0,
+            textShadow: '0 6px 28px rgba(0, 0, 0, 0.95)',
+          }}
+        >
+          {headline}
         </h1>
-      </div>
 
-      <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '520px', background: 'linear-gradient(to top, rgba(5, 7, 10, 0.98) 0%, rgba(5, 7, 10, 0.7) 60%, transparent 100%)', pointerEvents: 'none', zIndex: 25 }} />
+        <div
+          style={{
+            marginTop: '16px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '12px',
+            backgroundColor: 'rgba(15, 23, 42, 0.82)',
+            padding: '6px 14px',
+            borderRadius: '6px',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            color: '#cbd5e1',
+            fontSize: '13px',
+            fontWeight: 700,
+            fontFamily: "'Space Grotesk', sans-serif",
+          }}
+        >
+          <span style={{ color: '#f43f5e', fontWeight: 800 }}>● PEMINDAIAN ANATOMI 3D</span>
+          <span>•</span>
+          <span>REAKSI ORGAN DETIK DEMI DETIK</span>
+        </div>
+      </div>
     </div>
   );
 };
