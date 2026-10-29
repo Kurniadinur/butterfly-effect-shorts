@@ -63,10 +63,12 @@ Kamu adalah Sutradara Sains & Medis Kelas Dunia (setara kreator Zack D. Films, K
 Tugasmu adalah menciptakan naskah dan alur visual simulasi anatomi 3D "Apa yang Terjadi pada Tubuhmu Jika..." berdurasi 60 hingga 140 detik untuk YouTube Shorts / TikTok / Reels (9:16).
 
 PRINSIP WAJIB SUTRADARA MEDIS 3D:
-1. GAYA HOOK PEMBUKA ("fullscreen-dramatic"):
-   - 'kicker': Badge singkat medis (misal: "SIMULASI MEDIS 72 JAM", "PERINGATAN ANATOMI", "EKSPERIMEN BIOLOGIS").
-   - 'headline': Judul pancingan besar 3-6 kata (misal: "72 JAM TANPA TIDUR", "MENAHAN KENCING TERLALU LAMA", "MINUM KOPI SAAT PERUT KOSONG").
-   - 'narration': Kalimat pembuka yang langsung membawa penonton masuk ke dalam tubuh mereka sendiri pada detik/jam pertama!
+1. GAYA HOOK PEMBUKA ("fullscreen-dramatic" — WAJIB HOOK PERTANYAAN PENASARAN!):
+   - DILARANG KERAS langsung memulai pembahasan teknis di detik pertama!
+   - Mulailah video dengan HOOK PERTANYAAN PSIKOLOGIS yang langsung memancing rasa penasaran penonton tentang tubuh mereka sendiri (*Curiosity Gap*), baru kemudian berikan pratinjau taruhan medisnya!
+   - 'kicker': Badge pemicu rasa penasaran (misal: "PERTANYAAN MEDIS", "EKSPERIMEN TUBUH MANUSIA", "SIMULASI BIOLOGIS").
+   - 'headline': Kalimat tanya singkat, menohok, dan wajib diakhiri tanda tanya "?" (maksimal 6-9 kata, contoh: "BAGAIMANA KEADAAN TUBUHMU JIKA TIDAK TIDUR 72 JAM?", "APA YANG TERJADI JIKA MENAHAN KENCING TERLALU LAMA?", "BENARKAH KOPI SAAT PERUT KOSONG MERUSAK LAMBUNG?").
+   - 'narration': WAJIB dibuka dengan kalimat pertanyaan langsung ke penonton (contoh: "Pernahkah kamu membayangkan, bagaimana keadaan di dalam tubuhmu jika kamu memaksa tidak tidur selama 72 jam penuh? Kamu mungkin mengira hanya akan merasa mengantuk biasa... tapi di balik kulitmu, organ-organ vitalmu sedang berjuang melewati batas kritis. Mari kita masuk ke dalam tubuhmu detik demi detik!").
 
 2. AKURASI MEDIS & BIOLOGIS NYATA:
    - Jelaskan mekanisme biologis yang nyata: nama hormon (kortisol, adrenalin, dopamin, adenosin, insulin), nama bagian organ (korteks prefrontal, amigdala, alveoli, nefron ginjal, mukosa lambung), dan angka medis konkret (misal: detak jantung 130 BPM, pH asam lambung 1.5, tekanan darah melonjak).
@@ -104,9 +106,9 @@ FORMAT JSON WAJIB:
   },
   "hook": {
     "hookStyle": "fullscreen-dramatic",
-    "kicker": "SIMULASI ANATOMI 3D",
-    "headline": "JUDUL HOOK SINGKAT & MENohok",
-    "narration": "Kalimat pembuka menggigit dan ilmiah (20-28 kata)...",
+    "kicker": "PERTANYAAN ANATOMI 3D",
+    "headline": "BAGAIMANA KEADAAN TUBUHMU JIKA ... ?",
+    "narration": "Pernahkah kamu membayangkan, bagaimana keadaan tubuhmu ketika ...? Kamu mungkin mengira efeknya sepele, tapi di dalam tubuhmu, organ-organmu sedang bereaksi keras. Mari kita lihat detik demi detik!",
     "leftTitle": "Kebiasaan Sepele",
     "rightTitle": "Reaksi Organ",
     "leftBadge": "PEMICU AWAL",
@@ -392,29 +394,48 @@ async function generateStoryboard(topic) {
   }
   console.log(`      🎨 [AI Editorial Style] Mood: ${storyData.editorialStyle.mood} | Grain: ${storyData.editorialStyle.grainIntensity} | Shake Chaos: ${storyData.editorialStyle.shakeThresholdChaos}`);
 
-  // Normalize Hook
+  // Normalize Hook (Enforce Curiosity-Gap Question Hook!)
+  const cleanScenario = topic.replace(/^(Apa yang Terjadi pada Tubuhmu Jika|Bagaimana Jika)\s*/i, '').replace(/\?+$/, '').trim();
+  const defaultQuestionHeadline = `BAGAIMANA KEADAAN TUBUHMU KETIKA ${cleanScenario.toUpperCase()}?`;
+  const defaultQuestionNarration = `Pernahkah kamu bertanya-tanya, bagaimana keadaan tubuhmu ketika ${cleanScenario.toLowerCase()}? Kamu mungkin mengira efeknya sepele, namun dalam hitungan menit, organ dalammu langsung memicu reaksi darurat. Mari kita lihat apa yang terjadi di dalam tubuhmu!`;
+
   if (!storyData.hook || typeof storyData.hook !== 'object') {
     storyData.hook = {
       hookStyle: 'fullscreen-dramatic',
-      kicker: 'DOKUMENTER INVESTIGASI',
-      headline: storyData.title || topic,
-      narration: `Satu kelalaian kecil yang tampak sepele... mengubah jalannya sejarah dunia hanya dalam hitungan jam.`,
-      leftTitle: 'Awal Mula Sepele',
-      rightTitle: 'Bencana Global',
-      leftBadge: 'AWAL MULA SEPELE',
-      rightBadge: 'BENCANA GLOBAL',
+      kicker: 'PERTANYAAN ANATOMI 3D',
+      headline: defaultQuestionHeadline,
+      narration: defaultQuestionNarration,
+      leftTitle: 'Pemicu Awal',
+      rightTitle: 'Reaksi Organ',
+      leftBadge: 'PEMICU AWAL',
+      rightBadge: 'REAKSI ORGAN',
     };
   } else {
     if (!storyData.hook.hookStyle) storyData.hook.hookStyle = 'fullscreen-dramatic';
-    if (!storyData.hook.kicker) storyData.hook.kicker = 'DOKUMENTER INVESTIGASI';
-    if (!storyData.hook.headline) storyData.hook.headline = storyData.title || topic;
-    if (!storyData.hook.narration) {
-      storyData.hook.narration = `Satu kelalaian kecil pada ${storyData.hook.leftTitle || 'hari itu'} memicu rangkaian kehancuran tak terbendung hingga meruntuhkan tatanan dunia.`;
+    if (!storyData.hook.kicker || storyData.hook.kicker.includes('INVESTIGASI')) {
+      storyData.hook.kicker = 'PERTANYAAN ANATOMI 3D';
     }
-    if (!storyData.hook.leftTitle) storyData.hook.leftTitle = 'Awal Mula Sepele';
-    if (!storyData.hook.rightTitle) storyData.hook.rightTitle = 'Bencana Global';
-    if (!storyData.hook.leftBadge) storyData.hook.leftBadge = 'AWAL MULA SEPELE';
-    if (!storyData.hook.rightBadge) storyData.hook.rightBadge = 'BENCANA GLOBAL';
+    // Ensure headline is formatted as an engaging question
+    if (!storyData.hook.headline) {
+      storyData.hook.headline = defaultQuestionHeadline;
+    } else if (!storyData.hook.headline.includes('?')) {
+      const rawH = storyData.hook.headline.trim();
+      if (/^(bagaimana|apa|benarkah|kenapa|mengapa|kapan)/i.test(rawH)) {
+        storyData.hook.headline = `${rawH}?`;
+      } else {
+        storyData.hook.headline = defaultQuestionHeadline;
+      }
+    }
+    // Ensure narration starts with a curiosity question before diving into the explanation
+    if (!storyData.hook.narration) {
+      storyData.hook.narration = defaultQuestionNarration;
+    } else if (!storyData.hook.narration.includes('?')) {
+      storyData.hook.narration = `Pernahkah kamu membayangkan, bagaimana keadaan tubuhmu ketika ${cleanScenario.toLowerCase()}? ${storyData.hook.narration}`;
+    }
+    if (!storyData.hook.leftTitle) storyData.hook.leftTitle = 'Pemicu Awal';
+    if (!storyData.hook.rightTitle) storyData.hook.rightTitle = 'Reaksi Organ';
+    if (!storyData.hook.leftBadge) storyData.hook.leftBadge = 'PEMICU AWAL';
+    if (!storyData.hook.rightBadge) storyData.hook.rightBadge = 'REAKSI ORGAN';
   }
 
   // Normalize Outro

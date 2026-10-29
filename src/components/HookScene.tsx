@@ -30,8 +30,9 @@ export const HookScene: React.FC<HookSceneProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const kicker = rawKicker || 'SIMULASI MEDIS & BIOLOGIS';
-  const headline = rawHeadline || rightTitle || leftTitle || 'APA YANG TERJADI PADA TUBUHMU?';
+  const kicker = rawKicker || 'PERTANYAAN ANATOMI & MEDIS';
+  const rawH = rawHeadline || rightTitle || leftTitle || 'BAGAIMANA KEADAAN TUBUHMU?';
+  const headline = rawH.trim().endsWith('?') ? rawH.trim() : `${rawH.trim()}?`;
   const heroImage = rightImage || leftImage || 'butterfly/media/medical_body_xray.jpg';
 
   // Fluid spring zoom-in + organic heartbeat thump
@@ -56,7 +57,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
       style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(circle at 50% 38%, #0284c7 0%, #0b2545 58%, #07192e 100%)',
+        background: 'radial-gradient(circle at 50% 38%, #152c52 0%, #0b162c 62%, #060d1a 100%)',
         overflow: 'hidden',
       }}
     >
@@ -75,9 +76,9 @@ export const HookScene: React.FC<HookSceneProps> = ({
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            opacity: 0.72,
+            opacity: 0.32,
             mixBlendMode: 'screen',
-            filter: 'contrast(1.22) brightness(1.12) saturate(1.3)',
+            filter: 'grayscale(80%) contrast(1.18) brightness(0.9)',
           }}
         />
       </div>
@@ -186,11 +187,11 @@ export const HookScene: React.FC<HookSceneProps> = ({
 
         <h1
           style={{
-            fontSize: '50px',
+            fontSize: headline.length > 36 ? '44px' : '50px',
             fontWeight: 900,
             color: '#ffffff',
-            lineHeight: 1.12,
-            letterSpacing: '-1.2px',
+            lineHeight: 1.16,
+            letterSpacing: '-1px',
             fontFamily: "'Montserrat', sans-serif",
             textTransform: 'uppercase',
             margin: 0,
@@ -202,23 +203,23 @@ export const HookScene: React.FC<HookSceneProps> = ({
 
         <div
           style={{
-            marginTop: '16px',
+            marginTop: '18px',
             display: 'inline-flex',
             alignItems: 'center',
             gap: '12px',
-            backgroundColor: 'rgba(15, 23, 42, 0.82)',
-            padding: '6px 14px',
-            borderRadius: '6px',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            color: '#cbd5e1',
-            fontSize: '13px',
-            fontWeight: 700,
+            backgroundColor: 'rgba(15, 23, 42, 0.88)',
+            padding: '8px 16px',
+            borderRadius: '8px',
+            border: '1px solid rgba(251, 191, 36, 0.45)',
+            color: '#fef08a',
+            fontSize: '14px',
+            fontWeight: 800,
             fontFamily: "'Space Grotesk', sans-serif",
+            boxShadow: '0 4px 18px rgba(0, 0, 0, 0.6)',
           }}
         >
-          <span style={{ color: '#f43f5e', fontWeight: 800 }}>● PEMINDAIAN ANATOMI 3D</span>
-          <span>•</span>
-          <span>REAKSI ORGAN DETIK DEMI DETIK</span>
+          <span style={{ color: '#fbbf24', fontSize: '16px' }}>❓</span>
+          <span>SIMAK REAKSI ORGANMU DETIK DEMI DETIK</span>
         </div>
       </div>
     </div>

@@ -132,7 +132,9 @@ KRITERIA AUDIT MEDIS & VISUAL:
    - Pastikan reaksi organ, hormon, dan tahapan waktu masuk akal secara ilmiah (misal: lambung -> pembuluh darah -> jantung -> otak -> ginjal).
 2. KELENGKAPAN TARGET ORGAN ('organTarget'):
    - Pastikan setiap node memiliki 'organTarget' yang valid ('brain', 'heart', 'lungs', 'stomach', 'liver', 'kidney', 'intestine', 'blood', 'nerves', atau 'muscles') agar pemindai anatomi 3D bergerak luwes antar-organ.
-3. KEPADATAN TEKS LAYAR:
+3. KEPADATAN TEKS LAYAR & HOOK PERTANYAAN:
+   - 'hook.headline': WAJIB berupa kalimat pertanyaan pancingan penasaran (diakhiri tanda tanya "?"), misal: "BAGAIMANA KEADAAN TUBUHMU KETIKA ... ?".
+   - 'hook.narration': WAJIB dimulai dengan kalimat pertanyaan ke penonton sebelum masuk ke penjelasan teknis organ.
    - 'primaryText': maksimal 25 karakter (indikator reaksi medis singkat).
    - 'headline': 3 sampai 6 kata yang jelas dan dramatis.
 

@@ -14,8 +14,8 @@ export const CURRENT_STORY: ButterflyStoryData = {
   },
   "hook": {
     "hookStyle": "fullscreen-dramatic",
-    "kicker": "SIMULASI NEUROLOGIS KRITIS",
-    "headline": "72 JAM TANPA TIDUR",
+    "kicker": "PERTANYAAN ANATOMI 3D",
+    "headline": "BAGAIMANA KEADAAN TUBUHMU KETIKA TIDAK TIDUR 72 JAM?",
     "narration": "Detik pertama tanpa tidur, adenosin mulai menumpuk di otak. Dalam 72 jam, tubuhmu berubah menjadi ladang perang biokimia yang menghancurkan kognisi.",
     "leftTitle": "Penumpukan Adenosin",
     "rightTitle": "Kegagalan Saraf",
