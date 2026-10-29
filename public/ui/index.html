@@ -7,262 +7,409 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #030712;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #060b16;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -15%, rgba(14, 165, 233, 0.18), transparent),
+        radial-gradient(ellipse 60% 45% at 85% 95%, rgba(16, 185, 129, 0.08), transparent);
       color: #f8fafc;
     }
     .font-space {
       font-family: 'Space Grotesk', sans-serif;
     }
-    .card-panel {
-      background: rgba(10, 18, 36, 0.82);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(56, 189, 248, 0.16);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
+    .glass-card {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(9, 15, 29, 0.94) 100%);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    }
+    .topic-chip {
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .topic-chip:hover {
+      transform: translateY(-1px);
+      border-color: rgba(56, 189, 248, 0.55);
+      background-color: rgba(14, 165, 233, 0.14);
+      color: #e0f2fe;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.35);
+      border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(56, 189, 248, 0.6);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between p-4 sm:p-8">
+<body class="min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-8">
 
-  <!-- TOP HEADER -->
-  <header class="max-w-xl w-full mx-auto flex items-center justify-between pb-5 border-b border-slate-800/80">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-xl bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-400 font-black text-base">
+  <!-- TOP NAVIGATION BAR -->
+  <header class="max-w-6xl w-full mx-auto flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-800/80">
+    <div class="flex items-center gap-3.5">
+      <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-sky-500/25 to-cyan-500/10 border border-sky-400/40 flex items-center justify-center text-sky-400 text-xl shadow-lg shadow-sky-950/50">
         🧬
       </div>
       <div>
-        <h1 class="text-sm font-black tracking-widest uppercase text-white">
-          BODY SCANNER 3D STUDIO
-        </h1>
-        <p class="text-[10px] text-sky-400 font-mono tracking-tight font-bold">SIMULASI ANATOMI X-RAY 3D • ANIMASI ORGAN & EKG HIDUP</p>
+        <div class="flex items-center gap-2.5">
+          <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-white">
+            Body Scanner 3D Studio
+          </h1>
+          <span class="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-space font-bold uppercase px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Kamera 1-Tubuh Kontinu
+          </span>
+        </div>
+        <p class="text-xs text-slate-400 font-medium mt-0.5">
+          Generator Video Edukasi Medis & Anatomi 3D • Tanpa Potongan Slide
+        </p>
       </div>
     </div>
-    <a
-      href="http://localhost:3000"
-      target="_blank"
-      class="text-xs font-bold text-slate-300 hover:text-white px-3.5 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5"
-    >
-      <span>▶</span>
-      <span>Buka Player</span>
-    </a>
+
+    <div class="flex items-center gap-2.5">
+      <a
+        href="http://localhost:3000"
+        target="_blank"
+        class="text-xs font-bold text-slate-200 hover:text-white px-4 py-2.5 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700 transition flex items-center gap-2 shadow"
+      >
+        <span class="text-sky-400">▶</span>
+        <span>Buka Remotion Player</span>
+      </a>
+    </div>
   </header>
 
-  <!-- MAIN CONTAINER (FOKUS 3 HAL: JUDUL, GENERATE, PREVIEW & DOWNLOAD) -->
-  <main class="max-w-xl w-full mx-auto my-auto space-y-6 py-6">
+  <!-- MAIN 2-COLUMN STUDIO DASHBOARD -->
+  <main class="max-w-6xl w-full mx-auto my-auto py-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
-    <!-- 1. INPUT JUDUL & GENERATE BUTTON -->
-    <div class="card-panel rounded-2xl p-6 sm:p-7 space-y-4">
-      <div>
-        <div class="flex items-center justify-between mb-2">
-          <label for="input-topic" class="block text-xs font-bold font-space uppercase text-sky-400 tracking-wider">
-            Topik "Apa yang Terjadi pada Tubuhmu Jika...":
-          </label>
+    <!-- ===================================================================
+         LEFT COLUMN (7 COLS): SKENARIO AI, GENERATOR & TIMELINE ORGAN
+         =================================================================== -->
+    <div class="lg:col-span-7 space-y-6">
+
+      <!-- CARD 1: INPUT SKENARIO & AI BRAINSTORMER -->
+      <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <span class="text-[11px] font-space font-bold uppercase tracking-wider text-sky-400">
+              LANGKAH 1 • SKENARIO SIMULASI TUBUH
+            </span>
+            <h2 class="text-base sm:text-lg font-extrabold text-white mt-0.5">
+              Apa yang Terjadi pada Tubuhmu Jika...
+            </h2>
+          </div>
+
           <button
             id="btn-brainstorm"
             onclick="brainstormAiTopics()"
-            class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-400/40 transition flex items-center gap-1"
+            class="text-xs font-bold px-3.5 py-2 rounded-xl bg-sky-500/15 hover:bg-sky-500/25 text-sky-300 border border-sky-400/35 transition flex items-center gap-2 shadow-sm active:scale-95"
           >
             <span>🎲</span>
-            <span id="brainstorm-text">Acak Ide Judul AI</span>
+            <span>Cari 6 Ide Judul AI Baru</span>
           </button>
         </div>
-        <input
-          id="input-topic"
-          type="text"
-          class="w-full px-4 py-3.5 bg-slate-950/90 border border-slate-700/80 rounded-xl text-white font-bold text-base focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 transition shadow-inner placeholder-slate-600"
-          placeholder="Ketik skenario tubuh... (contoh: Tidak Tidur Selama 72 Jam)"
-          value="Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur Selama 72 Jam"
-        />
 
-        <!-- Quick Topic Inspirations (1-Klik Ide Evergreen) -->
-        <div id="topic-chips" class="mt-3 flex flex-wrap gap-1.5">
-          <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur Selama 72 Jam')" class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-sky-950 text-slate-300 hover:text-sky-300 border border-slate-800 hover:border-sky-500/40 transition">
-            🧠 Tidak Tidur 72 Jam
-          </button>
-          <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Menahan Kencing Terlalu Lama')" class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-sky-950 text-slate-300 hover:text-sky-300 border border-slate-800 hover:border-sky-500/40 transition">
-            🫘 Menahan Kencing
-          </button>
-          <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Minum Kopi Saat Perut Kosong Setiap Pagi')" class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-sky-950 text-slate-300 hover:text-sky-300 border border-slate-800 hover:border-sky-500/40 transition">
-            ☕ Kopi Perut Kosong
-          </button>
-          <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Makan Mie Instan Setiap Hari')" class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-sky-950 text-slate-300 hover:text-sky-300 border border-slate-800 hover:border-sky-500/40 transition">
-            🍜 Mie Instan Tiap Hari
-          </button>
-          <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Berhenti Makan Gula Selama 30 Hari')" class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-sky-950 text-slate-300 hover:text-sky-300 border border-slate-800 hover:border-sky-500/40 transition">
-            🍬 Stop Gula 30 Hari
-          </button>
+        <!-- Input Field -->
+        <div class="relative">
+          <input
+            id="input-topic"
+            type="text"
+            class="w-full px-4 py-4 bg-slate-950/90 border border-slate-700/80 rounded-xl text-white font-bold text-sm sm:text-base focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 transition shadow-inner placeholder-slate-500"
+            placeholder="Ketik skenario tubuh... (contoh: Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur 72 Jam)"
+            value="Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur Selama 72 Jam"
+          />
+        </div>
+
+        <!-- Quick Topic Inspirations -->
+        <div>
+          <div class="text-[11px] font-semibold text-slate-400 mb-2 flex items-center justify-between">
+            <span>Pilihan Topik Populer (Klik untuk memilih):</span>
+            <span id="chip-status" class="text-[10px] font-mono text-sky-400/80">Siap digunakan</span>
+          </div>
+          <div id="topic-chips" class="flex flex-wrap gap-2">
+            <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur Selama 72 Jam')" class="topic-chip text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-900/90 text-slate-300 border border-slate-800">
+              🧠 Tidak Tidur 72 Jam
+            </button>
+            <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Menahan Kencing Terlalu Lama')" class="topic-chip text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-900/90 text-slate-300 border border-slate-800">
+              🫘 Menahan Kencing Terlalu Lama
+            </button>
+            <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Minum Kopi Saat Perut Kosong Setiap Pagi')" class="topic-chip text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-900/90 text-slate-300 border border-slate-800">
+              ☕ Kopi Saat Perut Kosong
+            </button>
+            <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Makan Mie Instan Setiap Hari')" class="topic-chip text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-900/90 text-slate-300 border border-slate-800">
+              🍜 Mie Instan Tiap Hari
+            </button>
+            <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Berhenti Makan Gula Selama 30 Hari')" class="topic-chip text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-900/90 text-slate-300 border border-slate-800">
+              🍬 Stop Gula 30 Hari
+            </button>
+            <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Hanya Minum Soda Tanpa Air Putih')" class="topic-chip text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-900/90 text-slate-300 border border-slate-800">
+              🥤 Minum Soda Tanpa Air Putih
+            </button>
+          </div>
+        </div>
+
+        <!-- Primary Action Button -->
+        <button
+          id="btn-generate"
+          onclick="generateVideo()"
+          class="w-full py-4 rounded-xl bg-gradient-to-r from-sky-500 via-cyan-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-extrabold text-sm sm:text-base uppercase tracking-wider shadow-lg shadow-sky-950/70 transition active:scale-[0.99] flex items-center justify-center gap-2.5"
+        >
+          <span class="text-lg">⚡</span>
+          <span id="btn-text">Buat Video Simulasi 3D Sekarang</span>
+        </button>
+
+        <!-- Live Generation Progress & Terminal Box -->
+        <div id="status-box" class="hidden p-4 rounded-xl bg-slate-950/95 border border-sky-800/60 space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5 text-xs font-bold text-slate-200">
+              <span id="gen-spinner" class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-ping shrink-0"></span>
+              <span id="status-text">Memproses simulasi anatomi...</span>
+            </div>
+            <span id="gen-eta" class="text-[11px] font-mono font-bold text-sky-300 bg-sky-950/90 border border-sky-700/60 px-2.5 py-0.5 rounded-lg shrink-0">
+              ⏳ Est: ~25 dtk
+            </span>
+          </div>
+          <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+            <div id="gen-progress-bar" class="h-full bg-gradient-to-r from-sky-400 to-cyan-300 transition-all duration-300" style="width: 10%"></div>
+          </div>
+          <pre id="gen-log-terminal" class="text-[11px] font-mono text-slate-300 bg-black/70 border border-slate-800 rounded-lg p-3 max-h-36 overflow-y-auto whitespace-pre-wrap leading-relaxed"></pre>
         </div>
       </div>
 
-      <!-- Tombol Generate Utama -->
-      <button
-        id="btn-generate"
-        onclick="generateVideo()"
-        class="w-full py-4 rounded-xl bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white font-black text-base uppercase tracking-wider shadow-lg shadow-sky-950/60 transition active:scale-[0.99] flex items-center justify-center gap-2"
-      >
-        <span>🧬</span>
-        <span id="btn-text">Generate Video Simulasi 3D</span>
-      </button>
-
-      <!-- Status Progress Live + Terminal Log & Estimasi Waktu -->
-      <div id="status-box" class="hidden p-4 rounded-xl bg-slate-900/95 border border-sky-900/60 space-y-3">
-        <div class="flex items-center justify-between gap-2">
-          <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
-            <span id="gen-spinner" class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-ping shrink-0"></span>
-            <span id="status-text">Sedang memproses simulasi anatomi...</span>
+      <!-- CARD 2: RUTE PERJALANAN KAMERA ORGAN & HOOK PERTANYAAN AKTIF -->
+      <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+          <div>
+            <span class="text-[11px] font-space font-bold uppercase tracking-wider text-emerald-400">
+              ALUR SIMULASI AKTIF
+            </span>
+            <h3 class="text-sm sm:text-base font-extrabold text-white">
+              Hook Pertanyaan & Rute Kamera Antar-Organ
+            </h3>
           </div>
-          <span id="gen-eta" class="text-[11px] font-mono text-sky-400 bg-sky-950/80 border border-sky-800/60 px-2 py-0.5 rounded shrink-0">
-            ⏳ Est: ~25 dtk
+          <span id="organ-count-badge" class="text-xs font-space font-bold text-slate-300 bg-slate-800/90 border border-slate-700 px-3 py-1 rounded-full">
+            0 Tahap Organ
           </span>
         </div>
-        <!-- Progress Bar -->
-        <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-          <div id="gen-progress-bar" class="h-full bg-gradient-to-r from-sky-500 to-cyan-400 transition-all duration-300" style="width: 10%"></div>
+
+        <!-- Hook Pertanyaan Box -->
+        <div class="p-3.5 rounded-xl bg-sky-950/35 border border-sky-500/30 space-y-1">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-space font-bold uppercase tracking-wider text-sky-400">
+              ❓ HOOK PERTANYAAN PEMBUKA (3 DETIK PERTAMA)
+            </span>
+            <span id="hook-kicker-badge" class="text-[10px] font-mono text-amber-300 font-bold">
+              PERTANYAAN ANATOMI 3D
+            </span>
+          </div>
+          <div id="hook-headline-display" class="text-sm font-extrabold text-white">
+            BAGAIMANA KEADAAN TUBUHMU KETIKA TIDAK TIDUR 72 JAM?
+          </div>
+          <p id="story-sub" class="text-xs text-slate-300 leading-relaxed">
+            Memuat narasi pembuka...
+          </p>
         </div>
-        <!-- Live Terminal Log Box -->
-        <pre id="gen-log-terminal" class="text-[10px] font-mono text-slate-400 bg-black/60 border border-slate-800/80 rounded-lg p-2.5 max-h-28 overflow-y-auto whitespace-pre-wrap leading-relaxed"></pre>
+
+        <!-- Daftar Rute Organ (Scrollable Pills) -->
+        <div>
+          <div class="text-[11px] font-semibold text-slate-400 mb-2">
+            Urutan Perjalanan Kamera 1-Tubuh (Tanpa Cut):
+          </div>
+          <div id="organ-journey-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto pr-1">
+            <!-- Diisi otomatis oleh loadCurrentStory() -->
+          </div>
+        </div>
       </div>
+
     </div>
 
-    <!-- 2. PREVIEW VIDEO HASIL -->
-    <div id="preview-panel" class="card-panel rounded-2xl p-6 sm:p-7 space-y-5">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <span class="text-xs font-space font-bold uppercase text-slate-400 tracking-wider">
-          Preview Video Saat Ini:
-        </span>
-        <span id="story-dur" class="text-xs font-space font-bold text-sky-400 bg-sky-950/80 border border-sky-800/80 px-2.5 py-0.5 rounded-full">
-          Memuat...
-        </span>
-      </div>
+    <!-- ===================================================================
+         RIGHT COLUMN (5 COLS): PREVIEW 9:16, AUDIO PLAYER & CLOUD RENDER MP4
+         =================================================================== -->
+    <div class="lg:col-span-5 space-y-6">
 
-      <!-- Preview Layout: Thumbnail 9:16 + Detail + Controls -->
-      <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
-        
-        <!-- Thumbnail Vertikal 9:16 -->
-        <div class="relative w-36 sm:w-40 aspect-[9/16] rounded-xl overflow-hidden border border-sky-500/30 bg-black shrink-0 shadow-xl">
-          <img
-            id="preview-img"
-            src="/butterfly/preview_reka_adegan.png"
-            onerror="this.src='/butterfly/verify_photo_node3.png'"
-            alt="Preview Visual 3D Medical X-Ray"
-            class="w-full h-full object-cover"
-          />
-          <div class="absolute top-2 right-2 bg-black/85 backdrop-blur px-1.5 py-0.5 rounded border border-sky-400/40 text-[9px] font-space font-bold text-sky-300 flex items-center gap-1 shadow">
-            <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
-            <span>3D X-RAY</span>
+      <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+          <div>
+            <span class="text-[11px] font-space font-bold uppercase tracking-wider text-sky-400">
+              PRATINJAU & EKSPOR VIDEO
+            </span>
+            <h2 id="story-title" class="text-base font-extrabold text-white truncate max-w-[230px] sm:max-w-[280px]">
+              Memuat Judul...
+            </h2>
           </div>
+          <span id="story-dur" class="text-xs font-space font-bold text-sky-300 bg-sky-950/90 border border-sky-700/70 px-3 py-1 rounded-full shrink-0">
+            Memuat...
+          </span>
         </div>
 
-        <!-- Info Judul, Narasi & Aksi -->
-        <div class="flex-1 space-y-4 w-full">
-          <div>
-            <h2 id="story-title" class="text-base font-black text-white leading-snug">
-              Memuat Judul Simulasi...
-            </h2>
-            <p id="story-sub" class="text-xs text-slate-400 mt-1 line-clamp-3 leading-relaxed">
-              Memuat pembuka narasi video...
-            </p>
-          </div>
-
-          <!-- Pemutar Audio Voiceover -->
-          <div class="space-y-1.5">
-            <div class="flex items-center justify-between">
-              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">
-                Voiceover Narasi Medis:
-              </span>
-              <span class="text-[10px] text-sky-400 font-mono">Audio Sync</span>
+        <!-- 9:16 Vertical Visual Preview Container -->
+        <div class="flex flex-col sm:flex-row lg:flex-col gap-5 items-center">
+          <div class="relative w-48 sm:w-52 aspect-[9/16] rounded-2xl overflow-hidden border-2 border-slate-700/80 bg-slate-950 shadow-2xl shrink-0 group">
+            <img
+              id="preview-img"
+              src="/butterfly/verify_photo_node3.png"
+              alt="Preview Visual 3D Medical X-Ray"
+              class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div class="absolute top-2.5 left-2.5 bg-slate-950/85 backdrop-blur-md px-2 py-0.5 rounded-md border border-sky-400/40 text-[10px] font-space font-bold text-sky-300 flex items-center gap-1.5 shadow">
+              <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+              <span>9:16 SHORTS</span>
             </div>
-            <audio id="audio-player" controls class="w-full h-9 rounded-lg"></audio>
-          </div>
-
-          <!-- Dua Tombol Aksi: Buka Player (Browser) & Download Video MP4 -->
-          <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
             <a
               href="http://localhost:3000"
               target="_blank"
-              class="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white text-center transition flex items-center justify-center gap-1.5 shadow"
+              class="absolute inset-0 bg-slate-950/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
             >
-              <span>▶</span>
-              <span>Buka Player</span>
+              <span class="px-3.5 py-2 rounded-xl bg-sky-500 text-white font-bold text-xs shadow-lg">
+                ▶ Putar Animasi Penuh
+              </span>
             </a>
-            <button
-              id="btn-download"
-              onclick="downloadVideoMp4()"
-              class="flex-1 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-xs font-bold text-white transition flex items-center justify-center gap-1.5 shadow shadow-emerald-950/40"
-            >
-              <span>📥</span>
-              <span id="btn-download-text">Download Video (.MP4)</span>
-            </button>
           </div>
 
-          <!-- Notifikasi & Live Log Cloud Render MP4 (Lengkap dengan Estimasi Waktu) -->
-          <div id="download-notif" class="hidden text-xs p-3.5 rounded-xl bg-slate-900/95 border border-slate-800 text-slate-300 space-y-2.5">
-            <div class="flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 font-semibold">
-                <span id="download-spinner" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
-                <span id="download-status-msg">Sedang memproses file MP4 di Cloud...</span>
+          <!-- Audio & Export Controls -->
+          <div class="w-full space-y-4">
+            <!-- Voiceover Audio Player -->
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-slate-300 uppercase tracking-wide flex items-center gap-1.5">
+                  <span>🔊</span>
+                  <span>Voiceover Narasi Medis</span>
+                </span>
+                <span class="text-[10px] text-emerald-400 font-mono font-bold">Whisper Sync ✓</span>
               </div>
-              <span id="cloud-eta-badge" class="text-[11px] font-mono text-emerald-300 bg-emerald-950/80 border border-emerald-800/60 px-2 py-0.5 rounded shrink-0">
-                ⏳ Est: ~1m 45d
-              </span>
+              <audio id="audio-player" controls class="w-full h-9 rounded-lg"></audio>
             </div>
 
-            <!-- Cloud Progress Bar -->
-            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-              <div id="cloud-progress-bar" class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-500" style="width: 8%"></div>
+            <!-- Action Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <a
+                href="http://localhost:3000"
+                target="_blank"
+                class="py-3.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white text-center transition flex items-center justify-center gap-2 shadow"
+              >
+                <span>▶</span>
+                <span>Buka Player</span>
+              </a>
+              <button
+                id="btn-download"
+                onclick="downloadVideoMp4()"
+                class="py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-xs font-extrabold text-white transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/60"
+              >
+                <span>📥</span>
+                <span id="btn-download-text">Render & Unduh MP4</span>
+              </button>
             </div>
 
-            <!-- Daftar Tahapan (Steps) & Log Cloud Real-Time -->
-            <div id="cloud-steps-log" class="text-[11px] font-mono bg-black/60 border border-slate-800/80 rounded-lg p-2.5 space-y-1 max-h-36 overflow-y-auto">
-              <div class="text-slate-400">Mengirim kode terbaru ke GitHub Actions Cloud...</div>
+            <!-- Live Cloud Render Status & Step-by-Step ETA -->
+            <div id="download-notif" class="hidden text-xs p-4 rounded-xl bg-slate-950/95 border border-emerald-800/60 text-slate-200 space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2 font-bold">
+                  <span id="download-spinner" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
+                  <span id="download-status-msg">Memproses di Cloud...</span>
+                </div>
+                <span id="cloud-eta-badge" class="text-[11px] font-mono font-bold text-emerald-300 bg-emerald-950/90 border border-emerald-700/60 px-2.5 py-0.5 rounded-lg shrink-0">
+                  ⏳ Est: ~1m 45d
+                </span>
+              </div>
+
+              <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                <div id="cloud-progress-bar" class="h-full bg-gradient-to-r from-emerald-500 to-teal-300 transition-all duration-500" style="width: 8%"></div>
+              </div>
+
+              <div id="cloud-steps-log" class="text-[11px] font-mono bg-black/70 border border-slate-800 rounded-lg p-3 space-y-1.5 max-h-40 overflow-y-auto">
+                <div class="text-slate-400">Mengirim kode terbaru ke GitHub Actions Cloud...</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
 
   </main>
 
   <!-- FOOTER -->
-  <footer class="text-center text-xs text-slate-600 font-mono py-2">
-    Body Scanner 3D Studio • Animasi Pemindai Organ, Partikel Sel & EKG Real-Time
+  <footer class="max-w-6xl w-full mx-auto text-center sm:flex items-center justify-between text-xs text-slate-500 font-mono pt-4 border-t border-slate-900">
+    <span>Body Scanner 3D Studio • Continuous 1-Body Camera Engine</span>
+    <span>1080×1920 (9:16 Vertical Shorts) • 30 FPS</span>
   </footer>
 
   <!-- SCRIPT LOGIC -->
   <script>
+    const ORGAN_ICONS = {
+      brain: '🧠 Otak',
+      nerves: '⚡ Saraf',
+      heart: '❤️ Jantung',
+      blood: '🩸 Pembuluh Darah',
+      lungs: '🫁 Paru-Paru',
+      stomach: '🟠 Lambung',
+      liver: '🟡 Hati (Liver)',
+      kidney: '🫘 Ginjal',
+      intestine: '🧬 Usus',
+      muscles: '💪 Otot',
+    };
+
     function setTopic(text) {
-      document.getElementById('input-topic').value = text;
+      const input = document.getElementById('input-topic');
+      input.value = text;
+      input.focus();
+      const status = document.getElementById('chip-status');
+      if (status) {
+        status.textContent = '✓ Topik dipilih';
+        setTimeout(() => { status.textContent = 'Siap digunakan'; }, 2000);
+      }
     }
 
     async function brainstormAiTopics() {
       const btn = document.getElementById('btn-brainstorm');
       const chipsContainer = document.getElementById('topic-chips');
-      const originalText = btn.innerHTML;
+      const status = document.getElementById('chip-status');
+      const originalHtml = btn.innerHTML;
       btn.disabled = true;
-      btn.innerHTML = '<span>⏳</span><span>AI Sedang Mencari Ide...</span>';
+      btn.innerHTML = '<span>⏳</span><span>AI Sedang Meracik Ide...</span>';
+      if (status) status.textContent = 'Meminta ide dari Groq AI...';
 
       try {
         const res = await fetch('/api/brainstorm');
-        const data = await res.json();
-        if (data.topics && data.topics.length > 0) {
-          // Langsung isi kolom input dengan ide nomor 1 dari AI
-          document.getElementById('input-topic').value = data.topics[0];
+        const rawData = await res.json();
 
-          // Perbarui daftar chip dengan 6 ide baru dari AI
-          chipsContainer.innerHTML = data.topics.map((t) => {
-            const safeAttr = t.replace(/'/g, "\\'");
-            const shortLabel = t.replace(/^Apa yang Terjadi pada Tubuhmu Jika\s*/i, '');
-            return `<button onclick="setTopic('${safeAttr}')" class="topic-chip text-xs px-3 py-1.5 rounded-full bg-slate-900 border border-sky-800/60 text-sky-200 transition">🧬 ${shortLabel}</button>`;
+        // Support both raw array `[...]` and `{ topics: [...] }`
+        const list = Array.isArray(rawData)
+          ? rawData
+          : (Array.isArray(rawData.topics) ? rawData.topics : []);
+
+        const titles = list
+          .map((item) => (typeof item === 'string' ? item : item?.title))
+          .filter(Boolean);
+
+        if (titles.length > 0) {
+          document.getElementById('input-topic').value = titles[0];
+
+          chipsContainer.innerHTML = titles.map((t) => {
+            const safeAttr = String(t).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+            const shortLabel = String(t).replace(/^Apa yang Terjadi pada Tubuhmu Jika\s*/i, '');
+            return `<button onclick="setTopic('${safeAttr}')" class="topic-chip text-xs font-semibold px-3 py-1.5 rounded-xl bg-sky-950/50 text-sky-200 border border-sky-800/60">✨ ${shortLabel}</button>`;
           }).join('');
+
+          if (status) status.textContent = `✓ ${titles.length} ide baru dari AI siap dipilih!`;
         }
       } catch (err) {
         console.warn('Gagal mengambil ide AI:', err);
+        if (status) status.textContent = 'Gagal memuat ide AI';
       } finally {
         btn.disabled = false;
-        btn.innerHTML = originalText;
+        btn.innerHTML = originalHtml;
       }
     }
 
@@ -272,16 +419,45 @@
         const data = await res.json();
         if (data.error) return;
 
-        document.getElementById('story-title').textContent = data.title;
+        document.getElementById('story-title').textContent = data.title || 'Simulasi Anatomi 3D';
         document.getElementById('story-sub').textContent = data.hook?.narration || '';
-        
-        const durSec = (data.totalDurationFrames / 30).toFixed(1);
-        document.getElementById('story-dur').textContent = `${durSec} Detik (${data.nodes?.length || 0} Fase Organ)`;
+        document.getElementById('hook-headline-display').textContent =
+          data.hook?.headline || `BAGAIMANA KEADAAN TUBUHMU KETIKA ${(data.title || '').toUpperCase()}?`;
+        document.getElementById('hook-kicker-badge').textContent =
+          data.hook?.kicker || 'PERTANYAAN ANATOMI 3D';
 
-        if (data.audioPath) {
+        const durSec = ((data.totalDurationFrames || 0) / 30).toFixed(1);
+        const nodeCount = data.nodes?.length || 0;
+        document.getElementById('story-dur').textContent = `${durSec} Detik`;
+        document.getElementById('organ-count-badge').textContent = `${nodeCount} Tahap Organ`;
+
+        // Populate Organ Journey Timeline Pills
+        const journeyContainer = document.getElementById('organ-journey-list');
+        if (journeyContainer && Array.isArray(data.nodes)) {
+          journeyContainer.innerHTML = data.nodes.map((n, idx) => {
+            const organLabel = ORGAN_ICONS[n.organTarget] || '🧬 Organ Tubuh';
+            const bpmEst = Math.round(68 + ((n.chaosLevel || 30) / 100) * 98);
+            return `
+              <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800/90 flex items-center justify-between gap-2">
+                <div class="min-w-0">
+                  <div class="text-[10px] font-mono text-sky-400 font-bold truncate">${idx + 1}. ${n.timeOrYear || `Tahap ${idx + 1}`}</div>
+                  <div class="text-xs font-bold text-white truncate">${n.headline || organLabel}</div>
+                </div>
+                <div class="text-right shrink-0">
+                  <div class="text-[10px] font-semibold text-slate-300">${organLabel}</div>
+                  <div class="text-[10px] font-mono text-rose-400 font-bold">${bpmEst} BPM</div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+
+        // Fix Audio Player URL (Checks both audioUrl and audioPath)
+        const rawAudio = data.audioUrl || data.audioPath;
+        if (rawAudio) {
           const audioPlayer = document.getElementById('audio-player');
-          const filename = data.audioPath.split('/').pop().split('\\').pop();
-          audioPlayer.src = `/audio/${filename}`;
+          const filename = rawAudio.split('/').pop().split('\\').pop();
+          audioPlayer.src = `/audio/${filename}?t=${Date.now()}`;
         }
 
         const img = document.getElementById('preview-img');
@@ -316,7 +492,7 @@
       genTerm.textContent = `[00d] Memulai AI Director Pipeline untuk: "${topic}"...\n`;
       btn.disabled = true;
       btn.classList.add('opacity-50', 'cursor-not-allowed');
-      btnText.textContent = 'Sedang Memproses...';
+      btnText.textContent = 'Sedang Memproses Simulasi...';
 
       const startMs = Date.now();
       const etaTimer = setInterval(() => {
@@ -339,13 +515,13 @@
                 genTerm.scrollTop = genTerm.scrollHeight;
               }
               if (cleanLog.includes('[1/4]')) {
-                statusText.textContent = '1/4: Merancang alur reaksi organ & kamera anatomi 3D...';
+                statusText.textContent = '1/4: Merancang Hook Pertanyaan & rute kamera organ...';
                 genBar.style.width = '28%';
               } else if (cleanLog.includes('[2/4]')) {
                 statusText.textContent = '2/4: Mensintesis suara voiceover medis...';
                 genBar.style.width = '55%';
               } else if (cleanLog.includes('[3/4]')) {
-                statusText.textContent = '3/4: Menyelaraskan subtitle & detak jantung EKG...';
+                statusText.textContent = '3/4: Menyelaraskan subtitle per kata (Whisper)...';
                 genBar.style.width = '80%';
               } else if (cleanLog.includes('[4/4]')) {
                 statusText.textContent = '4/4: Menyusun perjalanan kamera 1 tubuh utuh...';
@@ -353,16 +529,16 @@
               } else if (cleanLog.includes('Proses selesai')) {
                 clearInterval(etaTimer);
                 const totalElapsed = Math.round((Date.now() - startMs) / 1000);
-                statusText.textContent = `✓ Selesai dalam ${totalElapsed} detik! Memperbarui pratinjau...`;
+                statusText.textContent = `✓ Selesai dalam ${totalElapsed} detik! Memperbarui studio...`;
                 genEta.textContent = `✅ Selesai (${totalElapsed}d)`;
                 genBar.style.width = '100%';
                 if (eventSource) eventSource.close();
                 setTimeout(() => {
                   btn.disabled = false;
                   btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                  btnText.textContent = 'Generate Video Simulasi 3D';
+                  btnText.textContent = 'Buat Video Simulasi 3D Sekarang';
                   loadCurrentStory();
-                }, 1500);
+                }, 1200);
               }
             }
           } catch (e) {}
@@ -382,7 +558,7 @@
           statusText.textContent = `Gagal: ${data.error || 'Server sibuk'}`;
           btn.disabled = false;
           btn.classList.remove('opacity-50', 'cursor-not-allowed');
-          btnText.textContent = 'Generate Video Simulasi 3D';
+          btnText.textContent = 'Buat Video Simulasi 3D Sekarang';
           if (eventSource) eventSource.close();
         }
       } catch (err) {
@@ -390,7 +566,7 @@
         statusText.textContent = `Error: ${err.message}`;
         btn.disabled = false;
         btn.classList.remove('opacity-50', 'cursor-not-allowed');
-        btnText.textContent = 'Generate Video Simulasi 3D';
+        btnText.textContent = 'Buat Video Simulasi 3D Sekarang';
         if (eventSource) eventSource.close();
       }
     }
@@ -414,12 +590,12 @@
       stepsLog.innerHTML = '<div class="text-sky-300">⚡ [1/2] Mengunggah naskah & memicu GitHub Actions runner...</div>';
       btn.disabled = true;
       btn.classList.add('opacity-60', 'cursor-not-allowed');
-      btnText.textContent = 'Sedang Render Cloud...';
+      btnText.textContent = 'Render Cloud...';
 
       try {
         await fetch('/api/cloud-render', { method: 'POST' });
-        statusMsg.innerHTML = '⚙️ Video sedang dirender di GitHub Actions Cloud...';
-        stepsLog.innerHTML += '<div class="text-emerald-300">✓ [2/2] Cloud Runner aktif! Memantau log tahapan secara langsung...</div>';
+        statusMsg.innerHTML = '⚙️ Sedang dirender di GitHub Actions Cloud...';
+        stepsLog.innerHTML += '<div class="text-emerald-300">✓ [2/2] Cloud Runner aktif! Memantau log tahapan...</div>';
 
         if (pollInterval) clearInterval(pollInterval);
         pollInterval = setInterval(async () => {
@@ -461,27 +637,27 @@
 
               if (data.conclusion === 'success') {
                 etaBadge.textContent = `✅ Selesai (${formatSec(data.elapsedSec || 95)})`;
-                statusMsg.innerHTML = `📥 Mengunduh otomatis file MP4 dari Cloud ke folder <code class="text-emerald-300">out/</code>...`;
+                statusMsg.innerHTML = `📥 Mengunduh MP4 ke folder <code class="text-emerald-300">out/</code>...`;
                 stepsLog.innerHTML += `<div class="text-sky-300 font-bold mt-1">⬇️ Mengunduh artefak remotion-video ke komputer lokal...</div>`;
 
                 const dlRes = await fetch('/api/download-artifact', { method: 'POST' });
                 const dlData = await dlRes.json();
                 btn.disabled = false;
                 btn.classList.remove('opacity-60', 'cursor-not-allowed');
-                btnText.textContent = 'Download Video (.MP4)';
+                btnText.textContent = 'Render & Unduh MP4';
 
                 if (dlData.status === 'success') {
-                  statusMsg.innerHTML = `🎉 Selesai! Tersimpan di <code class="text-emerald-300">out/butterfly_effect_shorts.mp4</code> • <a href="${data.url}" target="_blank" class="underline text-sky-400 ml-1">Buka GitHub</a>`;
+                  statusMsg.innerHTML = `🎉 Tersimpan di <code class="text-emerald-300">out/butterfly_effect_shorts.mp4</code> • <a href="${data.url}" target="_blank" class="underline text-sky-400 ml-1">GitHub</a>`;
                   stepsLog.innerHTML += `<div class="text-emerald-400 font-bold">🎉 BERHASIL! Video MP4 siap di folder out/butterfly_effect_shorts.mp4</div>`;
                 } else {
-                  statusMsg.innerHTML = `✅ Video selesai di Cloud! <a href="${data.url}" target="_blank" class="underline text-emerald-400 font-bold ml-1">Klik di sini untuk Unduh MP4 dari GitHub</a>`;
+                  statusMsg.innerHTML = `✅ Selesai di Cloud! <a href="${data.url}" target="_blank" class="underline text-emerald-400 font-bold ml-1">Unduh MP4 dari GitHub</a>`;
                 }
               } else {
                 btn.disabled = false;
                 btn.classList.remove('opacity-60', 'cursor-not-allowed');
-                btnText.textContent = 'Download Video (.MP4)';
+                btnText.textContent = 'Render & Unduh MP4';
                 etaBadge.textContent = `⚠️ Gagal`;
-                statusMsg.innerHTML = `⚠️ Render selesai dengan status: ${data.conclusion}. <a href="${data.url}" target="_blank" class="underline text-amber-400 ml-1">Lihat Log Detail di GitHub</a>`;
+                statusMsg.innerHTML = `⚠️ Render selesai (${data.conclusion}). <a href="${data.url}" target="_blank" class="underline text-amber-400 ml-1">Lihat Log GitHub</a>`;
               }
             }
           } catch (e) {}
@@ -490,7 +666,7 @@
         statusMsg.textContent = `Error: ${err.message}`;
         btn.disabled = false;
         btn.classList.remove('opacity-60', 'cursor-not-allowed');
-        btnText.textContent = 'Download Video (.MP4)';
+        btnText.textContent = 'Render & Unduh MP4';
       }
     }
 

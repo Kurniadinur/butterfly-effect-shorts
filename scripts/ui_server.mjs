@@ -530,12 +530,19 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
-  // 11. Serve Media Files
-  if (pathname.startsWith('/media/')) {
-    const filename = path.basename(pathname);
-    const mediaPath = path.join(ROOT_DIR, 'public', 'butterfly', 'media', filename);
-    if (fs.existsSync(mediaPath)) {
-      res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+  // 11. Serve Media Files & Static Butterfly Assets
+  if (pathname.startsWith('/media/') || pathname.startsWith('/butterfly/')) {
+    const relPath = pathname.startsWith('/butterfly/')
+      ? pathname.slice(1) // 'butterfly/...'
+      : path.join('butterfly', 'media', path.basename(pathname));
+    const mediaPath = path.join(ROOT_DIR, 'public', relPath);
+    if (fs.existsSync(mediaPath) && fs.statSync(mediaPath).isFile()) {
+      const ext = path.extname(mediaPath).toLowerCase();
+      const mime =
+        ext === '.png' ? 'image/png' :
+        ext === '.wav' ? 'audio/wav' :
+        ext === '.mp4' ? 'video/mp4' : 'image/jpeg';
+      res.writeHead(200, { 'Content-Type': mime });
       fs.createReadStream(mediaPath).pipe(res);
       return;
     }
