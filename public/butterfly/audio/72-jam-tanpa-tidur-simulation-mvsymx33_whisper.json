@@ -1,0 +1,2374 @@
+{
+  "model": "whisper-large-v3",
+  "engine": "Groq Cloud LPU",
+  "totalDurationSec": 97.68,
+  "allWords": [
+    {
+      "word": "Detik",
+      "start": 0.04,
+      "end": 0.32
+    },
+    {
+      "word": "pertama",
+      "start": 0.32,
+      "end": 0.72
+    },
+    {
+      "word": "tanpa",
+      "start": 0.72,
+      "end": 0.96
+    },
+    {
+      "word": "tidur,",
+      "start": 0.96,
+      "end": 1.74
+    },
+    {
+      "word": "adenosin",
+      "start": 1.74,
+      "end": 2.14
+    },
+    {
+      "word": "menumpuk",
+      "start": 2.14,
+      "end": 2.46
+    },
+    {
+      "word": "di",
+      "start": 2.46,
+      "end": 2.6
+    },
+    {
+      "word": "otak.",
+      "start": 2.6,
+      "end": 3.4
+    },
+    {
+      "word": "Dalam",
+      "start": 3.62,
+      "end": 3.84
+    },
+    {
+      "word": "72",
+      "start": 3.84,
+      "end": 4.36
+    },
+    {
+      "word": "jam,",
+      "start": 4.36,
+      "end": 5.12
+    },
+    {
+      "word": "tubuhmu",
+      "start": 5.12,
+      "end": 5.38
+    },
+    {
+      "word": "berubah",
+      "start": 5.38,
+      "end": 5.68
+    },
+    {
+      "word": "menjadi",
+      "start": 5.68,
+      "end": 6
+    },
+    {
+      "word": "ladang",
+      "start": 6,
+      "end": 6.3
+    },
+    {
+      "word": "perang",
+      "start": 6.3,
+      "end": 6.62
+    },
+    {
+      "word": "biokimia",
+      "start": 6.62,
+      "end": 7.14
+    },
+    {
+      "word": "yang",
+      "start": 7.14,
+      "end": 7.34
+    },
+    {
+      "word": "menghancurkan",
+      "start": 7.34,
+      "end": 8.08
+    },
+    {
+      "word": "kognisi.",
+      "start": 8.08,
+      "end": 8.96
+    },
+    {
+      "word": "Setiap",
+      "start": 9.42,
+      "end": 9.62
+    },
+    {
+      "word": "detik",
+      "start": 9.62,
+      "end": 9.8
+    },
+    {
+      "word": "terjaga,",
+      "start": 9.8,
+      "end": 10.82
+    },
+    {
+      "word": "neurotransmitter",
+      "start": 10.82,
+      "end": 11.46
+    },
+    {
+      "word": "adenosin",
+      "start": 11.46,
+      "end": 11.92
+    },
+    {
+      "word": "menumpuk",
+      "start": 11.92,
+      "end": 12.32
+    },
+    {
+      "word": "di",
+      "start": 12.32,
+      "end": 12.5
+    },
+    {
+      "word": "reseptor",
+      "start": 12.5,
+      "end": 12.82
+    },
+    {
+      "word": "otak,",
+      "start": 12.82,
+      "end": 13.62
+    },
+    {
+      "word": "menekan",
+      "start": 13.68,
+      "end": 13.9
+    },
+    {
+      "word": "sinyal",
+      "start": 13.9,
+      "end": 14.16
+    },
+    {
+      "word": "bangun",
+      "start": 14.16,
+      "end": 14.52
+    },
+    {
+      "word": "dan",
+      "start": 14.52,
+      "end": 14.7
+    },
+    {
+      "word": "menciptakan",
+      "start": 14.7,
+      "end": 15.18
+    },
+    {
+      "word": "tekanan",
+      "start": 15.18,
+      "end": 15.54
+    },
+    {
+      "word": "tidur.",
+      "start": 15.54,
+      "end": 15.86
+    },
+    {
+      "word": "Klenjar",
+      "start": 16.66,
+      "end": 16.92
+    },
+    {
+      "word": "adrenal",
+      "start": 16.92,
+      "end": 17.26
+    },
+    {
+      "word": "memompah",
+      "start": 17.26,
+      "end": 17.66
+    },
+    {
+      "word": "adrenalin",
+      "start": 17.66,
+      "end": 18.14
+    },
+    {
+      "word": "untuk",
+      "start": 18.14,
+      "end": 18.34
+    },
+    {
+      "word": "melawan",
+      "start": 18.34,
+      "end": 18.68
+    },
+    {
+      "word": "kantuk.",
+      "start": 18.68,
+      "end": 19.58
+    },
+    {
+      "word": "Detak",
+      "start": 19.66,
+      "end": 19.82
+    },
+    {
+      "word": "jantung",
+      "start": 19.82,
+      "end": 20.08
+    },
+    {
+      "word": "naik,",
+      "start": 20.08,
+      "end": 20.9
+    },
+    {
+      "word": "memberikan",
+      "start": 20.9,
+      "end": 21.12
+    },
+    {
+      "word": "energi",
+      "start": 21.12,
+      "end": 21.42
+    },
+    {
+      "word": "palsu",
+      "start": 21.42,
+      "end": 21.82
+    },
+    {
+      "word": "yang",
+      "start": 21.82,
+      "end": 21.98
+    },
+    {
+      "word": "singkat.",
+      "start": 21.98,
+      "end": 22.84
+    },
+    {
+      "word": "Tanpa",
+      "start": 23,
+      "end": 23.16
+    },
+    {
+      "word": "siklus",
+      "start": 23.16,
+      "end": 23.44
+    },
+    {
+      "word": "tidur,",
+      "start": 23.44,
+      "end": 24.18
+    },
+    {
+      "word": "pengaturan",
+      "start": 24.18,
+      "end": 24.54
+    },
+    {
+      "word": "hormon",
+      "start": 24.54,
+      "end": 24.86
+    },
+    {
+      "word": "ghrelin",
+      "start": 24.86,
+      "end": 25.14
+    },
+    {
+      "word": "terganggu,",
+      "start": 25.14,
+      "end": 26.12
+    },
+    {
+      "word": "memicu",
+      "start": 26.16,
+      "end": 26.46
+    },
+    {
+      "word": "rasa",
+      "start": 26.46,
+      "end": 26.64
+    },
+    {
+      "word": "lapar",
+      "start": 26.64,
+      "end": 26.9
+    },
+    {
+      "word": "palsu",
+      "start": 26.9,
+      "end": 27.3
+    },
+    {
+      "word": "dan",
+      "start": 27.3,
+      "end": 27.44
+    },
+    {
+      "word": "peningkatan",
+      "start": 27.44,
+      "end": 27.96
+    },
+    {
+      "word": "asam",
+      "start": 27.96,
+      "end": 28.16
+    },
+    {
+      "word": "lambung.",
+      "start": 28.16,
+      "end": 28.98
+    },
+    {
+      "word": "Kortisol",
+      "start": 29.24,
+      "end": 29.6
+    },
+    {
+      "word": "tinggi",
+      "start": 29.6,
+      "end": 29.98
+    },
+    {
+      "word": "membuat",
+      "start": 29.98,
+      "end": 30.26
+    },
+    {
+      "word": "pembuluh",
+      "start": 30.26,
+      "end": 30.54
+    },
+    {
+      "word": "darah",
+      "start": 30.54,
+      "end": 30.74
+    },
+    {
+      "word": "menyempit.",
+      "start": 30.74,
+      "end": 31.72
+    },
+    {
+      "word": "Jantung",
+      "start": 31.84,
+      "end": 32.06
+    },
+    {
+      "word": "bekerja",
+      "start": 32.06,
+      "end": 32.32
+    },
+    {
+      "word": "lebih",
+      "start": 32.32,
+      "end": 32.52
+    },
+    {
+      "word": "keras,",
+      "start": 32.52,
+      "end": 33.2
+    },
+    {
+      "word": "menaikkan",
+      "start": 33.2,
+      "end": 33.46
+    },
+    {
+      "word": "tekanan",
+      "start": 33.46,
+      "end": 33.72
+    },
+    {
+      "word": "darah",
+      "start": 33.72,
+      "end": 34.02
+    },
+    {
+      "word": "tanpa",
+      "start": 34.02,
+      "end": 34.32
+    },
+    {
+      "word": "istirahat.",
+      "start": 34.32,
+      "end": 34.86
+    },
+    {
+      "word": "Kortex",
+      "start": 35.68,
+      "end": 35.96
+    },
+    {
+      "word": "prefrontal",
+      "start": 35.96,
+      "end": 36.54
+    },
+    {
+      "word": "mulai",
+      "start": 36.54,
+      "end": 36.74
+    },
+    {
+      "word": "offline",
+      "start": 36.74,
+      "end": 37.06
+    },
+    {
+      "word": "sekejap.",
+      "start": 37.06,
+      "end": 37.46
+    },
+    {
+      "word": "Mata",
+      "start": 38.12,
+      "end": 38.24
+    },
+    {
+      "word": "berkerib",
+      "start": 38.24,
+      "end": 38.54
+    },
+    {
+      "word": "otomatis,",
+      "start": 38.54,
+      "end": 39.7
+    },
+    {
+      "word": "mengganggu",
+      "start": 39.7,
+      "end": 39.92
+    },
+    {
+      "word": "koordinasi",
+      "start": 39.92,
+      "end": 40.36
+    },
+    {
+      "word": "motorik",
+      "start": 40.36,
+      "end": 40.78
+    },
+    {
+      "word": "dan",
+      "start": 40.78,
+      "end": 40.92
+    },
+    {
+      "word": "konsentrasi.",
+      "start": 40.92,
+      "end": 41.68
+    },
+    {
+      "word": "Kelelahan",
+      "start": 42.42,
+      "end": 42.8
+    },
+    {
+      "word": "mempengaruhi",
+      "start": 42.8,
+      "end": 43.24
+    },
+    {
+      "word": "saraf",
+      "start": 43.24,
+      "end": 43.5
+    },
+    {
+      "word": "vagus.",
+      "start": 43.5,
+      "end": 43.88
+    },
+    {
+      "word": "Pola",
+      "start": 44.5,
+      "end": 44.68
+    },
+    {
+      "word": "napas",
+      "start": 44.68,
+      "end": 44.92
+    },
+    {
+      "word": "menjadi",
+      "start": 44.92,
+      "end": 45.12
+    },
+    {
+      "word": "tidak",
+      "start": 45.12,
+      "end": 45.36
+    },
+    {
+      "word": "teratur",
+      "start": 45.36,
+      "end": 45.7
+    },
+    {
+      "word": "dan",
+      "start": 45.7,
+      "end": 45.92
+    },
+    {
+      "word": "volume",
+      "start": 45.92,
+      "end": 46.2
+    },
+    {
+      "word": "udara",
+      "start": 46.2,
+      "end": 46.54
+    },
+    {
+      "word": "di",
+      "start": 46.54,
+      "end": 46.7
+    },
+    {
+      "word": "alveoli",
+      "start": 46.7,
+      "end": 47.08
+    },
+    {
+      "word": "menurun",
+      "start": 47.08,
+      "end": 47.46
+    },
+    {
+      "word": "drastis.",
+      "start": 47.46,
+      "end": 48.44
+    },
+    {
+      "word": "Tanpa",
+      "start": 48.72,
+      "end": 48.88
+    },
+    {
+      "word": "pemulihan",
+      "start": 48.88,
+      "end": 49.26
+    },
+    {
+      "word": "malam",
+      "start": 49.26,
+      "end": 49.52
+    },
+    {
+      "word": "hari,",
+      "start": 49.52,
+      "end": 50.38
+    },
+    {
+      "word": "jaringan",
+      "start": 50.38,
+      "end": 50.74
+    },
+    {
+      "word": "otot",
+      "start": 50.74,
+      "end": 50.92
+    },
+    {
+      "word": "mengalami",
+      "start": 50.92,
+      "end": 51.34
+    },
+    {
+      "word": "mikrotrauma",
+      "start": 51.34,
+      "end": 51.94
+    },
+    {
+      "word": "dan",
+      "start": 51.94,
+      "end": 52.16
+    },
+    {
+      "word": "penumpukan",
+      "start": 52.16,
+      "end": 52.66
+    },
+    {
+      "word": "asam",
+      "start": 52.66,
+      "end": 52.92
+    },
+    {
+      "word": "laktat,",
+      "start": 52.92,
+      "end": 53.84
+    },
+    {
+      "word": "memicu",
+      "start": 53.84,
+      "end": 54.1
+    },
+    {
+      "word": "nyeri",
+      "start": 54.1,
+      "end": 54.34
+    },
+    {
+      "word": "suku",
+      "start": 54.34,
+      "end": 54.56
+    },
+    {
+      "word": "jur",
+      "start": 54.56,
+      "end": 54.7
+    },
+    {
+      "word": "tubuh.",
+      "start": 54.7,
+      "end": 55.02
+    },
+    {
+      "word": "Stres",
+      "start": 55.74,
+      "end": 55.88
+    },
+    {
+      "word": "kronis",
+      "start": 55.88,
+      "end": 56.2
+    },
+    {
+      "word": "membuat",
+      "start": 56.2,
+      "end": 56.46
+    },
+    {
+      "word": "ginjal",
+      "start": 56.46,
+      "end": 56.78
+    },
+    {
+      "word": "menahan",
+      "start": 56.78,
+      "end": 57.08
+    },
+    {
+      "word": "natrium.",
+      "start": 57.08,
+      "end": 57.96
+    },
+    {
+      "word": "Tekanan",
+      "start": 58.08,
+      "end": 58.32
+    },
+    {
+      "word": "dalam",
+      "start": 58.32,
+      "end": 58.54
+    },
+    {
+      "word": "kanalikulus",
+      "start": 58.54,
+      "end": 59.08
+    },
+    {
+      "word": "naik,",
+      "start": 59.08,
+      "end": 59.92
+    },
+    {
+      "word": "menyulitkan",
+      "start": 59.92,
+      "end": 60.34
+    },
+    {
+      "word": "filtrasi",
+      "start": 60.34,
+      "end": 60.88
+    },
+    {
+      "word": "racun",
+      "start": 60.88,
+      "end": 61.16
+    },
+    {
+      "word": "metabolik.",
+      "start": 61.16,
+      "end": 62.26
+    },
+    {
+      "word": "Hati",
+      "start": 62.34,
+      "end": 62.54
+    },
+    {
+      "word": "gagal",
+      "start": 62.54,
+      "end": 62.88
+    },
+    {
+      "word": "memproses",
+      "start": 62.88,
+      "end": 63.26
+    },
+    {
+      "word": "glukosa",
+      "start": 63.26,
+      "end": 63.74
+    },
+    {
+      "word": "secara",
+      "start": 63.74,
+      "end": 64.06
+    },
+    {
+      "word": "efisien.",
+      "start": 64.06,
+      "end": 64.96
+    },
+    {
+      "word": "Enzim",
+      "start": 65.24,
+      "end": 65.42
+    },
+    {
+      "word": "inflamasi",
+      "start": 65.42,
+      "end": 65.9
+    },
+    {
+      "word": "dilepaskan",
+      "start": 65.9,
+      "end": 66.4
+    },
+    {
+      "word": "ke",
+      "start": 66.4,
+      "end": 66.54
+    },
+    {
+      "word": "sirkulasi",
+      "start": 66.54,
+      "end": 66.94
+    },
+    {
+      "word": "darah",
+      "start": 66.94,
+      "end": 67.3
+    },
+    {
+      "word": "karena",
+      "start": 67.3,
+      "end": 67.66
+    },
+    {
+      "word": "kurangnya",
+      "start": 67.66,
+      "end": 68.1
+    },
+    {
+      "word": "waktu",
+      "start": 68.1,
+      "end": 68.38
+    },
+    {
+      "word": "pembersihan.",
+      "start": 68.38,
+      "end": 69.42
+    },
+    {
+      "word": "Kurang",
+      "start": 69.66,
+      "end": 69.82
+    },
+    {
+      "word": "tidur",
+      "start": 69.82,
+      "end": 70.16
+    },
+    {
+      "word": "merusak",
+      "start": 70.16,
+      "end": 70.5
+    },
+    {
+      "word": "mikrobioma",
+      "start": 70.5,
+      "end": 71.08
+    },
+    {
+      "word": "dan",
+      "start": 71.08,
+      "end": 71.26
+    },
+    {
+      "word": "dinding",
+      "start": 71.26,
+      "end": 71.5
+    },
+    {
+      "word": "usus.",
+      "start": 71.5,
+      "end": 72.36
+    },
+    {
+      "word": "Meningkatkan",
+      "start": 72.52,
+      "end": 72.88
+    },
+    {
+      "word": "permeabilitas",
+      "start": 72.88,
+      "end": 73.58
+    },
+    {
+      "word": "yang",
+      "start": 73.58,
+      "end": 73.8
+    },
+    {
+      "word": "memicu",
+      "start": 73.8,
+      "end": 74.06
+    },
+    {
+      "word": "peradangan",
+      "start": 74.06,
+      "end": 74.52
+    },
+    {
+      "word": "sistemik",
+      "start": 74.52,
+      "end": 75.02
+    },
+    {
+      "word": "meluas.",
+      "start": 75.02,
+      "end": 75.92
+    },
+    {
+      "word": "Sistem",
+      "start": 76.24,
+      "end": 76.38
+    },
+    {
+      "word": "imun",
+      "start": 76.38,
+      "end": 76.66
+    },
+    {
+      "word": "salah",
+      "start": 76.66,
+      "end": 76.88
+    },
+    {
+      "word": "mengartikan",
+      "start": 76.88,
+      "end": 77.4
+    },
+    {
+      "word": "kelelahan",
+      "start": 77.4,
+      "end": 77.92
+    },
+    {
+      "word": "sebagai",
+      "start": 77.92,
+      "end": 78.22
+    },
+    {
+      "word": "infeksi.",
+      "start": 78.22,
+      "end": 79.22
+    },
+    {
+      "word": "Sal",
+      "start": 79.36,
+      "end": 79.52
+    },
+    {
+      "word": "darah",
+      "start": 79.52,
+      "end": 79.76
+    },
+    {
+      "word": "putih",
+      "start": 79.76,
+      "end": 79.96
+    },
+    {
+      "word": "memicu",
+      "start": 79.96,
+      "end": 80.28
+    },
+    {
+      "word": "peradangan",
+      "start": 80.28,
+      "end": 80.66
+    },
+    {
+      "word": "sistemik",
+      "start": 80.66,
+      "end": 81.12
+    },
+    {
+      "word": "parah",
+      "start": 81.12,
+      "end": 81.44
+    },
+    {
+      "word": "di",
+      "start": 81.44,
+      "end": 81.62
+    },
+    {
+      "word": "seluruh",
+      "start": 81.62,
+      "end": 81.94
+    },
+    {
+      "word": "pembuluh.",
+      "start": 81.94,
+      "end": 82.82
+    },
+    {
+      "word": "Neuron",
+      "start": 83,
+      "end": 83.2
+    },
+    {
+      "word": "kortikau",
+      "start": 83.2,
+      "end": 83.68
+    },
+    {
+      "word": "mengalami",
+      "start": 83.68,
+      "end": 84.04
+    },
+    {
+      "word": "kegagalan",
+      "start": 84.04,
+      "end": 84.48
+    },
+    {
+      "word": "sinaptik",
+      "start": 84.48,
+      "end": 84.88
+    },
+    {
+      "word": "total.",
+      "start": 84.88,
+      "end": 85.64
+    },
+    {
+      "word": "Halusinasi",
+      "start": 85.86,
+      "end": 86.36
+    },
+    {
+      "word": "visual",
+      "start": 86.36,
+      "end": 86.66
+    },
+    {
+      "word": "dan",
+      "start": 86.66,
+      "end": 86.86
+    },
+    {
+      "word": "auditory",
+      "start": 86.86,
+      "end": 87.34
+    },
+    {
+      "word": "muncul",
+      "start": 87.34,
+      "end": 87.78
+    },
+    {
+      "word": "akibat",
+      "start": 87.78,
+      "end": 88.2
+    },
+    {
+      "word": "otak",
+      "start": 88.2,
+      "end": 88.52
+    },
+    {
+      "word": "mulai",
+      "start": 88.52,
+      "end": 88.8
+    },
+    {
+      "word": "memakan",
+      "start": 88.8,
+      "end": 89.2
+    },
+    {
+      "word": "dirinya",
+      "start": 89.2,
+      "end": 89.58
+    },
+    {
+      "word": "sendiri",
+      "start": 89.58,
+      "end": 89.96
+    },
+    {
+      "word": "Menurutmu,",
+      "start": 89.92,
+      "end": 91.74
+    },
+    {
+      "word": "apa",
+      "start": 91.74,
+      "end": 91.82
+    },
+    {
+      "word": "keputusan",
+      "start": 91.82,
+      "end": 92.26
+    },
+    {
+      "word": "sepele",
+      "start": 92.26,
+      "end": 92.62
+    },
+    {
+      "word": "yang",
+      "start": 92.62,
+      "end": 92.78
+    },
+    {
+      "word": "kamu",
+      "start": 92.78,
+      "end": 93
+    },
+    {
+      "word": "ambil",
+      "start": 93,
+      "end": 93.24
+    },
+    {
+      "word": "hari",
+      "start": 93.24,
+      "end": 93.48
+    },
+    {
+      "word": "ini",
+      "start": 93.48,
+      "end": 93.72
+    },
+    {
+      "word": "Yang",
+      "start": 93.28,
+      "end": 94.1
+    },
+    {
+      "word": "tanpa",
+      "start": 94.1,
+      "end": 94.42
+    },
+    {
+      "word": "kamu",
+      "start": 94.42,
+      "end": 94.64
+    },
+    {
+      "word": "sadari",
+      "start": 94.64,
+      "end": 95.06
+    },
+    {
+      "word": "bakal",
+      "start": 95.06,
+      "end": 95.68
+    },
+    {
+      "word": "mengubah",
+      "start": 95.68,
+      "end": 96.02
+    },
+    {
+      "word": "jalan",
+      "start": 96.02,
+      "end": 96.22
+    },
+    {
+      "word": "hidupmu",
+      "start": 96.22,
+      "end": 96.64
+    },
+    {
+      "word": "5",
+      "start": 96.64,
+      "end": 96.78
+    },
+    {
+      "word": "tahun",
+      "start": 96.78,
+      "end": 97.02
+    },
+    {
+      "word": "lagi?",
+      "start": 97.02,
+      "end": 97.74
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 2.92,
+      "text": "Detik pertama tanpa tidur, adenosin menumpuk di otak.",
+      "words": [
+        {
+          "word": "Detik",
+          "start": 0.04,
+          "end": 0.32
+        },
+        {
+          "word": "pertama",
+          "start": 0.32,
+          "end": 0.72
+        },
+        {
+          "word": "tanpa",
+          "start": 0.72,
+          "end": 0.96
+        },
+        {
+          "word": "tidur,",
+          "start": 0.96,
+          "end": 1.74
+        },
+        {
+          "word": "adenosin",
+          "start": 1.74,
+          "end": 2.14
+        },
+        {
+          "word": "menumpuk",
+          "start": 2.14,
+          "end": 2.46
+        },
+        {
+          "word": "di",
+          "start": 2.46,
+          "end": 2.6
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 3.58,
+      "end": 8.54,
+      "text": "Dalam 72 jam, tubuhmu berubah menjadi ladang perang biokimia yang menghancurkan kognisi.",
+      "words": [
+        {
+          "word": "Dalam",
+          "start": 3.62,
+          "end": 3.84
+        },
+        {
+          "word": "72",
+          "start": 3.84,
+          "end": 4.36
+        },
+        {
+          "word": "jam,",
+          "start": 4.36,
+          "end": 5.12
+        },
+        {
+          "word": "tubuhmu",
+          "start": 5.12,
+          "end": 5.38
+        },
+        {
+          "word": "berubah",
+          "start": 5.38,
+          "end": 5.68
+        },
+        {
+          "word": "menjadi",
+          "start": 5.68,
+          "end": 6
+        },
+        {
+          "word": "ladang",
+          "start": 6,
+          "end": 6.3
+        },
+        {
+          "word": "perang",
+          "start": 6.3,
+          "end": 6.62
+        },
+        {
+          "word": "biokimia",
+          "start": 6.62,
+          "end": 7.14
+        },
+        {
+          "word": "yang",
+          "start": 7.14,
+          "end": 7.34
+        },
+        {
+          "word": "menghancurkan",
+          "start": 7.34,
+          "end": 8.08
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 9.36,
+      "end": 13.2,
+      "text": "Setiap detik terjaga, neurotransmitter adenosin menumpuk di reseptor otak,",
+      "words": [
+        {
+          "word": "Setiap",
+          "start": 9.42,
+          "end": 9.62
+        },
+        {
+          "word": "detik",
+          "start": 9.62,
+          "end": 9.8
+        },
+        {
+          "word": "terjaga,",
+          "start": 9.8,
+          "end": 10.82
+        },
+        {
+          "word": "neurotransmitter",
+          "start": 10.82,
+          "end": 11.46
+        },
+        {
+          "word": "adenosin",
+          "start": 11.46,
+          "end": 11.92
+        },
+        {
+          "word": "menumpuk",
+          "start": 11.92,
+          "end": 12.32
+        },
+        {
+          "word": "di",
+          "start": 12.32,
+          "end": 12.5
+        },
+        {
+          "word": "reseptor",
+          "start": 12.5,
+          "end": 12.82
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 13.6,
+      "end": 15.88,
+      "text": "menekan sinyal bangun dan menciptakan tekanan tidur.",
+      "words": [
+        {
+          "word": "menekan",
+          "start": 13.68,
+          "end": 13.9
+        },
+        {
+          "word": "sinyal",
+          "start": 13.9,
+          "end": 14.16
+        },
+        {
+          "word": "bangun",
+          "start": 14.16,
+          "end": 14.52
+        },
+        {
+          "word": "dan",
+          "start": 14.52,
+          "end": 14.7
+        },
+        {
+          "word": "menciptakan",
+          "start": 14.7,
+          "end": 15.18
+        },
+        {
+          "word": "tekanan",
+          "start": 15.18,
+          "end": 15.54
+        },
+        {
+          "word": "tidur.",
+          "start": 15.54,
+          "end": 15.86
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 16.62,
+      "end": 19.1,
+      "text": "Klenjar adrenal memompah adrenalin untuk melawan kantuk.",
+      "words": [
+        {
+          "word": "Klenjar",
+          "start": 16.66,
+          "end": 16.92
+        },
+        {
+          "word": "adrenal",
+          "start": 16.92,
+          "end": 17.26
+        },
+        {
+          "word": "memompah",
+          "start": 17.26,
+          "end": 17.66
+        },
+        {
+          "word": "adrenalin",
+          "start": 17.66,
+          "end": 18.14
+        },
+        {
+          "word": "untuk",
+          "start": 18.14,
+          "end": 18.34
+        },
+        {
+          "word": "melawan",
+          "start": 18.34,
+          "end": 18.68
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 19.64,
+      "end": 22.36,
+      "text": "Detak jantung naik, memberikan energi palsu yang singkat.",
+      "words": [
+        {
+          "word": "Detak",
+          "start": 19.66,
+          "end": 19.82
+        },
+        {
+          "word": "jantung",
+          "start": 19.82,
+          "end": 20.08
+        },
+        {
+          "word": "naik,",
+          "start": 20.08,
+          "end": 20.9
+        },
+        {
+          "word": "memberikan",
+          "start": 20.9,
+          "end": 21.12
+        },
+        {
+          "word": "energi",
+          "start": 21.12,
+          "end": 21.42
+        },
+        {
+          "word": "palsu",
+          "start": 21.42,
+          "end": 21.82
+        },
+        {
+          "word": "yang",
+          "start": 21.82,
+          "end": 21.98
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 22.92,
+      "end": 25.64,
+      "text": "Tanpa siklus tidur, pengaturan hormon ghrelin terganggu,",
+      "words": [
+        {
+          "word": "Tanpa",
+          "start": 23,
+          "end": 23.16
+        },
+        {
+          "word": "siklus",
+          "start": 23.16,
+          "end": 23.44
+        },
+        {
+          "word": "tidur,",
+          "start": 23.44,
+          "end": 24.18
+        },
+        {
+          "word": "pengaturan",
+          "start": 24.18,
+          "end": 24.54
+        },
+        {
+          "word": "hormon",
+          "start": 24.54,
+          "end": 24.86
+        },
+        {
+          "word": "ghrelin",
+          "start": 24.86,
+          "end": 25.14
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 26.12,
+      "end": 28.5,
+      "text": "memicu rasa lapar palsu dan peningkatan asam lambung.",
+      "words": [
+        {
+          "word": "memicu",
+          "start": 26.16,
+          "end": 26.46
+        },
+        {
+          "word": "rasa",
+          "start": 26.46,
+          "end": 26.64
+        },
+        {
+          "word": "lapar",
+          "start": 26.64,
+          "end": 26.9
+        },
+        {
+          "word": "palsu",
+          "start": 26.9,
+          "end": 27.3
+        },
+        {
+          "word": "dan",
+          "start": 27.3,
+          "end": 27.44
+        },
+        {
+          "word": "peningkatan",
+          "start": 27.44,
+          "end": 27.96
+        },
+        {
+          "word": "asam",
+          "start": 27.96,
+          "end": 28.16
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 29.28,
+      "end": 31.24,
+      "text": "Kortisol tinggi membuat pembuluh darah menyempit.",
+      "words": [
+        {
+          "word": "Kortisol",
+          "start": 29.24,
+          "end": 29.6
+        },
+        {
+          "word": "tinggi",
+          "start": 29.6,
+          "end": 29.98
+        },
+        {
+          "word": "membuat",
+          "start": 29.98,
+          "end": 30.26
+        },
+        {
+          "word": "pembuluh",
+          "start": 30.26,
+          "end": 30.54
+        },
+        {
+          "word": "darah",
+          "start": 30.54,
+          "end": 30.74
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 31.84,
+      "end": 34.9,
+      "text": "Jantung bekerja lebih keras, menaikkan tekanan darah tanpa istirahat.",
+      "words": [
+        {
+          "word": "Jantung",
+          "start": 31.84,
+          "end": 32.06
+        },
+        {
+          "word": "bekerja",
+          "start": 32.06,
+          "end": 32.32
+        },
+        {
+          "word": "lebih",
+          "start": 32.32,
+          "end": 32.52
+        },
+        {
+          "word": "keras,",
+          "start": 32.52,
+          "end": 33.2
+        },
+        {
+          "word": "menaikkan",
+          "start": 33.2,
+          "end": 33.46
+        },
+        {
+          "word": "tekanan",
+          "start": 33.46,
+          "end": 33.72
+        },
+        {
+          "word": "darah",
+          "start": 33.72,
+          "end": 34.02
+        },
+        {
+          "word": "tanpa",
+          "start": 34.02,
+          "end": 34.32
+        },
+        {
+          "word": "istirahat.",
+          "start": 34.32,
+          "end": 34.86
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 35.64,
+      "end": 37.5,
+      "text": "Kortex prefrontal mulai offline sekejap.",
+      "words": [
+        {
+          "word": "Kortex",
+          "start": 35.68,
+          "end": 35.96
+        },
+        {
+          "word": "prefrontal",
+          "start": 35.96,
+          "end": 36.54
+        },
+        {
+          "word": "mulai",
+          "start": 36.54,
+          "end": 36.74
+        },
+        {
+          "word": "offline",
+          "start": 36.74,
+          "end": 37.06
+        },
+        {
+          "word": "sekejap.",
+          "start": 37.06,
+          "end": 37.46
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 38.08,
+      "end": 41.68,
+      "text": "Mata berkerib otomatis, mengganggu koordinasi motorik dan konsentrasi.",
+      "words": [
+        {
+          "word": "Mata",
+          "start": 38.12,
+          "end": 38.24
+        },
+        {
+          "word": "berkerib",
+          "start": 38.24,
+          "end": 38.54
+        },
+        {
+          "word": "otomatis,",
+          "start": 38.54,
+          "end": 39.7
+        },
+        {
+          "word": "mengganggu",
+          "start": 39.7,
+          "end": 39.92
+        },
+        {
+          "word": "koordinasi",
+          "start": 39.92,
+          "end": 40.36
+        },
+        {
+          "word": "motorik",
+          "start": 40.36,
+          "end": 40.78
+        },
+        {
+          "word": "dan",
+          "start": 40.78,
+          "end": 40.92
+        },
+        {
+          "word": "konsentrasi.",
+          "start": 40.92,
+          "end": 41.68
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 42.38,
+      "end": 43.88,
+      "text": "Kelelahan mempengaruhi saraf vagus.",
+      "words": [
+        {
+          "word": "Kelelahan",
+          "start": 42.42,
+          "end": 42.8
+        },
+        {
+          "word": "mempengaruhi",
+          "start": 42.8,
+          "end": 43.24
+        },
+        {
+          "word": "saraf",
+          "start": 43.24,
+          "end": 43.5
+        },
+        {
+          "word": "vagus.",
+          "start": 43.5,
+          "end": 43.88
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 44.46,
+      "end": 47.96,
+      "text": "Pola napas menjadi tidak teratur dan volume udara di alveoli menurun drastis.",
+      "words": [
+        {
+          "word": "Pola",
+          "start": 44.5,
+          "end": 44.68
+        },
+        {
+          "word": "napas",
+          "start": 44.68,
+          "end": 44.92
+        },
+        {
+          "word": "menjadi",
+          "start": 44.92,
+          "end": 45.12
+        },
+        {
+          "word": "tidak",
+          "start": 45.12,
+          "end": 45.36
+        },
+        {
+          "word": "teratur",
+          "start": 45.36,
+          "end": 45.7
+        },
+        {
+          "word": "dan",
+          "start": 45.7,
+          "end": 45.92
+        },
+        {
+          "word": "volume",
+          "start": 45.92,
+          "end": 46.2
+        },
+        {
+          "word": "udara",
+          "start": 46.2,
+          "end": 46.54
+        },
+        {
+          "word": "di",
+          "start": 46.54,
+          "end": 46.7
+        },
+        {
+          "word": "alveoli",
+          "start": 46.7,
+          "end": 47.08
+        },
+        {
+          "word": "menurun",
+          "start": 47.08,
+          "end": 47.46
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 48.24,
+      "end": 53.36,
+      "text": "Tanpa pemulihan malam hari, jaringan otot mengalami mikrotrauma dan penumpukan asam laktat,",
+      "words": [
+        {
+          "word": "Tanpa",
+          "start": 48.72,
+          "end": 48.88
+        },
+        {
+          "word": "pemulihan",
+          "start": 48.88,
+          "end": 49.26
+        },
+        {
+          "word": "malam",
+          "start": 49.26,
+          "end": 49.52
+        },
+        {
+          "word": "hari,",
+          "start": 49.52,
+          "end": 50.38
+        },
+        {
+          "word": "jaringan",
+          "start": 50.38,
+          "end": 50.74
+        },
+        {
+          "word": "otot",
+          "start": 50.74,
+          "end": 50.92
+        },
+        {
+          "word": "mengalami",
+          "start": 50.92,
+          "end": 51.34
+        },
+        {
+          "word": "mikrotrauma",
+          "start": 51.34,
+          "end": 51.94
+        },
+        {
+          "word": "dan",
+          "start": 51.94,
+          "end": 52.16
+        },
+        {
+          "word": "penumpukan",
+          "start": 52.16,
+          "end": 52.66
+        },
+        {
+          "word": "asam",
+          "start": 52.66,
+          "end": 52.92
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 53.8,
+      "end": 55.06,
+      "text": "memicu nyeri suku jur tubuh.",
+      "words": [
+        {
+          "word": "memicu",
+          "start": 53.84,
+          "end": 54.1
+        },
+        {
+          "word": "nyeri",
+          "start": 54.1,
+          "end": 54.34
+        },
+        {
+          "word": "suku",
+          "start": 54.34,
+          "end": 54.56
+        },
+        {
+          "word": "jur",
+          "start": 54.56,
+          "end": 54.7
+        },
+        {
+          "word": "tubuh.",
+          "start": 54.7,
+          "end": 55.02
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 55.66,
+      "end": 57.48,
+      "text": "Stres kronis membuat ginjal menahan natrium.",
+      "words": [
+        {
+          "word": "Stres",
+          "start": 55.74,
+          "end": 55.88
+        },
+        {
+          "word": "kronis",
+          "start": 55.88,
+          "end": 56.2
+        },
+        {
+          "word": "membuat",
+          "start": 56.2,
+          "end": 56.46
+        },
+        {
+          "word": "ginjal",
+          "start": 56.46,
+          "end": 56.78
+        },
+        {
+          "word": "menahan",
+          "start": 56.78,
+          "end": 57.08
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "start": 58.06,
+      "end": 61.78,
+      "text": "Tekanan dalam kanalikulus naik, menyulitkan filtrasi racun metabolik.",
+      "words": [
+        {
+          "word": "Tekanan",
+          "start": 58.08,
+          "end": 58.32
+        },
+        {
+          "word": "dalam",
+          "start": 58.32,
+          "end": 58.54
+        },
+        {
+          "word": "kanalikulus",
+          "start": 58.54,
+          "end": 59.08
+        },
+        {
+          "word": "naik,",
+          "start": 59.08,
+          "end": 59.92
+        },
+        {
+          "word": "menyulitkan",
+          "start": 59.92,
+          "end": 60.34
+        },
+        {
+          "word": "filtrasi",
+          "start": 60.34,
+          "end": 60.88
+        },
+        {
+          "word": "racun",
+          "start": 60.88,
+          "end": 61.16
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 62.3,
+      "end": 64.54,
+      "text": "Hati gagal memproses glukosa secara efisien.",
+      "words": [
+        {
+          "word": "Hati",
+          "start": 62.34,
+          "end": 62.54
+        },
+        {
+          "word": "gagal",
+          "start": 62.54,
+          "end": 62.88
+        },
+        {
+          "word": "memproses",
+          "start": 62.88,
+          "end": 63.26
+        },
+        {
+          "word": "glukosa",
+          "start": 63.26,
+          "end": 63.74
+        },
+        {
+          "word": "secara",
+          "start": 63.74,
+          "end": 64.06
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 65.18,
+      "end": 68.94,
+      "text": "Enzim inflamasi dilepaskan ke sirkulasi darah karena kurangnya waktu pembersihan.",
+      "words": [
+        {
+          "word": "Enzim",
+          "start": 65.24,
+          "end": 65.42
+        },
+        {
+          "word": "inflamasi",
+          "start": 65.42,
+          "end": 65.9
+        },
+        {
+          "word": "dilepaskan",
+          "start": 65.9,
+          "end": 66.4
+        },
+        {
+          "word": "ke",
+          "start": 66.4,
+          "end": 66.54
+        },
+        {
+          "word": "sirkulasi",
+          "start": 66.54,
+          "end": 66.94
+        },
+        {
+          "word": "darah",
+          "start": 66.94,
+          "end": 67.3
+        },
+        {
+          "word": "karena",
+          "start": 67.3,
+          "end": 67.66
+        },
+        {
+          "word": "kurangnya",
+          "start": 67.66,
+          "end": 68.1
+        },
+        {
+          "word": "waktu",
+          "start": 68.1,
+          "end": 68.38
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "start": 69.62,
+      "end": 71.88,
+      "text": "Kurang tidur merusak mikrobioma dan dinding usus.",
+      "words": [
+        {
+          "word": "Kurang",
+          "start": 69.66,
+          "end": 69.82
+        },
+        {
+          "word": "tidur",
+          "start": 69.82,
+          "end": 70.16
+        },
+        {
+          "word": "merusak",
+          "start": 70.16,
+          "end": 70.5
+        },
+        {
+          "word": "mikrobioma",
+          "start": 70.5,
+          "end": 71.08
+        },
+        {
+          "word": "dan",
+          "start": 71.08,
+          "end": 71.26
+        },
+        {
+          "word": "dinding",
+          "start": 71.26,
+          "end": 71.5
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "start": 72.46,
+      "end": 75.44,
+      "text": "Meningkatkan permeabilitas yang memicu peradangan sistemik meluas.",
+      "words": [
+        {
+          "word": "Meningkatkan",
+          "start": 72.52,
+          "end": 72.88
+        },
+        {
+          "word": "permeabilitas",
+          "start": 72.88,
+          "end": 73.58
+        },
+        {
+          "word": "yang",
+          "start": 73.58,
+          "end": 73.8
+        },
+        {
+          "word": "memicu",
+          "start": 73.8,
+          "end": 74.06
+        },
+        {
+          "word": "peradangan",
+          "start": 74.06,
+          "end": 74.52
+        },
+        {
+          "word": "sistemik",
+          "start": 74.52,
+          "end": 75.02
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "start": 76.14,
+      "end": 78.74,
+      "text": "Sistem imun salah mengartikan kelelahan sebagai infeksi.",
+      "words": [
+        {
+          "word": "Sistem",
+          "start": 76.24,
+          "end": 76.38
+        },
+        {
+          "word": "imun",
+          "start": 76.38,
+          "end": 76.66
+        },
+        {
+          "word": "salah",
+          "start": 76.66,
+          "end": 76.88
+        },
+        {
+          "word": "mengartikan",
+          "start": 76.88,
+          "end": 77.4
+        },
+        {
+          "word": "kelelahan",
+          "start": 77.4,
+          "end": 77.92
+        },
+        {
+          "word": "sebagai",
+          "start": 77.92,
+          "end": 78.22
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "start": 79.36,
+      "end": 82.34,
+      "text": "Sal darah putih memicu peradangan sistemik parah di seluruh pembuluh.",
+      "words": [
+        {
+          "word": "Sal",
+          "start": 79.36,
+          "end": 79.52
+        },
+        {
+          "word": "darah",
+          "start": 79.52,
+          "end": 79.76
+        },
+        {
+          "word": "putih",
+          "start": 79.76,
+          "end": 79.96
+        },
+        {
+          "word": "memicu",
+          "start": 79.96,
+          "end": 80.28
+        },
+        {
+          "word": "peradangan",
+          "start": 80.28,
+          "end": 80.66
+        },
+        {
+          "word": "sistemik",
+          "start": 80.66,
+          "end": 81.12
+        },
+        {
+          "word": "parah",
+          "start": 81.12,
+          "end": 81.44
+        },
+        {
+          "word": "di",
+          "start": 81.44,
+          "end": 81.62
+        },
+        {
+          "word": "seluruh",
+          "start": 81.62,
+          "end": 81.94
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "start": 82.42,
+      "end": 85.24,
+      "text": "Neuron kortikau mengalami kegagalan sinaptik total.",
+      "words": [
+        {
+          "word": "Neuron",
+          "start": 83,
+          "end": 83.2
+        },
+        {
+          "word": "kortikau",
+          "start": 83.2,
+          "end": 83.68
+        },
+        {
+          "word": "mengalami",
+          "start": 83.68,
+          "end": 84.04
+        },
+        {
+          "word": "kegagalan",
+          "start": 84.04,
+          "end": 84.48
+        },
+        {
+          "word": "sinaptik",
+          "start": 84.48,
+          "end": 84.88
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "start": 85.24,
+      "end": 90.02,
+      "text": "Halusinasi visual dan auditory muncul akibat otak mulai memakan dirinya sendiri",
+      "words": [
+        {
+          "word": "Halusinasi",
+          "start": 85.86,
+          "end": 86.36
+        },
+        {
+          "word": "visual",
+          "start": 86.36,
+          "end": 86.66
+        },
+        {
+          "word": "dan",
+          "start": 86.66,
+          "end": 86.86
+        },
+        {
+          "word": "auditory",
+          "start": 86.86,
+          "end": 87.34
+        },
+        {
+          "word": "muncul",
+          "start": 87.34,
+          "end": 87.78
+        },
+        {
+          "word": "akibat",
+          "start": 87.78,
+          "end": 88.2
+        },
+        {
+          "word": "otak",
+          "start": 88.2,
+          "end": 88.52
+        },
+        {
+          "word": "mulai",
+          "start": 88.52,
+          "end": 88.8
+        },
+        {
+          "word": "memakan",
+          "start": 88.8,
+          "end": 89.2
+        },
+        {
+          "word": "dirinya",
+          "start": 89.2,
+          "end": 89.58
+        },
+        {
+          "word": "sendiri",
+          "start": 89.58,
+          "end": 89.96
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "start": 90.02,
+      "end": 93.78,
+      "text": "Menurutmu, apa keputusan sepele yang kamu ambil hari ini",
+      "words": [
+        {
+          "word": "apa",
+          "start": 91.74,
+          "end": 91.82
+        },
+        {
+          "word": "keputusan",
+          "start": 91.82,
+          "end": 92.26
+        },
+        {
+          "word": "sepele",
+          "start": 92.26,
+          "end": 92.62
+        },
+        {
+          "word": "yang",
+          "start": 92.62,
+          "end": 92.78
+        },
+        {
+          "word": "kamu",
+          "start": 92.78,
+          "end": 93
+        },
+        {
+          "word": "ambil",
+          "start": 93,
+          "end": 93.24
+        },
+        {
+          "word": "hari",
+          "start": 93.24,
+          "end": 93.48
+        },
+        {
+          "word": "ini",
+          "start": 93.48,
+          "end": 93.72
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "start": 93.78,
+      "end": 97.26,
+      "text": "Yang tanpa kamu sadari bakal mengubah jalan hidupmu 5 tahun lagi?",
+      "words": [
+        {
+          "word": "tanpa",
+          "start": 94.1,
+          "end": 94.42
+        },
+        {
+          "word": "kamu",
+          "start": 94.42,
+          "end": 94.64
+        },
+        {
+          "word": "sadari",
+          "start": 94.64,
+          "end": 95.06
+        },
+        {
+          "word": "bakal",
+          "start": 95.06,
+          "end": 95.68
+        },
+        {
+          "word": "mengubah",
+          "start": 95.68,
+          "end": 96.02
+        },
+        {
+          "word": "jalan",
+          "start": 96.02,
+          "end": 96.22
+        },
+        {
+          "word": "hidupmu",
+          "start": 96.22,
+          "end": 96.64
+        },
+        {
+          "word": "5",
+          "start": 96.64,
+          "end": 96.78
+        },
+        {
+          "word": "tahun",
+          "start": 96.78,
+          "end": 97.02
+        }
+      ]
+    }
+  ],
+  "text": " Detik pertama tanpa tidur, adenosin menumpuk di otak. Dalam 72 jam, tubuhmu berubah menjadi ladang perang biokimia yang menghancurkan kognisi. Setiap detik terjaga, neurotransmitter adenosin menumpuk di reseptor otak, menekan sinyal bangun dan menciptakan tekanan tidur. Klenjar adrenal memompah adrenalin untuk melawan kantuk. Detak jantung naik, memberikan energi palsu yang singkat. Tanpa siklus tidur, pengaturan hormon ghrelin terganggu, memicu rasa lapar palsu dan peningkatan asam lambung. Kortisol tinggi membuat pembuluh darah menyempit. Jantung bekerja lebih keras, menaikkan tekanan darah tanpa istirahat. Kortex prefrontal mulai offline sekejap. Mata berkerib otomatis, mengganggu koordinasi motorik dan konsentrasi. Kelelahan mempengaruhi saraf vagus. Pola napas menjadi tidak teratur dan volume udara di alveoli menurun drastis. Tanpa pemulihan malam hari, jaringan otot mengalami mikrotrauma dan penumpukan asam laktat, memicu nyeri suku jur tubuh. Stres kronis membuat ginjal menahan natrium. Tekanan dalam kanalikulus naik, menyulitkan filtrasi racun metabolik. Hati gagal memproses glukosa secara efisien. Enzim inflamasi dilepaskan ke sirkulasi darah karena kurangnya waktu pembersihan. Kurang tidur merusak mikrobioma dan dinding usus. Meningkatkan permeabilitas yang memicu peradangan sistemik meluas. Sistem imun salah mengartikan kelelahan sebagai infeksi. Sal darah putih memicu peradangan sistemik parah di seluruh pembuluh. Neuron kortikau mengalami kegagalan sinaptik total. Halusinasi visual dan auditory muncul akibat otak mulai memakan dirinya sendiri Menurutmu, apa keputusan sepele yang kamu ambil hari ini Yang tanpa kamu sadari bakal mengubah jalan hidupmu 5 tahun lagi?"
+}
