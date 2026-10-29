@@ -31,8 +31,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 74,
     zoomScale: 1.05,
     color: '#38bdf8',
-    bgToneTop: '#0b2545',
-    bgToneCenter: '#134e6f',
+    bgToneTop: '#0b1528',
+    bgToneCenter: '#132847',
   },
   brain: {
     id: 'brain',
@@ -41,8 +41,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 22,
     zoomScale: 1.56,
     color: '#38bdf8',
-    bgToneTop: '#0c2d57',
-    bgToneCenter: '#0284c7',
+    bgToneTop: '#0b162c',
+    bgToneCenter: '#152c52',
   },
   nerves: {
     id: 'nerves',
@@ -51,8 +51,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 36,
     zoomScale: 1.44,
     color: '#818cf8',
-    bgToneTop: '#1e1b4b',
-    bgToneCenter: '#4f46e5',
+    bgToneTop: '#0f142e',
+    bgToneCenter: '#1d2554',
   },
   lungs: {
     id: 'lungs',
@@ -61,8 +61,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 64,
     zoomScale: 1.40,
     color: '#2dd4bf',
-    bgToneTop: '#063940',
-    bgToneCenter: '#0d9488',
+    bgToneTop: '#081c26',
+    bgToneCenter: '#0f3342',
   },
   heart: {
     id: 'heart',
@@ -71,8 +71,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 70,
     zoomScale: 1.54,
     color: '#f43f5e',
-    bgToneTop: '#3b0a24',
-    bgToneCenter: '#be123c',
+    bgToneTop: '#0c1629',
+    bgToneCenter: '#172542',
   },
   blood: {
     id: 'blood',
@@ -81,8 +81,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 76,
     zoomScale: 1.42,
     color: '#ef4444',
-    bgToneTop: '#3b0918',
-    bgToneCenter: '#b91c1c',
+    bgToneTop: '#0c1629',
+    bgToneCenter: '#172542',
   },
   liver: {
     id: 'liver',
@@ -91,8 +91,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 87,
     zoomScale: 1.50,
     color: '#f59e0b',
-    bgToneTop: '#2e1c08',
-    bgToneCenter: '#b45309',
+    bgToneTop: '#0b1628',
+    bgToneCenter: '#162744',
   },
   stomach: {
     id: 'stomach',
@@ -101,8 +101,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 91,
     zoomScale: 1.52,
     color: '#fb923c',
-    bgToneTop: '#361708',
-    bgToneCenter: '#c2410c',
+    bgToneTop: '#0b1628',
+    bgToneCenter: '#162744',
   },
   kidney: {
     id: 'kidney',
@@ -111,8 +111,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 104,
     zoomScale: 1.50,
     color: '#a855f7',
-    bgToneTop: '#271042',
-    bgToneCenter: '#7e22ce',
+    bgToneTop: '#0d142b',
+    bgToneCenter: '#1a234a',
   },
   intestine: {
     id: 'intestine',
@@ -121,8 +121,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 118,
     zoomScale: 1.44,
     color: '#eab308',
-    bgToneTop: '#2a2008',
-    bgToneCenter: '#a16207',
+    bgToneTop: '#0b1628',
+    bgToneCenter: '#162744',
   },
   muscles: {
     id: 'muscles',
@@ -131,8 +131,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 82,
     zoomScale: 1.36,
     color: '#fb7185',
-    bgToneTop: '#331022',
-    bgToneCenter: '#9f1239',
+    bgToneTop: '#0c1629',
+    bgToneCenter: '#172542',
   },
 };
 
@@ -335,13 +335,9 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
     prevWp.chaosLevel >= 72 ? '#fb7185' : prevWp.chaosLevel >= 45 ? '#fbbf24' : prevWp.anchor.color;
   const accentColor = interpolateHexColor(prevAccent, targetAccent, cameraGlide);
 
-  // Dynamic Luminous Background Palette (Bright, Vibrant Medical Studio — Never Pitch Black!)
+  // Dynamic Neutral Clinical Slate-Navy Background (Clean, Calm, Never Clashes with Organs!)
   const bgTopColor = interpolateHexColor(prevWp.anchor.bgToneTop, effectiveAnchor.bgToneTop, cameraGlide);
-  const bgCenterColor = interpolateHexColor(
-    smoothChaos >= 72 ? '#881337' : prevWp.anchor.bgToneCenter,
-    smoothChaos >= 72 ? '#9f1239' : effectiveAnchor.bgToneCenter,
-    cameraGlide
-  );
+  const bgCenterColor = interpolateHexColor(prevWp.anchor.bgToneCenter, effectiveAnchor.bgToneCenter, cameraGlide);
 
   // Continuous 24 biological bloodstream & neural particles
   const particles = useMemo(() => {
@@ -426,14 +422,13 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
         overflow: 'hidden',
       }}
     >
-      {/* Volumetric Surgical Spotlight Behind the 3D Body */}
+      {/* Subtle Neutral Studio Backlight Behind the 3D Body */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           background: `
-            radial-gradient(ellipse 68% 52% at 50% 40%, rgba(56, 189, 248, 0.34) 0%, rgba(14, 165, 233, 0.14) 52%, transparent 80%),
-            radial-gradient(circle at 50% 25%, ${accentColor}33 0%, transparent 55%)
+            radial-gradient(ellipse 62% 48% at 50% 42%, rgba(56, 189, 248, 0.14) 0%, rgba(15, 23, 42, 0.08) 55%, transparent 80%)
           `,
           pointerEvents: 'none',
         }}
@@ -465,7 +460,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           willChange: 'transform',
         }}
       >
-        {/* Base 3D X-Ray Body Backdrop (Screen-blended for luminous glass anatomical depth) */}
+        {/* Base 3D X-Ray Body Backdrop (Neutralized & Desaturated so Organs Pop Clearly!) */}
         <Img
           src={staticFile(baseBodyMediaUrl)}
           style={{
@@ -475,9 +470,9 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             height: '100%',
             objectFit: 'cover',
             objectPosition: 'center 30%',
-            opacity: 0.68,
+            opacity: 0.24,
             mixBlendMode: 'screen',
-            filter: 'contrast(1.25) brightness(1.18) saturate(1.35)',
+            filter: 'grayscale(85%) contrast(1.15) brightness(0.82)',
           }}
         />
 
@@ -599,155 +594,155 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           {/* 1. BRAIN & CENTRAL NERVOUS CORTEX (Stage Y: 22) */}
           <g
             transform={`translate(50, 21) scale(${1 + Math.sin(frame * 0.08) * 0.03})`}
-            opacity={0.6 + getOrganHighlight('brain', 50, 22) * 0.4}
+            opacity={0.75 + getOrganHighlight('brain', 50, 22) * 0.25}
           >
-            <circle r="14" fill="url(#organGlowBrain)" opacity={0.65 + getOrganHighlight('brain', 50, 22) * 0.35} />
+            <circle r="14" fill="url(#organGlowBrain)" opacity={0.75 + getOrganHighlight('brain', 50, 22) * 0.25} />
             <path
               d="M-0.5 -7.5 C-6.5 -7.5 -10 -3.5 -10 1 C-10 5.5 -6.5 8 -1 8 Z"
-              fill="rgba(56, 189, 248, 0.55)"
-              stroke="#bae6fd"
-              strokeWidth="0.55"
+              fill="#0ea5e9"
+              stroke="#e0f2fe"
+              strokeWidth="0.6"
             />
             <path
               d="M0.5 -7.5 C6.5 -7.5 10 -3.5 10 1 C10 5.5 6.5 8 1 8 Z"
-              fill={isMicrosleep && frame % 30 < 12 ? 'rgba(15, 23, 42, 0.7)' : 'rgba(56, 189, 248, 0.55)'}
-              stroke="#bae6fd"
-              strokeWidth="0.55"
+              fill={isMicrosleep && frame % 30 < 12 ? '#1e293b' : '#0ea5e9'}
+              stroke="#e0f2fe"
+              strokeWidth="0.6"
             />
             {/* Neural Gyri Folds */}
             <path
               d="M-7 -2 Q-4 -4 -2 -1 M-8 2 Q-5 0 -2 3 M7 -2 Q4 -4 2 -1 M8 2 Q5 0 2 3"
-              stroke="#e0f2fe"
-              strokeWidth="0.4"
+              stroke="#ffffff"
+              strokeWidth="0.45"
               fill="none"
             />
             {/* Firing Neural Synapses & Adenosine Molecules */}
             <circle cx={Math.sin(frame * 0.17) * 5.5} cy={Math.cos(frame * 0.23) * 3.8} r="1.2" fill="#ffffff" />
-            <circle cx={Math.cos(frame * 0.14) * -4.8} cy={Math.sin(frame * 0.19) * 3.2} r="1.0" fill="#7dd3fc" />
+            <circle cx={Math.cos(frame * 0.14) * -4.8} cy={Math.sin(frame * 0.19) * 3.2} r="1.0" fill="#bae6fd" />
             <circle cx={Math.sin(frame * 0.11 + 2) * 4} cy={Math.cos(frame * 0.15 + 1) * -3} r="0.9" fill="#fde047" />
           </g>
 
           {/* 2. NERVOUS GANGLIA & ADRENAL SIGNAL SPARKS (Stage Y: 36) */}
           <g
             transform="translate(50, 36)"
-            opacity={0.55 + getOrganHighlight('nerves', 50, 36) * 0.45}
+            opacity={0.7 + getOrganHighlight('nerves', 50, 36) * 0.3}
           >
             <path
               d="M0 -6 L-9 2 M0 -2 L-11 6 M0 -6 L9 2 M0 -2 L11 6"
-              stroke="#c7d2fe"
-              strokeWidth="0.5"
+              stroke="#a5b4fc"
+              strokeWidth="0.55"
               fill="none"
             />
-            <circle cx={Math.sin(frame * 0.22) * 7} cy={Math.abs(Math.sin(frame * 0.22)) * 4 - 2} r="1.1" fill="#e0e7ff" />
+            <circle cx={Math.sin(frame * 0.22) * 7} cy={Math.abs(Math.sin(frame * 0.22)) * 4 - 2} r="1.1" fill="#ffffff" />
           </g>
 
           {/* 3. LUNGS & BRONCHIAL TREE (Stage Y: 64 — Expands & Contracts with Breathing) */}
           <g
             transform={`translate(50, 64) scale(${1 + breathCycle * 0.05}, ${1 + breathCycle * 0.04})`}
-            opacity={0.58 + getOrganHighlight('lungs', 50, 64) * 0.42}
+            opacity={0.72 + getOrganHighlight('lungs', 50, 64) * 0.28}
           >
-            <circle r="19" fill="url(#organGlowLungs)" opacity={0.55 + getOrganHighlight('lungs', 50, 64) * 0.45} />
+            <circle r="19" fill="url(#organGlowLungs)" opacity={0.6 + getOrganHighlight('lungs', 50, 64) * 0.4} />
             <path
               d="M-3 -11.5 C-10.5 -10.5 -15.5 -2 -15.5 9.5 C-15.5 13.5 -8 14.5 -3 10.5 Z"
-              fill="rgba(45, 212, 191, 0.45)"
-              stroke="#99f6e4"
-              strokeWidth="0.55"
+              fill="rgba(20, 184, 166, 0.72)"
+              stroke="#ccfbf1"
+              strokeWidth="0.6"
             />
             <path
               d="M3 -11.5 C10.5 -10.5 15.5 -2 15.5 9.5 C15.5 13.5 8 14.5 3 10.5 Z"
-              fill="rgba(45, 212, 191, 0.45)"
-              stroke="#99f6e4"
-              strokeWidth="0.55"
+              fill="rgba(20, 184, 166, 0.72)"
+              stroke="#ccfbf1"
+              strokeWidth="0.6"
             />
             <path
               d="M0 -15 L0 -6 M0 -6 L-7 2 M0 -6 L7 2 M-4 -1 L-9 6 M4 -1 L9 6"
-              stroke="#ccfbf1"
-              strokeWidth="0.5"
+              stroke="#ffffff"
+              strokeWidth="0.55"
               fill="none"
-              opacity="0.9"
+              opacity="0.95"
             />
           </g>
 
           {/* 4. BEATING HEART (Stage X: 54, Y: 70 — Systolic & Diastolic Real-Time Thump) */}
           <g
             transform={`translate(54, 70) scale(${1 + heartPulse * 0.18})`}
-            opacity={0.75 + getOrganHighlight('heart', 54, 70) * 0.25}
+            opacity={0.9 + getOrganHighlight('heart', 54, 70) * 0.1}
           >
-            <circle r="12.5" fill="url(#organGlowHeart)" opacity={0.75 + systolicBeat * 0.25} />
+            <circle r="13" fill="url(#organGlowHeart)" opacity={0.85 + systolicBeat * 0.15} />
             {/*Systolic Shockwave Ring when beating hard */}
             <circle
               r={5 + ((frame % 22) / 22) * 9}
               fill="none"
-              stroke="#fda4af"
-              strokeWidth="0.4"
+              stroke="#fecdd3"
+              strokeWidth="0.45"
               opacity={1 - (frame % 22) / 22}
             />
             <path
               d="M0 -4.5 C-2.8 -6.8 -6.5 -4.5 -6.5 -0.8 C-6.5 3.5 -1.6 6.2 0 8 C1.6 6.2 6.5 3.5 6.5 -0.8 C6.5 -4.5 2.8 -6.8 0 -4.5 Z"
               fill="#f43f5e"
-              stroke="#ffe4e6"
-              strokeWidth="0.55"
+              stroke="#ffffff"
+              strokeWidth="0.65"
             />
           </g>
 
           {/* 5. LIVER / HEPATIC SYSTEM (Stage X: 42, Y: 87) */}
           <g
             transform="translate(43, 86)"
-            opacity={0.55 + getOrganHighlight('liver', 42, 87) * 0.45}
+            opacity={0.75 + getOrganHighlight('liver', 42, 87) * 0.25}
           >
-            <circle r="12.5" fill="url(#organGlowLiver)" opacity={0.5 + getOrganHighlight('liver', 42, 87) * 0.5} />
+            <circle r="12.5" fill="url(#organGlowLiver)" opacity={0.65 + getOrganHighlight('liver', 42, 87) * 0.35} />
             <path
               d="M-7.5 -3.2 C0 -5.5 6.5 -3.2 8.5 2.2 C3.2 6.5 -5.5 6.5 -7.5 2.2 Z"
-              fill="rgba(245, 158, 11, 0.55)"
+              fill="#d97706"
               stroke="#fef08a"
-              strokeWidth="0.55"
+              strokeWidth="0.6"
             />
           </g>
 
           {/* 6. STOMACH & GASTRIC ACID WAVE (Stage X: 57, Y: 91) */}
           <g
             transform={`translate(56, 91) scale(${1 + Math.sin(frame * (isAcidWave ? 0.14 : 0.06)) * (isAcidWave ? 0.065 : 0.03)})`}
-            opacity={0.55 + getOrganHighlight('stomach', 57, 91) * 0.45}
+            opacity={0.75 + getOrganHighlight('stomach', 57, 91) * 0.25}
           >
-            <circle r="13" fill="url(#organGlowStomach)" opacity={0.55 + getOrganHighlight('stomach', 57, 91) * 0.45} />
+            <circle r="13" fill="url(#organGlowStomach)" opacity={0.65 + getOrganHighlight('stomach', 57, 91) * 0.35} />
             <path
               d="M-3.2 -5.2 C3.2 -6.2 7.5 -2.2 6.5 3.2 C5.5 7.5 -2.2 7.5 -5.5 4.2 C-6.5 1.2 -2.2 -1 -3.2 -5.2 Z"
-              fill="rgba(249, 115, 22, 0.55)"
-              stroke="#fed7aa"
-              strokeWidth="0.55"
+              fill="#ea580c"
+              stroke="#ffedd5"
+              strokeWidth="0.6"
             />
             {/* Bubbling Gastric Acid Level inside Stomach */}
-            <circle cx={Math.sin(frame * 0.15) * 2} cy={1.8 + Math.cos(frame * 0.2) * 1} r="0.85" fill="#fef08a" />
-            <circle cx={Math.cos(frame * 0.18) * -1.5} cy={2.4 + Math.sin(frame * 0.22) * 0.8} r="0.65" fill="#ffffff" />
+            <circle cx={Math.sin(frame * 0.15) * 2} cy={1.8 + Math.cos(frame * 0.2) * 1} r="0.9" fill="#fef08a" />
+            <circle cx={Math.cos(frame * 0.18) * -1.5} cy={2.4 + Math.sin(frame * 0.22) * 0.8} r="0.7" fill="#ffffff" />
           </g>
 
           {/* 7. KIDNEYS & ADRENAL GLANDS (Stage X: 50, Y: 104) */}
           <g
             transform="translate(50, 104)"
-            opacity={0.55 + getOrganHighlight('kidney', 50, 104) * 0.45}
+            opacity={0.75 + getOrganHighlight('kidney', 50, 104) * 0.25}
           >
-            <circle r="13.5" fill="url(#organGlowKidney)" opacity={0.5 + getOrganHighlight('kidney', 50, 104) * 0.5} />
-            <ellipse cx="-6.5" cy="0" rx="3.4" ry="5" fill="rgba(168, 85, 247, 0.58)" stroke="#f3e8ff" strokeWidth="0.5" />
-            <ellipse cx="6.5" cy="0" rx="3.4" ry="5" fill="rgba(168, 85, 247, 0.58)" stroke="#f3e8ff" strokeWidth="0.5" />
-            {/* Adrenal Caps on top of Kidneys (Glow bright red/gold during hormone/adrenaline surge!) */}
+            <circle r="13.5" fill="url(#organGlowKidney)" opacity={0.65 + getOrganHighlight('kidney', 50, 104) * 0.35} />
+            <ellipse cx="-6.5" cy="0" rx="3.4" ry="5" fill="#9333ea" stroke="#f3e8ff" strokeWidth="0.55" />
+            <ellipse cx="6.5" cy="0" rx="3.4" ry="5" fill="#9333ea" stroke="#f3e8ff" strokeWidth="0.55" />
+            {/* Adrenal Caps on top of Kidneys */}
             <polygon
               points="-8.5,-4.5 -4.5,-4.5 -6.5,-7.2"
               fill={isHormoneSurge ? '#fb7185' : '#fbbf24'}
               stroke="#ffffff"
-              strokeWidth="0.3"
+              strokeWidth="0.35"
             />
             <polygon
               points="4.5,-4.5 8.5,-4.5 6.5,-7.2"
               fill={isHormoneSurge ? '#fb7185' : '#fbbf24'}
               stroke="#ffffff"
-              strokeWidth="0.3"
+              strokeWidth="0.35"
             />
           </g>
 
           {/* 8. INTESTINES & METABOLIC TRACT (Stage X: 50, Y: 118) */}
           <g
             transform="translate(50, 117)"
-            opacity={0.52 + getOrganHighlight('intestine', 50, 118) * 0.48}
+            opacity={0.72 + getOrganHighlight('intestine', 50, 118) * 0.28}
           >
             <rect
               x="-9.5"
@@ -755,16 +750,16 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
               width="19"
               height="13"
               rx="3.5"
-              fill="rgba(234, 179, 8, 0.42)"
+              fill="rgba(202, 138, 4, 0.72)"
               stroke="#fef08a"
-              strokeWidth="0.5"
+              strokeWidth="0.55"
             />
             <path
               d="M-6 -3 Q0 -5 6 -3 Q-5 0 6 3 Q0 5 -6 3"
               stroke="#ffffff"
-              strokeWidth="0.5"
+              strokeWidth="0.55"
               fill="none"
-              opacity="0.8"
+              opacity="0.9"
             />
           </g>
 
