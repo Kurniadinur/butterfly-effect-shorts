@@ -42,7 +42,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 22,
     zoomScale: 1.48,
     color: '#38bdf8',
-    organMediaUrl: 'butterfly/media/medical_brain_xray.jpg',
+    organMediaUrl: 'butterfly/organs/brain.png',
     calloutSide: 'right',
   },
   nerves: {
@@ -52,7 +52,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 36,
     zoomScale: 1.38,
     color: '#818cf8',
-    organMediaUrl: 'butterfly/media/medical_brain_xray.jpg',
+    organMediaUrl: 'butterfly/organs/brain.png',
     calloutSide: 'left',
   },
   lungs: {
@@ -62,57 +62,57 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 63,
     zoomScale: 1.36,
     color: '#2dd4bf',
-    organMediaUrl: 'butterfly/media/medical_heart_xray.jpg',
+    organMediaUrl: 'butterfly/organs/lungs.png',
     calloutSide: 'left',
   },
   heart: {
     id: 'heart',
     label: 'JANTUNG & PEMBULUH DARAH',
-    stageX: 54,
-    stageY: 69,
+    stageX: 53,
+    stageY: 68,
     zoomScale: 1.46,
     color: '#f43f5e',
-    organMediaUrl: 'butterfly/media/medical_heart_xray.jpg',
+    organMediaUrl: 'butterfly/organs/heart.png',
     calloutSide: 'right',
   },
   blood: {
     id: 'blood',
     label: 'SIRKULASI ALIRAN DARAH',
-    stageX: 52,
-    stageY: 74,
+    stageX: 53,
+    stageY: 68,
     zoomScale: 1.38,
     color: '#ef4444',
-    organMediaUrl: 'butterfly/media/medical_heart_xray.jpg',
+    organMediaUrl: 'butterfly/organs/heart.png',
     calloutSide: 'left',
   },
   liver: {
     id: 'liver',
     label: 'HATI (LIVER) & DETOKS',
-    stageX: 42,
-    stageY: 86,
+    stageX: 43,
+    stageY: 85,
     zoomScale: 1.44,
     color: '#f59e0b',
-    organMediaUrl: 'butterfly/media/medical_stomach_xray.jpg',
+    organMediaUrl: 'butterfly/organs/liver.png',
     calloutSide: 'left',
   },
   stomach: {
     id: 'stomach',
     label: 'LAMBUNG & ASAM PENCERNAAN',
     stageX: 57,
-    stageY: 90,
+    stageY: 88,
     zoomScale: 1.46,
     color: '#fb923c',
-    organMediaUrl: 'butterfly/media/medical_stomach_xray.jpg',
+    organMediaUrl: 'butterfly/organs/stomach.png',
     calloutSide: 'right',
   },
   kidney: {
     id: 'kidney',
     label: 'GINJAL & KELENJAR ADRENAL',
     stageX: 50,
-    stageY: 104,
+    stageY: 103,
     zoomScale: 1.44,
     color: '#a855f7',
-    organMediaUrl: 'butterfly/media/medical_stomach_xray.jpg',
+    organMediaUrl: 'butterfly/organs/kidneys.png',
     calloutSide: 'right',
   },
   intestine: {
@@ -122,7 +122,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 118,
     zoomScale: 1.38,
     color: '#eab308',
-    organMediaUrl: 'butterfly/media/medical_stomach_xray.jpg',
+    organMediaUrl: 'butterfly/organs/intestines.png',
     calloutSide: 'left',
   },
   muscles: {
@@ -469,178 +469,144 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             </linearGradient>
           </defs>
 
-          {/* 3D Translucent Glass Torso Shell with Rim Lighting */}
+          {/* 3DTranslucent Anatomical Body Aura (Subtle, no cartoon block hands) */}
           <path
             d="M50 6 C58 6 63 12 63 21 C63 28 59 33 56 36 L60 42 C72 44 80 50 82 62 L85 104 C85 108 80 109 78 105 L73 66 L68 66 L70 118 L67 178 C67 183 59 183 58 178 L54 128 L46 128 L42 178 C41 183 33 183 33 178 L30 118 L32 66 L27 66 L22 105 C20 109 15 108 15 104 L18 62 C20 50 28 44 40 42 L44 36 C41 33 37 28 37 21 C37 12 42 6 50 6 Z"
             fill="url(#glassBodyRim)"
-            stroke="rgba(125, 211, 252, 0.45)"
-            strokeWidth="0.55"
+            stroke="rgba(125, 211, 252, 0.16)"
+            strokeWidth="0.3"
           />
 
-          {/* 3D Ribcage & Spine Depth Structure */}
-          <g stroke="rgba(186, 230, 253, 0.18)" strokeWidth="0.55" fill="none">
-            <line x1="50" y1="28" x2="50" y2="124" stroke="rgba(165, 180, 252, 0.4)" strokeWidth="1.2" strokeDasharray="1.6 1.2" />
-            <path d="M48 52 Q38 53 35 60 M52 52 Q62 53 65 60" />
-            <path d="M48 57 Q37 58 34 66 M52 57 Q63 58 66 66" />
-            <path d="M48 62 Q37 63 34 72 M52 62 Q63 63 66 72" />
-            <path d="M48 67 Q38 68 36 77 M52 67 Q62 68 64 77" />
-          </g>
-
           {/* 3D Arterial & Venous Bloodstream Highway */}
-          <g fill="none" strokeLinecap="round">
+          <g fill="none" strokeLinecap="round" opacity="0.55">
             {/* Outer Vessel Tube */}
             <path
               d="M52 68 Q53 45 50 24 M48 68 Q47 45 50 24 M52 66 Q65 55 77 95 M48 66 Q35 55 23 95 M53 72 L50 104 L43 160 M53 72 L50 104 L57 160 M51 86 L42 88 M52 88 L57 92"
-              stroke="rgba(244, 63, 94, 0.35)"
-              strokeWidth="1.1"
+              stroke="rgba(244, 63, 94, 0.28)"
+              strokeWidth="0.85"
             />
             {/* Flowing Blood Cells Pulse Inside Vessels */}
             <path
               d="M52 68 Q53 45 50 24 M48 68 Q47 45 50 24 M52 66 Q65 55 77 95 M48 66 Q35 55 23 95 M53 72 L50 104 L43 160 M53 72 L50 104 L57 160 M51 86 L42 88 M52 88 L57 92"
               stroke="#fda4af"
-              strokeWidth="0.55"
-              strokeDasharray="1.8 2.8"
+              strokeWidth="0.4"
+              strokeDasharray="1.4 2.6"
               strokeDashoffset={-(frame * (0.5 + (smoothChaos / 100) * 0.7))}
             />
           </g>
 
-          {/* 1. 3D VOLUMETRIC BRAIN (Stage Y: 22) */}
+          {/* 1. REAL 3D ANATOMICAL BRAIN (Stage X: 50, Y: 22) */}
           <g
-            transform={`translate(50, 21) scale(${1 + Math.sin(frame * 0.08) * 0.025})`}
+            transform={`translate(50, 21.5) scale(${1 + Math.sin(frame * 0.08) * 0.025})`}
             opacity={getOrganGlow('brain', 50, 22)}
           >
-            {/* Left & Right 3D Cerebral Lobes */}
-            <path
-              d="M-0.4 -7.8 C-6.8 -7.8 -10.2 -3.8 -10.2 1.2 C-10.2 5.8 -6.5 8.2 -0.8 8.2 Z"
-              fill="url(#vol3DBrain)"
-              stroke="#bae6fd"
-              strokeWidth="0.4"
-            />
-            <path
-              d="M0.4 -7.8 C6.8 -7.8 10.2 -3.8 10.2 1.2 C10.2 5.8 6.5 8.2 0.8 8.2 Z"
-              fill="url(#vol3DBrain)"
-              stroke="#bae6fd"
-              strokeWidth="0.4"
-            />
-            {/* 3D Cortical Sulci Highlights */}
-            <path
-              d="M-7.5 -2.5 Q-4.5 -4.5 -1.8 -1.2 M-8.2 2 Q-5 0 -1.8 3.2 M7.5 -2.5 Q4.5 -4.5 1.8 -1.2 M8.2 2 Q5 0 1.8 3.2"
-              stroke="rgba(224, 242, 254, 0.75)"
-              strokeWidth="0.45"
-              fill="none"
-              strokeLinecap="round"
+            <image
+              href={staticFile('butterfly/organs/brain.png')}
+              x="-11.5"
+              y="-11.5"
+              width="23"
+              height="23"
+              preserveAspectRatio="xMidYMid meet"
+              filter="url(#volumetricShadow)"
             />
             {/* Active Neural Synapse Sparks */}
-            <circle cx={Math.sin(frame * 0.16) * 5.2} cy={Math.cos(frame * 0.22) * 3.5} r="1.1" fill="#ffffff" />
-            <circle cx={Math.cos(frame * 0.14) * -4.6} cy={Math.sin(frame * 0.19) * 3} r="0.95" fill="#fde047" />
+            <circle cx={Math.sin(frame * 0.16) * 5.2} cy={Math.cos(frame * 0.22) * 3.5} r="0.8" fill="#ffffff" />
+            <circle cx={Math.cos(frame * 0.14) * -4.6} cy={Math.sin(frame * 0.19) * 3} r="0.7" fill="#38bdf8" />
           </g>
 
-          {/* 2. 3D VOLUMETRIC LUNGS (Stage Y: 63 — Expands with Breathing) */}
+          {/* 2. REAL 3D ANATOMICAL LUNGS (Stage X: 50, Y: 63 — Expands with Breathing) */}
           <g
-            transform={`translate(50, 63) scale(${1 + breathCycle * 0.05}, ${1 + breathCycle * 0.04})`}
+            transform={`translate(50, 62.5) scale(${1 + breathCycle * 0.045}, ${1 + breathCycle * 0.038})`}
             opacity={getOrganGlow('lungs', 50, 63)}
           >
-            {/* Trachea & Bronchial Stem */}
-            <path d="M0 -16 L0 -6 M0 -6 L-6 1 M0 -6 L6 1" stroke="#ccfbf1" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-            {/* Right & Left 3D Shaded Lung Lobes */}
-            <path
-              d="M-2.8 -11.5 C-10.8 -10.5 -15.8 -2 -15.8 9.5 C-15.8 13.8 -8.2 14.5 -2.8 10.2 Z"
-              fill="url(#vol3DLung)"
-              stroke="#99f6e4"
-              strokeWidth="0.4"
+            <image
+              href={staticFile('butterfly/organs/lungs.png')}
+              x="-18"
+              y="-17.5"
+              width="36"
+              height="35"
+              preserveAspectRatio="xMidYMid meet"
+              filter="url(#volumetricShadow)"
             />
-            <path
-              d="M2.8 -11.5 C10.8 -10.5 15.8 -2 15.8 9.5 C15.8 13.8 8.2 14.5 2.8 10.2 Z"
-              fill="url(#vol3DLung)"
-              stroke="#99f6e4"
-              strokeWidth="0.4"
-            />
-            {/* Specular 3D Highlight on Lungs */}
-            <ellipse cx="-8.5" cy="-2" rx="2.2" ry="4.5" fill="rgba(255,255,255,0.22)" transform="rotate(-12 -8.5 -2)" />
-            <ellipse cx="7.5" cy="-2" rx="2.2" ry="4.5" fill="rgba(255,255,255,0.18)" transform="rotate(12 7.5 -2)" />
           </g>
 
-          {/* 3. 3D VOLUMETRIC BEATING HEART (Stage X: 54, Y: 69) */}
+          {/* 3. REAL 3D ANATOMICAL BEATING HEART (Stage X: 53, Y: 68) */}
           <g
-            transform={`translate(54, 69) scale(${1 + heartPulse * 0.18})`}
-            opacity={Math.max(0.85, getOrganGlow('heart', 54, 69))}
+            transform={`translate(53, 68) scale(${1 + heartPulse * 0.14})`}
+            opacity={Math.max(0.88, getOrganGlow('heart', 53, 68))}
           >
-            {/* Aortic Arch */}
-            <path d="M-1 -4.5 C-1 -7.5 2.5 -7.5 2.5 -4.2" stroke="#f43f5e" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-            {/* 3D Shaded Ventricles */}
-            <path
-              d="M0 -4.2 C-3 -6.8 -6.8 -4.2 -6.8 -0.5 C-6.8 3.8 -1.8 6.5 0 8.4 C1.8 6.5 6.8 3.8 6.8 -0.5 C6.8 -4.2 3 -6.8 0 -4.2 Z"
-              fill="url(#vol3DHeart)"
-              stroke="#fecdd3"
-              strokeWidth="0.45"
+            <image
+              href={staticFile('butterfly/organs/heart.png')}
+              x="-7.5"
+              y="-10"
+              width="15"
+              height="20"
+              preserveAspectRatio="xMidYMid meet"
+              filter="url(#volumetricShadow)"
             />
-            {/* 3D Specular Gloss on Heart */}
-            <ellipse cx="-2.2" cy="-1.5" rx="1.6" ry="2.4" fill="rgba(255,255,255,0.38)" transform="rotate(-20 -2.2 -1.5)" />
           </g>
 
-          {/* 4. 3D VOLUMETRIC LIVER (Stage X: 42, Y: 86) */}
+          {/* 4. REAL 3D ANATOMICAL LIVER (Stage X: 43, Y: 85) */}
           <g
-            transform="translate(43, 86)"
-            opacity={getOrganGlow('liver', 42, 86)}
+            transform="translate(43.5, 85)"
+            opacity={getOrganGlow('liver', 43, 85)}
           >
-            <path
-              d="M-8 -3.5 C0 -6 6.8 -3.5 8.8 2.2 C3.5 6.8 -5.8 6.8 -8 2.2 Z"
-              fill="url(#vol3DLiver)"
-              stroke="#fde68a"
-              strokeWidth="0.4"
+            <image
+              href={staticFile('butterfly/organs/liver.png')}
+              x="-10.5"
+              y="-8.5"
+              width="21"
+              height="17"
+              preserveAspectRatio="xMidYMid meet"
+              filter="url(#volumetricShadow)"
             />
-            <ellipse cx="-2.5" cy="-1.2" rx="3" ry="1.3" fill="rgba(255,255,255,0.25)" transform="rotate(-10 -2.5 -1.2)" />
           </g>
 
-          {/* 5. 3D VOLUMETRIC STOMACH (Stage X: 57, Y: 90) */}
+          {/* 5. REAL 3D ANATOMICAL STOMACH (Stage X: 57, Y: 88) */}
           <g
-            transform={`translate(56, 90) scale(${1 + Math.sin(frame * 0.08) * 0.035})`}
-            opacity={getOrganGlow('stomach', 57, 90)}
+            transform={`translate(56.5, 88) scale(${1 + Math.sin(frame * 0.08) * 0.03})`}
+            opacity={getOrganGlow('stomach', 57, 88)}
           >
-            <path
-              d="M-3.2 -5.5 C3.5 -6.5 7.8 -2.2 6.8 3.5 C5.8 7.8 -2.2 7.8 -5.8 4.4 C-6.8 1.2 -2.2 -1 -3.2 -5.5 Z"
-              fill="url(#vol3DStomach)"
-              stroke="#fed7aa"
-              strokeWidth="0.4"
+            <image
+              href={staticFile('butterfly/organs/stomach.png')}
+              x="-8.5"
+              y="-10.5"
+              width="17"
+              height="21"
+              preserveAspectRatio="xMidYMid meet"
+              filter="url(#volumetricShadow)"
             />
-            <ellipse cx="1.8" cy="-1.5" rx="1.6" ry="2.8" fill="rgba(255,255,255,0.28)" transform="rotate(15 1.8 -1.5)" />
           </g>
 
-          {/* 6. 3D VOLUMETRIC KIDNEYS & ADRENAL GLANDS (Stage X: 50, Y: 104) */}
+          {/* 6. REAL 3D ANATOMICAL KIDNEYS & ADRENAL GLANDS (Stage X: 50, Y: 103) */}
           <g
-            transform="translate(50, 104)"
-            opacity={getOrganGlow('kidney', 50, 104)}
+            transform="translate(50, 103)"
+            opacity={getOrganGlow('kidney', 50, 103)}
           >
-            <ellipse cx="-6.5" cy="0" rx="3.5" ry="5.2" fill="url(#vol3DKidney)" stroke="#e9d5ff" strokeWidth="0.4" />
-            <ellipse cx="6.5" cy="0" rx="3.5" ry="5.2" fill="url(#vol3DKidney)" stroke="#e9d5ff" strokeWidth="0.4" />
-            <ellipse cx="-7.3" cy="-1.5" rx="1" ry="2" fill="rgba(255,255,255,0.3)" />
-            <ellipse cx="5.7" cy="-1.5" rx="1" ry="2" fill="rgba(255,255,255,0.3)" />
-            {/* Adrenal Caps */}
-            <polygon points="-8.5,-4.6 -4.5,-4.6 -6.5,-7.4" fill="#fbbf24" stroke="#fef08a" strokeWidth="0.3" />
-            <polygon points="4.5,-4.6 8.5,-4.6 6.5,-7.4" fill="#fbbf24" stroke="#fef08a" strokeWidth="0.3" />
+            <image
+              href={staticFile('butterfly/organs/kidneys.png')}
+              x="-11.5"
+              y="-9.5"
+              width="23"
+              height="19"
+              preserveAspectRatio="xMidYMid meet"
+              filter="url(#volumetricShadow)"
+            />
           </g>
 
-          {/* 7. 3D VOLUMETRIC INTESTINES (Stage X: 50, Y: 118) */}
+          {/* 7. REAL 3D ANATOMICAL INTESTINES (Stage X: 50, Y: 118) */}
           <g
-            transform="translate(50, 117)"
+            transform="translate(50, 118)"
             opacity={getOrganGlow('intestine', 50, 118)}
           >
-            <rect
-              x="-9.5"
-              y="-6.5"
-              width="19"
-              height="13"
-              rx="4"
-              fill="url(#vol3DIntestine)"
-              stroke="#fef08a"
-              strokeWidth="0.4"
-            />
-            <path
-              d="M-6 -3 Q0 -5 6 -3 Q-5 0 6 3 Q0 5 -6 3"
-              stroke="rgba(255,255,255,0.55)"
-              strokeWidth="0.6"
-              fill="none"
-              strokeLinecap="round"
+            <image
+              href={staticFile('butterfly/organs/intestines.png')}
+              x="-12.5"
+              y="-14.5"
+              width="25"
+              height="29"
+              preserveAspectRatio="xMidYMid meet"
+              filter="url(#volumetricShadow)"
             />
           </g>
 
@@ -743,11 +709,12 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           <Img
             src={staticFile(activeWp.anchor.organMediaUrl)}
             style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              transform: `scale(${1.18 + systolicBeat * 0.08})`,
-              filter: 'contrast(1.25) saturate(1.3)',
+              width: '84%',
+              height: '84%',
+              margin: '8%',
+              objectFit: 'contain',
+              transform: `scale(${1.05 + systolicBeat * 0.08})`,
+              filter: `drop-shadow(0 0 10px ${accentColor}88) contrast(1.15) saturate(1.2)`,
             }}
           />
           {/* 3D Glass Sphere Highlight Overlay */}
