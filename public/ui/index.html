@@ -56,9 +56,19 @@
     <!-- 1. INPUT JUDUL & GENERATE BUTTON -->
     <div class="card-panel rounded-2xl p-6 sm:p-7 space-y-4">
       <div>
-        <label for="input-topic" class="block text-xs font-bold font-space uppercase text-sky-400 tracking-wider mb-2">
-          Topik "Apa yang Terjadi pada Tubuhmu Jika...":
-        </label>
+        <div class="flex items-center justify-between mb-2">
+          <label for="input-topic" class="block text-xs font-bold font-space uppercase text-sky-400 tracking-wider">
+            Topik "Apa yang Terjadi pada Tubuhmu Jika...":
+          </label>
+          <button
+            id="btn-brainstorm"
+            onclick="brainstormAiTopics()"
+            class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-400/40 transition flex items-center gap-1"
+          >
+            <span>🎲</span>
+            <span id="brainstorm-text">Acak Ide Judul AI</span>
+          </button>
+        </div>
         <input
           id="input-topic"
           type="text"
@@ -68,7 +78,7 @@
         />
 
         <!-- Quick Topic Inspirations (1-Klik Ide Evergreen) -->
-        <div class="mt-3 flex flex-wrap gap-1.5">
+        <div id="topic-chips" class="mt-3 flex flex-wrap gap-1.5">
           <button onclick="setTopic('Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur Selama 72 Jam')" class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-sky-950 text-slate-300 hover:text-sky-300 border border-slate-800 hover:border-sky-500/40 transition">
             🧠 Tidak Tidur 72 Jam
           </button>
@@ -197,6 +207,35 @@
   <script>
     function setTopic(text) {
       document.getElementById('input-topic').value = text;
+    }
+
+    async function brainstormAiTopics() {
+      const btn = document.getElementById('btn-brainstorm');
+      const chipsContainer = document.getElementById('topic-chips');
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span>⏳</span><span>AI Sedang Mencari Ide...</span>';
+
+      try {
+        const res = await fetch('/api/brainstorm');
+        const data = await res.json();
+        if (data.topics && data.topics.length > 0) {
+          // Langsung isi kolom input dengan ide nomor 1 dari AI
+          document.getElementById('input-topic').value = data.topics[0];
+
+          // Perbarui daftar chip dengan 6 ide baru dari AI
+          chipsContainer.innerHTML = data.topics.map((t) => {
+            const safeAttr = t.replace(/'/g, "\\'");
+            const shortLabel = t.replace(/^Apa yang Terjadi pada Tubuhmu Jika\s*/i, '');
+            return `<button onclick="setTopic('${safeAttr}')" class="topic-chip text-xs px-3 py-1.5 rounded-full bg-slate-900 border border-sky-800/60 text-sky-200 transition">🧬 ${shortLabel}</button>`;
+          }).join('');
+        }
+      } catch (err) {
+        console.warn('Gagal mengambil ide AI:', err);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }
     }
 
     async function loadCurrentStory() {

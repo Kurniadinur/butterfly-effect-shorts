@@ -63,49 +63,31 @@ function broadcastLog(data) {
   }
 }
 
-// Built-in Curated Viral Butterfly Effect Topics
+// Built-in Curated Viral Body Scenario Topics
 const CURATED_TOPICS = [
   {
-    title: 'Runtuhnya Tembok Berlin Karena Salah Baca Memo',
-    category: 'Sejarah Dunia',
-    trivialCause: 'Juru bicara salah membaca selembar catatan memo tanpa briefing',
-    globalCatastrophe: 'Tembok Berlin dijebol warga, Tirai Besi runtuh, dan Uni Soviet bubar dalam 1 malam',
-    hookSnippet: '9 November 1989. Satu kesalahan membaca catatan di siaran langsung TV... menghapus negara adidaya dalam 4 jam.',
+    title: 'Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur Selama 72 Jam',
+    category: 'Otak & Saraf Pusat',
   },
   {
-    title: 'Tenggelamnya Kapal Titanic Karena Kunci Teropong Tertinggal',
-    category: 'Maritim & Kelalaian',
-    trivialCause: 'Petugas pemegang kunci loker teropong dipindah tugas mendadak dan lupa menyerahkan kuncinya',
-    globalCatastrophe: 'Pengawas tak bisa melihat gunung es di malam gelap, Titanic menabrak dan 1.500 jiwa melayang',
-    hookSnippet: 'Tidak ada yang menyangka, tenggelamnya kapal termewah di dunia berawal dari kunci loker yang tertinggal di darat.',
+    title: 'Apa yang Terjadi pada Tubuhmu Jika Menahan Kencing Terlalu Lama',
+    category: 'Ginjal & Ekskresi',
   },
   {
-    title: 'Meledaknya Reaktor Nuklir Chernobyl Akibat Uji Coba Tengah Malam',
-    category: 'Bencana Sains & Nuklir',
-    trivialCause: 'Penundaan jadwal uji coba turbin listrik yang dipaksakan saat pergantian shift malam tanpa persiapan',
-    globalCatastrophe: 'Reaktor 4 meledak dahsyat, awan radiasi mematikan menyelimuti benua Eropa',
-    hookSnippet: 'Sebuah uji coba listrik tengah malam yang dipaksakan... menyulap kota modern berpenduduk 50.000 jiwa jadi zona mati selamanya.',
+    title: 'Apa yang Terjadi pada Tubuhmu Jika Minum Kopi Saat Perut Kosong Setiap Pagi',
+    category: 'Lambung & Hormon',
   },
   {
-    title: 'Pecahnya Perang Dunia I Karena Sopir Salah Belok',
-    category: 'Perang & Intelijen',
-    trivialCause: 'Sopir Putra Mahkota Franz Ferdinand salah mengambil jalan dan mematikan mesin di depan kafe',
-    globalCatastrophe: 'Penembak Gavrilo Princip melihat kesempatan emas, memicu Perang Dunia I yang menewaskan 20 juta orang',
-    hookSnippet: 'Satu belokan salah di jalan sempit Sarajevo... memicu perang besar yang menewaskan 20 juta manusia.',
+    title: 'Apa yang Terjadi pada Tubuhmu Jika Berhenti Makan Gula Selama 30 Hari',
+    category: 'Metabolisme & Darah',
   },
   {
-    title: 'Penemuan Antibiotik Penisilin Karena Peneliti Lupa Cuci Piring Laboratorium',
-    category: 'Penemuan Tidak Sengaja',
-    trivialCause: 'Alexander Fleming pergi berlibur dan meninggalkan cawan petri berisi bakteri terbuka dekat jendela',
-    globalCatastrophe: 'Jamur Penicillium liar mengkontaminasi cawan, melahirkan antibiotik yang menyelamatkan 200 juta nyawa',
-    hookSnippet: 'Meninggalkan cawan laboratorium kotor sebelum berlibur... tidak sengaja melahirkan obat penyelamat 200 juta nyawa.',
+    title: 'Apa yang Terjadi pada Tubuhmu Jika Hanya Minum Soda Tanpa Air Putih',
+    category: 'Ginjal & Jantung',
   },
   {
-    title: 'Kekalahan Napoleon di Pertempuran Waterloo Akibat Sakit Wasir',
-    category: 'Tokoh & Sejarah',
-    trivialCause: 'Napoleon Bonaparte menderita sakit wasir akut di pagi hari pertempuran',
-    globalCatastrophe: 'Terlambat memerintahkan serangan meriam, pasukan koalisi tiba, imperium Prancis tumbang selamanya',
-    hookSnippet: 'Rasa sakit fisik sepele di pagi hari... membuat sang kaisar penakluk Eropa kehilangan seluruh kekaisarannya.',
+    title: 'Apa yang Terjadi pada Tubuhmu Jika Makan Makanan Super Pedas Berlebihan',
+    category: 'Lambung & Reseptor Saraf',
   },
 ];
 
@@ -144,8 +126,11 @@ function getCurrentStory() {
   return null;
 }
 
-// Helper: Call AI (Gemini or Groq) to brainstorm viral topics
+// Helper: Call AI (Groq or Gemini) to brainstorm fresh viral "Apa yang Terjadi pada Tubuhmu Jika..." topics
 async function brainstormTopicsWithAI() {
+  const randomSeed = Math.floor(Math.random() * 100000);
+  const promptText = `Hasilkan 6 ide judul konten evergreen viral "Apa yang Terjadi pada Tubuhmu Jika..." (simulasi anatomi & medis tubuh manusia, kebiasaan sehari-hari, makanan/minuman, kondisi ekstrem, atau reaksi organ) yang sangat membuat penasaran penonton Indonesia. Gunakan variasi segar (Seed: ${randomSeed}). Format JSON murni: { "topics": [ { "title": "Apa yang Terjadi pada Tubuhmu Jika ...", "category": "Nama Organ Utama" } ] }`;
+
   const apiKey = process.env.GROQ_API_KEY;
   if (apiKey) {
     try {
@@ -160,15 +145,15 @@ async function brainstormTopicsWithAI() {
           messages: [
             {
               role: 'system',
-              content: 'You are a viral YouTube Shorts / TikTok Documentary Producer. Generate 6 shocking, high-contrast Butterfly Effect story concepts. Return pure valid JSON with an array named "topics".',
+              content: 'You are a viral Medical & Human Body Science Shorts Producer (Zack D. Films style). Return pure valid JSON with an array named "topics".',
             },
             {
               role: 'user',
-              content: 'Hasilkan 6 ide cerita Butterfly Effect (sebab sepele vs akibat bencana/kejadian masif) yang paling viral dan mencengangkan. Format JSON: { "topics": [ { "title": "...", "category": "...", "trivialCause": "...", "globalCatastrophe": "...", "hookSnippet": "..." } ] }',
+              content: promptText,
             },
           ],
           response_format: { type: 'json_object' },
-          temperature: 0.9,
+          temperature: 0.95,
         }),
       });
       const data = await res.json();
@@ -176,14 +161,7 @@ async function brainstormTopicsWithAI() {
       if (content) {
         const parsed = JSON.parse(content);
         if (parsed.topics && Array.isArray(parsed.topics)) {
-          // AI Causality & Viral Quality Supervisor
-          // Filters out generic trivia and keeps only true high-contrast Butterfly Effect stories
-          const verifiedTopics = parsed.topics.filter((t) => {
-            const hasTitle = t.title && t.title.length > 5;
-            const hasCause = t.trivialCause && t.trivialCause.length > 5;
-            const hasCatastrophe = t.globalCatastrophe && t.globalCatastrophe.length > 5;
-            return hasTitle && (hasCause || hasCatastrophe);
-          });
+          const verifiedTopics = parsed.topics.filter((t) => t.title && t.title.length > 10);
           if (verifiedTopics.length >= 3) {
             return verifiedTopics;
           }
