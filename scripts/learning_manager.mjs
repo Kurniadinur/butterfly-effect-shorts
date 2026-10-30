@@ -165,7 +165,44 @@ FORMAT OUTPUT JSON MURNI:
 }
 `;
 
-  // 1. Primary Audit via Groq LPU (Instant, no 429 quota exhaustion)
+  // 1. Primary Audit via Google Gemini (Antigravity High-Credit Engine)
+  try {
+    const rawResult = await rpmGovernor.executeWithGovernor('Fact-Check Supervisor', async (ai, key, keyNum) => {
+      const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
+      const res = await ai.models.generateContent({
+        model,
+        contents: [{ role: 'user', parts: [{ text: auditPrompt }] }],
+        config: { temperature: 0.2, topP: 0.95 },
+      });
+      return res.text;
+    });
+
+    let clean = rawResult.replace(/```json/gi, '').replace(/```/g, '').trim();
+    const fIdx = clean.indexOf('{');
+    const lIdx = clean.lastIndexOf('}');
+    if (fIdx !== -1 && lIdx !== -1) {
+      const parsed = JSON.parse(clean.slice(fIdx, lIdx + 1));
+      if (parsed && typeof parsed === 'object') {
+        let finalStory = storyData;
+        if (parsed.refinedStory && Array.isArray(parsed.refinedStory.nodes)) {
+          if (parsed.refinedStory.nodes.length >= (storyData.nodes?.length || 0)) {
+            finalStory = parsed.refinedStory;
+          }
+        }
+        return {
+          approved: parsed.approved !== false,
+          score: typeof parsed.score === 'number' ? parsed.score : 95,
+          retentionScore: typeof parsed.retentionScore === 'number' ? parsed.retentionScore : 96,
+          notes: parsed.notes || 'Sensor otonom Antigravity lolos verifikasi.',
+          storyData: sanitizeLayoutDensity(finalStory),
+        };
+      }
+    }
+  } catch (geminiErr) {
+    console.warn('[AI Supervisor] Gemini audit failover:', geminiErr.message);
+  }
+
+  // 2. Fallback to Groq LPU only if all Gemini keys are unavailable
   const trimmedGroqKey = (groqApiKey || process.env.GROQ_API_KEY || '').trim();
   if (trimmedGroqKey) {
     try {
@@ -207,8 +244,8 @@ FORMAT OUTPUT JSON MURNI:
             }
             return {
               approved: parsed.approved !== false,
-              score: typeof parsed.score === 'number' ? parsed.score : 94,
-              retentionScore: typeof parsed.retentionScore === 'number' ? parsed.retentionScore : 95,
+              score: typeof parsed.score === 'number' ? parsed.score : 92,
+              retentionScore: typeof parsed.retentionScore === 'number' ? parsed.retentionScore : 94,
               notes: parsed.notes || 'Sensor otonom lolos verifikasi.',
               storyData: sanitizeLayoutDensity(finalStory),
             };
@@ -216,45 +253,8 @@ FORMAT OUTPUT JSON MURNI:
         }
       }
     } catch (err) {
-      console.warn('[AI Supervisor] Groq audit failover to Gemini:', err.message);
+      console.warn('[AI Supervisor] Groq fallback failed:', err.message);
     }
-  }
-
-  // 2. Fallback to Gemini if Groq unavailable
-  try {
-    const rawResult = await rpmGovernor.executeWithGovernor('Fact-Check Supervisor', async (ai, key, keyNum) => {
-      const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
-      const res = await ai.models.generateContent({
-        model,
-        contents: [{ role: 'user', parts: [{ text: auditPrompt }] }],
-        config: { temperature: 0.2, topP: 0.95 },
-      });
-      return res.text;
-    });
-
-    let clean = rawResult.replace(/```json/gi, '').replace(/```/g, '').trim();
-    const fIdx = clean.indexOf('{');
-    const lIdx = clean.lastIndexOf('}');
-    if (fIdx !== -1 && lIdx !== -1) {
-      const parsed = JSON.parse(clean.slice(fIdx, lIdx + 1));
-      if (parsed && typeof parsed === 'object') {
-        let finalStory = storyData;
-        if (parsed.refinedStory && Array.isArray(parsed.refinedStory.nodes)) {
-          if (parsed.refinedStory.nodes.length >= (storyData.nodes?.length || 0)) {
-            finalStory = parsed.refinedStory;
-          }
-        }
-        return {
-          approved: parsed.approved !== false,
-          score: typeof parsed.score === 'number' ? parsed.score : 92,
-          retentionScore: typeof parsed.retentionScore === 'number' ? parsed.retentionScore : 94,
-          notes: parsed.notes || 'Sensor otonom lolos verifikasi.',
-          storyData: sanitizeLayoutDensity(finalStory),
-        };
-      }
-    }
-  } catch (geminiErr) {
-    // silently catch
   }
 
   return {

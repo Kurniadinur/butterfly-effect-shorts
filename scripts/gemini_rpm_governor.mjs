@@ -53,14 +53,13 @@ class GeminiRpmGovernor {
    */
   getBestModelForKey(keyIndex, purpose = 'text') {
     if (purpose === 'tts') {
-      return 'gemini-3.8-flash-lite-tts';
+      return 'gemini-3.8-flash-tts';
     }
     if (purpose === 'vision') {
-      // gemini-3.5-flash-lite has 100% uptime, zero 503 errors, and sub-2s vision audit
-      return 'gemini-3.5-flash-lite';
+      return 'gemini-3.5-flash';
     }
-    // gemini-3.5-flash-lite provides reliable sub-second inference across all free & paid keys
-    return 'gemini-3.5-flash-lite';
+    // Gemini 3.5 Flash is Antigravity's powerhouse model for deep medical intelligence & creative writing
+    return process.env.GEMINI_MODEL || 'gemini-3.5-flash';
   }
 
   /**

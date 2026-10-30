@@ -115,11 +115,39 @@ function getCurrentStory() {
   return null;
 }
 
-// Helper: Call AI (Groq or Gemini) to brainstorm fresh viral "Apa yang Terjadi pada Tubuhmu Jika..." topics
+// Helper: Call AI (Gemini Antigravity primary, Groq fallback) to brainstorm fresh viral "Apa yang Terjadi pada Tubuhmu Jika..." topics
 async function brainstormTopicsWithAI() {
   const randomSeed = Math.floor(Math.random() * 100000);
   const promptText = `Hasilkan 6 ide judul konten evergreen viral "Apa yang Terjadi pada Tubuhmu Jika..." (simulasi anatomi & medis tubuh manusia, kebiasaan sehari-hari, makanan/minuman, kondisi ekstrem, atau reaksi organ) yang sangat membuat penasaran penonton Indonesia. Gunakan variasi segar (Seed: ${randomSeed}). Format JSON murni: { "topics": [ { "title": "Apa yang Terjadi pada Tubuhmu Jika ...", "category": "Nama Organ Utama" } ] }`;
 
+  // 1. Primary via Google Gemini (Antigravity High-Credit Engine)
+  try {
+    const rawResult = await rpmGovernor.executeWithGovernor('Brainstorm Topics', async (ai, key, keyNum) => {
+      const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
+      const res = await ai.models.generateContent({
+        model,
+        contents: promptText,
+        config: { temperature: 0.95 },
+      });
+      return res.text;
+    });
+    let clean = rawResult.replace(/```json/gi, '').replace(/```/g, '').trim();
+    const fIdx = clean.indexOf('{');
+    const lIdx = clean.lastIndexOf('}');
+    if (fIdx !== -1 && lIdx !== -1) {
+      const parsed = JSON.parse(clean.slice(fIdx, lIdx + 1));
+      if (parsed.topics && Array.isArray(parsed.topics)) {
+        const verifiedTopics = parsed.topics.filter((t) => t.title && t.title.length > 10);
+        if (verifiedTopics.length >= 3) {
+          return verifiedTopics;
+        }
+      }
+    }
+  } catch (geminiErr) {
+    console.warn('Gemini brainstorm failed, trying Groq fallback:', geminiErr.message);
+  }
+
+  // 2. Fallback to Groq LPU only if needed
   const apiKey = process.env.GROQ_API_KEY;
   if (apiKey) {
     try {

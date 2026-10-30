@@ -74,54 +74,55 @@ OUTPUT FORMAT JSON MURNI (TANPA PREAMBLE):
 }`;
 
   let rawOutput = '';
-  const groqKey = (process.env.GROQ_API_KEY || '').trim();
 
-  // 1. Primary via Groq LPU (Instant, no 429 quota exhaustion)
-  if (groqKey) {
-    try {
-      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${groqKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'qwen/qwen3.8-27b',
-          messages: [
-            {
-              role: 'system',
-              content: 'You are an elite YouTube Shorts Growth Strategist. Return pure valid JSON only.',
-            },
-            { role: 'user', content: prompt },
-          ],
-          response_format: { type: 'json_object' },
-          temperature: 0.7,
-        }),
+  // 1. Primary via Google Gemini (Antigravity High-Credit Engine)
+  try {
+    const winner = await rpmGovernor.executeWithGovernor('Publishing Pack', async (ai, key, keyNum) => {
+      const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
+      const res = await ai.models.generateContent({
+        model,
+        contents: prompt,
       });
-      const data = await res.json();
-      if (data.choices?.[0]?.message?.content) {
-        rawOutput = data.choices[0].message.content;
-        console.log('      ✓ [Groq LPU Turbo] Paket publikasi viral berhasil disusun!');
-      }
-    } catch (err) {
-      // fallback
-    }
+      return { text: res.text, keyIndex: keyNum, model };
+    });
+    rawOutput = winner.text;
+    console.log('      ✓ [Gemini Antigravity] Paket publikasi viral berhasil disusun!');
+  } catch (geminiErr) {
+    console.warn('      [Gemini Notice] Fallback ke Groq:', geminiErr.message);
   }
 
-  // 2. Fallback to Gemini if needed
+  // 2. Fallback to Groq LPU only if needed
   if (!rawOutput) {
-    try {
-      const winner = await rpmGovernor.executeWithGovernor('Publishing Pack', async (ai, key, keyNum) => {
-        const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
-        const res = await ai.models.generateContent({
-          model,
-          contents: prompt,
+    const groqKey = (process.env.GROQ_API_KEY || '').trim();
+    if (groqKey) {
+      try {
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${groqKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: 'qwen/qwen3.8-27b',
+            messages: [
+              {
+                role: 'system',
+                content: 'You are an elite YouTube Shorts Growth Strategist. Return pure valid JSON only.',
+              },
+              { role: 'user', content: prompt },
+            ],
+            response_format: { type: 'json_object' },
+            temperature: 0.7,
+          }),
         });
-        return { text: res.text, keyIndex: keyNum, model };
-      });
-      rawOutput = winner.text;
-    } catch (geminiErr) {
-      console.warn('      ⚠️ [Publishing Pack] Dilewati sementara.');
+        const data = await res.json();
+        if (data.choices?.[0]?.message?.content) {
+          rawOutput = data.choices[0].message.content;
+          console.log('      ✓ [Groq Fallback] Paket publikasi viral berhasil disusun!');
+        }
+      } catch (err) {
+        console.warn('      ⚠️ [Publishing Pack] Dilewati sementara.');
+      }
     }
   }
 
