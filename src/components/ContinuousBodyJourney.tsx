@@ -55,7 +55,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageY: 34,
     zoomScale: 1.35,
     color: '#818cf8',
-    organMediaUrl: 'butterfly/organs/nerves.png',
+    organMediaUrl: 'butterfly/organs/brain.png',
     calloutSide: 'left',
   },
   lungs: {
@@ -592,20 +592,71 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             style={{ mixBlendMode: 'screen' }}
           />
 
-          {/* 0. REAL 3D CENTRAL NERVOUS SYSTEM & SPINAL CORD (Stage X: 50, Y: 34) */}
+          {/* 0. NATIVE FULL-BODY SPINAL CORD & NEURAL TRANSMISSION (100% Aligned to Large Body Silhouette) */}
           <g
-            transform={`translate(50, 34) scale(${1 + Math.sin(frame * 0.12) * 0.02 + getOrganFocusWeight('nerves') * 0.07})`}
             opacity={getOrganGlow('nerves', 50, 34)}
-            style={{ filter: getOrganVisualFilter('nerves') }}
+            style={{ pointerEvents: 'none' }}
           >
-            <image
-              href={staticFile('butterfly/organs/nerves.png')}
-              x="-9"
-              y="-16"
-              width="18"
-              height="32"
-              preserveAspectRatio="xMidYMid meet"
+            {/* Main Central Spinal Cord Column (from Brainstem y:18 down to Sacrum y:86) */}
+            <path
+              d="M 50 18 L 50 86"
+              stroke="#38bdf8"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              style={{
+                filter: 'drop-shadow(0px 0px 3px #38bdf8) drop-shadow(0px 0px 6px #818cf8)',
+                opacity: 0.85 + Math.sin(frame * 0.15) * 0.15,
+              }}
             />
+            {/* Inner Golden Neural Conduction Core */}
+            <path
+              d="M 50 18 L 50 86"
+              stroke="#fef08a"
+              strokeWidth="0.5"
+              strokeLinecap="round"
+              opacity="0.9"
+            />
+            {/* Symmetrical Bilateral Spinal Nerve Roots Aligned to Ribs and Spine */}
+            {[24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 65, 72, 80].map((yLevel, i) => {
+              const spread = Math.min(18, 4 + (yLevel < 55 ? (yLevel - 20) * 0.42 : (86 - yLevel) * 0.35));
+              const pulseOffset = (frame * 0.1 + i * 0.4) % (Math.PI * 2);
+              const branchGlow = 0.65 + Math.sin(pulseOffset) * 0.35;
+              return (
+                <g key={`nerve-root-${yLevel}`} opacity={branchGlow}>
+                  <path
+                    d={`M 50 ${yLevel} Q ${50 - spread * 0.5} ${yLevel + 1.2} ${50 - spread} ${yLevel + 3}`}
+                    fill="none"
+                    stroke="#38bdf8"
+                    strokeWidth="0.45"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d={`M 50 ${yLevel} Q ${50 + spread * 0.5} ${yLevel + 1.2} ${50 + spread} ${yLevel + 3}`}
+                    fill="none"
+                    stroke="#38bdf8"
+                    strokeWidth="0.45"
+                    strokeLinecap="round"
+                  />
+                </g>
+              );
+            })}
+            {/* Traveling Action Potential Pulses (Signals Traveling Up from Bladder/Pelvis to Brain) */}
+            {[0, 1, 2].map((pIdx) => {
+              const travelProgress = ((frame * 0.04 + pIdx * 0.33) % 1);
+              const signalY = 84 - travelProgress * (84 - 18);
+              return (
+                <circle
+                  key={`action-pulse-${pIdx}`}
+                  cx="50"
+                  cy={signalY}
+                  r={0.9}
+                  fill="#ffffff"
+                  style={{
+                    filter: 'drop-shadow(0px 0px 2.5px #fef08a) drop-shadow(0px 0px 5px #38bdf8)',
+                  }}
+                />
+              );
+            })}
           </g>
 
           {/* 0B. REAL 3D BLOOD VESSELS & VASCULAR TREE (Stage X: 51, Y: 52) */}
