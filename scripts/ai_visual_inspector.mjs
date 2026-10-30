@@ -46,16 +46,17 @@ Judul/Aksi: "${context.headline || ''}"
 Subjudul/Keterangan: "${context.caption || ''}"
 Lokasi/Waktu: "${context.timeOrYear || ''}"
 
-KRITERIA EVALUASI KETAT:
-1. SAFE-ZONE INTEGRITY (Kritis):
-   - Apakah teks judul, badge, atau subtitle berada di zona aman 9:16?
-   - Pastikan teks TIDAK terpotong atau tertutup tombol Like/Comment di sisi kanan (x > 940) atau info profil di sisi bawah (y > 1750).
-2. TIPOGRAFI & KETERBACAAN (LEGIBILITY):
-   - Apakah font memiliki kontras tinggi terhadap latar belakang?
-   - Apakah teks tidak terlalu panjang dan nyaman dibaca cepat oleh penonton mobile?
-3. ESTETIKA NOIR-FORENSIK & DENSITAS VISUAL:
-   - Apakah ada ruang hitam kosong mati (dead void)? (Harus memiliki ambient lighting/grid/ruler meja investigasi).
-   - Apakah ada gambar garis/stickman kaku murahan? (Dilarang keras stickman primitif).
+KRITERIA EVALUASI KETAT (GAYA A: ZACK D. FILMS / CLEAN CINEMATIC 3D MEDICAL):
+1. SAFE-ZONE INTEGRITY (Kritis 9:16):
+   - Apakah teks judul, pill badge, atau subtitle berada di zona aman 9:16?
+   - Pastikan teks TIDAK terpotong atau tertutup tombol Like/Comment di sisi kanan atau info profil di sisi bawah.
+2. VISIBILITAS ANATOMI 3D & ORGAN (GAYA A ZACK D. FILMS):
+   - Apakah tubuh 3D transparan dan organ tubuh aktif terlihat jelas, dramatis, dan menyala?
+   - DILARANG KERAS ada kotak hitam solid/tebal yang menutupi perut atau organ tubuh!
+   - Desain UI WAJIB berupa Floating Glass Pills (kapsul kaca ramping transparan modern).
+3. TIPOGRAFI & KETERBACAAN SENSASI MANUSIA:
+   - Apakah label sensasi manusia di bagian bawah berupa kapsul ringkas padat (maksimal 4-6 kata) dengan kontras tinggi?
+   - Apakah subtitle kinetik di bagian bawah bersih dengan highlight kuning menyala?
 4. REKOMENDASI AUTO-POLISH (Jika skor < 88 atau ada yang bisa disempurnakan):
    - Berikan perbaikan konkret yang bisa langsung diterapkan ke storyboard Remotion.
 

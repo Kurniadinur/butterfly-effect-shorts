@@ -571,51 +571,11 @@ async function generateStoryboard(topic) {
   }
   fs.mkdirSync(storyMediaDir, { recursive: true });
 
-  // Helper to strictly detect if a scene is explicitly about a specific historical person or authentic object
-  function isExplicitHistoricalSubject(txt, query) {
-    const combined = (txt + ' ' + (query || '')).toLowerCase();
-    const explicitEntities = [
-      'schabowski', 'dyatlov', 'fleming', 'princip', 'fleet', 'ferdinand',
-      'napoleon', 'krenz', 'legasov', 'gorbachev', 'hitler', 'stalin', 'churchill',
-      'kennedy', 'lincoln', 'caesar', 'einstein', 'oppenheimer', 'newton',
-      'titanic', 'brandenburg gate', 'lusitania', 'carpathia',
-      'bismarck', 'archduke', 'gavrilo', 'edward smith', 'captain smith',
-      'akimov', 'toptunov', 'valery legasov', 'boris shcherbina', 'j. bruce ismay',
-      'columbus', 'galileo', 'darwin', 'edison', 'tesla', 'fdr', 'truman',
-      'hirohito', 'nixon', 'khrushchev', 'trotsky', 'lenin', 'cleopatra'
-    ];
-    return explicitEntities.some((entity) => combined.includes(entity));
-  }
+  console.log(`\n      [Visual Hunter (Clean Slate)] Kurasi visual 3D otonom untuk: "${storyData.title || topic}"...`);
 
-  function isHistoricalClimaxEvent(txt, query) {
-    const combined = (txt + ' ' + (query || '')).toLowerCase();
-    const climaxEntities = [
-      'world war', 'perang dunia', 'berlin wall', 'tembok berlin',
-      'chernobyl', 'reaktor chernobyl', 'titanic', 'kapal titanic',
-      'cold war', 'perang dingin', 'watergate', 'hiroshima'
-    ];
-    return climaxEntities.some((entity) => combined.includes(entity));
-  }
-
-  console.log(`\n      [Visual Hunter (Clean Slate)] Kurasi visual otonom untuk: "${storyData.title || topic}"...`);
-
-  // Tentukan arketipe animasi pembuka yang dramatis & 100% relevan sebagai fallback
+  // Arketipe pembuka medis 3D murni
   if (!storyData.hook.archetype) {
-    const graphicNode = storyData.nodes.find(
-      (n) => n.directorType && n.directorType !== 'forensic-dossier'
-    );
-    const topLower = topic.toLowerCase();
-    storyData.hook.archetype = graphicNode
-      ? graphicNode.directorType
-      : topLower.includes('berlin')
-      ? 'wall-demolition'
-      : topLower.includes('chernobyl')
-      ? 'reactor-meltdown'
-      : topLower.includes('titanic')
-      ? 'maritime-disaster'
-      : topLower.includes('sopir') || topLower.includes('mobil')
-      ? 'car-route'
-      : 'memo-investigation';
+    storyData.hook.archetype = 'anatomical-scan';
   }
 
   // Continuous 1-Body Anatomical Journey Mode:

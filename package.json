@@ -1,7 +1,7 @@
 {
   "name": "ButterflyProject",
   "version": "1.0.0",
-  "description": "Butterfly Effect Forensic Documentary in Remotion",
+  "description": "Autonomous AI 3D Medical & Human Body Simulation Video Engine (Gaya A: Zack D. Films)",
   "repository": {},
   "license": "UNLICENSED",
   "engines": {
@@ -29,6 +29,7 @@
   },
   "scripts": {
     "dev": "remotion studio",
+    "autonomous": "node scripts/autonomous_content_engine.mjs",
     "director": "node scripts/ai_director_pipeline.mjs",
     "render": "remotion render src/index.ts ButterflyEffect-Shorts out/butterfly_effect_shorts.mp4",
     "render:shorts": "remotion render src/index.ts ButterflyEffect-Shorts out/butterfly_effect_shorts.mp4",
