@@ -38,7 +38,7 @@ console.log('================================================================');
 console.log('   AI 3D MEDICAL X-RAY & BODY SCANNER PIPELINE (ANTIGRAVITY)    ');
 console.log('================================================================');
 console.log(`Topik Naskah : "${topic}"`);
-console.log(`AI Engine    : Google Gemini 3.8 Flash (Antigravity High-Credit Engine)`);
+console.log(`AI Engine    : Google Gemini (${rpmGovernor.getBestModelForKey(1, 'text')}) (Antigravity Engine)`);
 console.log(`Audio Sync   : Groq Cloud LPU (Whisper Large V3)`);
 console.log('================================================================\n');
 
@@ -342,10 +342,10 @@ async function generateStoryboard(topic) {
   const t0 = Date.now();
   let result = '';
 
-  // 1. PRIMARY AI STORYBOARD ENGINE: Google Gemini 3.5 Flash (Antigravity Model)
+  // 1. PRIMARY AI STORYBOARD ENGINE: Google Gemini (Antigravity Model)
   if (API_KEYS.length > 0) {
     try {
-      console.log(`      ⚡ Menjalankan AI Storyboard Engine via Google Gemini 3.5 Flash (Antigravity)...`);
+      console.log(`      ⚡ Menjalankan AI Storyboard Engine via Google Gemini (${rpmGovernor.getBestModelForKey(1, 'text')}) (Antigravity)...`);
       result = await rpmGovernor.executeWithGovernor('Antigravity Storyboard Engine', async (ai, key, keyNum) => {
         const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
         const res = await ai.models.generateContent({
@@ -355,7 +355,7 @@ async function generateStoryboard(topic) {
         });
         return res.text;
       });
-      console.log(`      ✓ Naskah berhasil disusun via Gemini 3.5 Flash (Antigravity)!`);
+      console.log(`      ✓ Naskah berhasil disusun via Antigravity Engine (${rpmGovernor.getBestModelForKey(1, 'text')})!`);
     } catch (geminiErr) {
       console.warn(`      [Gemini Notice] Governor error: ${geminiErr.message}. Mencoba racing key langsung...`);
       const availableKeys = rpmGovernor.getAvailableKeysForRace();
@@ -647,7 +647,7 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
     .replace(/["“”«»]/g, '')
     .trim();
 
-  // 1. Primary: Google Gemini 3.5 Flash for Doctor Voiceover Prosody & Natural Cadence
+  // 1. Primary: Antigravity Voiceover Prosody & Natural Cadence
   try {
     const rawResult = await rpmGovernor.executeWithGovernor('Doctor Vocal Supervisor', async (ai, key, keyNum) => {
       const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
