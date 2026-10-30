@@ -1,0 +1,2610 @@
+{
+  "model": "whisper-large-v3",
+  "engine": "Groq Cloud LPU",
+  "totalDurationSec": 88.32,
+  "allWords": [
+    {
+      "word": "Kamu",
+      "start": 0,
+      "end": 0.34
+    },
+    {
+      "word": "mungkin",
+      "start": 0.34,
+      "end": 0.56
+    },
+    {
+      "word": "sering",
+      "start": 0.56,
+      "end": 0.78
+    },
+    {
+      "word": "menunda",
+      "start": 0.78,
+      "end": 1.06
+    },
+    {
+      "word": "ke",
+      "start": 1.06,
+      "end": 1.22
+    },
+    {
+      "word": "toilet",
+      "start": 1.22,
+      "end": 1.46
+    },
+    {
+      "word": "karena",
+      "start": 1.46,
+      "end": 1.84
+    },
+    {
+      "word": "malas",
+      "start": 1.84,
+      "end": 2.08
+    },
+    {
+      "word": "beranjak",
+      "start": 2.08,
+      "end": 2.48
+    },
+    {
+      "word": "dari",
+      "start": 2.48,
+      "end": 2.68
+    },
+    {
+      "word": "kursi",
+      "start": 2.68,
+      "end": 3
+    },
+    {
+      "word": "atau",
+      "start": 3,
+      "end": 3.22
+    },
+    {
+      "word": "pekerjaan.",
+      "start": 3.22,
+      "end": 3.76
+    },
+    {
+      "word": "Tapi",
+      "start": 4.28,
+      "end": 4.42
+    },
+    {
+      "word": "taukah",
+      "start": 4.42,
+      "end": 4.68
+    },
+    {
+      "word": "kamu,",
+      "start": 4.68,
+      "end": 5.2
+    },
+    {
+      "word": "dibalik",
+      "start": 5.2,
+      "end": 5.44
+    },
+    {
+      "word": "rasa",
+      "start": 5.44,
+      "end": 5.64
+    },
+    {
+      "word": "santai",
+      "start": 5.64,
+      "end": 5.86
+    },
+    {
+      "word": "itu,",
+      "start": 5.86,
+      "end": 6.5
+    },
+    {
+      "word": "tekanan",
+      "start": 6.5,
+      "end": 6.78
+    },
+    {
+      "word": "cairan",
+      "start": 6.78,
+      "end": 7.14
+    },
+    {
+      "word": "di",
+      "start": 7.14,
+      "end": 7.24
+    },
+    {
+      "word": "rongga",
+      "start": 7.24,
+      "end": 7.4
+    },
+    {
+      "word": "panggulmu",
+      "start": 7.4,
+      "end": 7.84
+    },
+    {
+      "word": "sedang",
+      "start": 7.84,
+      "end": 8.06
+    },
+    {
+      "word": "menumpuk",
+      "start": 8.06,
+      "end": 8.48
+    },
+    {
+      "word": "dan",
+      "start": 8.48,
+      "end": 8.66
+    },
+    {
+      "word": "mulai",
+      "start": 8.66,
+      "end": 8.9
+    },
+    {
+      "word": "merusak",
+      "start": 8.9,
+      "end": 9.24
+    },
+    {
+      "word": "kenyamanan",
+      "start": 9.24,
+      "end": 9.78
+    },
+    {
+      "word": "tubuhmu",
+      "start": 9.78,
+      "end": 10.08
+    },
+    {
+      "word": "secara",
+      "start": 10.08,
+      "end": 10.32
+    },
+    {
+      "word": "perlahan.",
+      "start": 10.32,
+      "end": 10.68
+    },
+    {
+      "word": "Urin",
+      "start": 11.46,
+      "end": 11.56
+    },
+    {
+      "word": "mulai",
+      "start": 11.56,
+      "end": 11.76
+    },
+    {
+      "word": "mengisi",
+      "start": 11.76,
+      "end": 12
+    },
+    {
+      "word": "penuh",
+      "start": 12,
+      "end": 12.22
+    },
+    {
+      "word": "ruang",
+      "start": 12.22,
+      "end": 12.46
+    },
+    {
+      "word": "kantung",
+      "start": 12.46,
+      "end": 12.7
+    },
+    {
+      "word": "kemih,",
+      "start": 12.7,
+      "end": 13.42
+    },
+    {
+      "word": "membuat",
+      "start": 13.42,
+      "end": 13.66
+    },
+    {
+      "word": "dinding",
+      "start": 13.66,
+      "end": 13.94
+    },
+    {
+      "word": "otot",
+      "start": 13.94,
+      "end": 14.2
+    },
+    {
+      "word": "elastisnya",
+      "start": 14.2,
+      "end": 14.8
+    },
+    {
+      "word": "meregang",
+      "start": 14.8,
+      "end": 15.08
+    },
+    {
+      "word": "perlahan",
+      "start": 15.08,
+      "end": 15.52
+    },
+    {
+      "word": "tanpa",
+      "start": 15.52,
+      "end": 15.84
+    },
+    {
+      "word": "rasa",
+      "start": 15.84,
+      "end": 16.04
+    },
+    {
+      "word": "sakit.",
+      "start": 16.04,
+      "end": 16.34
+    },
+    {
+      "word": "Reseptor",
+      "start": 17.1,
+      "end": 17.34
+    },
+    {
+      "word": "regang",
+      "start": 17.34,
+      "end": 17.6
+    },
+    {
+      "word": "di",
+      "start": 17.6,
+      "end": 17.76
+    },
+    {
+      "word": "dinding",
+      "start": 17.76,
+      "end": 17.92
+    },
+    {
+      "word": "kantung",
+      "start": 17.92,
+      "end": 18.18
+    },
+    {
+      "word": "kemih",
+      "start": 18.18,
+      "end": 18.52
+    },
+    {
+      "word": "mengirim",
+      "start": 18.52,
+      "end": 18.92
+    },
+    {
+      "word": "sinyal",
+      "start": 18.92,
+      "end": 19.22
+    },
+    {
+      "word": "listrik",
+      "start": 19.22,
+      "end": 19.48
+    },
+    {
+      "word": "pertama",
+      "start": 19.48,
+      "end": 19.96
+    },
+    {
+      "word": "ke",
+      "start": 19.96,
+      "end": 20.44
+    },
+    {
+      "word": "sum-sum",
+      "start": 20.44,
+      "end": 20.7
+    },
+    {
+      "word": "tulang",
+      "start": 20.7,
+      "end": 20.9
+    },
+    {
+      "word": "belakang",
+      "start": 20.9,
+      "end": 21.28
+    },
+    {
+      "word": "dan",
+      "start": 21.28,
+      "end": 21.44
+    },
+    {
+      "word": "otak.",
+      "start": 21.44,
+      "end": 22.34
+    },
+    {
+      "word": "Kantung",
+      "start": 22.62,
+      "end": 22.64
+    },
+    {
+      "word": "kemih",
+      "start": 22.64,
+      "end": 22.8
+    },
+    {
+      "word": "yang",
+      "start": 22.8,
+      "end": 22.94
+    },
+    {
+      "word": "makin",
+      "start": 22.94,
+      "end": 23.06
+    },
+    {
+      "word": "penuh",
+      "start": 23.06,
+      "end": 23.3
+    },
+    {
+      "word": "menekan",
+      "start": 23.3,
+      "end": 23.64
+    },
+    {
+      "word": "dinding",
+      "start": 23.64,
+      "end": 23.86
+    },
+    {
+      "word": "otot",
+      "start": 23.86,
+      "end": 24.16
+    },
+    {
+      "word": "di",
+      "start": 24.16,
+      "end": 24.3
+    },
+    {
+      "word": "sekitarnya,",
+      "start": 24.3,
+      "end": 25.18
+    },
+    {
+      "word": "memicu",
+      "start": 25.18,
+      "end": 25.4
+    },
+    {
+      "word": "rasa",
+      "start": 25.4,
+      "end": 25.64
+    },
+    {
+      "word": "mulas",
+      "start": 25.64,
+      "end": 26.02
+    },
+    {
+      "word": "dan",
+      "start": 26.02,
+      "end": 26.24
+    },
+    {
+      "word": "gelisah",
+      "start": 26.24,
+      "end": 26.6
+    },
+    {
+      "word": "di",
+      "start": 26.6,
+      "end": 26.74
+    },
+    {
+      "word": "kursi.",
+      "start": 26.74,
+      "end": 27.34
+    },
+    {
+      "word": "Kantung",
+      "start": 27.62,
+      "end": 27.86
+    },
+    {
+      "word": "kemih",
+      "start": 27.86,
+      "end": 28.02
+    },
+    {
+      "word": "yang",
+      "start": 28.02,
+      "end": 28.14
+    },
+    {
+      "word": "membengkak,",
+      "start": 28.14,
+      "end": 28.84
+    },
+    {
+      "word": "mendesak",
+      "start": 28.84,
+      "end": 29.08
+    },
+    {
+      "word": "usus",
+      "start": 29.08,
+      "end": 29.3
+    },
+    {
+      "word": "besar",
+      "start": 29.3,
+      "end": 29.58
+    },
+    {
+      "word": "di",
+      "start": 29.58,
+      "end": 29.72
+    },
+    {
+      "word": "belakangnya,",
+      "start": 29.72,
+      "end": 30.58
+    },
+    {
+      "word": "menciptakan",
+      "start": 30.6,
+      "end": 30.94
+    },
+    {
+      "word": "sensasi",
+      "start": 30.94,
+      "end": 31.3
+    },
+    {
+      "word": "melilit",
+      "start": 31.3,
+      "end": 31.58
+    },
+    {
+      "word": "yang",
+      "start": 31.58,
+      "end": 31.86
+    },
+    {
+      "word": "bikin",
+      "start": 31.86,
+      "end": 32.16
+    },
+    {
+      "word": "posisi",
+      "start": 32.16,
+      "end": 32.5
+    },
+    {
+      "word": "duduk",
+      "start": 32.5,
+      "end": 32.78
+    },
+    {
+      "word": "serba",
+      "start": 32.78,
+      "end": 33.06
+    },
+    {
+      "word": "salah.",
+      "start": 33.06,
+      "end": 33.76
+    },
+    {
+      "word": "Otot",
+      "start": 33.96,
+      "end": 34.06
+    },
+    {
+      "word": "panggul",
+      "start": 34.06,
+      "end": 34.36
+    },
+    {
+      "word": "dan",
+      "start": 34.36,
+      "end": 34.52
+    },
+    {
+      "word": "sphincter",
+      "start": 34.52,
+      "end": 34.86
+    },
+    {
+      "word": "bekerja",
+      "start": 34.86,
+      "end": 35.24
+    },
+    {
+      "word": "ekstra",
+      "start": 35.24,
+      "end": 35.54
+    },
+    {
+      "word": "keras",
+      "start": 35.54,
+      "end": 35.8
+    },
+    {
+      "word": "menahan",
+      "start": 35.8,
+      "end": 36.14
+    },
+    {
+      "word": "keluaran",
+      "start": 36.14,
+      "end": 36.52
+    },
+    {
+      "word": "urin,",
+      "start": 36.52,
+      "end": 37.2
+    },
+    {
+      "word": "memicu",
+      "start": 37.26,
+      "end": 37.5
+    },
+    {
+      "word": "kram",
+      "start": 37.5,
+      "end": 37.7
+    },
+    {
+      "word": "dan",
+      "start": 37.7,
+      "end": 37.9
+    },
+    {
+      "word": "tegang",
+      "start": 37.9,
+      "end": 38.18
+    },
+    {
+      "word": "di",
+      "start": 38.18,
+      "end": 38.36
+    },
+    {
+      "word": "selangkangan.",
+      "start": 38.36,
+      "end": 39.1
+    },
+    {
+      "word": "Sinyal",
+      "start": 39.5,
+      "end": 39.68
+    },
+    {
+      "word": "darurat",
+      "start": 39.68,
+      "end": 40
+    },
+    {
+      "word": "dari",
+      "start": 40,
+      "end": 40.22
+    },
+    {
+      "word": "rongga",
+      "start": 40.22,
+      "end": 40.4
+    },
+    {
+      "word": "panggul",
+      "start": 40.4,
+      "end": 40.74
+    },
+    {
+      "word": "membanjiri",
+      "start": 40.74,
+      "end": 41.26
+    },
+    {
+      "word": "kortex",
+      "start": 41.26,
+      "end": 41.66
+    },
+    {
+      "word": "otak,",
+      "start": 41.66,
+      "end": 42.48
+    },
+    {
+      "word": "membuatmu",
+      "start": 42.46,
+      "end": 42.86
+    },
+    {
+      "word": "susah",
+      "start": 42.86,
+      "end": 43.04
+    },
+    {
+      "word": "konsentrasi",
+      "start": 43.04,
+      "end": 43.58
+    },
+    {
+      "word": "dan",
+      "start": 43.58,
+      "end": 43.74
+    },
+    {
+      "word": "cemas.",
+      "start": 43.74,
+      "end": 44.5
+    },
+    {
+      "word": "Tekanan",
+      "start": 44.68,
+      "end": 44.88
+    },
+    {
+      "word": "ekstrim",
+      "start": 44.88,
+      "end": 45.2
+    },
+    {
+      "word": "di",
+      "start": 45.2,
+      "end": 45.36
+    },
+    {
+      "word": "kantung",
+      "start": 45.36,
+      "end": 45.52
+    },
+    {
+      "word": "kemih",
+      "start": 45.52,
+      "end": 45.86
+    },
+    {
+      "word": "mulai",
+      "start": 45.86,
+      "end": 46.22
+    },
+    {
+      "word": "menghambat",
+      "start": 46.22,
+      "end": 46.66
+    },
+    {
+      "word": "saluran",
+      "start": 46.66,
+      "end": 46.98
+    },
+    {
+      "word": "ureter,",
+      "start": 46.98,
+      "end": 47.84
+    },
+    {
+      "word": "membuat",
+      "start": 47.8,
+      "end": 47.96
+    },
+    {
+      "word": "cairan",
+      "start": 47.96,
+      "end": 48.26
+    },
+    {
+      "word": "berisiko",
+      "start": 48.26,
+      "end": 48.68
+    },
+    {
+      "word": "naik",
+      "start": 48.68,
+      "end": 48.9
+    },
+    {
+      "word": "kembali",
+      "start": 48.9,
+      "end": 49.22
+    },
+    {
+      "word": "ke",
+      "start": 49.22,
+      "end": 49.38
+    },
+    {
+      "word": "ginjal.",
+      "start": 49.38,
+      "end": 49.68
+    },
+    {
+      "word": "Nyari",
+      "start": 50.34,
+      "end": 50.5
+    },
+    {
+      "word": "kronis",
+      "start": 50.5,
+      "end": 50.82
+    },
+    {
+      "word": "dan",
+      "start": 50.82,
+      "end": 51
+    },
+    {
+      "word": "ketegangan",
+      "start": 51,
+      "end": 51.34
+    },
+    {
+      "word": "fisik",
+      "start": 51.34,
+      "end": 51.72
+    },
+    {
+      "word": "memicu",
+      "start": 51.72,
+      "end": 52.04
+    },
+    {
+      "word": "hormon",
+      "start": 52.04,
+      "end": 52.3
+    },
+    {
+      "word": "stres,",
+      "start": 52.3,
+      "end": 53.1
+    },
+    {
+      "word": "membuat",
+      "start": 53.12,
+      "end": 53.36
+    },
+    {
+      "word": "jantung",
+      "start": 53.36,
+      "end": 53.7
+    },
+    {
+      "word": "berdetak",
+      "start": 53.7,
+      "end": 54.02
+    },
+    {
+      "word": "lebih",
+      "start": 54.02,
+      "end": 54.18
+    },
+    {
+      "word": "cepat,",
+      "start": 54.18,
+      "end": 54.76
+    },
+    {
+      "word": "merespons",
+      "start": 54.76,
+      "end": 55.14
+    },
+    {
+      "word": "ancaman.",
+      "start": 55.14,
+      "end": 56.02
+    },
+    {
+      "word": "Kadar",
+      "start": 56.12,
+      "end": 56.38
+    },
+    {
+      "word": "adrenalin",
+      "start": 56.38,
+      "end": 56.84
+    },
+    {
+      "word": "yang",
+      "start": 56.84,
+      "end": 56.96
+    },
+    {
+      "word": "melonjak",
+      "start": 56.96,
+      "end": 57.24
+    },
+    {
+      "word": "akibat",
+      "start": 57.24,
+      "end": 57.58
+    },
+    {
+      "word": "stres",
+      "start": 57.58,
+      "end": 57.86
+    },
+    {
+      "word": "menahan",
+      "start": 57.86,
+      "end": 58.12
+    },
+    {
+      "word": "kencing",
+      "start": 58.12,
+      "end": 58.42
+    },
+    {
+      "word": "membuat",
+      "start": 58.48,
+      "end": 59.06
+    },
+    {
+      "word": "pembuluh",
+      "start": 59.06,
+      "end": 59.36
+    },
+    {
+      "word": "darah",
+      "start": 59.36,
+      "end": 59.54
+    },
+    {
+      "word": "menyempit",
+      "start": 59.54,
+      "end": 59.96
+    },
+    {
+      "word": "dan",
+      "start": 59.96,
+      "end": 60.3
+    },
+    {
+      "word": "tekanan",
+      "start": 60.3,
+      "end": 60.68
+    },
+    {
+      "word": "darah",
+      "start": 60.68,
+      "end": 60.86
+    },
+    {
+      "word": "naik.",
+      "start": 60.86,
+      "end": 61.74
+    },
+    {
+      "word": "Akumulasi",
+      "start": 61.86,
+      "end": 62.22
+    },
+    {
+      "word": "rasa",
+      "start": 62.22,
+      "end": 62.4
+    },
+    {
+      "word": "sakit,",
+      "start": 62.4,
+      "end": 62.98
+    },
+    {
+      "word": "kecemasan,",
+      "start": 62.98,
+      "end": 63.48
+    },
+    {
+      "word": "dan",
+      "start": 63.48,
+      "end": 63.58
+    },
+    {
+      "word": "lonjakan",
+      "start": 63.58,
+      "end": 63.98
+    },
+    {
+      "word": "tekanan",
+      "start": 63.98,
+      "end": 64.28
+    },
+    {
+      "word": "darah",
+      "start": 64.28,
+      "end": 64.62
+    },
+    {
+      "word": "memicu",
+      "start": 64.62,
+      "end": 65.22
+    },
+    {
+      "word": "sakit",
+      "start": 65.22,
+      "end": 65.44
+    },
+    {
+      "word": "kepala",
+      "start": 65.44,
+      "end": 65.74
+    },
+    {
+      "word": "tegang",
+      "start": 65.74,
+      "end": 65.96
+    },
+    {
+      "word": "yang",
+      "start": 65.96,
+      "end": 66.12
+    },
+    {
+      "word": "hebat",
+      "start": 66.12,
+      "end": 66.42
+    },
+    {
+      "word": "di",
+      "start": 66.42,
+      "end": 66.8
+    },
+    {
+      "word": "seluruh",
+      "start": 66.8,
+      "end": 67.1
+    },
+    {
+      "word": "area",
+      "start": 67.1,
+      "end": 67.32
+    },
+    {
+      "word": "kepala.",
+      "start": 67.32,
+      "end": 68.14
+    },
+    {
+      "word": "Otot",
+      "start": 68.38,
+      "end": 68.52
+    },
+    {
+      "word": "sphincter",
+      "start": 68.52,
+      "end": 68.82
+    },
+    {
+      "word": "kandung",
+      "start": 68.82,
+      "end": 69.04
+    },
+    {
+      "word": "kemih",
+      "start": 69.04,
+      "end": 69.3
+    },
+    {
+      "word": "mulai",
+      "start": 69.3,
+      "end": 69.46
+    },
+    {
+      "word": "kehabisan",
+      "start": 69.46,
+      "end": 69.84
+    },
+    {
+      "word": "tenaga",
+      "start": 69.84,
+      "end": 70.18
+    },
+    {
+      "word": "dan",
+      "start": 69.88,
+      "end": 70.54
+    },
+    {
+      "word": "mengalami",
+      "start": 70.54,
+      "end": 70.92
+    },
+    {
+      "word": "kelelahan",
+      "start": 70.92,
+      "end": 71.3
+    },
+    {
+      "word": "ekstrim,",
+      "start": 71.3,
+      "end": 72.12
+    },
+    {
+      "word": "nyaris",
+      "start": 72.12,
+      "end": 72.34
+    },
+    {
+      "word": "kehilangan",
+      "start": 72.34,
+      "end": 72.74
+    },
+    {
+      "word": "kendali.",
+      "start": 72.74,
+      "end": 73.58
+    },
+    {
+      "word": "Batas",
+      "start": 73.8,
+      "end": 73.96
+    },
+    {
+      "word": "toleransi",
+      "start": 73.96,
+      "end": 74.4
+    },
+    {
+      "word": "tubuh",
+      "start": 74.4,
+      "end": 74.52
+    },
+    {
+      "word": "jubol",
+      "start": 74.52,
+      "end": 74.74
+    },
+    {
+      "word": "total,",
+      "start": 74.74,
+      "end": 75.46
+    },
+    {
+      "word": "risiko",
+      "start": 75.46,
+      "end": 75.78
+    },
+    {
+      "word": "infeksi",
+      "start": 75.78,
+      "end": 76.14
+    },
+    {
+      "word": "saluran",
+      "start": 76.14,
+      "end": 76.46
+    },
+    {
+      "word": "kemih,",
+      "start": 76.46,
+      "end": 76.86
+    },
+    {
+      "word": "ISK,",
+      "start": 76.86,
+      "end": 77.56
+    },
+    {
+      "word": "pecahnya",
+      "start": 77.18,
+      "end": 77.94
+    },
+    {
+      "word": "kantung",
+      "start": 77.94,
+      "end": 78.08
+    },
+    {
+      "word": "kemih,",
+      "start": 78.08,
+      "end": 78.46
+    },
+    {
+      "word": "atau",
+      "start": 78.46,
+      "end": 78.9
+    },
+    {
+      "word": "kerusakan",
+      "start": 78.9,
+      "end": 79.26
+    },
+    {
+      "word": "saraf",
+      "start": 79.26,
+      "end": 79.62
+    },
+    {
+      "word": "mengancam.",
+      "start": 79.62,
+      "end": 80.08
+    },
+    {
+      "word": "Menahan",
+      "start": 80.7,
+      "end": 80.94
+    },
+    {
+      "word": "kencing",
+      "start": 80.94,
+      "end": 81.28
+    },
+    {
+      "word": "bukan",
+      "start": 81.28,
+      "end": 81.62
+    },
+    {
+      "word": "cuma",
+      "start": 81.62,
+      "end": 81.8
+    },
+    {
+      "word": "soal",
+      "start": 81.8,
+      "end": 81.98
+    },
+    {
+      "word": "rasa",
+      "start": 81.98,
+      "end": 82.2
+    },
+    {
+      "word": "tidak",
+      "start": 82.2,
+      "end": 82.38
+    },
+    {
+      "word": "nyaman",
+      "start": 82.38,
+      "end": 82.6
+    },
+    {
+      "word": "sesaat.",
+      "start": 82.6,
+      "end": 83.44
+    },
+    {
+      "word": "Jika",
+      "start": 83.38,
+      "end": 83.56
+    },
+    {
+      "word": "sering",
+      "start": 83.56,
+      "end": 83.74
+    },
+    {
+      "word": "dibiasakan,",
+      "start": 83.74,
+      "end": 84.66
+    },
+    {
+      "word": "tekanan",
+      "start": 84.66,
+      "end": 84.84
+    },
+    {
+      "word": "balik",
+      "start": 84.84,
+      "end": 85.06
+    },
+    {
+      "word": "bisa",
+      "start": 85.06,
+      "end": 85.24
+    },
+    {
+      "word": "merusak",
+      "start": 85.24,
+      "end": 85.54
+    },
+    {
+      "word": "ginjal",
+      "start": 85.54,
+      "end": 85.88
+    },
+    {
+      "word": "dan",
+      "start": 85.88,
+      "end": 86.34
+    },
+    {
+      "word": "melemahkan",
+      "start": 86.34,
+      "end": 86.82
+    },
+    {
+      "word": "otot",
+      "start": 86.82,
+      "end": 87.06
+    },
+    {
+      "word": "gantung",
+      "start": 87.06,
+      "end": 87.32
+    },
+    {
+      "word": "kemih",
+      "start": 87.32,
+      "end": 87.64
+    },
+    {
+      "word": "selamanya.",
+      "start": 87.64,
+      "end": 88.1
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 3.76,
+      "text": "Kamu mungkin sering menunda ke toilet karena malas beranjak dari kursi atau pekerjaan.",
+      "words": [
+        {
+          "word": "Kamu",
+          "start": 0,
+          "end": 0.34
+        },
+        {
+          "word": "mungkin",
+          "start": 0.34,
+          "end": 0.56
+        },
+        {
+          "word": "sering",
+          "start": 0.56,
+          "end": 0.78
+        },
+        {
+          "word": "menunda",
+          "start": 0.78,
+          "end": 1.06
+        },
+        {
+          "word": "ke",
+          "start": 1.06,
+          "end": 1.22
+        },
+        {
+          "word": "toilet",
+          "start": 1.22,
+          "end": 1.46
+        },
+        {
+          "word": "karena",
+          "start": 1.46,
+          "end": 1.84
+        },
+        {
+          "word": "malas",
+          "start": 1.84,
+          "end": 2.08
+        },
+        {
+          "word": "beranjak",
+          "start": 2.08,
+          "end": 2.48
+        },
+        {
+          "word": "dari",
+          "start": 2.48,
+          "end": 2.68
+        },
+        {
+          "word": "kursi",
+          "start": 2.68,
+          "end": 3
+        },
+        {
+          "word": "atau",
+          "start": 3,
+          "end": 3.22
+        },
+        {
+          "word": "pekerjaan.",
+          "start": 3.22,
+          "end": 3.76
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 4.24,
+      "end": 10.74,
+      "text": "Tapi taukah kamu, dibalik rasa santai itu, tekanan cairan di rongga panggulmu sedang menumpuk dan mulai merusak kenyamanan tubuhmu secara perlahan.",
+      "words": [
+        {
+          "word": "Tapi",
+          "start": 4.28,
+          "end": 4.42
+        },
+        {
+          "word": "taukah",
+          "start": 4.42,
+          "end": 4.68
+        },
+        {
+          "word": "kamu,",
+          "start": 4.68,
+          "end": 5.2
+        },
+        {
+          "word": "dibalik",
+          "start": 5.2,
+          "end": 5.44
+        },
+        {
+          "word": "rasa",
+          "start": 5.44,
+          "end": 5.64
+        },
+        {
+          "word": "santai",
+          "start": 5.64,
+          "end": 5.86
+        },
+        {
+          "word": "itu,",
+          "start": 5.86,
+          "end": 6.5
+        },
+        {
+          "word": "tekanan",
+          "start": 6.5,
+          "end": 6.78
+        },
+        {
+          "word": "cairan",
+          "start": 6.78,
+          "end": 7.14
+        },
+        {
+          "word": "di",
+          "start": 7.14,
+          "end": 7.24
+        },
+        {
+          "word": "rongga",
+          "start": 7.24,
+          "end": 7.4
+        },
+        {
+          "word": "panggulmu",
+          "start": 7.4,
+          "end": 7.84
+        },
+        {
+          "word": "sedang",
+          "start": 7.84,
+          "end": 8.06
+        },
+        {
+          "word": "menumpuk",
+          "start": 8.06,
+          "end": 8.48
+        },
+        {
+          "word": "dan",
+          "start": 8.48,
+          "end": 8.66
+        },
+        {
+          "word": "mulai",
+          "start": 8.66,
+          "end": 8.9
+        },
+        {
+          "word": "merusak",
+          "start": 8.9,
+          "end": 9.24
+        },
+        {
+          "word": "kenyamanan",
+          "start": 9.24,
+          "end": 9.78
+        },
+        {
+          "word": "tubuhmu",
+          "start": 9.78,
+          "end": 10.08
+        },
+        {
+          "word": "secara",
+          "start": 10.08,
+          "end": 10.32
+        },
+        {
+          "word": "perlahan.",
+          "start": 10.32,
+          "end": 10.68
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 11.38,
+      "end": 16.46,
+      "text": "Urin mulai mengisi penuh ruang kantung kemih, membuat dinding otot elastisnya meregang perlahan tanpa rasa sakit.",
+      "words": [
+        {
+          "word": "Urin",
+          "start": 11.46,
+          "end": 11.56
+        },
+        {
+          "word": "mulai",
+          "start": 11.56,
+          "end": 11.76
+        },
+        {
+          "word": "mengisi",
+          "start": 11.76,
+          "end": 12
+        },
+        {
+          "word": "penuh",
+          "start": 12,
+          "end": 12.22
+        },
+        {
+          "word": "ruang",
+          "start": 12.22,
+          "end": 12.46
+        },
+        {
+          "word": "kantung",
+          "start": 12.46,
+          "end": 12.7
+        },
+        {
+          "word": "kemih,",
+          "start": 12.7,
+          "end": 13.42
+        },
+        {
+          "word": "membuat",
+          "start": 13.42,
+          "end": 13.66
+        },
+        {
+          "word": "dinding",
+          "start": 13.66,
+          "end": 13.94
+        },
+        {
+          "word": "otot",
+          "start": 13.94,
+          "end": 14.2
+        },
+        {
+          "word": "elastisnya",
+          "start": 14.2,
+          "end": 14.8
+        },
+        {
+          "word": "meregang",
+          "start": 14.8,
+          "end": 15.08
+        },
+        {
+          "word": "perlahan",
+          "start": 15.08,
+          "end": 15.52
+        },
+        {
+          "word": "tanpa",
+          "start": 15.52,
+          "end": 15.84
+        },
+        {
+          "word": "rasa",
+          "start": 15.84,
+          "end": 16.04
+        },
+        {
+          "word": "sakit.",
+          "start": 16.04,
+          "end": 16.34
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 17.02,
+      "end": 21.86,
+      "text": "Reseptor regang di dinding kantung kemih mengirim sinyal listrik pertama ke sum-sum tulang belakang dan otak.",
+      "words": [
+        {
+          "word": "Reseptor",
+          "start": 17.1,
+          "end": 17.34
+        },
+        {
+          "word": "regang",
+          "start": 17.34,
+          "end": 17.6
+        },
+        {
+          "word": "di",
+          "start": 17.6,
+          "end": 17.76
+        },
+        {
+          "word": "dinding",
+          "start": 17.76,
+          "end": 17.92
+        },
+        {
+          "word": "kantung",
+          "start": 17.92,
+          "end": 18.18
+        },
+        {
+          "word": "kemih",
+          "start": 18.18,
+          "end": 18.52
+        },
+        {
+          "word": "mengirim",
+          "start": 18.52,
+          "end": 18.92
+        },
+        {
+          "word": "sinyal",
+          "start": 18.92,
+          "end": 19.22
+        },
+        {
+          "word": "listrik",
+          "start": 19.22,
+          "end": 19.48
+        },
+        {
+          "word": "pertama",
+          "start": 19.48,
+          "end": 19.96
+        },
+        {
+          "word": "ke",
+          "start": 19.96,
+          "end": 20.44
+        },
+        {
+          "word": "sum-sum",
+          "start": 20.44,
+          "end": 20.7
+        },
+        {
+          "word": "tulang",
+          "start": 20.7,
+          "end": 20.9
+        },
+        {
+          "word": "belakang",
+          "start": 20.9,
+          "end": 21.28
+        },
+        {
+          "word": "dan",
+          "start": 21.28,
+          "end": 21.44
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 22.46,
+      "end": 27,
+      "text": "Kantung kemih yang makin penuh menekan dinding otot di sekitarnya, memicu rasa mulas dan gelisah di kursi.",
+      "words": [
+        {
+          "word": "Kantung",
+          "start": 22.62,
+          "end": 22.64
+        },
+        {
+          "word": "kemih",
+          "start": 22.64,
+          "end": 22.8
+        },
+        {
+          "word": "yang",
+          "start": 22.8,
+          "end": 22.94
+        },
+        {
+          "word": "makin",
+          "start": 22.94,
+          "end": 23.06
+        },
+        {
+          "word": "penuh",
+          "start": 23.06,
+          "end": 23.3
+        },
+        {
+          "word": "menekan",
+          "start": 23.3,
+          "end": 23.64
+        },
+        {
+          "word": "dinding",
+          "start": 23.64,
+          "end": 23.86
+        },
+        {
+          "word": "otot",
+          "start": 23.86,
+          "end": 24.16
+        },
+        {
+          "word": "di",
+          "start": 24.16,
+          "end": 24.3
+        },
+        {
+          "word": "sekitarnya,",
+          "start": 24.3,
+          "end": 25.18
+        },
+        {
+          "word": "memicu",
+          "start": 25.18,
+          "end": 25.4
+        },
+        {
+          "word": "rasa",
+          "start": 25.4,
+          "end": 25.64
+        },
+        {
+          "word": "mulas",
+          "start": 25.64,
+          "end": 26.02
+        },
+        {
+          "word": "dan",
+          "start": 26.02,
+          "end": 26.24
+        },
+        {
+          "word": "gelisah",
+          "start": 26.24,
+          "end": 26.6
+        },
+        {
+          "word": "di",
+          "start": 26.6,
+          "end": 26.74
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 27.62,
+      "end": 30.16,
+      "text": "Kantung kemih yang membengkak, mendesak usus besar di belakangnya,",
+      "words": [
+        {
+          "word": "Kantung",
+          "start": 27.62,
+          "end": 27.86
+        },
+        {
+          "word": "kemih",
+          "start": 27.86,
+          "end": 28.02
+        },
+        {
+          "word": "yang",
+          "start": 28.02,
+          "end": 28.14
+        },
+        {
+          "word": "membengkak,",
+          "start": 28.14,
+          "end": 28.84
+        },
+        {
+          "word": "mendesak",
+          "start": 28.84,
+          "end": 29.08
+        },
+        {
+          "word": "usus",
+          "start": 29.08,
+          "end": 29.3
+        },
+        {
+          "word": "besar",
+          "start": 29.3,
+          "end": 29.58
+        },
+        {
+          "word": "di",
+          "start": 29.58,
+          "end": 29.72
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 30.58,
+      "end": 33.28,
+      "text": "menciptakan sensasi melilit yang bikin posisi duduk serba salah.",
+      "words": [
+        {
+          "word": "menciptakan",
+          "start": 30.6,
+          "end": 30.94
+        },
+        {
+          "word": "sensasi",
+          "start": 30.94,
+          "end": 31.3
+        },
+        {
+          "word": "melilit",
+          "start": 31.3,
+          "end": 31.58
+        },
+        {
+          "word": "yang",
+          "start": 31.58,
+          "end": 31.86
+        },
+        {
+          "word": "bikin",
+          "start": 31.86,
+          "end": 32.16
+        },
+        {
+          "word": "posisi",
+          "start": 32.16,
+          "end": 32.5
+        },
+        {
+          "word": "duduk",
+          "start": 32.5,
+          "end": 32.78
+        },
+        {
+          "word": "serba",
+          "start": 32.78,
+          "end": 33.06
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 33.88,
+      "end": 36.8,
+      "text": "Otot panggul dan sphincter bekerja ekstra keras menahan keluaran urin,",
+      "words": [
+        {
+          "word": "Otot",
+          "start": 33.96,
+          "end": 34.06
+        },
+        {
+          "word": "panggul",
+          "start": 34.06,
+          "end": 34.36
+        },
+        {
+          "word": "dan",
+          "start": 34.36,
+          "end": 34.52
+        },
+        {
+          "word": "sphincter",
+          "start": 34.52,
+          "end": 34.86
+        },
+        {
+          "word": "bekerja",
+          "start": 34.86,
+          "end": 35.24
+        },
+        {
+          "word": "ekstra",
+          "start": 35.24,
+          "end": 35.54
+        },
+        {
+          "word": "keras",
+          "start": 35.54,
+          "end": 35.8
+        },
+        {
+          "word": "menahan",
+          "start": 35.8,
+          "end": 36.14
+        },
+        {
+          "word": "keluaran",
+          "start": 36.14,
+          "end": 36.52
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 37.16,
+      "end": 38.74,
+      "text": "memicu kram dan tegang di selangkangan.",
+      "words": [
+        {
+          "word": "memicu",
+          "start": 37.26,
+          "end": 37.5
+        },
+        {
+          "word": "kram",
+          "start": 37.5,
+          "end": 37.7
+        },
+        {
+          "word": "dan",
+          "start": 37.7,
+          "end": 37.9
+        },
+        {
+          "word": "tegang",
+          "start": 37.9,
+          "end": 38.18
+        },
+        {
+          "word": "di",
+          "start": 38.18,
+          "end": 38.36
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 39.46,
+      "end": 42.06,
+      "text": "Sinyal darurat dari rongga panggul membanjiri kortex otak,",
+      "words": [
+        {
+          "word": "Sinyal",
+          "start": 39.5,
+          "end": 39.68
+        },
+        {
+          "word": "darurat",
+          "start": 39.68,
+          "end": 40
+        },
+        {
+          "word": "dari",
+          "start": 40,
+          "end": 40.22
+        },
+        {
+          "word": "rongga",
+          "start": 40.22,
+          "end": 40.4
+        },
+        {
+          "word": "panggul",
+          "start": 40.4,
+          "end": 40.74
+        },
+        {
+          "word": "membanjiri",
+          "start": 40.74,
+          "end": 41.26
+        },
+        {
+          "word": "kortex",
+          "start": 41.26,
+          "end": 41.66
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 42.4,
+      "end": 44.02,
+      "text": "membuatmu susah konsentrasi dan cemas.",
+      "words": [
+        {
+          "word": "membuatmu",
+          "start": 42.46,
+          "end": 42.86
+        },
+        {
+          "word": "susah",
+          "start": 42.86,
+          "end": 43.04
+        },
+        {
+          "word": "konsentrasi",
+          "start": 43.04,
+          "end": 43.58
+        },
+        {
+          "word": "dan",
+          "start": 43.58,
+          "end": 43.74
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 44.62,
+      "end": 47.36,
+      "text": "Tekanan ekstrim di kantung kemih mulai menghambat saluran ureter,",
+      "words": [
+        {
+          "word": "Tekanan",
+          "start": 44.68,
+          "end": 44.88
+        },
+        {
+          "word": "ekstrim",
+          "start": 44.88,
+          "end": 45.2
+        },
+        {
+          "word": "di",
+          "start": 45.2,
+          "end": 45.36
+        },
+        {
+          "word": "kantung",
+          "start": 45.36,
+          "end": 45.52
+        },
+        {
+          "word": "kemih",
+          "start": 45.52,
+          "end": 45.86
+        },
+        {
+          "word": "mulai",
+          "start": 45.86,
+          "end": 46.22
+        },
+        {
+          "word": "menghambat",
+          "start": 46.22,
+          "end": 46.66
+        },
+        {
+          "word": "saluran",
+          "start": 46.66,
+          "end": 46.98
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 47.36,
+      "end": 49.7,
+      "text": "membuat cairan berisiko naik kembali ke ginjal.",
+      "words": [
+        {
+          "word": "membuat",
+          "start": 47.8,
+          "end": 47.96
+        },
+        {
+          "word": "cairan",
+          "start": 47.96,
+          "end": 48.26
+        },
+        {
+          "word": "berisiko",
+          "start": 48.26,
+          "end": 48.68
+        },
+        {
+          "word": "naik",
+          "start": 48.68,
+          "end": 48.9
+        },
+        {
+          "word": "kembali",
+          "start": 48.9,
+          "end": 49.22
+        },
+        {
+          "word": "ke",
+          "start": 49.22,
+          "end": 49.38
+        },
+        {
+          "word": "ginjal.",
+          "start": 49.38,
+          "end": 49.68
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 50.26,
+      "end": 52.62,
+      "text": "Nyari kronis dan ketegangan fisik memicu hormon stres,",
+      "words": [
+        {
+          "word": "Nyari",
+          "start": 50.34,
+          "end": 50.5
+        },
+        {
+          "word": "kronis",
+          "start": 50.5,
+          "end": 50.82
+        },
+        {
+          "word": "dan",
+          "start": 50.82,
+          "end": 51
+        },
+        {
+          "word": "ketegangan",
+          "start": 51,
+          "end": 51.34
+        },
+        {
+          "word": "fisik",
+          "start": 51.34,
+          "end": 51.72
+        },
+        {
+          "word": "memicu",
+          "start": 51.72,
+          "end": 52.04
+        },
+        {
+          "word": "hormon",
+          "start": 52.04,
+          "end": 52.3
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 53.06,
+      "end": 55.54,
+      "text": "membuat jantung berdetak lebih cepat, merespons ancaman.",
+      "words": [
+        {
+          "word": "membuat",
+          "start": 53.12,
+          "end": 53.36
+        },
+        {
+          "word": "jantung",
+          "start": 53.36,
+          "end": 53.7
+        },
+        {
+          "word": "berdetak",
+          "start": 53.7,
+          "end": 54.02
+        },
+        {
+          "word": "lebih",
+          "start": 54.02,
+          "end": 54.18
+        },
+        {
+          "word": "cepat,",
+          "start": 54.18,
+          "end": 54.76
+        },
+        {
+          "word": "merespons",
+          "start": 54.76,
+          "end": 55.14
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 56.12,
+      "end": 58.46,
+      "text": "Kadar adrenalin yang melonjak akibat stres menahan kencing",
+      "words": [
+        {
+          "word": "Kadar",
+          "start": 56.12,
+          "end": 56.38
+        },
+        {
+          "word": "adrenalin",
+          "start": 56.38,
+          "end": 56.84
+        },
+        {
+          "word": "yang",
+          "start": 56.84,
+          "end": 56.96
+        },
+        {
+          "word": "melonjak",
+          "start": 56.96,
+          "end": 57.24
+        },
+        {
+          "word": "akibat",
+          "start": 57.24,
+          "end": 57.58
+        },
+        {
+          "word": "stres",
+          "start": 57.58,
+          "end": 57.86
+        },
+        {
+          "word": "menahan",
+          "start": 57.86,
+          "end": 58.12
+        },
+        {
+          "word": "kencing",
+          "start": 58.12,
+          "end": 58.42
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 58.46,
+      "end": 61.26,
+      "text": "membuat pembuluh darah menyempit dan tekanan darah naik.",
+      "words": [
+        {
+          "word": "membuat",
+          "start": 58.48,
+          "end": 59.06
+        },
+        {
+          "word": "pembuluh",
+          "start": 59.06,
+          "end": 59.36
+        },
+        {
+          "word": "darah",
+          "start": 59.36,
+          "end": 59.54
+        },
+        {
+          "word": "menyempit",
+          "start": 59.54,
+          "end": 59.96
+        },
+        {
+          "word": "dan",
+          "start": 59.96,
+          "end": 60.3
+        },
+        {
+          "word": "tekanan",
+          "start": 60.3,
+          "end": 60.68
+        },
+        {
+          "word": "darah",
+          "start": 60.68,
+          "end": 60.86
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "start": 61.76,
+      "end": 64.64,
+      "text": "Akumulasi rasa sakit, kecemasan, dan lonjakan tekanan darah",
+      "words": [
+        {
+          "word": "Akumulasi",
+          "start": 61.86,
+          "end": 62.22
+        },
+        {
+          "word": "rasa",
+          "start": 62.22,
+          "end": 62.4
+        },
+        {
+          "word": "sakit,",
+          "start": 62.4,
+          "end": 62.98
+        },
+        {
+          "word": "kecemasan,",
+          "start": 62.98,
+          "end": 63.48
+        },
+        {
+          "word": "dan",
+          "start": 63.48,
+          "end": 63.58
+        },
+        {
+          "word": "lonjakan",
+          "start": 63.58,
+          "end": 63.98
+        },
+        {
+          "word": "tekanan",
+          "start": 63.98,
+          "end": 64.28
+        },
+        {
+          "word": "darah",
+          "start": 64.28,
+          "end": 64.62
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 64.64,
+      "end": 67.7,
+      "text": "memicu sakit kepala tegang yang hebat di seluruh area kepala.",
+      "words": [
+        {
+          "word": "memicu",
+          "start": 64.62,
+          "end": 65.22
+        },
+        {
+          "word": "sakit",
+          "start": 65.22,
+          "end": 65.44
+        },
+        {
+          "word": "kepala",
+          "start": 65.44,
+          "end": 65.74
+        },
+        {
+          "word": "tegang",
+          "start": 65.74,
+          "end": 65.96
+        },
+        {
+          "word": "yang",
+          "start": 65.96,
+          "end": 66.12
+        },
+        {
+          "word": "hebat",
+          "start": 66.12,
+          "end": 66.42
+        },
+        {
+          "word": "di",
+          "start": 66.42,
+          "end": 66.8
+        },
+        {
+          "word": "seluruh",
+          "start": 66.8,
+          "end": 67.1
+        },
+        {
+          "word": "area",
+          "start": 67.1,
+          "end": 67.32
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 68.32,
+      "end": 70.2,
+      "text": "Otot sphincter kandung kemih mulai kehabisan tenaga",
+      "words": [
+        {
+          "word": "Otot",
+          "start": 68.38,
+          "end": 68.52
+        },
+        {
+          "word": "sphincter",
+          "start": 68.52,
+          "end": 68.82
+        },
+        {
+          "word": "kandung",
+          "start": 68.82,
+          "end": 69.04
+        },
+        {
+          "word": "kemih",
+          "start": 69.04,
+          "end": 69.3
+        },
+        {
+          "word": "mulai",
+          "start": 69.3,
+          "end": 69.46
+        },
+        {
+          "word": "kehabisan",
+          "start": 69.46,
+          "end": 69.84
+        },
+        {
+          "word": "tenaga",
+          "start": 69.84,
+          "end": 70.18
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "start": 70.2,
+      "end": 73.12,
+      "text": "dan mengalami kelelahan ekstrim, nyaris kehilangan kendali.",
+      "words": [
+        {
+          "word": "mengalami",
+          "start": 70.54,
+          "end": 70.92
+        },
+        {
+          "word": "kelelahan",
+          "start": 70.92,
+          "end": 71.3
+        },
+        {
+          "word": "ekstrim,",
+          "start": 71.3,
+          "end": 72.12
+        },
+        {
+          "word": "nyaris",
+          "start": 72.12,
+          "end": 72.34
+        },
+        {
+          "word": "kehilangan",
+          "start": 72.34,
+          "end": 72.74
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "start": 73.74,
+      "end": 77.32,
+      "text": "Batas toleransi tubuh jubol total, risiko infeksi saluran kemih, ISK,",
+      "words": [
+        {
+          "word": "Batas",
+          "start": 73.8,
+          "end": 73.96
+        },
+        {
+          "word": "toleransi",
+          "start": 73.96,
+          "end": 74.4
+        },
+        {
+          "word": "tubuh",
+          "start": 74.4,
+          "end": 74.52
+        },
+        {
+          "word": "jubol",
+          "start": 74.52,
+          "end": 74.74
+        },
+        {
+          "word": "total,",
+          "start": 74.74,
+          "end": 75.46
+        },
+        {
+          "word": "risiko",
+          "start": 75.46,
+          "end": 75.78
+        },
+        {
+          "word": "infeksi",
+          "start": 75.78,
+          "end": 76.14
+        },
+        {
+          "word": "saluran",
+          "start": 76.14,
+          "end": 76.46
+        },
+        {
+          "word": "kemih,",
+          "start": 76.46,
+          "end": 76.86
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "start": 77.32,
+      "end": 80.1,
+      "text": "pecahnya kantung kemih, atau kerusakan saraf mengancam.",
+      "words": [
+        {
+          "word": "kantung",
+          "start": 77.94,
+          "end": 78.08
+        },
+        {
+          "word": "kemih,",
+          "start": 78.08,
+          "end": 78.46
+        },
+        {
+          "word": "atau",
+          "start": 78.46,
+          "end": 78.9
+        },
+        {
+          "word": "kerusakan",
+          "start": 78.9,
+          "end": 79.26
+        },
+        {
+          "word": "saraf",
+          "start": 79.26,
+          "end": 79.62
+        },
+        {
+          "word": "mengancam.",
+          "start": 79.62,
+          "end": 80.08
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "start": 80.66,
+      "end": 82.96,
+      "text": "Menahan kencing bukan cuma soal rasa tidak nyaman sesaat.",
+      "words": [
+        {
+          "word": "Menahan",
+          "start": 80.7,
+          "end": 80.94
+        },
+        {
+          "word": "kencing",
+          "start": 80.94,
+          "end": 81.28
+        },
+        {
+          "word": "bukan",
+          "start": 81.28,
+          "end": 81.62
+        },
+        {
+          "word": "cuma",
+          "start": 81.62,
+          "end": 81.8
+        },
+        {
+          "word": "soal",
+          "start": 81.8,
+          "end": 81.98
+        },
+        {
+          "word": "rasa",
+          "start": 81.98,
+          "end": 82.2
+        },
+        {
+          "word": "tidak",
+          "start": 82.2,
+          "end": 82.38
+        },
+        {
+          "word": "nyaman",
+          "start": 82.38,
+          "end": 82.6
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "start": 82.96,
+      "end": 88.1,
+      "text": "Jika sering dibiasakan, tekanan balik bisa merusak ginjal dan melemahkan otot gantung kemih selamanya.",
+      "words": [
+        {
+          "word": "Jika",
+          "start": 83.38,
+          "end": 83.56
+        },
+        {
+          "word": "sering",
+          "start": 83.56,
+          "end": 83.74
+        },
+        {
+          "word": "dibiasakan,",
+          "start": 83.74,
+          "end": 84.66
+        },
+        {
+          "word": "tekanan",
+          "start": 84.66,
+          "end": 84.84
+        },
+        {
+          "word": "balik",
+          "start": 84.84,
+          "end": 85.06
+        },
+        {
+          "word": "bisa",
+          "start": 85.06,
+          "end": 85.24
+        },
+        {
+          "word": "merusak",
+          "start": 85.24,
+          "end": 85.54
+        },
+        {
+          "word": "ginjal",
+          "start": 85.54,
+          "end": 85.88
+        },
+        {
+          "word": "dan",
+          "start": 85.88,
+          "end": 86.34
+        },
+        {
+          "word": "melemahkan",
+          "start": 86.34,
+          "end": 86.82
+        },
+        {
+          "word": "otot",
+          "start": 86.82,
+          "end": 87.06
+        },
+        {
+          "word": "gantung",
+          "start": 87.06,
+          "end": 87.32
+        },
+        {
+          "word": "kemih",
+          "start": 87.32,
+          "end": 87.64
+        },
+        {
+          "word": "selamanya.",
+          "start": 87.64,
+          "end": 88.1
+        }
+      ]
+    }
+  ],
+  "text": " Kamu mungkin sering menunda ke toilet karena malas beranjak dari kursi atau pekerjaan. Tapi taukah kamu, dibalik rasa santai itu, tekanan cairan di rongga panggulmu sedang menumpuk dan mulai merusak kenyamanan tubuhmu secara perlahan. Urin mulai mengisi penuh ruang kantung kemih, membuat dinding otot elastisnya meregang perlahan tanpa rasa sakit. Reseptor regang di dinding kantung kemih mengirim sinyal listrik pertama ke sum-sum tulang belakang dan otak. Kantung kemih yang makin penuh menekan dinding otot di sekitarnya, memicu rasa mulas dan gelisah di kursi. Kantung kemih yang membengkak, mendesak usus besar di belakangnya, menciptakan sensasi melilit yang bikin posisi duduk serba salah. Otot panggul dan sphincter bekerja ekstra keras menahan keluaran urin, memicu kram dan tegang di selangkangan. Sinyal darurat dari rongga panggul membanjiri kortex otak, membuatmu susah konsentrasi dan cemas. Tekanan ekstrim di kantung kemih mulai menghambat saluran ureter, membuat cairan berisiko naik kembali ke ginjal. Nyari kronis dan ketegangan fisik memicu hormon stres, membuat jantung berdetak lebih cepat, merespons ancaman. Kadar adrenalin yang melonjak akibat stres menahan kencing membuat pembuluh darah menyempit dan tekanan darah naik. Akumulasi rasa sakit, kecemasan, dan lonjakan tekanan darah memicu sakit kepala tegang yang hebat di seluruh area kepala. Otot sphincter kandung kemih mulai kehabisan tenaga dan mengalami kelelahan ekstrim, nyaris kehilangan kendali. Batas toleransi tubuh jubol total, risiko infeksi saluran kemih, ISK, pecahnya kantung kemih, atau kerusakan saraf mengancam. Menahan kencing bukan cuma soal rasa tidak nyaman sesaat. Jika sering dibiasakan, tekanan balik bisa merusak ginjal dan melemahkan otot gantung kemih selamanya."
+}

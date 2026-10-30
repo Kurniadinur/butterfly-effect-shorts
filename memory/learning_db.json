@@ -7,6 +7,27 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "menahan-kencing-terlalu-lama-dampak-mvubents",
+      "title": "APA JADINYA KALAU KAMU TAHAN KENCING TERLALU LAMA?",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "Kamu mungkin sering menunda ke toilet karena malas beranjak dari kursi atau pekerjaan. Tapi tahukah kamu, di balik rasa santai itu, tekanan cairan di rongga panggulmu sedang menumpuk dan mulai merusak kenyamanan tubuhmu secara perlahan?",
+      "scenes": [
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "action-tracker",
+        "action-tracker",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "action-tracker",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "action-tracker",
+        "action-tracker"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "kopi-perut-kosong-mvu5mpm1",
       "title": "APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?",
       "hookStyle": "fullscreen-dramatic",
@@ -116,32 +137,6 @@
         "character-intro"
       ],
       "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
-    },
-    {
-      "id": "berlin-wall-fall-memo-misread-mvowutyg",
-      "title": "RUNTUHNYA TEMBOK BERLIN KARENA SALAH BACA MEMO",
-      "hookStyle": "fullscreen-dramatic",
-      "hookNarration": "Berlin, 9 November 1989: a single handwritten note slipped onto Günter Schabowski’s desk during the press conference, and within hours the wall began to crumble.",
-      "scenes": [
-        "Draft Dokumen Rahasia Kuno",
-        "Penyelundupan Memo ke Meja Schabowski",
-        "Konferensi Pers Internasional Dimulai",
-        "Pertanyaan Kritis Riccardo Ehrman",
-        "Schabowski Membaca Klausul Dokumen",
-        "Ucapan Fatal 'Sofort'",
-        "Teletype Mengirimkan Flash News",
-        "Siaran Berita Tagesschau",
-        "Warga Berhamburan ke Jalan",
-        "Ketegangan di Checkpoint Charlie",
-        "Komandan Jäger Menerima Telepon",
-        "Massa Menuntut Paspor Dicap",
-        "Kebuntuan Perintah Atasan",
-        "Keputusan Bersejarah Harald Jäger",
-        "Palang Gerbang Diangkat",
-        "Pelukan Erat di Sisi Barat",
-        "Palu dan Pahat Menghantam Tembok"
-      ],
-      "why_successful": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ],
   "blacklisted_patterns": [
@@ -254,6 +249,13 @@
       "title": "APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "menahan-kencing-terlalu-lama-dampak-mvubents",
+      "timestamp": "2026-10-30T01:51:51.203Z",
+      "title": "APA JADINYA KALAU KAMU TAHAN KENCING TERLALU LAMA?",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ]
 }
