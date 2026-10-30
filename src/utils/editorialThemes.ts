@@ -44,121 +44,121 @@ export interface EditorialThemeConfig {
 export const EDITORIAL_THEMES: Record<EditorialThemeId, EditorialThemeConfig> = {
   'vox-archival': {
     id: 'vox-archival',
-    name: 'Vox Archival Yellow & Warm Paper',
-    bgGradient: 'radial-gradient(circle at 50% 42%, #1a1b1f 0%, #101114 68%, #090a0c 100%)',
-    bgPatternImage: 'radial-gradient(rgba(244, 240, 234, 0.08) 1.5px, transparent 1.5px)',
-    bgPatternSize: '36px 36px',
-    cardBg: '#F4F0EA',
-    cardBorder: '2.5px solid #111215',
-    cardRadius: '4px',
-    cardShadow: '10px 10px 0px #111215, 0 18px 36px rgba(0, 0, 0, 0.55)',
-    inkDark: '#111215',
-    inkMuted: '#52525b',
-    paperLight: '#F4F0EA',
-    primaryHighlight: '#FFCC00',
-    primaryHighlightText: '#111215',
-    criticalHighlight: '#FF3B30',
+    name: 'Gaya A - Cinematic Cyan Neon (Zack D. Films)',
+    bgGradient: 'radial-gradient(circle at 50% 42%, #0B1426 0%, #050B14 65%, #020408 100%)',
+    bgPatternImage:
+      'linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px)',
+    bgPatternSize: '48px 48px',
+    cardBg: 'rgba(10, 18, 36, 0.75)',
+    cardBorder: '1.5px solid rgba(56, 189, 248, 0.38)',
+    cardRadius: '18px',
+    cardShadow: '0 16px 40px rgba(0, 0, 0, 0.75), 0 0 24px rgba(56, 189, 248, 0.16)',
+    inkDark: '#FFFFFF',
+    inkMuted: '#94A3B8',
+    paperLight: '#FFFFFF',
+    primaryHighlight: '#38BDF8',
+    primaryHighlightText: '#FFFFFF',
+    criticalHighlight: '#EF4444',
     criticalHighlightText: '#FFFFFF',
-    specimenBg: '#16181d',
-    leaderLineColor: '#F4F0EA',
-    topBarVariant: 'full-bar',
-    hookLayout: 'stamp-grid-right',
+    specimenBg: 'rgba(15, 23, 42, 0.8)',
+    leaderLineColor: '#38BDF8',
+    topBarVariant: 'floating-pills',
+    hookLayout: 'dossier-left-body-right',
   },
 
   'johnny-harris-slate': {
     id: 'johnny-harris-slate',
-    name: 'Johnny Harris Blueprint Slate & Vermilion',
-    bgGradient: 'radial-gradient(circle at 50% 40%, #16202B 0%, #0D131A 68%, #070A0E 100%)',
+    name: 'Gaya A - Slate Crimson Alert (Zack D. Films)',
+    bgGradient: 'radial-gradient(circle at 50% 40%, #151A28 0%, #090D15 65%, #040508 100%)',
     bgPatternImage:
-      'linear-gradient(rgba(248, 246, 240, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(248, 246, 240, 0.04) 1px, transparent 1px)',
+      'linear-gradient(rgba(239, 68, 68, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(239, 68, 68, 0.04) 1px, transparent 1px)',
     bgPatternSize: '48px 48px',
-    cardBg: '#FAF8F5',
-    cardBorder: '2.5px solid #0D131A',
-    cardRadius: '3px',
-    cardShadow: '9px 9px 0px #06090D, 0 20px 40px rgba(0, 0, 0, 0.6)',
-    cardTopAccentBar: '#E63946',
-    inkDark: '#0D131A',
-    inkMuted: '#475569',
-    paperLight: '#FAF8F5',
-    primaryHighlight: '#E63946',
+    cardBg: 'rgba(15, 20, 32, 0.78)',
+    cardBorder: '1.5px solid rgba(239, 68, 68, 0.45)',
+    cardRadius: '18px',
+    cardShadow: '0 16px 40px rgba(0, 0, 0, 0.75), 0 0 24px rgba(239, 68, 68, 0.16)',
+    inkDark: '#FFFFFF',
+    inkMuted: '#94A3B8',
+    paperLight: '#FFFFFF',
+    primaryHighlight: '#EF4444',
     primaryHighlightText: '#FFFFFF',
-    criticalHighlight: '#B91C1C',
+    criticalHighlight: '#DC2626',
     criticalHighlightText: '#FFFFFF',
-    specimenBg: '#0F172A',
-    leaderLineColor: '#E63946',
+    specimenBg: 'rgba(15, 23, 42, 0.8)',
+    leaderLineColor: '#EF4444',
     topBarVariant: 'floating-pills',
     hookLayout: 'dossier-left-body-right',
   },
 
   'cleo-abram-studio': {
     id: 'cleo-abram-studio',
-    name: 'Cleo Abram Warm Espresso & Coral Block',
-    bgGradient: 'radial-gradient(circle at 50% 42%, #231C18 0%, #14100E 68%, #0B0908 100%)',
-    bgPatternImage: 'radial-gradient(rgba(255, 237, 213, 0.07) 1.5px, transparent 1.5px)',
-    bgPatternSize: '32px 32px',
-    cardBg: '#F7F3EB',
-    cardBorder: '3px solid #181311',
-    cardRadius: '6px',
-    cardShadow: '9px 9px 0px #FF5A36, 0 18px 36px rgba(0, 0, 0, 0.55)',
-    cardLeftAccentSpine: '#FF5A36',
-    inkDark: '#181311',
-    inkMuted: '#57534E',
-    paperLight: '#F7F3EB',
-    primaryHighlight: '#FF5A36',
+    name: 'Gaya A - Amber Warning Kinetic (Zack D. Films)',
+    bgGradient: 'radial-gradient(circle at 50% 42%, #1E1710 0%, #0E0B08 65%, #050403 100%)',
+    bgPatternImage:
+      'linear-gradient(rgba(245, 158, 11, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245, 158, 11, 0.04) 1px, transparent 1px)',
+    bgPatternSize: '48px 48px',
+    cardBg: 'rgba(24, 18, 14, 0.8)',
+    cardBorder: '1.5px solid rgba(245, 158, 11, 0.45)',
+    cardRadius: '18px',
+    cardShadow: '0 16px 40px rgba(0, 0, 0, 0.75), 0 0 24px rgba(245, 158, 11, 0.16)',
+    inkDark: '#FFFFFF',
+    inkMuted: '#94A3B8',
+    paperLight: '#FFFFFF',
+    primaryHighlight: '#F59E0B',
     primaryHighlightText: '#FFFFFF',
     criticalHighlight: '#DC2626',
     criticalHighlightText: '#FFFFFF',
-    specimenBg: '#1C1917',
-    leaderLineColor: '#FF5A36',
-    topBarVariant: 'centered-timecode',
-    hookLayout: 'split-cascade-banner',
+    specimenBg: 'rgba(24, 18, 14, 0.8)',
+    leaderLineColor: '#F59E0B',
+    topBarVariant: 'floating-pills',
+    hookLayout: 'dossier-left-body-right',
   },
 
   'anatomical-atlas': {
     id: 'anatomical-atlas',
-    name: 'Institute of Human Anatomy Vintage Atlas & Teal Gold',
-    bgGradient: 'radial-gradient(circle at 50% 42%, #131F1C 0%, #0B1210 68%, #060A09 100%)',
-    bgPatternImage: 'radial-gradient(rgba(230, 224, 208, 0.07) 1.5px, transparent 1.5px)',
-    bgPatternSize: '40px 40px',
-    cardBg: '#F5F0E1',
-    cardBorder: '2.5px solid #0F1715',
-    cardRadius: '3px',
-    cardShadow: '10px 10px 0px #090E0C, 0 18px 36px rgba(0, 0, 0, 0.6)',
-    cardTopAccentBar: '#0F766E',
-    inkDark: '#0F1715',
-    inkMuted: '#4B5563',
-    paperLight: '#F5F0E1',
-    primaryHighlight: '#F59E0B',
-    primaryHighlightText: '#0F1715',
+    name: 'Gaya A - Emerald Clinical Scanner (Zack D. Films)',
+    bgGradient: 'radial-gradient(circle at 50% 42%, #0A1C1A 0%, #040E0D 65%, #020605 100%)',
+    bgPatternImage:
+      'linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px)',
+    bgPatternSize: '48px 48px',
+    cardBg: 'rgba(10, 26, 23, 0.8)',
+    cardBorder: '1.5px solid rgba(16, 185, 129, 0.45)',
+    cardRadius: '18px',
+    cardShadow: '0 16px 40px rgba(0, 0, 0, 0.75), 0 0 24px rgba(16, 185, 129, 0.16)',
+    inkDark: '#FFFFFF',
+    inkMuted: '#94A3B8',
+    paperLight: '#FFFFFF',
+    primaryHighlight: '#10B981',
+    primaryHighlightText: '#FFFFFF',
     criticalHighlight: '#DC2626',
     criticalHighlightText: '#FFFFFF',
-    specimenBg: '#111C19',
-    leaderLineColor: '#F59E0B',
+    specimenBg: 'rgba(10, 26, 23, 0.8)',
+    leaderLineColor: '#10B981',
     topBarVariant: 'floating-pills',
-    hookLayout: 'stamp-grid-right',
+    hookLayout: 'dossier-left-body-right',
   },
 
   'poster-documentary': {
     id: 'poster-documentary',
-    name: 'Modern Graphic Poster Navy & Tangelo',
-    bgGradient: 'radial-gradient(circle at 50% 42%, #191B2E 0%, #0F101C 68%, #080910 100%)',
-    bgPatternImage: 'radial-gradient(rgba(255, 255, 255, 0.07) 1.5px, transparent 1.5px)',
-    bgPatternSize: '34px 34px',
-    cardBg: '#FFFFFF',
-    cardBorder: '3px solid #0B0C14',
-    cardRadius: '5px',
-    cardShadow: '11px 11px 0px #0B0C14, 0 20px 40px rgba(0, 0, 0, 0.6)',
-    cardLeftAccentSpine: '#FF6B00',
-    inkDark: '#0B0C14',
-    inkMuted: '#4B5563',
+    name: 'Gaya A - Royal Violet Pulse (Zack D. Films)',
+    bgGradient: 'radial-gradient(circle at 50% 42%, #181128 0%, #0B0814 65%, #040308 100%)',
+    bgPatternImage:
+      'linear-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px)',
+    bgPatternSize: '48px 48px',
+    cardBg: 'rgba(20, 14, 34, 0.8)',
+    cardBorder: '1.5px solid rgba(168, 85, 247, 0.45)',
+    cardRadius: '18px',
+    cardShadow: '0 16px 40px rgba(0, 0, 0, 0.75), 0 0 24px rgba(168, 85, 247, 0.16)',
+    inkDark: '#FFFFFF',
+    inkMuted: '#94A3B8',
     paperLight: '#FFFFFF',
-    primaryHighlight: '#FFD600',
-    primaryHighlightText: '#0B0C14',
-    criticalHighlight: '#FF2E00',
+    primaryHighlight: '#A855F7',
+    primaryHighlightText: '#FFFFFF',
+    criticalHighlight: '#EF4444',
     criticalHighlightText: '#FFFFFF',
-    specimenBg: '#131524',
-    leaderLineColor: '#FFD600',
-    topBarVariant: 'full-bar',
+    specimenBg: 'rgba(20, 14, 34, 0.8)',
+    leaderLineColor: '#A855F7',
+    topBarVariant: 'floating-pills',
     hookLayout: 'dossier-left-body-right',
   },
 };
@@ -267,71 +267,101 @@ export function inferHumanFeelingForNode(node: {
   secondaryText?: string | null;
   caption?: string | null;
 }): { feeling: string; emoji: string } {
+  let rawFeeling = '';
+  let emoji = node.symptomEmoji || '⚡';
+
   if (node.humanFeeling && node.humanFeeling.trim().length > 3) {
-    return {
-      feeling: node.humanFeeling.trim().toUpperCase(),
-      emoji: node.symptomEmoji || '⚡',
-    };
+    rawFeeling = node.humanFeeling.trim();
+  } else {
+    const combined = `${node.headline || ''} ${node.narration || ''} ${node.primaryText || ''} ${node.secondaryText || ''} ${node.caption || ''}`.toLowerCase();
+    const organ = (node.organTarget || '').toLowerCase();
+
+    if (/mulas|peristaltik|kontraksi usus|bab|diare/i.test(combined)) {
+      emoji = '🚽';
+      rawFeeling = 'PERUT MULAS & INGIN KE TOILET';
+    } else if (/asam|mukosa|parietal|perih|lambung kosong|iritasi lambung|maag/i.test(combined)) {
+      emoji = '😣';
+      rawFeeling = 'PERUT PERIH & MELILIT';
+    } else if (/kortisol|adrenal|fight or flight|cemas|stres kimiawi/i.test(combined)) {
+      emoji = '😰';
+      rawFeeling = 'GELISAH & CEMAS TANPA SEBAB';
+    } else if (/takikardia|detak jantung|adrenalin memacu|memompa lebih keras/i.test(combined)) {
+      emoji = '💓';
+      rawFeeling = 'JANTUNG BERDEBAR KENCANG';
+    } else if (/vasokonstriksi|pembuluh darah.*menyempit|arteri/i.test(combined)) {
+      emoji = '🥶';
+      rawFeeling = 'TELAPAK DINGIN & KEPALA BERAT';
+    } else if (/otot|kram|ketegangan otot|asam laktat/i.test(combined)) {
+      emoji = '🫨';
+      rawFeeling = 'OTOT TEGANG & KRAM RINGAN';
+    } else if (/adenosin.*blokir|menghentikan sinyal.*mengantuk|kewaspadaan buatan/i.test(combined)) {
+      emoji = '😳';
+      rawFeeling = 'MATA MELEK TAPI TUBUH LELAH';
+    } else if (/dopamin|euforia|energi bersih/i.test(combined)) {
+      emoji = '⚡';
+      rawFeeling = 'SEGAR & FOKUS SESAAT';
+    } else if (/diuretik|diuresis|urine|kencing|dehidrasi/i.test(combined)) {
+      emoji = '💧';
+      rawFeeling = 'MENAHAN KENCING HINGGA GELISAH';
+    } else if (/crash|kelelahan mendadak|menyerbu reseptor|hutang energi/i.test(combined)) {
+      emoji = '🥱';
+      rawFeeling = 'BADAN LEMAS & NGANTUK BERAT';
+    } else if (/halusinasi|mikrosleep|tidak tidur/i.test(combined)) {
+      emoji = '😵';
+      rawFeeling = 'PANDANGAN KABUR & LINGLUNG';
+    } else if (/paru|oksigen|alveoli|napas/i.test(combined)) {
+      emoji = '😮‍💨';
+      rawFeeling = 'NAPAS PENDEK & BERAT';
+    } else if (/hati|hepatosit|sitokrom|detoks/i.test(combined)) {
+      emoji = '🤢';
+      rawFeeling = 'BADAN BEGAH & CEPAT LELAH';
+    } else if (/ginjal|kreatinin|kristal/i.test(combined)) {
+      emoji = '😖';
+      rawFeeling = 'PINGGANG PEGAL & NGILU';
+    } else if (/saraf|mielin|refleks/i.test(combined)) {
+      emoji = '🫠';
+      rawFeeling = 'TUBUH LEMAS & KESEMUTAN';
+    } else if (organ === 'brain') {
+      emoji = '🤯';
+      rawFeeling = 'SULIT FOKUS & KEPALA PENAT';
+    } else if (organ === 'stomach' || organ === 'intestine') {
+      emoji = '😣';
+      rawFeeling = 'PERUT KEMBUNG & TIDAK NYAMAN';
+    } else if (organ === 'heart' || organ === 'blood') {
+      emoji = '💓';
+      rawFeeling = 'DADA BERDEBAR & CEPAT LELAH';
+    } else {
+      emoji = '⚠️';
+      rawFeeling = 'TUBUH LEMAS & TIDAK FIT';
+    }
   }
 
-  const combined = `${node.headline || ''} ${node.narration || ''} ${node.primaryText || ''} ${node.secondaryText || ''} ${node.caption || ''}`.toLowerCase();
-  const organ = (node.organTarget || '').toLowerCase();
+  // Clean and condense to a punchy, concise single-line label (max ~32 characters)
+  let feeling = rawFeeling
+    .replace(/^EFEK:\s*/i, '')
+    .replace(/^YANG DIRASAKAN:\s*/i, '')
+    .replace(/^RASA\s+/i, '')
+    .trim()
+    .toUpperCase();
 
-  // Specific physical sensations based on context & organ
-  if (/mulas|peristaltik|kontraksi usus|bab|diare/i.test(combined)) {
-    return { emoji: '🚽', feeling: 'PERUT MULAS MENDADAK & INGIN KE TOILET' };
-  }
-  if (/asam|mukosa|parietal|perih|lambung kosong|iritasi lambung|maag/i.test(combined)) {
-    return { emoji: '😣', feeling: 'PERUT TERASA PERIH, MELILIT & MUAL' };
-  }
-  if (/kortisol|adrenal|fight or flight|cemas|stres kimiawi/i.test(combined)) {
-    return { emoji: '😰', feeling: 'MUNCUL RASA GELISAH, CEMAS & PANIK TANPA SEBAB' };
-  }
-  if (/takikardia|detak jantung|adrenalin memacu|memompa lebih keras/i.test(combined)) {
-    return { emoji: '💓', feeling: 'JANTUNG BERDEBAR KENCANG (DEG-DEGAN)' };
-  }
-  if (/vasokonstriksi|pembuluh darah.*menyempit|arteri/i.test(combined)) {
-    return { emoji: '🥶', feeling: 'TELAPAK TANGAN DINGIN & KEPALA TERASA BERAT' };
-  }
-  if (/otot|kram|ketegangan otot|asam laktat/i.test(combined)) {
-    return { emoji: '🫨', feeling: 'TANGAN GEMETAR (TREMOR) & OTOT TERASA TEGANG' };
-  }
-  if (/adenosin.*blokir|menghentikan sinyal.*mengantuk|kewaspadaan buatan/i.test(combined)) {
-    return { emoji: '😳', feeling: 'MATA LANGSUNG MELEK TAPI TUBUH SEBENARNYA LELAH' };
-  }
-  if (/dopamin|euforia|energi bersih/i.test(combined)) {
-    return { emoji: '⚡', feeling: 'MERASA SEGAR & FOKUS SESAAT (ENERGI SEMU)' };
-  }
-  if (/diuretik|diuresis|urine|kencing|dehidrasi/i.test(combined)) {
-    return { emoji: '💧', feeling: 'SERING KEBELET KENCING & TENGGOROKAN KERING' };
-  }
-  if (/crash|kelelahan mendadak|menyerbu reseptor|hutang energi/i.test(combined)) {
-    return { emoji: '🥱', feeling: 'BADAN MENDADAK LEMAS, PUSING & NGANTUK BERAT' };
-  }
-  if (/halusinasi|mikrosleep|tidak tidur/i.test(combined)) {
-    return { emoji: '😵', feeling: 'PANDANGAN KABUR, LINGLUNG & HAMPIR PINGSAN' };
-  }
-  if (/paru|oksigen|alveoli|napas/i.test(combined)) {
-    return { emoji: '😮‍💨', feeling: 'NAPAS TERASA PENDEK, BERAT & MUDAH NGOS-NGOSAN' };
-  }
-  if (/hati|hepatosit|sitokrom|detoks/i.test(combined)) {
-    return { emoji: '🤢', feeling: 'BADAN TERASA ENEK, BEGAH & CEPAT LELAH' };
-  }
-  if (/ginjal|kreatinin|kristal/i.test(combined)) {
-    return { emoji: '😖', feeling: 'PINGGANG TERASA PEGAL & URIN BERWARNA PEKAT' };
-  }
-  if (/saraf|mielin|refleks/i.test(combined)) {
-    return { emoji: '🫠', feeling: 'TUBUH CEPAT LEMAS, KESEMUTAN & KURANG RESPONSIF' };
-  }
-  if (organ === 'brain') {
-    return { emoji: '🤯', feeling: 'KEPALA PENAT, SULIT FOKUS & MUDAH LUPA' };
-  }
-  if (organ === 'stomach' || organ === 'intestine') {
-    return { emoji: '😣', feeling: 'PERUT TERASA TIDAK NYAMAN, KEMBUNG & PERIH' };
-  }
-  if (organ === 'heart' || organ === 'blood') {
-    return { emoji: '💓', feeling: 'DADA BERDEBAR & TUBUH TERASA CEPAT LELAH' };
+  // If longer than 32 chars, take first punchy clause
+  if (feeling.length > 32) {
+    const parts = feeling.split(/,|;|\s+DAN\s+|\s+TAPI\s+/i);
+    if (parts[0] && parts[0].trim().length >= 10 && parts[0].trim().length <= 32) {
+      feeling = parts[0].trim();
+    } else {
+      const words = feeling.split(/\s+/);
+      let acc = '';
+      for (const w of words) {
+        if ((acc + ' ' + w).trim().length <= 30) {
+          acc = (acc + ' ' + w).trim();
+        } else {
+          break;
+        }
+      }
+      feeling = acc || feeling.slice(0, 30);
+    }
   }
 
-  return { emoji: '⚠️', feeling: 'TUBUH TERASA LEMAS, TIDAK FIT & KEHABISAN ENERGI' };
+  return { feeling, emoji };
 }

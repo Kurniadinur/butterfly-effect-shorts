@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { Img, useCurrentFrame, useVideoConfig, staticFile, interpolate } from 'remotion';
+import { useCurrentFrame, useVideoConfig, staticFile, interpolate } from 'remotion';
 import { ButterflyNode, OrganTarget, WordTimestamp } from '../data/types';
-import { detectOrganFromText } from './MedicalScannerScene';
+import { detectOrganFromText } from '../utils/anatomyUtils';
 import { resolveEditorialTheme, humanizeOnScreenText, inferHumanFeelingForNode } from '../utils/editorialThemes';
 
 export interface ContinuousBodyJourneyProps {
@@ -40,10 +40,10 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   brain: {
     id: 'brain',
-    label: 'BAGIAN OTAK',
+    label: 'OTAK & SARAF PUSAT',
     stageX: 50,
     stageY: 12,
-    zoomScale: 1.48,
+    zoomScale: 2.1,
     color: '#38bdf8',
     organMediaUrl: 'butterfly/organs/brain.png',
     calloutSide: 'right',
@@ -53,109 +53,9 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'SISTEM SARAF & TULANG BELAKANG',
     stageX: 50,
     stageY: 34,
-    zoomScale: 1.35,
+    zoomScale: 1.65,
     color: '#818cf8',
     organMediaUrl: 'butterfly/organs/brain.png',
-    calloutSide: 'left',
-  },
-  lungs: {
-    id: 'lungs',
-    label: 'PARU-PARU',
-    stageX: 50,
-    stageY: 47,
-    zoomScale: 1.36,
-    color: '#2dd4bf',
-    organMediaUrl: 'butterfly/organs/lungs.png',
-    calloutSide: 'left',
-  },
-  heart: {
-    id: 'heart',
-    label: 'JANTUNG',
-    stageX: 52,
-    stageY: 49,
-    zoomScale: 1.46,
-    color: '#f43f5e',
-    organMediaUrl: 'butterfly/organs/heart.png',
-    calloutSide: 'right',
-  },
-  blood: {
-    id: 'blood',
-    label: 'PEMBULUH DARAH',
-    stageX: 51,
-    stageY: 52,
-    zoomScale: 1.36,
-    color: '#ef4444',
-    organMediaUrl: 'butterfly/organs/blood_vessels.png',
-    calloutSide: 'left',
-  },
-  liver: {
-    id: 'liver',
-    label: 'ORGAN HATI',
-    stageX: 45,
-    stageY: 62,
-    zoomScale: 1.44,
-    color: '#f59e0b',
-    organMediaUrl: 'butterfly/organs/liver.png',
-    calloutSide: 'left',
-  },
-  stomach: {
-    id: 'stomach',
-    label: 'LAMBUNG',
-    stageX: 55,
-    stageY: 63,
-    zoomScale: 1.46,
-    color: '#fb923c',
-    organMediaUrl: 'butterfly/organs/stomach.png',
-    calloutSide: 'right',
-  },
-  pancreas: {
-    id: 'pancreas',
-    label: 'PANKREAS & EMPEDU',
-    stageX: 52,
-    stageY: 66,
-    zoomScale: 1.46,
-    color: '#10b981',
-    organMediaUrl: 'butterfly/organs/pancreas.png',
-    calloutSide: 'right',
-  },
-  kidney: {
-    id: 'kidney',
-    label: 'GINJAL',
-    stageX: 50,
-    stageY: 70,
-    zoomScale: 1.44,
-    color: '#a855f7',
-    organMediaUrl: 'butterfly/organs/kidneys.png',
-    calloutSide: 'right',
-  },
-  intestine: {
-    id: 'intestine',
-    label: 'USUS HALUS & BESAR',
-    stageX: 50,
-    stageY: 79,
-    zoomScale: 1.38,
-    color: '#eab308',
-    organMediaUrl: 'butterfly/organs/intestines.png',
-    calloutSide: 'left',
-  },
-  bladder: {
-    id: 'bladder',
-    label: 'KANDUNG KEMIH',
-    stageX: 50,
-    stageY: 88,
-    zoomScale: 1.45,
-    color: '#38bdf8',
-    organMediaUrl: 'butterfly/organs/bladder.png',
-    calloutSide: 'right',
-  },
-  muscles: {
-    id: 'muscles',
-    label: 'OTOT & RANGKA',
-    stageX: 36,
-    stageY: 80,
-    zoomScale: 1.32,
-    color: '#fb7185',
-    organMediaUrl: 'butterfly/media/medical_body_xray.jpg',
     calloutSide: 'left',
   },
   vocal_cords: {
@@ -163,7 +63,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'PITA SUARA & LARING',
     stageX: 50,
     stageY: 30,
-    zoomScale: 1.48,
+    zoomScale: 2.25,
     color: '#38bdf8',
     organMediaUrl: 'butterfly/organs/vocal_cords.png',
     calloutSide: 'right',
@@ -173,9 +73,109 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'KERONGKONGAN (ESOFAGUS)',
     stageX: 51,
     stageY: 42,
-    zoomScale: 1.45,
+    zoomScale: 1.95,
     color: '#fb923c',
     organMediaUrl: 'butterfly/organs/esophagus.png',
+    calloutSide: 'left',
+  },
+  lungs: {
+    id: 'lungs',
+    label: 'PARU-PARU & PERNAPASAN',
+    stageX: 50,
+    stageY: 47,
+    zoomScale: 1.75,
+    color: '#2dd4bf',
+    organMediaUrl: 'butterfly/organs/lungs.png',
+    calloutSide: 'left',
+  },
+  heart: {
+    id: 'heart',
+    label: 'JANTUNG & SIRKULASI',
+    stageX: 52,
+    stageY: 49,
+    zoomScale: 2.05,
+    color: '#f43f5e',
+    organMediaUrl: 'butterfly/organs/heart.png',
+    calloutSide: 'right',
+  },
+  blood: {
+    id: 'blood',
+    label: 'PEMBULUH DARAH',
+    stageX: 51,
+    stageY: 52,
+    zoomScale: 1.85,
+    color: '#ef4444',
+    organMediaUrl: 'butterfly/organs/blood_vessels.png',
+    calloutSide: 'left',
+  },
+  liver: {
+    id: 'liver',
+    label: 'HATI (METABOLISME)',
+    stageX: 45,
+    stageY: 62,
+    zoomScale: 1.95,
+    color: '#f59e0b',
+    organMediaUrl: 'butterfly/organs/liver.png',
+    calloutSide: 'left',
+  },
+  stomach: {
+    id: 'stomach',
+    label: 'LAMBUNG & PENCERNAAN',
+    stageX: 55,
+    stageY: 63,
+    zoomScale: 2.05,
+    color: '#fb923c',
+    organMediaUrl: 'butterfly/organs/stomach.png',
+    calloutSide: 'right',
+  },
+  pancreas: {
+    id: 'pancreas',
+    label: 'PANKREAS & INSULIN',
+    stageX: 52,
+    stageY: 66,
+    zoomScale: 2.05,
+    color: '#10b981',
+    organMediaUrl: 'butterfly/organs/pancreas.png',
+    calloutSide: 'left',
+  },
+  kidney: {
+    id: 'kidney',
+    label: 'GINJAL & FILTRASI',
+    stageX: 50,
+    stageY: 70,
+    zoomScale: 2.0,
+    color: '#a855f7',
+    organMediaUrl: 'butterfly/organs/kidneys.png',
+    calloutSide: 'right',
+  },
+  intestine: {
+    id: 'intestine',
+    label: 'SALURAN USUS',
+    stageX: 50,
+    stageY: 79,
+    zoomScale: 1.8,
+    color: '#eab308',
+    organMediaUrl: 'butterfly/organs/intestines.png',
+    calloutSide: 'left',
+  },
+  bladder: {
+    id: 'bladder',
+    label: 'KANDUNG KEMIH',
+    stageX: 50,
+    stageY: 88,
+    zoomScale: 2.15,
+    color: '#38bdf8',
+    organMediaUrl: 'butterfly/organs/bladder.png',
+    calloutSide: 'right',
+  },
+  muscles: {
+    id: 'muscles',
+    label: 'OTOT & RANGKA',
+    stageX: 36,
+    stageY: 80,
+    zoomScale: 1.5,
+    color: '#fb7185',
+    organMediaUrl: 'butterfly/media/medical_body_xray.jpg',
     calloutSide: 'left',
   },
 };
@@ -436,18 +436,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
     });
   }, []);
 
-  // Screen pixel coordinates where the active organ sits after camera transform,
-  // so our 3D Callout Card points directly to the exact center of the organ!
-  const baseScreenX = activeWp.anchor.stageX * 10.8;
-  const baseScreenY = activeWp.anchor.stageY * 10.38;
-  const organScreenX = 540 + (baseScreenX - 540) * finalScale + offsetX;
-  const organScreenY = 806.4 + (baseScreenY - 806.4) * finalScale + offsetY;
-  const clampedTargetX = Math.max(240, Math.min(840, organScreenX));
-  const clampedTargetY = Math.max(250, Math.min(1140, organScreenY));
 
-  const calloutOnRight = activeWp.anchor.calloutSide === 'right';
-  const cardLeft = calloutOnRight ? Math.min(604, clampedTargetX + 125) : Math.max(36, clampedTargetX - 565);
-  const cardTop = Math.max(210, Math.min(730, clampedTargetY - 210));
 
   return (
     <div
@@ -896,202 +885,109 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       </div>
 
       {/* =====================================================================
-          3. MULTI-THEME EDITORIAL CALLOUT (Physical Paper Card + Leader Line + Hard Shadow)
+          2. GAYA A: FLOATING GLASS ORGAN HUD CAPSULE (Top-Left, Zack D. Films Style)
+             Zero visual obstruction of the 3D body! Pure cinematic clarity.
           ===================================================================== */}
-      <svg
-        width="1080"
-        height="1920"
-        style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 24 }}
-      >
-        {/* Clean L-Shaped Architectural Leader Line */}
-        <polyline
-          points={`${clampedTargetX},${clampedTargetY} ${
-            calloutOnRight ? cardLeft - 24 : cardLeft + 444
-          },${cardTop + 68} ${calloutOnRight ? cardLeft : cardLeft + 420},${cardTop + 68}`}
-          fill="none"
-          stroke={theme.leaderLineColor}
-          strokeWidth="2.5"
-        />
-        <rect
-          x={calloutOnRight ? cardLeft - 4 : cardLeft + 416}
-          y={cardTop + 62}
-          width="8"
-          height="12"
-          fill={theme.primaryHighlight}
-        />
-      </svg>
-
       <div
         style={{
           position: 'absolute',
-          left: `${cardLeft}px`,
-          top: `${cardTop}px`,
-          width: '420px',
-          zIndex: 25,
-          backgroundColor: theme.cardBg,
-          borderRadius: theme.cardRadius,
-          border: theme.cardBorder,
-          borderTop: theme.cardTopAccentBar ? `7px solid ${theme.cardTopAccentBar}` : theme.cardBorder,
-          borderLeft: theme.cardLeftAccentSpine ? `8px solid ${theme.cardLeftAccentSpine}` : theme.cardBorder,
-          boxShadow: theme.cardShadow,
-          padding: '14px 16px',
+          top: '56px',
+          left: '48px',
+          zIndex: 35,
           display: 'flex',
           alignItems: 'center',
-          gap: '16px',
+          gap: '12px',
+          padding: '10px 22px',
+          backgroundColor: 'rgba(9, 13, 22, 0.78)',
+          backdropFilter: 'blur(20px)',
+          border: `1.5px solid ${activeWp.anchor.color}`,
+          borderRadius: '999px',
+          boxShadow: `0 8px 32px rgba(0, 0, 0, 0.75), 0 0 20px ${activeWp.anchor.color}35`,
         }}
       >
-        {/* Editorial Specimen Frame */}
         <div
           style={{
-            position: 'relative',
-            width: '104px',
-            height: '104px',
-            borderRadius: '3px',
-            overflow: 'hidden',
-            border: `2px solid ${theme.inkDark}`,
-            backgroundColor: theme.specimenBg,
-            flexShrink: 0,
+            width: '10px',
+            height: '10px',
+            borderRadius: '50%',
+            backgroundColor: activeWp.anchor.color,
+            boxShadow: `0 0 10px ${activeWp.anchor.color}`,
+            transform: `scale(${1 + systolicBeat * 0.3})`,
           }}
-        >
-          <Img
-            src={staticFile(activeWp.anchor.organMediaUrl)}
-            style={{
-              width: '86%',
-              height: '86%',
-              margin: '7%',
-              objectFit: 'contain',
-              transform: `scale(${1.04 + systolicBeat * 0.06})`,
-            }}
-          />
-        </div>
-
-        {/* High-Contrast Print Typography */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', minWidth: 0 }}>
-          <div
+        />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+          <span
             style={{
               fontFamily: "'Space Grotesk', monospace",
-              fontSize: '12px',
+              fontSize: '11px',
               fontWeight: 800,
-              color: theme.inkMuted,
+              color: activeWp.anchor.color,
               letterSpacing: '1.2px',
               textTransform: 'uppercase',
-              borderBottom: '1.5px solid rgba(0,0,0,0.14)',
-              paddingBottom: '3px',
             }}
           >
             {activeWp.anchor.label}
-          </div>
-
-          <div
+          </span>
+          <span
             style={{
               fontFamily: "'Montserrat', sans-serif",
-              fontSize: '20px',
+              fontSize: '15px',
               fontWeight: 900,
-              color: theme.inkDark,
-              lineHeight: 1.15,
-              letterSpacing: '-0.4px',
+              color: '#FFFFFF',
+              letterSpacing: '-0.2px',
               textTransform: 'uppercase',
             }}
           >
             {activeWp.headline}
-          </div>
-
-          {/* Editorial Marker Highlighter Strip */}
-          <div
-            style={{
-              marginTop: '3px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              backgroundColor: smoothChaos >= 65 ? theme.criticalHighlight : theme.primaryHighlight,
-              padding: '3px 9px',
-              borderRadius: '2px',
-              border: `1.5px solid ${theme.inkDark}`,
-              width: 'fit-content',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "'Space Grotesk', monospace",
-                fontSize: '11px',
-                fontWeight: 900,
-                color: smoothChaos >= 65 ? theme.criticalHighlightText : theme.primaryHighlightText,
-                letterSpacing: '0.6px',
-                textTransform: 'uppercase',
-              }}
-            >
-              {activeWp.primaryText}
-            </span>
-          </div>
+          </span>
         </div>
       </div>
 
       {/* =====================================================================
-          3B. REAL HUMAN SENSATION CARD ("YANG DIRASAKAN MANUSIA / TUBUHMU")
-              Shows viewers what the person actually feels physically at each stage!
+          3. GAYA A: FLOATING HUMAN SENSATION CAPSULE (Center-Bottom, Zack D. Films Style)
+             Sleek single-line glass pill right above subtitle zone!
           ===================================================================== */}
       <div
         style={{
           position: 'absolute',
-          top: '1015px',
-          left: '72px',
-          right: '72px',
-          zIndex: 26,
+          bottom: '500px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 35,
           display: 'flex',
           alignItems: 'center',
-          gap: '18px',
-          backgroundColor: theme.specimenBg,
-          borderRadius: theme.cardRadius,
-          border: `2.5px solid ${theme.paperLight}`,
-          borderLeft: `10px solid ${smoothChaos >= 65 ? theme.criticalHighlight : theme.primaryHighlight}`,
-          boxShadow: '10px 10px 0px rgba(0, 0, 0, 0.85)',
-          padding: '14px 20px',
+          gap: '14px',
+          padding: '12px 28px',
+          backgroundColor: 'rgba(9, 14, 24, 0.90)',
+          backdropFilter: 'blur(24px)',
+          border: `2px solid ${smoothChaos >= 65 ? theme.criticalHighlight : theme.primaryHighlight}`,
+          borderRadius: '12px',
+          boxShadow: `0 12px 36px rgba(0, 0, 0, 0.85), 0 0 24px ${smoothChaos >= 65 ? theme.criticalHighlight : theme.primaryHighlight}40`,
         }}
       >
-        <div
+        <span
           style={{
-            width: '64px',
-            height: '64px',
-            borderRadius: '4px',
-            backgroundColor: theme.cardBg,
-            border: `2px solid ${theme.inkDark}`,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '36px',
-            flexShrink: 0,
-            transform: `scale(${1 + systolicBeat * 0.06})`,
+            fontSize: '26px',
+            lineHeight: 1,
+            transform: `scale(${1 + systolicBeat * 0.12})`,
+            display: 'inline-block',
           }}
         >
           {activeWp.symptomEmoji}
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: 0 }}>
-          <span
-            style={{
-              fontFamily: "'Space Grotesk', monospace",
-              fontSize: '12px',
-              fontWeight: 900,
-              color: smoothChaos >= 65 ? theme.criticalHighlight : theme.primaryHighlight,
-              letterSpacing: '1.2px',
-              textTransform: 'uppercase',
-            }}
-          >
-            YANG DIRASAKAN MANUSIA SAAT INI:
-          </span>
-          <span
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: '21px',
-              fontWeight: 900,
-              color: '#F4F0EA',
-              lineHeight: 1.2,
-              textTransform: 'uppercase',
-            }}
-          >
-            {activeWp.humanFeeling}
-          </span>
-        </div>
+        </span>
+        <span
+          style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: '18px',
+            fontWeight: 900,
+            color: '#FFFFFF',
+            letterSpacing: '0.8px',
+            textTransform: 'uppercase',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {activeWp.humanFeeling}
+        </span>
       </div>
 
       {/* =====================================================================
@@ -1124,11 +1020,12 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           display: 'inline-flex',
           alignItems: 'center',
           gap: '14px',
-          backgroundColor: theme.specimenBg,
-          padding: '10px 18px',
-          borderRadius: '4px',
-          border: `2px solid ${theme.paperLight}`,
-          boxShadow: '6px 6px 0px rgba(0,0,0,0.85)',
+          backgroundColor: 'rgba(9, 13, 22, 0.78)',
+          backdropFilter: 'blur(20px)',
+          padding: '10px 22px',
+          borderRadius: '999px',
+          border: `1.5px solid ${theme.primaryHighlight}66`,
+          boxShadow: `0 8px 32px rgba(0, 0, 0, 0.75), 0 0 16px ${theme.primaryHighlight}25`,
         }}
       >
         <svg width="105" height="26" viewBox="0 0 220 40" style={{ overflow: 'visible' }}>

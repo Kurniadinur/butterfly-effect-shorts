@@ -1043,11 +1043,11 @@ export const HookScene: React.FC<HookSceneProps> = ({
         {/* 1. Live Physiological Threat & Escalation Gauge */}
         <div
           style={{
-            backgroundColor: theme.specimenBg,
+            backgroundColor: 'rgba(15, 23, 42, 0.65)',
             padding: '20px 22px',
-            borderRadius: '4px',
-            border: `2px solid ${theme.paperLight}`,
-            boxShadow: '6px 6px 0px rgba(0, 0, 0, 0.85)',
+            borderRadius: '16px',
+            border: `1.5px solid rgba(56, 189, 248, 0.25)`,
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
           }}
         >
           <div
@@ -1079,10 +1079,11 @@ export const HookScene: React.FC<HookSceneProps> = ({
                 fontFamily: "'Space Grotesk', monospace",
                 fontSize: '13px',
                 fontWeight: 900,
-                color: isCritical ? theme.criticalHighlight : '#F4F0EA',
-                backgroundColor: 'rgba(255,255,255,0.08)',
+                color: isCritical ? theme.criticalHighlight : '#38BDF8',
+                backgroundColor: 'rgba(56, 189, 248, 0.12)',
+                border: '1px solid rgba(56, 189, 248, 0.3)',
                 padding: '4px 10px',
-                borderRadius: '3px',
+                borderRadius: '8px',
               }}
             >
               {isCritical ? scenario.meterEndText : scenario.meterStartText} ({dynamicBpm} BPM)
@@ -1093,10 +1094,10 @@ export const HookScene: React.FC<HookSceneProps> = ({
           <div
             style={{
               width: '100%',
-              height: '20px',
+              height: '18px',
               backgroundColor: 'rgba(0,0,0,0.6)',
-              borderRadius: '3px',
-              border: `1.5px solid ${theme.paperLight}`,
+              borderRadius: '999px',
+              border: `1px solid rgba(255, 255, 255, 0.15)`,
               overflow: 'hidden',
               padding: '2px',
             }}
@@ -1105,8 +1106,13 @@ export const HookScene: React.FC<HookSceneProps> = ({
               style={{
                 width: `${meterPercent}%`,
                 height: '100%',
-                backgroundColor: isCritical ? theme.criticalHighlight : theme.primaryHighlight,
-                borderRadius: '2px',
+                background: isCritical
+                  ? 'linear-gradient(90deg, #F59E0B 0%, #EF4444 100%)'
+                  : 'linear-gradient(90deg, #38BDF8 0%, #0284C7 100%)',
+                borderRadius: '999px',
+                boxShadow: isCritical
+                  ? '0 0 16px rgba(239, 68, 68, 0.8)'
+                  : '0 0 16px rgba(56, 189, 248, 0.8)',
                 transition: 'width 0.1s ease',
               }}
             />
@@ -1116,12 +1122,11 @@ export const HookScene: React.FC<HookSceneProps> = ({
         {/* 2. Bold Hook Mystery Question (Creates irresistible curiosity without giving away the answers!) */}
         <div
           style={{
-            backgroundColor: theme.specimenBg,
+            backgroundColor: 'rgba(245, 158, 11, 0.08)',
             padding: '22px 24px',
-            borderRadius: '4px',
-            border: `2px solid ${theme.paperLight}`,
-            borderLeft: `8px solid ${theme.primaryHighlight}`,
-            boxShadow: `6px 6px 0px ${theme.primaryHighlight}`,
+            borderRadius: '16px',
+            border: `1.5px solid rgba(245, 158, 11, 0.35)`,
+            boxShadow: `0 8px 24px rgba(245, 158, 11, 0.12)`,
             display: 'flex',
             alignItems: 'center',
             gap: '16px',
@@ -1133,8 +1138,8 @@ export const HookScene: React.FC<HookSceneProps> = ({
               fontFamily: "'Montserrat', sans-serif",
               fontSize: '20px',
               fontWeight: 900,
-              color: '#F4F0EA',
-              lineHeight: 1.3,
+              color: '#FFFFFF',
+              lineHeight: 1.35,
             }}
           >
             {scenario.hookMysteryQuestion}
@@ -1145,39 +1150,21 @@ export const HookScene: React.FC<HookSceneProps> = ({
   };
 
     const counterColumn = (
-
     <div
-
       style={{
-
         display: 'flex',
-
         flexDirection: 'column',
-
-        gap: '16px',
-
-        backgroundColor: theme.cardBg,
-
-        border: theme.cardBorder,
-
-        borderTop: theme.cardTopAccentBar ? `8px solid ${theme.cardTopAccentBar}` : theme.cardBorder,
-
-        borderLeft: theme.cardLeftAccentSpine ? `9px solid ${theme.cardLeftAccentSpine}` : theme.cardBorder,
-
-        borderRadius: theme.cardRadius,
-
-        padding: '20px 18px',
-
-        boxShadow: theme.cardShadow,
-
+        gap: '18px',
+        backgroundColor: 'rgba(9, 15, 28, 0.78)',
+        backdropFilter: 'blur(24px)',
+        border: '1.5px solid rgba(56, 189, 248, 0.35)',
+        borderRadius: '20px',
+        padding: '24px 22px',
+        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.12)',
       }}
-
     >
-
       {renderTopicSpecificCardContent()}
-
     </div>
-
   );
 
   return (
@@ -1279,31 +1266,17 @@ export const HookScene: React.FC<HookSceneProps> = ({
           {headlineParts.highlighted && (
 
             <span
-
               style={{
-
                 backgroundColor: theme.primaryHighlight,
-
-                color: theme.primaryHighlightText,
-
-                padding: '2px 12px',
-
-                borderRadius: '3px',
-
-                border: `2px solid ${theme.inkDark}`,
-
-                boxShadow: `4px 4px 0px ${theme.inkDark}`,
-
+                color: '#FFFFFF',
+                padding: '4px 16px',
+                borderRadius: '8px',
+                boxShadow: `0 0 25px ${theme.primaryHighlight}88`,
                 display: 'inline-block',
-
                 marginTop: '6px',
-
               }}
-
             >
-
               {headlineParts.highlighted}
-
             </span>
 
           )}
