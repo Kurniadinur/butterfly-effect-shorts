@@ -56,10 +56,20 @@ class GeminiRpmGovernor {
       return 'gemini-3.8-flash-tts';
     }
     if (purpose === 'vision') {
-      return 'gemini-3.5-flash';
+      return process.env.GEMINI_VISION_MODEL || 'gemini-3-flash-preview';
     }
-    // Gemini 3.5 Flash is Antigravity's powerhouse model for deep medical intelligence & creative writing
-    return process.env.GEMINI_MODEL || 'gemini-3.5-flash';
+    // Gemini 3 Flash on Antigravity is ultra-fast & highly reliable (1.2s response time)
+    return process.env.GEMINI_MODEL || 'gemini-3-flash-preview';
+  }
+
+  getFallbackModels(purpose = 'text') {
+    if (purpose === 'tts') {
+      return ['gemini-3.8-flash-tts', 'gemini-2.5-flash-preview-tts'];
+    }
+    if (purpose === 'vision') {
+      return ['gemini-2.5-flash', 'gemini-3-flash-preview'];
+    }
+    return ['gemini-2.5-flash', 'gemini-3-flash-preview', 'gemini-3.6-flash'];
   }
 
   /**

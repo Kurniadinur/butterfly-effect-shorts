@@ -38,7 +38,7 @@ console.log('================================================================');
 console.log('   AI 3D MEDICAL X-RAY & BODY SCANNER PIPELINE (ANTIGRAVITY)    ');
 console.log('================================================================');
 console.log(`Topik Naskah : "${topic}"`);
-console.log(`AI Engine    : Google Gemini 3.5 Flash (Antigravity High-Credit Engine)`);
+console.log(`AI Engine    : Google Gemini 3.8 Flash (Antigravity High-Credit Engine)`);
 console.log(`Audio Sync   : Groq Cloud LPU (Whisper Large V3)`);
 console.log('================================================================\n');
 
