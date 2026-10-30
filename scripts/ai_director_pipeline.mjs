@@ -744,10 +744,25 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
 async function generateVoiceover(storyData) {
   console.log('[2/4] Mensintesis narasi vokal via Gemini 3.8 Flash Lite TTS...');
 
+  const cleanTopicText = (storyData.title || topic || 'kebiasaan ini')
+    .replace(/^(Apa yang Terjadi pada Tubuhmu Jika|Apa Efek|Apa Jadinya Kalau Kamu|Apa Jadinya Kalau|Bagaimana Jika)\s*/i, '')
+    .replace(/\?+$/, '')
+    .trim();
+  const safeOutroNarration =
+    storyData.outro?.narration && !/keputusan sepele|5 tahun lagi/i.test(storyData.outro.narration)
+      ? storyData.outro.narration
+      : `Setelah melihat apa yang terjadi di dalam tubuhmu tadi, gejala mana yang paling sering kamu rasakan saat ${cleanTopicText.toLowerCase()}?`;
+  if (storyData.outro) {
+    storyData.outro.narration = safeOutroNarration;
+    if (!storyData.outro.question || /keputusan sepele|5 tahun lagi/i.test(storyData.outro.question)) {
+      storyData.outro.question = `Kalau kamu ${cleanTopicText.toLowerCase()}, gejala mana yang paling sering kamu rasakan di tubuhmu?`;
+    }
+  }
+
   const scriptParts = [
-    storyData.hook?.narration || 'Kalian bayangin ini...',
+    storyData.hook?.narration || `Pernahkah kamu membayangkan apa yang terjadi di dalam tubuhmu saat ${cleanTopicText.toLowerCase()}?`,
     ...storyData.nodes.map((n) => n?.narration || ''),
-    storyData.outro?.narration || 'Menurutmu apa keputusan sepele hari ini yang bakal mengubah hidupmu 5 tahun lagi?',
+    safeOutroNarration,
   ].filter(Boolean);
   const rawScript = scriptParts.join(' ');
 

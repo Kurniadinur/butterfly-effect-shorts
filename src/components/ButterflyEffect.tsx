@@ -63,6 +63,9 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
             leftImage={data.hook.leftImage || data.nodes?.[0]?.mediaUrl}
             rightImage={data.hook.rightImage || data.nodes?.[0]?.mediaUrl}
             hookAnimationType={data.hook.hookAnimationType}
+            hookMode={data.hook.hookMode}
+            hookConditionLabel={data.hook.hookConditionLabel}
+            hookSymptoms={data.hook.hookSymptoms}
             hookItemEmoji={data.hook.hookItemEmoji}
             hookItemLabel={data.hook.hookItemLabel}
             hookTargetCount={data.hook.hookTargetCount}
@@ -97,6 +100,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
             question={data.outro.question}
             storyId={storyId}
             editorialMood={editorialMood}
+            storyTitle={data.title || data.hook?.headline}
           />
         </Sequence>
       </CameraShake>

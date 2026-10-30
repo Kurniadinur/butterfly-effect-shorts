@@ -6,11 +6,26 @@ interface OutroSceneProps {
   question: string;
   storyId?: string | null;
   editorialMood?: string | null;
+  storyTitle?: string | null;
 }
 
-export const OutroScene: React.FC<OutroSceneProps> = ({ question, storyId, editorialMood }) => {
+export const OutroScene: React.FC<OutroSceneProps> = ({ question: rawQuestion, storyId, editorialMood, storyTitle }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+
+  // Safety guard: never display the legacy "keputusan sepele ... 5 tahun lagi" question from the old history project
+  const question = useMemo(() => {
+    if (!rawQuestion || /keputusan sepele|5 tahun lagi|mengubah jalan hidupmu/i.test(rawQuestion)) {
+      const cleanTopic = (storyTitle || '')
+        .replace(/^(APA JADINYA KALAU KAMU|APA JADINYA KALAU|APA EFEK|BAGAIMANA JIKA)\s*/i, '')
+        .replace(/\?+$/, '')
+        .trim();
+      return cleanTopic
+        ? `KALAU KAMU ${cleanTopic.toUpperCase()}, GEJALA MANA YANG PALING SERING KAMU RASAKAN DI TUBUHMU?`
+        : 'GEJALA MANA YANG PALING SERING KAMU RASAKAN DI TUBUHMU SETELAH MELAKUKAN KEBIASAAN INI?';
+    }
+    return rawQuestion;
+  }, [rawQuestion, storyTitle]);
 
   const theme = useMemo(
     () => resolveEditorialTheme(storyId, editorialMood, question),

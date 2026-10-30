@@ -1,15 +1,9 @@
 {
   "system_principles": [
-    "100% Foto Sinematik & Reka Adegan Hiper-Realistis (9:16 vertikal) adalah fondasi visual mutlak video. DILARANG KERAS menggunakan sketsa kartun garis murah atau 2D vector.",
-    "Setiap adegan wajib memiliki foto beresolusi tinggi dengan pencahayaan dramatis, 35mm film grain, dan subjek berada di atas zona aman subtitle (y < 1200px).",
-    "Aturan 3 Detik Pertama (Stop-The-Scroll): Mulai langsung dengan Pattern Interrupt + Kontras Tajam ([Waktu/Tokoh Spesifik] + [Aksi Mikro Sepele] + [Bencana/Konsekuensi Masif Dunia]).",
-    "Teknik Seamless Infinite Loop: Kalimat penutup outro dirancang menyambung kembali ke kata pertama pada kalimat pembuka hook agar retensi melonjak > 100%.",
-    "Visual Shift 2.5 - 4 Detik: Setiap 3 hingga 5 detik wajib ada pergantian adegan foto dinamis agar alur granular dan penonton tidak bosan.",
-    "Desain Audio Berlapis: Voiceover jernih di depan (1.0), Drone tensi atmosfer di latar (0.14), Shutter click transisi (0.65), dan Sub-bass impact pada klimaks (0.55).",
-    "Hook pembuka dilarang menggunakan kalimat klise 'Kalian bayangin... dari...', gunakan pembuka dramatis variatif (fakta dingin, misteri, kronologis mendadak).",
-    "Hook pembuka menggunakan format fullscreen-dramatic dengan foto sinematik resolusi tinggi 1080x1920.",
-    "Akurasi sejarah wajib mutlak: dilarang memasukkan elemen fiksi (seperti katup bocor di Tembok Berlin atau mobil belok di Titanic).",
-    "Prinsip Kausalitas & Sebab-Musabab Detail: Jabarkan rantai sebab-musabab yang runtut secara granular (15 hingga 25+ adegan foto dinamis) untuk memaksimalkan durasi video hingga 3 menit."
+    "Simulasi Anatomi 3D & Sensasi Manusia: Setiap adegan wajib menampilkan reaksi organ 3D sekaligus efek nyata yang dirasakan tubuh manusia (humanFeeling) di atas zona aman subtitle (y < 1200px).",
+    "Hook Pembuka Wajib Menyesuaikan Judul Topik: Dilarang menyamakan semua topik dengan kalender 30 hari. Gunakan animasi yang sesuai (misal kopi dituang ke lambung kosong, baterai energi terkuras untuk begadang, tekanan cairan untuk menahan kencing, dan kalender 30 hari khusus topik 30 hari).",
+    "Bahasa Manusia Natural: Dilarang memakai kata 'EKSPERIMEN', 'TARGET UTAMA', atau jargon medis robotik di kartu layar. Gunakan bahasa sehari-hari yang mudah dipahami.",
+    "Pertanyaan Penutup (Outro) Wajib Sesuai Topik: Tanyakan langsung gejala atau kebiasaan terkait judul video yang sedang dibahas, dilarang memakai pertanyaan template masa lalu."
   ],
   "best_story_benchmarks": [
     {

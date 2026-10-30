@@ -376,8 +376,12 @@ export const HookScene: React.FC<HookSceneProps> = ({
   const isBodyOnRight = theme.hookLayout === 'dossier-left-body-right';
 
   // ---------------------------------------------------------------------------
-  // 3D HUMAN BODY COLUMN (With Expressive Human Reaction & Organ Glow)
+  // 3D HUMAN BODY COLUMN (With Topic-Matched Custom Action Animation!)
   // ---------------------------------------------------------------------------
+  const isPouringDrink = /☕|🥤|🍺|🧋|🍵|🥛/.test(scenario.emoji) || /kopi|minum|soda|alkohol/i.test(scenario.naturalHeadline);
+  const isSleepOrScreen = scenario.mode === 'time-drain-battery';
+  const isHoldFluid = scenario.mode === 'pressure-overload';
+
   const bodyColumn = (
     <div
       style={{
@@ -413,6 +417,45 @@ export const HookScene: React.FC<HookSceneProps> = ({
         }}
       />
 
+      {/* Glowing Esophagus / Throat Liquid Path when Pouring Drink */}
+      {isPouringDrink && (
+        <svg
+          width="470"
+          height="850"
+          viewBox="0 0 470 850"
+          style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
+        >
+          <defs>
+            <linearGradient id="coffeeLiquidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#d97706" stopOpacity="0.95" />
+              <stop offset="60%" stopColor="#b45309" stopOpacity="0.9" />
+              <stop offset="100%" stopColor={theme.primaryHighlight} stopOpacity="0.95" />
+            </linearGradient>
+          </defs>
+          {/* Animated liquid stream flowing from mouth (235, 198) down esophagus into stomach (252, 345) */}
+          <path
+            d="M 235 198 C 235 245, 240 285, 252 345"
+            fill="none"
+            stroke="url(#coffeeLiquidGrad)"
+            strokeWidth={6 + Math.sin(frame * 0.35) * 2}
+            strokeLinecap="round"
+            strokeDasharray="16 10"
+            strokeDashoffset={-frame * 3.2}
+            opacity={Math.min(1, curvedProgress * 2.2)}
+          />
+          {/* Empty Stomach Acid Splash Rings */}
+          <circle
+            cx="252"
+            cy="356"
+            r={18 + ((frame * 1.4) % 34)}
+            fill="none"
+            stroke={theme.primaryHighlight}
+            strokeWidth="2.5"
+            opacity={Math.max(0, 0.85 - ((frame * 1.4) % 34) / 34)}
+          />
+        </svg>
+      )}
+
       {/* 3D Organ Inside Body Glowing as Trigger Enters */}
       <div
         style={{
@@ -424,13 +467,13 @@ export const HookScene: React.FC<HookSceneProps> = ({
               ? '255px'
               : '318px',
           left: scenario.targetOrganPng.includes('stomach') ? '53.5%' : '50%',
-          transform: `translateX(-50%) scale(${0.88 + curvedProgress * 0.12 + systolicBeat * 0.05})`,
-          width: '74px',
-          height: '74px',
+          transform: `translateX(-50%) scale(${0.88 + curvedProgress * 0.14 + systolicBeat * 0.06})`,
+          width: '82px',
+          height: '82px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          filter: `drop-shadow(0 0 ${8 + curvedProgress * 16}px ${theme.primaryHighlight}) saturate(${1.1 + curvedProgress * 0.35})`,
+          filter: `drop-shadow(0 0 ${10 + curvedProgress * 18}px ${theme.primaryHighlight}) saturate(${1.15 + curvedProgress * 0.4})`,
         }}
       >
         <Img
@@ -443,52 +486,168 @@ export const HookScene: React.FC<HookSceneProps> = ({
         />
       </div>
 
-      {/* Stream of Trigger Items Entering the Body */}
-      {streamItems.map((item) => {
-        const cycle = ((frame + item.offset) % 48) / 48;
-        const mouthX = 235;
-        const mouthY = 205;
-        const startX = isBodyOnRight ? 25 : 445;
-        const organY =
-          scenario.targetOrganPng.includes('brain')
-            ? 165
-            : scenario.targetOrganPng.includes('lungs') || scenario.targetOrganPng.includes('heart')
-            ? 295
-            : 355;
-
-        const curX =
-          cycle < 0.6
-            ? interpolate(cycle, [0, 0.6], [startX, mouthX])
-            : mouthX + Math.sin(cycle * Math.PI * 4) * 4;
-        const curY =
-          cycle < 0.6
-            ? interpolate(cycle, [0, 0.6], [240, mouthY]) - Math.sin((cycle / 0.6) * Math.PI) * (35 + item.curveX * 0.5)
-            : interpolate(cycle, [0.6, 1], [mouthY, organY]);
-
-        const itemScale =
-          cycle < 0.6
-            ? interpolate(cycle, [0, 0.2, 0.6], [0.5, 1.15, 0.72])
-            : interpolate(cycle, [0.6, 1], [0.68, 0.25]);
-        const itemOpacity = interpolate(cycle, [0, 0.12, 0.6, 0.92, 1], [0, 1, 0.95, 0.75, 0]);
-
-        return (
+      {/* TOPIC-SPECIFIC ACTION ANIMATION ON THE BODY: */}
+      {isPouringDrink ? (
+        <>
+          {/* Single Tilted Cup Pouring Liquid Directly Into Mouth */}
           <div
-            key={item.id}
             style={{
               position: 'absolute',
-              left: `${curX}px`,
-              top: `${curY}px`,
-              fontSize: '40px',
-              transform: `translate(-50%, -50%) scale(${itemScale}) rotate(${cycle < 0.6 ? cycle * 180 : 0}deg)`,
-              opacity: itemOpacity,
-              filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.65))',
-              pointerEvents: 'none',
+              left: isBodyOnRight ? '168px' : '295px',
+              top: '152px',
+              fontSize: '58px',
+              transform: `translate(-50%, -50%) rotate(${isBodyOnRight ? 38 + Math.sin(frame * 0.15) * 6 : -38 - Math.sin(frame * 0.15) * 6}deg)`,
+              filter: 'drop-shadow(0 6px 14px rgba(0,0,0,0.75))',
+              zIndex: 10,
             }}
           >
             {scenario.emoji}
           </div>
-        );
-      })}
+          {/* Liquid Droplets Pouring From Cup Into Mouth & Stomach */}
+          {[0, 1, 2, 3, 4].map((dropIdx) => {
+            const p = ((frame * 1.6 + dropIdx * 12) % 60) / 60;
+            const dropX =
+              p < 0.35
+                ? interpolate(p, [0, 0.35], [isBodyOnRight ? 195 : 275, 235])
+                : interpolate(p, [0.35, 1], [235, 252]);
+            const dropY =
+              p < 0.35
+                ? interpolate(p, [0, 0.35], [168, 198])
+                : interpolate(p, [0.35, 1], [198, 352]);
+            return (
+              <div
+                key={dropIdx}
+                style={{
+                  position: 'absolute',
+                  left: `${dropX}px`,
+                  top: `${dropY}px`,
+                  width: p < 0.35 ? '11px' : '9px',
+                  height: p < 0.35 ? '16px' : '13px',
+                  borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
+                  backgroundColor: p < 0.65 ? '#b45309' : theme.primaryHighlight,
+                  boxShadow: `0 0 10px ${theme.primaryHighlight}`,
+                  transform: 'translate(-50%, -50%)',
+                  opacity: interpolate(p, [0, 0.1, 0.9, 1], [0, 0.95, 0.9, 0]),
+                }}
+              />
+            );
+          })}
+          {/* Live Floating Callout Badge on Empty Stomach */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '398px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              backgroundColor: theme.specimenBg,
+              border: `2px solid ${theme.primaryHighlight}`,
+              padding: '5px 12px',
+              borderRadius: '3px',
+              fontFamily: "'Space Grotesk', monospace",
+              fontSize: '12px',
+              fontWeight: 900,
+              color: '#F4F0EA',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.8)',
+            }}
+          >
+            🔥 LAMBUNG KOSONG TERKENA ASAM!
+          </div>
+        </>
+      ) : isSleepOrScreen ? (
+        <>
+          {/* Pulsing Brain Exhaustion Waves */}
+          {[0, 1, 2].map((ringIdx) => {
+            const rProg = ((frame + ringIdx * 18) % 54) / 54;
+            return (
+              <div
+                key={ringIdx}
+                style={{
+                  position: 'absolute',
+                  top: '165px',
+                  left: '235px',
+                  width: `${50 + rProg * 120}px`,
+                  height: `${50 + rProg * 120}px`,
+                  borderRadius: '50%',
+                  border: `2.5px solid ${theme.primaryHighlight}`,
+                  transform: 'translate(-50%, -50%)',
+                  opacity: 1 - rProg,
+                }}
+              />
+            );
+          })}
+        </>
+      ) : isHoldFluid ? (
+        <>
+          {/* Rising Fluid Pressure Rings on Kidneys / Bladder */}
+          {[0, 1, 2].map((ringIdx) => {
+            const rProg = ((frame + ringIdx * 18) % 54) / 54;
+            return (
+              <div
+                key={ringIdx}
+                style={{
+                  position: 'absolute',
+                  top: '355px',
+                  left: '235px',
+                  width: `${50 + rProg * 110}px`,
+                  height: `${50 + rProg * 110}px`,
+                  borderRadius: '50%',
+                  border: `2.5px solid ${theme.primaryHighlight}`,
+                  transform: 'translate(-50%, -50%)',
+                  opacity: 1 - rProg,
+                }}
+              />
+            );
+          })}
+        </>
+      ) : (
+        /* Stream of Food Items Entering Mouth (for Makan Mie 30 Hari, Makan Pedas, etc.) */
+        streamItems.map((item) => {
+          const cycle = ((frame + item.offset) % 48) / 48;
+          const mouthX = 235;
+          const mouthY = 205;
+          const startX = isBodyOnRight ? 25 : 445;
+          const organY =
+            scenario.targetOrganPng.includes('brain')
+              ? 165
+              : scenario.targetOrganPng.includes('lungs') || scenario.targetOrganPng.includes('heart')
+              ? 295
+              : 355;
+
+          const curX =
+            cycle < 0.6
+              ? interpolate(cycle, [0, 0.6], [startX, mouthX])
+              : mouthX + Math.sin(cycle * Math.PI * 4) * 4;
+          const curY =
+            cycle < 0.6
+              ? interpolate(cycle, [0, 0.6], [240, mouthY]) - Math.sin((cycle / 0.6) * Math.PI) * (35 + item.curveX * 0.5)
+              : interpolate(cycle, [0.6, 1], [mouthY, organY]);
+
+          const itemScale =
+            cycle < 0.6
+              ? interpolate(cycle, [0, 0.2, 0.6], [0.5, 1.15, 0.72])
+              : interpolate(cycle, [0.6, 1], [0.68, 0.25]);
+          const itemOpacity = interpolate(cycle, [0, 0.12, 0.6, 0.92, 1], [0, 1, 0.95, 0.75, 0]);
+
+          return (
+            <div
+              key={item.id}
+              style={{
+                position: 'absolute',
+                left: `${curX}px`,
+                top: `${curY}px`,
+                fontSize: '40px',
+                transform: `translate(-50%, -50%) scale(${itemScale}) rotate(${cycle < 0.6 ? cycle * 180 : 0}deg)`,
+                opacity: itemOpacity,
+                filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.65))',
+                pointerEvents: 'none',
+              }}
+            >
+              {scenario.emoji}
+            </div>
+          );
+        })
+      )}
     </div>
   );
 

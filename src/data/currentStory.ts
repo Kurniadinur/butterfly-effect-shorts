@@ -1588,124 +1588,88 @@ export const CURRENT_STORY: ButterflyStoryData = {
       "pageIndex": 73
     },
     {
-      "word": "Menurutmu",
+      "word": "Kalau",
       "startFrame": 2722,
-      "endFrame": 2752,
+      "endFrame": 2742,
       "pageIndex": 74
     },
     {
-      "word": "apa",
-      "startFrame": 2752,
+      "word": "kamu",
+      "startFrame": 2742,
       "endFrame": 2755,
       "pageIndex": 74
     },
     {
-      "word": "keputusan",
+      "word": "minum",
       "startFrame": 2755,
       "endFrame": 2769,
       "pageIndex": 74
     },
     {
-      "word": "sepele",
+      "word": "kopi",
       "startFrame": 2769,
       "endFrame": 2780,
       "pageIndex": 75
     },
     {
-      "word": "yang",
+      "word": "saat",
       "startFrame": 2780,
-      "endFrame": 2785,
+      "endFrame": 2788,
       "pageIndex": 75
     },
     {
-      "word": "kamu",
-      "startFrame": 2785,
-      "endFrame": 2791,
+      "word": "perut",
+      "startFrame": 2788,
+      "endFrame": 2798,
       "pageIndex": 75
     },
     {
-      "word": "ambil",
-      "startFrame": 2791,
-      "endFrame": 2797,
+      "word": "kosong",
+      "startFrame": 2798,
+      "endFrame": 2814,
       "pageIndex": 76
     },
     {
-      "word": "hari",
-      "startFrame": 2797,
-      "endFrame": 2804,
+      "word": "efek",
+      "startFrame": 2814,
+      "endFrame": 2826,
       "pageIndex": 76
     },
     {
-      "word": "ini",
-      "startFrame": 2804,
-      "endFrame": 2822,
+      "word": "mana",
+      "startFrame": 2826,
+      "endFrame": 2838,
       "pageIndex": 76
     },
     {
       "word": "yang",
-      "startFrame": 2822,
-      "endFrame": 2825,
+      "startFrame": 2838,
+      "endFrame": 2848,
       "pageIndex": 77
     },
     {
-      "word": "tanpa",
-      "startFrame": 2825,
-      "endFrame": 2834,
+      "word": "paling",
+      "startFrame": 2848,
+      "endFrame": 2860,
+      "pageIndex": 77
+    },
+    {
+      "word": "sering",
+      "startFrame": 2860,
+      "endFrame": 2872,
       "pageIndex": 77
     },
     {
       "word": "kamu",
-      "startFrame": 2834,
-      "endFrame": 2841,
-      "pageIndex": 77
-    },
-    {
-      "word": "sadari",
-      "startFrame": 2841,
-      "endFrame": 2854,
+      "startFrame": 2872,
+      "endFrame": 2885,
       "pageIndex": 78
     },
     {
-      "word": "bakal",
-      "startFrame": 2854,
-      "endFrame": 2866,
+      "word": "rasakan",
+      "startFrame": 2885,
+      "endFrame": 2925,
       "pageIndex": 78
-    },
-    {
-      "word": "mengubah",
-      "startFrame": 2866,
-      "endFrame": 2876,
-      "pageIndex": 78
-    },
-    {
-      "word": "jalan",
-      "startFrame": 2876,
-      "endFrame": 2884,
-      "pageIndex": 79
-    },
-    {
-      "word": "hidupmu",
-      "startFrame": 2884,
-      "endFrame": 2896,
-      "pageIndex": 79
-    },
-    {
-      "word": "5",
-      "startFrame": 2896,
-      "endFrame": 2900,
-      "pageIndex": 79
-    },
-    {
-      "word": "tahun",
-      "startFrame": 2900,
-      "endFrame": 2908,
-      "pageIndex": 80
-    },
-    {
-      "word": "lagi",
-      "startFrame": 2908,
-      "endFrame": 2930,
-      "pageIndex": 80
     }
   ],
   "audioUrl": "butterfly/audio/kopi-perut-kosong-mvu5mpm1_voiceover.wav",
