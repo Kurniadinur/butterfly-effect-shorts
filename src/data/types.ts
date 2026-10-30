@@ -62,6 +62,8 @@ export type OrganTarget =
   | 'intestine'
   | 'blood'
   | 'nerves'
+  | 'bladder'
+  | 'pancreas'
   | 'muscles'
   | 'full-body'
   | string;
@@ -141,6 +143,8 @@ export interface ButterflyStoryData {
   outro: {
     narration: string;
     question: string;
+    headline?: string;
+    outroStyle?: string;
     durationFrames: number;
   };
   wordTimestamps: WordTimestamp[];

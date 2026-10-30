@@ -34,8 +34,10 @@ const ORGAN_MAP: Record<string, OrganCoord> = {
   heart: { id: 'heart', label: 'JANTUNG & PEMBULUH', x: 54, y: 70, color: '#f43f5e' },
   liver: { id: 'liver', label: 'HATI (LIVER)', x: 42, y: 88, color: '#f59e0b' },
   stomach: { id: 'stomach', label: 'LAMBUNG & PENCERNAAN', x: 57, y: 92, color: '#fb923c' },
+  pancreas: { id: 'pancreas', label: 'PANKREAS & EMPEDU', x: 52, y: 96, color: '#10b981' },
   kidney: { id: 'kidney', label: 'GINJAL & EKSKRESI', x: 50, y: 104, color: '#a855f7' },
   intestine: { id: 'intestine', label: 'USUS & METABOLISME', x: 50, y: 118, color: '#eab308' },
+  bladder: { id: 'bladder', label: 'KANDUNG KEMIH', x: 50, y: 136, color: '#38bdf8' },
   blood: { id: 'blood', label: 'ALIRAN DARAH & SEL', x: 54, y: 76, color: '#ef4444' },
   muscles: { id: 'muscles', label: 'JARINGAN OTOT & SEL', x: 32, y: 82, color: '#fb7185' },
   'full-body': { id: 'full-body', label: 'SISTEM IMUN & TUBUH', x: 50, y: 78, color: '#38bdf8' },
@@ -65,7 +67,13 @@ export function detectOrganFromText(
   if (/lambung|asam|perut|mual|muntah|lapar|makan|minum|kopi|kafein|maag/.test(combined)) {
     return ORGAN_MAP.stomach;
   }
-  if (/ginjal|kencing|urin|kandung kemih|dehidrasi|cairan|racun|ureum/.test(combined)) {
+  if (/kandung kemih|kemal|bladd|pipis|kencing|anyang/.test(combined)) {
+    return ORGAN_MAP.bladder;
+  }
+  if (/pancreas|pankreas|insulin|gula darah|empedu/.test(combined)) {
+    return ORGAN_MAP.pancreas;
+  }
+  if (/ginjal|nefron|filtrasi racun|ureum|batu ginjal/.test(combined)) {
     return ORGAN_MAP.kidney;
   }
   if (/hati|liver|empedu|detoks|alkohol|glikogen/.test(combined)) {

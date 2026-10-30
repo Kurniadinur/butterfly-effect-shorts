@@ -50,12 +50,12 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   nerves: {
     id: 'nerves',
-    label: 'SISTEM SARAF',
+    label: 'SISTEM SARAF & TULANG BELAKANG',
     stageX: 50,
-    stageY: 22,
-    zoomScale: 1.38,
+    stageY: 34,
+    zoomScale: 1.35,
     color: '#818cf8',
-    organMediaUrl: 'butterfly/organs/brain.png',
+    organMediaUrl: 'butterfly/organs/nerves.png',
     calloutSide: 'left',
   },
   lungs: {
@@ -81,11 +81,11 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   blood: {
     id: 'blood',
     label: 'PEMBULUH DARAH',
-    stageX: 52,
-    stageY: 49,
-    zoomScale: 1.38,
+    stageX: 51,
+    stageY: 52,
+    zoomScale: 1.36,
     color: '#ef4444',
-    organMediaUrl: 'butterfly/organs/heart.png',
+    organMediaUrl: 'butterfly/organs/blood_vessels.png',
     calloutSide: 'left',
   },
   liver: {
@@ -108,6 +108,16 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     organMediaUrl: 'butterfly/organs/stomach.png',
     calloutSide: 'right',
   },
+  pancreas: {
+    id: 'pancreas',
+    label: 'PANKREAS & EMPEDU',
+    stageX: 52,
+    stageY: 66,
+    zoomScale: 1.46,
+    color: '#10b981',
+    organMediaUrl: 'butterfly/organs/pancreas.png',
+    calloutSide: 'right',
+  },
   kidney: {
     id: 'kidney',
     label: 'GINJAL',
@@ -120,7 +130,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   },
   intestine: {
     id: 'intestine',
-    label: 'USUS HALUS',
+    label: 'USUS HALUS & BESAR',
     stageX: 50,
     stageY: 79,
     zoomScale: 1.38,
@@ -128,9 +138,19 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     organMediaUrl: 'butterfly/organs/intestines.png',
     calloutSide: 'left',
   },
+  bladder: {
+    id: 'bladder',
+    label: 'KANDUNG KEMIH',
+    stageX: 50,
+    stageY: 88,
+    zoomScale: 1.45,
+    color: '#38bdf8',
+    organMediaUrl: 'butterfly/organs/bladder.png',
+    calloutSide: 'right',
+  },
   muscles: {
     id: 'muscles',
-    label: 'OTOT TUBUH',
+    label: 'OTOT & RANGKA',
     stageX: 36,
     stageY: 80,
     zoomScale: 1.32,
@@ -552,6 +572,38 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             style={{ mixBlendMode: 'screen' }}
           />
 
+          {/* 0. REAL 3D CENTRAL NERVOUS SYSTEM & SPINAL CORD (Stage X: 50, Y: 34) */}
+          <g
+            transform={`translate(50, 34) scale(${1 + Math.sin(frame * 0.12) * 0.02 + getOrganFocusWeight('nerves') * 0.07})`}
+            opacity={getOrganGlow('nerves', 50, 34)}
+            style={{ filter: getOrganVisualFilter('nerves') }}
+          >
+            <image
+              href={staticFile('butterfly/organs/nerves.png')}
+              x="-9"
+              y="-16"
+              width="18"
+              height="32"
+              preserveAspectRatio="xMidYMid meet"
+            />
+          </g>
+
+          {/* 0B. REAL 3D BLOOD VESSELS & VASCULAR TREE (Stage X: 51, Y: 52) */}
+          <g
+            transform={`translate(51, 52) scale(${1 + heartPulse * 0.05 + getOrganFocusWeight('blood') * 0.06})`}
+            opacity={getOrganGlow('blood', 51, 52)}
+            style={{ filter: getOrganVisualFilter('blood') }}
+          >
+            <image
+              href={staticFile('butterfly/organs/blood_vessels.png')}
+              x="-12.5"
+              y="-18"
+              width="25"
+              height="36"
+              preserveAspectRatio="xMidYMid meet"
+            />
+          </g>
+
           {/* 1. REAL 3D ANATOMICAL BRAIN (Cranial Cavity — Stage X: 50, Y: 12) */}
           <g
             transform={`translate(50, 12) scale(${1 + Math.sin(frame * 0.08) * 0.025 + getOrganFocusWeight('brain') * 0.08})`}
@@ -663,6 +715,38 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
               y="-8"
               width="16.4"
               height="16"
+              preserveAspectRatio="xMidYMid meet"
+            />
+          </g>
+
+          {/* 8. REAL 3D ANATOMICAL PANCREAS & GALLBLADDER (C-Loop of Duodenum — Stage X: 52, Y: 66) */}
+          <g
+            transform={`translate(52, 66) scale(${1 + getOrganFocusWeight('pancreas') * 0.08})`}
+            opacity={getOrganGlow('pancreas', 52, 66)}
+            style={{ filter: getOrganVisualFilter('pancreas') }}
+          >
+            <image
+              href={staticFile('butterfly/organs/pancreas.png')}
+              x="-6.5"
+              y="-4.5"
+              width="13"
+              height="9"
+              preserveAspectRatio="xMidYMid meet"
+            />
+          </g>
+
+          {/* 9. REAL 3D ANATOMICAL URINARY BLADDER (Pelvic Cavity — Stage X: 50, Y: 88) */}
+          <g
+            transform={`translate(50, 88) scale(${1 + Math.sin(frame * 0.1) * 0.03 + getOrganFocusWeight('bladder') * 0.09})`}
+            opacity={getOrganGlow('bladder', 50, 88)}
+            style={{ filter: getOrganVisualFilter('bladder') }}
+          >
+            <image
+              href={staticFile('butterfly/organs/bladder.png')}
+              x="-6"
+              y="-5.5"
+              width="12"
+              height="11"
               preserveAspectRatio="xMidYMid meet"
             />
           </g>

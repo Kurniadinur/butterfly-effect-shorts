@@ -42,9 +42,9 @@ export const CURRENT_STORY: ButterflyStoryData = {
   "nodes": [
     {
       "step": 1,
-      "timeOrYear": "MENIT KE-5 • KANTUNG KEMAL (BLADDER)",
-      "organTarget": "kidney",
-      "headline": "KANTUNG KEMAL MULAI MEREGANG",
+      "timeOrYear": "MENIT KE-5 • KANDUNG KEMIH",
+      "organTarget": "bladder",
+      "headline": "KANDUNG KEMIH MULAI MEREGANG",
       "narration": "Urine mulai mengisi penuh ruang kantung kemal, membuat dinding otot elastisnya meregang perlahan tanpa rasa sakit.",
       "humanFeeling": "Mulai terasa ada dorongan kecil untuk pergi ke toilet, tapi masih sangat bisa ditahan",
       "symptomEmoji": "💧",
@@ -88,8 +88,8 @@ export const CURRENT_STORY: ButterflyStoryData = {
     },
     {
       "step": 3,
-      "timeOrYear": "MENIT KE-30 • KANTUNG KEMAL (BLADDER)",
-      "organTarget": "kidney",
+      "timeOrYear": "MENIT KE-30 • KANDUNG KEMIH",
+      "organTarget": "bladder",
       "headline": "PERUT BAWAH MULAS & SESAK",
       "narration": "Kantung kemal yang makin penuh menekan dinding otot di sekitarnya, memicu rasa mulas dan gelisah di kursi.",
       "humanFeeling": "Perut bawah terasa mulas, sesak, dan ada dorongan kuat untuk segera ke toilet",
