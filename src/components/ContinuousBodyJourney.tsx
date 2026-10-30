@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Img, useCurrentFrame, useVideoConfig, staticFile, interpolate } from 'remotion';
 import { ButterflyNode, OrganTarget, WordTimestamp } from '../data/types';
 import { detectOrganFromText } from './MedicalScannerScene';
-import { resolveEditorialTheme, humanizeOnScreenText } from '../utils/editorialThemes';
+import { resolveEditorialTheme, humanizeOnScreenText, inferHumanFeelingForNode } from '../utils/editorialThemes';
 
 export interface ContinuousBodyJourneyProps {
   storyId?: string | null;
@@ -201,6 +201,8 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           timeTag: 'TAHAP 1',
           primaryText: 'REAKSI TUBUH',
           secondaryText: 'Perubahan di dalam tubuh',
+          humanFeeling: 'TUBUH MULAI BEREAKSI',
+          symptomEmoji: '⚡',
           step: 1,
         },
       ];
@@ -217,6 +219,10 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       const anchor = ORGAN_CAMERA_ANCHORS[detected.id] || ORGAN_CAMERA_ANCHORS['full-body'];
       const sFrame = n.startFrame;
       const eFrame = n.startFrame + n.durationFrames;
+      const inferredSensation = inferHumanFeelingForNode({
+        ...n,
+        organTarget: detected.id,
+      });
       return {
         centerFrame: sFrame + Math.min(42, n.durationFrames * 0.35),
         startFrame: sFrame,
@@ -227,6 +233,8 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
         timeTag: (n.timeOrYear || `TAHAP ${idx + 1}`).replace(/eksperimen|simulasi/gi, '').trim(),
         primaryText: humanizeOnScreenText(n.primaryText, n.secondaryText || 'REAKSI TUBUH'),
         secondaryText: n.secondaryText || n.caption || '',
+        humanFeeling: inferredSensation.feeling,
+        symptomEmoji: inferredSensation.emoji,
         step: n.step || idx + 1,
       };
     });
@@ -399,7 +407,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
 
   const calloutOnRight = activeWp.anchor.calloutSide === 'right';
   const cardLeft = calloutOnRight ? Math.min(604, clampedTargetX + 125) : Math.max(36, clampedTargetX - 565);
-  const cardTop = Math.max(220, Math.min(840, clampedTargetY - 210));
+  const cardTop = Math.max(210, Math.min(730, clampedTargetY - 210));
 
   return (
     <div
@@ -828,6 +836,74 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
               {activeWp.primaryText}
             </span>
           </div>
+        </div>
+      </div>
+
+      {/* =====================================================================
+          3B. REAL HUMAN SENSATION CARD ("YANG DIRASAKAN MANUSIA / TUBUHMU")
+              Shows viewers what the person actually feels physically at each stage!
+          ===================================================================== */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '1015px',
+          left: '72px',
+          right: '72px',
+          zIndex: 26,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '18px',
+          backgroundColor: theme.specimenBg,
+          borderRadius: theme.cardRadius,
+          border: `2.5px solid ${theme.paperLight}`,
+          borderLeft: `10px solid ${smoothChaos >= 65 ? theme.criticalHighlight : theme.primaryHighlight}`,
+          boxShadow: '10px 10px 0px rgba(0, 0, 0, 0.85)',
+          padding: '14px 20px',
+        }}
+      >
+        <div
+          style={{
+            width: '64px',
+            height: '64px',
+            borderRadius: '4px',
+            backgroundColor: theme.cardBg,
+            border: `2px solid ${theme.inkDark}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '36px',
+            flexShrink: 0,
+            transform: `scale(${1 + systolicBeat * 0.06})`,
+          }}
+        >
+          {activeWp.symptomEmoji}
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: 0 }}>
+          <span
+            style={{
+              fontFamily: "'Space Grotesk', monospace",
+              fontSize: '12px',
+              fontWeight: 900,
+              color: smoothChaos >= 65 ? theme.criticalHighlight : theme.primaryHighlight,
+              letterSpacing: '1.2px',
+              textTransform: 'uppercase',
+            }}
+          >
+            YANG DIRASAKAN MANUSIA SAAT INI:
+          </span>
+          <span
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: '21px',
+              fontWeight: 900,
+              color: '#F4F0EA',
+              lineHeight: 1.2,
+              textTransform: 'uppercase',
+            }}
+          >
+            {activeWp.humanFeeling}
+          </span>
         </div>
       </div>
 

@@ -46,61 +46,59 @@ console.log('================================================================\n'
 // -----------------------------------------------------------------------------
 export const CREATIVE_PERSPECTIVES = [
   {
-    name: '🧬 MASTER SIMULASI ANATOMI & ORGAN KRONOLOGIS LENGKAP',
-    angle: 'BEDAH REAKSI BIOLOGIS DAN ANATOMI TUBUH MANUSIA SECARA KRONOLOGIS DETIK DEMI DETIK, MENIT DEMI MENIT, HINGGA JAM/HARI KRITIS! ' +
-      'Buat 12 hingga 20 adegan granular dalam array "nodes" agar visual 3D Medical X-Ray berganti dinamis setiap 3–5 detik mengikuti pergerakan kamera pemindai dari satu organ ke organ lain (Otak, Jantung, Paru-paru, Lambung, Hati, Ginjal, Pembuluh Darah, Sistem Saraf)! ' +
-      'Jelaskan secara ilmiah namun dramatis dan mudah dipahami: ' +
-      '• Fase 1: Reaksi Awal (Menit Pertama - Perubahan hormon, reseptor saraf, atau pencernaan). ' +
-      '• Fase 2: Kompensasi Organ (Jam-Jam Awal - Detak jantung meningkat, lonjakan kortisol/adrenalin, penyempitan pembuluh darah). ' +
-      '• Fase 3: Stres Seluler & Kerusakan Jaringan (Otak mulai kehilangan fokus/mikrosleep, akumulasi racun/asam, dehidrasi sel). ' +
-      '• Fase 4: Ambang Kritis Medis (Halusinasi, kegagalan fungsi organ, alarm darurat sistem imun/saraf pusat). ' +
-      '• Fase 5: Dampak Jangka Panjang & Kesimpulan Medis (Bagaimana tubuh memulihkan diri atau batas maksimal ketahanan manusia).',
+    name: '🧬 MASTER SIMULASI ANATOMI & SENSASI MANUSIA KRONOLOGIS LENGKAP',
+    angle: 'BEDAH REAKSI BIOLOGIS ORGAN SEKALIGUS APA YANG DIRASAKAN LANGSUNG OLEH MANUSIANYA SECARA KRONOLOGIS DETIK DEMI DETIK, MENIT DEMI MENIT, HINGGA JAM/HARI KRITIS! ' +
+      'Buat 12 hingga 18 adegan granular dalam array "nodes" agar visual 3D Medical X-Ray berganti dinamis setiap 3–5 detik mengikuti pergerakan kamera pemindai dari satu organ ke organ lain (Otak, Jantung, Paru-paru, Lambung, Hati, Ginjal, Pembuluh Darah, Sistem Saraf)! ' +
+      'WAJIB HUKUMNYA: Jangan hanya membahas mekanisme organ internal, tetapi di SETIAP ADEGAN dari awal sampai akhir, jelaskan juga EFEK NYATA YANG DIRASAKAN MANUSIANYA (misal: perut perih melilit, mual, mulas mendadak & kebelet BAB, jantung deg-degan, tangan gemetar, keringat dingin, cemas/gelisah, sampai badan lemas & ngantuk berat di akhir)! ' +
+      '• Fase 1: Reaksi Awal & Sensasi Pertama yang Dirasakan Manusia (Menit Pertama - Organ terpapar & apa yang langsung terasa di tubuh). ' +
+      '• Fase 2: Kompensasi Organ & Gejala Fisik (Detak jantung meningkat/deg-degan, lonjakan hormon, mulas, atau pusing). ' +
+      '• Fase 3: Stres Seluler & Efek ke Aktivitas Manusia (Sulit fokus, tangan gemetar, cemas, haus terus-menerus, atau bolak-balik toilet). ' +
+      '• Fase 4: Ambang Kritis & Drop Energi (Kelelahan mendadak / crash, kantuk berat, lemas, atau alarm darurat tubuh). ' +
+      '• Fase 5: Dampak Akhir pada Manusia & Kesimpulan (Apa yang dialami tubuh manusia setelah efeknya habis dan pelajaran pentingnya).',
   },
 ];
 
 export const DIRECTOR_PROMPT = `
-Kamu adalah Sutradara Sains & Medis Kelas Dunia (setara kreator Zack D. Films, Kurzgesagt, dan Institute of Human Anatomy).
+Kamu adalah Sutradara Sains & Medis Kelas Dunia (setara kreator Vox, Johnny Harris, Cleo Abram, dan Institute of Human Anatomy).
 Tugasmu adalah menciptakan naskah dan alur visual simulasi anatomi 3D "Apa yang Terjadi pada Tubuhmu Jika..." berdurasi 60 hingga 140 detik untuk YouTube Shorts / TikTok / Reels (9:16).
 
-PRINSIP WAJIB SUTRADARA MEDIS 3D:
-1. GAYA HOOK PEMBUKA ("fullscreen-dramatic" — WAJIB JUDUL MANUSIAWI & NATURAL!):
+PRINSIP WAJIB SUTRADARA MEDIS 3D (ANTI-TEMPLATE & FOKUS PADA MANUSIA!):
+1. GAYA HOOK PEMBUKA & DESAIN VISUAL HOOK YANG WAJIB MENYESUAIKAN TOPIK (JANGAN PERNAH SAMA TERUS!):
    - DILARANG KERAS memakai kata-kata khas AI seperti "EKSPERIMEN TUBUH MANUSIA", "SIMULASI BIOLOGIS", "TARGET UTAMA", atau judul kaku berpola "X: APAKAH MENGANCAM NYAWAMU?".
-   - Buat 'headline' persis seperti judul video manusia yang natural dan sesuai durasi topik (contoh: "APA JADINYA KALAU KAMU MAKAN MIE 30 HARI TERUS-MENERUS?", "APA JADINYA KALAU TIDAK TIDUR 72 JAM NON-STOP?", "APA JADINYA MINUM KOPI SAAT PERUT KOSONG 30 HARI?").
-   - 'kicker': Cukup durasi singkat seperti "30 HARI NON-STOP" atau "72 JAM NON-STOP" (jangan pakai kata "EKSPERIMEN").
-   - 'narration': WAJIB dibuka dengan kalimat pertanyaan langsung ke penonton tanpa bocoran teknis yang berlebihan di awal.
+   - Buat 'headline' persis seperti judul video manusia yang natural dan sesuai topik (contoh: "APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?", "APA JADINYA KALAU KAMU MAKAN MIE 30 HARI TERUS-MENERUS?", "APA JADINYA KALAU TIDAK TIDUR 72 JAM NON-STOP?").
+   - Pilih 'hookMode' yang PALING COCOK dengan topik (DILARANG menyamakan semua topik dengan kalender 30 hari!):
+     * "empty-stomach-alert" -> Gunakan untuk topik reaksi langsung di tubuh/pencernaan/minuman/makanan (seperti Minum Kopi Saat Perut Kosong, Makan Pedas Ekstrem, Minum Soda/Alkohol/Obat). Menampilkan indikator kondisi tubuh & 4 gejala nyata yang langsung dirasakan manusia!
+     * "time-drain-battery" -> Gunakan untuk topik kurang tidur, begadang, menatap layar HP berjam-jam, atau kelelahan otak/mata.
+     * "pressure-overload" -> Gunakan untuk topik menahan kencing, kurang minum air putih, menahan BAB, atau tekanan cairan tubuh.
+     * "streak-calendar" -> HANYA BOLEH digunakan jika judul topik secara eksplisit menyebutkan tantangan sekian hari berturut-turut (seperti "30 Hari", "7 Hari", "Sebulan"). JANGAN PERNAH memakai "streak-calendar" atau angka 30 untuk topik harian biasa seperti minum kopi perut kosong!
+   - Isi 'hookConditionLabel' dengan status awal tubuh (contoh: "KONDISI AWAL: PERUT KOSONG (0% MAKANAN)" atau "DURASI: 72 JAM TANPA TIDUR").
+   - Isi 'hookSymptoms' dengan array 4 gejala fisik nyata yang dirasakan manusia pada topik tersebut (contoh untuk kopi perut kosong: ["😣 Perut Terasa Perih, Melilit & Mual", "🚽 Mulas Mendadak & Kebelet BAB Pagi-Pagi", "💓 Jantung Berdebar Kencang (Deg-degan) & Gemetar", "🥱 Siangnya Badan Lemas & Ngantuk Berat (Crash)"]).
 
-2. TEKS KARTU ORGAN YANG NATURAL & MUDAH DIPAHAMI (BUKAN BAHASA ROBOT/AI):
-   - Di dalam narasi suara ('narration'), jelaskan proses biologis secara ilmiah namun mengalir.
-   - Namun untuk teks di layar ('headline' dan 'primaryText' pada setiap 'node'), DILARANG memakai istilah medis rumit/kaku khas AI (seperti "HEPATOSIT AKTIF", "DISFUNGSI ENDOTEL", "DEGENERASI MIELIN", "SISTEMIK KOLLAPS"). Gunakan bahasa sehari-hari yang langsung dipahami penonton:
-     * Contoh 'headline' yang bagus: "LAMBUNG BEKERJA EKSTRA", "DINDING USUS TERIRITASI", "HATI MULAI KELELAHAN", "PEMBULUH DARAH MENYEMPIT", "GINJAL KEWALAHAN MENYARING", "SULIT FOKUS & MUDAH LELAH".
-     * Contoh 'primaryText' yang bagus: "ASAM LAMBUNG NAIK", "PENYERAPAN TERGANGGU", "KERJA HATI MENINGKAT", "ALIRAN DARAH MELAMBAT", "TEKANAN DARAH NAIK".
-   - Setiap adegan ('node') WAJIB memiliki:
-     * 'timeOrYear': Tahap waktu kronologis & organ (contoh: "MENIT KE-15 • LAMBUNG", "JAM KE-24 • KORTEKS OTAK", "JAM KE-48 • SISTEM SARAF", "HARI KE-3 • JANTUNG").
-     * 'organTarget': Pilih SATU kode organ yang sedang disorot kamera pemindai:
-       - "brain" (Otak / Kepala / Pikiran / Mata / Saraf Pusat)
-       - "heart" (Jantung / Kardiovaskular)
-       - "lungs" (Paru-paru / Pernapasan / Tenggorokan)
-       - "stomach" (Lambung / Kerongkongan / Asam Lambung)
-       - "liver" (Hati / Detoksifikasi / Metabolisme)
-       - "kidney" (Ginjal / Kandung Kemih / Cairan Urin)
-       - "intestine" (Usus Halus / Usus Besar / Penyerapan)
-       - "blood" (Pembuluh Darah / Sel Darah Merah / Imun)
-       - "nerves" (Jaringan Saraf / Reseptor Rasa Sakit)
-       - "muscles" (Otot / Sendi / Kulit / Suhu Tubuh)
-     * 'chaosLevel': Angka 10 sampai 95 yang menunjukkan tingkat stres biologis / bahaya medis pada tahap tersebut (mengatur kecepatan detak jantung BPM dan warna indikator di layar).
-     * 'primaryText': Indikator reaksi medis singkat di layar (contoh: "HORMON KORTISOL +200%", "MIKROSLEEP 3 DETIK", "TEKANAN DARAH NAIK").
-     * 'imagePrompt': Deskripsi bahasa Inggris untuk 3D Medical X-Ray Generator (contoh: "3D medical anatomical X-ray visualization of glowing human brain neurons firing electric blue synapses, dark clinical background, 9:16 vertical").
+2. WAJIB ADA "APA YANG DIRASAKAN MANUSIA" ('humanFeeling' & 'symptomEmoji') DI SETIAP ADEGAN DARI AWAL SAMPAI AKHIR:
+   - Penonton adalah manusia biasa, bukan dokter! Jangan hanya menjelaskan reaksi organ ("sel parietal", "enzim P450", "vasokonstriksi", "blokade adenosin") tanpa memberi tahu APA YANG DIRASAKAN OLEH MANUSIANYA!
+   - Di SETIAP 'node' (dari step 1 sampai step terakhir):
+     * Di dalam 'narration': Hubungkan reaksi organ dengan apa yang dirasakan manusianya (contoh: "Cairan kopi asam langsung menyentuh dinding lambung yang kosong, membuat perutmu mulai terasa perih, panas, dan sedikit mual.").
+     * 'headline' & 'primaryText': Gunakan bahasa Indonesia sehari-hari yang natural, BUKAN jargon medis kaku (contoh 'headline': "LAMBUNG KOSONG LANGSUNG PERIH", "MULAS MENDADAK & KEBELET BAB", "JANTUNG MULAI BERDEBAR KENCANG", "ENERGI ANJLOK & NGANTUK BERAT").
+     * 'humanFeeling' (WAJIB DIISI DI SETIAP NODE!): Kalimat 5-10 kata yang menjelaskan apa yang dirasakan fisik/mental manusia pada detik/menit itu (contoh: "Perut terasa perih, melilit, dan mulai mual karena belum terisi makanan", "Perut terasa mulas mendadak dan muncul dorongan kuat ingin ke kamar mandi", "Dada terasa deg-degan kencang, napas lebih cepat, dan jari sedikit gemetar", "Badan mendadak lemas, kepala berat, dan muncul rasa kantuk luar biasa").
+     * 'symptomEmoji' (WAJIB DIISI DI SETIAP NODE!): Satu emoji ekspresi/gejala manusia yang pas (contoh: "😣", "🤢", "🚽", "💓", "😰", "🥶", "🫨", "😳", "⚡", "💧", "🥱").
 
-3. ALUR PERGERAKAN ANTAR-ORGAN YANG LUWES:
-   - Buat 12 sampai 18 adegan ('nodes') yang mengalir secara kronologis.
-   - Berpindahlah secara logis dari satu organ ke organ lain (misal: dari Lambung -> masuk ke Aliran Darah -> memicu Jantung -> mempengaruhi Otak -> disaring Ginjal) agar peta pemindai tubuh 3D di layar meluncur mulus antar-organ!
+3. KELENGKAPAN DATA TIAP ADEGAN ('node'):
+   - Buat 12 sampai 16 adegan ('nodes') yang mengalir secara kronologis dari awal sampai efek akhirnya pada manusia.
+   - Setiap 'node' wajib memiliki:
+     * 'timeOrYear': Tahap waktu kronologis & organ (contoh: "DETIK KE-30 • LAMBUNG", "MENIT KE-5 • USUS", "MENIT KE-18 • JANTUNG", "JAM KE-2 • OTAK").
+     * 'organTarget': Pilih SATU kode organ ("brain", "heart", "lungs", "stomach", "liver", "kidney", "intestine", "blood", "nerves", "muscles").
+     * 'chaosLevel': Angka 15 sampai 95.
+     * 'imagePrompt': Deskripsi bahasa Inggris untuk 3D Medical X-Ray Generator.
+
+4. OUTRO YANG SESUAI TOPIK & MENANYAKAN PENGALAMAN PENONTON:
+   - 'outro.narration' & 'outro.question' WAJIB membahas topik video tersebut dan menanyakan apa yang sering dirasakan penonton (contoh untuk kopi: "Tubuhmu sebenarnya butuh air putih dan sarapan dulu sebelum menerima kafein. Kalau kamu minum kopi saat perut kosong, efek mana yang paling sering kamu rasakan: perut mulas atau jantung deg-degan?"). DILARANG memakai kalimat template tentang "keputusan sepele 5 tahun lagi".
 
 FORMAT JSON WAJIB:
 {
   "id": "slug-topik-medis",
-  "title": "JUDUL UTAMA HURUF BESAR",
+  "title": "APA JADINYA KALAU ... ?",
   "editorialStyle": {
-    "mood": "clean-documentary",
+    "mood": "johnny-harris-slate",
     "grainIntensity": 0.035,
     "vignetteStrength": 0.30,
     "shakeSensitivity": "subtle",
@@ -108,45 +106,46 @@ FORMAT JSON WAJIB:
   },
   "hook": {
     "hookStyle": "fullscreen-dramatic",
-    "kicker": "PERTANYAAN ANATOMI 3D",
-    "headline": "BAGAIMANA KEADAAN TUBUHMU JIKA ... ?",
-    "narration": "Pernahkah kamu membayangkan, bagaimana keadaan tubuhmu ketika ...? Kamu mungkin mengira efeknya sepele, tapi di dalam tubuhmu, organ-organmu sedang bereaksi keras. Mari kita lihat detik demi detik!",
-    "leftTitle": "Kebiasaan Sepele",
-    "rightTitle": "Reaksi Organ",
-    "leftBadge": "PEMICU AWAL",
-    "rightBadge": "DAMPAK BIOLOGIS",
-    "leftPrimaryText": "Fakta Medis Utama",
-    "leftStampText": "FASE 0",
-    "leftSearchQuery": "3D medical X-ray human body glowing anatomy",
-    "rightSearchQuery": "3D medical X-ray glowing brain and heart scan",
-    "imagePrompt": "3D medical anatomical X-ray scan of glowing human body brain and heart, bioluminescent cyan and red, Zack D Films style, 9:16 vertical",
-    "hookAnimationType": "multiplier-cascade",
-    "hookItemEmoji": "🍜 (atau emoji objek pemicu seperti ☕, 🚬, 🪫, 🥤, 🌶️, 💧)",
-    "hookItemLabel": "BUNGKUS MIE INSTAN (atau nama objek yang dikalikan)",
-    "hookTargetCount": 30,
-    "hookUnitLabel": "HARI BERTURUT-TURUT (atau JAM TANPA TIDUR / GELAS PER HARI)"
+    "kicker": "REAKSI TUBUH & MANUSIA",
+    "headline": "APA JADINYA KALAU ... ?",
+    "narration": "Pernahkah kamu membayangkan, apa yang sebenarnya terjadi pada tubuhmu dan apa yang kamu rasakan ketika ...?",
+    "hookMode": "empty-stomach-alert (atau time-drain-battery / pressure-overload / streak-calendar)",
+    "hookConditionLabel": "KONDISI AWAL: PERUT KOSONG (0% MAKANAN)",
+    "hookSymptoms": [
+      "😣 Gejala nyata 1 yang dirasakan manusia",
+      "🚽 Gejala nyata 2 yang dirasakan manusia",
+      "💓 Gejala nyata 3 yang dirasakan manusia",
+      "🥱 Gejala nyata 4 yang dirasakan manusia di akhir"
+    ],
+    "hookItemEmoji": "☕",
+    "hookItemLabel": "CANGKIR KOPI PAGI",
+    "hookTargetCount": 1,
+    "hookUnitLabel": "SAAT PERUT KOSONG",
+    "imagePrompt": "3D medical anatomical X-ray scan of glowing human body brain and heart, bioluminescent cyan and red, 9:16 vertical"
   },
   "nodes": [
     {
       "step": 1,
-      "timeOrYear": "MENIT KE-15 • LAMBUNG",
+      "timeOrYear": "DETIK KE-30 • LAMBUNG",
       "organTarget": "stomach",
-      "headline": "JUDUL REAKSI ORGAN 1",
-      "narration": "Narasi ilmiah & dramatis tahap 1 (12-18 kata)...",
-      "chaosLevel": 20,
+      "headline": "LAMBUNG KOSONG LANGSUNG TERIRITASI",
+      "narration": "Cairan kopi asam langsung menyentuh dinding lambung yang kosong, membuat perutmu mulai terasa hangat, perih, dan sedikit mual.",
+      "humanFeeling": "Perut mulai terasa perih, panas di ulu hati, dan sedikit mual",
+      "symptomEmoji": "😣",
+      "chaosLevel": 25,
       "mediaType": "photo",
       "searchQuery": "3D medical X-ray glowing human stomach acid",
       "imagePrompt": "3D medical anatomical X-ray render of glowing human stomach with glowing gastric acid, dark background, 9:16 vertical",
       "directorType": "laboratory-discovery",
-      "primaryText": "ASAM LAMBUNG NAIK",
-      "secondaryText": "Mukosa mulai teriritasi",
+      "primaryText": "ULU HATI TERASA PERIH",
+      "secondaryText": "Dinding lambung tanpa pelindung",
       "stampText": "FASE 1",
-      "caption": "Keterangan medis singkat..."
+      "caption": "Asam kopi langsung menyentuh dinding lambung kosong dan memicu rasa perih di ulu hati."
     }
   ],
   "outro": {
-    "narration": "Tubuhmu selalu memberikan sinyal peringatan sebelum terlambat. Kebiasaan mana yang paling sering kamu abaikan setiap hari?",
-    "question": "Kebiasaan mana yang paling sering kamu lakukan tanpa sadar setiap hari?"
+    "narration": "Kesimpulan medis topik ini dan pertanyaan langsung tentang gejala yang paling sering dirasakan penonton.",
+    "question": "Pertanyaan diskusi singkat sesuai topik video?"
   }
 }
 `;
@@ -221,8 +220,8 @@ Adegan Saat Ini:
 ${JSON.stringify(storyData.nodes, null, 2)}
 
 TUGAS MUTLAK:
-Pecah dan kembangkan menjadi 12 HINGGA 16 ADEGAN ANATOMI GRANULAR ('nodes')!
-Setiap adegan harus menyoroti reaksi spesifik pada organ ('organTarget': 'brain' | 'heart' | 'lungs' | 'stomach' | 'liver' | 'kidney' | 'intestine' | 'blood' | 'nerves' | 'muscles'), memiliki 'timeOrYear' kronologis (misal "JAM KE-6 • JANTUNG"), 'primaryText' fakta medis singkat, dan 'imagePrompt' 3D medical X-ray render dalam bahasa Inggris.
+Pecah dan kembangkan menjadi 12 HINGGA 16 ADEGAN ANATOMI & SENSASI MANUSIA GRANULAR ('nodes')!
+Setiap adegan harus menyoroti reaksi spesifik pada organ ('organTarget': 'brain' | 'heart' | 'lungs' | 'stomach' | 'liver' | 'kidney' | 'intestine' | 'blood' | 'nerves' | 'muscles'), memiliki 'timeOrYear' kronologis (misal "JAM KE-6 • JANTUNG"), 'headline' bahasa sehari-hari yang natural, 'humanFeeling' (apa yang dirasakan langsung oleh manusianya pada tahap itu), 'symptomEmoji', 'primaryText' singkat, dan 'imagePrompt' 3D medical X-ray render dalam bahasa Inggris.
 
 FORMAT JSON MURNI:
 {
@@ -231,16 +230,18 @@ FORMAT JSON MURNI:
       "step": 1,
       "timeOrYear": "MENIT KE-10 • OTAK",
       "organTarget": "brain",
-      "headline": "JUDUL REAKSI ORGAN 1",
-      "narration": "Narasi ilmiah 12-18 kata...",
+      "headline": "FOKUS MENINGKAT SEMENTARA",
+      "narration": "Narasi ilmiah & apa yang dirasakan manusia 12-18 kata...",
+      "humanFeeling": "Kepala terasa lebih segar dan mata langsung melek",
+      "symptomEmoji": "⚡",
       "chaosLevel": 15,
       "mediaType": "photo",
       "searchQuery": "3D medical X-ray glowing brain",
       "imagePrompt": "3D medical anatomical X-ray visualization of glowing human brain, 9:16 vertical",
-      "primaryText": "LONJAKAN DOPAMIN",
+      "primaryText": "MATA LANGSUNG MELEK",
       "secondaryText": "Saraf pusat aktif",
       "stampText": "FASE 1",
-      "caption": "Keterangan medis..."
+      "caption": "Keterangan medis & efek ke tubuh manusia..."
     }
   ]
 }`;
@@ -416,26 +417,52 @@ async function generateStoryboard(topic) {
   }
   console.log(`      🎨 [Auto-Rotating Editorial Theme] Gaya Edit Video Ini: ${storyData.editorialStyle.mood}`);
 
-  // Normalize Hook (Enforce Natural Human Question Hook!)
-  const cleanScenario = topic.replace(/^(Apa yang Terjadi pada Tubuhmu Jika|Apa Jadinya Kalau|Bagaimana Jika)\s*/i, '').replace(/\?+$/, '').trim();
+  // Normalize Hook (Enforce Natural Human Question Hook & Topic-Specific Hook Mode!)
+  const cleanScenario = topic.replace(/^(Apa yang Terjadi pada Tubuhmu Jika|Apa Efek|Apa Jadinya Kalau|Bagaimana Jika)\s*/i, '').replace(/\?+$/, '').trim();
   const defaultQuestionHeadline = `APA JADINYA KALAU ${cleanScenario.toUpperCase()}?`;
-  const defaultQuestionNarration = `Pernahkah kamu bertanya-tanya, apa jadinya kalau ${cleanScenario.toLowerCase()}? Kamu mungkin mengira efeknya sepele, namun di dalam tubuhmu, organ-organmu langsung bereaksi. Mari kita lihat apa yang terjadi di dalam tubuhmu!`;
+  const defaultQuestionNarration = `Pernahkah kamu bertanya-tanya, apa yang sebenarnya terjadi di dalam tubuhmu dan apa yang kamu rasakan kalau ${cleanScenario.toLowerCase()}? Kamu mungkin mengira efeknya sepele, namun organ-organmu langsung bereaksi. Mari kita lihat detik demi detik!`;
+
+  const isMultiDayTopic = /(\d+)\s*hari|sebulan|seminggu|setiap hari selama/i.test(topic);
+  const isSleepOrScreenTopic = /tidur|begadang|melek|layar|hp|gadget|mata/i.test(topic);
+  const isHoldFluidTopic = /tahan kencing|menahan pipis|dehidrasi|kurang minum|haus/i.test(topic);
+  const detectedHookMode = isMultiDayTopic
+    ? 'streak-calendar'
+    : isSleepOrScreenTopic
+    ? 'time-drain-battery'
+    : isHoldFluidTopic
+    ? 'pressure-overload'
+    : 'empty-stomach-alert';
+  const detectedKicker = isMultiDayTopic
+    ? (topic.match(/(\d+\s*hari)/i)?.[1]?.toUpperCase() + ' NON-STOP' || '30 HARI NON-STOP')
+    : isSleepOrScreenTopic
+    ? 'REAKSI SARAF & TUBUH'
+    : 'REAKSI ORGAN & TUBUH MANUSIA';
 
   if (!storyData.hook || typeof storyData.hook !== 'object') {
     storyData.hook = {
       hookStyle: 'fullscreen-dramatic',
-      kicker: '30 HARI NON-STOP',
+      kicker: detectedKicker,
       headline: defaultQuestionHeadline,
       narration: defaultQuestionNarration,
-      leftTitle: 'Kebiasaan Harian',
-      rightTitle: 'Reaksi Tubuh',
-      leftBadge: 'HARI 1',
-      rightBadge: 'HARI 30',
+      hookMode: detectedHookMode,
+      leftTitle: 'Pemicu Awal',
+      rightTitle: 'Yang Dirasakan Tubuh',
+      leftBadge: 'PEMICU',
+      rightBadge: 'GEJALA MANUSIA',
     };
   } else {
     if (!storyData.hook.hookStyle) storyData.hook.hookStyle = 'fullscreen-dramatic';
-    if (!storyData.hook.kicker || /INVESTIGASI|EKSPERIMEN|SIMULASI/i.test(storyData.hook.kicker)) {
-      storyData.hook.kicker = '30 HARI NON-STOP';
+    if (!storyData.hook.kicker || /INVESTIGASI|EKSPERIMEN|SIMULASI|30 HARI/i.test(storyData.hook.kicker)) {
+      storyData.hook.kicker = detectedKicker;
+    }
+    if (!isMultiDayTopic && storyData.hook.hookMode === 'streak-calendar') {
+      storyData.hook.hookMode = detectedHookMode;
+    }
+    if (!storyData.hook.hookMode) {
+      storyData.hook.hookMode = detectedHookMode;
+    }
+    if (!isMultiDayTopic && storyData.hook.hookTargetCount === 30) {
+      storyData.hook.hookTargetCount = 1;
     }
     // Ensure headline is formatted as a natural human question (never stiff AI colons)
     if (!storyData.hook.headline || /:|mengancam nyawamu|eksperimen|bagaimana keadaan tubuhmu/i.test(storyData.hook.headline)) {
@@ -460,20 +487,23 @@ async function generateStoryboard(topic) {
     if (!storyData.hook.rightBadge) storyData.hook.rightBadge = 'REAKSI ORGAN';
   }
 
-  // Normalize Outro
+  // Normalize Outro (Topic-Specific & Human-Focused, Never Old Historical Fallback!)
+  const dynamicTopicOutro = `Tubuhmu selalu memberi sinyal lewat apa yang kamu rasakan setiap hari. Setelah melihat reaksi organ dan efeknya pada tubuhmu tadi, gejala mana yang paling sering kamu rasakan saat ${cleanScenario.toLowerCase()}?`;
   if (!storyData.outro || typeof storyData.outro !== 'object') {
-    const defaultOutro = typeof storyData.outro === 'string'
+    const defaultOutro = typeof storyData.outro === 'string' && !/5 tahun lagi|keputusan sepele/i.test(storyData.outro)
       ? storyData.outro
-      : 'Menurutmu, apa keputusan sepele yang kamu ambil hari ini, yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?';
+      : dynamicTopicOutro;
     storyData.outro = {
       narration: defaultOutro,
       question: defaultOutro,
     };
   } else {
-    if (!storyData.outro.narration) {
-      storyData.outro.narration = storyData.outro.question || 'Menurutmu, apa keputusan sepele yang kamu ambil hari ini yang bakal mengubah hidupmu 5 tahun lagi?';
+    if (!storyData.outro.narration || /5 tahun lagi|keputusan sepele/i.test(storyData.outro.narration)) {
+      storyData.outro.narration = (storyData.outro.question && !/5 tahun lagi|keputusan sepele/i.test(storyData.outro.question))
+        ? storyData.outro.question
+        : dynamicTopicOutro;
     }
-    if (!storyData.outro.question) {
+    if (!storyData.outro.question || /5 tahun lagi|keputusan sepele/i.test(storyData.outro.question)) {
       storyData.outro.question = storyData.outro.narration;
     }
   }

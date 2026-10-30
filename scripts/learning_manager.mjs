@@ -102,7 +102,7 @@ function sanitizeLayoutDensity(data) {
   if (!data || !Array.isArray(data.nodes)) return data;
   if (data.hook) {
     if (data.hook.kicker && /eksperimen|investigasi|simulasi/i.test(data.hook.kicker)) {
-      data.hook.kicker = '30 HARI NON-STOP';
+      data.hook.kicker = 'REAKSI TUBUH & MANUSIA';
     }
     if (data.hook.headline && /:|mengancam nyawamu|eksperimen/i.test(data.hook.headline)) {
       const cleaned = data.hook.headline.replace(/:.*$/, '').replace(/\?+$/, '').trim();
@@ -138,14 +138,22 @@ TOPIK: "${topic}"
 DRAFT STORYBOARD:
 ${JSON.stringify(storyData, null, 2)}
 
-KRITERIA AUDIT MEDIS & BAHASA MANUSIA (ANTI-AI):
-1. AKURASI MEDIS & URUTAN ORGAN:
-   - Pastikan reaksi organ dan tahapan waktu masuk akal secara ilmiah (misal: lambung -> usus -> pembuluh darah -> hati -> jantung -> ginjal -> otak).
-2. KELENGKAPAN TARGET ORGAN ('organTarget'):
-   - Pastikan setiap node memiliki 'organTarget' yang valid ('brain', 'heart', 'lungs', 'stomach', 'liver', 'kidney', 'intestine', 'blood', 'nerves', atau 'muscles').
+KRITERIA AUDIT MEDIS, HOOK SPESIFIK TOPIK & APA YANG DIRASAKAN MANUSIA (ANTI-AI):
+1. HOOK WAJIB MENYESUAIKAN TOPIK (JANGAN SAMA TERUS!):
+   - Pastikan 'hook.hookMode' sesuai dengan topik:
+     * "empty-stomach-alert" untuk topik minum kopi perut kosong, makan pedas, minuman/makanan/obat yang masuk ke tubuh.
+     * "time-drain-battery" untuk topik kurang tidur, begadang, layar HP, kelelahan otak.
+     * "pressure-overload" untuk topik menahan kencing, kurang minum air, tekanan cairan.
+     * "streak-calendar" HANYA jika topik menyebut jumlah hari berturut-turut (misal 30 hari / 7 hari). DILARANG memakai streak-calendar untuk topik harian biasa!
+   - Pastikan 'hook.hookSymptoms' berisi 4 gejala nyata yang dirasakan manusia sesuai topik.
+2. WAJIB ADA "APA YANG DIRASAKAN MANUSIA" ('humanFeeling' & 'symptomEmoji') DI SETIAP NODE DARI AWAL SAMPAI AKHIR:
+   - Pastikan SETIAP node memiliki 'humanFeeling' (kalimat 5-10 kata tentang apa yang dirasakan langsung oleh fisik/mental manusia, seperti perut perih, mual, mulas & kebelet BAB, jantung deg-degan, tangan gemetar, cemas, sampai badan lemas & ngantuk berat di akhir) dan 'symptomEmoji' yang pas.
+   - Pastikan 'narration' tidak cuma membahas organ secara kaku, tetapi juga menyebutkan efek yang dirasakan manusianya.
 3. BAHASA MANUSIA NATURAL (DILARANG KERAS TEKS KAKU KHAS AI!):
-   - 'hook.headline': WAJIB berupa judul pertanyaan natural seperti manusia, contoh: "APA JADINYA KALAU KAMU MAKAN MIE 30 HARI TERUS-MENERUS?" atau "APA JADINYA KALAU TIDAK TIDUR 72 JAM NON-STOP?". DILARANG memakai kata "EKSPERIMEN", "TARGET UTAMA", atau pola kaku "X: APAKAH MENGANCAM NYAWAMU?".
-   - Pada setiap node, 'headline' dan 'primaryText' WAJIB menggunakan bahasa Indonesia sehari-hari yang mudah dipahami penonton (contoh: "LAMBUNG BEKERJA EKSTRA", "DINDING USUS TERIRITASI", "HATI MULAI KELELAHAN", "ASAM LAMBUNG NAIK", "PENYERAPAN TERGANGGU"). DILARANG memakai jargon medis robotik seperti "HEPATOSIT AKTIF", "DISFUNGSI ENDOTEL", "SISTEMIK KOLLAPS".
+   - 'hook.headline': WAJIB berupa judul pertanyaan natural seperti manusia. DILARANG memakai kata "EKSPERIMEN", "TARGET UTAMA", atau pola kaku "X: APAKAH MENGANCAM NYAWAMU?".
+   - Pada setiap node, 'headline' dan 'primaryText' WAJIB menggunakan bahasa Indonesia sehari-hari yang mudah dipahami penonton (contoh: "LAMBUNG KOSONG TERASA PERIH", "MULAS MENDADAK & KEBELET BAB", "JANTUNG BERDEBAR KENCANG", "ENERGI ANJLOK & NGANTUK BERAT"). DILARANG memakai jargon medis robotik seperti "BENTURAN PERTAMA DI MUKOSA", "VASOKONSTRISI SISTEMIK", "BLOKADE RESEPTOR ADENOSIN".
+4. OUTRO SESUAI TOPIK:
+   - Pastikan 'outro.narration' dan 'outro.question' menanyakan pengalaman/gejala yang dirasakan penonton terkait topik "${topic}".
 
 FORMAT OUTPUT JSON MURNI:
 {

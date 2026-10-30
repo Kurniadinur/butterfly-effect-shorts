@@ -82,6 +82,8 @@ export interface ButterflyNode {
   zoomDirection?: ZoomDirection;
   primaryText?: string | null;
   secondaryText?: string | null;
+  humanFeeling?: string | null;
+  symptomEmoji?: string | null;
   stampText?: string | null;
   quoteText?: string | null;
   metricLabel?: string | null;
@@ -125,6 +127,9 @@ export interface ButterflyStoryData {
     rightImage?: string | null;
     imagePrompt?: string | null;
     hookAnimationType?: 'multiplier-cascade' | 'countdown-depletion' | 'rapid-ingestion' | string | null;
+    hookMode?: 'empty-stomach-alert' | 'time-drain-battery' | 'pressure-overload' | 'streak-calendar' | 'body-shock-radar' | string | null;
+    hookConditionLabel?: string | null;
+    hookSymptoms?: string[] | null;
     hookItemEmoji?: string | null;
     hookItemLabel?: string | null;
     hookTargetCount?: number | null;

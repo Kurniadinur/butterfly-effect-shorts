@@ -20,6 +20,9 @@ export interface HookSceneProps {
   leftImage?: string | null;
   rightImage?: string | null;
   hookAnimationType?: string | null;
+  hookMode?: string | null;
+  hookConditionLabel?: string | null;
+  hookSymptoms?: string[] | null;
   hookItemEmoji?: string | null;
   hookItemLabel?: string | null;
   hookTargetCount?: number | null;
@@ -27,9 +30,21 @@ export interface HookSceneProps {
   durationFrames?: number;
 }
 
+type HookVisualMode =
+  | 'empty-stomach-alert'
+  | 'time-drain-battery'
+  | 'pressure-overload'
+  | 'streak-calendar';
+
 interface ParsedHookScenario {
+  mode: HookVisualMode;
   emoji: string;
   itemLabel: string;
+  conditionLabel: string;
+  meterLabel: string;
+  meterStartText: string;
+  meterEndText: string;
+  symptoms: Array<{ emoji: string; text: string }>;
   targetCount: number;
   unitWord: string;
   unitLabel: string;
@@ -39,12 +54,16 @@ interface ParsedHookScenario {
 }
 
 /**
- * Automatically extracts the trigger item, multiplier number (×1..×30 / 72 Jam / 7 Hari),
- * target organ, and natural human Indonesian headline from ANY topic or storyboard!
+ * Intelligent Topic-Aware Hook Director:
+ * Selects a distinct Hook Visual Mode & Human Symptom List tailored to the specific topic,
+ * so "Minum Kopi Saat Perut Kosong" NEVER looks like "Makan Mie 30 Hari"!
  */
 function parseHookScenarioFromTopic(
   headline: string,
   narration: string,
+  overrideMode?: string | null,
+  overrideCondition?: string | null,
+  overrideSymptoms?: string[] | null,
   overrideEmoji?: string | null,
   overrideLabel?: string | null,
   overrideCount?: number | null,
@@ -52,183 +71,212 @@ function parseHookScenarioFromTopic(
 ): ParsedHookScenario {
   const combined = `${headline} ${narration}`.toLowerCase();
 
-  // 1. Detect Number & Unit (e.g. "30 hari", "sebulan", "72 jam", "seminggu", "10 gelas")
+  // Check if the topic is EXPLICITLY a multi-day streak challenge (e.g., "30 hari", "7 hari", "sebulan")
+  const explicitDayMatch = headline.match(/(\d+)\s*(hari|minggu|bulan)/i);
+  const isExplicitMultiDayStreak =
+    Boolean(explicitDayMatch) || /selama sebulan|30 hari|7 hari|14 hari/i.test(headline);
+
+  let mode: HookVisualMode = isExplicitMultiDayStreak ? 'streak-calendar' : 'empty-stomach-alert';
+  let emoji = overrideEmoji || '☕';
+  let itemLabel = overrideLabel || 'KONSUMSI LANGSUNG';
+  let conditionLabel = overrideCondition || 'KONDISI AWAL TUBUH';
+  let meterLabel = 'LONJAKAN ASAM & STRES ORGAN';
+  let meterStartText = 'NORMAL';
+  let meterEndText = 'TINGGI!';
   let targetCount = overrideCount || 30;
   let unitWord = 'HARI';
   let unitLabel = overrideUnit || '30 HARI NON-STOP';
-
-  const numMatch = combined.match(/(\d+)\s*(hari|jam|minggu|bulan|tahun|bungkus|gelas|kaleng|cangkir|kali|batang|botol|porsi|piring)/i);
-  if (overrideCount) {
-    targetCount = overrideCount;
-  } else if (numMatch) {
-    targetCount = Math.max(2, Math.min(365, parseInt(numMatch[1], 10)));
-    unitWord = numMatch[2].toUpperCase();
-    unitLabel = `${targetCount} ${unitWord} NON-STOP`;
-  } else if (/sebulan|satu bulan|setiap hari|tiap hari|terus menerus|terus-menerus/i.test(combined)) {
-    targetCount = 30;
-    unitWord = 'HARI';
-    unitLabel = '30 HARI NON-STOP';
-  } else if (/seminggu|satu minggu|7 hari/i.test(combined)) {
-    targetCount = 7;
-    unitWord = 'HARI';
-    unitLabel = '7 HARI NON-STOP';
-  } else if (/seharian|24 jam/i.test(combined)) {
-    targetCount = 24;
-    unitWord = 'JAM';
-    unitLabel = '24 JAM NON-STOP';
-  } else if (/3 hari|72 jam/i.test(combined)) {
-    targetCount = 72;
-    unitWord = 'JAM';
-    unitLabel = '72 JAM NON-STOP';
-  }
-
-  // 2. Comprehensive Trigger Dictionary (Covers 25+ everyday Indonesian health/body topics)
-  let emoji = overrideEmoji || '⚡';
-  let itemLabel = overrideLabel || `${unitWord} BERUNTUN`;
   let targetOrganPng = 'butterfly/organs/stomach.png';
-  let naturalHeadline = headline;
-  let highlightPhrase = `${targetCount} ${unitWord}`;
+  let naturalHeadline = headline.toUpperCase();
+  let highlightPhrase = '';
+  let symptoms: Array<{ emoji: string; text: string }> = [
+    { emoji: '😣', text: 'Perut Terasa Perih, Panas & Mual' },
+    { emoji: '🚽', text: 'Mulas Mendadak & Ingin ke Toilet' },
+    { emoji: '💓', text: 'Jantung Berdebar Kencang & Gemetar' },
+    { emoji: '🥱', text: 'Siangnya Badan Lemas & Ngantuk Berat' },
+  ];
 
-  if (/mie|mi instan|indomie|ramen/i.test(combined)) {
-    emoji = overrideEmoji || '🍜';
-    itemLabel = overrideLabel || 'BUNGKUS MIE';
-    targetOrganPng = 'butterfly/organs/stomach.png';
-    naturalHeadline = `APA JADINYA KALAU KAMU MAKAN MIE ${targetCount} ${unitWord} TERUS-MENERUS?`;
-    highlightPhrase = `${targetCount} ${unitWord} TERUS-MENERUS?`;
-  } else if (/tidur|begadang|insomnia|melek/i.test(combined)) {
-    emoji = overrideEmoji || '🪫';
-    if (!overrideCount && !numMatch) {
-      targetCount = 72;
-      unitWord = 'JAM';
-      unitLabel = '72 JAM NON-STOP';
-    }
-    itemLabel = overrideLabel || 'JAM BEGADANG';
-    targetOrganPng = 'butterfly/organs/brain.png';
-    naturalHeadline = `APA JADINYA KALAU KAMU TIDAK TIDUR ${targetCount} ${unitWord} NON-STOP?`;
-    highlightPhrase = `${targetCount} ${unitWord} NON-STOP?`;
-  } else if (/rokok|merokok|vape|nikotin|asap/i.test(combined)) {
-    emoji = overrideEmoji || '🚬';
-    itemLabel = overrideLabel || 'BATANG ROKOK';
-    targetOrganPng = 'butterfly/organs/lungs.png';
-    naturalHeadline = `APA JADINYA KALAU KAMU MEROKOK ${targetCount} ${unitWord} TERUS-MENERUS?`;
-    highlightPhrase = `${targetCount} ${unitWord} TERUS-MENERUS?`;
-  } else if (/kopi|kafein|energy drink|minuman energi/i.test(combined)) {
+  // 1. KOPI / KAFEIN (Terutama Saat Perut Kosong)
+  if (/kopi|kafein|energy drink|minuman energi/i.test(combined)) {
     emoji = overrideEmoji || '☕';
-    itemLabel = overrideLabel || 'GELAS KOPI';
-    targetOrganPng = /perut kosong|lambung|pagi/i.test(combined)
-      ? 'butterfly/organs/stomach.png'
-      : 'butterfly/organs/heart.png';
+    itemLabel = 'KOPI SAAT PERUT KOSONG';
+    conditionLabel = 'ISI LAMBUNG: 0% KOSONG';
+    meterLabel = 'LONJAKAN ASAM LAMBUNG & DETAK JANTUNG';
+    meterStartText = 'TENANG';
+    meterEndText = 'MELONJAK!';
+    targetOrganPng = 'butterfly/organs/stomach.png';
+    mode = isExplicitMultiDayStreak ? 'streak-calendar' : 'empty-stomach-alert';
     naturalHeadline = /perut kosong/i.test(combined)
-      ? `APA JADINYA MINUM KOPI SAAT PERUT KOSONG ${targetCount} ${unitWord}?`
-      : `APA JADINYA KALAU MINUM KOPI ${targetCount} ${unitWord} BERTURUT-TURUT?`;
-    highlightPhrase = `${targetCount} ${unitWord}`;
-  } else if (/berhenti.*gula|tanpa gula|stop gula|puasa gula/i.test(combined)) {
-    emoji = overrideEmoji || '🚫';
-    itemLabel = overrideLabel || 'HARI TANPA GULA';
-    targetOrganPng = 'butterfly/organs/liver.png';
-    naturalHeadline = `APA JADINYA KALAU BERHENTI MAKAN GULA SELAMA ${targetCount} ${unitWord}?`;
-    highlightPhrase = `SELAMA ${targetCount} ${unitWord}?`;
-  } else if (/gula|manis|boba|soda|minuman kemasan|sirup/i.test(combined)) {
-    emoji = overrideEmoji || '🥤';
-    itemLabel = overrideLabel || 'MINUMAN MANIS';
-    targetOrganPng = 'butterfly/organs/liver.png';
-    naturalHeadline = `APA JADINYA KALAU MINUM SODA & MANIS ${targetCount} ${unitWord} NON-STOP?`;
-    highlightPhrase = `${targetCount} ${unitWord} NON-STOP?`;
-  } else if (/air putih|dehidrasi|kurang minum|haus/i.test(combined)) {
-    emoji = overrideEmoji || '💧';
-    itemLabel = overrideLabel || 'KURANG MINUM AIR';
-    targetOrganPng = 'butterfly/organs/kidneys.png';
-    naturalHeadline = `APA JADINYA KALAU JARANG MINUM AIR PUTIH SELAMA ${targetCount} ${unitWord}?`;
-    highlightPhrase = `SELAMA ${targetCount} ${unitWord}?`;
-  } else if (/pedas|cabai|sambal|seblak|level/i.test(combined)) {
-    emoji = overrideEmoji || '🌶️';
-    itemLabel = overrideLabel || 'PORSI PEDAS';
-    targetOrganPng = 'butterfly/organs/stomach.png';
-    naturalHeadline = `APA JADINYA KALAU MAKAN PEDAS ${targetCount} ${unitWord} TERUS-MENERUS?`;
-    highlightPhrase = `${targetCount} ${unitWord} TERUS-MENERUS?`;
-  } else if (/tahan kencing|menahan kencing|menahan buang air/i.test(combined)) {
-    emoji = overrideEmoji || '🚽';
-    if (!overrideCount && !numMatch) {
-      targetCount = 12;
-      unitWord = 'JAM';
-      unitLabel = '12 JAM MENAHAN KENCING';
-    }
-    itemLabel = overrideLabel || 'JAM TAHAN KENCING';
-    targetOrganPng = 'butterfly/organs/kidneys.png';
-    naturalHeadline = `APA JADINYA KALAU MENAHAN KENCING TERLALU LAMA?`;
-    highlightPhrase = `TERLALU LAMA?`;
-  } else if (/gorengan|junk food|fast food|minyak|kolesterol/i.test(combined)) {
-    emoji = overrideEmoji || '🍟';
-    itemLabel = overrideLabel || 'PORSI GORENGAN';
-    targetOrganPng = 'butterfly/organs/heart.png';
-    naturalHeadline = `APA JADINYA KALAU MAKAN GORENGAN ${targetCount} ${unitWord} NON-STOP?`;
-    highlightPhrase = `${targetCount} ${unitWord} NON-STOP?`;
-  } else if (/alkohol|miras|bir/i.test(combined)) {
-    emoji = overrideEmoji || '🍺';
-    itemLabel = overrideLabel || 'GELAS ALKOHOL';
-    targetOrganPng = 'butterfly/organs/liver.png';
-    naturalHeadline = `APA JADINYA KALAU MINUM ALKOHOL ${targetCount} ${unitWord} BERTURUT-TURUT?`;
-    highlightPhrase = `${targetCount} ${unitWord} BERTURUT-TURUT?`;
-  } else if (/rebahan|malas gerak|tiduran|duduk terus/i.test(combined)) {
-    emoji = overrideEmoji || '🛋️';
-    itemLabel = overrideLabel || 'HARI REBAHAN';
-    targetOrganPng = 'butterfly/organs/heart.png';
-    naturalHeadline = `APA JADINYA KALAU REBAHAN TERUS SELAMA ${targetCount} ${unitWord}?`;
-    highlightPhrase = `SELAMA ${targetCount} ${unitWord}?`;
-  } else if (/hp|layar|gadget|main game|scroll/i.test(combined)) {
-    emoji = overrideEmoji || '📱';
-    if (!overrideCount && !numMatch) {
-      targetCount = 16;
-      unitWord = 'JAM';
-      unitLabel = '16 JAM NON-STOP';
-    }
-    itemLabel = overrideLabel || 'JAM LAYAR HP';
+      ? 'APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG?'
+      : headline.toUpperCase();
+    highlightPhrase = /perut kosong/i.test(combined) ? 'SAAT PERUT KOSONG?' : 'MINUM KOPI?';
+    symptoms = [
+      { emoji: '😣', text: 'Perut Terasa Perih, Melilit & Mual' },
+      { emoji: '🚽', text: 'Mulas Mendadak & Kebelet BAB' },
+      { emoji: '💓', text: 'Jantung Berdebar (Deg-degan) & Gemetar' },
+      { emoji: '🥱', text: 'Siangnya Badan Lemas & Ngantuk Berat' },
+    ];
+  }
+  // 2. TIDAK TIDUR / BEGADANG / MAIN HP
+  else if (/tidur|begadang|insomnia|melek|main hp|layar/i.test(combined)) {
+    mode = 'time-drain-battery';
+    emoji = /hp|layar/i.test(combined) ? '📱' : '🪫';
+    const hourMatch = combined.match(/(\d+)\s*jam/i);
+    targetCount = hourMatch ? parseInt(hourMatch[1], 10) : 72;
+    unitWord = 'JAM';
+    unitLabel = `${targetCount} JAM TANPA ISTIRAHAT`;
+    itemLabel = `${targetCount} JAM NON-STOP`;
+    conditionLabel = 'ENERGI OTAK & TUBUH TERKURAS';
+    meterLabel = 'SISA ENERGI & FOKUS MANUSIA';
+    meterStartText = '100% SEGAR';
+    meterEndText = '4% KRITIS!';
     targetOrganPng = 'butterfly/organs/brain.png';
-    naturalHeadline = `APA JADINYA MAIN HP DI TEMPAT GELAP ${targetCount} ${unitWord} TIAP HARI?`;
-    highlightPhrase = `${targetCount} ${unitWord} TIAP HARI?`;
-  } else if (/telur/i.test(combined)) {
-    emoji = overrideEmoji || '🥚';
-    itemLabel = overrideLabel || 'BUTIR TELUR';
-    targetOrganPng = 'butterfly/organs/liver.png';
-    naturalHeadline = `APA JADINYA KALAU MAKAN TELUR ${targetCount} ${unitWord} BERTURUT-TURUT?`;
-    highlightPhrase = `${targetCount} ${unitWord} BERTURUT-TURUT?`;
-  } else if (/puasa|tidak makan|berhenti makan/i.test(combined)) {
-    emoji = overrideEmoji || '⏳';
-    if (!overrideCount && !numMatch) {
-      targetCount = 72;
-      unitWord = 'JAM';
-      unitLabel = '72 JAM TANPA MAKAN';
-    }
-    itemLabel = overrideLabel || 'JAM TANPA MAKAN';
+    naturalHeadline = /hp|layar/i.test(combined)
+      ? `APA JADINYA MAIN HP DI TEMPAT GELAP TERLALU LAMA?`
+      : `APA JADINYA KALAU KAMU TIDAK TIDUR ${targetCount} JAM NON-STOP?`;
+    highlightPhrase = /hp|layar/i.test(combined) ? 'TERLALU LAMA?' : `${targetCount} JAM NON-STOP?`;
+    symptoms = [
+      { emoji: '😵', text: 'Mata Perih, Berat & Kepala Pusing' },
+      { emoji: '😡', text: 'Emosi Mudah Meledak & Sulit Fokus' },
+      { emoji: '💤', text: 'Tertidur Tiba-Tiba (Mikrosleep 3 Detik)' },
+      { emoji: '👁️', text: 'Linglung & Mulai Melihat Halusinasi' },
+    ];
+  }
+  // 3. MENAHAN KENCING / KURANG MINUM AIR PUTIH / DEHIDRASI
+  else if (/tahan kencing|menahan kencing|buang air|air putih|dehidrasi|kurang minum/i.test(combined)) {
+    mode = 'pressure-overload';
+    emoji = /kencing/i.test(combined) ? '🚽' : '💧';
+    itemLabel = /kencing/i.test(combined) ? 'MENAHAN KENCING BERJAM-JAM' : 'TUBUH KEKURANGAN AIR PUTIH';
+    conditionLabel = /kencing/i.test(combined) ? 'TEKANAN KANDUNG KEMIH NAIK' : 'CADANGAN CAIRAN TUBUH MENIPIS';
+    meterLabel = /kencing/i.test(combined) ? 'KAPASITAS KANDUNG KEMIH' : 'TINGKAT DEHIDRASI GINJAL';
+    meterStartText = '150 ML';
+    meterEndText = '800 ML PENUH!';
+    targetOrganPng = 'butterfly/organs/kidneys.png';
+    naturalHeadline = /kencing/i.test(combined)
+      ? 'APA JADINYA KALAU KAMU MENAHAN KENCING TERLALU LAMA?'
+      : 'APA JADINYA KALAU JARANG MINUM AIR PUTIH?';
+    highlightPhrase = /kencing/i.test(combined) ? 'TERLALU LAMA?' : 'AIR PUTIH?';
+    symptoms = /kencing/i.test(combined)
+      ? [
+          { emoji: '😣', text: 'Perut Bawah Terasa Penuh, Keras & Nyeri' },
+          { emoji: '💦', text: 'Keringat Dingin & Gelisah Tak Tahan' },
+          { emoji: '🔥', text: 'Perih Saat Buang Air (Anyang-anyangan)' },
+          { emoji: '😖', text: 'Pinggang Pegal karena Urin Balik ke Ginjal' },
+        ]
+      : [
+          { emoji: '👄', text: 'Tenggorokan Kering & Bibir Pecah-Pecah' },
+          { emoji: '🤕', text: 'Kepala Pusing & Sulit Berkonsentrasi' },
+          { emoji: '🚽', text: 'Urin Berwarna Kuning Pekat & Berbau Tajam' },
+          { emoji: '😖', text: 'Pinggang Pegal & Risiko Batu Ginjal' },
+        ];
+  }
+  // 4. MAKAN MIE 30 HARI (Atau tantangan jumlah hari eksplisit)
+  else if (/mie|mi instan|indomie|ramen/i.test(combined)) {
+    emoji = '🍜';
+    targetCount = explicitDayMatch ? parseInt(explicitDayMatch[1], 10) : 30;
+    unitWord = 'HARI';
+    unitLabel = `${targetCount} HARI NON-STOP`;
+    itemLabel = 'BUNGKUS MIE';
     targetOrganPng = 'butterfly/organs/stomach.png';
-    naturalHeadline = `APA JADINYA KALAU TIDAK MAKAN SELAMA ${targetCount} ${unitWord}?`;
-    highlightPhrase = `SELAMA ${targetCount} ${unitWord}?`;
-  } else {
-    // Universal dynamic extractor for any other topic so no manual dictation is ever needed
-    const cleanedRaw = headline
-      .replace(/^(bagaimana keadaan tubuhmu ketika|apa yang terjadi pada tubuhmu jika|apa yang terjadi jika|bagaimana jika)\s*/i, '')
-      .replace(/:.*$/, '')
-      .replace(/\?+$/, '')
-      .trim();
-    if (cleanedRaw.length > 4) {
-      naturalHeadline = `APA JADINYA KALAU ${cleanedRaw.toUpperCase()}?`;
-      const words = naturalHeadline.split(/\s+/);
-      highlightPhrase = words.slice(Math.max(1, words.length - 3)).join(' ');
-    }
+    mode = isExplicitMultiDayStreak ? 'streak-calendar' : 'empty-stomach-alert';
+    naturalHeadline = `APA JADINYA KALAU KAMU MAKAN MIE ${targetCount} HARI TERUS-MENERUS?`;
+    highlightPhrase = `${targetCount} HARI TERUS-MENERUS?`;
+    symptoms = [
+      { emoji: '🫃', text: 'Perut Begah, Kembung & Cepat Haus' },
+      { emoji: '🥱', text: 'Cepat Kenyang tapi 1 Jam Kemudian Lemas' },
+      { emoji: '🤕', text: 'Kepala Sering Pusing & Wajah Sembab' },
+      { emoji: '💓', text: 'Tekanan Darah Naik & Mudah Lelah' },
+    ];
+  }
+  // 5. MAKAN PEDAS / SEBLAK / CABAI
+  else if (/pedas|cabai|sambal|seblak/i.test(combined)) {
+    mode = isExplicitMultiDayStreak ? 'streak-calendar' : 'empty-stomach-alert';
+    emoji = '🌶️';
+    itemLabel = 'MAKANAN SUPER PEDAS';
+    conditionLabel = 'SERANGAN CAPSAICIN DI LAMBUNG';
+    meterLabel = 'TINGKAT IRITASI & PANAS LAMBUNG';
+    meterStartText = 'AMAN';
+    meterEndText = 'TERBAKAR!';
+    targetOrganPng = 'butterfly/organs/stomach.png';
+    naturalHeadline = 'APA JADINYA KALAU MAKAN PEDAS BERLEBIHAN?';
+    highlightPhrase = 'PEDAS BERLEBIHAN?';
+    symptoms = [
+      { emoji: '🥵', text: 'Mulut Terbakar, Keringat Bercucuran & Melar' },
+      { emoji: '🔥', text: 'Ulu Hati Panas & Perut Melilit Hebat' },
+      { emoji: '🚽', text: 'Diare Panas & Bolak-Balik ke Toilet' },
+      { emoji: '🤢', text: 'Mual, Asam Lambung Naik ke Tenggorokan' },
+    ];
+  }
+  // 6. GULA / MINUMAN MANIS / SODA
+  else if (/gula|manis|boba|soda|minuman kemasan/i.test(combined)) {
+    mode = isExplicitMultiDayStreak ? 'streak-calendar' : 'empty-stomach-alert';
+    emoji = /berhenti|tanpa|stop/i.test(combined) ? '🚫' : '🥤';
+    itemLabel = /berhenti|tanpa|stop/i.test(combined) ? 'STOP KONSUMSI GULA' : 'LONJAKAN GULA & SODA';
+    conditionLabel = /berhenti|tanpa|stop/i.test(combined) ? 'TUBUH DETOKS TANPA GULA' : 'LONJAKAN GULA DARAH EKSTREM';
+    meterLabel = 'KADAR GULA & INSULIN DARAH';
+    targetOrganPng = 'butterfly/organs/liver.png';
+    symptoms = [
+      { emoji: '⚡', text: 'Energi Naik Sesaat Lalu Langsung Ngantuk' },
+      { emoji: '🍔', text: 'Cepat Lapar Lagi & Ingin Ngemil Terus' },
+      { emoji: '🫃', text: 'Perut Buncit & Mudah Lelah Saat Beraktivitas' },
+      { emoji: '🦷', text: 'Tenggorokan Sering Haus & Kulit Kusam' },
+    ];
+  }
+  // 7. ROKOK / VAPE
+  else if (/rokok|merokok|vape|nikotin|asap/i.test(combined)) {
+    mode = isExplicitMultiDayStreak ? 'streak-calendar' : 'empty-stomach-alert';
+    emoji = '🚬';
+    itemLabel = 'ASAP NIKOTIN & TAR';
+    conditionLabel = 'PAPARAN LANGSUNG KE PARU-PARU';
+    meterLabel = 'PENURUNAN OKSIGEN & KAPASITAS PARU';
+    targetOrganPng = 'butterfly/organs/lungs.png';
+    symptoms = [
+      { emoji: '😮‍💨', text: 'Napas Terasa Pendek & Cepat Ngos-ngosan' },
+      { emoji: '🗣️', text: 'Tenggorokan Gatal, Berdahak & Batuk Pagi' },
+      { emoji: '💓', text: 'Jantung Berdetak Lebih Cepat & Tangan Dingin' },
+      { emoji: '🥱', text: 'Tubuh Cepat Lelah Saat Naik Tangga' },
+    ];
   }
 
-  // Clean up any robotic AI headline patterns automatically
-  const isStiffAiHeadline = /:|mengancam nyawamu|eksperimen|simulasi|bagaimana keadaan tubuhmu/i.test(headline);
-  const finalHeadline = isStiffAiHeadline ? naturalHeadline : headline.toUpperCase();
+  // Override mode if explicitly passed and valid (except don't allow streak-calendar unless truly multi-day!)
+  if (
+    overrideMode === 'empty-stomach-alert' ||
+    overrideMode === 'time-drain-battery' ||
+    overrideMode === 'pressure-overload' ||
+    (overrideMode === 'streak-calendar' && isExplicitMultiDayStreak)
+  ) {
+    mode = overrideMode;
+  }
+
+  // Override symptoms if AI Director explicitly generated topic-specific human symptoms
+  if (Array.isArray(overrideSymptoms) && overrideSymptoms.length >= 3) {
+    const defaultEmojis = ['😣', '🚽', '💓', '🥱'];
+    symptoms = overrideSymptoms.slice(0, 4).map((s, idx) => ({
+      emoji: defaultEmojis[idx % defaultEmojis.length],
+      text: s.replace(/^[😣🚽💓🥱😵🔥💧⚡⚠️]+\s*/, '').trim(),
+    }));
+  }
+
+  // Highlight last 2-3 words of headline if not set
+  if (!highlightPhrase) {
+    const words = naturalHeadline.split(/\s+/);
+    highlightPhrase = words.slice(Math.max(1, words.length - 3)).join(' ');
+  }
 
   return {
+    mode,
     emoji,
-    itemLabel: itemLabel.replace(/eksperimen|target utama/gi, '').trim(),
+    itemLabel,
+    conditionLabel,
+    meterLabel,
+    meterStartText,
+    meterEndText,
+    symptoms,
     targetCount,
     unitWord,
-    unitLabel: unitLabel.replace(/eksperimen/gi, '').trim(),
+    unitLabel,
     targetOrganPng,
-    naturalHeadline: finalHeadline,
+    naturalHeadline,
     highlightPhrase,
   };
 }
@@ -240,6 +288,9 @@ export const HookScene: React.FC<HookSceneProps> = ({
   narration: rawNarration,
   leftTitle,
   rightTitle,
+  hookMode,
+  hookConditionLabel,
+  hookSymptoms,
   hookItemEmoji,
   hookItemLabel,
   hookTargetCount,
@@ -249,7 +300,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const rawH = rawHeadline || rightTitle || leftTitle || 'APA JADINYA KALAU KAMU MAKAN MIE 30 HARI TERUS-MENERUS?';
+  const rawH = rawHeadline || rightTitle || leftTitle || 'APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG?';
   const headlineInput = rawH.trim().endsWith('?') ? rawH.trim() : `${rawH.trim()}?`;
   const narration = rawNarration || '';
 
@@ -263,15 +314,17 @@ export const HookScene: React.FC<HookSceneProps> = ({
       parseHookScenarioFromTopic(
         headlineInput,
         narration,
+        hookMode,
+        hookConditionLabel,
+        hookSymptoms,
         hookItemEmoji,
         hookItemLabel,
         hookTargetCount,
         hookUnitLabel
       ),
-    [headlineInput, narration, hookItemEmoji, hookItemLabel, hookTargetCount, hookUnitLabel]
+    [headlineInput, narration, hookMode, hookConditionLabel, hookSymptoms, hookItemEmoji, hookItemLabel, hookTargetCount, hookUnitLabel]
   );
 
-  // Smooth spring entrance
   const introSpring = spring({
     frame,
     fps,
@@ -284,14 +337,10 @@ export const HookScene: React.FC<HookSceneProps> = ({
   const curvedProgress = 1 - Math.pow(1 - rawProgress, 1.85);
   const currentCount = Math.max(1, Math.round(1 + curvedProgress * (scenario.targetCount - 1)));
 
-  // Subtle physiological pulse
-  const dynamicBpm = Math.round(72 + curvedProgress * 65);
+  // Physiological pulse
+  const dynamicBpm = Math.round(72 + curvedProgress * 62);
   const beatPhase = (frame / fps) * (dynamicBpm / 60) * Math.PI * 2;
   const systolicBeat = Math.pow(Math.max(0, Math.sin(beatPhase)), 8);
-
-  // 30-slot visual grid
-  const totalGridSlots = Math.min(30, Math.max(12, scenario.targetCount > 30 ? 30 : scenario.targetCount));
-  const activeGridSlots = Math.max(1, Math.round(curvedProgress * totalGridSlots));
 
   // Rapid-fire flying items streaming into the 3D human body's mouth & down the esophagus
   const streamItems = useMemo(() => {
@@ -302,7 +351,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
     }));
   }, []);
 
-  // Split headline to highlight the bottom/key phrase in the active theme's highlight color
+  // Split headline to highlight the key phrase
   const headlineParts = useMemo(() => {
     const full = scenario.naturalHeadline.toUpperCase();
     const target = scenario.highlightPhrase.toUpperCase();
@@ -324,9 +373,11 @@ export const HookScene: React.FC<HookSceneProps> = ({
     return { before: full, highlighted: '' };
   }, [scenario.naturalHeadline, scenario.highlightPhrase]);
 
-  // Layout variation: whether the 3D body is on the left or right so different videos feel freshly edited!
   const isBodyOnRight = theme.hookLayout === 'dossier-left-body-right';
 
+  // ---------------------------------------------------------------------------
+  // 3D HUMAN BODY COLUMN (With Expressive Human Reaction & Organ Glow)
+  // ---------------------------------------------------------------------------
   const bodyColumn = (
     <div
       style={{
@@ -339,7 +390,6 @@ export const HookScene: React.FC<HookSceneProps> = ({
         transform: `scale(${0.97 + curvedProgress * 0.05 + systolicBeat * 0.012})`,
       }}
     >
-      {/* Subtle Studio Spotlight Behind 3D Body */}
       <div
         style={{
           position: 'absolute',
@@ -363,7 +413,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
         }}
       />
 
-      {/* 3D Organ Inside Body Glowing Gently as Item Enters */}
+      {/* 3D Organ Inside Body Glowing as Trigger Enters */}
       <div
         style={{
           position: 'absolute',
@@ -393,7 +443,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
         />
       </div>
 
-      {/* Rapid-Fire Ingestion Stream: Items Flying into the Mouth -> Down Esophagus -> Organ! */}
+      {/* Stream of Trigger Items Entering the Body */}
       {streamItems.map((item) => {
         const cycle = ((frame + item.offset) % 48) / 48;
         const mouthX = 235;
@@ -442,158 +492,446 @@ export const HookScene: React.FC<HookSceneProps> = ({
     </div>
   );
 
-  const counterColumn = (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '18px',
-        backgroundColor: theme.cardBg,
-        border: theme.cardBorder,
-        borderTop: theme.cardTopAccentBar ? `8px solid ${theme.cardTopAccentBar}` : theme.cardBorder,
-        borderLeft: theme.cardLeftAccentSpine ? `9px solid ${theme.cardLeftAccentSpine}` : theme.cardBorder,
-        borderRadius: theme.cardRadius,
-        padding: '22px 18px',
-        boxShadow: theme.cardShadow,
-      }}
-    >
-      {/* Giant Multiplier Counter: ×1, ×2, ×3 ... ×N */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          backgroundColor: theme.specimenBg,
-          padding: '18px 20px',
-          borderRadius: '4px',
-          border: `2px solid ${theme.inkDark}`,
-        }}
-      >
-        <div
-          style={{
-            fontSize: '68px',
-            lineHeight: 1,
-            transform: `scale(${1 + Math.sin(frame * 0.35) * 0.12}) rotate(${Math.sin(frame * 0.25) * 6}deg)`,
-          }}
-        >
-          {scenario.emoji}
-        </div>
+  // ---------------------------------------------------------------------------
+  // TOPIC-SPECIFIC HOOK VISUAL CARD (4 Distinct Modes — Never One-Size-Fits-All!)
+  // ---------------------------------------------------------------------------
+  const renderTopicSpecificCardContent = () => {
+    // MODE A: STREAK CALENDAR (ONLY for explicit "30 Hari" / "7 Hari" topics like Makan Mie 30 Hari)
+    if (scenario.mode === 'streak-calendar') {
+      const totalGridSlots = Math.min(30, Math.max(7, scenario.targetCount > 30 ? 30 : scenario.targetCount));
+      const activeGridSlots = Math.max(1, Math.round(curvedProgress * totalGridSlots));
 
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+      return (
+        <>
           <div
             style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: '68px',
-              fontWeight: 900,
-              color: curvedProgress >= 0.75 ? theme.criticalHighlight : theme.primaryHighlight,
-              lineHeight: 1.0,
-              transform: `scale(${1 + (frame % 6 === 0 && rawProgress < 1 ? 0.07 : 0)})`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              backgroundColor: theme.specimenBg,
+              padding: '18px 20px',
+              borderRadius: '4px',
+              border: `2px solid ${theme.inkDark}`,
             }}
           >
-            ×{currentCount}
+            <div
+              style={{
+                fontSize: '68px',
+                lineHeight: 1,
+                transform: `scale(${1 + Math.sin(frame * 0.35) * 0.12}) rotate(${Math.sin(frame * 0.25) * 6}deg)`,
+              }}
+            >
+              {scenario.emoji}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+              <div
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: '68px',
+                  fontWeight: 900,
+                  color: curvedProgress >= 0.75 ? theme.criticalHighlight : theme.primaryHighlight,
+                  lineHeight: 1.0,
+                }}
+              >
+                ×{currentCount}
+              </div>
+              <span
+                style={{
+                  fontFamily: "'Space Grotesk', monospace",
+                  fontSize: '13px',
+                  fontWeight: 900,
+                  color: '#F4F0EA',
+                  letterSpacing: '1px',
+                  marginTop: '6px',
+                }}
+              >
+                {scenario.itemLabel}
+              </span>
+            </div>
           </div>
-          <span
+
+          <div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '12px',
+                borderBottom: `2px solid ${theme.inkDark}`,
+                paddingBottom: '8px',
+              }}
+            >
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '13px', fontWeight: 900, color: theme.inkDark }}>
+                {scenario.unitLabel}
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Space Grotesk', monospace",
+                  fontSize: '13px',
+                  fontWeight: 900,
+                  color: theme.primaryHighlightText,
+                  backgroundColor: theme.primaryHighlight,
+                  border: `1.5px solid ${theme.inkDark}`,
+                  padding: '2px 10px',
+                  borderRadius: '2px',
+                }}
+              >
+                {scenario.unitWord} {currentCount}/{scenario.targetCount}
+              </span>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '8px' }}>
+              {Array.from({ length: totalGridSlots }).map((_, idx) => {
+                const isLit = idx < activeGridSlots;
+                const isNewest = idx === activeGridSlots - 1;
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      height: '62px',
+                      borderRadius: '3px',
+                      backgroundColor: isLit ? (isNewest ? theme.primaryHighlight : theme.specimenBg) : '#E5E0D5',
+                      border: `2px solid ${theme.inkDark}`,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transform: isNewest ? 'scale(1.08)' : 'scale(1)',
+                      opacity: isLit ? 1 : 0.45,
+                    }}
+                  >
+                    <span style={{ fontSize: '24px', lineHeight: 1 }}>{scenario.emoji}</span>
+                    <span
+                      style={{
+                        fontFamily: "'Space Grotesk', monospace",
+                        fontSize: '11px',
+                        fontWeight: 900,
+                        color: isLit ? (isNewest ? theme.primaryHighlightText : '#F4F0EA') : '#71717a',
+                        marginTop: '3px',
+                      }}
+                    >
+                      #{idx + 1}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </>
+      );
+    }
+
+    // MODE B: TIME-DRAIN & BATTERY DEPLETION (For "Tidak Tidur 72 Jam" / "Main HP")
+    if (scenario.mode === 'time-drain-battery') {
+      const remainingBattery = Math.max(4, Math.round(100 - curvedProgress * 96));
+      const activeSymptoms = Math.max(1, Math.ceil(curvedProgress * scenario.symptoms.length));
+
+      return (
+        <>
+          <div
             style={{
-              fontFamily: "'Space Grotesk', monospace",
-              fontSize: '13px',
-              fontWeight: 900,
-              color: '#F4F0EA',
-              letterSpacing: '1px',
-              marginTop: '6px',
+              backgroundColor: theme.specimenBg,
+              padding: '18px 20px',
+              borderRadius: '4px',
+              border: `2px solid ${theme.inkDark}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
             }}
           >
-            {scenario.itemLabel}
-          </span>
-        </div>
-      </div>
+            <div style={{ fontSize: '60px', lineHeight: 1 }}>{scenario.emoji}</div>
+            <div style={{ textAlign: 'right' }}>
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '12px', fontWeight: 800, color: '#a1a1aa' }}>
+                DURASI TANPA ISTIRAHAT
+              </span>
+              <div
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: '54px',
+                  fontWeight: 900,
+                  color: theme.primaryHighlight,
+                  lineHeight: 1.05,
+                }}
+              >
+                {currentCount} JAM
+              </div>
+            </div>
+          </div>
 
-      {/* 30-Slot Stamp Grid (#1, #2, #3 ... #30) */}
-      <div>
+          {/* Battery Drain Bar */}
+          <div
+            style={{
+              backgroundColor: '#E5E0D5',
+              padding: '12px 14px',
+              borderRadius: '4px',
+              border: `2px solid ${theme.inkDark}`,
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '12px', fontWeight: 900, color: theme.inkDark }}>
+                ENERGI & FOKUS TUBUH
+              </span>
+              <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '13px', fontWeight: 900, color: theme.criticalHighlight }}>
+                SISA {remainingBattery}%
+              </span>
+            </div>
+            <div
+              style={{
+                width: '100%',
+                height: '18px',
+                backgroundColor: theme.specimenBg,
+                borderRadius: '3px',
+                border: `1.5px solid ${theme.inkDark}`,
+                overflow: 'hidden',
+              }}
+            >
+              <div
+                style={{
+                  width: `${remainingBattery}%`,
+                  height: '100%',
+                  backgroundColor: remainingBattery < 30 ? theme.criticalHighlight : '#22c55e',
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Human Symptoms Popping In */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
+            <div
+              style={{
+                fontFamily: "'Space Grotesk', monospace",
+                fontSize: '12px',
+                fontWeight: 900,
+                color: theme.inkDark,
+                letterSpacing: '0.8px',
+                borderBottom: `2px solid ${theme.inkDark}`,
+                paddingBottom: '5px',
+              }}
+            >
+              YANG DIRASAKAN TUBUHMU:
+            </div>
+            {scenario.symptoms.map((sym, idx) => {
+              const isVisible = idx < activeSymptoms;
+              return (
+                <div
+                  key={idx}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: '10px 12px',
+                    borderRadius: '4px',
+                    backgroundColor: isVisible ? theme.specimenBg : '#E5E0D5',
+                    border: `2px solid ${theme.inkDark}`,
+                    opacity: isVisible ? 1 : 0.35,
+                    transform: isVisible ? 'scale(1)' : 'scale(0.97)',
+                  }}
+                >
+                  <span style={{ fontSize: '26px', lineHeight: 1 }}>{sym.emoji}</span>
+                  <span
+                    style={{
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '14px',
+                      fontWeight: 800,
+                      color: isVisible ? '#F4F0EA' : '#52525b',
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {sym.text}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    }
+
+    // MODE C & D: EMPTY STOMACH ALERT / PRESSURE OVERLOAD (For "Minum Kopi Saat Perut Kosong", "Makan Pedas", "Menahan Kencing", etc.)
+    const meterPercent = Math.round(18 + curvedProgress * 78);
+    const activeSymptoms = Math.max(1, Math.ceil(curvedProgress * scenario.symptoms.length));
+
+    return (
+      <>
+        {/* Top Status Header: Condition (e.g. ISI LAMBUNG: 0% KOSONG) + Trigger Item */}
         <div
           style={{
+            backgroundColor: theme.specimenBg,
+            padding: '16px 18px',
+            borderRadius: '4px',
+            border: `2px solid ${theme.inkDark}`,
             display: 'flex',
-            justifyContent: 'space-between',
             alignItems: 'center',
-            marginBottom: '12px',
-            borderBottom: `2px solid ${theme.inkDark}`,
-            paddingBottom: '8px',
+            justifyContent: 'space-between',
+            gap: '12px',
           }}
         >
-          <span
+          <div
             style={{
-              fontFamily: "'Space Grotesk', monospace",
-              fontSize: '13px',
-              fontWeight: 900,
-              color: theme.inkDark,
-              letterSpacing: '0.8px',
+              fontSize: '60px',
+              lineHeight: 1,
+              transform: `scale(${1 + Math.sin(frame * 0.3) * 0.1}) rotate(${Math.sin(frame * 0.2) * 5}deg)`,
             }}
           >
-            {scenario.unitLabel}
-          </span>
-          <span
-            style={{
-              fontFamily: "'Space Grotesk', monospace",
-              fontSize: '13px',
-              fontWeight: 900,
-              color: theme.primaryHighlightText,
-              backgroundColor: theme.primaryHighlight,
-              border: `1.5px solid ${theme.inkDark}`,
-              padding: '2px 10px',
-              borderRadius: '2px',
-            }}
-          >
-            {scenario.unitWord} {currentCount}/{scenario.targetCount}
-          </span>
+            {scenario.emoji}
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', textAlign: 'right' }}>
+            <span
+              style={{
+                backgroundColor: theme.primaryHighlight,
+                color: theme.primaryHighlightText,
+                fontFamily: "'Space Grotesk', monospace",
+                fontSize: '12px',
+                fontWeight: 900,
+                padding: '3px 9px',
+                borderRadius: '2px',
+                marginBottom: '6px',
+              }}
+            >
+              {scenario.conditionLabel}
+            </span>
+            <div
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '22px',
+                fontWeight: 900,
+                color: '#F4F0EA',
+                lineHeight: 1.15,
+              }}
+            >
+              {scenario.itemLabel}
+            </div>
+          </div>
         </div>
 
+        {/* Live Reaction / Acidity / Pressure Bar */}
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(6, 1fr)',
-            gap: '8px',
+            backgroundColor: '#E5E0D5',
+            padding: '12px 14px',
+            borderRadius: '4px',
+            border: `2px solid ${theme.inkDark}`,
           }}
         >
-          {Array.from({ length: totalGridSlots }).map((_, idx) => {
-            const isLit = idx < activeGridSlots;
-            const isNewest = idx === activeGridSlots - 1;
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+            <span style={{ fontFamily: "'Space Grotesk', monospace", fontSize: '11px', fontWeight: 900, color: theme.inkDark }}>
+              {scenario.meterLabel}
+            </span>
+            <span
+              style={{
+                fontFamily: "'Space Grotesk', monospace",
+                fontSize: '12px',
+                fontWeight: 900,
+                color: curvedProgress > 0.5 ? theme.criticalHighlight : theme.inkDark,
+              }}
+            >
+              {curvedProgress > 0.6 ? scenario.meterEndText : scenario.meterStartText} ({dynamicBpm} BPM)
+            </span>
+          </div>
+          <div
+            style={{
+              width: '100%',
+              height: '16px',
+              backgroundColor: theme.specimenBg,
+              borderRadius: '3px',
+              border: `1.5px solid ${theme.inkDark}`,
+              overflow: 'hidden',
+            }}
+          >
+            <div
+              style={{
+                width: `${meterPercent}%`,
+                height: '100%',
+                backgroundColor: curvedProgress > 0.65 ? theme.criticalHighlight : theme.primaryHighlight,
+              }}
+            />
+          </div>
+        </div>
+
+        {/* 4 Real Human Sensations ("YANG LANGSUNG DIRASAKAN TUBUHMU") */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderBottom: `2px solid ${theme.inkDark}`,
+              paddingBottom: '6px',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'Space Grotesk', monospace",
+                fontSize: '12px',
+                fontWeight: 900,
+                color: theme.inkDark,
+                letterSpacing: '0.6px',
+              }}
+            >
+              EFEK YANG DIRASAKAN MANUSIA:
+            </span>
+          </div>
+
+          {scenario.symptoms.map((sym, idx) => {
+            const isLit = idx < activeSymptoms;
+            const isNewest = idx === activeSymptoms - 1;
             return (
               <div
                 key={idx}
                 style={{
-                  height: '62px',
-                  borderRadius: '3px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  padding: '11px 14px',
+                  borderRadius: '4px',
                   backgroundColor: isLit
                     ? isNewest
                       ? theme.primaryHighlight
                       : theme.specimenBg
                     : '#E5E0D5',
                   border: `2px solid ${theme.inkDark}`,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transform: isNewest ? 'scale(1.08)' : 'scale(1)',
-                  opacity: isLit ? 1 : 0.45,
-                  boxShadow: isNewest ? `3px 3px 0px ${theme.inkDark}` : 'none',
+                  boxShadow: isNewest ? `4px 4px 0px ${theme.inkDark}` : 'none',
+                  transform: isNewest ? 'scale(1.03)' : 'scale(1)',
+                  opacity: isLit ? 1 : 0.4,
                 }}
               >
-                <span style={{ fontSize: '24px', lineHeight: 1 }}>{scenario.emoji}</span>
+                <span style={{ fontSize: '26px', lineHeight: 1 }}>{sym.emoji}</span>
                 <span
                   style={{
-                    fontFamily: "'Space Grotesk', monospace",
-                    fontSize: '11px',
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: '14px',
                     fontWeight: 900,
                     color: isLit ? (isNewest ? theme.primaryHighlightText : '#F4F0EA') : '#71717a',
-                    marginTop: '3px',
+                    lineHeight: 1.2,
                   }}
                 >
-                  #{idx + 1}
+                  {sym.text}
                 </span>
               </div>
             );
           })}
         </div>
-      </div>
+      </>
+    );
+  };
+
+  const counterColumn = (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '16px',
+        backgroundColor: theme.cardBg,
+        border: theme.cardBorder,
+        borderTop: theme.cardTopAccentBar ? `8px solid ${theme.cardTopAccentBar}` : theme.cardBorder,
+        borderLeft: theme.cardLeftAccentSpine ? `9px solid ${theme.cardLeftAccentSpine}` : theme.cardBorder,
+        borderRadius: theme.cardRadius,
+        padding: '20px 18px',
+        boxShadow: theme.cardShadow,
+      }}
+    >
+      {renderTopicSpecificCardContent()}
     </div>
   );
 
@@ -619,7 +957,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
       />
 
       {/* =====================================================================
-          2. CLEAN HUMAN-EDITED TITLE (Natural question, zero "EKSPERIMEN" badge)
+          2. CLEAN HUMAN-EDITED TITLE
           ===================================================================== */}
       <div
         style={{
@@ -666,7 +1004,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
       </div>
 
       {/* =====================================================================
-          3. CENTER STAGE: DYNAMIC MULTI-LAYOUT 3D BODY + MULTIPLIER CARD
+          3. CENTER STAGE: 3D BODY + TOPIC-SPECIFIC HOOK VISUAL
           ===================================================================== */}
       <div
         style={{
