@@ -52,31 +52,58 @@ function broadcastLog(data) {
   }
 }
 
-// Built-in Curated Viral Body Scenario Topics
+// Built-in Curated Viral Body Scenario Topics (Out of the Box & Balanced Scenarios)
 const CURATED_TOPICS = [
+  // --- KATEGORI 1: SKENARIO EKSTREM & OUT-OF-THE-BOX (UNIK / JARANG TERJADI) ---
   {
-    title: 'Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur Selama 72 Jam',
-    category: 'Otak & Saraf Pusat',
+    title: 'Apa Jadinya Kalau Kamu Menghirup Gas Helium Murni Selama 2 Menit',
+    category: '⚡ Out of the Box: Pita Suara & Paru-Paru',
   },
   {
-    title: 'Apa yang Terjadi pada Tubuhmu Jika Menahan Kencing Terlalu Lama',
-    category: 'Ginjal & Ekskresi',
+    title: 'Apa Jadinya Kalau Tubuhmu Tersambar Petir 300 Juta Volt dan Selamat',
+    category: '⚡ Out of the Box: Saraf Jantung & Listrik Tubuh',
   },
   {
-    title: 'Apa yang Terjadi pada Tubuhmu Jika Minum Kopi Saat Perut Kosong Setiap Pagi',
-    category: 'Lambung & Hormon',
+    title: 'Apa Jadinya Kalau Kamu Tidak Sengaja Menelan Baterai Koin dan Magnet',
+    category: '⚡ Out of the Box: Kerongkongan & Dinding Lambung',
   },
   {
-    title: 'Apa yang Terjadi pada Tubuhmu Jika Berhenti Makan Gula Selama 30 Hari',
-    category: 'Metabolisme & Darah',
+    title: 'Apa Jadinya Kalau Kamu Minum Air Laut di Tengah Samudra Saat Dehidrasi',
+    category: '⚡ Out of the Box: Osmosis Seluler & Ginjal',
   },
   {
-    title: 'Apa yang Terjadi pada Tubuhmu Jika Hanya Minum Soda Tanpa Air Putih',
-    category: 'Ginjal & Jantung',
+    title: 'Apa Jadinya Kalau Kamu Menahan Bersin Kuat dengan Menutup Hidung dan Mulut',
+    category: '⚡ Out of the Box: Tekanan Balik Faring & Gendang Telinga',
   },
   {
-    title: 'Apa yang Terjadi pada Tubuhmu Jika Makan Makanan Super Pedas Berlebihan',
-    category: 'Lambung & Reseptor Saraf',
+    title: 'Apa Jadinya Kalau Kamu Minum 5 Kaleng Minuman Energi Sekaligus dalam 10 Menit',
+    category: '⚡ Out of the Box: Aritmia Jantung & Adrenalin',
+  },
+
+  // --- KATEGORI 2: KEBIASAAN EKSTREM SEHARI-HARI (SEIMBANG & RELATABLE) ---
+  {
+    title: 'Apa Jadinya Kalau Kamu Minum Kopi Hitam Saat Perut Benar-Benar Kosong',
+    category: '☕ Relatable: Lambung & Lonjakan Kortisol',
+  },
+  {
+    title: 'Apa Jadinya Kalau Kamu Menahan Kencing Terlalu Lama Sampai Sakit Perut',
+    category: '🚽 Relatable: Kandung Kemih & Refluks Ginjal',
+  },
+  {
+    title: 'Apa Jadinya Kalau Kamu Tidak Tidur Selama 72 Jam Non-Stop',
+    category: '🧠 Relatable: Toksin Otak & Halusinasi Saraf',
+  },
+  {
+    title: 'Apa Jadinya Kalau Kamu Berhenti Total Mengonsumsi Gula Selama 30 Hari',
+    category: '🥗 Relatable: Detoks Dopamin & Sensitivitas Insulin',
+  },
+  {
+    title: 'Apa Jadinya Kalau Kamu Hanya Minum Minuman Bersoda Tanpa Air Putih',
+    category: '🥤 Relatable: Batu Ginjal & Kerusakan Enamel',
+  },
+  {
+    title: 'Apa Jadinya Kalau Kamu Makan Cabai Terpedas Carolina Reaper Tanpa Minum',
+    category: '🌶️ Relatable: Reseptor Capsaicin & Spasme Saluran Cerna',
   },
 ];
 

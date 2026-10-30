@@ -70,6 +70,13 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
             hookItemLabel={data.hook.hookItemLabel}
             hookTargetCount={data.hook.hookTargetCount}
             hookUnitLabel={data.hook.hookUnitLabel}
+            characterActionPng={data.hook.characterActionPng}
+            targetOrganPng={data.hook.targetOrganPng}
+            meterLabel={data.hook.meterLabel}
+            meterStartText={data.hook.meterStartText}
+            meterEndText={data.hook.meterEndText}
+            curiosityClue={data.hook.curiosityClue}
+            hookMysteryQuestion={data.hook.hookMysteryQuestion}
             durationFrames={data.hook.durationFrames}
           />
         </Sequence>

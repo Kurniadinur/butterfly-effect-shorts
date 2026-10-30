@@ -136,6 +136,13 @@ export interface ButterflyStoryData {
     hookItemLabel?: string | null;
     hookTargetCount?: number | null;
     hookUnitLabel?: string | null;
+    characterActionPng?: string | null;
+    targetOrganPng?: string | null;
+    meterLabel?: string | null;
+    meterStartText?: string | null;
+    meterEndText?: string | null;
+    curiosityClue?: string | null;
+    hookMysteryQuestion?: string | null;
     soundEffect?: any;
     durationFrames: number;
   };

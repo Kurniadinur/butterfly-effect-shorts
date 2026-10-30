@@ -9,6 +9,7 @@ import { searchAndDownloadImage } from './fetch_scene_media.mjs';
 import { loadLearningMemory, auditAndRefineStory } from './learning_manager.mjs';
 import { runAutonomousRemotionEditor } from './ai_visual_inspector.mjs';
 import { generatePublishingPack } from './generate_publishing_pack.mjs';
+import { resolveDynamicStoryAssets } from './dynamic_asset_resolver.mjs';
 import { rpmGovernor } from './gemini_rpm_governor.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -1158,6 +1159,7 @@ export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(fullStory, nul
 async function main() {
   try {
     const storyData = await generateStoryboard(topic);
+    await resolveDynamicStoryAssets(storyData);
     const { wavPath, relAudioUrl } = await generateVoiceover(storyData);
     const whisperData = await runWhisperAlignment(wavPath, storyData.id);
     buildSynchronizedStory(storyData, whisperData, relAudioUrl);
