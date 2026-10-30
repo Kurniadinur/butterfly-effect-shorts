@@ -13,7 +13,7 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question: rawQuestion, s
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Safety guard: never display the legacy "keputusan sepele ... 5 tahun lagi" question from the old history project
+  // Safety guard: ensure medical discussion question
   const question = useMemo(() => {
     if (!rawQuestion || /keputusan sepele|5 tahun lagi|mengubah jalan hidupmu/i.test(rawQuestion)) {
       const cleanTopic = (storyTitle || '')
@@ -22,7 +22,7 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question: rawQuestion, s
         .trim();
       return cleanTopic
         ? `KALAU KAMU ${cleanTopic.toUpperCase()}, GEJALA MANA YANG PALING SERING KAMU RASAKAN DI TUBUHMU?`
-        : 'GEJALA MANA YANG PALING SERING KAMU RASAKAN DI TUBUHMU SETELAH MELAKUKAN KEBIASAAN INI?';
+        : 'GEJALA MANA YANG PALING SERING KAMU RASAKAN DI TUBUHMU SETELAH MELAKUKAN INI?';
     }
     return rawQuestion;
   }, [rawQuestion, storyTitle]);
@@ -45,10 +45,10 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question: rawQuestion, s
     <div
       style={{
         position: 'absolute',
-        top: '310px',
+        top: '320px',
         left: '56px',
         right: '56px',
-        zIndex: 30,
+        zIndex: 40,
         transform: `scale(${entrance + systolicBeat * 0.01})`,
         opacity: entrance,
         display: 'flex',
@@ -57,47 +57,48 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question: rawQuestion, s
         textAlign: 'center',
       }}
     >
+      {/* Gaya A: Floating Frosted Glass Question Card */}
       <div
         style={{
-          backgroundColor: theme.cardBg,
-          borderRadius: theme.cardRadius,
-          padding: '44px 36px',
-          border: theme.cardBorder,
-          borderTop: theme.cardTopAccentBar ? `8px solid ${theme.cardTopAccentBar}` : theme.cardBorder,
-          borderLeft: theme.cardLeftAccentSpine ? `9px solid ${theme.cardLeftAccentSpine}` : theme.cardBorder,
-          boxShadow: theme.cardShadow,
+          backgroundColor: 'rgba(9, 15, 28, 0.82)',
+          backdropFilter: 'blur(26px)',
+          borderRadius: '24px',
+          padding: '44px 34px',
+          border: `1.5px solid ${theme.primaryHighlight}66`,
+          boxShadow: `0 24px 60px rgba(0, 0, 0, 0.85), 0 0 35px ${theme.primaryHighlight}20`,
           width: '100%',
         }}
       >
         <span
           style={{
-            fontSize: '14px',
-            color: theme.primaryHighlightText,
+            fontSize: '13px',
+            color: theme.primaryHighlight,
             fontWeight: 900,
             fontFamily: "'Space Grotesk', monospace",
             letterSpacing: '1.5px',
             textTransform: 'uppercase',
-            backgroundColor: theme.primaryHighlight,
-            border: `2px solid ${theme.inkDark}`,
-            padding: '5px 16px',
-            borderRadius: '3px',
+            backgroundColor: `${theme.primaryHighlight}18`,
+            border: `1px solid ${theme.primaryHighlight}55`,
+            padding: '6px 20px',
+            borderRadius: '999px',
             display: 'inline-block',
             marginBottom: '22px',
-            boxShadow: `4px 4px 0px ${theme.inkDark}`,
+            boxShadow: `0 0 16px ${theme.primaryHighlight}25`,
           }}
         >
-          PERTANYAAN BUAT KAMU
+          PERTANYAAN DOKTER BUAT KAMU
         </span>
 
         <h2
           style={{
-            fontSize: '36px',
+            fontSize: '34px',
             fontWeight: 900,
-            color: theme.inkDark,
-            lineHeight: 1.25,
+            color: '#FFFFFF',
+            lineHeight: 1.3,
             margin: '0 0 28px 0',
             fontFamily: "'Montserrat', sans-serif",
             textTransform: 'uppercase',
+            textShadow: '0 4px 20px rgba(0, 0, 0, 0.85)',
           }}
         >
           {question}
@@ -105,16 +106,19 @@ export const OutroScene: React.FC<OutroSceneProps> = ({ question: rawQuestion, s
 
         <div
           style={{
-            display: 'inline-block',
-            backgroundColor: theme.specimenBg,
-            border: `2px solid ${theme.inkDark}`,
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            backgroundColor: 'rgba(245, 158, 11, 0.12)',
+            border: '1.5px solid rgba(245, 158, 11, 0.45)',
             padding: '12px 28px',
-            borderRadius: '3px',
-            fontSize: '17px',
-            fontWeight: 800,
+            borderRadius: '999px',
+            fontSize: '16px',
+            fontWeight: 900,
             fontFamily: "'Space Grotesk', monospace",
-            color: '#F4F0EA',
+            color: '#FBBF24',
             letterSpacing: '1px',
+            boxShadow: '0 0 20px rgba(245, 158, 11, 0.2)',
           }}
         >
           TULIS DI KOLOM KOMENTAR 👇

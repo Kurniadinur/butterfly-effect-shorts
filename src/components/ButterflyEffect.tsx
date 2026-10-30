@@ -84,7 +84,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
         {/* 2. Continuous Unbroken 3D Volumetric Anatomical Journey (Multi-Theme Editorial UI) */}
         <Sequence
           from={data.hook.durationFrames}
-          durationInFrames={Math.max(1, data.totalDurationFrames - data.hook.durationFrames - data.outro.durationFrames)}
+          durationInFrames={Math.max(1, data.totalDurationFrames - data.hook.durationFrames)}
         >
           <ContinuousBodyJourney
             storyId={storyId}

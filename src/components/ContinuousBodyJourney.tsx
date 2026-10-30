@@ -52,8 +52,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     id: 'nerves',
     label: 'SISTEM SARAF & TULANG BELAKANG',
     stageX: 50,
-    stageY: 34,
-    zoomScale: 1.65,
+    stageY: 40,
+    zoomScale: 1.45,
     color: '#818cf8',
     organMediaUrl: 'butterfly/organs/brain.png',
     calloutSide: 'left',
@@ -305,6 +305,19 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
   const camZoomBase = interpolate(glideProgress, [0, 1], [prevWp.anchor.zoomScale, activeWp.anchor.zoomScale]);
   const smoothChaos = interpolate(glideProgress, [0, 1], [prevWp.chaosLevel, activeWp.chaosLevel]);
 
+  // Outro transition: ease camera smoothly back to majestic full-body view and fade HUD
+  const outroStartFrame = totalDurationFrames - outroDurationFrames;
+  const isInOutro = frame >= outroStartFrame;
+  const outroRaw = isInOutro ? (frame - outroStartFrame) / 36 : 0;
+  const outroFade = Math.min(1, Math.max(0, outroRaw));
+  const outroEase = easeInOutCubic(outroFade);
+
+  const fullBodyAnchor = ORGAN_CAMERA_ANCHORS['full-body'];
+  const effectiveStageX = interpolate(outroEase, [0, 1], [camStageX, fullBodyAnchor.stageX]);
+  const effectiveStageY = interpolate(outroEase, [0, 1], [camStageY, fullBodyAnchor.stageY]);
+  const effectiveZoom = interpolate(outroEase, [0, 1], [camZoomBase, fullBodyAnchor.zoomScale]);
+  const hudOpacity = Math.max(0, 1 - outroFade * 1.5);
+
   // Physiological Heartbeat & Breathing
   const bpm = Math.round(68 + (Math.min(100, Math.max(5, smoothChaos)) / 100) * 98);
   const beatPhase = (frame / fps) * (bpm / 60) * Math.PI * 2;
@@ -316,14 +329,14 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
   const breathCycle = (Math.sin((frame / fps) * (breathRate / 60) * Math.PI * 2) + 1) * 0.5;
 
   // True 3D Parallax & Orbital Rotation Angles (Makes the anatomy feel like a 3D hologram!)
-  const orbitRotateY = Math.sin(frame * 0.022) * 8 + (50 - camStageX) * 0.25;
-  const orbitRotateX = Math.cos(frame * 0.018) * 4 + (74 - camStageY) * 0.08;
+  const orbitRotateY = Math.sin(frame * 0.022) * 8 + (50 - effectiveStageX) * 0.25;
+  const orbitRotateX = Math.cos(frame * 0.018) * 4 + (74 - effectiveStageY) * 0.08;
   const floatX = Math.sin(frame * 0.024) * 10;
   const floatY = Math.cos(frame * 0.02) * 8;
 
-  const finalScale = camZoomBase + Math.sin(frame * 0.016) * 0.03 + heartPulse * 0.012;
-  const offsetX = (50 - camStageX) * 6.2 + floatX;
-  const offsetY = (74 - camStageY) * 5.8 + floatY;
+  const finalScale = effectiveZoom + Math.sin(frame * 0.016) * 0.03 + heartPulse * 0.012;
+  const offsetX = (50 - effectiveStageX) * 6.2 + floatX;
+  const offsetY = (74 - effectiveStageY) * 5.8 + floatY;
 
   const accentColor = interpolateHexColor(prevWp.anchor.color, activeWp.anchor.color, glideProgress);
 
@@ -581,73 +594,6 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             style={{ mixBlendMode: 'screen' }}
           />
 
-          {/* 0. NATIVE FULL-BODY SPINAL CORD & NEURAL TRANSMISSION (100% Aligned to Large Body Silhouette) */}
-          <g
-            opacity={getOrganGlow('nerves', 50, 34)}
-            style={{ pointerEvents: 'none' }}
-          >
-            {/* Main Central Spinal Cord Column (from Brainstem y:18 down to Sacrum y:86) */}
-            <path
-              d="M 50 18 L 50 86"
-              stroke="#38bdf8"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              style={{
-                filter: 'drop-shadow(0px 0px 3px #38bdf8) drop-shadow(0px 0px 6px #818cf8)',
-                opacity: 0.85 + Math.sin(frame * 0.15) * 0.15,
-              }}
-            />
-            {/* Inner Golden Neural Conduction Core */}
-            <path
-              d="M 50 18 L 50 86"
-              stroke="#fef08a"
-              strokeWidth="0.5"
-              strokeLinecap="round"
-              opacity="0.9"
-            />
-            {/* Symmetrical Bilateral Spinal Nerve Roots Aligned to Ribs and Spine */}
-            {[24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 65, 72, 80].map((yLevel, i) => {
-              const spread = Math.min(18, 4 + (yLevel < 55 ? (yLevel - 20) * 0.42 : (86 - yLevel) * 0.35));
-              const pulseOffset = (frame * 0.1 + i * 0.4) % (Math.PI * 2);
-              const branchGlow = 0.65 + Math.sin(pulseOffset) * 0.35;
-              return (
-                <g key={`nerve-root-${yLevel}`} opacity={branchGlow}>
-                  <path
-                    d={`M 50 ${yLevel} Q ${50 - spread * 0.5} ${yLevel + 1.2} ${50 - spread} ${yLevel + 3}`}
-                    fill="none"
-                    stroke="#38bdf8"
-                    strokeWidth="0.45"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d={`M 50 ${yLevel} Q ${50 + spread * 0.5} ${yLevel + 1.2} ${50 + spread} ${yLevel + 3}`}
-                    fill="none"
-                    stroke="#38bdf8"
-                    strokeWidth="0.45"
-                    strokeLinecap="round"
-                  />
-                </g>
-              );
-            })}
-            {/* Traveling Action Potential Pulses (Signals Traveling Up from Bladder/Pelvis to Brain) */}
-            {[0, 1, 2].map((pIdx) => {
-              const travelProgress = ((frame * 0.04 + pIdx * 0.33) % 1);
-              const signalY = 84 - travelProgress * (84 - 18);
-              return (
-                <circle
-                  key={`action-pulse-${pIdx}`}
-                  cx="50"
-                  cy={signalY}
-                  r={0.9}
-                  fill="#ffffff"
-                  style={{
-                    filter: 'drop-shadow(0px 0px 2.5px #fef08a) drop-shadow(0px 0px 5px #38bdf8)',
-                  }}
-                />
-              );
-            })}
-          </g>
-
           {/* 0B. REAL 3D BLOOD VESSELS & VASCULAR TREE (Stage X: 51, Y: 52) */}
           <g
             transform={`translate(51, 52) scale(${1 + heartPulse * 0.05 + getOrganFocusWeight('blood') * 0.06})`}
@@ -894,6 +840,8 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           top: '56px',
           left: '48px',
           zIndex: 35,
+          opacity: hudOpacity,
+          pointerEvents: 'none',
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
@@ -954,6 +902,8 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 35,
+          opacity: hudOpacity,
+          pointerEvents: 'none',
           display: 'flex',
           alignItems: 'center',
           gap: '14px',
@@ -1017,6 +967,8 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           top: '56px',
           right: '48px',
           zIndex: 30,
+          opacity: hudOpacity,
+          pointerEvents: 'none',
           display: 'inline-flex',
           alignItems: 'center',
           gap: '14px',
