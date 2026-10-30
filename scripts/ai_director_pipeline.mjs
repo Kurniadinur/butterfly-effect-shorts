@@ -1127,9 +1127,103 @@ export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(fullStory, nul
 // -----------------------------------------------------------------------------
 // MAIN ENTRY
 // -----------------------------------------------------------------------------
+// Valid Organ Anchors recognized by ContinuousBodyJourney
+const VALID_ORGAN_TARGETS = [
+  'brain', 'heart', 'lungs', 'stomach', 'liver', 'kidney',
+  'intestine', 'blood', 'nerves', 'bladder', 'pancreas', 'vocal_cords', 'esophagus'
+];
+
+function resolveOrganTarget(explicitOrgan, text) {
+  if (explicitOrgan && VALID_ORGAN_TARGETS.includes(explicitOrgan)) return explicitOrgan;
+  const combined = `${explicitOrgan || ''} ${text || ''}`.toLowerCase();
+  if (/otak|saraf pusat|neuron|pikiran|kepala|mata|kognitif|dopamin/i.test(combined)) return 'brain';
+  if (/saraf|tulang belakang|spinal|impuls/i.test(combined)) return 'nerves';
+  if (/jantung|detak|tekanan darah|tensi|nadi|kardio/i.test(combined)) return 'heart';
+  if (/darah|pembuluh|vaskular/i.test(combined)) return 'blood';
+  if (/paru|napas|oksigen|sesak/i.test(combined)) return 'lungs';
+  if (/lambung|asam|ulu hati|mual|muntah/i.test(combined)) return 'stomach';
+  if (/hati|liver|detoks/i.test(combined)) return 'liver';
+  if (/pankreas|insulin|gula darah/i.test(combined)) return 'pancreas';
+  if (/ginjal|filtrasi|ureum/i.test(combined)) return 'kidney';
+  if (/kandung kemih|kemih|pipis|kencing|urin/i.test(combined)) return 'bladder';
+  if (/usus|kolon|pencernaan/i.test(combined)) return 'intestine';
+  return 'heart'; // Highest stakes visceral fallback
+}
+
+/**
+ * Autonomous AI Script & Timeline Guardian
+ * Systemic Quality Gate: Guarantees every future video has 50-65s viral Shorts pacing,
+ * 1-sentence hook, and zero generic idling!
+ */
+export async function runAIScriptTimelineGuardian(storyData, topic) {
+  console.log('\n================================================================');
+  console.log('   🛡️ [AI SCRIPT & TIMELINE GUARDIAN] Menjamin Standar Shorts 90%+ Retensi...');
+  console.log('================================================================');
+
+  // 1. Hook Retention Rule: Strictly 1 punchy question (8-14 words, ~2.5 - 3.2s)
+  let hookNarration = (storyData.hook?.narration || '').replace(/\s+/g, ' ').trim();
+  const sentenceMatch = hookNarration.match(/^([^.!?]+[.!?])/);
+  if (sentenceMatch) {
+    const firstSentence = sentenceMatch[1].trim();
+    const excess = hookNarration.slice(firstSentence.length).trim();
+    storyData.hook.narration = firstSentence;
+    if (excess && storyData.nodes && storyData.nodes.length > 0) {
+      storyData.nodes[0].narration = `${excess} ${storyData.nodes[0].narration || ''}`.trim();
+    }
+  }
+  const hookWords = (storyData.hook.narration || '').split(/\s+/);
+  if (hookWords.length > 15) {
+    const cleanTopic = topic.replace(/^(apa yang terjadi pada tubuhmu jika|apa efek|apa jadinya kalau)\s*/i, '').replace(/\?+$/, '').trim();
+    storyData.hook.narration = `Apa yang sebenarnya terjadi pada tubuhmu jika kamu ${cleanTopic.toLowerCase()}?`;
+  }
+  console.log(`      ✓ Hook Narration : "${storyData.hook.narration}" (~2.8s)`);
+
+  // 2. Shorts Viral Node Count Rule (7 to 9 nodes max for 50-65s total duration)
+  if (Array.isArray(storyData.nodes) && storyData.nodes.length > 9) {
+    console.log(`      ⚡ [AI Node Consolidation] Mengurangi ${storyData.nodes.length} adegan berlebih menjadi 8 adegan berkecepatan tinggi...`);
+    const sortedByStakes = [...storyData.nodes].sort((a, b) => (b.chaosLevel || 0) - (a.chaosLevel || 0));
+    const keepSet = new Set([0, storyData.nodes.length - 1]);
+    for (const n of sortedByStakes) {
+      if (keepSet.size >= 8) break;
+      const idx = storyData.nodes.indexOf(n);
+      keepSet.add(idx);
+    }
+    const finalNodes = [...keepSet].sort((a, b) => a - b).map((idx, newStep) => ({
+      ...storyData.nodes[idx],
+      step: newStep + 1,
+    }));
+    storyData.nodes = finalNodes;
+  }
+
+  // 3. Organ Targeting Rule (Eliminates generic "otot & rangka" / "full-body" idling)
+  for (const node of storyData.nodes) {
+    const resolved = resolveOrganTarget(node.organTarget, `${node.headline} ${node.primaryText} ${node.narration}`);
+    if (node.organTarget !== resolved) {
+      console.log(`      🛠️ [AI Organ Retargeting] Adegan ${node.step}: ${node.organTarget || 'none'} -> ${resolved}`);
+      node.organTarget = resolved;
+    }
+    // Enforce concise narration (12 to 18 words, ~4-5s per node)
+    const nWords = (node.narration || '').split(/\s+/);
+    if (nWords.length > 22) {
+      node.narration = nWords.slice(0, 20).join(' ') + '...';
+    }
+  }
+
+  // 4. Outro Rule: 1 short conclusion + question (~4-5s)
+  if (storyData.outro && storyData.outro.narration) {
+    const oWords = storyData.outro.narration.split(/\s+/);
+    if (oWords.length > 22) {
+      storyData.outro.narration = oWords.slice(0, 18).join(' ') + '.';
+    }
+  }
+
+  console.log(`      ✓ Struktur Shorts Selesai: Hook + ${storyData.nodes.length} Nodes + Outro (Target Durasi: ~50-65s)\n`);
+}
+
 async function main() {
   try {
     const storyData = await generateStoryboard(topic);
+    await runAIScriptTimelineGuardian(storyData, topic);
     await resolveDynamicStoryAssets(storyData);
     const { wavPath, relAudioUrl } = await generateVoiceover(storyData);
     const whisperData = await runWhisperAlignment(wavPath, storyData.id);

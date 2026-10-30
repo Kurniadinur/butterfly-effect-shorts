@@ -21,6 +21,7 @@ interface OrganCameraAnchor {
   stageX: number;
   stageY: number;
   zoomScale: number;
+  targetScreenY?: number; // Exact screen Y center in 1080x1920 viewport (guarantees ZERO clipping!)
   color: string;
   organMediaUrl: string;
   // Direction for the 3D Callout Card relative to organ center ('left' or 'right')
@@ -32,8 +33,9 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     id: 'full-body',
     label: 'SELURUH TUBUH',
     stageX: 50,
-    stageY: 74,
+    stageY: 78,
     zoomScale: 1.05,
+    targetScreenY: 880,
     color: '#38bdf8',
     organMediaUrl: 'butterfly/media/medical_body_xray.jpg',
     calloutSide: 'right',
@@ -42,8 +44,9 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     id: 'brain',
     label: 'OTAK & SARAF PUSAT',
     stageX: 50,
-    stageY: 12,
-    zoomScale: 2.85,
+    stageY: 13,
+    zoomScale: 2.75,
+    targetScreenY: 630, // Perfectly frames full cranial dome without clipping top edge!
     color: '#38bdf8',
     organMediaUrl: 'butterfly/organs/brain.png',
     calloutSide: 'right',
@@ -53,7 +56,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'SISTEM SARAF & TULANG BELAKANG',
     stageX: 50,
     stageY: 36,
-    zoomScale: 2.70,
+    zoomScale: 2.65,
+    targetScreenY: 650,
     color: '#818cf8',
     organMediaUrl: 'butterfly/organs/nerves.png',
     calloutSide: 'left',
@@ -63,7 +67,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'PITA SUARA & LARING',
     stageX: 50,
     stageY: 30,
-    zoomScale: 2.90,
+    zoomScale: 2.80,
+    targetScreenY: 640,
     color: '#38bdf8',
     organMediaUrl: 'butterfly/organs/vocal_cords.png',
     calloutSide: 'right',
@@ -74,6 +79,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageX: 51,
     stageY: 42,
     zoomScale: 2.75,
+    targetScreenY: 650,
     color: '#fb923c',
     organMediaUrl: 'butterfly/organs/esophagus.png',
     calloutSide: 'left',
@@ -83,7 +89,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'PARU-PARU & PERNAPASAN',
     stageX: 50,
     stageY: 47,
-    zoomScale: 2.55,
+    zoomScale: 2.50,
+    targetScreenY: 660,
     color: '#2dd4bf',
     organMediaUrl: 'butterfly/organs/lungs.png',
     calloutSide: 'left',
@@ -93,7 +100,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'JANTUNG & SIRKULASI',
     stageX: 52,
     stageY: 49,
-    zoomScale: 2.85,
+    zoomScale: 2.80,
+    targetScreenY: 660,
     color: '#f43f5e',
     organMediaUrl: 'butterfly/organs/heart.png',
     calloutSide: 'right',
@@ -104,6 +112,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     stageX: 51,
     stageY: 52,
     zoomScale: 2.60,
+    targetScreenY: 660,
     color: '#ef4444',
     organMediaUrl: 'butterfly/organs/blood_vessels.png',
     calloutSide: 'left',
@@ -113,7 +122,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'HATI (METABOLISME)',
     stageX: 45,
     stageY: 62,
-    zoomScale: 2.75,
+    zoomScale: 2.70,
+    targetScreenY: 660,
     color: '#f59e0b',
     organMediaUrl: 'butterfly/organs/liver.png',
     calloutSide: 'left',
@@ -123,7 +133,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'LAMBUNG & PENCERNAAN',
     stageX: 55,
     stageY: 63,
-    zoomScale: 2.85,
+    zoomScale: 2.80,
+    targetScreenY: 660,
     color: '#fb923c',
     organMediaUrl: 'butterfly/organs/stomach.png',
     calloutSide: 'right',
@@ -133,7 +144,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'PANKREAS & INSULIN',
     stageX: 52,
     stageY: 66,
-    zoomScale: 2.85,
+    zoomScale: 2.80,
+    targetScreenY: 660,
     color: '#10b981',
     organMediaUrl: 'butterfly/organs/pancreas.png',
     calloutSide: 'left',
@@ -143,7 +155,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'GINJAL & FILTRASI',
     stageX: 50,
     stageY: 70,
-    zoomScale: 2.95,
+    zoomScale: 2.85,
+    targetScreenY: 660,
     color: '#a855f7',
     organMediaUrl: 'butterfly/organs/kidneys.png',
     calloutSide: 'right',
@@ -153,7 +166,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'SALURAN USUS',
     stageX: 50,
     stageY: 79,
-    zoomScale: 2.65,
+    zoomScale: 2.60,
+    targetScreenY: 680,
     color: '#eab308',
     organMediaUrl: 'butterfly/organs/intestines.png',
     calloutSide: 'left',
@@ -163,7 +177,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'KANDUNG KEMIH',
     stageX: 50,
     stageY: 88,
-    zoomScale: 3.15,
+    zoomScale: 3.10,
+    targetScreenY: 720,
     color: '#38bdf8',
     organMediaUrl: 'butterfly/organs/bladder.png',
     calloutSide: 'right',
@@ -173,7 +188,8 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'OTOT & RANGKA',
     stageX: 44,
     stageY: 76,
-    zoomScale: 2.45,
+    zoomScale: 2.40,
+    targetScreenY: 680,
     color: '#fb7185',
     organMediaUrl: 'butterfly/organs/blood_vessels.png',
     calloutSide: 'left',
@@ -303,6 +319,11 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
   const camStageX = interpolate(glideProgress, [0, 1], [prevWp.anchor.stageX, activeWp.anchor.stageX]);
   const camStageY = interpolate(glideProgress, [0, 1], [prevWp.anchor.stageY, activeWp.anchor.stageY]);
   const camZoomBase = interpolate(glideProgress, [0, 1], [prevWp.anchor.zoomScale, activeWp.anchor.zoomScale]);
+  const camTargetY = interpolate(
+    glideProgress,
+    [0, 1],
+    [prevWp.anchor.targetScreenY ?? 660, activeWp.anchor.targetScreenY ?? 660]
+  );
   const smoothChaos = interpolate(glideProgress, [0, 1], [prevWp.chaosLevel, activeWp.chaosLevel]);
 
   // Outro transition: ease camera smoothly back to majestic full-body view and fade HUD
@@ -316,6 +337,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
   const effectiveStageX = interpolate(outroEase, [0, 1], [camStageX, fullBodyAnchor.stageX]);
   const effectiveStageY = interpolate(outroEase, [0, 1], [camStageY, fullBodyAnchor.stageY]);
   const effectiveZoom = interpolate(outroEase, [0, 1], [camZoomBase, fullBodyAnchor.zoomScale]);
+  const effectiveTargetY = interpolate(outroEase, [0, 1], [camTargetY, fullBodyAnchor.targetScreenY ?? 880]);
   const hudOpacity = Math.max(0, 1 - outroFade * 1.5);
 
   // Physiological Heartbeat & Breathing
@@ -346,8 +368,11 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
   const floatY = Math.cos(frame * 0.02) * 8;
 
   const finalScale = effectiveZoom + Math.sin(frame * 0.016) * 0.03 + heartPulse * 0.012;
-  const offsetX = (50 - effectiveStageX) * 6.2 + floatX;
-  const offsetY = (74 - effectiveStageY) * 5.8 + floatY;
+  // Precise Camera Geometry Math: Centers any organ at (effectiveStageX, effectiveStageY) exactly to screen (540, effectiveTargetY)
+  const pixelStageX = (effectiveStageX / 100) * 1080;
+  const pixelStageY = (effectiveStageY / 185) * 1920;
+  const offsetX = 540 - pixelStageX * finalScale + floatX;
+  const offsetY = effectiveTargetY - pixelStageY * finalScale + floatY;
 
   const accentColor = interpolateHexColor(prevWp.anchor.color, activeWp.anchor.color, glideProgress);
 
@@ -374,9 +399,34 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
   // never look crowded or messy!
   const getOrganGlow = (organId: OrganTarget, ox: number, oy: number) => {
     const focusW = getOrganFocusWeight(organId);
-    const dist = Math.hypot(camStageX - ox, camStageY - oy);
-    const prox = Math.max(0, 1 - dist / 24);
-    return Math.min(1, 0.16 + focusW * 0.84 + prox * 0.16);
+
+    // Zack D. Films Surgical Isolation:
+    // Global network overlays (blood vessels and nerves) MUST NOT clutter behind distinct visceral organs like heart, stomach, kidneys!
+    if (organId === 'blood') {
+      const isBloodRelevant = activeWp.anchor.id === 'blood' || prevWp.anchor.id === 'blood' ||
+                              activeWp.anchor.id === 'muscles' || prevWp.anchor.id === 'muscles';
+      if (!isBloodRelevant) return 0; // Strictly 0 behind Heart, Stomach, Lungs!
+      return Math.min(1, focusW);
+    }
+    if (organId === 'nerves') {
+      const isNervesRelevant = activeWp.anchor.id === 'nerves' || prevWp.anchor.id === 'nerves' ||
+                               activeWp.anchor.id === 'brain' || prevWp.anchor.id === 'brain';
+      if (!isNervesRelevant) return 0; // Strictly 0 behind Heart, Liver, Kidneys, Bladder!
+      return Math.min(1, focusW);
+    }
+
+    // Visceral organs: Heart, Brain, Lungs, Liver, Stomach, Kidneys, Bladder, Pancreas
+    if (focusW > 0.05) {
+      return Math.min(1, 0.18 + focusW * 0.82);
+    }
+
+    // Full-body view during intro / outro: gentle translucent ambient silhouette
+    if (activeWp.anchor.id === 'full-body' || isInOutro) {
+      return 0.18;
+    }
+
+    // Very subtle depth silhouette for non-active visceral organs (0.05), never competing with active organ!
+    return 0.05;
   };
 
   // Dynamic CSS filter for each 3D organ:
@@ -508,7 +558,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           inset: 0,
           transformStyle: 'preserve-3d',
           transform: `translate3d(${offsetX}px, ${offsetY}px, 0px) scale(${finalScale}) rotateY(${orbitRotateY.toFixed(2)}deg) rotateX(${orbitRotateX.toFixed(2)}deg)`,
-          transformOrigin: '50% 42%',
+          transformOrigin: '0px 0px',
         }}
       >
         {/* PLANE -60px (DEEP AMBIENT BACKDROP): Subtle Studio Spotlight */}
@@ -1004,7 +1054,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       <div
         style={{
           position: 'absolute',
-          bottom: '500px',
+          bottom: '560px',
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 35,
