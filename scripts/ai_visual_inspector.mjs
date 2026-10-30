@@ -288,6 +288,21 @@ export async function runAutonomousRemotionEditor(storyData) {
     });
   }
 
+  // Checkpoint 4: Outro Question & Discussion Call (Penutup & Interaksi Penonton)
+  if (storyData.outro) {
+    const outroFrame = Math.max(120, (storyData.totalDurationFrames || 2800) - 45);
+    checkpoints.push({
+      label: 'Pertanyaan Diskusi & Outro CTA',
+      frameNumber: outroFrame,
+      nodeIndex: -2,
+      context: {
+        headline: storyData.outro.question || 'Pertanyaan Diskusi',
+        caption: storyData.outro.narration?.slice(0, 60),
+        timeOrYear: 'KESIMPULAN DOKTER',
+      },
+    });
+  }
+
   const checkpointResults = [];
   let totalScore = 0;
   let anyPolishApplied = false;

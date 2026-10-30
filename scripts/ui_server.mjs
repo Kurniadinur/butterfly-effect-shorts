@@ -17,24 +17,24 @@ const PORT = process.env.UI_PORT || 3333;
 
 const CREATIVE_PERSPECTIVES = [
   {
-    name: '🧬 OTOMATIS: ROTASI 5 GAYA EDITORIAL DOKUMENTER (ANTI-BOSAN)',
-    angle: 'Sistem secara otomatis merotasi 5 gaya edit dokumenter manusia (Vox Archival Yellow, Johnny Harris Slate & Vermilion, Cleo Abram Studio Coral, Institute of Human Anatomy Atlas, dan Poster Documentary) serta membedah reaksi organ tubuh manusia secara kronologis dengan bahasa sehari-hari yang natural.',
+    name: '🧬 OTOMATIS: ROTASI 5 TEMA GAYA A (ZACK D. FILMS / 3D MEDICAL)',
+    angle: 'Sistem merotasi 5 tema warna visual 3D Zack D. Films (Cinematic Cyan, Slate Crimson, Amber Kinetic, Emerald Clinical, Royal Violet) dengan kanvas tubuh 3D transparan, zoom makro organ, dan floating glass capsule HUD.',
   },
   {
-    name: '📒 GAYA 1: VOX ARCHIVAL (Kertas Krem & Stabilo Kuning)',
-    angle: 'Gunakan gaya visual Vox Archival dengan kartu kertas krem hangat, stabilo kuning #FFCC00, dan alur kronologis organ dalam yang tajam.',
+    name: '💎 GAYA 1: CINEMATIC CYAN NEON (Kapsul Kaca & Neon Cyan)',
+    angle: 'Gunakan gaya visual Gaya A Zack D. Films dengan ambient obsidian gelap, aksen cyan neon #38BDF8, dan kapsul kaca melayang transparan.',
   },
   {
-    name: '📐 GAYA 2: JOHNNY HARRIS SLATE (Blueprint Gelap & Merah Vermilion)',
-    angle: 'Gunakan gaya visual Johnny Harris dengan latar belakang slate arsitektural, kartu tab merah vermilion #E63946, dan tata letak terbalik (karakter 3D di kanan, kartu hitungan di kiri).',
+    name: '🚨 GAYA 2: SLATE CRIMSON ALERT (Kapsul Kaca & Neon Crimson)',
+    angle: 'Gunakan gaya visual Gaya A Zack D. Films dengan ambient slate gelap, aksen merah darurat #EF4444, dan zoom makro organ intens.',
   },
   {
-    name: '🔥 GAYA 3: CLEO ABRAM STUDIO (Espresso Hangat & Coral Block)',
-    angle: 'Gunakan gaya visual Cleo Abram dengan latar studio espresso hangat, bayangan blok warna coral #FF5A36, dan timecode bar di tengah atas.',
+    name: '⚡ GAYA 3: AMBER KINETIC (Kapsul Kaca & Neon Amber)',
+    angle: 'Gunakan gaya visual Gaya A Zack D. Films dengan aksen amber emas #F59E0B dan indikator vital dinamis.',
   },
   {
-    name: '🌿 GAYA 4: ANATOMICAL ATLAS (Jurnal Medis Klasik & Teal Emas)',
-    angle: 'Gunakan gaya visual Institute of Human Anatomy dengan kartu perkamen gading, aksen hijau teal & emas, serta pil informasi mengambang.',
+    name: '🔬 GAYA 4: EMERALD CLINICAL (Kapsul Kaca & Neon Emerald)',
+    angle: 'Gunakan gaya visual Gaya A Zack D. Films dengan aksen hijau emerald #10B981 untuk pemindaian klinis beresolusi tinggi.',
   },
 ];
 
