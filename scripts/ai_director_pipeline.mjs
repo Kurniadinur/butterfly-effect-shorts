@@ -87,35 +87,35 @@ PRINSIP WAJIB SUTRADARA MEDIS 3D (PERSONA DOKTER & EDUKASI ANATOMI AKURAT!):
    - "muscles" (Otot / Sendi / Rangka / Tubuh Luar)
    - "full-body" (Seluruh Tubuh Manusia)
 
-2. GAYA HOOK PEMBUKA & DESAIN VISUAL HOOK YANG WAJIB MENYESUAIKAN TOPIK (JANGAN PERNAH SAMA TERUS!):
+2. GAYA HOOK PEMBUKA (WAJIB SUPER PUNCHY, 1 KALIMAT, 8-12 KATA MAX):
+   - Penonton YouTube Shorts/TikTok memutuskan dalam 2 detik pertama! DILARANG membuat hook narration bertele-tele atau bercerita panjang!
+   - 'hook.narration' WAJIB HANYA 1 KALIMAT PERTANYAAN SINGKAT (maksimal 10-14 kata, durasi ~2.5 - 3.2 detik).
+   - Contoh BENAR: "Apa jadinya kalau kamu menahan kencing terlalu lama?" atau "Inilah yang terjadi pada tubuhmu jika kamu minum kopi saat perut kosong!"
+   - DILARANG menulis 3-4 kalimat panjang di hook. Semua penjelasan mekanisme organ WAJIB masuk ke dalam array 'nodes'!
    - DILARANG KERAS memakai kata-kata khas AI seperti "EKSPERIMEN TUBUH MANUSIA", "SIMULASI BIOLOGIS", "TARGET UTAMA", atau judul kaku berpola "X: APAKAH MENGANCAM NYAWAMU?".
    - Buat 'headline' persis seperti judul video manusia yang natural dan sesuai topik (contoh: "APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?", "APA JADINYA KALAU KAMU MAKAN MIE 30 HARI TERUS-MENERUS?", "APA JADINYA KALAU TIDAK TIDUR 72 JAM NON-STOP?").
-   - Pilih 'hookMode' yang PALING COCOK dengan topik (DILARANG menyamakan semua topik dengan kalender 30 hari!):
-     * "empty-stomach-alert" -> Gunakan untuk topik reaksi langsung di tubuh/pencernaan/minuman/makanan (seperti Minum Kopi Saat Perut Kosong, Makan Pedas Ekstrem, Minum Soda/Alkohol/Obat). Menampilkan indikator kondisi tubuh & 4 gejala nyata yang langsung dirasakan manusia!
-     * "time-drain-battery" -> Gunakan untuk topik kurang tidur, begadang, menatap layar HP berjam-jam, atau kelelahan otak/mata.
-     * "pressure-overload" -> Gunakan untuk topik menahan kencing, kurang minum air putih, menahan BAB, atau tekanan cairan tubuh.
-     * "streak-calendar" -> HANYA BOLEH digunakan jika judul topik secara eksplisit menyebutkan tantangan sekian hari berturut-turut (seperti "30 Hari", "7 Hari", "Sebulan"). JANGAN PERNAH memakai "streak-calendar" atau angka 30 untuk topik harian biasa seperti minum kopi perut kosong!
+   - Pilih 'hookMode' yang PALING COCOK dengan topik: "empty-stomach-alert" | "time-drain-battery" | "pressure-overload" | "streak-calendar".
    - Isi 'hookConditionLabel' dengan status awal tubuh (contoh: "KONDISI AWAL: PERUT KOSONG (0% MAKANAN)" atau "DURASI: 72 JAM TANPA TIDUR").
-   - Isi 'hookSymptoms' dengan array 4 gejala fisik nyata yang dirasakan manusia pada topik tersebut (contoh untuk kopi perut kosong: ["😣 Perut Terasa Perih, Melilit & Mual", "🚽 Mulas Mendadak & Kebelet BAB Pagi-Pagi", "💓 Jantung Berdebar Kencang (Deg-degan) & Gemetar", "🥱 Siangnya Badan Lemas & Ngantuk Berat (Crash)"]).
+   - Isi 'hookSymptoms' dengan array 4 gejala fisik nyata yang dirasakan manusia pada topik tersebut.
 
-2. WAJIB ADA "APA YANG DIRASAKAN MANUSIA" ('humanFeeling' & 'symptomEmoji') DI SETIAP ADEGAN DARI AWAL SAMPAI AKHIR:
-   - Penonton adalah manusia biasa, bukan dokter! Jangan hanya menjelaskan reaksi organ ("sel parietal", "enzim P450", "vasokonstriksi", "blokade adenosin") tanpa memberi tahu APA YANG DIRASAKAN OLEH MANUSIANYA!
-   - Di SETIAP 'node' (dari step 1 sampai step terakhir):
-     * Di dalam 'narration': Hubungkan reaksi organ dengan apa yang dirasakan manusianya (contoh: "Cairan kopi asam langsung menyentuh dinding lambung yang kosong, membuat perutmu mulai terasa perih, panas, dan sedikit mual.").
-     * 'headline' & 'primaryText': Gunakan bahasa Indonesia sehari-hari yang natural, BUKAN jargon medis kaku (contoh 'headline': "LAMBUNG KOSONG LANGSUNG PERIH", "MULAS MENDADAK & KEBELET BAB", "JANTUNG MULAI BERDEBAR KENCANG", "ENERGI ANJLOK & NGANTUK BERAT").
-     * 'humanFeeling' (WAJIB DIISI DI SETIAP NODE!): Kalimat 5-10 kata yang menjelaskan apa yang dirasakan fisik/mental manusia pada detik/menit itu (contoh: "Perut terasa perih, melilit, dan mulai mual karena belum terisi makanan", "Perut terasa mulas mendadak dan muncul dorongan kuat ingin ke kamar mandi", "Dada terasa deg-degan kencang, napas lebih cepat, dan jari sedikit gemetar", "Badan mendadak lemas, kepala berat, dan muncul rasa kantuk luar biasa").
-     * 'symptomEmoji' (WAJIB DIISI DI SETIAP NODE!): Satu emoji ekspresi/gejala manusia yang pas (contoh: "😣", "🤢", "🚽", "💓", "😰", "🥶", "🫨", "😳", "⚡", "💧", "🥱").
+3. WAJIB ADA "APA YANG DIRASAKAN MANUSIA" ('humanFeeling' & 'symptomEmoji') DI SETIAP ADEGAN:
+   - Penonton adalah manusia biasa, bukan dokter! Di SETIAP 'node' (dari step 1 sampai step terakhir):
+     * 'narration': Hubungkan reaksi organ dengan apa yang dirasakan manusianya (1-2 kalimat padat, 12-18 kata per adegan).
+     * 'headline' & 'primaryText': Gunakan bahasa Indonesia sehari-hari yang natural.
+     * 'humanFeeling': Kalimat 5-10 kata menjelaskan apa yang dirasakan fisik/mental manusia saat itu.
+     * 'symptomEmoji': Satu emoji ekspresi/gejala yang pas.
 
-3. KELENGKAPAN DATA TIAP ADEGAN ('node'):
-   - Buat 12 sampai 16 adegan ('nodes') yang mengalir secara kronologis dari awal sampai efek akhirnya pada manusia.
+4. KELENGKAPAN DATA TIAP ADEGAN ('nodes') — STRUKTUR CEPAT SHORTS (8-10 ADEGAN, TOTAL 50-65 DETIK):
+   - Buat 8 sampai 10 adegan ('nodes') berkecepatan tinggi yang mengalir secara kronologis dari awal sampai efek akhirnya pada manusia.
+   - Durasi tiap adegan: Narration HANYA 1-2 kalimat padat (12-18 kata per adegan, durasi 4-6 detik). Pergantian visual organ yang cepat setiap 4-5 detik adalah kunci retensi ala Zack D. Films!
    - Setiap 'node' wajib memiliki:
      * 'timeOrYear': Tahap waktu kronologis & organ (contoh: "DETIK KE-30 • LAMBUNG", "MENIT KE-5 • USUS", "MENIT KE-18 • JANTUNG", "JAM KE-2 • OTAK").
-     * 'organTarget': Pilih SATU kode organ ("brain", "heart", "lungs", "stomach", "liver", "kidney", "intestine", "blood", "nerves", "muscles").
-     * 'chaosLevel': Angka 15 sampai 95.
+     * 'organTarget': Pilih SATU kode organ spesifik ("brain", "heart", "lungs", "stomach", "liver", "kidney", "intestine", "blood", "nerves", "bladder", "muscles").
+     * 'chaosLevel': Angka 15 sampai 95 (meningkat seiring eskalasi krisis).
      * 'imagePrompt': Deskripsi bahasa Inggris untuk 3D Medical X-Ray Generator.
 
-4. OUTRO YANG SESUAI TOPIK & MENANYAKAN PENGALAMAN PENONTON:
-   - 'outro.narration' & 'outro.question' WAJIB membahas topik video tersebut dan menanyakan apa yang sering dirasakan penonton (contoh untuk kopi: "Tubuhmu sebenarnya butuh air putih dan sarapan dulu sebelum menerima kafein. Kalau kamu minum kopi saat perut kosong, efek mana yang paling sering kamu rasakan: perut mulas atau jantung deg-degan?"). DILARANG memakai kalimat template tentang "keputusan sepele 5 tahun lagi".
+5. OUTRO YANG SESUAI TOPIK & MENANYAKAN PENGALAMAN PENONTON (DURASI ~4-5 DETIK):
+   - 'outro.narration' & 'outro.question' WAJIB singkat, padat, dan menanyakan apa yang sering dirasakan penonton. DILARANG bertele-tele.
 
 FORMAT JSON WAJIB:
 {
@@ -515,11 +515,22 @@ async function generateStoryboard(topic) {
         storyData.hook.headline = defaultQuestionHeadline;
       }
     }
-    // Ensure narration starts with a curiosity question before diving into the explanation
+    // Strictly Enforce Zack D. Films Snappy 1-Sentence Hook (~2.5 to 3.2s)
     if (!storyData.hook.narration) {
-      storyData.hook.narration = defaultQuestionNarration;
-    } else if (!storyData.hook.narration.includes('?')) {
-      storyData.hook.narration = `Pernahkah kamu membayangkan, bagaimana keadaan tubuhmu ketika ${cleanScenario.toLowerCase()}? ${storyData.hook.narration}`;
+      storyData.hook.narration = `Apa yang sebenarnya terjadi pada tubuhmu jika kamu ${cleanScenario.toLowerCase()}?`;
+    } else {
+      // Extract ONLY the first punchy question or statement sentence for the Hook!
+      const rawHookText = storyData.hook.narration.replace(/\s+/g, ' ').trim();
+      const sentenceMatch = rawHookText.match(/^([^.!?]+[.!?])/);
+      if (sentenceMatch) {
+        const firstSentence = sentenceMatch[1].trim();
+        const excess = rawHookText.slice(firstSentence.length).trim();
+        storyData.hook.narration = firstSentence;
+        if (excess && storyData.nodes && storyData.nodes.length > 0) {
+          // Push any excess explanation into Node 1 so no insight is lost!
+          storyData.nodes[0].narration = `${excess} ${storyData.nodes[0].narration || ''}`.trim();
+        }
+      }
     }
     if (!storyData.hook.leftTitle) storyData.hook.leftTitle = 'Pemicu Awal';
     if (!storyData.hook.rightTitle) storyData.hook.rightTitle = 'Reaksi Organ';

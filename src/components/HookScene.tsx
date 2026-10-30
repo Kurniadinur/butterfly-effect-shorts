@@ -700,6 +700,15 @@ export const HookScene: React.FC<HookSceneProps> = ({
 
   });
 
+  // Zack D. Films Macro Dive Push-in Exit Transition (Last 18 frames / 0.6s plunge directly into organs!)
+  const exitDuration = 18;
+  const isExiting = frame >= Math.max(0, durationFrames - exitDuration);
+  const exitRaw = isExiting ? (frame - (durationFrames - exitDuration)) / exitDuration : 0;
+  const exitEase = exitRaw * exitRaw * exitRaw; // aggressive cubic acceleration plunge
+  const exitScale = 1 + exitEase * 1.85; // zooms from 1.0 to 2.85x
+  const exitBlur = exitEase * 12;
+  const exitStageOpacity = Math.max(0, 1 - exitEase * 1.35);
+
   // Escalation progress from 0 -> 1 over the first 68% of the hook duration
 
   const rampEndFrame = Math.max(90, Math.round(durationFrames * 0.68));
@@ -1229,7 +1238,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
 
           transform: `translateY(${interpolate(introSpring, [0, 1], [-24, 0])}px)`,
 
-          opacity: introSpring,
+          opacity: Math.max(0, introSpring * (1 - exitRaw * 2.2)),
 
         }}
 
@@ -1314,6 +1323,14 @@ export const HookScene: React.FC<HookSceneProps> = ({
           gap: '20px',
 
           alignItems: 'center',
+
+          transform: `scale(${exitScale})`,
+
+          filter: exitBlur > 0 ? `blur(${exitBlur.toFixed(1)}px)` : undefined,
+
+          opacity: exitStageOpacity,
+
+          transformOrigin: isBodyOnRight ? '75% 50%' : '25% 50%',
 
         }}
 

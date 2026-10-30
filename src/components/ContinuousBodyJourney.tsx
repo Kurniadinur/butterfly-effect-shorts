@@ -43,7 +43,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'OTAK & SARAF PUSAT',
     stageX: 50,
     stageY: 12,
-    zoomScale: 2.1,
+    zoomScale: 2.85,
     color: '#38bdf8',
     organMediaUrl: 'butterfly/organs/brain.png',
     calloutSide: 'right',
@@ -52,10 +52,10 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     id: 'nerves',
     label: 'SISTEM SARAF & TULANG BELAKANG',
     stageX: 50,
-    stageY: 40,
-    zoomScale: 1.45,
+    stageY: 36,
+    zoomScale: 2.70,
     color: '#818cf8',
-    organMediaUrl: 'butterfly/organs/brain.png',
+    organMediaUrl: 'butterfly/organs/nerves.png',
     calloutSide: 'left',
   },
   vocal_cords: {
@@ -63,7 +63,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'PITA SUARA & LARING',
     stageX: 50,
     stageY: 30,
-    zoomScale: 2.25,
+    zoomScale: 2.90,
     color: '#38bdf8',
     organMediaUrl: 'butterfly/organs/vocal_cords.png',
     calloutSide: 'right',
@@ -73,7 +73,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'KERONGKONGAN (ESOFAGUS)',
     stageX: 51,
     stageY: 42,
-    zoomScale: 1.95,
+    zoomScale: 2.75,
     color: '#fb923c',
     organMediaUrl: 'butterfly/organs/esophagus.png',
     calloutSide: 'left',
@@ -83,7 +83,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'PARU-PARU & PERNAPASAN',
     stageX: 50,
     stageY: 47,
-    zoomScale: 1.75,
+    zoomScale: 2.55,
     color: '#2dd4bf',
     organMediaUrl: 'butterfly/organs/lungs.png',
     calloutSide: 'left',
@@ -93,7 +93,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'JANTUNG & SIRKULASI',
     stageX: 52,
     stageY: 49,
-    zoomScale: 2.05,
+    zoomScale: 2.85,
     color: '#f43f5e',
     organMediaUrl: 'butterfly/organs/heart.png',
     calloutSide: 'right',
@@ -103,7 +103,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'PEMBULUH DARAH',
     stageX: 51,
     stageY: 52,
-    zoomScale: 1.85,
+    zoomScale: 2.60,
     color: '#ef4444',
     organMediaUrl: 'butterfly/organs/blood_vessels.png',
     calloutSide: 'left',
@@ -113,7 +113,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'HATI (METABOLISME)',
     stageX: 45,
     stageY: 62,
-    zoomScale: 1.95,
+    zoomScale: 2.75,
     color: '#f59e0b',
     organMediaUrl: 'butterfly/organs/liver.png',
     calloutSide: 'left',
@@ -123,7 +123,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'LAMBUNG & PENCERNAAN',
     stageX: 55,
     stageY: 63,
-    zoomScale: 2.05,
+    zoomScale: 2.85,
     color: '#fb923c',
     organMediaUrl: 'butterfly/organs/stomach.png',
     calloutSide: 'right',
@@ -133,7 +133,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'PANKREAS & INSULIN',
     stageX: 52,
     stageY: 66,
-    zoomScale: 2.05,
+    zoomScale: 2.85,
     color: '#10b981',
     organMediaUrl: 'butterfly/organs/pancreas.png',
     calloutSide: 'left',
@@ -143,7 +143,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'GINJAL & FILTRASI',
     stageX: 50,
     stageY: 70,
-    zoomScale: 2.0,
+    zoomScale: 2.95,
     color: '#a855f7',
     organMediaUrl: 'butterfly/organs/kidneys.png',
     calloutSide: 'right',
@@ -153,7 +153,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'SALURAN USUS',
     stageX: 50,
     stageY: 79,
-    zoomScale: 1.8,
+    zoomScale: 2.65,
     color: '#eab308',
     organMediaUrl: 'butterfly/organs/intestines.png',
     calloutSide: 'left',
@@ -163,7 +163,7 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
     label: 'KANDUNG KEMIH',
     stageX: 50,
     stageY: 88,
-    zoomScale: 2.15,
+    zoomScale: 3.15,
     color: '#38bdf8',
     organMediaUrl: 'butterfly/organs/bladder.png',
     calloutSide: 'right',
@@ -171,11 +171,11 @@ export const ORGAN_CAMERA_ANCHORS: Record<string, OrganCameraAnchor> = {
   muscles: {
     id: 'muscles',
     label: 'OTOT & RANGKA',
-    stageX: 36,
-    stageY: 80,
-    zoomScale: 1.5,
+    stageX: 44,
+    stageY: 76,
+    zoomScale: 2.45,
     color: '#fb7185',
-    organMediaUrl: 'butterfly/media/medical_body_xray.jpg',
+    organMediaUrl: 'butterfly/organs/blood_vessels.png',
     calloutSide: 'left',
   },
 };
@@ -297,7 +297,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
 
   // Continuous, butter-smooth camera glide over 48 frames (1.6 seconds) using cubic easing
   // Never teleports or snaps!
-  const glideRaw = (frame - activeWp.startFrame) / 48;
+  const glideRaw = (frame - activeWp.startFrame) / 30;
   const glideProgress = easeInOutCubic(glideRaw);
 
   const camStageX = interpolate(glideProgress, [0, 1], [prevWp.anchor.stageX, activeWp.anchor.stageX]);
@@ -319,6 +319,17 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
   const hudOpacity = Math.max(0, 1 - outroFade * 1.5);
 
   // Physiological Heartbeat & Breathing
+  // Zack D. Films Dynamic Pathology & Organ Stress States
+  const isBladderActive = activeWp.anchor.id === 'bladder';
+  const bladderStress = isBladderActive ? smoothChaos : Math.max(20, smoothChaos * 0.4);
+  const bladderDistend = 1.0 + (Math.max(0, bladderStress - 20) / 80) * 0.46; // Ballooning outward up to +46%
+  const bladderPulse = Math.sin(frame * 0.14) * (0.015 + (bladderStress / 100) * 0.035);
+  const bladderTotalScale = bladderDistend * (1 + bladderPulse);
+
+  const isKidneyActive = activeWp.anchor.id === 'kidney';
+  const kidneyStress = isKidneyActive ? smoothChaos : Math.max(20, smoothChaos * 0.35);
+  const kidneyDistend = 1.0 + (Math.max(0, kidneyStress - 30) / 70) * 0.22; // Hydronephrosis swelling up to +22%
+
   const bpm = Math.round(68 + (Math.min(100, Math.max(5, smoothChaos)) / 100) * 98);
   const beatPhase = (frame / fps) * (bpm / 60) * Math.PI * 2;
   const systolicBeat = Math.pow(Math.max(0, Math.sin(beatPhase)), 8);
@@ -610,6 +621,22 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             />
           </g>
 
+          {/* REAL 3D ANATOMICAL NERVES & SPINAL CORD (Stage X: 50, Y: 36) */}
+          <g
+            transform={`translate(50, 36) scale(${1 + getOrganFocusWeight('nerves') * 0.08})`}
+            opacity={getOrganGlow('nerves', 50, 36)}
+            style={{ filter: getOrganVisualFilter('nerves') }}
+          >
+            <image
+              href={staticFile('butterfly/organs/nerves.png')}
+              x="-8"
+              y="-14"
+              width="16"
+              height="28"
+              preserveAspectRatio="xMidYMid meet"
+            />
+          </g>
+
           {/* 1. REAL 3D ANATOMICAL BRAIN (Cranial Cavity — Stage X: 50, Y: 12) */}
           <g
             transform={`translate(50, 12) scale(${1 + Math.sin(frame * 0.08) * 0.025 + getOrganFocusWeight('brain') * 0.08})`}
@@ -661,9 +688,9 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             />
           </g>
 
-          {/* 6. REAL 3D ANATOMICAL KIDNEYS (Retroperitoneal Back Layer — Stage X: 50, Y: 70, rendered BEHIND Liver/Stomach/Intestines!) */}
+          {/* 6. REAL 3D ANATOMICAL KIDNEYS (Retroperitoneal Back Layer — Stage X: 50, Y: 70) */}
           <g
-            transform={`translate(50, 70) scale(${1 + getOrganFocusWeight('kidney') * 0.08})`}
+            transform={`translate(50, 70) scale(${kidneyDistend + getOrganFocusWeight('kidney') * 0.08})`}
             opacity={getOrganGlow('kidney', 50, 70)}
             style={{ filter: getOrganVisualFilter('kidney') }}
           >
@@ -675,6 +702,30 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
               height="14"
               preserveAspectRatio="xMidYMid meet"
             />
+            {/* Vesicoureteral Reflux Backpressure Stream when chaos >= 45 */}
+            {smoothChaos >= 45 && (
+              <g opacity={Math.min(1, (smoothChaos - 45) / 35)}>
+                {/* Ascending reflux stream lines from pelvic ureters to kidneys */}
+                <path
+                  d="M 48.5 84 Q 47 77 47 72"
+                  fill="none"
+                  stroke="#fbbf24"
+                  strokeWidth="0.75"
+                  strokeDasharray="1.5 1"
+                  strokeDashoffset={-frame * 0.28}
+                  filter="drop-shadow(0 0 4px #eab308)"
+                />
+                <path
+                  d="M 51.5 84 Q 53 77 53 72"
+                  fill="none"
+                  stroke="#fbbf24"
+                  strokeWidth="0.75"
+                  strokeDasharray="1.5 1"
+                  strokeDashoffset={-frame * 0.28}
+                  filter="drop-shadow(0 0 4px #eab308)"
+                />
+              </g>
+            )}
           </g>
 
           {/* 4. REAL 3D ANATOMICAL LIVER (Right Upper Quadrant — Stage X: 45, Y: 62) */}
@@ -741,9 +792,9 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
             />
           </g>
 
-          {/* 9. REAL 3D ANATOMICAL URINARY BLADDER (Pelvic Cavity — Stage X: 50, Y: 88) */}
+          {/* 9. REAL 3D ANATOMICAL URINARY BLADDER (Pelvic Cavity — Stage X: 50, Y: 88, Zack D. Films Bulging & Fluid Surge) */}
           <g
-            transform={`translate(50, 88) scale(${1 + Math.sin(frame * 0.1) * 0.03 + getOrganFocusWeight('bladder') * 0.09})`}
+            transform={`translate(50, 88) scale(${bladderTotalScale + getOrganFocusWeight('bladder') * 0.10})`}
             opacity={getOrganGlow('bladder', 50, 88)}
             style={{ filter: getOrganVisualFilter('bladder') }}
           >
@@ -755,6 +806,22 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
               height="11"
               preserveAspectRatio="xMidYMid meet"
             />
+            {/* Surface Red Stress Capillaries glowing when pressure peaks */}
+            {bladderStress >= 50 && (
+              <g opacity={Math.min(0.9, (bladderStress - 50) / 40)}>
+                <circle
+                  cx="0"
+                  cy="0.5"
+                  r={5.2 * bladderDistend}
+                  fill="none"
+                  stroke="#ef4444"
+                  strokeWidth="0.45"
+                  strokeDasharray="2 1.5"
+                  opacity={0.65 + Math.sin(frame * 0.2) * 0.3}
+                  filter="drop-shadow(0 0 4px #dc2626)"
+                />
+              </g>
+            )}
           </g>
 
           {/* 10. REAL 3D ANATOMICAL VOCAL CORDS */}

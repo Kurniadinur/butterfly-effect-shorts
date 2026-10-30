@@ -32,11 +32,11 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
   const medicalSfxEvents = useMemo(() => {
     const events: Array<{ type: 'whoosh' | 'heartbeat' | 'warning' | 'mri'; frame: number; volume: number }> = [];
 
-    // Hook to Body Journey transition whoosh
+    // Hook to Body Journey transition whoosh (Synchronized with Macro Plunge Dive)
     events.push({
       type: 'whoosh',
-      frame: Math.max(0, data.hook.durationFrames - 12),
-      volume: 0.28,
+      frame: Math.max(0, data.hook.durationFrames - 16),
+      volume: 0.36,
     });
 
     // Organ transitions, dynamic heartbeats & crisis alerts from AI Story Nodes
