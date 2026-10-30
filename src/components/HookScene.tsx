@@ -794,7 +794,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
 
         justifyContent: 'center',
 
-        transform: `scale(${0.97 + curvedProgress * 0.04 + systolicBeat * 0.01})`,
+        transform: `scale(${((interpolate(frame, [0, 18, 48], [0.88, 1.04, 1.0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' })) + curvedProgress * 0.03 + systolicBeat * 0.01).toFixed(3)})`,
 
       }}
 

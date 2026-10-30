@@ -831,6 +831,45 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
       </div>
 
       {/* =====================================================================
+          HOLOGRAPHIC MEDICAL MRI LASER SCANLINE (Cinematic Lab Scanner Sweep)
+          ===================================================================== */}
+      {(() => {
+        const scanCycle = 160;
+        const scanNorm = (frame % scanCycle) / scanCycle;
+        const scanY = 160 + scanNorm * 1180;
+        const scanGlow = Math.sin(scanNorm * Math.PI);
+        const scanOpacity = Math.max(0, scanGlow * 0.72) * hudOpacity;
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              left: '6%',
+              right: '6%',
+              top: `${scanY}px`,
+              height: '3px',
+              background: 'linear-gradient(90deg, transparent 0%, #38bdf8 25%, #ffffff 50%, #38bdf8 75%, transparent 100%)',
+              boxShadow: '0 0 18px #38bdf8, 0 0 36px #0284c7, 0 0 54px #38bdf888',
+              opacity: scanOpacity,
+              pointerEvents: 'none',
+              zIndex: 16,
+            }}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                bottom: '100%',
+                height: '40px',
+                background: 'linear-gradient(to top, rgba(56, 189, 248, 0.22), transparent)',
+                filter: 'blur(6px)',
+              }}
+            />
+          </div>
+        );
+      })()}
+
+      {/* =====================================================================
           2. GAYA A: FLOATING GLASS ORGAN HUD CAPSULE (Top-Left, Zack D. Films Style)
              Zero visual obstruction of the 3D body! Pure cinematic clarity.
           ===================================================================== */}

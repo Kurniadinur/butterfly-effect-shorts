@@ -28,6 +28,66 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
   const storyId = data.id;
   const editorialMood = data.editorialStyle?.mood;
 
+  // AI-Driven Dynamic Medical SFX Soundscape (Heartbeat, Macro Whoosh, Telemetry Pulse, MRI Sweep)
+  const medicalSfxEvents = useMemo(() => {
+    const events: Array<{ type: 'whoosh' | 'heartbeat' | 'warning' | 'mri'; frame: number; volume: number }> = [];
+
+    // Hook to Body Journey transition whoosh
+    events.push({
+      type: 'whoosh',
+      frame: Math.max(0, data.hook.durationFrames - 12),
+      volume: 0.28,
+    });
+
+    // Organ transitions, dynamic heartbeats & crisis alerts from AI Story Nodes
+    let prevOrgan = '';
+    (data.nodes || []).forEach((node) => {
+      // Organ transition macro whoosh
+      if (node.organTarget && node.organTarget !== prevOrgan && node.startFrame > data.hook.durationFrames) {
+        events.push({
+          type: 'whoosh',
+          frame: Math.max(0, node.startFrame - 8),
+          volume: 0.20,
+        });
+        prevOrgan = node.organTarget;
+      }
+
+      // Crisis warning pulse for high-chaos moments (chaos >= 75)
+      if ((node.chaosLevel || 0) >= 75) {
+        events.push({
+          type: 'warning',
+          frame: node.startFrame + 18,
+          volume: 0.18,
+        });
+      }
+
+      // Dynamic Heartbeat pulses synchronized to chaos level (BPM 72 -> 138)
+      const chaos = node.chaosLevel || 30;
+      if (chaos >= 35) {
+        const frameInterval = Math.round(26 - ((chaos - 35) / 65) * 13);
+        const beatVol = 0.10 + ((chaos - 35) / 65) * 0.18;
+        for (let f = node.startFrame; f < node.startFrame + node.durationFrames - 8; f += Math.max(12, frameInterval)) {
+          events.push({
+            type: 'heartbeat',
+            frame: f,
+            volume: beatVol,
+          });
+        }
+      }
+    });
+
+    // Periodic subtle MRI scan sweeps (every 160 frames, matching visual scanline)
+    for (let f = data.hook.durationFrames + 20; f < data.totalDurationFrames - data.outro.durationFrames; f += 160) {
+      events.push({
+        type: 'mri',
+        frame: f,
+        volume: 0.08,
+      });
+    }
+
+    return events;
+  }, [data]);
+
   return (
     <div
       style={{
@@ -130,6 +190,39 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
           <Audio src={staticFile('butterfly/sfx/tension_drone.wav')} volume={0.14} />
         </Sequence>
       ))}
+
+      {/* 7. AI-Driven Dynamic Medical SFX (Heartbeat, Macro Whoosh, ICU Warning, MRI Scan) */}
+      {medicalSfxEvents.map((ev, i) => {
+        if (ev.type === 'whoosh') {
+          return (
+            <Sequence key={'sfx-whoosh-' + i} from={ev.frame} durationInFrames={25}>
+              <Audio src={staticFile('butterfly/sfx/macro_whoosh.wav')} volume={ev.volume} />
+            </Sequence>
+          );
+        }
+        if (ev.type === 'warning') {
+          return (
+            <Sequence key={'sfx-warn-' + i} from={ev.frame} durationInFrames={18}>
+              <Audio src={staticFile('butterfly/sfx/medical_warning_pulse.wav')} volume={ev.volume} />
+            </Sequence>
+          );
+        }
+        if (ev.type === 'heartbeat') {
+          return (
+            <Sequence key={'sfx-hb-' + i} from={ev.frame} durationInFrames={20}>
+              <Audio src={staticFile('butterfly/sfx/heartbeat_pulse.wav')} volume={ev.volume} />
+            </Sequence>
+          );
+        }
+        if (ev.type === 'mri') {
+          return (
+            <Sequence key={'sfx-mri-' + i} from={ev.frame} durationInFrames={36}>
+              <Audio src={staticFile('butterfly/sfx/mri_scan_sweep.wav')} volume={ev.volume} />
+            </Sequence>
+          );
+        }
+        return null;
+      })}
     </div>
   );
 };
