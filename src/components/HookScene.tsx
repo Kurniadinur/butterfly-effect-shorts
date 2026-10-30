@@ -49,6 +49,8 @@ interface ParsedHookScenario {
   unitWord: string;
   unitLabel: string;
   targetOrganPng: string;
+  characterActionPng: string;
+  actionCalloutText: string;
   naturalHeadline: string;
   highlightPhrase: string;
 }
@@ -87,6 +89,8 @@ function parseHookScenarioFromTopic(
   let unitWord = 'HARI';
   let unitLabel = overrideUnit || '30 HARI NON-STOP';
   let targetOrganPng = 'butterfly/organs/stomach.png';
+  let characterActionPng = 'butterfly/characters/action_drinking.png';
+  let actionCalloutText = '☕ MINUM KOPI SAAT PERUT KOSONG';
   let naturalHeadline = headline.toUpperCase();
   let highlightPhrase = '';
   let symptoms: Array<{ emoji: string; text: string }> = [
@@ -96,8 +100,8 @@ function parseHookScenarioFromTopic(
     { emoji: '🥱', text: 'Siangnya Badan Lemas & Ngantuk Berat' },
   ];
 
-  // 1. KOPI / KAFEIN (Terutama Saat Perut Kosong)
-  if (/kopi|kafein|energy drink|minuman energi/i.test(combined)) {
+  // 1. KOPI / KAFEIN / MINUMAN (Terutama Saat Perut Kosong)
+  if (/kopi|kafein|energy drink|minuman energi|minum/i.test(combined)) {
     emoji = overrideEmoji || '☕';
     itemLabel = 'KOPI SAAT PERUT KOSONG';
     conditionLabel = 'ISI LAMBUNG: 0% KOSONG';
@@ -105,6 +109,8 @@ function parseHookScenarioFromTopic(
     meterStartText = 'TENANG';
     meterEndText = 'MELONJAK!';
     targetOrganPng = 'butterfly/organs/stomach.png';
+    characterActionPng = 'butterfly/characters/action_drinking.png';
+    actionCalloutText = '☕ SEDANG MINUM SAAT PERUT KOSONG';
     mode = isExplicitMultiDayStreak ? 'streak-calendar' : 'empty-stomach-alert';
     naturalHeadline = /perut kosong/i.test(combined)
       ? 'APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG?'
@@ -131,6 +137,8 @@ function parseHookScenarioFromTopic(
     meterStartText = '100% SEGAR';
     meterEndText = '4% KRITIS!';
     targetOrganPng = 'butterfly/organs/brain.png';
+    characterActionPng = 'butterfly/characters/action_sleepy.png';
+    actionCalloutText = '😴 MENGANTUK BERAT & MATA MELEK PAKSA';
     naturalHeadline = /hp|layar/i.test(combined)
       ? `APA JADINYA MAIN HP DI TEMPAT GELAP TERLALU LAMA?`
       : `APA JADINYA KALAU KAMU TIDAK TIDUR ${targetCount} JAM NON-STOP?`;
@@ -143,20 +151,22 @@ function parseHookScenarioFromTopic(
     ];
   }
   // 3. MENAHAN KENCING / KURANG MINUM AIR PUTIH / DEHIDRASI
-  else if (/tahan kencing|menahan kencing|buang air|air putih|dehidrasi|kurang minum/i.test(combined)) {
+  else if (/tahan kencing|menahan kencing|buang air|kencing|pipis|kemal|bladder|air putih|dehidrasi|kurang minum/i.test(combined)) {
     mode = 'pressure-overload';
-    emoji = /kencing/i.test(combined) ? '🚽' : '💧';
-    itemLabel = /kencing/i.test(combined) ? 'MENAHAN KENCING BERJAM-JAM' : 'TUBUH KEKURANGAN AIR PUTIH';
-    conditionLabel = /kencing/i.test(combined) ? 'TEKANAN KANDUNG KEMIH NAIK' : 'CADANGAN CAIRAN TUBUH MENIPIS';
-    meterLabel = /kencing/i.test(combined) ? 'KAPASITAS KANDUNG KEMIH' : 'TINGKAT DEHIDRASI GINJAL';
+    emoji = /kencing|pipis|kemal|bladder/i.test(combined) ? '🚽' : '💧';
+    itemLabel = /kencing|pipis|kemal|bladder/i.test(combined) ? 'MENAHAN KENCING BERJAM-JAM' : 'TUBUH KEKURANGAN AIR PUTIH';
+    conditionLabel = /kencing|pipis|kemal|bladder/i.test(combined) ? 'TEKANAN KANDUNG KEMIH NAIK' : 'CADANGAN CAIRAN TUBUH MENIPIS';
+    meterLabel = /kencing|pipis|kemal|bladder/i.test(combined) ? 'KAPASITAS KANDUNG KEMIH' : 'TINGKAT DEHIDRASI GINJAL';
     meterStartText = '150 ML';
     meterEndText = '800 ML PENUH!';
-    targetOrganPng = 'butterfly/organs/kidneys.png';
-    naturalHeadline = /kencing/i.test(combined)
+    targetOrganPng = 'butterfly/organs/bladder.png';
+    characterActionPng = 'butterfly/characters/action_holding_pee.png';
+    actionCalloutText = '😣 MENAHAN KENCING HINGGA GELISAH';
+    naturalHeadline = /kencing|pipis|kemal/i.test(combined)
       ? 'APA JADINYA KALAU KAMU MENAHAN KENCING TERLALU LAMA?'
       : 'APA JADINYA KALAU JARANG MINUM AIR PUTIH?';
-    highlightPhrase = /kencing/i.test(combined) ? 'TERLALU LAMA?' : 'AIR PUTIH?';
-    symptoms = /kencing/i.test(combined)
+    highlightPhrase = /kencing|pipis|kemal/i.test(combined) ? 'TERLALU LAMA?' : 'AIR PUTIH?';
+    symptoms = /kencing|pipis|kemal/i.test(combined)
       ? [
           { emoji: '😣', text: 'Perut Bawah Terasa Penuh, Keras & Nyeri' },
           { emoji: '💦', text: 'Keringat Dingin & Gelisah Tak Tahan' },
@@ -170,14 +180,16 @@ function parseHookScenarioFromTopic(
           { emoji: '😖', text: 'Pinggang Pegal & Risiko Batu Ginjal' },
         ];
   }
-  // 4. MAKAN MIE 30 HARI (Atau tantangan jumlah hari eksplisit)
-  else if (/mie|mi instan|indomie|ramen/i.test(combined)) {
+  // 4. MAKAN MIE 30 HARI (Atau tantangan makan mi / makanan instan)
+  else if (/mie|mi instan|indomie|ramen|makan/i.test(combined)) {
     emoji = '🍜';
     targetCount = explicitDayMatch ? parseInt(explicitDayMatch[1], 10) : 30;
     unitWord = 'HARI';
     unitLabel = `${targetCount} HARI NON-STOP`;
     itemLabel = 'BUNGKUS MIE';
     targetOrganPng = 'butterfly/organs/stomach.png';
+    characterActionPng = 'butterfly/characters/action_eating.png';
+    actionCalloutText = '🍜 MAKAN MIE DENGAN CEPAT';
     mode = isExplicitMultiDayStreak ? 'streak-calendar' : 'empty-stomach-alert';
     naturalHeadline = `APA JADINYA KALAU KAMU MAKAN MIE ${targetCount} HARI TERUS-MENERUS?`;
     highlightPhrase = `${targetCount} HARI TERUS-MENERUS?`;
@@ -276,6 +288,8 @@ function parseHookScenarioFromTopic(
     unitWord,
     unitLabel,
     targetOrganPng,
+    characterActionPng,
+    actionCalloutText,
     naturalHeadline,
     highlightPhrase,
   };
@@ -342,15 +356,6 @@ export const HookScene: React.FC<HookSceneProps> = ({
   const beatPhase = (frame / fps) * (dynamicBpm / 60) * Math.PI * 2;
   const systolicBeat = Math.pow(Math.max(0, Math.sin(beatPhase)), 8);
 
-  // Rapid-fire flying items streaming into the 3D human body's mouth & down the esophagus
-  const streamItems = useMemo(() => {
-    return Array.from({ length: 6 }).map((_, i) => ({
-      id: i,
-      offset: i * 15,
-      curveX: (i % 2 === 0 ? 1 : -1) * (25 + (i % 3) * 18),
-    }));
-  }, []);
-
   // Split headline to highlight the key phrase
   const headlineParts = useMemo(() => {
     const full = scenario.naturalHeadline.toUpperCase();
@@ -376,13 +381,15 @@ export const HookScene: React.FC<HookSceneProps> = ({
   const isBodyOnRight = theme.hookLayout === 'dossier-left-body-right';
 
   // ---------------------------------------------------------------------------
-  // 3D HUMAN BODY COLUMN (With Topic-Matched Custom Action Animation!)
+  // 3D HUMAN ACTION CHARACTER COLUMN (Focus on Realistic Human Action & Suspense)
+  // Instead of spoiling internal organs early, shows the real human physical activity!
   // ---------------------------------------------------------------------------
-  const isPouringDrink = /☕|🥤|🍺|🧋|🍵|🥛/.test(scenario.emoji) || /kopi|minum|soda|alkohol/i.test(scenario.naturalHeadline);
-  const isSleepOrScreen = scenario.mode === 'time-drain-battery';
-  const isHoldFluid = scenario.mode === 'pressure-overload';
+  const isDrinking = /drinking|kopi|minum/.test(scenario.characterActionPng);
+  const isEating = /eating|makan|mie/.test(scenario.characterActionPng);
+  const isHoldingPee = /holding_pee|kencing|pipis|bladder/.test(scenario.characterActionPng);
+  const isSleepy = /sleepy|tidur|begadang|layar/.test(scenario.characterActionPng);
 
-  const bodyColumn = (
+  const characterActionColumn = (
     <div
       style={{
         position: 'relative',
@@ -391,263 +398,143 @@ export const HookScene: React.FC<HookSceneProps> = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        transform: `scale(${0.97 + curvedProgress * 0.05 + systolicBeat * 0.012})`,
+        transform: `scale(${0.97 + curvedProgress * 0.04 + systolicBeat * 0.01})`,
       }}
     >
+      {/* Cinematic Studio Aura */}
       <div
         style={{
           position: 'absolute',
-          width: '360px',
-          height: '560px',
+          width: '380px',
+          height: '620px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(244, 240, 234, 0.1) 0%, transparent 70%)',
-          filter: 'blur(20px)',
+          background: `radial-gradient(circle, ${theme.primaryHighlight}33 0%, transparent 72%)`,
+          filter: 'blur(28px)',
         }}
       />
 
-      {/* 3D Translucent Glass Body Shell */}
-      <Img
-        src={staticFile('butterfly/organs/body_3d_shell.png')}
-        style={{
-          width: '470px',
-          height: '830px',
-          objectFit: 'contain',
-          opacity: 0.88,
-          mixBlendMode: 'screen',
-        }}
-      />
-
-      {/* Glowing Esophagus / Throat Liquid Path when Pouring Drink */}
-      {isPouringDrink && (
-        <svg
-          width="470"
-          height="850"
-          viewBox="0 0 470 850"
-          style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
-        >
-          <defs>
-            <linearGradient id="coffeeLiquidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#d97706" stopOpacity="0.95" />
-              <stop offset="60%" stopColor="#b45309" stopOpacity="0.9" />
-              <stop offset="100%" stopColor={theme.primaryHighlight} stopOpacity="0.95" />
-            </linearGradient>
-          </defs>
-          {/* Animated liquid stream flowing from mouth (235, 198) down esophagus into stomach (252, 345) */}
-          <path
-            d="M 235 198 C 235 245, 240 285, 252 345"
-            fill="none"
-            stroke="url(#coffeeLiquidGrad)"
-            strokeWidth={6 + Math.sin(frame * 0.35) * 2}
-            strokeLinecap="round"
-            strokeDasharray="16 10"
-            strokeDashoffset={-frame * 3.2}
-            opacity={Math.min(1, curvedProgress * 2.2)}
-          />
-          {/* Empty Stomach Acid Splash Rings */}
-          <circle
-            cx="252"
-            cy="356"
-            r={18 + ((frame * 1.4) % 34)}
-            fill="none"
-            stroke={theme.primaryHighlight}
-            strokeWidth="2.5"
-            opacity={Math.max(0, 0.85 - ((frame * 1.4) % 34) / 34)}
-          />
-        </svg>
-      )}
-
-      {/* 3D Organ Inside Body Glowing as Trigger Enters */}
+      {/* 3D Realistic Character Cutout Performing the Action */}
       <div
         style={{
-          position: 'absolute',
-          top:
-            scenario.targetOrganPng.includes('brain')
-              ? '128px'
-              : scenario.targetOrganPng.includes('lungs') || scenario.targetOrganPng.includes('heart')
-              ? '255px'
-              : '318px',
-          left: scenario.targetOrganPng.includes('stomach') ? '53.5%' : '50%',
-          transform: `translateX(-50%) scale(${0.88 + curvedProgress * 0.14 + systolicBeat * 0.06})`,
-          width: '82px',
-          height: '82px',
+          position: 'relative',
+          width: '440px',
+          height: '760px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          filter: `drop-shadow(0 0 ${10 + curvedProgress * 18}px ${theme.primaryHighlight}) saturate(${1.15 + curvedProgress * 0.4})`,
+          transform: isDrinking
+            ? `rotate(${Math.sin(frame * 0.12) * 2}deg) translateY(${Math.sin(frame * 0.18) * 6}px)`
+            : isEating
+            ? `translateY(${Math.sin(frame * 0.28) * 8}px)`
+            : isHoldingPee
+            ? `translateX(${Math.sin(frame * 0.45) * 5}px) rotate(${Math.sin(frame * 0.22) * 2.5}deg)`
+            : `rotate(${Math.sin(frame * 0.08) * 3}deg) translateY(${Math.sin(frame * 0.1) * 8}px)`,
+          filter: 'drop-shadow(0 20px 35px rgba(0,0,0,0.85))',
         }}
       >
         <Img
-          src={staticFile(scenario.targetOrganPng)}
+          src={staticFile(scenario.characterActionPng)}
           style={{
             width: '100%',
             height: '100%',
             objectFit: 'contain',
           }}
         />
-      </div>
 
-      {/* TOPIC-SPECIFIC ACTION ANIMATION ON THE BODY: */}
-      {isPouringDrink ? (
-        <>
-          {/* Single Tilted Cup Pouring Liquid Directly Into Mouth */}
+        {/* Action Specific Micro-Visual Dynamics */}
+        {isDrinking && (
+          /* Steam Rising from Hot Cup */
           <div
             style={{
               position: 'absolute',
-              left: isBodyOnRight ? '168px' : '295px',
-              top: '152px',
-              fontSize: '58px',
-              transform: `translate(-50%, -50%) rotate(${isBodyOnRight ? 38 + Math.sin(frame * 0.15) * 6 : -38 - Math.sin(frame * 0.15) * 6}deg)`,
-              filter: 'drop-shadow(0 6px 14px rgba(0,0,0,0.75))',
-              zIndex: 10,
+              top: '180px',
+              left: '52%',
+              transform: 'translateX(-50%)',
+              pointerEvents: 'none',
             }}
           >
-            {scenario.emoji}
+            {[0, 1, 2].map((sIdx) => {
+              const sProg = ((frame * 1.5 + sIdx * 20) % 60) / 60;
+              return (
+                <div
+                  key={sIdx}
+                  style={{
+                    position: 'absolute',
+                    top: `${-sProg * 50}px`,
+                    left: `${Math.sin(sProg * Math.PI * 2) * 12}px`,
+                    width: `${8 + sProg * 14}px`,
+                    height: `${14 + sProg * 20}px`,
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.45)',
+                    filter: 'blur(5px)',
+                    opacity: 1 - sProg,
+                  }}
+                />
+              );
+            })}
           </div>
-          {/* Liquid Droplets Pouring From Cup Into Mouth & Stomach */}
-          {[0, 1, 2, 3, 4].map((dropIdx) => {
-            const p = ((frame * 1.6 + dropIdx * 12) % 60) / 60;
-            const dropX =
-              p < 0.35
-                ? interpolate(p, [0, 0.35], [isBodyOnRight ? 195 : 275, 235])
-                : interpolate(p, [0.35, 1], [235, 252]);
-            const dropY =
-              p < 0.35
-                ? interpolate(p, [0, 0.35], [168, 198])
-                : interpolate(p, [0.35, 1], [198, 352]);
-            return (
-              <div
-                key={dropIdx}
-                style={{
-                  position: 'absolute',
-                  left: `${dropX}px`,
-                  top: `${dropY}px`,
-                  width: p < 0.35 ? '11px' : '9px',
-                  height: p < 0.35 ? '16px' : '13px',
-                  borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
-                  backgroundColor: p < 0.65 ? '#b45309' : theme.primaryHighlight,
-                  boxShadow: `0 0 10px ${theme.primaryHighlight}`,
-                  transform: 'translate(-50%, -50%)',
-                  opacity: interpolate(p, [0, 0.1, 0.9, 1], [0, 0.95, 0.9, 0]),
-                }}
-              />
-            );
-          })}
-          {/* Live Floating Callout Badge on Empty Stomach */}
+        )}
+
+        {isSleepy && (
+          /* Smartphone Screen Glow & Floating Zzz */
           <div
             style={{
               position: 'absolute',
-              top: '398px',
+              top: '220px',
+              right: '80px',
+              fontFamily: "'Space Grotesk', monospace",
+              fontSize: '28px',
+              fontWeight: 900,
+              color: '#38bdf8',
+              opacity: (Math.sin(frame * 0.15) + 1) * 0.5,
+              textShadow: '0 0 12px #38bdf8',
+            }}
+          >
+            Zzz...
+          </div>
+        )}
+
+        {isHoldingPee && (
+          /* Nervous Agitation Pulses on Abdomen */
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '220px',
               left: '50%',
               transform: 'translateX(-50%)',
-              backgroundColor: theme.specimenBg,
-              border: `2px solid ${theme.primaryHighlight}`,
-              padding: '5px 12px',
-              borderRadius: '3px',
-              fontFamily: "'Space Grotesk', monospace",
-              fontSize: '12px',
-              fontWeight: 900,
-              color: '#F4F0EA',
-              whiteSpace: 'nowrap',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.8)',
+              width: '120px',
+              height: '120px',
+              borderRadius: '50%',
+              border: `2.5px solid ${theme.primaryHighlight}`,
+              opacity: (Math.sin(frame * 0.35) + 1) * 0.45,
+              filter: `drop-shadow(0 0 10px ${theme.primaryHighlight})`,
             }}
-          >
-            🔥 LAMBUNG KOSONG TERKENA ASAM!
-          </div>
-        </>
-      ) : isSleepOrScreen ? (
-        <>
-          {/* Pulsing Brain Exhaustion Waves */}
-          {[0, 1, 2].map((ringIdx) => {
-            const rProg = ((frame + ringIdx * 18) % 54) / 54;
-            return (
-              <div
-                key={ringIdx}
-                style={{
-                  position: 'absolute',
-                  top: '165px',
-                  left: '235px',
-                  width: `${50 + rProg * 120}px`,
-                  height: `${50 + rProg * 120}px`,
-                  borderRadius: '50%',
-                  border: `2.5px solid ${theme.primaryHighlight}`,
-                  transform: 'translate(-50%, -50%)',
-                  opacity: 1 - rProg,
-                }}
-              />
-            );
-          })}
-        </>
-      ) : isHoldFluid ? (
-        <>
-          {/* Rising Fluid Pressure Rings on Kidneys / Bladder */}
-          {[0, 1, 2].map((ringIdx) => {
-            const rProg = ((frame + ringIdx * 18) % 54) / 54;
-            return (
-              <div
-                key={ringIdx}
-                style={{
-                  position: 'absolute',
-                  top: '355px',
-                  left: '235px',
-                  width: `${50 + rProg * 110}px`,
-                  height: `${50 + rProg * 110}px`,
-                  borderRadius: '50%',
-                  border: `2.5px solid ${theme.primaryHighlight}`,
-                  transform: 'translate(-50%, -50%)',
-                  opacity: 1 - rProg,
-                }}
-              />
-            );
-          })}
-        </>
-      ) : (
-        /* Stream of Food Items Entering Mouth (for Makan Mie 30 Hari, Makan Pedas, etc.) */
-        streamItems.map((item) => {
-          const cycle = ((frame + item.offset) % 48) / 48;
-          const mouthX = 235;
-          const mouthY = 205;
-          const startX = isBodyOnRight ? 25 : 445;
-          const organY =
-            scenario.targetOrganPng.includes('brain')
-              ? 165
-              : scenario.targetOrganPng.includes('lungs') || scenario.targetOrganPng.includes('heart')
-              ? 295
-              : 355;
+          />
+        )}
+      </div>
 
-          const curX =
-            cycle < 0.6
-              ? interpolate(cycle, [0, 0.6], [startX, mouthX])
-              : mouthX + Math.sin(cycle * Math.PI * 4) * 4;
-          const curY =
-            cycle < 0.6
-              ? interpolate(cycle, [0, 0.6], [240, mouthY]) - Math.sin((cycle / 0.6) * Math.PI) * (35 + item.curveX * 0.5)
-              : interpolate(cycle, [0.6, 1], [mouthY, organY]);
-
-          const itemScale =
-            cycle < 0.6
-              ? interpolate(cycle, [0, 0.2, 0.6], [0.5, 1.15, 0.72])
-              : interpolate(cycle, [0.6, 1], [0.68, 0.25]);
-          const itemOpacity = interpolate(cycle, [0, 0.12, 0.6, 0.92, 1], [0, 1, 0.95, 0.75, 0]);
-
-          return (
-            <div
-              key={item.id}
-              style={{
-                position: 'absolute',
-                left: `${curX}px`,
-                top: `${curY}px`,
-                fontSize: '40px',
-                transform: `translate(-50%, -50%) scale(${itemScale}) rotate(${cycle < 0.6 ? cycle * 180 : 0}deg)`,
-                opacity: itemOpacity,
-                filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.65))',
-                pointerEvents: 'none',
-              }}
-            >
-              {scenario.emoji}
-            </div>
-          );
-        })
-      )}
+      {/* Floating Tactical Human Action Pill (Non-Spoiler!) */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '24px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          backgroundColor: theme.specimenBg,
+          border: `2px solid ${theme.primaryHighlight}`,
+          padding: '8px 18px',
+          borderRadius: '4px',
+          fontFamily: "'Space Grotesk', monospace",
+          fontSize: '13px',
+          fontWeight: 900,
+          color: '#F4F0EA',
+          letterSpacing: '0.8px',
+          whiteSpace: 'nowrap',
+          boxShadow: `0 8px 24px rgba(0,0,0,0.8), 4px 4px 0px ${theme.inkDark}`,
+        }}
+      >
+        {scenario.actionCalloutText}
+      </div>
     </div>
   );
 
@@ -1163,7 +1050,7 @@ export const HookScene: React.FC<HookSceneProps> = ({
       </div>
 
       {/* =====================================================================
-          3. CENTER STAGE: 3D BODY + TOPIC-SPECIFIC HOOK VISUAL
+          3. CENTER STAGE: 3D REALISTIC HUMAN ACTION + TOPIC-SPECIFIC HOOK VISUAL
           ===================================================================== */}
       <div
         style={{
@@ -1182,11 +1069,11 @@ export const HookScene: React.FC<HookSceneProps> = ({
         {isBodyOnRight ? (
           <>
             {counterColumn}
-            {bodyColumn}
+            {characterActionColumn}
           </>
         ) : (
           <>
-            {bodyColumn}
+            {characterActionColumn}
             {counterColumn}
           </>
         )}
