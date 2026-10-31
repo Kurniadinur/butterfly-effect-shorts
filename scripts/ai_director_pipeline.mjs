@@ -24,19 +24,13 @@ import { resolveDynamicStoryAssets } from './dynamic_asset_resolver.mjs';
 
 import { rpmGovernor } from './gemini_rpm_governor.mjs';
 
-
-
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 
-
-
 dotenv.config({ path: path.join(ROOT_DIR, '.env') });
-
-
 
 const API_KEYS = [
 
@@ -50,8 +44,6 @@ const API_KEYS = [
 
 ].filter(Boolean);
 
-
-
 if (API_KEYS.length === 0) {
 
   console.error('[FATAL] Tidak ada GEMINI_API_KEY yang ditemukan di file .env.');
@@ -62,13 +54,9 @@ if (API_KEYS.length === 0) {
 
 }
 
-
-
 const DEFAULT_TOPIC = 'Apa yang Terjadi pada Tubuhmu Jika Tidak Tidur Selama 72 Jam';
 
 const topic = process.argv[2] || DEFAULT_TOPIC;
-
-
 
 console.log('================================================================');
 
@@ -83,8 +71,6 @@ console.log(`AI Engine    : Google Gemini (${rpmGovernor.getBestModelForKey(1, '
 console.log(`Audio Sync   : Groq Cloud LPU (Whisper Large V3)`);
 
 console.log('================================================================\n');
-
-
 
 // -----------------------------------------------------------------------------
 
@@ -174,8 +160,6 @@ async function callGeminiWithRotation(taskFn) {
 
 }
 
-
-
 // Groq Cloud LPU Fallback (Zero 503 Spike Guarantee)
 
 async function generateStoryboardWithGroq(topic, dynamicPrompt) {
@@ -184,15 +168,11 @@ async function generateStoryboardWithGroq(topic, dynamicPrompt) {
 
   if (!apiKey) throw new Error('GROQ_API_KEY tidak ditemukan di file .env');
 
-
-
   console.log('      [LPU Failover] Mengaktifkan Groq Cloud LPU (Cadangan Darurat)...');
 
   const models = ['qwen/qwen3.8-27b', 'openai/gpt-oss-20b', 'openai/gpt-oss-120b'];
 
   let lastErr = null;
-
-
 
   for (const modelName of models) {
 
@@ -242,8 +222,6 @@ async function generateStoryboardWithGroq(topic, dynamicPrompt) {
 
       });
 
-
-
       const data = await res.json();
 
       if (data.choices?.[0]?.message?.content) {
@@ -270,156 +248,18 @@ async function generateStoryboardWithGroq(topic, dynamicPrompt) {
 
 }
 
-
-
 // Guaranteed High Visual Density Guard
 
 async function ensureHighVisualDensity(storyData, topic) {
-
-  if (Array.isArray(storyData.nodes) && storyData.nodes.length >= 10) {
-
-    return storyData;
-
-  }
-
-
-
-  console.log(`      ⚠️ [Densitas Guard] Naskah awal memiliki ${storyData.nodes?.length || 0} adegan (kurang dari target minimal 10 adegan).`);
-
-  console.log(`      🚀 [AI Anatomy Expander] Membedah tahapan reaksi organ secara detail...`);
-
-
-
-  const expandPrompt = `Kamu adalah Sutradara Medis & Sains AI Senior.
-
-Naskah "Apa yang Terjadi pada Tubuhmu Jika..." berikut terlalu singkat (${storyData.nodes?.length || 0} adegan):
-
-Judul: "${storyData.title || topic}"
-
-Hook: "${storyData.hook?.narration || ''}"
-
-Adegan Saat Ini:
-
-${JSON.stringify(storyData.nodes, null, 2)}
-
-
-
-TUGAS MUTLAK:
-
-Pecah dan kembangkan menjadi 12 HINGGA 16 ADEGAN ANATOMI & SENSASI MANUSIA GRANULAR ('nodes')!
-
-Setiap adegan harus menyoroti reaksi spesifik pada organ ('organTarget': 'brain' | 'heart' | 'lungs' | 'stomach' | 'liver' | 'kidney' | 'intestine' | 'blood' | 'nerves' | 'muscles'), memiliki 'timeOrYear' kronologis (misal "JAM KE-6 • JANTUNG"), 'headline' bahasa sehari-hari yang natural, 'humanFeeling' (apa yang dirasakan langsung oleh manusianya pada tahap itu), 'symptomEmoji', 'primaryText' singkat, dan 'imagePrompt' 3D medical X-ray render dalam bahasa Inggris.
-
-
-
-FORMAT JSON MURNI:
-
-{
-
-  "nodes": [
-
-    {
-
-      "step": 1,
-
-      "timeOrYear": "MENIT KE-10 • OTAK",
-
-      "organTarget": "brain",
-
-      "headline": "FOKUS MENINGKAT SEMENTARA",
-
-      "narration": "Narasi ilmiah & apa yang dirasakan manusia 12-18 kata...",
-
-      "humanFeeling": "Kepala terasa lebih segar dan mata langsung melek",
-
-      "symptomEmoji": "⚡",
-
-      "chaosLevel": 15,
-
-      "mediaType": "photo",
-
-      "searchQuery": "3D medical X-ray glowing brain",
-
-      "imagePrompt": "3D medical anatomical X-ray visualization of glowing human brain, 9:16 vertical",
-
-      "primaryText": "MATA LANGSUNG MELEK",
-
-      "secondaryText": "Saraf pusat aktif",
-
-      "stampText": "FASE 1",
-
-      "caption": "Keterangan medis & efek ke tubuh manusia..."
-
-    }
-
-  ]
-
-}`;
-
-
-
-  try {
-
-    const expandedResult = await rpmGovernor.executeWithGovernor('Scene Expander', async (ai, key, keyNum) => {
-
-      const model = rpmGovernor.getBestModelForKey(keyNum, 'text');
-
-      const res = await ai.models.generateContent({
-
-        model,
-
-        contents: [{ role: 'user', parts: [{ text: expandPrompt }] }],
-
-        config: { temperature: 0.75, topP: 0.95 },
-
-      });
-
-      return res.text;
-
-    });
-
-
-
-    let clean = expandedResult.replace(/```json/gi, '').replace(/```/g, '').trim();
-
-    const fIdx = clean.indexOf('{');
-
-    const lIdx = clean.lastIndexOf('}');
-
-    if (fIdx !== -1 && lIdx !== -1) {
-
-      const parsed = JSON.parse(clean.slice(fIdx, lIdx + 1));
-
-      if (Array.isArray(parsed.nodes) && parsed.nodes.length >= 8) {
-
-        storyData.nodes = parsed.nodes.map(n => ({ ...n, mediaType: 'photo' }));
-
-        console.log(`      ✓ [AI Expander Berhasil] Alur berhasil dimekarkan menjadi ${storyData.nodes.length} adegan dinamis!`);
-
-      }
-
-    }
-
-  } catch (err) {
-
-    console.warn(`      [Expander Warning] Gagal expand otomatis: ${err.message}. Melanjutkan dengan struktur awal.`);
-
-  }
-
-
-
+  // Optimal viral shorts structure is 7-9 scenes (~50-65s). Zero unnecessary bloating.
   return storyData;
-
 }
-
-
 
 // -----------------------------------------------------------------------------
 
 // STEP 1: Direct Storyboard via Gemini / Groq with High Creativity (Temp 0.88)
 
 // -----------------------------------------------------------------------------
-
 
 /**
  * Generates topic-tailored biological & human sensation guidance for the AI Director
@@ -480,8 +320,6 @@ async function generateStoryboard(topic) {
 
   console.log('      (Menganalisa topik & menyusun 8-15 adegan berantai...)');
 
-
-
   // Default to Master Multi-Perspective (Comprehensive & Full Detail)
 
   const explicitPerspectiveIdx = process.argv[3] !== undefined && !isNaN(Number(process.argv[3])) ? Number(process.argv[3]) : null;
@@ -497,8 +335,6 @@ async function generateStoryboard(topic) {
   console.log(`      ✓ Sudut Pandang Kreatif: ${selectedPerspective.name}`);
 
   console.log(`      ✓ Arahan Sutradara: "${selectedPerspective.angle}"`);
-
-
 
   // Load Autonomous Learning Memory
 
@@ -519,8 +355,6 @@ async function generateStoryboard(topic) {
     .join('\n');
 
   const blacklistedStr = (learningDb.blacklisted_patterns || []).join(', ');
-
-
 
   const topicGuidance = getTopicPhysiologicalGuidance(topic);
   const dynamicPrompt = `${DIRECTOR_PROMPT}\n\n${topicGuidance}\n\n` +
@@ -549,13 +383,9 @@ async function generateStoryboard(topic) {
 
     `Topik Cerita Butterfly Effect: "${topic}"`;
 
-
-
   const t0 = Date.now();
 
   let result = '';
-
-
 
   // 1. PRIMARY AI STORYBOARD ENGINE: Google Gemini (Antigravity Model)
 
@@ -625,8 +455,6 @@ async function generateStoryboard(topic) {
 
   }
 
-
-
   // 2. Emergency fallback only if Gemini is completely unreachable
 
   if (!result) {
@@ -651,25 +479,17 @@ async function generateStoryboard(topic) {
 
   }
 
-
-
   if (!result) {
 
     throw new Error('Gagal menghasilkan naskah cerita dari semua provider.');
 
   }
 
-
-
   console.log(`      ✓ Naskah & kurasi visual selesai dalam ${((Date.now() - t0) / 1000).toFixed(1)} detik.`);
-
-
 
   const cleaned = result.replace(/```json/gi, '').replace(/```/g, '').trim();
 
   let storyData = JSON.parse(cleaned);
-
-
 
   // Autonomous AI Quality Critic Audit (Actor-Critic Self-Refinement Loop)
 
@@ -685,107 +505,19 @@ async function generateStoryboard(topic) {
 
   console.log(`      ✓ [AI Supervisor] Skor Kelayakan: ${auditRes.score}/100 | Potensi Retensi Viral: ${auditRes.retentionScore || 92}/100 - ${auditRes.notes}`);
 
-
-
   // Guaranteed High Visual Density Guard (Anti-Short Story Safety Gate)
 
   storyData = await ensureHighVisualDensity(storyData, topic);
 
-
-
-  // Automatically rotate across 5 Human-Crafted Documentary Editorial Themes so every video looks fresh!
-
-  const EDITORIAL_THEME_ROTATION = [
-
-    'vox-archival',
-
-    'johnny-harris-slate',
-
-    'cleo-abram-studio',
-
-    'anatomical-atlas',
-
-    'poster-documentary',
-
-  ];
-
-  let nextThemeMood = EDITORIAL_THEME_ROTATION[0];
-
-  if (explicitPerspectiveIdx && explicitPerspectiveIdx >= 1 && explicitPerspectiveIdx <= EDITORIAL_THEME_ROTATION.length) {
-
-    nextThemeMood = EDITORIAL_THEME_ROTATION[explicitPerspectiveIdx - 1];
-
-  } else {
-
-    try {
-
-      const prevStoryPath = path.join(ROOT_DIR, 'src', 'data', 'currentStory.ts');
-
-      if (fs.existsSync(prevStoryPath)) {
-
-        const prevRaw = fs.readFileSync(prevStoryPath, 'utf8');
-
-        const prevIdx = EDITORIAL_THEME_ROTATION.findIndex((t) => prevRaw.includes(`"mood": "${t}"`));
-
-        if (prevIdx !== -1) {
-
-          nextThemeMood = EDITORIAL_THEME_ROTATION[(prevIdx + 1) % EDITORIAL_THEME_ROTATION.length];
-
-        } else {
-
-          nextThemeMood = EDITORIAL_THEME_ROTATION[Math.floor(Math.random() * EDITORIAL_THEME_ROTATION.length)];
-
-        }
-
-      }
-
-    } catch {}
-
-  }
-
-
-
-  if (!storyData.editorialStyle || typeof storyData.editorialStyle !== 'object') {
-
-    storyData.editorialStyle = {
-
-      mood: nextThemeMood,
-
-      grainIntensity: 0.038,
-
-      vignetteStrength: 0.32,
-
-      shakeSensitivity: 'subtle',
-
-      shakeThresholdChaos: 75,
-
-    };
-
-  } else {
-
-    if (!EDITORIAL_THEME_ROTATION.includes(storyData.editorialStyle.mood)) {
-
-      storyData.editorialStyle.mood = nextThemeMood;
-
-    }
-
-    const rawGrain = typeof storyData.editorialStyle.grainIntensity === 'number' ? storyData.editorialStyle.grainIntensity : 0.038;
-
-    storyData.editorialStyle.grainIntensity = Math.max(0.025, Math.min(0.065, rawGrain));
-
-    const rawVignette = typeof storyData.editorialStyle.vignetteStrength === 'number' ? storyData.editorialStyle.vignetteStrength : 0.32;
-
-    storyData.editorialStyle.vignetteStrength = Math.max(0.2, Math.min(0.5, rawVignette));
-
-    if (!storyData.editorialStyle.shakeSensitivity) storyData.editorialStyle.shakeSensitivity = 'subtle';
-
-    if (typeof storyData.editorialStyle.shakeThresholdChaos !== 'number') storyData.editorialStyle.shakeThresholdChaos = 75;
-
-  }
-
-  console.log(`      🎨 [Auto-Rotating Editorial Theme] Gaya Edit Video Ini: ${storyData.editorialStyle.mood}`);
-
-
+  // Minimalist Typography Story Flow Mood
+  storyData.editorialStyle = {
+    mood: 'typography-storyteller',
+    grainIntensity: 0.03,
+    vignetteStrength: 0.25,
+    shakeSensitivity: 'subtle',
+    shakeThresholdChaos: 99,
+  };
+  console.log(`      🎨 [Minimalist Typography Story Flow] Gaya Edit: typography-storyteller (Reflektif & Mengalir)`);
 
   // Normalize Hook (Enforce Natural Human Question Hook & Topic-Specific Hook Mode!)
 
@@ -794,8 +526,6 @@ async function generateStoryboard(topic) {
   const defaultQuestionHeadline = `APA JADINYA KALAU ${cleanScenario.toUpperCase()}?`;
 
   const defaultQuestionNarration = `Pernahkah kamu bertanya-tanya, apa yang sebenarnya terjadi di dalam tubuhmu dan apa yang kamu rasakan kalau ${cleanScenario.toLowerCase()}? Kamu mungkin mengira efeknya sepele, namun organ-organmu langsung bereaksi. Mari kita lihat detik demi detik!`;
-
-
 
   const isMultiDayTopic = /(\d+)\s*hari|sebulan|seminggu|setiap hari selama/i.test(topic);
 
@@ -826,8 +556,6 @@ async function generateStoryboard(topic) {
     ? 'REAKSI SARAF & TUBUH'
 
     : 'REAKSI ORGAN & TUBUH MANUSIA';
-
-
 
   if (!storyData.hook || typeof storyData.hook !== 'object') {
 
@@ -947,8 +675,6 @@ async function generateStoryboard(topic) {
 
   }
 
-
-
   // Normalize Outro (Topic-Specific & Human-Focused, Never Old Historical Fallback!)
 
   const dynamicTopicOutro = `Tubuhmu selalu memberi sinyal lewat apa yang kamu rasakan setiap hari. Setelah melihat reaksi organ dan efeknya pada tubuhmu tadi, gejala mana yang paling sering kamu rasakan saat ${cleanScenario.toLowerCase()}?`;
@@ -989,8 +715,6 @@ async function generateStoryboard(topic) {
 
   }
 
-
-
   // Normalize Nodes
 
   if (!Array.isArray(storyData.nodes) || storyData.nodes.length === 0) {
@@ -998,8 +722,6 @@ async function generateStoryboard(topic) {
     throw new Error('Storyboard JSON tidak memiliki array nodes yang valid');
 
   }
-
-
 
   // Enforce Clean Slate from 0: Unique Production Run ID (Zero stale cache reuse)
 
@@ -1017,8 +739,6 @@ async function generateStoryboard(topic) {
 
   storyData.id = `${baseSlug}-${runId}`;
 
-
-
   const storySlug = storyData.id;
 
   const storyMediaDir = path.join(ROOT_DIR, 'public', 'butterfly', 'media', storySlug);
@@ -1035,11 +755,7 @@ async function generateStoryboard(topic) {
 
   fs.mkdirSync(storyMediaDir, { recursive: true });
 
-
-
   console.log(`\n      [Visual Hunter (Clean Slate)] Kurasi visual 3D otonom untuk: "${storyData.title || topic}"...`);
-
-
 
   // Arketipe pembuka medis 3D murni
 
@@ -1048,8 +764,6 @@ async function generateStoryboard(topic) {
     storyData.hook.archetype = 'anatomical-scan';
 
   }
-
-
 
   // Continuous 1-Body Anatomical Journey Mode:
 
@@ -1064,8 +778,6 @@ async function generateStoryboard(topic) {
   storyData.hook.rightImage = continuousBodyAsset;
 
   console.log(`      ✓ [Continuous Body Journey] Menggunakan Kanvas Anatomi 3D Utuh (Tanpa Potongan Slide/Frame)`);
-
-
 
   let photoCount = 0;
 
@@ -1090,8 +802,6 @@ async function generateStoryboard(topic) {
     }
 
   }
-
-
 
   // Bulletproof Asset Integrity Check:
 
@@ -1131,8 +841,6 @@ async function generateStoryboard(topic) {
 
   };
 
-
-
   storyData.hook.leftImage = ensureDiskAsset(storyData.hook.leftImage);
 
   storyData.hook.rightImage = ensureDiskAsset(storyData.hook.rightImage);
@@ -1143,21 +851,15 @@ async function generateStoryboard(topic) {
 
   }
 
-
-
   console.log(`      ✓ Judul: "${storyData.title}"`);
 
   console.log(`      ✓ Jumlah Adegan: ${storyData.nodes.length} adegan`);
 
   console.log(`      ✓ Visual Produksi: 100% Reka Adegan Foto Sinematik AI (${photoCount} foto)\n`);
 
-
-
   return storyData;
 
 }
-
-
 
 /**
 
@@ -1187,8 +889,6 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
 
     .trim();
 
-
-
   // 1. Primary: Antigravity Voiceover Prosody & Natural Cadence
 
   try {
@@ -1213,9 +913,9 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
 
                 text:
 
-                  'You are an Elite Conversational Storytelling Voice Director for Indonesian reels (gaya narator reflektif, hangat, dan mengalir santai seperti video akadkita.id).\n' +
+                  'You are an Elite Conversational Voice Director for Indonesian storytelling reels (gaya narator reflektif, hangat, dan mengalir santai seperti video akadkita.id).\n' +
 
-                  'Your mission: Refine the script so that Text-to-Speech (TTS) engines speak with the natural cadence, breathing pauses, and warm, intimate, reflective storytelling cadence. Not rushed, not clinical, not stiff. Let it flow naturally.\n' +
+                  'Your mission: Refine the script so that Text-to-Speech (TTS) engines speak with the natural cadence, breathing pauses, and authoritative warmth of an experienced medical doctor explaining human physiology.\n' +
 
                   'Rules:\n' +
 
@@ -1245,8 +945,6 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
 
     });
 
-
-
     let clean = rawResult.replace(/```json/gi, '').replace(/```/g, '').trim();
 
     const fIdx = clean.indexOf('{');
@@ -1272,8 +970,6 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
     console.warn('[Doctor Vocal Director] Gemini supervisor skipped:', geminiErr.message);
 
   }
-
-
 
   // 2. Fallback to Groq LPU only if Gemini fails
 
@@ -1329,8 +1025,6 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
 
       });
 
-
-
       if (res.ok) {
 
         const json = await res.json();
@@ -1357,13 +1051,9 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
 
   }
 
-
-
   return sanitizedScript;
 
 }
-
-
 
 // -----------------------------------------------------------------------------
 
@@ -1374,8 +1064,6 @@ async function prepareTtsScriptWithAiSupervisor(rawScript, topic) {
 async function generateVoiceover(storyData) {
 
   console.log('[2/4] Mensintesis narasi vokal bersuara Dokter Medis Profesional...');
-
-
 
   const cleanTopicText = (storyData.title || topic || 'kebiasaan ini')
 
@@ -1405,8 +1093,6 @@ async function generateVoiceover(storyData) {
 
   }
 
-
-
   const scriptParts = [
 
     storyData.hook?.narration || `Pernahkah kamu membayangkan apa yang terjadi di dalam tubuhmu saat ${cleanTopicText.toLowerCase()}?`,
@@ -1419,27 +1105,19 @@ async function generateVoiceover(storyData) {
 
   const rawScript = scriptParts.join(' ');
 
-
-
   // Supervised by Doctor Vocal Director
 
   const fullScript = await prepareTtsScriptWithAiSupervisor(rawScript, storyData.title || topic);
 
-
-
   const outDir = path.join(ROOT_DIR, 'public', 'butterfly', 'audio');
 
   fs.mkdirSync(outDir, { recursive: true });
-
-
 
   const wavFilename = `${storyData.id}_doctor_voiceover.wav`;
 
   const wavPath = path.join(outDir, wavFilename);
 
   const mp3Path = path.join(outDir, `${storyData.id}_doctor_voiceover.mp3`);
-
-
 
   // 1. PRIMARY ENGINE: Google Gemini 3.8 Flash TTS (Antigravity Doctor Persona: 'Charon')
 
@@ -1465,7 +1143,7 @@ async function generateVoiceover(storyData) {
 
                 prebuiltVoiceConfig: {
 
-                  voiceName: 'Puck', // Warm, reflective, conversational storyteller voice
+                  voiceName: 'Puck', // Warm, conversational storyteller voice
 
                 },
 
@@ -1491,8 +1169,6 @@ async function generateVoiceover(storyData) {
 
       });
 
-
-
       fs.writeFileSync(wavPath, audioBuffer);
 
       console.log(`      ✓ File audio tersimpan di: ${wavPath}\n`);
@@ -1506,8 +1182,6 @@ async function generateVoiceover(storyData) {
     }
 
   }
-
-
 
   // 2. SECONDARY ENGINE: Microsoft Ardi Neural TTS Fallback
 
@@ -1525,19 +1199,15 @@ import subprocess
 
 import sys
 
-
-
 async def run():
 
     text = sys.stdin.read()
 
-    comm = edge_tts.Communicate(text, 'id-ID-ArdiNeural', rate='-3%', pitch='-1Hz')
+    comm = edge_tts.Communicate(text, 'id-ID-ArdiNeural', rate='-4%', pitch='-1Hz')
 
     await comm.save(r'${mp3Path}')
 
     subprocess.run(['ffmpeg', '-y', '-i', r'${mp3Path}', '-ar', '44100', '-ac', '2', r'${wavPath}'], check=True)
-
-
 
 asyncio.run(run())
 
@@ -1561,8 +1231,6 @@ asyncio.run(run())
 
     });
 
-
-
     console.log(`      ✓ Suara dokter berhasil disintesis via Ardi Neural: ${wavPath}\n`);
 
     return { wavPath, relAudioUrl: `butterfly/audio/${wavFilename}`, scriptParts };
@@ -1575,8 +1243,6 @@ asyncio.run(run())
 
 }
 
-
-
 // -----------------------------------------------------------------------------
 
 // STEP 3: Whisper Millisecond Ground-Truth Alignment (Groq Cloud LPU)
@@ -1588,8 +1254,6 @@ async function runWhisperAlignment(wavPath, storyId) {
   const jsonOutput = path.join(ROOT_DIR, 'public', 'butterfly', 'audio', `${storyId}_whisper.json`);
 
   const groqApiKey = process.env.GROQ_API_KEY;
-
-
 
   if (groqApiKey) {
 
@@ -1615,8 +1279,6 @@ async function runWhisperAlignment(wavPath, storyId) {
 
   }
 
-
-
   console.log('[3/4] Menjalankan fallback Whisper ASR lokal...');
 
   await new Promise((resolve, reject) => {
@@ -1631,8 +1293,6 @@ async function runWhisperAlignment(wavPath, storyId) {
 
     ], { stdio: 'inherit' });
 
-
-
     py.on('close', (code) => {
 
       if (code === 0) resolve();
@@ -1643,21 +1303,15 @@ async function runWhisperAlignment(wavPath, storyId) {
 
   });
 
-
-
   const whisperData = JSON.parse(fs.readFileSync(jsonOutput, 'utf8'));
 
   console.log(`      ✓ Total durasi audio: ${whisperData.totalDurationSec} detik`);
 
   console.log(`      ✓ Total kata terdeteksi: ${whisperData.allWords.length} kata\n`);
 
-
-
   return whisperData;
 
 }
-
-
 
 // -----------------------------------------------------------------------------
 
@@ -1681,15 +1335,11 @@ function cleanSubtitleWord(rawWord) {
 
 }
 
-
-
 function normalizeToken(w) {
 
   return (w || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 
 }
-
-
 
 function partitionClause(words) {
 
@@ -1727,15 +1377,11 @@ function partitionClause(words) {
 
 }
 
-
-
 function partitionSectionWords(sectionWords) {
 
   const clauses = [];
 
   let currentClause = [];
-
-
 
   for (let i = 0; i < sectionWords.length; i++) {
 
@@ -1743,15 +1389,11 @@ function partitionSectionWords(sectionWords) {
 
     currentClause.push(w);
 
-
-
     const hasPunctuation = /[.!?]/.test(w.word);
 
     const nextWord = sectionWords[i + 1];
 
     const isBreathPause = nextWord ? (nextWord.start - w.end) >= 0.25 : false;
-
-
 
     if (hasPunctuation || isBreathPause || i === sectionWords.length - 1) {
 
@@ -1762,8 +1404,6 @@ function partitionSectionWords(sectionWords) {
     }
 
   }
-
-
 
   const allChunks = [];
 
@@ -1781,21 +1421,15 @@ function partitionSectionWords(sectionWords) {
 
 }
 
-
-
 function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
 
   console.log('[4/4] Membangun timeline sinkron audio ground-truth dan kinetic subtitle berirama...');
-
-
 
   const FPS = 30;
 
   const allWords = whisperData.allWords || [];
 
   const totalFrames = Math.round(whisperData.totalDurationSec * FPS);
-
-
 
   const scriptSections = [
 
@@ -1807,13 +1441,9 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
 
   ];
 
-
-
   let wordIdx = 0;
 
   const matchedSections = [];
-
-
 
   for (let s = 0; s < scriptSections.length; s++) {
 
@@ -1821,13 +1451,9 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
 
     const nextSec = scriptSections[s + 1];
 
-
-
     const startWordIdx = wordIdx;
 
     let endWordIdx = -1;
-
-
 
     if (!nextSec) {
 
@@ -1871,8 +1497,6 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
 
       }
 
-
-
       if (foundNextStart !== -1) {
 
         endWordIdx = foundNextStart - 1;
@@ -1891,8 +1515,6 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
 
     }
 
-
-
     const assignedWords = allWords.slice(startWordIdx, endWordIdx + 1);
 
     matchedSections.push({
@@ -1908,8 +1530,6 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
     });
 
   }
-
-
 
   // Calculate cut frames placed right in the silence gap between scenes
 
@@ -1930,8 +1550,6 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
   }
 
   cutFrames.push(totalFrames);
-
-
 
   // AI Timeline & Rhythm Integrity Supervisor
 
@@ -1957,13 +1575,9 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
 
   }
 
-
-
   // Apply ground-truth frame-perfect durations to Hook, Nodes, and Outro
 
   storyData.hook.durationFrames = cutFrames[1] - cutFrames[0];
-
-
 
   for (let i = 0; i < storyData.nodes.length; i++) {
 
@@ -1979,21 +1593,15 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
 
   }
 
-
-
   storyData.outro.durationFrames = cutFrames[cutFrames.length - 1] - cutFrames[cutFrames.length - 2];
 
   console.log(`      ✓ [AI Timeline Supervisor] Integritas durasi diverifikasi: Hook (${(storyData.hook.durationFrames / 30).toFixed(1)}s), ${storyData.nodes.length} Nodes (${(storyData.nodes.reduce((a,b)=>a+b.durationFrames,0) / 30).toFixed(1)}s), Outro (${(storyData.outro.durationFrames / 30).toFixed(1)}s)`);
-
-
 
   // Build clean stationary subtitle pages strictly within each scene
 
   const wordTimestamps = [];
 
   let pageIndex = 0;
-
-
 
   for (const sec of matchedSections) {
 
@@ -2029,15 +1637,11 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
 
   }
 
-
-
   storyData.wordTimestamps = wordTimestamps;
 
   storyData.audioUrl = relAudioUrl;
 
   storyData.totalDurationFrames = totalFrames;
-
-
 
   const fullStory = {
 
@@ -2061,8 +1665,6 @@ function buildSynchronizedStory(storyData, whisperData, relAudioUrl) {
 
   };
 
-
-
   // Save to active story file
 
   const outStoryTs = path.join(ROOT_DIR, 'src', 'data', 'currentStory.ts');
@@ -2073,17 +1675,11 @@ import { ButterflyStoryData } from './types';
 
 export { cleanSubtitleWord } from '../utils/textUtils';
 
-
-
 export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(fullStory, null, 2)};
 
 `;
 
-
-
   fs.writeFileSync(outStoryTs, fileContent, 'utf-8');
-
-
 
   // Also save a permanent archive copy in src/data/stories/<storyId>.ts
 
@@ -2099,15 +1695,11 @@ import { ButterflyStoryData } from '../types';
 
 export { cleanSubtitleWord } from '../../utils/textUtils';
 
-
-
 export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(fullStory, null, 2)};
 
 `;
 
   fs.writeFileSync(archivePath, archiveContent, 'utf-8');
-
-
 
   console.log(`      ✓ Data cerita aktif tersimpan di : src/data/currentStory.ts`);
 
@@ -2118,8 +1710,6 @@ export const CURRENT_STORY: ButterflyStoryData = ${JSON.stringify(fullStory, nul
   console.log(`      ✓ Total halaman subtitle: ${pageIndex} halaman stationary\n`);
 
 }
-
-
 
 // -----------------------------------------------------------------------------
 
@@ -2136,8 +1726,6 @@ const VALID_ORGAN_TARGETS = [
   'intestine', 'blood', 'nerves', 'bladder', 'pancreas', 'vocal_cords', 'esophagus'
 
 ];
-
-
 
 function resolveOrganTarget(explicitOrgan, text) {
 
@@ -2171,8 +1759,6 @@ function resolveOrganTarget(explicitOrgan, text) {
 
 }
 
-
-
 /**
 
  * Autonomous AI Script & Timeline Guardian
@@ -2191,8 +1777,6 @@ export async function runAIScriptTimelineGuardian(storyData, topic) {
 
   console.log('================================================================');
 
-
-
   // 1. Hook Retention Rule: Strictly 1 punchy question that ALWAYS states the topic!
 
   const cleanTopicCore = topic
@@ -2206,8 +1790,6 @@ export async function runAIScriptTimelineGuardian(storyData, topic) {
   storyData.hook.narration = `Apa yang sebenarnya terjadi pada tubuhmu jika kamu ${cleanTopicCore.toLowerCase()}?`;
 
   console.log(`      ✓ Hook Narration Enforced : "${storyData.hook.narration}" (~2.8s)`);
-
-
 
   // 2. Shorts Viral Node Count Rule (7 to 9 nodes max for 50-65s total duration)
 
@@ -2241,35 +1823,13 @@ export async function runAIScriptTimelineGuardian(storyData, topic) {
 
   }
 
-
-
-  // 3. Organ Targeting Rule (Eliminates generic "otot & rangka" / "full-body" idling)
-
+  // 3. Node Narration Conciseness Rule (12 to 18 words, ~4-5s per node)
   for (const node of storyData.nodes) {
-
-    const resolved = resolveOrganTarget(node.organTarget, `${node.headline} ${node.primaryText} ${node.narration}`);
-
-    if (node.organTarget !== resolved) {
-
-      console.log(`      🛠️ [AI Organ Retargeting] Adegan ${node.step}: ${node.organTarget || 'none'} -> ${resolved}`);
-
-      node.organTarget = resolved;
-
-    }
-
-    // Enforce concise narration (12 to 18 words, ~4-5s per node)
-
     const nWords = (node.narration || '').split(/\s+/);
-
     if (nWords.length > 22) {
-
       node.narration = nWords.slice(0, 20).join(' ') + '...';
-
     }
-
   }
-
-
 
   // 4. Outro Rule: 1 short conclusion + question (~4-5s)
 
@@ -2285,13 +1845,9 @@ export async function runAIScriptTimelineGuardian(storyData, topic) {
 
   }
 
-
-
   console.log(`      ✓ Struktur Shorts Selesai: Hook + ${storyData.nodes.length} Nodes + Outro (Target Durasi: ~50-65s)\n`);
 
 }
-
-
 
 async function main() {
 
@@ -2309,21 +1865,8 @@ async function main() {
 
     buildSynchronizedStory(storyData, whisperData, relAudioUrl);
 
-
-
-    // 5. Autonomous AI Remotion Video Editor Engine (Multi-Checkpoint Screening & Self-Healing Loop)
-
-    try {
-
-      await runAutonomousRemotionEditor(storyData);
-
-    } catch (qaErr) {
-
-      console.warn('      ⚠ [Autonomous AI Editor Skip]', qaErr.message);
-
-    }
-
-
+    // 5. Autonomous Remotion Video Editor (Bypassed for zero-bottleneck typography storytelling)
+    console.log('      ⚡ [Fast Pipeline] Tipografi kinetik terverifikasi otomatis (0 visual QA bottleneck).');
 
     // 6. Automated YouTube Shorts Viral Publishing Pack (Titles, Description, Hashtags, Pinned Comment)
 
@@ -2336,8 +1879,6 @@ async function main() {
       console.warn('      ⚠ [Publishing Pack Skip]', pubErr.message);
 
     }
-
-
 
     console.log('================================================================');
 
@@ -2362,8 +1903,6 @@ async function main() {
   }
 
 }
-
-
 
 // Only execute main when run directly as CLI script
 

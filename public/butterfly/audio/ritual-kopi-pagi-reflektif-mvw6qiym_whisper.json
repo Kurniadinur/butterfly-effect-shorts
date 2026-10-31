@@ -1,0 +1,1883 @@
+{
+  "model": "whisper-large-v3",
+  "engine": "Groq Cloud LPU",
+  "totalDurationSec": 80.64,
+  "allWords": [
+    {
+      "word": "Pernahkah",
+      "start": 0.02,
+      "end": 0.54
+    },
+    {
+      "word": "Anda",
+      "start": 0.54,
+      "end": 0.7
+    },
+    {
+      "word": "bertanya-tanya",
+      "start": 0.7,
+      "end": 1.3
+    },
+    {
+      "word": "apa",
+      "start": 1.3,
+      "end": 1.88
+    },
+    {
+      "word": "yang",
+      "start": 1.88,
+      "end": 2.06
+    },
+    {
+      "word": "sebenarnya",
+      "start": 2.06,
+      "end": 2.58
+    },
+    {
+      "word": "terjadi",
+      "start": 2.58,
+      "end": 3.02
+    },
+    {
+      "word": "pada",
+      "start": 3.02,
+      "end": 3.3
+    },
+    {
+      "word": "anatomi",
+      "start": 3.3,
+      "end": 3.7
+    },
+    {
+      "word": "tubuh",
+      "start": 3.7,
+      "end": 4.06
+    },
+    {
+      "word": "saat",
+      "start": 4.06,
+      "end": 4.58
+    },
+    {
+      "word": "secangkir",
+      "start": 4.58,
+      "end": 5.06
+    },
+    {
+      "word": "kopi",
+      "start": 5.06,
+      "end": 5.38
+    },
+    {
+      "word": "masuk",
+      "start": 5.38,
+      "end": 5.78
+    },
+    {
+      "word": "ke",
+      "start": 5.78,
+      "end": 6
+    },
+    {
+      "word": "perut",
+      "start": 6,
+      "end": 6.24
+    },
+    {
+      "word": "yang",
+      "start": 6.24,
+      "end": 6.36
+    },
+    {
+      "word": "masih",
+      "start": 6.36,
+      "end": 6.52
+    },
+    {
+      "word": "kosong?",
+      "start": 6.52,
+      "end": 6.9
+    },
+    {
+      "word": "Tegukan",
+      "start": 8.02,
+      "end": 8.24
+    },
+    {
+      "word": "pertama",
+      "start": 8.24,
+      "end": 8.7
+    },
+    {
+      "word": "memang",
+      "start": 8.7,
+      "end": 9.08
+    },
+    {
+      "word": "terasa",
+      "start": 9.08,
+      "end": 9.38
+    },
+    {
+      "word": "nikmat.",
+      "start": 9.38,
+      "end": 9.74
+    },
+    {
+      "word": "Namun",
+      "start": 10.46,
+      "end": 10.66
+    },
+    {
+      "word": "di",
+      "start": 10.66,
+      "end": 10.78
+    },
+    {
+      "word": "dalam",
+      "start": 10.78,
+      "end": 11.02
+    },
+    {
+      "word": "sana,",
+      "start": 11.02,
+      "end": 11.86
+    },
+    {
+      "word": "lambung",
+      "start": 11.86,
+      "end": 12.1
+    },
+    {
+      "word": "Anda",
+      "start": 12.1,
+      "end": 12.36
+    },
+    {
+      "word": "terkejut.",
+      "start": 12.36,
+      "end": 12.78
+    },
+    {
+      "word": "Asam",
+      "start": 13.68,
+      "end": 13.84
+    },
+    {
+      "word": "lambung",
+      "start": 13.84,
+      "end": 14.16
+    },
+    {
+      "word": "mulai",
+      "start": 14.16,
+      "end": 14.44
+    },
+    {
+      "word": "meluap",
+      "start": 14.44,
+      "end": 14.76
+    },
+    {
+      "word": "hebat",
+      "start": 14.76,
+      "end": 15.1
+    },
+    {
+      "word": "tanpa",
+      "start": 15.1,
+      "end": 15.72
+    },
+    {
+      "word": "ada",
+      "start": 15.72,
+      "end": 15.96
+    },
+    {
+      "word": "nutrisi",
+      "start": 15.96,
+      "end": 16.46
+    },
+    {
+      "word": "yang",
+      "start": 16.46,
+      "end": 16.6
+    },
+    {
+      "word": "bisa",
+      "start": 16.6,
+      "end": 16.9
+    },
+    {
+      "word": "diolah.",
+      "start": 16.9,
+      "end": 17.28
+    },
+    {
+      "word": "Tiba-tiba,",
+      "start": 18.22,
+      "end": 19.18
+    },
+    {
+      "word": "perut",
+      "start": 19.18,
+      "end": 19.34
+    },
+    {
+      "word": "terasa",
+      "start": 19.34,
+      "end": 19.82
+    },
+    {
+      "word": "mulas.",
+      "start": 19.82,
+      "end": 20.2
+    },
+    {
+      "word": "Itu",
+      "start": 20.88,
+      "end": 20.98
+    },
+    {
+      "word": "karena",
+      "start": 20.98,
+      "end": 21.24
+    },
+    {
+      "word": "kafein",
+      "start": 21.24,
+      "end": 21.62
+    },
+    {
+      "word": "sedang",
+      "start": 21.62,
+      "end": 21.88
+    },
+    {
+      "word": "memaksa",
+      "start": 21.88,
+      "end": 22.34
+    },
+    {
+      "word": "gerakan",
+      "start": 22.34,
+      "end": 22.68
+    },
+    {
+      "word": "peristaltik",
+      "start": 22.68,
+      "end": 23.4
+    },
+    {
+      "word": "usus",
+      "start": 23.4,
+      "end": 23.64
+    },
+    {
+      "word": "bekerja",
+      "start": 23.64,
+      "end": 24.1
+    },
+    {
+      "word": "terlalu",
+      "start": 24.1,
+      "end": 24.52
+    },
+    {
+      "word": "cepat,",
+      "start": 24.52,
+      "end": 24.86
+    },
+    {
+      "word": "jauh",
+      "start": 24.86,
+      "end": 25.7
+    },
+    {
+      "word": "sebelum",
+      "start": 25.7,
+      "end": 26.08
+    },
+    {
+      "word": "waktunya.",
+      "start": 26.08,
+      "end": 26.4
+    },
+    {
+      "word": "Jantung",
+      "start": 27.7,
+      "end": 28.06
+    },
+    {
+      "word": "mulai",
+      "start": 28.06,
+      "end": 28.32
+    },
+    {
+      "word": "berdegup",
+      "start": 28.32,
+      "end": 28.72
+    },
+    {
+      "word": "tidak",
+      "start": 28.72,
+      "end": 28.92
+    },
+    {
+      "word": "beraturan.",
+      "start": 28.92,
+      "end": 29.36
+    },
+    {
+      "word": "dan",
+      "start": 30,
+      "end": 30.14
+    },
+    {
+      "word": "jemari",
+      "start": 30.14,
+      "end": 30.52
+    },
+    {
+      "word": "sedikit",
+      "start": 30.52,
+      "end": 30.96
+    },
+    {
+      "word": "gemetar,",
+      "start": 30.96,
+      "end": 31.44
+    },
+    {
+      "word": "karena",
+      "start": 32.06,
+      "end": 32.26
+    },
+    {
+      "word": "hormon",
+      "start": 32.26,
+      "end": 32.62
+    },
+    {
+      "word": "kortisol",
+      "start": 32.62,
+      "end": 33.08
+    },
+    {
+      "word": "atau",
+      "start": 33.08,
+      "end": 33.56
+    },
+    {
+      "word": "hormon",
+      "start": 33.56,
+      "end": 33.92
+    },
+    {
+      "word": "stres",
+      "start": 33.92,
+      "end": 34.2
+    },
+    {
+      "word": "Anda",
+      "start": 34.2,
+      "end": 34.52
+    },
+    {
+      "word": "dipaksa",
+      "start": 34.52,
+      "end": 35.52
+    },
+    {
+      "word": "melonjak",
+      "start": 35.52,
+      "end": 36.02
+    },
+    {
+      "word": "drastis.",
+      "start": 36.02,
+      "end": 36.54
+    },
+    {
+      "word": "Mata",
+      "start": 37.68,
+      "end": 37.92
+    },
+    {
+      "word": "memang",
+      "start": 37.92,
+      "end": 38.18
+    },
+    {
+      "word": "terjaga,",
+      "start": 38.18,
+      "end": 39.14
+    },
+    {
+      "word": "tapi",
+      "start": 39.24,
+      "end": 39.36
+    },
+    {
+      "word": "ingat,",
+      "start": 39.36,
+      "end": 39.64
+    },
+    {
+      "word": "ini",
+      "start": 39.64,
+      "end": 40.18
+    },
+    {
+      "word": "hanyalah",
+      "start": 40.18,
+      "end": 40.64
+    },
+    {
+      "word": "energi",
+      "start": 40.64,
+      "end": 41.06
+    },
+    {
+      "word": "pinjaman.",
+      "start": 41.06,
+      "end": 41.54
+    },
+    {
+      "word": "Pikiran",
+      "start": 42.32,
+      "end": 42.62
+    },
+    {
+      "word": "terasa",
+      "start": 42.62,
+      "end": 42.98
+    },
+    {
+      "word": "waspada,",
+      "start": 42.98,
+      "end": 43.9
+    },
+    {
+      "word": "namun",
+      "start": 43.94,
+      "end": 44.1
+    },
+    {
+      "word": "sebenarnya",
+      "start": 44.1,
+      "end": 44.6
+    },
+    {
+      "word": "sangat",
+      "start": 44.6,
+      "end": 45.14
+    },
+    {
+      "word": "rapuh.",
+      "start": 45.14,
+      "end": 45.52
+    },
+    {
+      "word": "Tenggorokan",
+      "start": 46.52,
+      "end": 46.96
+    },
+    {
+      "word": "mulai",
+      "start": 46.96,
+      "end": 47.16
+    },
+    {
+      "word": "kering",
+      "start": 47.16,
+      "end": 47.46
+    },
+    {
+      "word": "dan",
+      "start": 47.46,
+      "end": 47.86
+    },
+    {
+      "word": "kepala",
+      "start": 47.86,
+      "end": 48.28
+    },
+    {
+      "word": "perlahan",
+      "start": 48.28,
+      "end": 48.84
+    },
+    {
+      "word": "memberat,",
+      "start": 48.84,
+      "end": 49.22
+    },
+    {
+      "word": "karena",
+      "start": 49.96,
+      "end": 50.16
+    },
+    {
+      "word": "cairan",
+      "start": 50.16,
+      "end": 50.56
+    },
+    {
+      "word": "di",
+      "start": 50.56,
+      "end": 50.7
+    },
+    {
+      "word": "tubuh",
+      "start": 50.7,
+      "end": 50.88
+    },
+    {
+      "word": "mulai",
+      "start": 50.88,
+      "end": 51.12
+    },
+    {
+      "word": "terkuras",
+      "start": 51.12,
+      "end": 51.6
+    },
+    {
+      "word": "menuju",
+      "start": 51.6,
+      "end": 52.08
+    },
+    {
+      "word": "kandung",
+      "start": 52.08,
+      "end": 52.36
+    },
+    {
+      "word": "kemih",
+      "start": 52.36,
+      "end": 52.66
+    },
+    {
+      "word": "dengan",
+      "start": 52.66,
+      "end": 52.88
+    },
+    {
+      "word": "sangat",
+      "start": 52.88,
+      "end": 53.28
+    },
+    {
+      "word": "cepat.",
+      "start": 53.28,
+      "end": 53.66
+    },
+    {
+      "word": "Hingga",
+      "start": 54.64,
+      "end": 54.84
+    },
+    {
+      "word": "akhirnya,",
+      "start": 54.84,
+      "end": 55.34
+    },
+    {
+      "word": "benteng",
+      "start": 55.34,
+      "end": 56.16
+    },
+    {
+      "word": "pertahanan",
+      "start": 56.16,
+      "end": 56.68
+    },
+    {
+      "word": "Anda",
+      "start": 56.68,
+      "end": 56.88
+    },
+    {
+      "word": "runtuh.",
+      "start": 56.88,
+      "end": 57.26
+    },
+    {
+      "word": "Rasa",
+      "start": 58.08,
+      "end": 58.32
+    },
+    {
+      "word": "kantuk",
+      "start": 58.32,
+      "end": 58.8
+    },
+    {
+      "word": "yang",
+      "start": 58.8,
+      "end": 58.96
+    },
+    {
+      "word": "luar",
+      "start": 58.96,
+      "end": 59.2
+    },
+    {
+      "word": "biasa",
+      "start": 59.2,
+      "end": 59.46
+    },
+    {
+      "word": "datang",
+      "start": 59.46,
+      "end": 59.86
+    },
+    {
+      "word": "menyerang,",
+      "start": 59.86,
+      "end": 60.9
+    },
+    {
+      "word": "membuat",
+      "start": 60.9,
+      "end": 61.1
+    },
+    {
+      "word": "raga",
+      "start": 61.1,
+      "end": 61.44
+    },
+    {
+      "word": "terasa",
+      "start": 61.44,
+      "end": 61.94
+    },
+    {
+      "word": "sangat",
+      "start": 61.94,
+      "end": 62.3
+    },
+    {
+      "word": "lemas.",
+      "start": 62.3,
+      "end": 62.66
+    },
+    {
+      "word": "Kopi",
+      "start": 63.84,
+      "end": 64.08
+    },
+    {
+      "word": "bukanlah",
+      "start": 64.08,
+      "end": 64.52
+    },
+    {
+      "word": "musuh,",
+      "start": 64.52,
+      "end": 65.34
+    },
+    {
+      "word": "dia",
+      "start": 65.34,
+      "end": 65.48
+    },
+    {
+      "word": "hanya",
+      "start": 65.48,
+      "end": 65.68
+    },
+    {
+      "word": "butuh",
+      "start": 65.68,
+      "end": 65.9
+    },
+    {
+      "word": "teman.",
+      "start": 65.9,
+      "end": 66.22
+    },
+    {
+      "word": "Berupa",
+      "start": 66.84,
+      "end": 67.08
+    },
+    {
+      "word": "sarapan",
+      "start": 67.08,
+      "end": 67.42
+    },
+    {
+      "word": "kecil",
+      "start": 67.42,
+      "end": 67.88
+    },
+    {
+      "word": "agar",
+      "start": 67.88,
+      "end": 68.5
+    },
+    {
+      "word": "tidak",
+      "start": 68.5,
+      "end": 68.72
+    },
+    {
+      "word": "melukai",
+      "start": 68.72,
+      "end": 69.12
+    },
+    {
+      "word": "rumah",
+      "start": 69.12,
+      "end": 69.44
+    },
+    {
+      "word": "tempat",
+      "start": 69.44,
+      "end": 69.82
+    },
+    {
+      "word": "jiwa",
+      "start": 69.82,
+      "end": 70.06
+    },
+    {
+      "word": "Anda",
+      "start": 70.06,
+      "end": 70.24
+    },
+    {
+      "word": "tinggal.",
+      "start": 70.24,
+      "end": 70.64
+    },
+    {
+      "word": "Dengarkanlah,",
+      "start": 71.62,
+      "end": 72.78
+    },
+    {
+      "word": "tubuh",
+      "start": 72.78,
+      "end": 72.94
+    },
+    {
+      "word": "Anda",
+      "start": 72.94,
+      "end": 73.12
+    },
+    {
+      "word": "selalu",
+      "start": 73.12,
+      "end": 73.38
+    },
+    {
+      "word": "bicara",
+      "start": 73.38,
+      "end": 73.76
+    },
+    {
+      "word": "lewat",
+      "start": 73.76,
+      "end": 73.98
+    },
+    {
+      "word": "rasa",
+      "start": 73.98,
+      "end": 74.26
+    },
+    {
+      "word": "perih",
+      "start": 74.26,
+      "end": 74.64
+    },
+    {
+      "word": "dan",
+      "start": 74.64,
+      "end": 74.82
+    },
+    {
+      "word": "debaran.",
+      "start": 74.82,
+      "end": 75.16
+    },
+    {
+      "word": "Kopi",
+      "start": 76.06,
+      "end": 76.22
+    },
+    {
+      "word": "akan",
+      "start": 76.22,
+      "end": 76.42
+    },
+    {
+      "word": "jauh",
+      "start": 76.42,
+      "end": 76.66
+    },
+    {
+      "word": "lebih",
+      "start": 76.66,
+      "end": 76.84
+    },
+    {
+      "word": "nikmat",
+      "start": 76.84,
+      "end": 77.22
+    },
+    {
+      "word": "saat",
+      "start": 77.22,
+      "end": 77.96
+    },
+    {
+      "word": "perut",
+      "start": 77.96,
+      "end": 78.2
+    },
+    {
+      "word": "Anda",
+      "start": 78.2,
+      "end": 78.46
+    },
+    {
+      "word": "sudah",
+      "start": 78.46,
+      "end": 78.96
+    },
+    {
+      "word": "benar-benar",
+      "start": 78.96,
+      "end": 79.46
+    },
+    {
+      "word": "siap",
+      "start": 79.46,
+      "end": 79.76
+    },
+    {
+      "word": "meneribanya.",
+      "start": 79.76,
+      "end": 80.22
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 6.84,
+      "text": "Pernahkah Anda bertanya-tanya apa yang sebenarnya terjadi pada anatomi tubuh saat secangkir kopi masuk ke perut yang masih kosong?",
+      "words": [
+        {
+          "word": "Pernahkah",
+          "start": 0.02,
+          "end": 0.54
+        },
+        {
+          "word": "Anda",
+          "start": 0.54,
+          "end": 0.7
+        },
+        {
+          "word": "bertanya-tanya",
+          "start": 0.7,
+          "end": 1.3
+        },
+        {
+          "word": "apa",
+          "start": 1.3,
+          "end": 1.88
+        },
+        {
+          "word": "yang",
+          "start": 1.88,
+          "end": 2.06
+        },
+        {
+          "word": "sebenarnya",
+          "start": 2.06,
+          "end": 2.58
+        },
+        {
+          "word": "terjadi",
+          "start": 2.58,
+          "end": 3.02
+        },
+        {
+          "word": "pada",
+          "start": 3.02,
+          "end": 3.3
+        },
+        {
+          "word": "anatomi",
+          "start": 3.3,
+          "end": 3.7
+        },
+        {
+          "word": "tubuh",
+          "start": 3.7,
+          "end": 4.06
+        },
+        {
+          "word": "saat",
+          "start": 4.06,
+          "end": 4.58
+        },
+        {
+          "word": "secangkir",
+          "start": 4.58,
+          "end": 5.06
+        },
+        {
+          "word": "kopi",
+          "start": 5.06,
+          "end": 5.38
+        },
+        {
+          "word": "masuk",
+          "start": 5.38,
+          "end": 5.78
+        },
+        {
+          "word": "ke",
+          "start": 5.78,
+          "end": 6
+        },
+        {
+          "word": "perut",
+          "start": 6,
+          "end": 6.24
+        },
+        {
+          "word": "yang",
+          "start": 6.24,
+          "end": 6.36
+        },
+        {
+          "word": "masih",
+          "start": 6.36,
+          "end": 6.52
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 7.98,
+      "end": 9.78,
+      "text": "Tegukan pertama memang terasa nikmat.",
+      "words": [
+        {
+          "word": "Tegukan",
+          "start": 8.02,
+          "end": 8.24
+        },
+        {
+          "word": "pertama",
+          "start": 8.24,
+          "end": 8.7
+        },
+        {
+          "word": "memang",
+          "start": 8.7,
+          "end": 9.08
+        },
+        {
+          "word": "terasa",
+          "start": 9.08,
+          "end": 9.38
+        },
+        {
+          "word": "nikmat.",
+          "start": 9.38,
+          "end": 9.74
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 10.38,
+      "end": 12.8,
+      "text": "Namun di dalam sana, lambung Anda terkejut.",
+      "words": [
+        {
+          "word": "Namun",
+          "start": 10.46,
+          "end": 10.66
+        },
+        {
+          "word": "di",
+          "start": 10.66,
+          "end": 10.78
+        },
+        {
+          "word": "dalam",
+          "start": 10.78,
+          "end": 11.02
+        },
+        {
+          "word": "sana,",
+          "start": 11.02,
+          "end": 11.86
+        },
+        {
+          "word": "lambung",
+          "start": 11.86,
+          "end": 12.1
+        },
+        {
+          "word": "Anda",
+          "start": 12.1,
+          "end": 12.36
+        },
+        {
+          "word": "terkejut.",
+          "start": 12.36,
+          "end": 12.78
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 13.6,
+      "end": 17.3,
+      "text": "Asam lambung mulai meluap hebat tanpa ada nutrisi yang bisa diolah.",
+      "words": [
+        {
+          "word": "Asam",
+          "start": 13.68,
+          "end": 13.84
+        },
+        {
+          "word": "lambung",
+          "start": 13.84,
+          "end": 14.16
+        },
+        {
+          "word": "mulai",
+          "start": 14.16,
+          "end": 14.44
+        },
+        {
+          "word": "meluap",
+          "start": 14.44,
+          "end": 14.76
+        },
+        {
+          "word": "hebat",
+          "start": 14.76,
+          "end": 15.1
+        },
+        {
+          "word": "tanpa",
+          "start": 15.1,
+          "end": 15.72
+        },
+        {
+          "word": "ada",
+          "start": 15.72,
+          "end": 15.96
+        },
+        {
+          "word": "nutrisi",
+          "start": 15.96,
+          "end": 16.46
+        },
+        {
+          "word": "yang",
+          "start": 16.46,
+          "end": 16.6
+        },
+        {
+          "word": "bisa",
+          "start": 16.6,
+          "end": 16.9
+        },
+        {
+          "word": "diolah.",
+          "start": 16.9,
+          "end": 17.28
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 18.18,
+      "end": 20.22,
+      "text": "Tiba-tiba, perut terasa mulas.",
+      "words": [
+        {
+          "word": "Tiba-tiba,",
+          "start": 18.22,
+          "end": 19.18
+        },
+        {
+          "word": "perut",
+          "start": 19.18,
+          "end": 19.34
+        },
+        {
+          "word": "terasa",
+          "start": 19.34,
+          "end": 19.82
+        },
+        {
+          "word": "mulas.",
+          "start": 19.82,
+          "end": 20.2
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 20.22,
+      "end": 26.42,
+      "text": "Itu karena kafein sedang memaksa gerakan peristaltik usus bekerja terlalu cepat, jauh sebelum waktunya.",
+      "words": [
+        {
+          "word": "Itu",
+          "start": 20.88,
+          "end": 20.98
+        },
+        {
+          "word": "karena",
+          "start": 20.98,
+          "end": 21.24
+        },
+        {
+          "word": "kafein",
+          "start": 21.24,
+          "end": 21.62
+        },
+        {
+          "word": "sedang",
+          "start": 21.62,
+          "end": 21.88
+        },
+        {
+          "word": "memaksa",
+          "start": 21.88,
+          "end": 22.34
+        },
+        {
+          "word": "gerakan",
+          "start": 22.34,
+          "end": 22.68
+        },
+        {
+          "word": "peristaltik",
+          "start": 22.68,
+          "end": 23.4
+        },
+        {
+          "word": "usus",
+          "start": 23.4,
+          "end": 23.64
+        },
+        {
+          "word": "bekerja",
+          "start": 23.64,
+          "end": 24.1
+        },
+        {
+          "word": "terlalu",
+          "start": 24.1,
+          "end": 24.52
+        },
+        {
+          "word": "cepat,",
+          "start": 24.52,
+          "end": 24.86
+        },
+        {
+          "word": "jauh",
+          "start": 24.86,
+          "end": 25.7
+        },
+        {
+          "word": "sebelum",
+          "start": 25.7,
+          "end": 26.08
+        },
+        {
+          "word": "waktunya.",
+          "start": 26.08,
+          "end": 26.4
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 27.28,
+      "end": 29.38,
+      "text": "Jantung mulai berdegup tidak beraturan.",
+      "words": [
+        {
+          "word": "Jantung",
+          "start": 27.7,
+          "end": 28.06
+        },
+        {
+          "word": "mulai",
+          "start": 28.06,
+          "end": 28.32
+        },
+        {
+          "word": "berdegup",
+          "start": 28.32,
+          "end": 28.72
+        },
+        {
+          "word": "tidak",
+          "start": 28.72,
+          "end": 28.92
+        },
+        {
+          "word": "beraturan.",
+          "start": 28.92,
+          "end": 29.36
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 30,
+      "end": 31.44,
+      "text": "dan jemari sedikit gemetar,",
+      "words": [
+        {
+          "word": "dan",
+          "start": 30,
+          "end": 30.14
+        },
+        {
+          "word": "jemari",
+          "start": 30.14,
+          "end": 30.52
+        },
+        {
+          "word": "sedikit",
+          "start": 30.52,
+          "end": 30.96
+        },
+        {
+          "word": "gemetar,",
+          "start": 30.96,
+          "end": 31.44
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 32.02,
+      "end": 36.58,
+      "text": "karena hormon kortisol atau hormon stres Anda dipaksa melonjak drastis.",
+      "words": [
+        {
+          "word": "karena",
+          "start": 32.06,
+          "end": 32.26
+        },
+        {
+          "word": "hormon",
+          "start": 32.26,
+          "end": 32.62
+        },
+        {
+          "word": "kortisol",
+          "start": 32.62,
+          "end": 33.08
+        },
+        {
+          "word": "atau",
+          "start": 33.08,
+          "end": 33.56
+        },
+        {
+          "word": "hormon",
+          "start": 33.56,
+          "end": 33.92
+        },
+        {
+          "word": "stres",
+          "start": 33.92,
+          "end": 34.2
+        },
+        {
+          "word": "Anda",
+          "start": 34.2,
+          "end": 34.52
+        },
+        {
+          "word": "dipaksa",
+          "start": 34.52,
+          "end": 35.52
+        },
+        {
+          "word": "melonjak",
+          "start": 35.52,
+          "end": 36.02
+        },
+        {
+          "word": "drastis.",
+          "start": 36.02,
+          "end": 36.54
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 37.66,
+      "end": 38.66,
+      "text": "Mata memang terjaga,",
+      "words": [
+        {
+          "word": "Mata",
+          "start": 37.68,
+          "end": 37.92
+        },
+        {
+          "word": "memang",
+          "start": 37.92,
+          "end": 38.18
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 39.26,
+      "end": 41.54,
+      "text": "tapi ingat, ini hanyalah energi pinjaman.",
+      "words": [
+        {
+          "word": "tapi",
+          "start": 39.24,
+          "end": 39.36
+        },
+        {
+          "word": "ingat,",
+          "start": 39.36,
+          "end": 39.64
+        },
+        {
+          "word": "ini",
+          "start": 39.64,
+          "end": 40.18
+        },
+        {
+          "word": "hanyalah",
+          "start": 40.18,
+          "end": 40.64
+        },
+        {
+          "word": "energi",
+          "start": 40.64,
+          "end": 41.06
+        },
+        {
+          "word": "pinjaman.",
+          "start": 41.06,
+          "end": 41.54
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 42.26,
+      "end": 43.42,
+      "text": "Pikiran terasa waspada,",
+      "words": [
+        {
+          "word": "Pikiran",
+          "start": 42.32,
+          "end": 42.62
+        },
+        {
+          "word": "terasa",
+          "start": 42.62,
+          "end": 42.98
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 43.96,
+      "end": 45.5,
+      "text": "namun sebenarnya sangat rapuh.",
+      "words": [
+        {
+          "word": "namun",
+          "start": 43.94,
+          "end": 44.1
+        },
+        {
+          "word": "sebenarnya",
+          "start": 44.1,
+          "end": 44.6
+        },
+        {
+          "word": "sangat",
+          "start": 44.6,
+          "end": 45.14
+        },
+        {
+          "word": "rapuh.",
+          "start": 45.14,
+          "end": 45.52
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 46.46,
+      "end": 49.26,
+      "text": "Tenggorokan mulai kering dan kepala perlahan memberat,",
+      "words": [
+        {
+          "word": "Tenggorokan",
+          "start": 46.52,
+          "end": 46.96
+        },
+        {
+          "word": "mulai",
+          "start": 46.96,
+          "end": 47.16
+        },
+        {
+          "word": "kering",
+          "start": 47.16,
+          "end": 47.46
+        },
+        {
+          "word": "dan",
+          "start": 47.46,
+          "end": 47.86
+        },
+        {
+          "word": "kepala",
+          "start": 47.86,
+          "end": 48.28
+        },
+        {
+          "word": "perlahan",
+          "start": 48.28,
+          "end": 48.84
+        },
+        {
+          "word": "memberat,",
+          "start": 48.84,
+          "end": 49.22
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 49.92,
+      "end": 53.72,
+      "text": "karena cairan di tubuh mulai terkuras menuju kandung kemih dengan sangat cepat.",
+      "words": [
+        {
+          "word": "karena",
+          "start": 49.96,
+          "end": 50.16
+        },
+        {
+          "word": "cairan",
+          "start": 50.16,
+          "end": 50.56
+        },
+        {
+          "word": "di",
+          "start": 50.56,
+          "end": 50.7
+        },
+        {
+          "word": "tubuh",
+          "start": 50.7,
+          "end": 50.88
+        },
+        {
+          "word": "mulai",
+          "start": 50.88,
+          "end": 51.12
+        },
+        {
+          "word": "terkuras",
+          "start": 51.12,
+          "end": 51.6
+        },
+        {
+          "word": "menuju",
+          "start": 51.6,
+          "end": 52.08
+        },
+        {
+          "word": "kandung",
+          "start": 52.08,
+          "end": 52.36
+        },
+        {
+          "word": "kemih",
+          "start": 52.36,
+          "end": 52.66
+        },
+        {
+          "word": "dengan",
+          "start": 52.66,
+          "end": 52.88
+        },
+        {
+          "word": "sangat",
+          "start": 52.88,
+          "end": 53.28
+        },
+        {
+          "word": "cepat.",
+          "start": 53.28,
+          "end": 53.66
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 54.12,
+      "end": 57.28,
+      "text": "Hingga akhirnya, benteng pertahanan Anda runtuh.",
+      "words": [
+        {
+          "word": "Hingga",
+          "start": 54.64,
+          "end": 54.84
+        },
+        {
+          "word": "akhirnya,",
+          "start": 54.84,
+          "end": 55.34
+        },
+        {
+          "word": "benteng",
+          "start": 55.34,
+          "end": 56.16
+        },
+        {
+          "word": "pertahanan",
+          "start": 56.16,
+          "end": 56.68
+        },
+        {
+          "word": "Anda",
+          "start": 56.68,
+          "end": 56.88
+        },
+        {
+          "word": "runtuh.",
+          "start": 56.88,
+          "end": 57.26
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 58.08,
+      "end": 62.68,
+      "text": "Rasa kantuk yang luar biasa datang menyerang, membuat raga terasa sangat lemas.",
+      "words": [
+        {
+          "word": "Rasa",
+          "start": 58.08,
+          "end": 58.32
+        },
+        {
+          "word": "kantuk",
+          "start": 58.32,
+          "end": 58.8
+        },
+        {
+          "word": "yang",
+          "start": 58.8,
+          "end": 58.96
+        },
+        {
+          "word": "luar",
+          "start": 58.96,
+          "end": 59.2
+        },
+        {
+          "word": "biasa",
+          "start": 59.2,
+          "end": 59.46
+        },
+        {
+          "word": "datang",
+          "start": 59.46,
+          "end": 59.86
+        },
+        {
+          "word": "menyerang,",
+          "start": 59.86,
+          "end": 60.9
+        },
+        {
+          "word": "membuat",
+          "start": 60.9,
+          "end": 61.1
+        },
+        {
+          "word": "raga",
+          "start": 61.1,
+          "end": 61.44
+        },
+        {
+          "word": "terasa",
+          "start": 61.44,
+          "end": 61.94
+        },
+        {
+          "word": "sangat",
+          "start": 61.94,
+          "end": 62.3
+        },
+        {
+          "word": "lemas.",
+          "start": 62.3,
+          "end": 62.66
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "start": 63.78,
+      "end": 66.24,
+      "text": "Kopi bukanlah musuh, dia hanya butuh teman.",
+      "words": [
+        {
+          "word": "Kopi",
+          "start": 63.84,
+          "end": 64.08
+        },
+        {
+          "word": "bukanlah",
+          "start": 64.08,
+          "end": 64.52
+        },
+        {
+          "word": "musuh,",
+          "start": 64.52,
+          "end": 65.34
+        },
+        {
+          "word": "dia",
+          "start": 65.34,
+          "end": 65.48
+        },
+        {
+          "word": "hanya",
+          "start": 65.48,
+          "end": 65.68
+        },
+        {
+          "word": "butuh",
+          "start": 65.68,
+          "end": 65.9
+        },
+        {
+          "word": "teman.",
+          "start": 65.9,
+          "end": 66.22
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 66.78,
+      "end": 70.64,
+      "text": "Berupa sarapan kecil agar tidak melukai rumah tempat jiwa Anda tinggal.",
+      "words": [
+        {
+          "word": "Berupa",
+          "start": 66.84,
+          "end": 67.08
+        },
+        {
+          "word": "sarapan",
+          "start": 67.08,
+          "end": 67.42
+        },
+        {
+          "word": "kecil",
+          "start": 67.42,
+          "end": 67.88
+        },
+        {
+          "word": "agar",
+          "start": 67.88,
+          "end": 68.5
+        },
+        {
+          "word": "tidak",
+          "start": 68.5,
+          "end": 68.72
+        },
+        {
+          "word": "melukai",
+          "start": 68.72,
+          "end": 69.12
+        },
+        {
+          "word": "rumah",
+          "start": 69.12,
+          "end": 69.44
+        },
+        {
+          "word": "tempat",
+          "start": 69.44,
+          "end": 69.82
+        },
+        {
+          "word": "jiwa",
+          "start": 69.82,
+          "end": 70.06
+        },
+        {
+          "word": "Anda",
+          "start": 70.06,
+          "end": 70.24
+        },
+        {
+          "word": "tinggal.",
+          "start": 70.24,
+          "end": 70.64
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 71.58,
+      "end": 75.16,
+      "text": "Dengarkanlah, tubuh Anda selalu bicara lewat rasa perih dan debaran.",
+      "words": [
+        {
+          "word": "Dengarkanlah,",
+          "start": 71.62,
+          "end": 72.78
+        },
+        {
+          "word": "tubuh",
+          "start": 72.78,
+          "end": 72.94
+        },
+        {
+          "word": "Anda",
+          "start": 72.94,
+          "end": 73.12
+        },
+        {
+          "word": "selalu",
+          "start": 73.12,
+          "end": 73.38
+        },
+        {
+          "word": "bicara",
+          "start": 73.38,
+          "end": 73.76
+        },
+        {
+          "word": "lewat",
+          "start": 73.76,
+          "end": 73.98
+        },
+        {
+          "word": "rasa",
+          "start": 73.98,
+          "end": 74.26
+        },
+        {
+          "word": "perih",
+          "start": 74.26,
+          "end": 74.64
+        },
+        {
+          "word": "dan",
+          "start": 74.64,
+          "end": 74.82
+        },
+        {
+          "word": "debaran.",
+          "start": 74.82,
+          "end": 75.16
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "start": 75.98,
+      "end": 80.24,
+      "text": "Kopi akan jauh lebih nikmat saat perut Anda sudah benar-benar siap meneribanya.",
+      "words": [
+        {
+          "word": "Kopi",
+          "start": 76.06,
+          "end": 76.22
+        },
+        {
+          "word": "akan",
+          "start": 76.22,
+          "end": 76.42
+        },
+        {
+          "word": "jauh",
+          "start": 76.42,
+          "end": 76.66
+        },
+        {
+          "word": "lebih",
+          "start": 76.66,
+          "end": 76.84
+        },
+        {
+          "word": "nikmat",
+          "start": 76.84,
+          "end": 77.22
+        },
+        {
+          "word": "saat",
+          "start": 77.22,
+          "end": 77.96
+        },
+        {
+          "word": "perut",
+          "start": 77.96,
+          "end": 78.2
+        },
+        {
+          "word": "Anda",
+          "start": 78.2,
+          "end": 78.46
+        },
+        {
+          "word": "sudah",
+          "start": 78.46,
+          "end": 78.96
+        },
+        {
+          "word": "benar-benar",
+          "start": 78.96,
+          "end": 79.46
+        },
+        {
+          "word": "siap",
+          "start": 79.46,
+          "end": 79.76
+        },
+        {
+          "word": "meneribanya.",
+          "start": 79.76,
+          "end": 80.22
+        }
+      ]
+    }
+  ],
+  "text": " Pernahkah Anda bertanya-tanya apa yang sebenarnya terjadi pada anatomi tubuh saat secangkir kopi masuk ke perut yang masih kosong? Tegukan pertama memang terasa nikmat. Namun di dalam sana, lambung Anda terkejut. Asam lambung mulai meluap hebat tanpa ada nutrisi yang bisa diolah. Tiba-tiba, perut terasa mulas. Itu karena kafein sedang memaksa gerakan peristaltik usus bekerja terlalu cepat, jauh sebelum waktunya. Jantung mulai berdegup tidak beraturan. dan jemari sedikit gemetar, karena hormon kortisol atau hormon stres Anda dipaksa melonjak drastis. Mata memang terjaga, tapi ingat, ini hanyalah energi pinjaman. Pikiran terasa waspada, namun sebenarnya sangat rapuh. Tenggorokan mulai kering dan kepala perlahan memberat, karena cairan di tubuh mulai terkuras menuju kandung kemih dengan sangat cepat. Hingga akhirnya, benteng pertahanan Anda runtuh. Rasa kantuk yang luar biasa datang menyerang, membuat raga terasa sangat lemas. Kopi bukanlah musuh, dia hanya butuh teman. Berupa sarapan kecil agar tidak melukai rumah tempat jiwa Anda tinggal. Dengarkanlah, tubuh Anda selalu bicara lewat rasa perih dan debaran. Kopi akan jauh lebih nikmat saat perut Anda sudah benar-benar siap meneribanya."
+}
