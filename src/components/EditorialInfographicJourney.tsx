@@ -30,6 +30,35 @@ const ORGAN_THEMES: Record<string, { label: string; color: string; icon: string;
   'full-body': { label: 'SELURUH TUBUH', color: '#38bdf8', icon: '🧍', defaultPng: 'butterfly/organs/bladder.png' },
 };
 
+/**
+ * Resolves a contextually matching 3D character action illustration
+ * based on the physical human symptom of each node.
+ */
+export function resolveCharacterActionForNode(node: ButterflyNode, fallbackPng?: string | null): string {
+  const combined = `${node.headline || ''} ${node.humanFeeling || ''} ${node.narration || ''} ${node.caption || ''} ${node.primaryText || ''} ${node.secondaryText || ''}`.toLowerCase();
+
+  if (/gemetar|goyang.*kaki|tarian kencing|kaki|fidget|tremor|menggoyangkan/i.test(combined)) {
+    return 'butterfly/characters/action_shaking_legs.png';
+  }
+  if (/pegal|pinggang|ginjal|flank|punggung belakang|ngilu/i.test(combined)) {
+    return 'butterfly/characters/action_back_pain.png';
+  }
+  if (/geli|perut bawah|sensasi awal|sinyal pertama|150ml/i.test(combined)) {
+    return 'butterfly/characters/action_belly_tingle.png';
+  }
+  if (/menggigil|meriang|demam|dingin|sepsis|chills/i.test(combined)) {
+    return 'butterfly/characters/action_shivering.png';
+  }
+  if (/batuk|tersedak/i.test(combined)) {
+    return 'butterfly/characters/action_coughing.png';
+  }
+  if (/mengantuk|sleepy|lemas|tidur/i.test(combined)) {
+    return 'butterfly/characters/action_sleepy.png';
+  }
+
+  return fallbackPng || 'butterfly/characters/action_holding_pee.png';
+}
+
 export const EditorialInfographicJourney: React.FC<EditorialInfographicJourneyProps> = ({
   nodes,
   hookDurationFrames,
@@ -75,6 +104,12 @@ export const EditorialInfographicJourney: React.FC<EditorialInfographicJourneyPr
 
   // Resolve human feeling & emoji
   const sensation = useMemo(() => inferHumanFeelingForNode(activeNode), [activeNode]);
+
+  // Dynamic character symptom action image matching this node's feeling
+  const nodeActionImage = useMemo(
+    () => resolveCharacterActionForNode(activeNode, characterActionPng),
+    [activeNode, characterActionPng]
+  );
 
   // Image source: prefer organ illustration, fallback to mediaUrl or character
   let displayImage = theme.defaultPng;
@@ -292,31 +327,66 @@ export const EditorialInfographicJourney: React.FC<EditorialInfographicJourneyPr
             }}
           />
 
-          {/* Optional Character Mini Reaction in corner of card */}
-          {characterActionPng && (
+          {/* Dynamic Character Mini Reaction in corner of card */}
+          {nodeActionImage && (
             <div
               style={{
                 position: 'absolute',
                 bottom: '12px',
                 right: '12px',
-                width: '110px',
-                height: '150px',
-                borderRadius: '16px',
-                backgroundColor: 'rgba(9, 13, 22, 0.85)',
-                border: `1.5px solid ${isEmergency ? '#ef4444' : theme.color}66`,
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.75)',
+                width: '120px',
+                height: '160px',
+                borderRadius: '18px',
+                backgroundColor: 'rgba(9, 13, 22, 0.88)',
+                border: `1.5px solid ${isEmergency ? '#ef4444' : theme.color}77`,
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.8)',
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
+                justifyContent: 'flex-end',
                 overflow: 'hidden',
-                padding: '4px',
+                padding: '6px',
               }}
             >
+              {/* Mini Label */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '6px',
+                  left: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  zIndex: 2,
+                }}
+              >
+                <span
+                  style={{
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    backgroundColor: isEmergency ? '#ef4444' : theme.color,
+                    boxShadow: `0 0 6px ${isEmergency ? '#ef4444' : theme.color}`,
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily: "'Space Grotesk', monospace",
+                    fontSize: '9px',
+                    fontWeight: 800,
+                    color: '#cbd5e1',
+                    letterSpacing: '0.6px',
+                  }}
+                >
+                  REAKSI
+                </span>
+              </div>
+
               <Img
-                src={staticFile(characterActionPng)}
+                src={staticFile(nodeActionImage)}
                 style={{
                   width: '100%',
-                  height: '100%',
+                  height: '90%',
                   objectFit: 'contain',
                 }}
               />
@@ -361,39 +431,101 @@ export const EditorialInfographicJourney: React.FC<EditorialInfographicJourneyPr
       <div
         style={{
           position: 'absolute',
-          bottom: '520px',
+          bottom: '515px',
           left: '50%',
-          transform: 'translateX(-50%)',
+          transform: `translateX(-50%) scale(${1 + Math.sin(frame * 0.08) * 0.012})`,
           zIndex: 35,
           pointerEvents: 'none',
           display: 'flex',
           alignItems: 'center',
-          gap: '12px',
-          padding: '12px 28px',
-          backgroundColor: 'rgba(15, 23, 42, 0.85)',
+          gap: '14px',
+          padding: '10px 26px 10px 14px',
+          backgroundColor: 'rgba(15, 23, 42, 0.94)',
           backdropFilter: 'blur(20px)',
           borderRadius: '999px',
-          border: `1.5px solid ${isEmergency ? '#ef4444' : theme.color}77`,
+          border: `1.5px solid ${isEmergency ? '#ef4444' : theme.color}99`,
           boxShadow: isEmergency
-            ? '0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(239, 68, 68, 0.35)'
-            : `0 10px 30px rgba(0, 0, 0, 0.8), 0 0 16px ${theme.color}25`,
+            ? '0 12px 35px rgba(0, 0, 0, 0.85), 0 0 24px rgba(239, 68, 68, 0.45)'
+            : `0 12px 35px rgba(0, 0, 0, 0.85), 0 0 20px ${theme.color}40`,
           maxWidth: '880px',
         }}
       >
-        <span style={{ fontSize: '20px' }}>{sensation.emoji}</span>
-        <span
+        {/* Symptom Character Thumbnail Avatar */}
+        {nodeActionImage && (
+          <div
+            style={{
+              width: '64px',
+              height: '64px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              backgroundColor: 'rgba(9, 13, 22, 0.95)',
+              border: `2px solid ${isEmergency ? '#ef4444' : theme.color}`,
+              boxShadow: `0 0 16px ${isEmergency ? '#ef4444' : theme.color}88`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <Img
+              src={staticFile(nodeActionImage)}
+              style={{
+                width: '92%',
+                height: '92%',
+                objectFit: 'contain',
+                transform: nodeActionImage.includes('shaking_legs')
+                  ? 'scale(1.55) translateY(-2px)'
+                  : 'scale(1.25)',
+              }}
+            />
+          </div>
+        )}
+
+        {/* Symptom Text Details */}
+        <div
           style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: '15px',
-            fontWeight: 800,
-            color: '#FFFFFF',
-            letterSpacing: '0.3px',
-            textTransform: 'uppercase',
-            whiteSpace: 'nowrap',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: '2px',
           }}
         >
-          {sensation.feeling}
-        </span>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+            }}
+          >
+            <span style={{ fontSize: '13px' }}>{sensation.emoji}</span>
+            <span
+              style={{
+                fontFamily: "'Space Grotesk', monospace",
+                fontSize: '11px',
+                fontWeight: 800,
+                color: isEmergency ? '#fca5a5' : theme.color,
+                letterSpacing: '0.8px',
+                textTransform: 'uppercase',
+              }}
+            >
+              GEJALA YANG DIRASAKAN
+            </span>
+          </div>
+
+          <span
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: '15px',
+              fontWeight: 900,
+              color: '#FFFFFF',
+              letterSpacing: '0.3px',
+              textTransform: 'uppercase',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {sensation.feeling}
+          </span>
+        </div>
       </div>
     </div>
   );
