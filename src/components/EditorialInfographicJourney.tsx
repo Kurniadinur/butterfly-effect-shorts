@@ -32,11 +32,19 @@ const ORGAN_THEMES: Record<string, { label: string; color: string; icon: string;
 
 /**
  * Resolves a contextually matching 3D character action illustration
- * based on the physical human symptom of each node.
+ * based on the physical human symptom, organ, or narration of each node.
+ * Automatically adapts to any new video title and topic without manual prompting.
  */
 export function resolveCharacterActionForNode(node: ButterflyNode, fallbackPng?: string | null): string {
-  const combined = `${node.headline || ''} ${node.humanFeeling || ''} ${node.narration || ''} ${node.caption || ''} ${node.primaryText || ''} ${node.secondaryText || ''}`.toLowerCase();
+  // 1. If node explicitly declares a valid characterActionPng, use it directly
+  if (node.characterActionPng && typeof node.characterActionPng === 'string' && node.characterActionPng.length > 5) {
+    return node.characterActionPng;
+  }
 
+  const combined = `${node.headline || ''} ${node.humanFeeling || ''} ${node.narration || ''} ${node.caption || ''} ${node.primaryText || ''} ${node.secondaryText || ''}`.toLowerCase();
+  const organ = (node.organTarget || '').toLowerCase();
+
+  // 2. High-priority physical symptom keyword matching
   if (/gemetar|goyang.*kaki|tarian kencing|kaki|fidget|tremor|menggoyangkan/i.test(combined)) {
     return 'butterfly/characters/action_shaking_legs.png';
   }
@@ -46,16 +54,47 @@ export function resolveCharacterActionForNode(node: ButterflyNode, fallbackPng?:
   if (/geli|perut bawah|sensasi awal|sinyal pertama|150ml/i.test(combined)) {
     return 'butterfly/characters/action_belly_tingle.png';
   }
-  if (/menggigil|meriang|demam|dingin|sepsis|chills/i.test(combined)) {
-    return 'butterfly/characters/action_shivering.png';
+  if (/kencing|pipis|kemih|beser|ngompol|sfingter|detrusor|penampung penuh/i.test(combined)) {
+    return 'butterfly/characters/action_holding_pee.png';
   }
-  if (/batuk|tersedak/i.test(combined)) {
+  if (/pusing|kepala|migrain|otak|vertigo|penat|sulit fokus|linglung/i.test(combined)) {
+    return 'butterfly/characters/action_headache.png';
+  }
+  if (/dada|jantung|debar|berdebar|sesak|takikardia|serangan jantung|napas pendek/i.test(combined)) {
+    return 'butterfly/characters/action_chest_pain.png';
+  }
+  if (/perut|lambung|asam|maag|mual|muntah|kembung|melilit|kram perut|diare/i.test(combined)) {
+    return 'butterfly/characters/action_stomachache.png';
+  }
+  if (/batuk|tersedak|tenggorokan|pita suara|paru/i.test(combined)) {
     return 'butterfly/characters/action_coughing.png';
   }
-  if (/mengantuk|sleepy|lemas|tidur/i.test(combined)) {
+  if (/menggigil|meriang|demam|dingin|sepsis|chills|suhu tubuh/i.test(combined)) {
+    return 'butterfly/characters/action_shivering.png';
+  }
+  if (/mengantuk|sleepy|lemas|tidur|begadang|insomnia|mata berat/i.test(combined)) {
     return 'butterfly/characters/action_sleepy.png';
   }
+  if (/kopi|minum|kafein|cairan|dehidrasi/i.test(combined)) {
+    return 'butterfly/characters/action_drinking.png';
+  }
+  if (/makan|mie|pedas|cabai|makanan/i.test(combined)) {
+    return 'butterfly/characters/action_eating.png';
+  }
+  if (/helium|gas|hirup|oksigen/i.test(combined)) {
+    return 'butterfly/characters/action_inhaling.png';
+  }
 
+  // 3. Fallback to organ target mapping
+  if (organ === 'brain') return 'butterfly/characters/action_headache.png';
+  if (organ === 'heart') return 'butterfly/characters/action_chest_pain.png';
+  if (organ === 'lungs') return 'butterfly/characters/action_coughing.png';
+  if (organ === 'stomach' || organ === 'intestine') return 'butterfly/characters/action_stomachache.png';
+  if (organ === 'kidney') return 'butterfly/characters/action_back_pain.png';
+  if (organ === 'bladder') return 'butterfly/characters/action_holding_pee.png';
+  if (organ === 'muscles') return 'butterfly/characters/action_shaking_legs.png';
+
+  // 4. Default fallback to story hook character or generic character
   return fallbackPng || 'butterfly/characters/action_holding_pee.png';
 }
 

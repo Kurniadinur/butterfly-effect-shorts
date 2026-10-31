@@ -166,12 +166,61 @@ export async function resolveDynamicStoryAssets(storyData) {
   storyData.hook.targetOrganPng = organRelPath;
   console.log(`      ✓ Target organ terverifikasi: ${organRelPath}`);
 
-  // 3. Normalize & Validate all node organTargets
+  // 3. Normalize & Validate all node organTargets + Auto-Assign matching character action pose
+  console.log('   🧑 [Character Action Matcher] Menyelaraskan ekspresi karakter untuk setiap adegan...');
   for (const node of storyData.nodes || []) {
     const rawTarget = (node.organTarget || '').toLowerCase();
     if (rawTarget === 'kidneys') node.organTarget = 'kidney';
     if (rawTarget === 'blood_vessels') node.organTarget = 'blood';
     if (rawTarget === 'intestines') node.organTarget = 'intestine';
+
+    // Auto-assign matching character action pose dynamically
+    if (!node.characterActionPng) {
+      const combined = `${node.headline || ''} ${node.humanFeeling || ''} ${node.narration || ''} ${node.caption || ''}`.toLowerCase();
+      const organ = (node.organTarget || '').toLowerCase();
+
+      if (/gemetar|goyang.*kaki|tarian kencing|kaki|fidget|tremor|menggoyangkan/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_shaking_legs.png';
+      } else if (/pegal|pinggang|ginjal|flank|punggung belakang|ngilu/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_back_pain.png';
+      } else if (/geli|perut bawah|sensasi awal|sinyal pertama|150ml/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_belly_tingle.png';
+      } else if (/kencing|pipis|kemih|beser|ngompol|sfingter/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_holding_pee.png';
+      } else if (/pusing|kepala|migrain|otak|vertigo|penat|sulit fokus|linglung/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_headache.png';
+      } else if (/dada|jantung|debar|berdebar|sesak|takikardia|serangan jantung/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_chest_pain.png';
+      } else if (/perut|lambung|asam|maag|mual|muntah|kembung|melilit|kram perut|diare/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_stomachache.png';
+      } else if (/batuk|tersedak|tenggorokan|pita suara|paru/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_coughing.png';
+      } else if (/menggigil|meriang|demam|dingin|sepsis|chills/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_shivering.png';
+      } else if (/mengantuk|sleepy|lemas|tidur|begadang|insomnia/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_sleepy.png';
+      } else if (/kopi|minum|kafein|cairan|dehidrasi/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_drinking.png';
+      } else if (/makan|mie|pedas|cabai|makanan/i.test(combined)) {
+        node.characterActionPng = 'butterfly/characters/action_eating.png';
+      } else if (organ === 'brain') {
+        node.characterActionPng = 'butterfly/characters/action_headache.png';
+      } else if (organ === 'heart') {
+        node.characterActionPng = 'butterfly/characters/action_chest_pain.png';
+      } else if (organ === 'lungs') {
+        node.characterActionPng = 'butterfly/characters/action_coughing.png';
+      } else if (organ === 'stomach' || organ === 'intestine') {
+        node.characterActionPng = 'butterfly/characters/action_stomachache.png';
+      } else if (organ === 'kidney') {
+        node.characterActionPng = 'butterfly/characters/action_back_pain.png';
+      } else if (organ === 'bladder') {
+        node.characterActionPng = 'butterfly/characters/action_holding_pee.png';
+      } else if (organ === 'muscles') {
+        node.characterActionPng = 'butterfly/characters/action_shaking_legs.png';
+      } else {
+        node.characterActionPng = charRelPath;
+      }
+    }
   }
 
   console.log(`      ✓ Seluruh organ & karakter 3D 100% tervalidasi dan siap dirender.\n`);
