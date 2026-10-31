@@ -144,12 +144,6 @@ export const EditorialInfographicJourney: React.FC<EditorialInfographicJourneyPr
   // Resolve human feeling & emoji
   const sensation = useMemo(() => inferHumanFeelingForNode(activeNode), [activeNode]);
 
-  // Dynamic character symptom action image matching this node's feeling
-  const nodeActionImage = useMemo(
-    () => resolveCharacterActionForNode(activeNode, characterActionPng),
-    [activeNode, characterActionPng]
-  );
-
   // Image source: prefer organ illustration, fallback to mediaUrl or character
   let displayImage = theme.defaultPng;
   if (activeNode.mediaUrl && !activeNode.mediaUrl.includes('medical_body_xray')) {
@@ -366,8 +360,8 @@ export const EditorialInfographicJourney: React.FC<EditorialInfographicJourneyPr
             }}
           />
 
-          {/* Dynamic Character Mini Reaction in corner of card */}
-          {nodeActionImage && (
+          {/* Consistent Story Protagonist Reaction in corner of card */}
+          {characterActionPng && (
             <div
               style={{
                 position: 'absolute',
@@ -417,16 +411,18 @@ export const EditorialInfographicJourney: React.FC<EditorialInfographicJourneyPr
                     letterSpacing: '0.6px',
                   }}
                 >
-                  REAKSI
+                  PASIEN
                 </span>
               </div>
 
+              {/* Single Consistent Protagonist Character throughout entire video */}
               <Img
-                src={staticFile(nodeActionImage)}
+                src={staticFile(characterActionPng)}
                 style={{
                   width: '100%',
-                  height: '90%',
+                  height: '92%',
                   objectFit: 'contain',
+                  transform: `scale(${1 + Math.sin(frame * 0.1) * 0.02})`,
                 }}
               />
             </div>
@@ -478,7 +474,7 @@ export const EditorialInfographicJourney: React.FC<EditorialInfographicJourneyPr
           display: 'flex',
           alignItems: 'center',
           gap: '14px',
-          padding: '10px 26px 10px 14px',
+          padding: '10px 28px 10px 14px',
           backgroundColor: 'rgba(15, 23, 42, 0.94)',
           backdropFilter: 'blur(20px)',
           borderRadius: '999px',
@@ -489,36 +485,25 @@ export const EditorialInfographicJourney: React.FC<EditorialInfographicJourneyPr
           maxWidth: '880px',
         }}
       >
-        {/* Symptom Character Thumbnail Avatar */}
-        {nodeActionImage && (
-          <div
-            style={{
-              width: '64px',
-              height: '64px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              backgroundColor: 'rgba(9, 13, 22, 0.95)',
-              border: `2px solid ${isEmergency ? '#ef4444' : theme.color}`,
-              boxShadow: `0 0 16px ${isEmergency ? '#ef4444' : theme.color}88`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-            }}
-          >
-            <Img
-              src={staticFile(nodeActionImage)}
-              style={{
-                width: '92%',
-                height: '92%',
-                objectFit: 'contain',
-                transform: nodeActionImage.includes('shaking_legs')
-                  ? 'scale(1.55) translateY(-2px)'
-                  : 'scale(1.25)',
-              }}
-            />
-          </div>
-        )}
+        {/* Symptom Status Indicator Badge (Consistent, zero face-clashing) */}
+        <div
+          style={{
+            width: '56px',
+            height: '56px',
+            borderRadius: '50%',
+            overflow: 'hidden',
+            backgroundColor: `${isEmergency ? '#ef4444' : theme.color}25`,
+            border: `2px solid ${isEmergency ? '#ef4444' : theme.color}`,
+            boxShadow: `0 0 16px ${isEmergency ? '#ef4444' : theme.color}66`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+            fontSize: '28px',
+          }}
+        >
+          {sensation.emoji}
+        </div>
 
         {/* Symptom Text Details */}
         <div
@@ -536,7 +521,6 @@ export const EditorialInfographicJourney: React.FC<EditorialInfographicJourneyPr
               gap: '6px',
             }}
           >
-            <span style={{ fontSize: '13px' }}>{sensation.emoji}</span>
             <span
               style={{
                 fontFamily: "'Space Grotesk', monospace",
