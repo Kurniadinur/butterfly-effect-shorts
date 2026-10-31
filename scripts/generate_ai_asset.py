@@ -13,6 +13,12 @@ import time
 from PIL import Image, ImageChops, ImageEnhance
 import rembg
 
+# Force UTF-8 on Windows consoles to prevent cp1252 charmap encoding errors
+if sys.stdout and hasattr(sys.stdout, 'buffer'):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+if sys.stderr and hasattr(sys.stderr, 'buffer'):
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
 def fetch_image_from_generator(prompt: str, seed: int) -> bytes:
     encoded_prompt = urllib.parse.quote(prompt)
     url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=768&height=1024&nologo=true&seed={seed}"
@@ -110,10 +116,10 @@ def generate_perfect_asset(asset_type: str, subject_description: str, output_pat
 
             # If score is already stellar, break early
             if score >= 90.0:
-                print(f"  ✓ Kandidat {attempt} mencapai standar kesempurnaan (Skor >= 90)!")
+                print(f"  [OK] Kandidat {attempt} mencapai standar kesempurnaan (Skor >= 90)!")
                 break
         except Exception as e:
-            print(f"  ⚠ Kandidat {attempt} gagal: {e}")
+            print(f"  [WARN] Kandidat {attempt} gagal: {e}")
 
     if not best_image:
         raise RuntimeError("Semua kandidat visual generator gagal diproses.")

@@ -31,15 +31,27 @@ function generateMissingAsset(assetType, description, relativePath) {
     cwd: ROOT_DIR,
     stdio: 'inherit',
     encoding: 'utf-8',
+    env: { ...process.env, PYTHONIOENCODING: 'utf-8' },
   });
 
-  if (res.status === 0 && fs.existsSync(fullDiskPath)) {
+  if (res.status === 0 && fs.existsSync(fullDiskPath) && fs.statSync(fullDiskPath).size > 5000) {
     console.log(`      ✓ [AI Auto-Asset Berhasil] Aset 3D baru siap digunakan: ${relativePath}`);
     return relativePath;
   }
 
   console.warn(`      ⚠ [AI Asset Fallback] Menggunakan aset standar terdekat`);
-  return assetType === 'character' ? 'butterfly/characters/action_drinking.png' : 'butterfly/organs/stomach.png';
+  const fallbackRel = assetType === 'character' ? 'butterfly/characters/action_drinking.png' : 'butterfly/organs/stomach.png';
+  const fallbackFull = path.join(ROOT_DIR, 'public', fallbackRel);
+  if (fs.existsSync(fallbackFull) && !fs.existsSync(fullDiskPath)) {
+    try {
+      fs.copyFileSync(fallbackFull, fullDiskPath);
+      console.log(`      ✓ [AI Auto-Asset Salin] Aset dasar berhasil disalin ke: ${relativePath}`);
+      return relativePath;
+    } catch (e) {
+      // ignore
+    }
+  }
+  return fallbackRel;
 }
 
 /**
@@ -150,21 +162,23 @@ export async function resolveDynamicStoryAssets(storyData) {
   const charRelPath = `butterfly/characters/${specs.characterFile}`;
   const fullCharDiskPath = path.join(ROOT_DIR, 'public', charRelPath);
 
+  let verifiedCharRelPath = charRelPath;
   if (!fs.existsSync(fullCharDiskPath) || fs.statSync(fullCharDiskPath).size < 5000) {
-    generateMissingAsset('character', specs.characterPrompt, charRelPath);
+    verifiedCharRelPath = generateMissingAsset('character', specs.characterPrompt, charRelPath);
   }
-  storyData.hook.characterActionPng = charRelPath;
-  console.log(`      ✓ Karakter 3D aksi terverifikasi: ${charRelPath}`);
+  storyData.hook.characterActionPng = verifiedCharRelPath;
+  console.log(`      ✓ Karakter 3D aksi terverifikasi: ${verifiedCharRelPath}`);
 
   // 2. Resolve / Generate Target Organ for Hook
   const organRelPath = `butterfly/organs/${specs.targetOrganFile}`;
   const fullOrganDiskPath = path.join(ROOT_DIR, 'public', organRelPath);
 
+  let verifiedOrganRelPath = organRelPath;
   if (!fs.existsSync(fullOrganDiskPath) || fs.statSync(fullOrganDiskPath).size < 5000) {
-    generateMissingAsset('organ', specs.organPrompt, organRelPath);
+    verifiedOrganRelPath = generateMissingAsset('organ', specs.organPrompt, organRelPath);
   }
-  storyData.hook.targetOrganPng = organRelPath;
-  console.log(`      ✓ Target organ terverifikasi: ${organRelPath}`);
+  storyData.hook.targetOrganPng = verifiedOrganRelPath;
+  console.log(`      ✓ Target organ terverifikasi: ${verifiedOrganRelPath}`);
 
   // 3. Normalize & Validate all node organTargets + Auto-Assign matching character action pose
   console.log('   🧑 [Character Action Matcher] Menyelaraskan ekspresi karakter untuk setiap adegan...');

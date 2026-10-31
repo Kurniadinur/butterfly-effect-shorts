@@ -7,6 +7,23 @@
   ],
   "best_story_benchmarks": [
     {
+      "id": "efek-kopi-perut-kosong-kronologis-mvw14tvz",
+      "title": "APA JADINYA KALAU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?",
+      "hookStyle": "fullscreen-dramatic",
+      "hookNarration": "Apa yang sebenarnya terjadi pada tubuhmu jika kamu minum kopi saat perut kosong setiap pagi?",
+      "scenes": [
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "action-tracker",
+        "laboratory-discovery",
+        "laboratory-discovery",
+        "action-tracker",
+        "action-tracker",
+        "laboratory-discovery"
+      ],
+      "why_successful": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
       "id": "menahan-kencing-terlalu-lama-dampak-mvubents",
       "title": "APA JADINYA KALAU KAMU TAHAN KENCING TERLALU LAMA?",
       "hookStyle": "fullscreen-dramatic",
@@ -116,27 +133,6 @@
         "action-tracker"
       ],
       "why_successful": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
-    },
-    {
-      "id": "72-jam-tanpa-tidur-simulation-mvsymx33",
-      "title": "72 JAM TANPA TIDUR",
-      "hookStyle": "fullscreen-dramatic",
-      "hookNarration": "Detik pertama tanpa tidur, adenosin menumpuk di otak. Dalam 72 jam, tubuhmu berubah menjadi ladang perang biokimia yang menghancurkan kognisi.",
-      "scenes": [
-        "laboratory-discovery",
-        "action-tracker",
-        "laboratory-discovery",
-        "action-tracker",
-        "character-intro",
-        "laboratory-discovery",
-        "action-tracker",
-        "laboratory-discovery",
-        "laboratory-discovery",
-        "action-tracker",
-        "action-tracker",
-        "character-intro"
-      ],
-      "why_successful": "Tersertifikasi AI Editor dengan skor 93/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ],
   "blacklisted_patterns": [
@@ -256,6 +252,13 @@
       "title": "APA JADINYA KALAU KAMU TAHAN KENCING TERLALU LAMA?",
       "rating": "positive",
       "note": "Tersertifikasi AI Editor dengan skor 91/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
+    },
+    {
+      "id": "efek-kopi-perut-kosong-kronologis-mvw14tvz",
+      "timestamp": "2026-10-31T06:40:52.783Z",
+      "title": "APA JADINYA KALAU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?",
+      "rating": "positive",
+      "note": "Tersertifikasi AI Editor dengan skor 90/100. Safe-zone aman, 0% dead void, tipografi kontras tinggi."
     }
   ]
 }
