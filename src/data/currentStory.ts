@@ -7,7 +7,7 @@ export { cleanSubtitleWord } from '../utils/textUtils';
 
 
 export const CURRENT_STORY: ButterflyStoryData = {
-  "id": "efek-kopi-perut-kosong-kronologis-mvw14tvz",
+  "id": "kopi-perut-kosong-human-experience-mvw1sxv2",
   "title": "APA JADINYA KALAU MINUM KOPI SAAT PERUT KOSONG SETIAP PAGI?",
   "editorialStyle": {
     "mood": "johnny-harris-slate",
@@ -19,21 +19,21 @@ export const CURRENT_STORY: ButterflyStoryData = {
   "hook": {
     "hookStyle": "fullscreen-dramatic",
     "kicker": "REAKSI TUBUH & MANUSIA",
-    "headline": "MINUM KOPI SAAT PERUT KOSONG?",
+    "headline": "APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG?",
     "narration": "Apa yang sebenarnya terjadi pada tubuhmu jika kamu minum kopi saat perut kosong setiap pagi?",
     "hookMode": "empty-stomach-alert",
     "hookConditionLabel": "KONDISI AWAL: PERUT KOSONG (0% MAKANAN)",
     "hookSymptoms": [
       "😣 Perut perih & mual",
-      "🚽 Mulas mendadak ke toilet",
-      "💓 Jantung deg-degan & gelisah",
-      "🥱 Lemas luar biasa di siang hari"
+      "🚽 Mulas & kebelet BAB",
+      "💓 Jantung deg-degan parah",
+      "🥱 Lemas & ngantuk di siang hari"
     ],
     "hookItemEmoji": "☕",
-    "hookItemLabel": "KAFEIN MURNI",
+    "hookItemLabel": "KOPI HITAM PEKAT",
     "hookTargetCount": 1,
     "hookUnitLabel": "GELAS PERTAMA",
-    "imagePrompt": "3D medical anatomical X-ray scan of a human silhouette drinking glowing orange liquid, highlighting the stomach and esophagus, dark cinematic background, 9:16 vertical",
+    "imagePrompt": "3D medical anatomical X-ray scan of a human silhouette drinking glowing orange liquid, highlighting the stomach and esophagus, 9:16 vertical",
     "leftTitle": "Pemicu Awal",
     "rightTitle": "Reaksi Organ",
     "leftBadge": "PEMICU AWAL",
@@ -43,1494 +43,1516 @@ export const CURRENT_STORY: ButterflyStoryData = {
     "rightImage": "butterfly/media/medical_body_xray.jpg",
     "characterActionPng": "butterfly/characters/action_drinking_coffee.png",
     "targetOrganPng": "butterfly/organs/stomach.png",
-    "durationFrames": 214
+    "durationFrames": 196
   },
   "nodes": [
     {
       "step": 1,
       "timeOrYear": "DETIK KE-30 • LAMBUNG",
       "organTarget": "stomach",
-      "headline": "PERUT TERASA PERIH & PANAS",
-      "narration": "Apa yang sebenarnya terjadi di dalam sana? Tanpa ada makanan yang melindungi, asam kopi langsung menghantam dinding lambungmu. Ini memicu...",
-      "humanFeeling": "Sensasi hangat yang tidak nyaman dan perih di ulu hati",
-      "symptomEmoji": "😣",
+      "headline": "SERANGAN ASAM MENDADAK",
+      "narration": "Ternyata, memasukkan kafein ke perut yang benar-benar kosong itu seperti memicu reaksi berantai yang 'menyiksa' organ dalammu. Tanpa makanan, kafein...",
+      "humanFeeling": "Perut terasa perih, mual, dan ada sensasi panas di ulu hati",
+      "symptomEmoji": "🤢",
       "chaosLevel": 20,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray glowing stomach acid irritation",
-      "imagePrompt": "3D medical anatomical X-ray of a glowing stomach with intense orange acid splashing against the walls, cinematic lighting, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "PERUT MULAI PERIH",
-      "secondaryText": "Asam lambung naik drastis",
+      "searchQuery": "3D medical X-ray stomach acid splash",
+      "imagePrompt": "3D medical anatomical X-ray of glowing green gastric acid splashing against stomach walls, bioluminescent highlights, dark background, 9:16 vertical",
+      "primaryText": "ASAM LAMBUNG NAIK",
+      "secondaryText": "Iritasi Dinding Perut",
       "stampText": "FASE 1",
-      "caption": "Kopi memicu asam lambung saat perut belum siap menerimanya.",
+      "caption": "Asam lambung diproduksi berlebihan tanpa ada makanan untuk diproses.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "out",
-      "characterActionPng": "butterfly/characters/action_stomachache.png",
-      "startFrame": 214,
-      "durationFrames": 409
+      "characterActionPng": "butterfly/characters/action_chest_pain.png",
+      "startFrame": 196,
+      "durationFrames": 220
     },
     {
       "step": 2,
-      "timeOrYear": "MENIT KE-10 • KELENJAR ADRENAL",
-      "organTarget": "nerves",
-      "headline": "STRES PAGI YANG DIPAKSA",
-      "narration": "Kopi memaksa tubuhmu melepas hormon stres seperti kortisol dan adrenalin, padahal level alaminya sudah tinggi di pagi hari.",
-      "humanFeeling": "Rasa waspada yang berlebihan dan mulai merasa cemas",
-      "symptomEmoji": "😰",
-      "chaosLevel": 55,
-      "mediaType": "photo",
-      "searchQuery": "3D medical X-ray adrenal glands hormone release",
-      "imagePrompt": "3D medical anatomical X-ray focusing on the lower back glands glowing intensely red, nervous system pathways sparking, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "HORMON STRES NAIK",
-      "secondaryText": "Sistem saraf dipaksa siaga",
-      "stampText": "FASE 3",
-      "caption": "Tubuh dipaksa masuk ke mode 'lawan atau lari' secara prematur.",
-      "visualSource": "PEMINDAIAN 3D KONTINU",
-      "mediaUrl": "butterfly/media/medical_body_xray.jpg",
-      "zoomDirection": "out",
-      "characterActionPng": "butterfly/characters/action_drinking.png",
-      "startFrame": 623,
-      "durationFrames": 280
-    },
-    {
-      "step": 3,
-      "timeOrYear": "MENIT KE-15 • JANTUNG",
-      "organTarget": "heart",
-      "headline": "DADA TERASA BERDEBAR",
-      "narration": "Jantungmu mulai berpacu kencang. Otot jantung bekerja lebih keras karena stimulasi saraf yang terlalu kuat.",
-      "humanFeeling": "Dada terasa deg-degan kencang meski kamu hanya duduk diam",
-      "symptomEmoji": "💓",
-      "chaosLevel": 65,
-      "mediaType": "photo",
-      "searchQuery": "3D medical X-ray human heart beating fast",
-      "imagePrompt": "3D medical anatomical X-ray of a glowing human heart with motion blur, pulsing red energy, cinematic 9:16 vertical",
-      "directorType": "action-tracker",
-      "primaryText": "JANTUNG DEG-DEGAN",
-      "secondaryText": "Detak jantung meningkat",
-      "stampText": "FASE 3",
-      "caption": "Ritme jantung meningkat tanpa adanya aktivitas fisik.",
-      "visualSource": "PEMINDAIAN 3D KONTINU",
-      "mediaUrl": "butterfly/media/medical_body_xray.jpg",
-      "zoomDirection": "in",
-      "characterActionPng": "butterfly/characters/action_chest_pain.png",
-      "startFrame": 903,
-      "durationFrames": 184
-    },
-    {
-      "step": 4,
-      "timeOrYear": "MENIT KE-20 • OTOT & SARAF",
+      "timeOrYear": "MENIT KE-45 • OTAK",
       "organTarget": "brain",
-      "headline": "JARI-JARI MULAI GEMETAR",
-      "narration": "Sistem saraf pusatmu kelebihan beban. Sinyal ke ujung saraf tangan menjadi tidak stabil, memicu getaran halus.",
-      "humanFeeling": "Tangan sedikit gemetar (tremor) saat memegang HP atau pena",
-      "symptomEmoji": "🫨",
+      "headline": "FOKUS TAJAM TAPI CEMAS",
+      "narration": "Kafein memblokir reseptor adenosin sepenuhnya. Anda merasa terjaga, namun otak menjadi terlalu bising dengan pikiran yang melompat-lompat.",
+      "humanFeeling": "Mata melotot segar, tapi pikiran terasa gelisah dan sulit konsentrasi",
+      "symptomEmoji": "🧠",
       "chaosLevel": 70,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray human hand nerves glowing",
-      "imagePrompt": "3D medical anatomical X-ray of a human hand with glowing nervous pathways flickering like static, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "TANGAN GEMETAR",
-      "secondaryText": "Saraf terlalu aktif",
-      "stampText": "FASE 3",
-      "caption": "Sinyal saraf menjadi terlalu aktif dan tidak stabil.",
-      "visualSource": "PEMINDAIAN 3D KONTINU",
-      "mediaUrl": "butterfly/media/medical_body_xray.jpg",
-      "zoomDirection": "panRight",
-      "characterActionPng": "butterfly/characters/action_shaking_legs.png",
-      "startFrame": 1087,
-      "durationFrames": 452
-    },
-    {
-      "step": 5,
-      "timeOrYear": "MENIT KE-30 • OTAK",
-      "organTarget": "brain",
-      "headline": "MATA MELEK TAPI GELISAH",
-      "narration": "Kafein membajak reseptor di otakmu, menunda rasa kantuk secara paksa. Kamu merasa fokus, tapi pikiranmu terasa 'berisik'.",
-      "humanFeeling": "Mata terasa terbuka lebar tapi pikiran sulit tenang",
-      "symptomEmoji": "👁️",
-      "chaosLevel": 75,
-      "mediaType": "photo",
-      "searchQuery": "3D medical X-ray brain neurotransmitters",
-      "imagePrompt": "3D medical anatomical X-ray of a brain with glowing blue synapses and golden dopamine sparks, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "FOKUS BUATAN",
-      "secondaryText": "Menunda rasa kantuk",
-      "stampText": "FASE 4",
-      "caption": "Otakmu dipaksa terjaga meskipun sel butuh istirahat.",
+      "searchQuery": "3D medical X-ray brain synapse block",
+      "imagePrompt": "3D medical visualization of glowing molecules blocking violet brain receptors, electric sparks, 9:16 vertical",
+      "primaryText": "MANIPULASI OTAK",
+      "secondaryText": "Blokade Rasa Lelah",
+      "stampText": "FASE 7",
+      "caption": "Otak dipaksa bekerja tanpa menyadari bahwa tubuh sebenarnya lelah.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "out",
       "characterActionPng": "butterfly/characters/action_belly_tingle.png",
-      "startFrame": 1539,
-      "durationFrames": 230
+      "startFrame": 416,
+      "durationFrames": 342
     },
     {
-      "step": 6,
-      "timeOrYear": "JAM KE-1 • GINJAL",
+      "step": 3,
+      "timeOrYear": "JAM KE-2 • GINJAL",
       "organTarget": "kidney",
-      "headline": "BOLAK-BALIK BUANG AIR KECIL",
-      "narration": "Ginjalmu bekerja lembur menyaring cairan. Kopi memaksa tubuh membuang air lebih cepat dari biasanya.",
-      "humanFeeling": "Terus-menerus merasa ingin ke toilet untuk buang air kecil",
-      "symptomEmoji": "🚽",
-      "chaosLevel": 60,
-      "mediaType": "photo",
-      "searchQuery": "3D medical X-ray kidney filtration glowing",
-      "imagePrompt": "3D medical anatomical X-ray of kidneys glowing with fluid flow movement, dark background, 9:16 vertical",
-      "directorType": "action-tracker",
-      "primaryText": "EFEK DIURETIK",
-      "secondaryText": "Cairan tubuh terbuang cepat",
-      "stampText": "FASE 4",
-      "caption": "Kopi memicu ginjal bekerja lebih cepat dari normal.",
-      "visualSource": "PEMINDAIAN 3D KONTINU",
-      "mediaUrl": "butterfly/media/medical_body_xray.jpg",
-      "zoomDirection": "panRight",
-      "characterActionPng": "butterfly/characters/action_back_pain.png",
-      "startFrame": 1769,
-      "durationFrames": 435
-    },
-    {
-      "step": 7,
-      "timeOrYear": "JAM KE-5 • CRASH TOTAL",
-      "organTarget": "brain",
-      "headline": "BADAN LEMAS & NGANTUK BERAT",
-      "narration": "Efek kafein habis, dan rasa kantuk yang tadi ditahan kini menyerang sekaligus. Energimu anjlok drastis.",
-      "humanFeeling": "Rasa lelah luar biasa dan sulit untuk konsentrasi lagi",
-      "symptomEmoji": "🥱",
-      "chaosLevel": 85,
-      "mediaType": "photo",
-      "searchQuery": "3D medical X-ray brain shutting down energy",
-      "imagePrompt": "3D medical anatomical X-ray of a brain turning from bright gold to dim grey-blue, fading light, 9:16 vertical",
-      "directorType": "action-tracker",
-      "primaryText": "ENERGI ANJLOK",
-      "secondaryText": "Rasa kantuk datang sekaligus",
-      "stampText": "FASE 5",
-      "caption": "Tubuh menagih utang istirahat yang tadi sempat ditunda.",
-      "visualSource": "PEMINDAIAN 3D KONTINU",
-      "mediaUrl": "butterfly/media/medical_body_xray.jpg",
-      "zoomDirection": "out",
-      "characterActionPng": "butterfly/characters/action_sleepy.png",
-      "startFrame": 2204,
-      "durationFrames": 223
-    },
-    {
-      "step": 8,
-      "timeOrYear": "JAM KE-6 • SELURUH TUBUH",
-      "organTarget": "heart",
-      "headline": "TUBUH NAGIH NUTRISI",
-      "narration": "Setelah dipaksa bekerja keras tanpa bahan bakar, tubuhmu kini dalam kondisi dehidrasi dan butuh asupan nutrisi nyata.",
-      "humanFeeling": "Badan terasa lemas, haus, dan perut terasa kembung",
+      "headline": "GINJAL MEMBUANG CAIRAN TUBUH",
+      "narration": "Kopi bersifat diuretik. Ginjal dipaksa mengeluarkan natrium dan air lebih banyak, memicu dehidrasi seluler yang cepat.",
+      "humanFeeling": "Bolak-balik kencing dan warna urin cenderung bening",
       "symptomEmoji": "💧",
-      "chaosLevel": 40,
+      "chaosLevel": 75,
       "mediaType": "photo",
-      "searchQuery": "3D medical X-ray full body exhausted",
-      "imagePrompt": "3D medical anatomical X-ray of a full human body with dim glowing core, looking tired, cinematic, 9:16 vertical",
-      "directorType": "laboratory-discovery",
-      "primaryText": "BUTUH PEMULIHAN",
-      "secondaryText": "Mencari keseimbangan kembali",
-      "stampText": "KESIMPULAN",
-      "caption": "Minum air putih dan makan sebelum kopi adalah kunci kesehatan.",
+      "searchQuery": "3D medical X-ray kidney filtration liquid",
+      "imagePrompt": "3D medical render of glowing kidneys filtering yellow fluid rapidly, dark background, 9:16 vertical",
+      "primaryText": "EFEK DIURETIK",
+      "secondaryText": "Pelepasan Cairan",
+      "stampText": "FASE 9",
+      "caption": "Tubuh kehilangan cairan penting yang seharusnya menghidrasi sel.",
       "visualSource": "PEMINDAIAN 3D KONTINU",
       "mediaUrl": "butterfly/media/medical_body_xray.jpg",
       "zoomDirection": "in",
+      "characterActionPng": "butterfly/characters/action_back_pain.png",
+      "startFrame": 758,
+      "durationFrames": 296
+    },
+    {
+      "step": 4,
+      "timeOrYear": "JAM KE-3 • MULUT & TENGGOROKAN",
+      "organTarget": "lungs",
+      "headline": "KERING DAN DEHIDRASI",
+      "narration": "Kurangnya cairan mulai berdampak pada produksi air liur. Selaput lendir mengering, membuat sistem pertahanan awal melemah.",
+      "humanFeeling": "Mulut terasa kering (serak), haus yang sangat, dan bibir pecah",
+      "symptomEmoji": "🌵",
+      "chaosLevel": 80,
+      "mediaType": "photo",
+      "searchQuery": "3D medical X-ray throat dehydration",
+      "imagePrompt": "3D medical render of a human throat and mouth with glowing dry textures, orange heat map, 9:16 vertical",
+      "primaryText": "MULUT KERING",
+      "secondaryText": "Tanda Dehidrasi",
+      "stampText": "FASE 10",
+      "caption": "Tanda awal tubuh kekurangan cairan akibat efek samping kopi.",
+      "visualSource": "PEMINDAIAN 3D KONTINU",
+      "mediaUrl": "butterfly/media/medical_body_xray.jpg",
+      "zoomDirection": "out",
+      "characterActionPng": "butterfly/characters/action_drinking.png",
+      "startFrame": 1054,
+      "durationFrames": 268
+    },
+    {
+      "step": 5,
+      "timeOrYear": "JAM KE-4 • KERONGKONGAN",
+      "organTarget": "stomach",
+      "headline": "DADA TERASA TERBAKAR (GERD)",
+      "narration": "Katup antara kerongkongan dan lambung melemah akibat kafein, membiarkan asam lambung naik kembali ke atas (refluks).",
+      "humanFeeling": "Rasa terbakar di dada (heartburn) dan lidah terasa pahit/asam",
+      "symptomEmoji": "🔥",
+      "chaosLevel": 85,
+      "mediaType": "photo",
+      "searchQuery": "3D medical X-ray acid reflux esophagus",
+      "imagePrompt": "3D medical render of glowing green acid rising from stomach to esophagus, red inflammation, 9:16 vertical",
+      "primaryText": "REFLUKS ASAM",
+      "secondaryText": "Heartburn Menyiksa",
+      "stampText": "FASE 11",
+      "caption": "Asam lambung yang 'menganggur' mulai merusak saluran pernapasan.",
+      "visualSource": "PEMINDAIAN 3D KONTINU",
+      "mediaUrl": "butterfly/media/medical_body_xray.jpg",
+      "zoomDirection": "in",
+      "characterActionPng": "butterfly/characters/action_chest_pain.png",
+      "startFrame": 1322,
+      "durationFrames": 92
+    },
+    {
+      "step": 6,
+      "timeOrYear": "JAM KE-5 • SELURUH TUBUH",
+      "organTarget": "brain",
+      "headline": "KECELAKAAN ENERGI (THE CRASH)",
+      "narration": "Efek kafein menghilang, dan semua adenosin yang tertahan tadi menyerbu otak sekaligus. Tubuh kehabisan bahan bakar.",
+      "humanFeeling": "Badan terasa sangat lemas, mengantuk berat, dan kepala pusing",
+      "symptomEmoji": "📉",
+      "chaosLevel": 90,
+      "mediaType": "photo",
+      "searchQuery": "3D medical X-ray human body energy depletion",
+      "imagePrompt": "3D medical anatomical X-ray of a slumped human silhouette, glowing parts fading to dark grey, 9:16 vertical",
+      "primaryText": "CAFFEINE CRASH",
+      "secondaryText": "Energi Anjlok Total",
+      "stampText": "FASE 12",
+      "caption": "Tubuh menagih istirahat setelah dipaksa bekerja melampaui batas.",
+      "visualSource": "PEMINDAIAN 3D KONTINU",
+      "mediaUrl": "butterfly/media/medical_body_xray.jpg",
+      "zoomDirection": "panRight",
+      "characterActionPng": "butterfly/characters/action_headache.png",
+      "startFrame": 1414,
+      "durationFrames": 438
+    },
+    {
+      "step": 7,
+      "timeOrYear": "JAM KE-6 • OTAK",
+      "organTarget": "brain",
+      "headline": "SAKIT KEPALA & MOOD BURUK",
+      "narration": "Pelebaran pembuluh darah di otak setelah sebelumnya menyempit menyebabkan sakit kepala berdenyut dan iritabilitas.",
+      "humanFeeling": "Kepala pusing berdenyut, mudah marah, dan sulit diajak bicara",
+      "symptomEmoji": "🤯",
+      "chaosLevel": 95,
+      "mediaType": "photo",
+      "searchQuery": "3D medical X-ray brain inflammation headache",
+      "imagePrompt": "3D medical render of a human brain with glowing red areas on temples, neural distress, 9:16 vertical",
+      "primaryText": "MIGRAIN KAFEIN",
+      "secondaryText": "Mood Tidak Stabil",
+      "stampText": "FASE 13",
+      "caption": "Efek putus zat sementara yang membuat mental terasa sangat lelah.",
+      "visualSource": "PEMINDAIAN 3D KONTINU",
+      "mediaUrl": "butterfly/media/medical_body_xray.jpg",
+      "zoomDirection": "out",
+      "characterActionPng": "butterfly/characters/action_headache.png",
+      "startFrame": 1852,
+      "durationFrames": 256
+    },
+    {
+      "step": 8,
+      "timeOrYear": "JAM KE-8 • PENCERNAAN",
+      "organTarget": "intestine",
+      "headline": "KEMBUNG & BEGAH",
+      "narration": "Sisa-sisa kopi yang tidak tercerna dengan baik mulai berfermentasi dan menghasilkan gas di usus yang sedang stres.",
+      "humanFeeling": "Perut terasa kembung, begah, dan sering buang angin",
+      "symptomEmoji": "💨",
+      "chaosLevel": 100,
+      "mediaType": "photo",
+      "searchQuery": "3D medical X-ray intestinal gas bloating",
+      "imagePrompt": "3D medical render of glowing gas bubbles trapped in the intestinal tract, 9:16 vertical",
+      "primaryText": "INFLAMASI USUS",
+      "secondaryText": "Pemulihan Sistem",
+      "stampText": "FINAL",
+      "caption": "Tubuh memerlukan waktu berjam-jam untuk menetralkan dampak kopi pagi Anda.",
+      "visualSource": "PEMINDAIAN 3D KONTINU",
+      "mediaUrl": "butterfly/media/medical_body_xray.jpg",
+      "zoomDirection": "panRight",
       "characterActionPng": "butterfly/characters/action_stomachache.png",
-      "startFrame": 2427,
-      "durationFrames": 203
+      "startFrame": 2108,
+      "durationFrames": 198
     }
   ],
   "outro": {
-    "narration": "Jadi, jangan biarkan lambungmu 'disiksa' setiap pagi. Cobalah minum air putih atau makan sedikit biskuit sebelum menyentuh kopi.",
-    "question": "Pernahkah kamu merasa gemetar atau mulas setelah minum kopi saat perut kosong?",
-    "durationFrames": 291
+    "narration": "Minum kopi saat perut kosong adalah cara tercepat untuk merusak ritme tubuhmu. Selalu usahakan makan sedikit—bahkan hanya sepotong biskuit—sebelum menyentuh cangkir kopimu.",
+    "question": "Pernahkah kamu merasa gemetar atau mulas setelah minum kopi pagi? Tulis di kolom komentar!",
+    "durationFrames": 366
   },
   "wordTimestamps": [
     {
-      "word": "Pernahkah",
-      "startFrame": 1,
-      "endFrame": 22,
+      "word": "Apa",
+      "startFrame": 7,
+      "endFrame": 16,
       "pageIndex": 0
-    },
-    {
-      "word": "Anda",
-      "startFrame": 22,
-      "endFrame": 34,
-      "pageIndex": 0
-    },
-    {
-      "word": "membayangkan",
-      "startFrame": 34,
-      "endFrame": 55,
-      "pageIndex": 0
-    },
-    {
-      "word": "apa",
-      "startFrame": 55,
-      "endFrame": 77,
-      "pageIndex": 1
     },
     {
       "word": "yang",
-      "startFrame": 77,
-      "endFrame": 87,
-      "pageIndex": 1
+      "startFrame": 16,
+      "endFrame": 20,
+      "pageIndex": 0
     },
     {
-      "word": "kebenarnya",
-      "startFrame": 87,
-      "endFrame": 98,
-      "pageIndex": 1
+      "word": "sebenarnya",
+      "startFrame": 20,
+      "endFrame": 32,
+      "pageIndex": 0
     },
     {
       "word": "terjadi",
-      "startFrame": 98,
-      "endFrame": 110,
-      "pageIndex": 2
+      "startFrame": 32,
+      "endFrame": 44,
+      "pageIndex": 1
     },
     {
       "word": "pada",
-      "startFrame": 110,
-      "endFrame": 118,
-      "pageIndex": 2
+      "startFrame": 44,
+      "endFrame": 50,
+      "pageIndex": 1
     },
     {
       "word": "tubuh",
-      "startFrame": 118,
-      "endFrame": 130,
+      "startFrame": 50,
+      "endFrame": 58,
+      "pageIndex": 1
+    },
+    {
+      "word": "Anda",
+      "startFrame": 58,
+      "endFrame": 67,
       "pageIndex": 2
     },
     {
       "word": "jika",
-      "startFrame": 130,
-      "endFrame": 149,
-      "pageIndex": 3
+      "startFrame": 67,
+      "endFrame": 87,
+      "pageIndex": 2
     },
     {
       "word": "Anda",
-      "startFrame": 149,
-      "endFrame": 163,
-      "pageIndex": 3
+      "startFrame": 87,
+      "endFrame": 95,
+      "pageIndex": 2
     },
     {
       "word": "meminum",
-      "startFrame": 163,
-      "endFrame": 176,
+      "startFrame": 95,
+      "endFrame": 106,
       "pageIndex": 3
     },
     {
       "word": "kopi",
-      "startFrame": 176,
-      "endFrame": 188,
-      "pageIndex": 4
+      "startFrame": 106,
+      "endFrame": 116,
+      "pageIndex": 3
     },
     {
       "word": "saat",
-      "startFrame": 188,
-      "endFrame": 199,
-      "pageIndex": 4
+      "startFrame": 116,
+      "endFrame": 124,
+      "pageIndex": 3
     },
     {
       "word": "perut",
-      "startFrame": 199,
-      "endFrame": 214,
+      "startFrame": 124,
+      "endFrame": 133,
       "pageIndex": 4
     },
     {
-      "word": "masih",
-      "startFrame": 214,
-      "endFrame": 223,
-      "pageIndex": 5
+      "word": "benar-benar",
+      "startFrame": 133,
+      "endFrame": 148,
+      "pageIndex": 4
     },
     {
       "word": "kosong",
-      "startFrame": 223,
-      "endFrame": 235,
-      "pageIndex": 5
+      "startFrame": 148,
+      "endFrame": 158,
+      "pageIndex": 4
     },
     {
       "word": "setiap",
-      "startFrame": 235,
-      "endFrame": 244,
-      "pageIndex": 6
+      "startFrame": 158,
+      "endFrame": 168,
+      "pageIndex": 5
     },
     {
       "word": "pagi",
-      "startFrame": 244,
+      "startFrame": 168,
+      "endFrame": 179,
+      "pageIndex": 5
+    },
+    {
+      "word": "Ternyata",
+      "startFrame": 212,
+      "endFrame": 242,
+      "pageIndex": 6
+    },
+    {
+      "word": "memasukkan",
+      "startFrame": 242,
       "endFrame": 251,
       "pageIndex": 6
     },
     {
-      "word": "Mari",
-      "startFrame": 287,
-      "endFrame": 293,
-      "pageIndex": 7
-    },
-    {
-      "word": "kita",
-      "startFrame": 293,
-      "endFrame": 299,
-      "pageIndex": 7
-    },
-    {
-      "word": "lihat",
-      "startFrame": 299,
-      "endFrame": 302,
-      "pageIndex": 7
-    },
-    {
-      "word": "lebih",
-      "startFrame": 302,
-      "endFrame": 307,
-      "pageIndex": 8
-    },
-    {
-      "word": "dalam",
-      "startFrame": 307,
-      "endFrame": 328,
-      "pageIndex": 8
-    },
-    {
-      "word": "Tanpa",
-      "startFrame": 355,
-      "endFrame": 365,
-      "pageIndex": 9
-    },
-    {
-      "word": "adanya",
-      "startFrame": 365,
-      "endFrame": 375,
-      "pageIndex": 9
-    },
-    {
-      "word": "bantalan",
-      "startFrame": 375,
-      "endFrame": 387,
-      "pageIndex": 9
-    },
-    {
-      "word": "makanan",
-      "startFrame": 387,
-      "endFrame": 399,
-      "pageIndex": 10
-    },
-    {
-      "word": "yang",
-      "startFrame": 399,
-      "endFrame": 402,
-      "pageIndex": 10
-    },
-    {
-      "word": "melindungi",
-      "startFrame": 402,
-      "endFrame": 431,
-      "pageIndex": 10
-    },
-    {
-      "word": "asam",
-      "startFrame": 431,
-      "endFrame": 442,
-      "pageIndex": 11
-    },
-    {
-      "word": "dari",
-      "startFrame": 442,
-      "endFrame": 448,
-      "pageIndex": 11
-    },
-    {
-      "word": "kopi",
-      "startFrame": 448,
-      "endFrame": 462,
-      "pageIndex": 11
-    },
-    {
-      "word": "akan",
-      "startFrame": 462,
-      "endFrame": 473,
-      "pageIndex": 12
-    },
-    {
-      "word": "langsung",
-      "startFrame": 473,
-      "endFrame": 487,
-      "pageIndex": 12
-    },
-    {
-      "word": "bersentuhan",
-      "startFrame": 487,
-      "endFrame": 502,
-      "pageIndex": 12
-    },
-    {
-      "word": "dengan",
-      "startFrame": 502,
-      "endFrame": 513,
-      "pageIndex": 13
-    },
-    {
-      "word": "dinding",
-      "startFrame": 513,
-      "endFrame": 526,
-      "pageIndex": 13
-    },
-    {
-      "word": "lambung",
-      "startFrame": 526,
-      "endFrame": 534,
-      "pageIndex": 14
-    },
-    {
-      "word": "Anda",
-      "startFrame": 534,
-      "endFrame": 553,
-      "pageIndex": 14
-    },
-    {
-      "word": "Ini",
-      "startFrame": 565,
-      "endFrame": 571,
-      "pageIndex": 15
-    },
-    {
-      "word": "memicu",
-      "startFrame": 571,
-      "endFrame": 584,
-      "pageIndex": 15
-    },
-    {
-      "word": "reaksi",
-      "startFrame": 584,
-      "endFrame": 595,
-      "pageIndex": 16
-    },
-    {
-      "word": "berantai",
-      "startFrame": 595,
-      "endFrame": 607,
-      "pageIndex": 16
-    },
-    {
-      "word": "Kopi",
-      "startFrame": 639,
-      "endFrame": 647,
-      "pageIndex": 17
-    },
-    {
-      "word": "memaksa",
-      "startFrame": 647,
-      "endFrame": 665,
-      "pageIndex": 17
-    },
-    {
-      "word": "tubuh",
-      "startFrame": 665,
-      "endFrame": 671,
-      "pageIndex": 17
-    },
-    {
-      "word": "melepaskan",
-      "startFrame": 671,
-      "endFrame": 686,
-      "pageIndex": 18
-    },
-    {
-      "word": "hormon",
-      "startFrame": 686,
-      "endFrame": 696,
-      "pageIndex": 18
-    },
-    {
-      "word": "stres",
-      "startFrame": 696,
-      "endFrame": 724,
-      "pageIndex": 18
-    },
-    {
-      "word": "seperti",
-      "startFrame": 724,
-      "endFrame": 727,
-      "pageIndex": 19
-    },
-    {
-      "word": "kortisol",
-      "startFrame": 727,
-      "endFrame": 746,
-      "pageIndex": 19
-    },
-    {
-      "word": "dan",
-      "startFrame": 746,
-      "endFrame": 755,
-      "pageIndex": 20
-    },
-    {
-      "word": "adrenalin",
-      "startFrame": 755,
-      "endFrame": 775,
-      "pageIndex": 20
-    },
-    {
-      "word": "Padahal",
-      "startFrame": 800,
-      "endFrame": 818,
-      "pageIndex": 21
-    },
-    {
-      "word": "secara",
-      "startFrame": 818,
-      "endFrame": 827,
-      "pageIndex": 21
-    },
-    {
-      "word": "fisiologis",
-      "startFrame": 827,
-      "endFrame": 869,
-      "pageIndex": 21
-    },
-    {
-      "word": "level",
-      "startFrame": 869,
-      "endFrame": 871,
-      "pageIndex": 22
-    },
-    {
-      "word": "alami",
-      "startFrame": 871,
-      "endFrame": 881,
-      "pageIndex": 22
-    },
-    {
-      "word": "hormon",
-      "startFrame": 881,
-      "endFrame": 890,
-      "pageIndex": 22
-    },
-    {
-      "word": "ini",
-      "startFrame": 890,
-      "endFrame": 896,
-      "pageIndex": 23
-    },
-    {
-      "word": "sudah",
-      "startFrame": 896,
-      "endFrame": 903,
-      "pageIndex": 23
-    },
-    {
-      "word": "sangat",
-      "startFrame": 903,
-      "endFrame": 912,
-      "pageIndex": 24
-    },
-    {
-      "word": "tinggi",
-      "startFrame": 912,
-      "endFrame": 921,
-      "pageIndex": 24
-    },
-    {
-      "word": "di",
-      "startFrame": 921,
-      "endFrame": 925,
-      "pageIndex": 24
-    },
-    {
-      "word": "pagi",
-      "startFrame": 925,
-      "endFrame": 930,
-      "pageIndex": 25
-    },
-    {
-      "word": "hari",
-      "startFrame": 930,
-      "endFrame": 951,
-      "pageIndex": 25
-    },
-    {
-      "word": "Jantung",
-      "startFrame": 975,
-      "endFrame": 987,
-      "pageIndex": 26
-    },
-    {
-      "word": "Anda",
-      "startFrame": 987,
-      "endFrame": 995,
-      "pageIndex": 26
-    },
-    {
-      "word": "pun",
-      "startFrame": 995,
-      "endFrame": 999,
-      "pageIndex": 26
-    },
-    {
-      "word": "mulai",
-      "startFrame": 999,
-      "endFrame": 1006,
-      "pageIndex": 27
-    },
-    {
-      "word": "berpacu",
-      "startFrame": 1006,
-      "endFrame": 1018,
-      "pageIndex": 27
-    },
-    {
-      "word": "kencang",
-      "startFrame": 1018,
-      "endFrame": 1028,
-      "pageIndex": 27
-    },
-    {
-      "word": "Otot",
-      "startFrame": 1051,
-      "endFrame": 1055,
-      "pageIndex": 28
-    },
-    {
-      "word": "jantung",
-      "startFrame": 1055,
-      "endFrame": 1064,
-      "pageIndex": 28
-    },
-    {
-      "word": "dipaksa",
-      "startFrame": 1064,
-      "endFrame": 1078,
-      "pageIndex": 29
-    },
-    {
-      "word": "bekerja",
-      "startFrame": 1078,
-      "endFrame": 1087,
-      "pageIndex": 29
-    },
-    {
-      "word": "lebih",
-      "startFrame": 1087,
-      "endFrame": 1093,
-      "pageIndex": 30
-    },
-    {
-      "word": "keras",
-      "startFrame": 1093,
-      "endFrame": 1104,
-      "pageIndex": 30
-    },
-    {
-      "word": "akibat",
-      "startFrame": 1104,
-      "endFrame": 1125,
-      "pageIndex": 30
-    },
-    {
-      "word": "stimulasi",
-      "startFrame": 1125,
-      "endFrame": 1138,
-      "pageIndex": 31
-    },
-    {
-      "word": "syaraf",
-      "startFrame": 1138,
-      "endFrame": 1147,
-      "pageIndex": 31
-    },
-    {
-      "word": "yang",
-      "startFrame": 1147,
-      "endFrame": 1153,
-      "pageIndex": 31
-    },
-    {
-      "word": "terlalu",
-      "startFrame": 1153,
-      "endFrame": 1168,
-      "pageIndex": 32
-    },
-    {
-      "word": "intens",
-      "startFrame": 1168,
-      "endFrame": 1192,
-      "pageIndex": 32
-    },
-    {
-      "word": "Sistem",
-      "startFrame": 1211,
-      "endFrame": 1220,
-      "pageIndex": 33
-    },
-    {
-      "word": "syaraf",
-      "startFrame": 1220,
-      "endFrame": 1229,
-      "pageIndex": 33
-    },
-    {
-      "word": "pusat",
-      "startFrame": 1229,
-      "endFrame": 1238,
-      "pageIndex": 33
-    },
-    {
-      "word": "Anda",
-      "startFrame": 1238,
-      "endFrame": 1248,
-      "pageIndex": 34
-    },
-    {
-      "word": "kini",
-      "startFrame": 1248,
-      "endFrame": 1261,
-      "pageIndex": 34
-    },
-    {
-      "word": "mengalami",
-      "startFrame": 1261,
-      "endFrame": 1275,
-      "pageIndex": 34
-    },
-    {
-      "word": "beban",
-      "startFrame": 1275,
-      "endFrame": 1283,
-      "pageIndex": 35
-    },
-    {
-      "word": "berlebih",
-      "startFrame": 1283,
-      "endFrame": 1295,
-      "pageIndex": 35
-    },
-    {
-      "word": "Sinyal",
-      "startFrame": 1322,
-      "endFrame": 1330,
-      "pageIndex": 36
+      "word": "kafein",
+      "startFrame": 251,
+      "endFrame": 262,
+      "pageIndex": 6
     },
     {
       "word": "ke",
-      "startFrame": 1330,
-      "endFrame": 1334,
-      "pageIndex": 36
+      "startFrame": 262,
+      "endFrame": 266,
+      "pageIndex": 7
     },
     {
-      "word": "ujung",
-      "startFrame": 1334,
-      "endFrame": 1337,
-      "pageIndex": 36
+      "word": "dalam",
+      "startFrame": 266,
+      "endFrame": 271,
+      "pageIndex": 7
     },
     {
-      "word": "syaraf",
-      "startFrame": 1337,
-      "endFrame": 1347,
-      "pageIndex": 37
+      "word": "sistem",
+      "startFrame": 271,
+      "endFrame": 281,
+      "pageIndex": 7
     },
     {
-      "word": "tangan",
-      "startFrame": 1347,
-      "endFrame": 1355,
-      "pageIndex": 37
-    },
-    {
-      "word": "menjadi",
-      "startFrame": 1355,
-      "endFrame": 1364,
-      "pageIndex": 37
-    },
-    {
-      "word": "tidak",
-      "startFrame": 1364,
-      "endFrame": 1370,
-      "pageIndex": 38
-    },
-    {
-      "word": "stabil",
-      "startFrame": 1370,
-      "endFrame": 1396,
-      "pageIndex": 38
+      "word": "pencernaan",
+      "startFrame": 281,
+      "endFrame": 295,
+      "pageIndex": 8
     },
     {
       "word": "yang",
-      "startFrame": 1397,
-      "endFrame": 1400,
-      "pageIndex": 38
+      "startFrame": 295,
+      "endFrame": 298,
+      "pageIndex": 8
     },
     {
-      "word": "kemudian",
-      "startFrame": 1400,
-      "endFrame": 1414,
-      "pageIndex": 39
-    },
-    {
-      "word": "memicu",
-      "startFrame": 1414,
-      "endFrame": 1424,
-      "pageIndex": 39
-    },
-    {
-      "word": "tremor",
-      "startFrame": 1424,
-      "endFrame": 1441,
-      "pageIndex": 39
-    },
-    {
-      "word": "atau",
-      "startFrame": 1441,
-      "endFrame": 1457,
-      "pageIndex": 40
-    },
-    {
-      "word": "getaran",
-      "startFrame": 1457,
-      "endFrame": 1466,
-      "pageIndex": 40
-    },
-    {
-      "word": "halus",
-      "startFrame": 1466,
-      "endFrame": 1492,
-      "pageIndex": 40
-    },
-    {
-      "word": "Di",
-      "startFrame": 1505,
-      "endFrame": 1507,
-      "pageIndex": 41
-    },
-    {
-      "word": "dalam",
-      "startFrame": 1507,
-      "endFrame": 1514,
-      "pageIndex": 41
-    },
-    {
-      "word": "kepala",
-      "startFrame": 1514,
-      "endFrame": 1539,
-      "pageIndex": 41
-    },
-    {
-      "word": "kafein",
-      "startFrame": 1539,
-      "endFrame": 1552,
-      "pageIndex": 42
-    },
-    {
-      "word": "membajak",
-      "startFrame": 1552,
-      "endFrame": 1568,
-      "pageIndex": 42
-    },
-    {
-      "word": "reseptor",
-      "startFrame": 1568,
-      "endFrame": 1583,
-      "pageIndex": 42
-    },
-    {
-      "word": "di",
-      "startFrame": 1583,
-      "endFrame": 1588,
-      "pageIndex": 43
-    },
-    {
-      "word": "otak",
-      "startFrame": 1588,
-      "endFrame": 1594,
-      "pageIndex": 43
-    },
-    {
-      "word": "Anda",
-      "startFrame": 1594,
-      "endFrame": 1616,
-      "pageIndex": 43
-    },
-    {
-      "word": "menunda",
-      "startFrame": 1623,
-      "endFrame": 1634,
-      "pageIndex": 44
-    },
-    {
-      "word": "rasa",
-      "startFrame": 1634,
-      "endFrame": 1642,
-      "pageIndex": 44
-    },
-    {
-      "word": "kantuk",
-      "startFrame": 1642,
-      "endFrame": 1651,
-      "pageIndex": 44
-    },
-    {
-      "word": "secara",
-      "startFrame": 1651,
-      "endFrame": 1662,
-      "pageIndex": 45
-    },
-    {
-      "word": "paksa",
-      "startFrame": 1662,
-      "endFrame": 1673,
-      "pageIndex": 45
-    },
-    {
-      "word": "Anda",
-      "startFrame": 1696,
-      "endFrame": 1701,
-      "pageIndex": 46
-    },
-    {
-      "word": "mungkin",
-      "startFrame": 1701,
-      "endFrame": 1708,
-      "pageIndex": 46
-    },
-    {
-      "word": "merasa",
-      "startFrame": 1708,
-      "endFrame": 1716,
-      "pageIndex": 46
-    },
-    {
-      "word": "fokus",
-      "startFrame": 1716,
-      "endFrame": 1748,
-      "pageIndex": 47
-    },
-    {
-      "word": "namun",
-      "startFrame": 1748,
-      "endFrame": 1752,
-      "pageIndex": 47
-    },
-    {
-      "word": "sebenarnya",
-      "startFrame": 1752,
-      "endFrame": 1769,
-      "pageIndex": 47
-    },
-    {
-      "word": "pikiran",
-      "startFrame": 1769,
-      "endFrame": 1793,
-      "pageIndex": 48
-    },
-    {
-      "word": "Anda",
-      "startFrame": 1793,
-      "endFrame": 1799,
-      "pageIndex": 48
-    },
-    {
-      "word": "sedang",
-      "startFrame": 1799,
-      "endFrame": 1808,
-      "pageIndex": 48
-    },
-    {
-      "word": "dalam",
-      "startFrame": 1808,
-      "endFrame": 1815,
-      "pageIndex": 49
-    },
-    {
-      "word": "kondisi",
-      "startFrame": 1815,
-      "endFrame": 1828,
-      "pageIndex": 49
-    },
-    {
-      "word": "berisik",
-      "startFrame": 1828,
-      "endFrame": 1844,
-      "pageIndex": 49
-    },
-    {
-      "word": "Sementara",
-      "startFrame": 1873,
-      "endFrame": 1882,
-      "pageIndex": 50
+      "word": "kosong",
+      "startFrame": 298,
+      "endFrame": 325,
+      "pageIndex": 8
     },
     {
       "word": "itu",
-      "startFrame": 1882,
-      "endFrame": 1909,
-      "pageIndex": 50
+      "startFrame": 319,
+      "endFrame": 324,
+      "pageIndex": 9
     },
     {
-      "word": "ginjal",
-      "startFrame": 1909,
-      "endFrame": 1918,
-      "pageIndex": 50
+      "word": "seperti",
+      "startFrame": 324,
+      "endFrame": 335,
+      "pageIndex": 9
     },
     {
-      "word": "bekerja",
-      "startFrame": 1918,
-      "endFrame": 1930,
-      "pageIndex": 51
+      "word": "memicu",
+      "startFrame": 335,
+      "endFrame": 346,
+      "pageIndex": 9
     },
     {
-      "word": "lembur",
-      "startFrame": 1930,
-      "endFrame": 1937,
-      "pageIndex": 51
+      "word": "reaksi",
+      "startFrame": 346,
+      "endFrame": 356,
+      "pageIndex": 10
     },
     {
-      "word": "menyaring",
-      "startFrame": 1937,
-      "endFrame": 1952,
-      "pageIndex": 52
-    },
-    {
-      "word": "cairan",
-      "startFrame": 1952,
-      "endFrame": 1966,
-      "pageIndex": 52
-    },
-    {
-      "word": "Kopi",
-      "startFrame": 1993,
-      "endFrame": 1999,
-      "pageIndex": 53
-    },
-    {
-      "word": "bersifat",
-      "startFrame": 1999,
-      "endFrame": 2011,
-      "pageIndex": 53
-    },
-    {
-      "word": "diuretik",
-      "startFrame": 2011,
-      "endFrame": 2027,
-      "pageIndex": 53
+      "word": "berantai",
+      "startFrame": 356,
+      "endFrame": 373,
+      "pageIndex": 10
     },
     {
       "word": "yang",
-      "startFrame": 2027,
-      "endFrame": 2041,
-      "pageIndex": 54
+      "startFrame": 373,
+      "endFrame": 378,
+      "pageIndex": 10
     },
     {
-      "word": "memaksa",
-      "startFrame": 2041,
-      "endFrame": 2055,
-      "pageIndex": 54
+      "word": "cukup",
+      "startFrame": 378,
+      "endFrame": 385,
+      "pageIndex": 11
     },
     {
-      "word": "kandung",
-      "startFrame": 2055,
-      "endFrame": 2063,
-      "pageIndex": 54
+      "word": "berat",
+      "startFrame": 385,
+      "endFrame": 395,
+      "pageIndex": 11
     },
     {
-      "word": "kemih",
-      "startFrame": 2063,
-      "endFrame": 2073,
-      "pageIndex": 55
+      "word": "bagi",
+      "startFrame": 395,
+      "endFrame": 403,
+      "pageIndex": 11
     },
     {
-      "word": "membuang",
-      "startFrame": 2073,
-      "endFrame": 2081,
-      "pageIndex": 55
-    },
-    {
-      "word": "air",
-      "startFrame": 2081,
-      "endFrame": 2089,
-      "pageIndex": 55
-    },
-    {
-      "word": "lebih",
-      "startFrame": 2089,
-      "endFrame": 2098,
-      "pageIndex": 56
-    },
-    {
-      "word": "cepat",
-      "startFrame": 2098,
-      "endFrame": 2110,
-      "pageIndex": 56
-    },
-    {
-      "word": "dari",
-      "startFrame": 2110,
-      "endFrame": 2116,
-      "pageIndex": 57
-    },
-    {
-      "word": "biasanya",
-      "startFrame": 2116,
-      "endFrame": 2129,
-      "pageIndex": 57
-    },
-    {
-      "word": "Namun",
-      "startFrame": 2161,
-      "endFrame": 2165,
-      "pageIndex": 58
-    },
-    {
-      "word": "ingat",
-      "startFrame": 2165,
-      "endFrame": 2191,
-      "pageIndex": 58
-    },
-    {
-      "word": "saat",
-      "startFrame": 2191,
-      "endFrame": 2204,
-      "pageIndex": 58
-    },
-    {
-      "word": "efek",
-      "startFrame": 2204,
-      "endFrame": 2214,
-      "pageIndex": 59
-    },
-    {
-      "word": "kafein",
-      "startFrame": 2214,
-      "endFrame": 2224,
-      "pageIndex": 59
-    },
-    {
-      "word": "habis",
-      "startFrame": 2224,
-      "endFrame": 2247,
-      "pageIndex": 59
-    },
-    {
-      "word": "rasa",
-      "startFrame": 2247,
-      "endFrame": 2251,
-      "pageIndex": 60
-    },
-    {
-      "word": "kantuk",
-      "startFrame": 2251,
-      "endFrame": 2260,
-      "pageIndex": 60
-    },
-    {
-      "word": "yang",
-      "startFrame": 2260,
-      "endFrame": 2264,
-      "pageIndex": 60
-    },
-    {
-      "word": "tadi",
-      "startFrame": 2264,
-      "endFrame": 2271,
-      "pageIndex": 61
-    },
-    {
-      "word": "ditahan",
-      "startFrame": 2271,
-      "endFrame": 2282,
-      "pageIndex": 61
-    },
-    {
-      "word": "akan",
-      "startFrame": 2282,
-      "endFrame": 2291,
-      "pageIndex": 61
-    },
-    {
-      "word": "menyerang",
-      "startFrame": 2291,
-      "endFrame": 2308,
-      "pageIndex": 62
-    },
-    {
-      "word": "sekaligus",
-      "startFrame": 2308,
-      "endFrame": 2323,
-      "pageIndex": 62
-    },
-    {
-      "word": "Energi",
-      "startFrame": 2347,
-      "endFrame": 2354,
-      "pageIndex": 63
-    },
-    {
-      "word": "Anda",
-      "startFrame": 2354,
-      "endFrame": 2362,
-      "pageIndex": 63
-    },
-    {
-      "word": "akan",
-      "startFrame": 2362,
-      "endFrame": 2371,
-      "pageIndex": 63
-    },
-    {
-      "word": "anjlok",
-      "startFrame": 2371,
-      "endFrame": 2386,
-      "pageIndex": 64
-    },
-    {
-      "word": "drastis",
-      "startFrame": 2386,
-      "endFrame": 2420,
-      "pageIndex": 64
-    },
-    {
-      "word": "Setelah",
-      "startFrame": 2434,
-      "endFrame": 2441,
-      "pageIndex": 65
-    },
-    {
-      "word": "dipaksa",
-      "startFrame": 2441,
-      "endFrame": 2451,
-      "pageIndex": 65
-    },
-    {
-      "word": "bekerja",
-      "startFrame": 2451,
-      "endFrame": 2461,
-      "pageIndex": 65
-    },
-    {
-      "word": "keras",
-      "startFrame": 2461,
-      "endFrame": 2468,
-      "pageIndex": 66
-    },
-    {
-      "word": "tanpa",
-      "startFrame": 2468,
-      "endFrame": 2475,
-      "pageIndex": 66
-    },
-    {
-      "word": "bahan",
-      "startFrame": 2475,
-      "endFrame": 2482,
-      "pageIndex": 66
-    },
-    {
-      "word": "bakar",
-      "startFrame": 2482,
-      "endFrame": 2512,
-      "pageIndex": 67
-    },
-    {
-      "word": "tubuh",
-      "startFrame": 2512,
-      "endFrame": 2518,
-      "pageIndex": 67
-    },
-    {
-      "word": "kini",
-      "startFrame": 2518,
-      "endFrame": 2523,
-      "pageIndex": 67
+      "word": "organ",
+      "startFrame": 403,
+      "endFrame": 409,
+      "pageIndex": 12
     },
     {
       "word": "dalam",
-      "startFrame": 2523,
-      "endFrame": 2529,
-      "pageIndex": 68
+      "startFrame": 409,
+      "endFrame": 416,
+      "pageIndex": 12
     },
     {
-      "word": "kondisi",
-      "startFrame": 2529,
-      "endFrame": 2540,
-      "pageIndex": 68
+      "word": "Anda",
+      "startFrame": 416,
+      "endFrame": 426,
+      "pageIndex": 13
     },
     {
-      "word": "dehidrasi",
-      "startFrame": 2540,
-      "endFrame": 2558,
-      "pageIndex": 68
+      "word": "Tanpa",
+      "startFrame": 454,
+      "endFrame": 460,
+      "pageIndex": 14
+    },
+    {
+      "word": "adanya",
+      "startFrame": 460,
+      "endFrame": 469,
+      "pageIndex": 14
+    },
+    {
+      "word": "makanan",
+      "startFrame": 469,
+      "endFrame": 494,
+      "pageIndex": 14
+    },
+    {
+      "word": "kafein",
+      "startFrame": 494,
+      "endFrame": 506,
+      "pageIndex": 15
+    },
+    {
+      "word": "akan",
+      "startFrame": 506,
+      "endFrame": 514,
+      "pageIndex": 15
+    },
+    {
+      "word": "memblokir",
+      "startFrame": 514,
+      "endFrame": 528,
+      "pageIndex": 15
+    },
+    {
+      "word": "reseptor",
+      "startFrame": 528,
+      "endFrame": 542,
+      "pageIndex": 16
+    },
+    {
+      "word": "adenosin",
+      "startFrame": 542,
+      "endFrame": 555,
+      "pageIndex": 16
+    },
+    {
+      "word": "secara",
+      "startFrame": 555,
+      "endFrame": 563,
+      "pageIndex": 17
+    },
+    {
+      "word": "total",
+      "startFrame": 563,
+      "endFrame": 589,
+      "pageIndex": 17
+    },
+    {
+      "word": "Anda",
+      "startFrame": 598,
+      "endFrame": 605,
+      "pageIndex": 18
+    },
+    {
+      "word": "memang",
+      "startFrame": 605,
+      "endFrame": 613,
+      "pageIndex": 18
+    },
+    {
+      "word": "merasa",
+      "startFrame": 613,
+      "endFrame": 620,
+      "pageIndex": 18
+    },
+    {
+      "word": "terjaga",
+      "startFrame": 620,
+      "endFrame": 651,
+      "pageIndex": 19
+    },
+    {
+      "word": "namun",
+      "startFrame": 651,
+      "endFrame": 659,
+      "pageIndex": 19
+    },
+    {
+      "word": "otak",
+      "startFrame": 659,
+      "endFrame": 671,
+      "pageIndex": 19
+    },
+    {
+      "word": "menjadi",
+      "startFrame": 671,
+      "endFrame": 679,
+      "pageIndex": 20
+    },
+    {
+      "word": "terlalu",
+      "startFrame": 679,
+      "endFrame": 688,
+      "pageIndex": 20
+    },
+    {
+      "word": "bising",
+      "startFrame": 688,
+      "endFrame": 697,
+      "pageIndex": 20
+    },
+    {
+      "word": "dengan",
+      "startFrame": 697,
+      "endFrame": 706,
+      "pageIndex": 21
+    },
+    {
+      "word": "pikiran",
+      "startFrame": 706,
+      "endFrame": 719,
+      "pageIndex": 21
+    },
+    {
+      "word": "yang",
+      "startFrame": 719,
+      "endFrame": 724,
+      "pageIndex": 21
+    },
+    {
+      "word": "melompat-lompat",
+      "startFrame": 724,
+      "endFrame": 744,
+      "pageIndex": 22
+    },
+    {
+      "word": "tanpa",
+      "startFrame": 744,
+      "endFrame": 751,
+      "pageIndex": 22
+    },
+    {
+      "word": "arah",
+      "startFrame": 751,
+      "endFrame": 761,
+      "pageIndex": 22
+    },
+    {
+      "word": "Kopi",
+      "startFrame": 754,
+      "endFrame": 799,
+      "pageIndex": 23
+    },
+    {
+      "word": "bersifat",
+      "startFrame": 799,
+      "endFrame": 812,
+      "pageIndex": 23
+    },
+    {
+      "word": "diuretik",
+      "startFrame": 812,
+      "endFrame": 829,
+      "pageIndex": 23
+    },
+    {
+      "word": "ginjal",
+      "startFrame": 842,
+      "endFrame": 853,
+      "pageIndex": 24
+    },
+    {
+      "word": "dipaksa",
+      "startFrame": 853,
+      "endFrame": 872,
+      "pageIndex": 24
+    },
+    {
+      "word": "untuk",
+      "startFrame": 872,
+      "endFrame": 877,
+      "pageIndex": 24
+    },
+    {
+      "word": "mengeluarkan",
+      "startFrame": 877,
+      "endFrame": 892,
+      "pageIndex": 25
+    },
+    {
+      "word": "natrium",
+      "startFrame": 892,
+      "endFrame": 905,
+      "pageIndex": 25
     },
     {
       "word": "dan",
-      "startFrame": 2558,
-      "endFrame": 2572,
-      "pageIndex": 69
-    },
-    {
-      "word": "sangat",
-      "startFrame": 2572,
-      "endFrame": 2581,
-      "pageIndex": 69
-    },
-    {
-      "word": "membutuhkan",
-      "startFrame": 2581,
-      "endFrame": 2597,
-      "pageIndex": 69
-    },
-    {
-      "word": "nutrisi",
-      "startFrame": 2597,
-      "endFrame": 2609,
-      "pageIndex": 70
-    },
-    {
-      "word": "nyata",
-      "startFrame": 2609,
-      "endFrame": 2617,
-      "pageIndex": 70
-    },
-    {
-      "word": "Jadi",
-      "startFrame": 2643,
-      "endFrame": 2668,
-      "pageIndex": 71
-    },
-    {
-      "word": "saran",
-      "startFrame": 2668,
-      "endFrame": 2671,
-      "pageIndex": 71
-    },
-    {
-      "word": "saya",
-      "startFrame": 2671,
-      "endFrame": 2696,
-      "pageIndex": 71
-    },
-    {
-      "word": "jangan",
-      "startFrame": 2696,
-      "endFrame": 2699,
-      "pageIndex": 72
-    },
-    {
-      "word": "biarkan",
-      "startFrame": 2699,
-      "endFrame": 2710,
-      "pageIndex": 72
-    },
-    {
-      "word": "lambung",
-      "startFrame": 2710,
-      "endFrame": 2717,
-      "pageIndex": 72
-    },
-    {
-      "word": "Anda",
-      "startFrame": 2717,
-      "endFrame": 2722,
-      "pageIndex": 73
-    },
-    {
-      "word": "tersiksa",
-      "startFrame": 2722,
-      "endFrame": 2737,
-      "pageIndex": 73
-    },
-    {
-      "word": "setiap",
-      "startFrame": 2737,
-      "endFrame": 2744,
-      "pageIndex": 74
-    },
-    {
-      "word": "pagi",
-      "startFrame": 2744,
-      "endFrame": 2753,
-      "pageIndex": 74
-    },
-    {
-      "word": "Cobalah",
-      "startFrame": 2773,
-      "endFrame": 2783,
-      "pageIndex": 75
-    },
-    {
-      "word": "minum",
-      "startFrame": 2783,
-      "endFrame": 2791,
-      "pageIndex": 75
-    },
-    {
-      "word": "segelas",
-      "startFrame": 2791,
-      "endFrame": 2801,
-      "pageIndex": 75
+      "startFrame": 905,
+      "endFrame": 911,
+      "pageIndex": 25
     },
     {
       "word": "air",
-      "startFrame": 2801,
-      "endFrame": 2806,
-      "pageIndex": 76
+      "startFrame": 911,
+      "endFrame": 919,
+      "pageIndex": 26
     },
     {
-      "word": "putih",
-      "startFrame": 2806,
-      "endFrame": 2821,
-      "pageIndex": 76
+      "word": "dalam",
+      "startFrame": 919,
+      "endFrame": 927,
+      "pageIndex": 26
+    },
+    {
+      "word": "jumlah",
+      "startFrame": 927,
+      "endFrame": 937,
+      "pageIndex": 26
+    },
+    {
+      "word": "yang",
+      "startFrame": 937,
+      "endFrame": 943,
+      "pageIndex": 27
+    },
+    {
+      "word": "lebih",
+      "startFrame": 943,
+      "endFrame": 947,
+      "pageIndex": 27
+    },
+    {
+      "word": "banyak",
+      "startFrame": 947,
+      "endFrame": 949,
+      "pageIndex": 27
+    },
+    {
+      "word": "sehingga",
+      "startFrame": 970,
+      "endFrame": 988,
+      "pageIndex": 28
+    },
+    {
+      "word": "memicu",
+      "startFrame": 988,
+      "endFrame": 1000,
+      "pageIndex": 28
+    },
+    {
+      "word": "dehidrasi",
+      "startFrame": 1000,
+      "endFrame": 1015,
+      "pageIndex": 28
+    },
+    {
+      "word": "seluler",
+      "startFrame": 1015,
+      "endFrame": 1026,
+      "pageIndex": 29
+    },
+    {
+      "word": "yang",
+      "startFrame": 1026,
+      "endFrame": 1031,
+      "pageIndex": 29
+    },
+    {
+      "word": "sangat",
+      "startFrame": 1031,
+      "endFrame": 1039,
+      "pageIndex": 30
+    },
+    {
+      "word": "cepat",
+      "startFrame": 1039,
+      "endFrame": 1039,
+      "pageIndex": 30
+    },
+    {
+      "word": "Kurangnya",
+      "startFrame": 1069,
+      "endFrame": 1082,
+      "pageIndex": 31
+    },
+    {
+      "word": "cairan",
+      "startFrame": 1082,
+      "endFrame": 1093,
+      "pageIndex": 31
+    },
+    {
+      "word": "ini",
+      "startFrame": 1093,
+      "endFrame": 1102,
+      "pageIndex": 31
+    },
+    {
+      "word": "mulai",
+      "startFrame": 1102,
+      "endFrame": 1111,
+      "pageIndex": 32
+    },
+    {
+      "word": "berdampak",
+      "startFrame": 1111,
+      "endFrame": 1126,
+      "pageIndex": 32
+    },
+    {
+      "word": "pada",
+      "startFrame": 1126,
+      "endFrame": 1132,
+      "pageIndex": 32
+    },
+    {
+      "word": "produksi",
+      "startFrame": 1132,
+      "endFrame": 1145,
+      "pageIndex": 33
+    },
+    {
+      "word": "air",
+      "startFrame": 1145,
+      "endFrame": 1151,
+      "pageIndex": 33
+    },
+    {
+      "word": "liur",
+      "startFrame": 1151,
+      "endFrame": 1159,
+      "pageIndex": 33
+    },
+    {
+      "word": "Selaput",
+      "startFrame": 1174,
+      "endFrame": 1186,
+      "pageIndex": 34
+    },
+    {
+      "word": "lendir",
+      "startFrame": 1186,
+      "endFrame": 1195,
+      "pageIndex": 34
+    },
+    {
+      "word": "pun",
+      "startFrame": 1195,
+      "endFrame": 1202,
+      "pageIndex": 34
+    },
+    {
+      "word": "mengering",
+      "startFrame": 1202,
+      "endFrame": 1219,
+      "pageIndex": 35
+    },
+    {
+      "word": "membuat",
+      "startFrame": 1225,
+      "endFrame": 1243,
+      "pageIndex": 35
+    },
+    {
+      "word": "sistem",
+      "startFrame": 1243,
+      "endFrame": 1256,
+      "pageIndex": 35
+    },
+    {
+      "word": "pertahanan",
+      "startFrame": 1256,
+      "endFrame": 1271,
+      "pageIndex": 36
+    },
+    {
+      "word": "awal",
+      "startFrame": 1271,
+      "endFrame": 1277,
+      "pageIndex": 36
+    },
+    {
+      "word": "tubuh",
+      "startFrame": 1277,
+      "endFrame": 1283,
+      "pageIndex": 36
+    },
+    {
+      "word": "Anda",
+      "startFrame": 1283,
+      "endFrame": 1293,
+      "pageIndex": 37
+    },
+    {
+      "word": "perlahan",
+      "startFrame": 1293,
+      "endFrame": 1309,
+      "pageIndex": 37
+    },
+    {
+      "word": "melemah",
+      "startFrame": 1309,
+      "endFrame": 1309,
+      "pageIndex": 37
+    },
+    {
+      "word": "Katup",
+      "startFrame": 1334,
+      "endFrame": 1346,
+      "pageIndex": 38
+    },
+    {
+      "word": "antara",
+      "startFrame": 1346,
+      "endFrame": 1356,
+      "pageIndex": 38
+    },
+    {
+      "word": "kerongkongan",
+      "startFrame": 1356,
+      "endFrame": 1369,
+      "pageIndex": 38
+    },
+    {
+      "word": "dan",
+      "startFrame": 1369,
+      "endFrame": 1374,
+      "pageIndex": 39
+    },
+    {
+      "word": "lambung",
+      "startFrame": 1374,
+      "endFrame": 1381,
+      "pageIndex": 39
+    },
+    {
+      "word": "juga",
+      "startFrame": 1381,
+      "endFrame": 1388,
+      "pageIndex": 39
+    },
+    {
+      "word": "melemah",
+      "startFrame": 1388,
+      "endFrame": 1400,
+      "pageIndex": 40
+    },
+    {
+      "word": "akibat",
+      "startFrame": 1400,
+      "endFrame": 1414,
+      "pageIndex": 40
+    },
+    {
+      "word": "efek",
+      "startFrame": 1414,
+      "endFrame": 1420,
+      "pageIndex": 41
+    },
+    {
+      "word": "kafein",
+      "startFrame": 1420,
+      "endFrame": 1429,
+      "pageIndex": 41
+    },
+    {
+      "word": "membiarkan",
+      "startFrame": 1441,
+      "endFrame": 1460,
+      "pageIndex": 42
+    },
+    {
+      "word": "asam",
+      "startFrame": 1460,
+      "endFrame": 1468,
+      "pageIndex": 42
+    },
+    {
+      "word": "lambung",
+      "startFrame": 1468,
+      "endFrame": 1477,
+      "pageIndex": 42
+    },
+    {
+      "word": "naik",
+      "startFrame": 1477,
+      "endFrame": 1483,
+      "pageIndex": 43
+    },
+    {
+      "word": "kembali",
+      "startFrame": 1483,
+      "endFrame": 1493,
+      "pageIndex": 43
+    },
+    {
+      "word": "ke",
+      "startFrame": 1493,
+      "endFrame": 1499,
+      "pageIndex": 43
+    },
+    {
+      "word": "atas",
+      "startFrame": 1499,
+      "endFrame": 1517,
+      "pageIndex": 44
     },
     {
       "word": "atau",
-      "startFrame": 2821,
-      "endFrame": 2831,
-      "pageIndex": 76
+      "startFrame": 1508,
+      "endFrame": 1527,
+      "pageIndex": 44
     },
     {
-      "word": "makan",
-      "startFrame": 2831,
-      "endFrame": 2840,
-      "pageIndex": 77
+      "word": "yang",
+      "startFrame": 1527,
+      "endFrame": 1532,
+      "pageIndex": 44
     },
     {
-      "word": "sedikit",
-      "startFrame": 2840,
-      "endFrame": 2848,
-      "pageIndex": 77
+      "word": "kita",
+      "startFrame": 1532,
+      "endFrame": 1541,
+      "pageIndex": 45
     },
     {
-      "word": "biskuit",
-      "startFrame": 2848,
-      "endFrame": 2861,
-      "pageIndex": 77
+      "word": "kenal",
+      "startFrame": 1541,
+      "endFrame": 1547,
+      "pageIndex": 45
     },
     {
-      "word": "sebelum",
-      "startFrame": 2861,
-      "endFrame": 2880,
-      "pageIndex": 78
+      "word": "sebagai",
+      "startFrame": 1547,
+      "endFrame": 1556,
+      "pageIndex": 46
+    },
+    {
+      "word": "reflux",
+      "startFrame": 1556,
+      "endFrame": 1576,
+      "pageIndex": 46
+    },
+    {
+      "word": "Saat",
+      "startFrame": 1564,
+      "endFrame": 1607,
+      "pageIndex": 47
+    },
+    {
+      "word": "efek",
+      "startFrame": 1607,
+      "endFrame": 1614,
+      "pageIndex": 47
+    },
+    {
+      "word": "kafein",
+      "startFrame": 1614,
+      "endFrame": 1622,
+      "pageIndex": 47
+    },
+    {
+      "word": "menghilang",
+      "startFrame": 1622,
+      "endFrame": 1652,
+      "pageIndex": 48
+    },
+    {
+      "word": "semua",
+      "startFrame": 1652,
+      "endFrame": 1655,
+      "pageIndex": 48
+    },
+    {
+      "word": "adenosin",
+      "startFrame": 1655,
+      "endFrame": 1670,
+      "pageIndex": 48
+    },
+    {
+      "word": "yang",
+      "startFrame": 1670,
+      "endFrame": 1674,
+      "pageIndex": 49
+    },
+    {
+      "word": "tertahan",
+      "startFrame": 1674,
+      "endFrame": 1684,
+      "pageIndex": 49
+    },
+    {
+      "word": "tadi",
+      "startFrame": 1684,
+      "endFrame": 1691,
+      "pageIndex": 49
+    },
+    {
+      "word": "akan",
+      "startFrame": 1691,
+      "endFrame": 1699,
+      "pageIndex": 50
+    },
+    {
+      "word": "menyerbu",
+      "startFrame": 1699,
+      "endFrame": 1710,
+      "pageIndex": 50
+    },
+    {
+      "word": "otak",
+      "startFrame": 1710,
+      "endFrame": 1721,
+      "pageIndex": 50
+    },
+    {
+      "word": "secara",
+      "startFrame": 1721,
+      "endFrame": 1730,
+      "pageIndex": 51
+    },
+    {
+      "word": "sekaligus",
+      "startFrame": 1730,
+      "endFrame": 1759,
+      "pageIndex": 51
+    },
+    {
+      "word": "Tubuh",
+      "startFrame": 1765,
+      "endFrame": 1775,
+      "pageIndex": 52
     },
     {
       "word": "Anda",
-      "startFrame": 2880,
-      "endFrame": 2887,
-      "pageIndex": 78
+      "startFrame": 1775,
+      "endFrame": 1785,
+      "pageIndex": 52
     },
     {
-      "word": "menyentuh",
-      "startFrame": 2887,
-      "endFrame": 2899,
-      "pageIndex": 78
+      "word": "tiba-tiba",
+      "startFrame": 1785,
+      "endFrame": 1804,
+      "pageIndex": 52
+    },
+    {
+      "word": "kehabisan",
+      "startFrame": 1804,
+      "endFrame": 1817,
+      "pageIndex": 53
+    },
+    {
+      "word": "bahan",
+      "startFrame": 1817,
+      "endFrame": 1824,
+      "pageIndex": 53
+    },
+    {
+      "word": "bakar",
+      "startFrame": 1824,
+      "endFrame": 1848,
+      "pageIndex": 53
+    },
+    {
+      "word": "Pelebaran",
+      "startFrame": 1856,
+      "endFrame": 1872,
+      "pageIndex": 54
+    },
+    {
+      "word": "pembuluh",
+      "startFrame": 1872,
+      "endFrame": 1880,
+      "pageIndex": 54
+    },
+    {
+      "word": "darah",
+      "startFrame": 1880,
+      "endFrame": 1885,
+      "pageIndex": 54
+    },
+    {
+      "word": "di",
+      "startFrame": 1885,
+      "endFrame": 1889,
+      "pageIndex": 55
+    },
+    {
+      "word": "otak",
+      "startFrame": 1889,
+      "endFrame": 1902,
+      "pageIndex": 55
+    },
+    {
+      "word": "setelah",
+      "startFrame": 1902,
+      "endFrame": 1915,
+      "pageIndex": 55
+    },
+    {
+      "word": "sebelumnya",
+      "startFrame": 1915,
+      "endFrame": 1927,
+      "pageIndex": 56
+    },
+    {
+      "word": "menyempit",
+      "startFrame": 1927,
+      "endFrame": 1939,
+      "pageIndex": 56
+    },
+    {
+      "word": "menyebabkan",
+      "startFrame": 1948,
+      "endFrame": 1963,
+      "pageIndex": 57
+    },
+    {
+      "word": "sakit",
+      "startFrame": 1963,
+      "endFrame": 1970,
+      "pageIndex": 57
+    },
+    {
+      "word": "kepala",
+      "startFrame": 1970,
+      "endFrame": 1979,
+      "pageIndex": 57
+    },
+    {
+      "word": "yang",
+      "startFrame": 1979,
+      "endFrame": 1985,
+      "pageIndex": 58
+    },
+    {
+      "word": "berdenyut",
+      "startFrame": 1985,
+      "endFrame": 1999,
+      "pageIndex": 58
+    },
+    {
+      "word": "dan",
+      "startFrame": 1999,
+      "endFrame": 2008,
+      "pageIndex": 58
+    },
+    {
+      "word": "rasa",
+      "startFrame": 2008,
+      "endFrame": 2017,
+      "pageIndex": 59
+    },
+    {
+      "word": "tidak",
+      "startFrame": 2017,
+      "endFrame": 2024,
+      "pageIndex": 59
+    },
+    {
+      "word": "nyaman",
+      "startFrame": 2024,
+      "endFrame": 2036,
+      "pageIndex": 59
+    },
+    {
+      "word": "atau",
+      "startFrame": 2036,
+      "endFrame": 2047,
+      "pageIndex": 60
+    },
+    {
+      "word": "iritabilitas",
+      "startFrame": 2047,
+      "endFrame": 2077,
+      "pageIndex": 60
+    },
+    {
+      "word": "Bahkan",
+      "startFrame": 2093,
+      "endFrame": 2108,
+      "pageIndex": 61
+    },
+    {
+      "word": "sisa-sisa",
+      "startFrame": 2108,
+      "endFrame": 2129,
+      "pageIndex": 62
     },
     {
       "word": "kopi",
-      "startFrame": 2899,
-      "endFrame": 2906,
-      "pageIndex": 79
+      "startFrame": 2129,
+      "endFrame": 2137,
+      "pageIndex": 62
+    },
+    {
+      "word": "yang",
+      "startFrame": 2137,
+      "endFrame": 2141,
+      "pageIndex": 62
+    },
+    {
+      "word": "tidak",
+      "startFrame": 2141,
+      "endFrame": 2147,
+      "pageIndex": 63
+    },
+    {
+      "word": "tercerna",
+      "startFrame": 2147,
+      "endFrame": 2158,
+      "pageIndex": 63
+    },
+    {
+      "word": "dengan",
+      "startFrame": 2158,
+      "endFrame": 2164,
+      "pageIndex": 63
+    },
+    {
+      "word": "baik",
+      "startFrame": 2164,
+      "endFrame": 2173,
+      "pageIndex": 64
+    },
+    {
+      "word": "mulai",
+      "startFrame": 2173,
+      "endFrame": 2187,
+      "pageIndex": 64
+    },
+    {
+      "word": "berfermentasi",
+      "startFrame": 2187,
+      "endFrame": 2209,
+      "pageIndex": 64
+    },
+    {
+      "word": "dan",
+      "startFrame": 2179,
+      "endFrame": 2225,
+      "pageIndex": 65
+    },
+    {
+      "word": "menghasilkan",
+      "startFrame": 2225,
+      "endFrame": 2240,
+      "pageIndex": 65
+    },
+    {
+      "word": "gas",
+      "startFrame": 2240,
+      "endFrame": 2246,
+      "pageIndex": 65
+    },
+    {
+      "word": "di",
+      "startFrame": 2246,
+      "endFrame": 2252,
+      "pageIndex": 66
+    },
+    {
+      "word": "usus",
+      "startFrame": 2252,
+      "endFrame": 2258,
+      "pageIndex": 66
+    },
+    {
+      "word": "yang",
+      "startFrame": 2258,
+      "endFrame": 2262,
+      "pageIndex": 66
+    },
+    {
+      "word": "sedang",
+      "startFrame": 2262,
+      "endFrame": 2269,
+      "pageIndex": 67
+    },
+    {
+      "word": "mengalami",
+      "startFrame": 2269,
+      "endFrame": 2279,
+      "pageIndex": 67
+    },
+    {
+      "word": "stres",
+      "startFrame": 2279,
+      "endFrame": 2297,
+      "pageIndex": 67
+    },
+    {
+      "word": "Minum",
+      "startFrame": 2314,
+      "endFrame": 2323,
+      "pageIndex": 68
+    },
+    {
+      "word": "kopi",
+      "startFrame": 2323,
+      "endFrame": 2331,
+      "pageIndex": 68
+    },
+    {
+      "word": "saat",
+      "startFrame": 2331,
+      "endFrame": 2336,
+      "pageIndex": 68
+    },
+    {
+      "word": "perut",
+      "startFrame": 2336,
+      "endFrame": 2342,
+      "pageIndex": 69
+    },
+    {
+      "word": "kosong",
+      "startFrame": 2342,
+      "endFrame": 2354,
+      "pageIndex": 69
+    },
+    {
+      "word": "adalah",
+      "startFrame": 2354,
+      "endFrame": 2368,
+      "pageIndex": 69
+    },
+    {
+      "word": "cara",
+      "startFrame": 2368,
+      "endFrame": 2377,
+      "pageIndex": 70
+    },
+    {
+      "word": "tercepat",
+      "startFrame": 2377,
+      "endFrame": 2390,
+      "pageIndex": 70
+    },
+    {
+      "word": "untuk",
+      "startFrame": 2390,
+      "endFrame": 2398,
+      "pageIndex": 70
+    },
+    {
+      "word": "merusak",
+      "startFrame": 2398,
+      "endFrame": 2410,
+      "pageIndex": 71
+    },
+    {
+      "word": "ritme",
+      "startFrame": 2410,
+      "endFrame": 2420,
+      "pageIndex": 71
+    },
+    {
+      "word": "alami",
+      "startFrame": 2420,
+      "endFrame": 2430,
+      "pageIndex": 71
+    },
+    {
+      "word": "tubuh",
+      "startFrame": 2430,
+      "endFrame": 2438,
+      "pageIndex": 72
     },
     {
       "word": "Anda",
-      "startFrame": 2906,
-      "endFrame": 2913,
-      "pageIndex": 79
+      "startFrame": 2438,
+      "endFrame": 2447,
+      "pageIndex": 72
+    },
+    {
+      "word": "Jadi",
+      "startFrame": 2434,
+      "endFrame": 2490,
+      "pageIndex": 73
+    },
+    {
+      "word": "selalu",
+      "startFrame": 2490,
+      "endFrame": 2494,
+      "pageIndex": 73
+    },
+    {
+      "word": "usahakan",
+      "startFrame": 2494,
+      "endFrame": 2505,
+      "pageIndex": 73
+    },
+    {
+      "word": "untuk",
+      "startFrame": 2505,
+      "endFrame": 2512,
+      "pageIndex": 74
+    },
+    {
+      "word": "makan",
+      "startFrame": 2512,
+      "endFrame": 2522,
+      "pageIndex": 74
+    },
+    {
+      "word": "sedikit",
+      "startFrame": 2522,
+      "endFrame": 2536,
+      "pageIndex": 74
+    },
+    {
+      "word": "bahkan",
+      "startFrame": 2536,
+      "endFrame": 2555,
+      "pageIndex": 75
+    },
+    {
+      "word": "hanya",
+      "startFrame": 2555,
+      "endFrame": 2562,
+      "pageIndex": 75
+    },
+    {
+      "word": "sepotong",
+      "startFrame": 2562,
+      "endFrame": 2572,
+      "pageIndex": 75
+    },
+    {
+      "word": "biskuit",
+      "startFrame": 2572,
+      "endFrame": 2581,
+      "pageIndex": 76
+    },
+    {
+      "word": "saja",
+      "startFrame": 2581,
+      "endFrame": 2608,
+      "pageIndex": 76
+    },
+    {
+      "word": "sebelum",
+      "startFrame": 2608,
+      "endFrame": 2613,
+      "pageIndex": 76
+    },
+    {
+      "word": "Anda",
+      "startFrame": 2613,
+      "endFrame": 2620,
+      "pageIndex": 77
+    },
+    {
+      "word": "menyentuh",
+      "startFrame": 2620,
+      "endFrame": 2630,
+      "pageIndex": 77
+    },
+    {
+      "word": "cangkir",
+      "startFrame": 2630,
+      "endFrame": 2641,
+      "pageIndex": 77
+    },
+    {
+      "word": "kopi",
+      "startFrame": 2641,
+      "endFrame": 2649,
+      "pageIndex": 78
+    },
+    {
+      "word": "pagi",
+      "startFrame": 2649,
+      "endFrame": 2656,
+      "pageIndex": 78
+    },
+    {
+      "word": "Anda",
+      "startFrame": 2656,
+      "endFrame": 2659,
+      "pageIndex": 78
     }
   ],
-  "audioUrl": "butterfly/audio/efek-kopi-perut-kosong-kronologis-mvw14tvz_doctor_voiceover.wav",
-  "totalDurationFrames": 2921
+  "audioUrl": "butterfly/audio/kopi-perut-kosong-human-experience-mvw1sxv2_doctor_voiceover.wav",
+  "totalDurationFrames": 2672
 };
 
