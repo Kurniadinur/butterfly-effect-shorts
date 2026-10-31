@@ -192,7 +192,7 @@ export function autoHealStoryboard(storyData, repairs, sceneLabel, nodeIndex = -
     }
     const isValidHexColor = typeof repairs.polish_accent_color === 'string' && /^#([0-9a-fA-F]{3,8})$/.test(repairs.polish_accent_color.trim());
     if (isValidHexColor && repairs.polish_accent_color.trim() !== node.accentColor) {
-      console.log(      🛠️ [AI Editor Auto-Polish] Mengoptimalkan kontras warna Adegan : \);
+      console.log(`      🛠️ [AI Editor Auto-Polish] Mengoptimalkan kontras warna Adegan ${node.step}: ${repairs.polish_accent_color.trim()}`);
       node.accentColor = repairs.polish_accent_color.trim();
       healed = true;
     }
