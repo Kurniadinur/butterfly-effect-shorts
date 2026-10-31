@@ -4,11 +4,11 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 
-dotenv.config({ path: 'C:/Users/dinur/Documents/ButterflyProject/.env' });
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
+
+dotenv.config({ path: path.join(ROOT_DIR, '.env') });
 
 // All 4 keys for automatic rotation / failover
 const API_KEYS = [
@@ -28,64 +28,77 @@ export const EXPANDED_SCRIPT = (
   "Seorang jurnalis asal Italia, Riccardo Ehrman, melempar pertanyaan tak terduga: Kapan aturan perjalanan baru ini mulai berlaku? " +
   "Schabowski mendadak panik. Dia membolak-balik kertas memo di mejanya, kacamata melorot, lalu bergumam ragu: Setahu saya... segera. Detik ini juga. " +
   "Ruang pers langsung gempar! " +
-  "Hanya dalam hitungan menit, stasiun berita internasional menyiarkan kabar mengejutkan: Pintu perbatasan Tembok Berlin telah dibuka! " +
-  "Kabar itu menyebar liar bagai api membakar hutan kering. Puluhan ribu warga Berlin Timur langsung tumpah ruah ke jalanan, menyerbu pos perbatasan Bornholmer Straße. " +
-  "Di pos perbatasan, para tentara gemetar ketakutan. Mereka panik menelepon atasan, tapi tidak ada satu pun jenderal yang berani memberi perintah tembak. " +
-  "Kalah jumlah dan takut pertumpahan darah massal, gerbang perbatasan akhirnya dibuka paksa. " +
-  "Malam itu, warga barat dan timur berpelukan sambil menangis. Mereka memanjat tembok dengan palu godam, menari di atas beton pembatas, dan meruntuhkan Tembok Berlin untuk selamanya. " +
-  "Hanya berselang beberapa bulan, seluruh Uni Soviet bubar, dan peta geopolitik dunia berubah total. " +
-  "Semua revolusi raksasa ini... dimulai dari satu orang yang salah ngomong satu kalimat di siaran TV. " +
-  "Menurutmu, apa keputusan sepele yang kamu ambil hari ini... yang tanpa kamu sadari, bakal mengubah jalan hidupmu 5 tahun lagi?"
+  "Ribuan warga Berlin Timur yang menonton siaran itu langsung tumpah ruah ke pos-pos perbatasan Tembok Berlin malam itu juga. " +
+  "Para tentara penjaga perbatasan bingung, komandan mereka tidak menerima instruksi apa pun. " +
+  "Massa yang membludak makin tak terbendung. Karena takut terjadi pertumpahan darah massal, tentara penjaga akhirnya menyerah dan membuka gerbang. " +
+  "Malam itu juga, warga dari kedua sisi berpelukan sambil menangis, menaiki tembok, dan mulai menghancurkan beton Tembok Berlin dengan palu. " +
+  "Sebuah insiden salah baca memo... yang secara tak sengaja mengakhiri Perang Dingin dan mengubah sejarah dunia selamanya."
 );
 
-async function generateWithRotation(text) {
+export async function generateFullVoiceover() {
+  if (API_KEYS.length === 0) {
+    throw new Error('Tidak ada GEMINI_API_KEY yang ditemukan di .env');
+  }
+
+  const outDir = path.join(ROOT_DIR, 'public', 'butterfly', 'audio');
+  fs.mkdirSync(outDir, { recursive: true });
+  const outWav = path.join(outDir, 'berlin_wall_narrator.wav');
+
   let lastError = null;
 
   for (let i = 0; i < API_KEYS.length; i++) {
     const key = API_KEYS[i];
-    console.log(`[TTS Engine] Mencoba API Key ${i + 1} / ${API_KEYS.length}...`);
+    console.log(`[Gemini TTS] Mencoba Key ${i + 1}/${API_KEYS.length}...`);
 
     try {
       const ai = new GoogleGenAI({ apiKey: key });
+
       const response = await ai.models.generateContent({
-        model: 'gemini-3.8-flash-lite-tts',
-        contents: text,
+        model: 'gemini-2.5-flash',
+        contents: [
+          {
+            role: 'user',
+            parts: [
+              {
+                text: `Bacakan naskah dokumenter sejarah berikut dengan intonasi dramatis, misterius, berwibawa, dan dinamis layaknya narator dokumenter kelas dunia (Vox/Johnny Harris/MagnatesMedia). Berikan jeda yang tepat pada momen-momen penekanan dan buat pendengar terhanyut:\n\n"${EXPANDED_SCRIPT}"`,
+              },
+            ],
+          },
+        ],
+        config: {
+          responseModalities: ['AUDIO'],
+          speechConfig: {
+            voiceConfig: {
+              prebuiltVoiceConfig: {
+                voiceName: 'Puck',
+              },
+            },
+          },
+        },
       });
 
-      const part = response.candidates?.[0]?.content?.parts?.[0];
-      if (part?.inlineData?.data) {
-        console.log(`[TTS Engine] SUKSES menggunakan Key ${i + 1}!`);
-        return Buffer.from(part.inlineData.data, 'base64');
+      const audioPart = response.candidates?.[0]?.content?.parts?.find(
+        (p) => p.inlineData && p.inlineData.mimeType?.startsWith('audio/')
+      );
+
+      if (!audioPart || !audioPart.inlineData?.data) {
+        throw new Error('Respons model tidak mengandung data audio');
       }
+
+      const buffer = Buffer.from(audioPart.inlineData.data, 'base64');
+      fs.writeFileSync(outWav, buffer);
+      console.log(`✓ Audio dokumenter berhasil digenerate via Key ${i + 1} (${(buffer.length / 1024).toFixed(1)} KB)`);
+      console.log(`  Lokasi: ${outWav}`);
+      return outWav;
     } catch (err) {
-      console.warn(`[TTS Engine] Key ${i + 1} gagal (${err.message}). Mencoba key berikutnya...`);
+      console.warn(`⚠ Gagal dengan Key ${i + 1}: ${err.message}`);
       lastError = err;
     }
   }
 
-  throw new Error(`Semua 4 API Key gagal. Error terakhir: ${lastError?.message}`);
+  throw new Error(`Semua ${API_KEYS.length} Gemini API Key gagal: ${lastError?.message}`);
 }
 
-async function main() {
-  console.log('===============================================================');
-  console.log('   GOOGLE GEMINI 3.8 FLASH LITE TTS - STORYTELLER ENGINE       ');
-  console.log('   Tersedia: 4 Kunci API Otomatis Rotasi (Anti-Limit)          ');
-  console.log('===============================================================\n');
-
-  try {
-    const audioBuffer = await generateWithRotation(EXPANDED_SCRIPT);
-    const outAudioWav = path.join(ROOT_DIR, 'public', 'butterfly', 'audio', 'berlin_wall_voiceover.wav');
-    const outAudioMp3 = path.join(ROOT_DIR, 'public', 'butterfly', 'audio', 'berlin_wall_voiceover.mp3');
-
-    fs.writeFileSync(outAudioWav, audioBuffer);
-    fs.writeFileSync(outAudioMp3, audioBuffer);
-
-    console.log(`\n[SUKSES] Audio voiceover Gemini 3.8 berhasil disimpan:`);
-    console.log(`- ${outAudioWav}`);
-    console.log(`- ${outAudioMp3}`);
-  } catch (err) {
-    console.error('[FATAL]', err.message);
-  }
+if (process.argv[1] && path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1])) {
+  generateFullVoiceover().catch(console.error);
 }
-
-main();

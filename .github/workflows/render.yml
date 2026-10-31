@@ -30,8 +30,8 @@ jobs:
 
       - name: Install System Dependencies (Chromium audio & video codecs)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg libasound2t64 libgbm1 libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libxtst6 || sudo apt-get install -y ffmpeg libgbm1 libnss3
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg libgbm1 libnss3 libasound2t64 || sudo apt-get install -y ffmpeg libgbm1 libnss3 libasound2
 
       - name: Install Node Dependencies
         run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
@@ -39,7 +39,8 @@ jobs:
       - name: Render Remotion Video (High-Speed Multi-Core)
         run: |
           mkdir -p out
-          npx remotion render src/index.ts "${{ github.event.inputs.composition }}" "out/${{ github.event.inputs.output_filename }}" --concurrency=2 --gl=swiftshader
+          npx remotion render src/index.ts "${{ github.event.inputs.composition }}" "out/${{ github.event.inputs.output_filename }}" --concurrency=100% --gl=angle || \
+          npx remotion render src/index.ts "${{ github.event.inputs.composition }}" "out/${{ github.event.inputs.output_filename }}" --concurrency=100% --gl=swiftshader
 
       - name: Upload Video as Artifact
         uses: actions/upload-artifact@v4
