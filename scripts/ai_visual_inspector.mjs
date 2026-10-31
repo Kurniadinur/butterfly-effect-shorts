@@ -190,9 +190,10 @@ export function autoHealStoryboard(storyData, repairs, sceneLabel, nodeIndex = -
       node.headline = repairs.shorten_headline;
       healed = true;
     }
-    if (repairs.polish_accent_color && repairs.polish_accent_color !== node.accentColor) {
-      console.log(`      🛠️ [AI Editor Auto-Polish] Mengoptimalkan kontras warna Adegan ${node.step}: ${repairs.polish_accent_color}`);
-      node.accentColor = repairs.polish_accent_color;
+    const isValidHexColor = typeof repairs.polish_accent_color === 'string' && /^#([0-9a-fA-F]{3,8})$/.test(repairs.polish_accent_color.trim());
+    if (isValidHexColor && repairs.polish_accent_color.trim() !== node.accentColor) {
+      console.log(      🛠️ [AI Editor Auto-Polish] Mengoptimalkan kontras warna Adegan : \);
+      node.accentColor = repairs.polish_accent_color.trim();
       healed = true;
     }
     if (isCleanContentText(repairs.polish_primary_text, 28)) {

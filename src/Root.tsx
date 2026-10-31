@@ -2,11 +2,11 @@ import React from 'react';
 import { Composition } from 'remotion';
 import './index.css';
 import { ButterflyEffect } from './components/ButterflyEffect';
-import { ContinuousBodyJourney } from './components/ContinuousBodyJourney';
+import { EditorialInfographicJourney } from './components/EditorialInfographicJourney';
 import { CURRENT_STORY } from './data/currentStory';
 
 const QABrainWrapper: React.FC = () => (
-  <ContinuousBodyJourney
+  <EditorialInfographicJourney
     hookDurationFrames={0}
     outroDurationFrames={0}
     totalDurationFrames={120}
@@ -20,7 +20,7 @@ const QABrainWrapper: React.FC = () => (
         secondaryText: 'Sinyal darurat membanjiri neuron',
         narration: 'Sinyal darurat membanjiri neuron di otak.',
         caption: 'Korteks serebral kebanjiran impuls sinyal darurat.',
-        mediaUrl: 'butterfly/media/medical_body_xray.jpg',
+        mediaUrl: 'butterfly/organs/brain.png',
         chaosLevel: 85,
         mediaType: 'photo',
         startFrame: 0,
@@ -31,7 +31,7 @@ const QABrainWrapper: React.FC = () => (
 );
 
 const QAHeartWrapper: React.FC = () => (
-  <ContinuousBodyJourney
+  <EditorialInfographicJourney
     hookDurationFrames={0}
     outroDurationFrames={0}
     totalDurationFrames={120}
@@ -45,7 +45,7 @@ const QAHeartWrapper: React.FC = () => (
         secondaryText: 'Tekanan arteri meningkat tajam',
         narration: 'Detak jantung melonjak cepat memompa darah bertekanan tinggi.',
         caption: 'Sirkulasi kardiovaskular berakselerasi menahan stres akut.',
-        mediaUrl: 'butterfly/media/medical_body_xray.jpg',
+        mediaUrl: 'butterfly/organs/heart.png',
         chaosLevel: 80,
         mediaType: 'photo',
         startFrame: 0,

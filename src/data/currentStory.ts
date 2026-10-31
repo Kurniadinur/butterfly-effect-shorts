@@ -151,7 +151,7 @@ export const CURRENT_STORY: ButterflyStoryData = {
       "zoomDirection": "in",
       "startFrame": 1100,
       "durationFrames": 260,
-      "accentColor": "Tambahkan efek linear gradient transparency (feathering) pada bagian bawah aset pembuluh darah agar menyatu halus dengan torso transparan."
+      "accentColor": "#ef4444"
     },
     {
       "step": 6,
@@ -218,7 +218,7 @@ export const CURRENT_STORY: ButterflyStoryData = {
       "zoomDirection": "panRight",
       "startFrame": 1799,
       "durationFrames": 279,
-      "accentColor": "Tingkatkan saturasi cyan pada garis pemisah horizontal."
+      "accentColor": "#06b6d4"
     }
   ],
   "outro": {

@@ -3,7 +3,7 @@ import { Sequence, Audio, staticFile, useCurrentFrame } from 'remotion';
 import { ButterflyStoryData } from '../data/types';
 import { CURRENT_STORY } from '../data/currentStory';
 import { HookScene } from './HookScene';
-import { ContinuousBodyJourney } from './ContinuousBodyJourney';
+import { EditorialInfographicJourney } from './EditorialInfographicJourney';
 import { KineticSubtitle } from './KineticSubtitle';
 import { OutroScene } from './OutroScene';
 import { CameraShake } from './effects/CameraShake';
@@ -146,15 +146,13 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
           from={data.hook.durationFrames}
           durationInFrames={Math.max(1, data.totalDurationFrames - data.hook.durationFrames)}
         >
-          <ContinuousBodyJourney
+          <EditorialInfographicJourney
             storyId={storyId}
             editorialMood={editorialMood}
             nodes={data.nodes}
-            wordTimestamps={data.wordTimestamps}
             hookDurationFrames={data.hook.durationFrames}
             outroDurationFrames={data.outro.durationFrames}
             totalDurationFrames={data.totalDurationFrames}
-            baseBodyMediaUrl="butterfly/media/medical_body_xray.jpg"
             characterActionPng={data.hook.characterActionPng}
           />
         </Sequence>
