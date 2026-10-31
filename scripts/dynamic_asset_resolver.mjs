@@ -152,6 +152,12 @@ Output PURE JSON:
  * Automatically inspects, resolves, and generates all story assets (characters + organs)
  */
 export async function resolveDynamicStoryAssets(storyData) {
+  if (storyData.editorialStyle?.mood === 'typography-storyteller') {
+    console.log('   🔍 [Asset Auto-Resolver] Mode Minimalist Typography Story Flow aktif.');
+    console.log('      ✓ Fokus pada tipografi kinetik estetik & alur cerita yang mengalir (zero asset bottleneck).\n');
+    return storyData;
+  }
+
   console.log('   🔍 [Asset Auto-Resolver] Menganalisis kebutuhan aset visual 3D via AI...');
   
   const specs = await deduceAssetSpecsWithAI(storyData);

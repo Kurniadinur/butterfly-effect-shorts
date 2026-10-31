@@ -1,0 +1,2030 @@
+{
+  "model": "whisper-large-v3",
+  "engine": "Groq Cloud LPU",
+  "totalDurationSec": 84.2,
+  "allWords": [
+    {
+      "word": "Pernah",
+      "start": 0.2,
+      "end": 0.52
+    },
+    {
+      "word": "nggak",
+      "start": 0.52,
+      "end": 0.7
+    },
+    {
+      "word": "sih",
+      "start": 0.7,
+      "end": 0.78
+    },
+    {
+      "word": "kepikiran",
+      "start": 0.78,
+      "end": 1.28
+    },
+    {
+      "word": "apa",
+      "start": 1.28,
+      "end": 2.12
+    },
+    {
+      "word": "yang",
+      "start": 2.12,
+      "end": 2.32
+    },
+    {
+      "word": "sebenarnya",
+      "start": 2.32,
+      "end": 2.78
+    },
+    {
+      "word": "terjadi",
+      "start": 2.78,
+      "end": 3.24
+    },
+    {
+      "word": "pada",
+      "start": 3.24,
+      "end": 3.46
+    },
+    {
+      "word": "tubuhmu",
+      "start": 3.46,
+      "end": 3.92
+    },
+    {
+      "word": "kalau",
+      "start": 3.92,
+      "end": 4.52
+    },
+    {
+      "word": "kamu",
+      "start": 4.52,
+      "end": 4.88
+    },
+    {
+      "word": "minum",
+      "start": 4.88,
+      "end": 5.16
+    },
+    {
+      "word": "kopi",
+      "start": 5.16,
+      "end": 5.5
+    },
+    {
+      "word": "saat",
+      "start": 5.5,
+      "end": 5.8
+    },
+    {
+      "word": "perut",
+      "start": 5.8,
+      "end": 6.14
+    },
+    {
+      "word": "masih",
+      "start": 6.14,
+      "end": 6.42
+    },
+    {
+      "word": "kosong,",
+      "start": 6.42,
+      "end": 7.24
+    },
+    {
+      "word": "setiap",
+      "start": 7.24,
+      "end": 7.6
+    },
+    {
+      "word": "pagi?",
+      "start": 7.6,
+      "end": 8.46
+    },
+    {
+      "word": "Mungkin",
+      "start": 8.92,
+      "end": 9.14
+    },
+    {
+      "word": "kamu",
+      "start": 9.14,
+      "end": 9.4
+    },
+    {
+      "word": "pernah",
+      "start": 9.4,
+      "end": 9.68
+    },
+    {
+      "word": "merasa",
+      "start": 9.68,
+      "end": 10
+    },
+    {
+      "word": "perut",
+      "start": 10,
+      "end": 10.26
+    },
+    {
+      "word": "perih",
+      "start": 10.26,
+      "end": 10.54
+    },
+    {
+      "word": "atau",
+      "start": 10.54,
+      "end": 11.24
+    },
+    {
+      "word": "jantung",
+      "start": 11.24,
+      "end": 11.72
+    },
+    {
+      "word": "tiba-tiba",
+      "start": 11.72,
+      "end": 12.18
+    },
+    {
+      "word": "deg-degan",
+      "start": 12.18,
+      "end": 12.7
+    },
+    {
+      "word": "padahal",
+      "start": 12.7,
+      "end": 13.78
+    },
+    {
+      "word": "baru",
+      "start": 13.78,
+      "end": 13.98
+    },
+    {
+      "word": "satu",
+      "start": 13.98,
+      "end": 14.16
+    },
+    {
+      "word": "teguk.",
+      "start": 14.16,
+      "end": 14.44
+    },
+    {
+      "word": "Ternyata,",
+      "start": 15.48,
+      "end": 15.98
+    },
+    {
+      "word": "saat",
+      "start": 15.98,
+      "end": 16.86
+    },
+    {
+      "word": "kopi",
+      "start": 16.86,
+      "end": 17.12
+    },
+    {
+      "word": "masuk",
+      "start": 17.12,
+      "end": 17.48
+    },
+    {
+      "word": "ke",
+      "start": 17.48,
+      "end": 17.62
+    },
+    {
+      "word": "perut",
+      "start": 17.62,
+      "end": 17.82
+    },
+    {
+      "word": "yang",
+      "start": 17.82,
+      "end": 17.92
+    },
+    {
+      "word": "masih",
+      "start": 17.92,
+      "end": 18.14
+    },
+    {
+      "word": "kosong,",
+      "start": 18.14,
+      "end": 19.18
+    },
+    {
+      "word": "sistem",
+      "start": 19.18,
+      "end": 19.42
+    },
+    {
+      "word": "saraf",
+      "start": 19.42,
+      "end": 19.86
+    },
+    {
+      "word": "langsung",
+      "start": 19.86,
+      "end": 20.26
+    },
+    {
+      "word": "memicu",
+      "start": 20.26,
+      "end": 20.66
+    },
+    {
+      "word": "kelenjar",
+      "start": 20.66,
+      "end": 21.06
+    },
+    {
+      "word": "adrenal",
+      "start": 21.06,
+      "end": 21.64
+    },
+    {
+      "word": "untuk",
+      "start": 21.64,
+      "end": 21.92
+    },
+    {
+      "word": "melepaskan",
+      "start": 21.92,
+      "end": 22.42
+    },
+    {
+      "word": "adrenalin.",
+      "start": 22.42,
+      "end": 22.96
+    },
+    {
+      "word": "Seketika,",
+      "start": 23.72,
+      "end": 24.66
+    },
+    {
+      "word": "tubuhmu",
+      "start": 24.66,
+      "end": 25.04
+    },
+    {
+      "word": "masuk",
+      "start": 25.04,
+      "end": 25.34
+    },
+    {
+      "word": "ke",
+      "start": 25.34,
+      "end": 25.54
+    },
+    {
+      "word": "mode",
+      "start": 25.54,
+      "end": 25.72
+    },
+    {
+      "word": "lawan",
+      "start": 25.72,
+      "end": 26.24
+    },
+    {
+      "word": "atau",
+      "start": 26.24,
+      "end": 26.48
+    },
+    {
+      "word": "lari.",
+      "start": 26.48,
+      "end": 26.8
+    },
+    {
+      "word": "Adrenalin",
+      "start": 27.52,
+      "end": 27.96
+    },
+    {
+      "word": "memaksa",
+      "start": 27.96,
+      "end": 28.32
+    },
+    {
+      "word": "otot",
+      "start": 28.32,
+      "end": 28.52
+    },
+    {
+      "word": "jantung",
+      "start": 28.52,
+      "end": 28.92
+    },
+    {
+      "word": "berdetak",
+      "start": 28.92,
+      "end": 29.3
+    },
+    {
+      "word": "lebih",
+      "start": 29.3,
+      "end": 29.46
+    },
+    {
+      "word": "cepat.",
+      "start": 29.46,
+      "end": 29.8
+    },
+    {
+      "word": "dan",
+      "start": 30.04,
+      "end": 30.38
+    },
+    {
+      "word": "lebih",
+      "start": 30.38,
+      "end": 30.56
+    },
+    {
+      "word": "kuat.",
+      "start": 30.56,
+      "end": 31.6
+    },
+    {
+      "word": "Tekanan",
+      "start": 31.6,
+      "end": 31.84
+    },
+    {
+      "word": "darah",
+      "start": 31.84,
+      "end": 32.08
+    },
+    {
+      "word": "pun",
+      "start": 32.08,
+      "end": 32.36
+    },
+    {
+      "word": "mulai",
+      "start": 32.06,
+      "end": 33.12
+    },
+    {
+      "word": "berangkak",
+      "start": 33.12,
+      "end": 33.46
+    },
+    {
+      "word": "naik.",
+      "start": 33.46,
+      "end": 34.14
+    },
+    {
+      "word": "Stimulasi",
+      "start": 34.28,
+      "end": 34.6
+    },
+    {
+      "word": "berlebih",
+      "start": 34.6,
+      "end": 34.96
+    },
+    {
+      "word": "pada",
+      "start": 34.96,
+      "end": 35.16
+    },
+    {
+      "word": "sistem",
+      "start": 35.16,
+      "end": 35.42
+    },
+    {
+      "word": "saraf",
+      "start": 35.42,
+      "end": 35.7
+    },
+    {
+      "word": "pusat",
+      "start": 35.7,
+      "end": 36
+    },
+    {
+      "word": "ini",
+      "start": 36,
+      "end": 36.3
+    },
+    {
+      "word": "membuat",
+      "start": 36.04,
+      "end": 37.1
+    },
+    {
+      "word": "transmisi",
+      "start": 37.1,
+      "end": 37.66
+    },
+    {
+      "word": "sinyal",
+      "start": 37.66,
+      "end": 38.08
+    },
+    {
+      "word": "ke",
+      "start": 38.08,
+      "end": 38.24
+    },
+    {
+      "word": "otot",
+      "start": 38.24,
+      "end": 38.48
+    },
+    {
+      "word": "jadi",
+      "start": 38.1,
+      "end": 38.78
+    },
+    {
+      "word": "nggak",
+      "start": 38.78,
+      "end": 38.88
+    },
+    {
+      "word": "stabil.",
+      "start": 38.88,
+      "end": 39.92
+    },
+    {
+      "word": "Nggak",
+      "start": 39.92,
+      "end": 40.02
+    },
+    {
+      "word": "cuma",
+      "start": 40.02,
+      "end": 40.18
+    },
+    {
+      "word": "itu,",
+      "start": 40.18,
+      "end": 40.74
+    },
+    {
+      "word": "kopi",
+      "start": 41.16,
+      "end": 41.34
+    },
+    {
+      "word": "juga",
+      "start": 41.34,
+      "end": 41.54
+    },
+    {
+      "word": "merangsang",
+      "start": 41.54,
+      "end": 41.92
+    },
+    {
+      "word": "gerak",
+      "start": 41.92,
+      "end": 42.18
+    },
+    {
+      "word": "peristaltik",
+      "start": 41.94,
+      "end": 42.78
+    },
+    {
+      "word": "usus",
+      "start": 42.78,
+      "end": 42.98
+    },
+    {
+      "word": "besar.",
+      "start": 42.98,
+      "end": 44.02
+    },
+    {
+      "word": "Otot",
+      "start": 44.02,
+      "end": 44.28
+    },
+    {
+      "word": "usus",
+      "start": 43.8,
+      "end": 44.6
+    },
+    {
+      "word": "berkontraksi",
+      "start": 44.6,
+      "end": 45.16
+    },
+    {
+      "word": "kuat,",
+      "start": 45.16,
+      "end": 45.98
+    },
+    {
+      "word": "mendorong",
+      "start": 45.98,
+      "end": 46.42
+    },
+    {
+      "word": "isinya",
+      "start": 45.94,
+      "end": 46.74
+    },
+    {
+      "word": "ke",
+      "start": 46.74,
+      "end": 46.88
+    },
+    {
+      "word": "bawah.",
+      "start": 46.88,
+      "end": 47.98
+    },
+    {
+      "word": "Di",
+      "start": 47.98,
+      "end": 48.12
+    },
+    {
+      "word": "saat",
+      "start": 48.12,
+      "end": 48.28
+    },
+    {
+      "word": "yang",
+      "start": 48.06,
+      "end": 48.44
+    },
+    {
+      "word": "sama,",
+      "start": 48.44,
+      "end": 49.54
+    },
+    {
+      "word": "kafein",
+      "start": 49.54,
+      "end": 49.76
+    },
+    {
+      "word": "meningkatkan",
+      "start": 49.76,
+      "end": 50.28
+    },
+    {
+      "word": "aliran",
+      "start": 49.8,
+      "end": 50.58
+    },
+    {
+      "word": "darah",
+      "start": 50.58,
+      "end": 50.9
+    },
+    {
+      "word": "ke",
+      "start": 50.9,
+      "end": 51.08
+    },
+    {
+      "word": "ginjal,",
+      "start": 51.08,
+      "end": 51.9
+    },
+    {
+      "word": "menghambat",
+      "start": 52.12,
+      "end": 52.56
+    },
+    {
+      "word": "penyerapan",
+      "start": 52.56,
+      "end": 52.96
+    },
+    {
+      "word": "kembali",
+      "start": 52.96,
+      "end": 53.26
+    },
+    {
+      "word": "natrium,",
+      "start": 53.26,
+      "end": 54.24
+    },
+    {
+      "word": "dan",
+      "start": 54.28,
+      "end": 54.42
+    },
+    {
+      "word": "memaksa",
+      "start": 54.42,
+      "end": 54.92
+    },
+    {
+      "word": "kandung",
+      "start": 54.92,
+      "end": 55.12
+    },
+    {
+      "word": "kemih",
+      "start": 55.12,
+      "end": 55.44
+    },
+    {
+      "word": "untuk",
+      "start": 55.44,
+      "end": 55.62
+    },
+    {
+      "word": "segera",
+      "start": 55.62,
+      "end": 55.94
+    },
+    {
+      "word": "membuang",
+      "start": 55.48,
+      "end": 56.28
+    },
+    {
+      "word": "cairan.",
+      "start": 56.28,
+      "end": 57.12
+    },
+    {
+      "word": "Tapi",
+      "start": 57.12,
+      "end": 57.32
+    },
+    {
+      "word": "tunggu,",
+      "start": 57.32,
+      "end": 58.04
+    },
+    {
+      "word": "saat",
+      "start": 58.3,
+      "end": 58.46
+    },
+    {
+      "word": "kafein",
+      "start": 58.46,
+      "end": 58.82
+    },
+    {
+      "word": "lepas",
+      "start": 58.82,
+      "end": 59.14
+    },
+    {
+      "word": "dari",
+      "start": 59.14,
+      "end": 59.34
+    },
+    {
+      "word": "reseptor,",
+      "start": 59.34,
+      "end": 59.98
+    },
+    {
+      "word": "Tumpukan",
+      "start": 60.28,
+      "end": 60.76
+    },
+    {
+      "word": "adenosin",
+      "start": 60.76,
+      "end": 61.38
+    },
+    {
+      "word": "atau",
+      "start": 61.38,
+      "end": 62.04
+    },
+    {
+      "word": "sinyal",
+      "start": 62.04,
+      "end": 62.62
+    },
+    {
+      "word": "lelah",
+      "start": 62.62,
+      "end": 63
+    },
+    {
+      "word": "yang",
+      "start": 63,
+      "end": 63.2
+    },
+    {
+      "word": "tadi",
+      "start": 63.2,
+      "end": 63.4
+    },
+    {
+      "word": "tertunda",
+      "start": 63.4,
+      "end": 63.82
+    },
+    {
+      "word": "langsung",
+      "start": 63.82,
+      "end": 64.8
+    },
+    {
+      "word": "menyerbu",
+      "start": 64.8,
+      "end": 65.16
+    },
+    {
+      "word": "otakmu",
+      "start": 65.16,
+      "end": 65.6
+    },
+    {
+      "word": "sekaligus.",
+      "start": 65.6,
+      "end": 66.16
+    },
+    {
+      "word": "Efek",
+      "start": 67.02,
+      "end": 67.1
+    },
+    {
+      "word": "kopinya",
+      "start": 67.1,
+      "end": 67.4
+    },
+    {
+      "word": "hilang,",
+      "start": 67.4,
+      "end": 67.76
+    },
+    {
+      "word": "tapi",
+      "start": 67.76,
+      "end": 68.58
+    },
+    {
+      "word": "iritasi",
+      "start": 68.58,
+      "end": 69.14
+    },
+    {
+      "word": "pada",
+      "start": 69.14,
+      "end": 69.36
+    },
+    {
+      "word": "dinding",
+      "start": 69.36,
+      "end": 69.6
+    },
+    {
+      "word": "lambung",
+      "start": 69.6,
+      "end": 70
+    },
+    {
+      "word": "akibat",
+      "start": 70,
+      "end": 70.4
+    },
+    {
+      "word": "asam",
+      "start": 70.4,
+      "end": 70.7
+    },
+    {
+      "word": "tadi",
+      "start": 70.7,
+      "end": 70.9
+    },
+    {
+      "word": "pagi",
+      "start": 70.9,
+      "end": 71.3
+    },
+    {
+      "word": "mungkin",
+      "start": 71.3,
+      "end": 72.32
+    },
+    {
+      "word": "masih",
+      "start": 72.32,
+      "end": 72.64
+    },
+    {
+      "word": "meninggalkan",
+      "start": 72.64,
+      "end": 73.1
+    },
+    {
+      "word": "luka",
+      "start": 73.1,
+      "end": 73.28
+    },
+    {
+      "word": "kecil.",
+      "start": 73.28,
+      "end": 73.62
+    },
+    {
+      "word": "Kopi",
+      "start": 74.38,
+      "end": 74.56
+    },
+    {
+      "word": "itu",
+      "start": 74.56,
+      "end": 74.86
+    },
+    {
+      "word": "teman",
+      "start": 74.86,
+      "end": 75.52
+    },
+    {
+      "word": "yang",
+      "start": 75.52,
+      "end": 75.66
+    },
+    {
+      "word": "asik.",
+      "start": 75.66,
+      "end": 75.86
+    },
+    {
+      "word": "Tapi",
+      "start": 76.6,
+      "end": 76.8
+    },
+    {
+      "word": "jangan",
+      "start": 76.8,
+      "end": 77.56
+    },
+    {
+      "word": "biarkan",
+      "start": 77.56,
+      "end": 77.92
+    },
+    {
+      "word": "lambungmu",
+      "start": 77.92,
+      "end": 78.36
+    },
+    {
+      "word": "berjuang",
+      "start": 78.36,
+      "end": 78.88
+    },
+    {
+      "word": "sendirian",
+      "start": 78.88,
+      "end": 79.34
+    },
+    {
+      "word": "tanpa",
+      "start": 79.34,
+      "end": 79.6
+    },
+    {
+      "word": "alas",
+      "start": 79.6,
+      "end": 79.84
+    },
+    {
+      "word": "makanan.",
+      "start": 79.84,
+      "end": 80.24
+    },
+    {
+      "word": "Tubuhmu",
+      "start": 80.9,
+      "end": 81.3
+    },
+    {
+      "word": "bakal",
+      "start": 81.3,
+      "end": 81.86
+    },
+    {
+      "word": "berterima",
+      "start": 81.86,
+      "end": 82.22
+    },
+    {
+      "word": "kasih",
+      "start": 82.22,
+      "end": 82.38
+    },
+    {
+      "word": "banget",
+      "start": 82.38,
+      "end": 82.68
+    },
+    {
+      "word": "kalau",
+      "start": 82.68,
+      "end": 83.2
+    },
+    {
+      "word": "kamu",
+      "start": 83.2,
+      "end": 83.42
+    },
+    {
+      "word": "sarapan",
+      "start": 83.42,
+      "end": 83.72
+    },
+    {
+      "word": "dulu.",
+      "start": 83.72,
+      "end": 83.9
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 7.98,
+      "text": "Pernah nggak sih kepikiran apa yang sebenarnya terjadi pada tubuhmu kalau kamu minum kopi saat perut masih kosong, setiap pagi?",
+      "words": [
+        {
+          "word": "Pernah",
+          "start": 0.2,
+          "end": 0.52
+        },
+        {
+          "word": "nggak",
+          "start": 0.52,
+          "end": 0.7
+        },
+        {
+          "word": "sih",
+          "start": 0.7,
+          "end": 0.78
+        },
+        {
+          "word": "kepikiran",
+          "start": 0.78,
+          "end": 1.28
+        },
+        {
+          "word": "apa",
+          "start": 1.28,
+          "end": 2.12
+        },
+        {
+          "word": "yang",
+          "start": 2.12,
+          "end": 2.32
+        },
+        {
+          "word": "sebenarnya",
+          "start": 2.32,
+          "end": 2.78
+        },
+        {
+          "word": "terjadi",
+          "start": 2.78,
+          "end": 3.24
+        },
+        {
+          "word": "pada",
+          "start": 3.24,
+          "end": 3.46
+        },
+        {
+          "word": "tubuhmu",
+          "start": 3.46,
+          "end": 3.92
+        },
+        {
+          "word": "kalau",
+          "start": 3.92,
+          "end": 4.52
+        },
+        {
+          "word": "kamu",
+          "start": 4.52,
+          "end": 4.88
+        },
+        {
+          "word": "minum",
+          "start": 4.88,
+          "end": 5.16
+        },
+        {
+          "word": "kopi",
+          "start": 5.16,
+          "end": 5.5
+        },
+        {
+          "word": "saat",
+          "start": 5.5,
+          "end": 5.8
+        },
+        {
+          "word": "perut",
+          "start": 5.8,
+          "end": 6.14
+        },
+        {
+          "word": "masih",
+          "start": 6.14,
+          "end": 6.42
+        },
+        {
+          "word": "kosong,",
+          "start": 6.42,
+          "end": 7.24
+        },
+        {
+          "word": "setiap",
+          "start": 7.24,
+          "end": 7.6
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 8.9,
+      "end": 14.48,
+      "text": "Mungkin kamu pernah merasa perut perih atau jantung tiba-tiba deg-degan padahal baru satu teguk.",
+      "words": [
+        {
+          "word": "Mungkin",
+          "start": 8.92,
+          "end": 9.14
+        },
+        {
+          "word": "kamu",
+          "start": 9.14,
+          "end": 9.4
+        },
+        {
+          "word": "pernah",
+          "start": 9.4,
+          "end": 9.68
+        },
+        {
+          "word": "merasa",
+          "start": 9.68,
+          "end": 10
+        },
+        {
+          "word": "perut",
+          "start": 10,
+          "end": 10.26
+        },
+        {
+          "word": "perih",
+          "start": 10.26,
+          "end": 10.54
+        },
+        {
+          "word": "atau",
+          "start": 10.54,
+          "end": 11.24
+        },
+        {
+          "word": "jantung",
+          "start": 11.24,
+          "end": 11.72
+        },
+        {
+          "word": "tiba-tiba",
+          "start": 11.72,
+          "end": 12.18
+        },
+        {
+          "word": "deg-degan",
+          "start": 12.18,
+          "end": 12.7
+        },
+        {
+          "word": "padahal",
+          "start": 12.7,
+          "end": 13.78
+        },
+        {
+          "word": "baru",
+          "start": 13.78,
+          "end": 13.98
+        },
+        {
+          "word": "satu",
+          "start": 13.98,
+          "end": 14.16
+        },
+        {
+          "word": "teguk.",
+          "start": 14.16,
+          "end": 14.44
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 15.4,
+      "end": 22.98,
+      "text": "Ternyata, saat kopi masuk ke perut yang masih kosong, sistem saraf langsung memicu kelenjar adrenal untuk melepaskan adrenalin.",
+      "words": [
+        {
+          "word": "Ternyata,",
+          "start": 15.48,
+          "end": 15.98
+        },
+        {
+          "word": "saat",
+          "start": 15.98,
+          "end": 16.86
+        },
+        {
+          "word": "kopi",
+          "start": 16.86,
+          "end": 17.12
+        },
+        {
+          "word": "masuk",
+          "start": 17.12,
+          "end": 17.48
+        },
+        {
+          "word": "ke",
+          "start": 17.48,
+          "end": 17.62
+        },
+        {
+          "word": "perut",
+          "start": 17.62,
+          "end": 17.82
+        },
+        {
+          "word": "yang",
+          "start": 17.82,
+          "end": 17.92
+        },
+        {
+          "word": "masih",
+          "start": 17.92,
+          "end": 18.14
+        },
+        {
+          "word": "kosong,",
+          "start": 18.14,
+          "end": 19.18
+        },
+        {
+          "word": "sistem",
+          "start": 19.18,
+          "end": 19.42
+        },
+        {
+          "word": "saraf",
+          "start": 19.42,
+          "end": 19.86
+        },
+        {
+          "word": "langsung",
+          "start": 19.86,
+          "end": 20.26
+        },
+        {
+          "word": "memicu",
+          "start": 20.26,
+          "end": 20.66
+        },
+        {
+          "word": "kelenjar",
+          "start": 20.66,
+          "end": 21.06
+        },
+        {
+          "word": "adrenal",
+          "start": 21.06,
+          "end": 21.64
+        },
+        {
+          "word": "untuk",
+          "start": 21.64,
+          "end": 21.92
+        },
+        {
+          "word": "melepaskan",
+          "start": 21.92,
+          "end": 22.42
+        },
+        {
+          "word": "adrenalin.",
+          "start": 22.42,
+          "end": 22.96
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 23.68,
+      "end": 26.82,
+      "text": "Seketika, tubuhmu masuk ke mode lawan atau lari.",
+      "words": [
+        {
+          "word": "Seketika,",
+          "start": 23.72,
+          "end": 24.66
+        },
+        {
+          "word": "tubuhmu",
+          "start": 24.66,
+          "end": 25.04
+        },
+        {
+          "word": "masuk",
+          "start": 25.04,
+          "end": 25.34
+        },
+        {
+          "word": "ke",
+          "start": 25.34,
+          "end": 25.54
+        },
+        {
+          "word": "mode",
+          "start": 25.54,
+          "end": 25.72
+        },
+        {
+          "word": "lawan",
+          "start": 25.72,
+          "end": 26.24
+        },
+        {
+          "word": "atau",
+          "start": 26.24,
+          "end": 26.48
+        },
+        {
+          "word": "lari.",
+          "start": 26.48,
+          "end": 26.8
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 27.2,
+      "end": 29.84,
+      "text": "Adrenalin memaksa otot jantung berdetak lebih cepat.",
+      "words": [
+        {
+          "word": "Adrenalin",
+          "start": 27.52,
+          "end": 27.96
+        },
+        {
+          "word": "memaksa",
+          "start": 27.96,
+          "end": 28.32
+        },
+        {
+          "word": "otot",
+          "start": 28.32,
+          "end": 28.52
+        },
+        {
+          "word": "jantung",
+          "start": 28.52,
+          "end": 28.92
+        },
+        {
+          "word": "berdetak",
+          "start": 28.92,
+          "end": 29.3
+        },
+        {
+          "word": "lebih",
+          "start": 29.3,
+          "end": 29.46
+        },
+        {
+          "word": "cepat.",
+          "start": 29.46,
+          "end": 29.8
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 30,
+      "end": 32.44,
+      "text": "dan lebih kuat. Tekanan darah pun",
+      "words": [
+        {
+          "word": "dan",
+          "start": 30.04,
+          "end": 30.38
+        },
+        {
+          "word": "lebih",
+          "start": 30.38,
+          "end": 30.56
+        },
+        {
+          "word": "kuat.",
+          "start": 30.56,
+          "end": 31.6
+        },
+        {
+          "word": "Tekanan",
+          "start": 31.6,
+          "end": 31.84
+        },
+        {
+          "word": "darah",
+          "start": 31.84,
+          "end": 32.08
+        },
+        {
+          "word": "pun",
+          "start": 32.08,
+          "end": 32.36
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 32.44,
+      "end": 33.72,
+      "text": "mulai berangkak naik.",
+      "words": [
+        {
+          "word": "berangkak",
+          "start": 33.12,
+          "end": 33.46
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 34.18,
+      "end": 36.36,
+      "text": "Stimulasi berlebih pada sistem saraf pusat ini",
+      "words": [
+        {
+          "word": "Stimulasi",
+          "start": 34.28,
+          "end": 34.6
+        },
+        {
+          "word": "berlebih",
+          "start": 34.6,
+          "end": 34.96
+        },
+        {
+          "word": "pada",
+          "start": 34.96,
+          "end": 35.16
+        },
+        {
+          "word": "sistem",
+          "start": 35.16,
+          "end": 35.42
+        },
+        {
+          "word": "saraf",
+          "start": 35.42,
+          "end": 35.7
+        },
+        {
+          "word": "pusat",
+          "start": 35.7,
+          "end": 36
+        },
+        {
+          "word": "ini",
+          "start": 36,
+          "end": 36.3
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 36.36,
+      "end": 38.5,
+      "text": "membuat transmisi sinyal ke otot",
+      "words": [
+        {
+          "word": "transmisi",
+          "start": 37.1,
+          "end": 37.66
+        },
+        {
+          "word": "sinyal",
+          "start": 37.66,
+          "end": 38.08
+        },
+        {
+          "word": "ke",
+          "start": 38.08,
+          "end": 38.24
+        },
+        {
+          "word": "otot",
+          "start": 38.24,
+          "end": 38.48
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 38.5,
+      "end": 40.42,
+      "text": "jadi nggak stabil. Nggak cuma itu,",
+      "words": [
+        {
+          "word": "nggak",
+          "start": 38.78,
+          "end": 38.88
+        },
+        {
+          "word": "stabil.",
+          "start": 38.88,
+          "end": 39.92
+        },
+        {
+          "word": "Nggak",
+          "start": 39.92,
+          "end": 40.02
+        },
+        {
+          "word": "cuma",
+          "start": 40.02,
+          "end": 40.18
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 41.12,
+      "end": 42.2,
+      "text": "kopi juga merangsang gerak",
+      "words": [
+        {
+          "word": "kopi",
+          "start": 41.16,
+          "end": 41.34
+        },
+        {
+          "word": "juga",
+          "start": 41.34,
+          "end": 41.54
+        },
+        {
+          "word": "merangsang",
+          "start": 41.54,
+          "end": 41.92
+        },
+        {
+          "word": "gerak",
+          "start": 41.92,
+          "end": 42.18
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 42.2,
+      "end": 44.3,
+      "text": "peristaltik usus besar. Otot",
+      "words": [
+        {
+          "word": "usus",
+          "start": 42.78,
+          "end": 42.98
+        },
+        {
+          "word": "besar.",
+          "start": 42.98,
+          "end": 44.02
+        },
+        {
+          "word": "Otot",
+          "start": 44.02,
+          "end": 44.28
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 44.3,
+      "end": 46.44,
+      "text": "usus berkontraksi kuat, mendorong",
+      "words": [
+        {
+          "word": "berkontraksi",
+          "start": 44.6,
+          "end": 45.16
+        },
+        {
+          "word": "kuat,",
+          "start": 45.16,
+          "end": 45.98
+        },
+        {
+          "word": "mendorong",
+          "start": 45.98,
+          "end": 46.42
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 46.44,
+      "end": 48.28,
+      "text": "isinya ke bawah. Di saat",
+      "words": [
+        {
+          "word": "ke",
+          "start": 46.74,
+          "end": 46.88
+        },
+        {
+          "word": "bawah.",
+          "start": 46.88,
+          "end": 47.98
+        },
+        {
+          "word": "Di",
+          "start": 47.98,
+          "end": 48.12
+        },
+        {
+          "word": "saat",
+          "start": 48.12,
+          "end": 48.28
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 48.28,
+      "end": 50.3,
+      "text": "yang sama, kafein meningkatkan",
+      "words": [
+        {
+          "word": "sama,",
+          "start": 48.44,
+          "end": 49.54
+        },
+        {
+          "word": "kafein",
+          "start": 49.54,
+          "end": 49.76
+        },
+        {
+          "word": "meningkatkan",
+          "start": 49.76,
+          "end": 50.28
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 50.3,
+      "end": 51.42,
+      "text": "aliran darah ke ginjal,",
+      "words": [
+        {
+          "word": "darah",
+          "start": 50.58,
+          "end": 50.9
+        },
+        {
+          "word": "ke",
+          "start": 50.9,
+          "end": 51.08
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 52.08,
+      "end": 53.76,
+      "text": "menghambat penyerapan kembali natrium,",
+      "words": [
+        {
+          "word": "menghambat",
+          "start": 52.12,
+          "end": 52.56
+        },
+        {
+          "word": "penyerapan",
+          "start": 52.56,
+          "end": 52.96
+        },
+        {
+          "word": "kembali",
+          "start": 52.96,
+          "end": 53.26
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "start": 54.26,
+      "end": 55.98,
+      "text": "dan memaksa kandung kemih untuk segera",
+      "words": [
+        {
+          "word": "dan",
+          "start": 54.28,
+          "end": 54.42
+        },
+        {
+          "word": "memaksa",
+          "start": 54.42,
+          "end": 54.92
+        },
+        {
+          "word": "kandung",
+          "start": 54.92,
+          "end": 55.12
+        },
+        {
+          "word": "kemih",
+          "start": 55.12,
+          "end": 55.44
+        },
+        {
+          "word": "untuk",
+          "start": 55.44,
+          "end": 55.62
+        },
+        {
+          "word": "segera",
+          "start": 55.62,
+          "end": 55.94
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 55.98,
+      "end": 57.62,
+      "text": "membuang cairan. Tapi tunggu,",
+      "words": [
+        {
+          "word": "cairan.",
+          "start": 56.28,
+          "end": 57.12
+        },
+        {
+          "word": "Tapi",
+          "start": 57.12,
+          "end": 57.32
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 58.26,
+      "end": 59.86,
+      "text": "saat kafein lepas dari reseptor,",
+      "words": [
+        {
+          "word": "saat",
+          "start": 58.3,
+          "end": 58.46
+        },
+        {
+          "word": "kafein",
+          "start": 58.46,
+          "end": 58.82
+        },
+        {
+          "word": "lepas",
+          "start": 58.82,
+          "end": 59.14
+        },
+        {
+          "word": "dari",
+          "start": 59.14,
+          "end": 59.34
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "start": 60,
+      "end": 66.16,
+      "text": "Tumpukan adenosin atau sinyal lelah yang tadi tertunda langsung menyerbu otakmu sekaligus.",
+      "words": [
+        {
+          "word": "Tumpukan",
+          "start": 60.28,
+          "end": 60.76
+        },
+        {
+          "word": "adenosin",
+          "start": 60.76,
+          "end": 61.38
+        },
+        {
+          "word": "atau",
+          "start": 61.38,
+          "end": 62.04
+        },
+        {
+          "word": "sinyal",
+          "start": 62.04,
+          "end": 62.62
+        },
+        {
+          "word": "lelah",
+          "start": 62.62,
+          "end": 63
+        },
+        {
+          "word": "yang",
+          "start": 63,
+          "end": 63.2
+        },
+        {
+          "word": "tadi",
+          "start": 63.2,
+          "end": 63.4
+        },
+        {
+          "word": "tertunda",
+          "start": 63.4,
+          "end": 63.82
+        },
+        {
+          "word": "langsung",
+          "start": 63.82,
+          "end": 64.8
+        },
+        {
+          "word": "menyerbu",
+          "start": 64.8,
+          "end": 65.16
+        },
+        {
+          "word": "otakmu",
+          "start": 65.16,
+          "end": 65.6
+        },
+        {
+          "word": "sekaligus.",
+          "start": 65.6,
+          "end": 66.16
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "start": 66.94,
+      "end": 73.62,
+      "text": "Efek kopinya hilang, tapi iritasi pada dinding lambung akibat asam tadi pagi mungkin masih meninggalkan luka kecil.",
+      "words": [
+        {
+          "word": "Efek",
+          "start": 67.02,
+          "end": 67.1
+        },
+        {
+          "word": "kopinya",
+          "start": 67.1,
+          "end": 67.4
+        },
+        {
+          "word": "hilang,",
+          "start": 67.4,
+          "end": 67.76
+        },
+        {
+          "word": "tapi",
+          "start": 67.76,
+          "end": 68.58
+        },
+        {
+          "word": "iritasi",
+          "start": 68.58,
+          "end": 69.14
+        },
+        {
+          "word": "pada",
+          "start": 69.14,
+          "end": 69.36
+        },
+        {
+          "word": "dinding",
+          "start": 69.36,
+          "end": 69.6
+        },
+        {
+          "word": "lambung",
+          "start": 69.6,
+          "end": 70
+        },
+        {
+          "word": "akibat",
+          "start": 70,
+          "end": 70.4
+        },
+        {
+          "word": "asam",
+          "start": 70.4,
+          "end": 70.7
+        },
+        {
+          "word": "tadi",
+          "start": 70.7,
+          "end": 70.9
+        },
+        {
+          "word": "pagi",
+          "start": 70.9,
+          "end": 71.3
+        },
+        {
+          "word": "mungkin",
+          "start": 71.3,
+          "end": 72.32
+        },
+        {
+          "word": "masih",
+          "start": 72.32,
+          "end": 72.64
+        },
+        {
+          "word": "meninggalkan",
+          "start": 72.64,
+          "end": 73.1
+        },
+        {
+          "word": "luka",
+          "start": 73.1,
+          "end": 73.28
+        },
+        {
+          "word": "kecil.",
+          "start": 73.28,
+          "end": 73.62
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "start": 74.3,
+      "end": 75.88,
+      "text": "Kopi itu teman yang asik.",
+      "words": [
+        {
+          "word": "Kopi",
+          "start": 74.38,
+          "end": 74.56
+        },
+        {
+          "word": "itu",
+          "start": 74.56,
+          "end": 74.86
+        },
+        {
+          "word": "teman",
+          "start": 74.86,
+          "end": 75.52
+        },
+        {
+          "word": "yang",
+          "start": 75.52,
+          "end": 75.66
+        },
+        {
+          "word": "asik.",
+          "start": 75.66,
+          "end": 75.86
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "start": 76.56,
+      "end": 80.24,
+      "text": "Tapi jangan biarkan lambungmu berjuang sendirian tanpa alas makanan.",
+      "words": [
+        {
+          "word": "Tapi",
+          "start": 76.6,
+          "end": 76.8
+        },
+        {
+          "word": "jangan",
+          "start": 76.8,
+          "end": 77.56
+        },
+        {
+          "word": "biarkan",
+          "start": 77.56,
+          "end": 77.92
+        },
+        {
+          "word": "lambungmu",
+          "start": 77.92,
+          "end": 78.36
+        },
+        {
+          "word": "berjuang",
+          "start": 78.36,
+          "end": 78.88
+        },
+        {
+          "word": "sendirian",
+          "start": 78.88,
+          "end": 79.34
+        },
+        {
+          "word": "tanpa",
+          "start": 79.34,
+          "end": 79.6
+        },
+        {
+          "word": "alas",
+          "start": 79.6,
+          "end": 79.84
+        },
+        {
+          "word": "makanan.",
+          "start": 79.84,
+          "end": 80.24
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "start": 80.86,
+      "end": 83.92,
+      "text": "Tubuhmu bakal berterima kasih banget kalau kamu sarapan dulu.",
+      "words": [
+        {
+          "word": "Tubuhmu",
+          "start": 80.9,
+          "end": 81.3
+        },
+        {
+          "word": "bakal",
+          "start": 81.3,
+          "end": 81.86
+        },
+        {
+          "word": "berterima",
+          "start": 81.86,
+          "end": 82.22
+        },
+        {
+          "word": "kasih",
+          "start": 82.22,
+          "end": 82.38
+        },
+        {
+          "word": "banget",
+          "start": 82.38,
+          "end": 82.68
+        },
+        {
+          "word": "kalau",
+          "start": 82.68,
+          "end": 83.2
+        },
+        {
+          "word": "kamu",
+          "start": 83.2,
+          "end": 83.42
+        },
+        {
+          "word": "sarapan",
+          "start": 83.42,
+          "end": 83.72
+        },
+        {
+          "word": "dulu.",
+          "start": 83.72,
+          "end": 83.9
+        }
+      ]
+    }
+  ],
+  "text": " Pernah nggak sih kepikiran apa yang sebenarnya terjadi pada tubuhmu kalau kamu minum kopi saat perut masih kosong, setiap pagi? Mungkin kamu pernah merasa perut perih atau jantung tiba-tiba deg-degan padahal baru satu teguk. Ternyata, saat kopi masuk ke perut yang masih kosong, sistem saraf langsung memicu kelenjar adrenal untuk melepaskan adrenalin. Seketika, tubuhmu masuk ke mode lawan atau lari. Adrenalin memaksa otot jantung berdetak lebih cepat. dan lebih kuat. Tekanan darah pun mulai berangkak naik. Stimulasi berlebih pada sistem saraf pusat ini membuat transmisi sinyal ke otot jadi nggak stabil. Nggak cuma itu, kopi juga merangsang gerak peristaltik usus besar. Otot usus berkontraksi kuat, mendorong isinya ke bawah. Di saat yang sama, kafein meningkatkan aliran darah ke ginjal, menghambat penyerapan kembali natrium, dan memaksa kandung kemih untuk segera membuang cairan. Tapi tunggu, saat kafein lepas dari reseptor, Tumpukan adenosin atau sinyal lelah yang tadi tertunda langsung menyerbu otakmu sekaligus. Efek kopinya hilang, tapi iritasi pada dinding lambung akibat asam tadi pagi mungkin masih meninggalkan luka kecil. Kopi itu teman yang asik. Tapi jangan biarkan lambungmu berjuang sendirian tanpa alas makanan. Tubuhmu bakal berterima kasih banget kalau kamu sarapan dulu."
+}
