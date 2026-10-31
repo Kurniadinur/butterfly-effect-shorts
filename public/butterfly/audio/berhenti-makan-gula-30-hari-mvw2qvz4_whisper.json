@@ -1,0 +1,2388 @@
+{
+  "model": "whisper-large-v3",
+  "engine": "Groq Cloud LPU",
+  "totalDurationSec": 111.2,
+  "allWords": [
+    {
+      "word": "Apa",
+      "start": 0.08,
+      "end": 0.38
+    },
+    {
+      "word": "yang",
+      "start": 0.38,
+      "end": 0.6
+    },
+    {
+      "word": "sebenarnya",
+      "start": 0.6,
+      "end": 1.1
+    },
+    {
+      "word": "terjadi",
+      "start": 1.1,
+      "end": 1.76
+    },
+    {
+      "word": "pada",
+      "start": 1.76,
+      "end": 2.2
+    },
+    {
+      "word": "tubuh",
+      "start": 2.2,
+      "end": 2.48
+    },
+    {
+      "word": "Anda",
+      "start": 2.48,
+      "end": 2.74
+    },
+    {
+      "word": "jika",
+      "start": 2.74,
+      "end": 3.42
+    },
+    {
+      "word": "Anda",
+      "start": 3.42,
+      "end": 3.78
+    },
+    {
+      "word": "berhenti",
+      "start": 3.78,
+      "end": 4.28
+    },
+    {
+      "word": "mengonsumsi",
+      "start": 4.28,
+      "end": 4.82
+    },
+    {
+      "word": "gula",
+      "start": 4.82,
+      "end": 5.16
+    },
+    {
+      "word": "selama",
+      "start": 5.16,
+      "end": 6.02
+    },
+    {
+      "word": "30",
+      "start": 6.02,
+      "end": 6.72
+    },
+    {
+      "word": "hari?",
+      "start": 6.72,
+      "end": 7.06
+    },
+    {
+      "word": "Di",
+      "start": 8.42,
+      "end": 8.54
+    },
+    {
+      "word": "hari",
+      "start": 8.54,
+      "end": 8.7
+    },
+    {
+      "word": "pertama,",
+      "start": 8.7,
+      "end": 9.72
+    },
+    {
+      "word": "otak",
+      "start": 9.72,
+      "end": 9.9
+    },
+    {
+      "word": "Anda",
+      "start": 9.9,
+      "end": 10.16
+    },
+    {
+      "word": "mulai",
+      "start": 10.16,
+      "end": 10.7
+    },
+    {
+      "word": "protes.",
+      "start": 10.7,
+      "end": 12.14
+    },
+    {
+      "word": "Tanpa",
+      "start": 12.46,
+      "end": 12.72
+    },
+    {
+      "word": "lonjakan",
+      "start": 12.72,
+      "end": 13.12
+    },
+    {
+      "word": "dopamin",
+      "start": 13.12,
+      "end": 13.56
+    },
+    {
+      "word": "dari",
+      "start": 13.56,
+      "end": 13.76
+    },
+    {
+      "word": "gula,",
+      "start": 13.76,
+      "end": 14.88
+    },
+    {
+      "word": "Anda",
+      "start": 14.88,
+      "end": 15.02
+    },
+    {
+      "word": "akan",
+      "start": 15.02,
+      "end": 15.22
+    },
+    {
+      "word": "meraksa",
+      "start": 15.22,
+      "end": 15.56
+    },
+    {
+      "word": "gelisah,",
+      "start": 15.56,
+      "end": 16.46
+    },
+    {
+      "word": "mudah",
+      "start": 16.46,
+      "end": 16.76
+    },
+    {
+      "word": "marah,",
+      "start": 16.76,
+      "end": 17.64
+    },
+    {
+      "word": "dan",
+      "start": 17.64,
+      "end": 17.74
+    },
+    {
+      "word": "terus-menerus",
+      "start": 17.74,
+      "end": 18.34
+    },
+    {
+      "word": "memikirkan",
+      "start": 18.34,
+      "end": 18.9
+    },
+    {
+      "word": "makanan",
+      "start": 18.9,
+      "end": 19.26
+    },
+    {
+      "word": "manis.",
+      "start": 19.26,
+      "end": 19.72
+    },
+    {
+      "word": "Ini",
+      "start": 21.08,
+      "end": 21.32
+    },
+    {
+      "word": "adalah",
+      "start": 21.32,
+      "end": 21.8
+    },
+    {
+      "word": "fase",
+      "start": 21.8,
+      "end": 22.04
+    },
+    {
+      "word": "tersulit.",
+      "start": 22.04,
+      "end": 22.48
+    },
+    {
+      "word": "Tubuh",
+      "start": 23.36,
+      "end": 23.52
+    },
+    {
+      "word": "Anda",
+      "start": 23.52,
+      "end": 23.78
+    },
+    {
+      "word": "mengalami",
+      "start": 23.78,
+      "end": 24.18
+    },
+    {
+      "word": "gejala",
+      "start": 24.18,
+      "end": 24.5
+    },
+    {
+      "word": "putus",
+      "start": 24.5,
+      "end": 24.82
+    },
+    {
+      "word": "zat",
+      "start": 24.82,
+      "end": 25.08
+    },
+    {
+      "word": "atau",
+      "start": 25.08,
+      "end": 25.6
+    },
+    {
+      "word": "sakau",
+      "start": 25.6,
+      "end": 26.44
+    },
+    {
+      "word": "gula.",
+      "start": 26.44,
+      "end": 26.78
+    },
+    {
+      "word": "Sarap-sarap",
+      "start": 27.82,
+      "end": 28.26
+    },
+    {
+      "word": "mengirim",
+      "start": 28.26,
+      "end": 28.6
+    },
+    {
+      "word": "sinyal",
+      "start": 28.6,
+      "end": 28.88
+    },
+    {
+      "word": "darurat",
+      "start": 28.88,
+      "end": 29.34
+    },
+    {
+      "word": "yang",
+      "start": 29.34,
+      "end": 29.86
+    },
+    {
+      "word": "memicu",
+      "start": 29.86,
+      "end": 30.16
+    },
+    {
+      "word": "sakit",
+      "start": 30.16,
+      "end": 30.42
+    },
+    {
+      "word": "kepala",
+      "start": 30.42,
+      "end": 30.78
+    },
+    {
+      "word": "berdenyut",
+      "start": 30.78,
+      "end": 31.32
+    },
+    {
+      "word": "dan",
+      "start": 31.32,
+      "end": 31.62
+    },
+    {
+      "word": "emosi",
+      "start": 31.62,
+      "end": 32.26
+    },
+    {
+      "word": "yang",
+      "start": 32.26,
+      "end": 32.54
+    },
+    {
+      "word": "meledak-ledak",
+      "start": 32.54,
+      "end": 33.66
+    },
+    {
+      "word": "Kabar",
+      "start": 34.32,
+      "end": 34.68
+    },
+    {
+      "word": "baiknya,",
+      "start": 34.68,
+      "end": 35.8
+    },
+    {
+      "word": "pankreas",
+      "start": 35.8,
+      "end": 36.14
+    },
+    {
+      "word": "Anda",
+      "start": 36.14,
+      "end": 36.42
+    },
+    {
+      "word": "akhirnya",
+      "start": 36.42,
+      "end": 36.8
+    },
+    {
+      "word": "bisa",
+      "start": 36.8,
+      "end": 37.14
+    },
+    {
+      "word": "beristirahat",
+      "start": 37.14,
+      "end": 37.86
+    },
+    {
+      "word": "Produksi",
+      "start": 38.34,
+      "end": 38.78
+    },
+    {
+      "word": "insulin",
+      "start": 38.78,
+      "end": 39.12
+    },
+    {
+      "word": "mulai",
+      "start": 39.12,
+      "end": 39.48
+    },
+    {
+      "word": "stabil",
+      "start": 39.48,
+      "end": 39.96
+    },
+    {
+      "word": "dan",
+      "start": 39.96,
+      "end": 40.66
+    },
+    {
+      "word": "rasa",
+      "start": 40.66,
+      "end": 40.9
+    },
+    {
+      "word": "lapar",
+      "start": 40.9,
+      "end": 41.24
+    },
+    {
+      "word": "yang",
+      "start": 41.24,
+      "end": 41.4
+    },
+    {
+      "word": "biasanya",
+      "start": 41.4,
+      "end": 41.78
+    },
+    {
+      "word": "datang",
+      "start": 41.78,
+      "end": 42.08
+    },
+    {
+      "word": "tiba-tiba",
+      "start": 42.08,
+      "end": 42.78
+    },
+    {
+      "word": "kini",
+      "start": 42.78,
+      "end": 43.38
+    },
+    {
+      "word": "mulai",
+      "start": 43.38,
+      "end": 43.92
+    },
+    {
+      "word": "berkurang",
+      "start": 43.92,
+      "end": 44.4
+    },
+    {
+      "word": "Gula",
+      "start": 45.46,
+      "end": 45.82
+    },
+    {
+      "word": "bersifat",
+      "start": 45.82,
+      "end": 46.34
+    },
+    {
+      "word": "mengikat",
+      "start": 46.34,
+      "end": 46.64
+    },
+    {
+      "word": "air",
+      "start": 46.64,
+      "end": 46.96
+    },
+    {
+      "word": "Saat",
+      "start": 46.84,
+      "end": 47.96
+    },
+    {
+      "word": "kadar",
+      "start": 47.96,
+      "end": 48.18
+    },
+    {
+      "word": "gula",
+      "start": 48.18,
+      "end": 48.38
+    },
+    {
+      "word": "darah",
+      "start": 48.38,
+      "end": 48.56
+    },
+    {
+      "word": "turun,",
+      "start": 48.56,
+      "end": 49.38
+    },
+    {
+      "word": "tubuh",
+      "start": 49.38,
+      "end": 49.46
+    },
+    {
+      "word": "akan",
+      "start": 49.46,
+      "end": 49.68
+    },
+    {
+      "word": "membuang",
+      "start": 49.68,
+      "end": 50.1
+    },
+    {
+      "word": "kelebihan",
+      "start": 50.1,
+      "end": 50.56
+    },
+    {
+      "word": "cairan",
+      "start": 50.56,
+      "end": 51.06
+    },
+    {
+      "word": "Anda",
+      "start": 50.88,
+      "end": 51.92
+    },
+    {
+      "word": "akan",
+      "start": 51.92,
+      "end": 52.08
+    },
+    {
+      "word": "menyadari",
+      "start": 52.08,
+      "end": 52.66
+    },
+    {
+      "word": "wajah",
+      "start": 52.66,
+      "end": 53.3
+    },
+    {
+      "word": "terlihat",
+      "start": 53.3,
+      "end": 53.66
+    },
+    {
+      "word": "lebih",
+      "start": 53.66,
+      "end": 53.92
+    },
+    {
+      "word": "tirus",
+      "start": 53.92,
+      "end": 54.32
+    },
+    {
+      "word": "dan",
+      "start": 54.32,
+      "end": 54.72
+    },
+    {
+      "word": "perut",
+      "start": 54.72,
+      "end": 55.2
+    },
+    {
+      "word": "mulai",
+      "start": 55.2,
+      "end": 56
+    },
+    {
+      "word": "mengecil",
+      "start": 56,
+      "end": 56.5
+    },
+    {
+      "word": "Karena",
+      "start": 57.68,
+      "end": 57.86
+    },
+    {
+      "word": "tidak",
+      "start": 57.86,
+      "end": 58.06
+    },
+    {
+      "word": "ada",
+      "start": 58.06,
+      "end": 58.22
+    },
+    {
+      "word": "lagi",
+      "start": 58.22,
+      "end": 58.38
+    },
+    {
+      "word": "kiriman",
+      "start": 58.38,
+      "end": 58.68
+    },
+    {
+      "word": "gula,",
+      "start": 58.68,
+      "end": 59.6
+    },
+    {
+      "word": "organ",
+      "start": 59.6,
+      "end": 59.76
+    },
+    {
+      "word": "hati",
+      "start": 59.76,
+      "end": 60.06
+    },
+    {
+      "word": "beralih",
+      "start": 60.06,
+      "end": 60.5
+    },
+    {
+      "word": "fungsi",
+      "start": 60.5,
+      "end": 60.9
+    },
+    {
+      "word": "Sekarang",
+      "start": 61.52,
+      "end": 62.14
+    },
+    {
+      "word": "hati",
+      "start": 62.14,
+      "end": 62.64
+    },
+    {
+      "word": "mulai",
+      "start": 62.64,
+      "end": 62.88
+    },
+    {
+      "word": "membakar",
+      "start": 62.88,
+      "end": 63.28
+    },
+    {
+      "word": "simpanan",
+      "start": 63.28,
+      "end": 63.7
+    },
+    {
+      "word": "lemak",
+      "start": 63.7,
+      "end": 63.96
+    },
+    {
+      "word": "untuk",
+      "start": 63.96,
+      "end": 64.52
+    },
+    {
+      "word": "dijadikan",
+      "start": 64.52,
+      "end": 65.06
+    },
+    {
+      "word": "energi",
+      "start": 65.06,
+      "end": 65.74
+    },
+    {
+      "word": "Anda",
+      "start": 66.46,
+      "end": 66.76
+    },
+    {
+      "word": "mulai",
+      "start": 66.76,
+      "end": 67.02
+    },
+    {
+      "word": "merasa",
+      "start": 67.02,
+      "end": 67.36
+    },
+    {
+      "word": "jauh",
+      "start": 67.36,
+      "end": 67.9
+    },
+    {
+      "word": "lebih",
+      "start": 67.9,
+      "end": 68.1
+    },
+    {
+      "word": "bertenaga",
+      "start": 68.1,
+      "end": 68.56
+    },
+    {
+      "word": "Tanpa",
+      "start": 69.66,
+      "end": 69.94
+    },
+    {
+      "word": "gula,",
+      "start": 69.94,
+      "end": 70.68
+    },
+    {
+      "word": "proses",
+      "start": 70.68,
+      "end": 70.76
+    },
+    {
+      "word": "kerusakan",
+      "start": 70.76,
+      "end": 71.18
+    },
+    {
+      "word": "kolagen",
+      "start": 71.18,
+      "end": 71.62
+    },
+    {
+      "word": "akan",
+      "start": 71.62,
+      "end": 71.96
+    },
+    {
+      "word": "berhenti",
+      "start": 71.96,
+      "end": 72.64
+    },
+    {
+      "word": "Jerawat",
+      "start": 73.26,
+      "end": 73.6
+    },
+    {
+      "word": "mulai",
+      "start": 73.6,
+      "end": 73.84
+    },
+    {
+      "word": "mengempis",
+      "start": 73.84,
+      "end": 74.5
+    },
+    {
+      "word": "dan",
+      "start": 74.5,
+      "end": 74.84
+    },
+    {
+      "word": "kulit",
+      "start": 74.84,
+      "end": 75.12
+    },
+    {
+      "word": "Anda",
+      "start": 75.12,
+      "end": 75.3
+    },
+    {
+      "word": "akan",
+      "start": 75.3,
+      "end": 75.5
+    },
+    {
+      "word": "terlihat",
+      "start": 75.5,
+      "end": 75.82
+    },
+    {
+      "word": "jauh",
+      "start": 75.82,
+      "end": 76.18
+    },
+    {
+      "word": "lebih",
+      "start": 76.18,
+      "end": 76.42
+    },
+    {
+      "word": "cerah",
+      "start": 76.42,
+      "end": 76.76
+    },
+    {
+      "word": "serta",
+      "start": 76.76,
+      "end": 77.38
+    },
+    {
+      "word": "kenyal",
+      "start": 77.38,
+      "end": 77.76
+    },
+    {
+      "word": "secara",
+      "start": 77.76,
+      "end": 78.68
+    },
+    {
+      "word": "alami",
+      "start": 78.68,
+      "end": 79.28
+    },
+    {
+      "word": "Beban",
+      "start": 80.38,
+      "end": 80.64
+    },
+    {
+      "word": "kerja",
+      "start": 80.64,
+      "end": 80.96
+    },
+    {
+      "word": "pembuluh",
+      "start": 80.96,
+      "end": 81.22
+    },
+    {
+      "word": "darah",
+      "start": 81.22,
+      "end": 81.48
+    },
+    {
+      "word": "berkurang",
+      "start": 81.48,
+      "end": 81.92
+    },
+    {
+      "word": "drastis",
+      "start": 81.92,
+      "end": 82.56
+    },
+    {
+      "word": "Tekanan",
+      "start": 83.12,
+      "end": 83.38
+    },
+    {
+      "word": "darah",
+      "start": 83.38,
+      "end": 83.62
+    },
+    {
+      "word": "menurun",
+      "start": 83.62,
+      "end": 84.04
+    },
+    {
+      "word": "dan",
+      "start": 84.04,
+      "end": 84.34
+    },
+    {
+      "word": "jantung",
+      "start": 84.34,
+      "end": 84.98
+    },
+    {
+      "word": "Anda",
+      "start": 84.98,
+      "end": 85.3
+    },
+    {
+      "word": "kini",
+      "start": 85.3,
+      "end": 85.56
+    },
+    {
+      "word": "berdetak",
+      "start": 85.56,
+      "end": 86
+    },
+    {
+      "word": "lebih",
+      "start": 86,
+      "end": 86.26
+    },
+    {
+      "word": "efisien",
+      "start": 86.26,
+      "end": 86.92
+    },
+    {
+      "word": "Tanpa",
+      "start": 86.98,
+      "end": 87.62
+    },
+    {
+      "word": "gangguan",
+      "start": 87.62,
+      "end": 88.16
+    },
+    {
+      "word": "fluktuasi",
+      "start": 88.16,
+      "end": 88.64
+    },
+    {
+      "word": "gula",
+      "start": 88.64,
+      "end": 88.88
+    },
+    {
+      "word": "darah",
+      "start": 88.88,
+      "end": 89.2
+    },
+    {
+      "word": "Setelah",
+      "start": 90.1,
+      "end": 90.48
+    },
+    {
+      "word": "30",
+      "start": 90.48,
+      "end": 90.84
+    },
+    {
+      "word": "hari,",
+      "start": 90.84,
+      "end": 91.78
+    },
+    {
+      "word": "indera",
+      "start": 91.78,
+      "end": 92
+    },
+    {
+      "word": "perasa",
+      "start": 92,
+      "end": 92.26
+    },
+    {
+      "word": "Anda",
+      "start": 92.26,
+      "end": 92.54
+    },
+    {
+      "word": "berubah",
+      "start": 92.54,
+      "end": 93.18
+    },
+    {
+      "word": "total",
+      "start": 93.18,
+      "end": 93.6
+    },
+    {
+      "word": "Buah-buahan",
+      "start": 94.4,
+      "end": 94.94
+    },
+    {
+      "word": "kini",
+      "start": 94.94,
+      "end": 95.14
+    },
+    {
+      "word": "terasa",
+      "start": 95.14,
+      "end": 95.4
+    },
+    {
+      "word": "sangat",
+      "start": 95.4,
+      "end": 95.92
+    },
+    {
+      "word": "manis",
+      "start": 95.92,
+      "end": 96.38
+    },
+    {
+      "word": "Pikiran",
+      "start": 96.24,
+      "end": 97.28
+    },
+    {
+      "word": "menjadi",
+      "start": 97.28,
+      "end": 97.58
+    },
+    {
+      "word": "jernih",
+      "start": 97.58,
+      "end": 97.98
+    },
+    {
+      "word": "Dan",
+      "start": 97.88,
+      "end": 98.58
+    },
+    {
+      "word": "Anda",
+      "start": 98.58,
+      "end": 98.76
+    },
+    {
+      "word": "merasa",
+      "start": 98.76,
+      "end": 99.06
+    },
+    {
+      "word": "memiliki",
+      "start": 99.06,
+      "end": 99.46
+    },
+    {
+      "word": "tubuh",
+      "start": 99.46,
+      "end": 99.88
+    },
+    {
+      "word": "yang",
+      "start": 99.88,
+      "end": 100.12
+    },
+    {
+      "word": "baru",
+      "start": 100.12,
+      "end": 100.98
+    },
+    {
+      "word": "Berhenti",
+      "start": 102.06,
+      "end": 102.42
+    },
+    {
+      "word": "makan",
+      "start": 102.42,
+      "end": 102.66
+    },
+    {
+      "word": "gula",
+      "start": 102.66,
+      "end": 102.9
+    },
+    {
+      "word": "bukan",
+      "start": 102.9,
+      "end": 103.18
+    },
+    {
+      "word": "cuma",
+      "start": 103.18,
+      "end": 103.38
+    },
+    {
+      "word": "soal",
+      "start": 103.38,
+      "end": 103.6
+    },
+    {
+      "word": "diet",
+      "start": 103.6,
+      "end": 103.84
+    },
+    {
+      "word": "Tapi",
+      "start": 103.82,
+      "end": 104.62
+    },
+    {
+      "word": "soal",
+      "start": 104.62,
+      "end": 105.08
+    },
+    {
+      "word": "memberi",
+      "start": 105.08,
+      "end": 105.44
+    },
+    {
+      "word": "kesempatan",
+      "start": 105.44,
+      "end": 106
+    },
+    {
+      "word": "organ",
+      "start": 106,
+      "end": 106.3
+    },
+    {
+      "word": "dalam",
+      "start": 106.3,
+      "end": 106.58
+    },
+    {
+      "word": "Anda",
+      "start": 106.58,
+      "end": 106.94
+    },
+    {
+      "word": "untuk",
+      "start": 106.94,
+      "end": 107.74
+    },
+    {
+      "word": "bernapas",
+      "start": 107.74,
+      "end": 108.4
+    },
+    {
+      "word": "Jadi,",
+      "start": 109.18,
+      "end": 110.26
+    },
+    {
+      "word": "siapkah",
+      "start": 110.26,
+      "end": 110.58
+    },
+    {
+      "word": "Anda?",
+      "start": 110.58,
+      "end": 111.28
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "start": 0,
+      "end": 7.1,
+      "text": "Apa yang sebenarnya terjadi pada tubuh Anda jika Anda berhenti mengonsumsi gula selama 30 hari?",
+      "words": [
+        {
+          "word": "Apa",
+          "start": 0.08,
+          "end": 0.38
+        },
+        {
+          "word": "yang",
+          "start": 0.38,
+          "end": 0.6
+        },
+        {
+          "word": "sebenarnya",
+          "start": 0.6,
+          "end": 1.1
+        },
+        {
+          "word": "terjadi",
+          "start": 1.1,
+          "end": 1.76
+        },
+        {
+          "word": "pada",
+          "start": 1.76,
+          "end": 2.2
+        },
+        {
+          "word": "tubuh",
+          "start": 2.2,
+          "end": 2.48
+        },
+        {
+          "word": "Anda",
+          "start": 2.48,
+          "end": 2.74
+        },
+        {
+          "word": "jika",
+          "start": 2.74,
+          "end": 3.42
+        },
+        {
+          "word": "Anda",
+          "start": 3.42,
+          "end": 3.78
+        },
+        {
+          "word": "berhenti",
+          "start": 3.78,
+          "end": 4.28
+        },
+        {
+          "word": "mengonsumsi",
+          "start": 4.28,
+          "end": 4.82
+        },
+        {
+          "word": "gula",
+          "start": 4.82,
+          "end": 5.16
+        },
+        {
+          "word": "selama",
+          "start": 5.16,
+          "end": 6.02
+        },
+        {
+          "word": "30",
+          "start": 6.02,
+          "end": 6.72
+        },
+        {
+          "word": "hari?",
+          "start": 6.72,
+          "end": 7.06
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 8.38,
+      "end": 11.66,
+      "text": "Di hari pertama, otak Anda mulai protes.",
+      "words": [
+        {
+          "word": "Di",
+          "start": 8.42,
+          "end": 8.54
+        },
+        {
+          "word": "hari",
+          "start": 8.54,
+          "end": 8.7
+        },
+        {
+          "word": "pertama,",
+          "start": 8.7,
+          "end": 9.72
+        },
+        {
+          "word": "otak",
+          "start": 9.72,
+          "end": 9.9
+        },
+        {
+          "word": "Anda",
+          "start": 9.9,
+          "end": 10.16
+        },
+        {
+          "word": "mulai",
+          "start": 10.16,
+          "end": 10.7
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 12.4,
+      "end": 19.74,
+      "text": "Tanpa lonjakan dopamin dari gula, Anda akan meraksa gelisah, mudah marah, dan terus-menerus memikirkan makanan manis.",
+      "words": [
+        {
+          "word": "Tanpa",
+          "start": 12.46,
+          "end": 12.72
+        },
+        {
+          "word": "lonjakan",
+          "start": 12.72,
+          "end": 13.12
+        },
+        {
+          "word": "dopamin",
+          "start": 13.12,
+          "end": 13.56
+        },
+        {
+          "word": "dari",
+          "start": 13.56,
+          "end": 13.76
+        },
+        {
+          "word": "gula,",
+          "start": 13.76,
+          "end": 14.88
+        },
+        {
+          "word": "Anda",
+          "start": 14.88,
+          "end": 15.02
+        },
+        {
+          "word": "akan",
+          "start": 15.02,
+          "end": 15.22
+        },
+        {
+          "word": "meraksa",
+          "start": 15.22,
+          "end": 15.56
+        },
+        {
+          "word": "gelisah,",
+          "start": 15.56,
+          "end": 16.46
+        },
+        {
+          "word": "mudah",
+          "start": 16.46,
+          "end": 16.76
+        },
+        {
+          "word": "marah,",
+          "start": 16.76,
+          "end": 17.64
+        },
+        {
+          "word": "dan",
+          "start": 17.64,
+          "end": 17.74
+        },
+        {
+          "word": "terus-menerus",
+          "start": 17.74,
+          "end": 18.34
+        },
+        {
+          "word": "memikirkan",
+          "start": 18.34,
+          "end": 18.9
+        },
+        {
+          "word": "makanan",
+          "start": 18.9,
+          "end": 19.26
+        },
+        {
+          "word": "manis.",
+          "start": 19.26,
+          "end": 19.72
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 21.04,
+      "end": 22.5,
+      "text": "Ini adalah fase tersulit.",
+      "words": [
+        {
+          "word": "Ini",
+          "start": 21.08,
+          "end": 21.32
+        },
+        {
+          "word": "adalah",
+          "start": 21.32,
+          "end": 21.8
+        },
+        {
+          "word": "fase",
+          "start": 21.8,
+          "end": 22.04
+        },
+        {
+          "word": "tersulit.",
+          "start": 22.04,
+          "end": 22.48
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 23.32,
+      "end": 26.8,
+      "text": "Tubuh Anda mengalami gejala putus zat atau sakau gula.",
+      "words": [
+        {
+          "word": "Tubuh",
+          "start": 23.36,
+          "end": 23.52
+        },
+        {
+          "word": "Anda",
+          "start": 23.52,
+          "end": 23.78
+        },
+        {
+          "word": "mengalami",
+          "start": 23.78,
+          "end": 24.18
+        },
+        {
+          "word": "gejala",
+          "start": 24.18,
+          "end": 24.5
+        },
+        {
+          "word": "putus",
+          "start": 24.5,
+          "end": 24.82
+        },
+        {
+          "word": "zat",
+          "start": 24.82,
+          "end": 25.08
+        },
+        {
+          "word": "atau",
+          "start": 25.08,
+          "end": 25.6
+        },
+        {
+          "word": "sakau",
+          "start": 25.6,
+          "end": 26.44
+        },
+        {
+          "word": "gula.",
+          "start": 26.44,
+          "end": 26.78
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 26.8,
+      "end": 33.7,
+      "text": "Sarap-sarap mengirim sinyal darurat yang memicu sakit kepala berdenyut dan emosi yang meledak-ledak",
+      "words": [
+        {
+          "word": "Sarap-sarap",
+          "start": 27.82,
+          "end": 28.26
+        },
+        {
+          "word": "mengirim",
+          "start": 28.26,
+          "end": 28.6
+        },
+        {
+          "word": "sinyal",
+          "start": 28.6,
+          "end": 28.88
+        },
+        {
+          "word": "darurat",
+          "start": 28.88,
+          "end": 29.34
+        },
+        {
+          "word": "yang",
+          "start": 29.34,
+          "end": 29.86
+        },
+        {
+          "word": "memicu",
+          "start": 29.86,
+          "end": 30.16
+        },
+        {
+          "word": "sakit",
+          "start": 30.16,
+          "end": 30.42
+        },
+        {
+          "word": "kepala",
+          "start": 30.42,
+          "end": 30.78
+        },
+        {
+          "word": "berdenyut",
+          "start": 30.78,
+          "end": 31.32
+        },
+        {
+          "word": "dan",
+          "start": 31.32,
+          "end": 31.62
+        },
+        {
+          "word": "emosi",
+          "start": 31.62,
+          "end": 32.26
+        },
+        {
+          "word": "yang",
+          "start": 32.26,
+          "end": 32.54
+        },
+        {
+          "word": "meledak-ledak",
+          "start": 32.54,
+          "end": 33.66
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 33.7,
+      "end": 37.88,
+      "text": "Kabar baiknya, pankreas Anda akhirnya bisa beristirahat",
+      "words": [
+        {
+          "word": "Kabar",
+          "start": 34.32,
+          "end": 34.68
+        },
+        {
+          "word": "baiknya,",
+          "start": 34.68,
+          "end": 35.8
+        },
+        {
+          "word": "pankreas",
+          "start": 35.8,
+          "end": 36.14
+        },
+        {
+          "word": "Anda",
+          "start": 36.14,
+          "end": 36.42
+        },
+        {
+          "word": "akhirnya",
+          "start": 36.42,
+          "end": 36.8
+        },
+        {
+          "word": "bisa",
+          "start": 36.8,
+          "end": 37.14
+        },
+        {
+          "word": "beristirahat",
+          "start": 37.14,
+          "end": 37.86
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 37.88,
+      "end": 44.44,
+      "text": "Produksi insulin mulai stabil dan rasa lapar yang biasanya datang tiba-tiba kini mulai berkurang",
+      "words": [
+        {
+          "word": "Produksi",
+          "start": 38.34,
+          "end": 38.78
+        },
+        {
+          "word": "insulin",
+          "start": 38.78,
+          "end": 39.12
+        },
+        {
+          "word": "mulai",
+          "start": 39.12,
+          "end": 39.48
+        },
+        {
+          "word": "stabil",
+          "start": 39.48,
+          "end": 39.96
+        },
+        {
+          "word": "dan",
+          "start": 39.96,
+          "end": 40.66
+        },
+        {
+          "word": "rasa",
+          "start": 40.66,
+          "end": 40.9
+        },
+        {
+          "word": "lapar",
+          "start": 40.9,
+          "end": 41.24
+        },
+        {
+          "word": "yang",
+          "start": 41.24,
+          "end": 41.4
+        },
+        {
+          "word": "biasanya",
+          "start": 41.4,
+          "end": 41.78
+        },
+        {
+          "word": "datang",
+          "start": 41.78,
+          "end": 42.08
+        },
+        {
+          "word": "tiba-tiba",
+          "start": 42.08,
+          "end": 42.78
+        },
+        {
+          "word": "kini",
+          "start": 42.78,
+          "end": 43.38
+        },
+        {
+          "word": "mulai",
+          "start": 43.38,
+          "end": 43.92
+        },
+        {
+          "word": "berkurang",
+          "start": 43.92,
+          "end": 44.4
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 44.44,
+      "end": 47.02,
+      "text": "Gula bersifat mengikat air",
+      "words": [
+        {
+          "word": "Gula",
+          "start": 45.46,
+          "end": 45.82
+        },
+        {
+          "word": "bersifat",
+          "start": 45.82,
+          "end": 46.34
+        },
+        {
+          "word": "mengikat",
+          "start": 46.34,
+          "end": 46.64
+        },
+        {
+          "word": "air",
+          "start": 46.64,
+          "end": 46.96
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 47.02,
+      "end": 51.1,
+      "text": "Saat kadar gula darah turun, tubuh akan membuang kelebihan cairan",
+      "words": [
+        {
+          "word": "kadar",
+          "start": 47.96,
+          "end": 48.18
+        },
+        {
+          "word": "gula",
+          "start": 48.18,
+          "end": 48.38
+        },
+        {
+          "word": "darah",
+          "start": 48.38,
+          "end": 48.56
+        },
+        {
+          "word": "turun,",
+          "start": 48.56,
+          "end": 49.38
+        },
+        {
+          "word": "tubuh",
+          "start": 49.38,
+          "end": 49.46
+        },
+        {
+          "word": "akan",
+          "start": 49.46,
+          "end": 49.68
+        },
+        {
+          "word": "membuang",
+          "start": 49.68,
+          "end": 50.1
+        },
+        {
+          "word": "kelebihan",
+          "start": 50.1,
+          "end": 50.56
+        },
+        {
+          "word": "cairan",
+          "start": 50.56,
+          "end": 51.06
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 51.1,
+      "end": 56.54,
+      "text": "Anda akan menyadari wajah terlihat lebih tirus dan perut mulai mengecil",
+      "words": [
+        {
+          "word": "akan",
+          "start": 51.92,
+          "end": 52.08
+        },
+        {
+          "word": "menyadari",
+          "start": 52.08,
+          "end": 52.66
+        },
+        {
+          "word": "wajah",
+          "start": 52.66,
+          "end": 53.3
+        },
+        {
+          "word": "terlihat",
+          "start": 53.3,
+          "end": 53.66
+        },
+        {
+          "word": "lebih",
+          "start": 53.66,
+          "end": 53.92
+        },
+        {
+          "word": "tirus",
+          "start": 53.92,
+          "end": 54.32
+        },
+        {
+          "word": "dan",
+          "start": 54.32,
+          "end": 54.72
+        },
+        {
+          "word": "perut",
+          "start": 54.72,
+          "end": 55.2
+        },
+        {
+          "word": "mulai",
+          "start": 55.2,
+          "end": 56
+        },
+        {
+          "word": "mengecil",
+          "start": 56,
+          "end": 56.5
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 56.54,
+      "end": 60.92,
+      "text": "Karena tidak ada lagi kiriman gula, organ hati beralih fungsi",
+      "words": [
+        {
+          "word": "Karena",
+          "start": 57.68,
+          "end": 57.86
+        },
+        {
+          "word": "tidak",
+          "start": 57.86,
+          "end": 58.06
+        },
+        {
+          "word": "ada",
+          "start": 58.06,
+          "end": 58.22
+        },
+        {
+          "word": "lagi",
+          "start": 58.22,
+          "end": 58.38
+        },
+        {
+          "word": "kiriman",
+          "start": 58.38,
+          "end": 58.68
+        },
+        {
+          "word": "gula,",
+          "start": 58.68,
+          "end": 59.6
+        },
+        {
+          "word": "organ",
+          "start": 59.6,
+          "end": 59.76
+        },
+        {
+          "word": "hati",
+          "start": 59.76,
+          "end": 60.06
+        },
+        {
+          "word": "beralih",
+          "start": 60.06,
+          "end": 60.5
+        },
+        {
+          "word": "fungsi",
+          "start": 60.5,
+          "end": 60.9
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 60.92,
+      "end": 65.76,
+      "text": "Sekarang hati mulai membakar simpanan lemak untuk dijadikan energi",
+      "words": [
+        {
+          "word": "Sekarang",
+          "start": 61.52,
+          "end": 62.14
+        },
+        {
+          "word": "hati",
+          "start": 62.14,
+          "end": 62.64
+        },
+        {
+          "word": "mulai",
+          "start": 62.64,
+          "end": 62.88
+        },
+        {
+          "word": "membakar",
+          "start": 62.88,
+          "end": 63.28
+        },
+        {
+          "word": "simpanan",
+          "start": 63.28,
+          "end": 63.7
+        },
+        {
+          "word": "lemak",
+          "start": 63.7,
+          "end": 63.96
+        },
+        {
+          "word": "untuk",
+          "start": 63.96,
+          "end": 64.52
+        },
+        {
+          "word": "dijadikan",
+          "start": 64.52,
+          "end": 65.06
+        },
+        {
+          "word": "energi",
+          "start": 65.06,
+          "end": 65.74
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 65.76,
+      "end": 68.6,
+      "text": "Anda mulai merasa jauh lebih bertenaga",
+      "words": [
+        {
+          "word": "Anda",
+          "start": 66.46,
+          "end": 66.76
+        },
+        {
+          "word": "mulai",
+          "start": 66.76,
+          "end": 67.02
+        },
+        {
+          "word": "merasa",
+          "start": 67.02,
+          "end": 67.36
+        },
+        {
+          "word": "jauh",
+          "start": 67.36,
+          "end": 67.9
+        },
+        {
+          "word": "lebih",
+          "start": 67.9,
+          "end": 68.1
+        },
+        {
+          "word": "bertenaga",
+          "start": 68.1,
+          "end": 68.56
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 68.6,
+      "end": 72.66,
+      "text": "Tanpa gula, proses kerusakan kolagen akan berhenti",
+      "words": [
+        {
+          "word": "Tanpa",
+          "start": 69.66,
+          "end": 69.94
+        },
+        {
+          "word": "gula,",
+          "start": 69.94,
+          "end": 70.68
+        },
+        {
+          "word": "proses",
+          "start": 70.68,
+          "end": 70.76
+        },
+        {
+          "word": "kerusakan",
+          "start": 70.76,
+          "end": 71.18
+        },
+        {
+          "word": "kolagen",
+          "start": 71.18,
+          "end": 71.62
+        },
+        {
+          "word": "akan",
+          "start": 71.62,
+          "end": 71.96
+        },
+        {
+          "word": "berhenti",
+          "start": 71.96,
+          "end": 72.64
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 72.66,
+      "end": 79.28,
+      "text": "Jerawat mulai mengempis dan kulit Anda akan terlihat jauh lebih cerah serta kenyal secara alami",
+      "words": [
+        {
+          "word": "Jerawat",
+          "start": 73.26,
+          "end": 73.6
+        },
+        {
+          "word": "mulai",
+          "start": 73.6,
+          "end": 73.84
+        },
+        {
+          "word": "mengempis",
+          "start": 73.84,
+          "end": 74.5
+        },
+        {
+          "word": "dan",
+          "start": 74.5,
+          "end": 74.84
+        },
+        {
+          "word": "kulit",
+          "start": 74.84,
+          "end": 75.12
+        },
+        {
+          "word": "Anda",
+          "start": 75.12,
+          "end": 75.3
+        },
+        {
+          "word": "akan",
+          "start": 75.3,
+          "end": 75.5
+        },
+        {
+          "word": "terlihat",
+          "start": 75.5,
+          "end": 75.82
+        },
+        {
+          "word": "jauh",
+          "start": 75.82,
+          "end": 76.18
+        },
+        {
+          "word": "lebih",
+          "start": 76.18,
+          "end": 76.42
+        },
+        {
+          "word": "cerah",
+          "start": 76.42,
+          "end": 76.76
+        },
+        {
+          "word": "serta",
+          "start": 76.76,
+          "end": 77.38
+        },
+        {
+          "word": "kenyal",
+          "start": 77.38,
+          "end": 77.76
+        },
+        {
+          "word": "secara",
+          "start": 77.76,
+          "end": 78.68
+        },
+        {
+          "word": "alami",
+          "start": 78.68,
+          "end": 79.28
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 79.28,
+      "end": 82.58,
+      "text": "Beban kerja pembuluh darah berkurang drastis",
+      "words": [
+        {
+          "word": "Beban",
+          "start": 80.38,
+          "end": 80.64
+        },
+        {
+          "word": "kerja",
+          "start": 80.64,
+          "end": 80.96
+        },
+        {
+          "word": "pembuluh",
+          "start": 80.96,
+          "end": 81.22
+        },
+        {
+          "word": "darah",
+          "start": 81.22,
+          "end": 81.48
+        },
+        {
+          "word": "berkurang",
+          "start": 81.48,
+          "end": 81.92
+        },
+        {
+          "word": "drastis",
+          "start": 81.92,
+          "end": 82.56
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "start": 82.58,
+      "end": 86.98,
+      "text": "Tekanan darah menurun dan jantung Anda kini berdetak lebih efisien",
+      "words": [
+        {
+          "word": "Tekanan",
+          "start": 83.12,
+          "end": 83.38
+        },
+        {
+          "word": "darah",
+          "start": 83.38,
+          "end": 83.62
+        },
+        {
+          "word": "menurun",
+          "start": 83.62,
+          "end": 84.04
+        },
+        {
+          "word": "dan",
+          "start": 84.04,
+          "end": 84.34
+        },
+        {
+          "word": "jantung",
+          "start": 84.34,
+          "end": 84.98
+        },
+        {
+          "word": "Anda",
+          "start": 84.98,
+          "end": 85.3
+        },
+        {
+          "word": "kini",
+          "start": 85.3,
+          "end": 85.56
+        },
+        {
+          "word": "berdetak",
+          "start": 85.56,
+          "end": 86
+        },
+        {
+          "word": "lebih",
+          "start": 86,
+          "end": 86.26
+        },
+        {
+          "word": "efisien",
+          "start": 86.26,
+          "end": 86.92
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 86.98,
+      "end": 89.38,
+      "text": "Tanpa gangguan fluktuasi gula darah",
+      "words": [
+        {
+          "word": "Tanpa",
+          "start": 86.98,
+          "end": 87.62
+        },
+        {
+          "word": "gangguan",
+          "start": 87.62,
+          "end": 88.16
+        },
+        {
+          "word": "fluktuasi",
+          "start": 88.16,
+          "end": 88.64
+        },
+        {
+          "word": "gula",
+          "start": 88.64,
+          "end": 88.88
+        },
+        {
+          "word": "darah",
+          "start": 88.88,
+          "end": 89.2
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 89.38,
+      "end": 93.64,
+      "text": "Setelah 30 hari, indera perasa Anda berubah total",
+      "words": [
+        {
+          "word": "Setelah",
+          "start": 90.1,
+          "end": 90.48
+        },
+        {
+          "word": "30",
+          "start": 90.48,
+          "end": 90.84
+        },
+        {
+          "word": "hari,",
+          "start": 90.84,
+          "end": 91.78
+        },
+        {
+          "word": "indera",
+          "start": 91.78,
+          "end": 92
+        },
+        {
+          "word": "perasa",
+          "start": 92,
+          "end": 92.26
+        },
+        {
+          "word": "Anda",
+          "start": 92.26,
+          "end": 92.54
+        },
+        {
+          "word": "berubah",
+          "start": 92.54,
+          "end": 93.18
+        },
+        {
+          "word": "total",
+          "start": 93.18,
+          "end": 93.6
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "start": 93.64,
+      "end": 96.4,
+      "text": "Buah-buahan kini terasa sangat manis",
+      "words": [
+        {
+          "word": "Buah-buahan",
+          "start": 94.4,
+          "end": 94.94
+        },
+        {
+          "word": "kini",
+          "start": 94.94,
+          "end": 95.14
+        },
+        {
+          "word": "terasa",
+          "start": 95.14,
+          "end": 95.4
+        },
+        {
+          "word": "sangat",
+          "start": 95.4,
+          "end": 95.92
+        },
+        {
+          "word": "manis",
+          "start": 95.92,
+          "end": 96.38
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "start": 96.4,
+      "end": 98.16,
+      "text": "Pikiran menjadi jernih",
+      "words": [
+        {
+          "word": "menjadi",
+          "start": 97.28,
+          "end": 97.58
+        },
+        {
+          "word": "jernih",
+          "start": 97.58,
+          "end": 97.98
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "start": 98.16,
+      "end": 101.02,
+      "text": "Dan Anda merasa memiliki tubuh yang baru",
+      "words": [
+        {
+          "word": "Anda",
+          "start": 98.58,
+          "end": 98.76
+        },
+        {
+          "word": "merasa",
+          "start": 98.76,
+          "end": 99.06
+        },
+        {
+          "word": "memiliki",
+          "start": 99.06,
+          "end": 99.46
+        },
+        {
+          "word": "tubuh",
+          "start": 99.46,
+          "end": 99.88
+        },
+        {
+          "word": "yang",
+          "start": 99.88,
+          "end": 100.12
+        },
+        {
+          "word": "baru",
+          "start": 100.12,
+          "end": 100.98
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "start": 101.02,
+      "end": 103.86,
+      "text": "Berhenti makan gula bukan cuma soal diet",
+      "words": [
+        {
+          "word": "Berhenti",
+          "start": 102.06,
+          "end": 102.42
+        },
+        {
+          "word": "makan",
+          "start": 102.42,
+          "end": 102.66
+        },
+        {
+          "word": "gula",
+          "start": 102.66,
+          "end": 102.9
+        },
+        {
+          "word": "bukan",
+          "start": 102.9,
+          "end": 103.18
+        },
+        {
+          "word": "cuma",
+          "start": 103.18,
+          "end": 103.38
+        },
+        {
+          "word": "soal",
+          "start": 103.38,
+          "end": 103.6
+        },
+        {
+          "word": "diet",
+          "start": 103.6,
+          "end": 103.84
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "start": 103.86,
+      "end": 108.46,
+      "text": "Tapi soal memberi kesempatan organ dalam Anda untuk bernapas",
+      "words": [
+        {
+          "word": "Tapi",
+          "start": 103.82,
+          "end": 104.62
+        },
+        {
+          "word": "soal",
+          "start": 104.62,
+          "end": 105.08
+        },
+        {
+          "word": "memberi",
+          "start": 105.08,
+          "end": 105.44
+        },
+        {
+          "word": "kesempatan",
+          "start": 105.44,
+          "end": 106
+        },
+        {
+          "word": "organ",
+          "start": 106,
+          "end": 106.3
+        },
+        {
+          "word": "dalam",
+          "start": 106.3,
+          "end": 106.58
+        },
+        {
+          "word": "Anda",
+          "start": 106.58,
+          "end": 106.94
+        },
+        {
+          "word": "untuk",
+          "start": 106.94,
+          "end": 107.74
+        },
+        {
+          "word": "bernapas",
+          "start": 107.74,
+          "end": 108.4
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "start": 108.46,
+      "end": 110.8,
+      "text": "Jadi, siapkah Anda?",
+      "words": [
+        {
+          "word": "Jadi,",
+          "start": 109.18,
+          "end": 110.26
+        },
+        {
+          "word": "siapkah",
+          "start": 110.26,
+          "end": 110.58
+        }
+      ]
+    }
+  ],
+  "text": " Apa yang sebenarnya terjadi pada tubuh Anda jika Anda berhenti mengonsumsi gula selama 30 hari? Di hari pertama, otak Anda mulai protes. Tanpa lonjakan dopamin dari gula, Anda akan meraksa gelisah, mudah marah, dan terus-menerus memikirkan makanan manis. Ini adalah fase tersulit. Tubuh Anda mengalami gejala putus zat atau sakau gula. Sarap-sarap mengirim sinyal darurat yang memicu sakit kepala berdenyut dan emosi yang meledak-ledak Kabar baiknya, pankreas Anda akhirnya bisa beristirahat Produksi insulin mulai stabil dan rasa lapar yang biasanya datang tiba-tiba kini mulai berkurang Gula bersifat mengikat air Saat kadar gula darah turun, tubuh akan membuang kelebihan cairan Anda akan menyadari wajah terlihat lebih tirus dan perut mulai mengecil Karena tidak ada lagi kiriman gula, organ hati beralih fungsi Sekarang hati mulai membakar simpanan lemak untuk dijadikan energi Anda mulai merasa jauh lebih bertenaga Tanpa gula, proses kerusakan kolagen akan berhenti Jerawat mulai mengempis dan kulit Anda akan terlihat jauh lebih cerah serta kenyal secara alami Beban kerja pembuluh darah berkurang drastis Tekanan darah menurun dan jantung Anda kini berdetak lebih efisien Tanpa gangguan fluktuasi gula darah Setelah 30 hari, indera perasa Anda berubah total Buah-buahan kini terasa sangat manis Pikiran menjadi jernih Dan Anda merasa memiliki tubuh yang baru Berhenti makan gula bukan cuma soal diet Tapi soal memberi kesempatan organ dalam Anda untuk bernapas Jadi, siapkah Anda?"
+}
