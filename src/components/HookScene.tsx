@@ -166,7 +166,7 @@ function parseHookScenarioFromTopic(
 
 ): ParsedHookScenario {
 
-  const combined = `${headline} ${narration}`.toLowerCase();
+  const combined = `${headline} ${narration} ${overrideClue || ''}`.toLowerCase();
 
   // Check if the topic is EXPLICITLY a multi-day streak challenge (e.g., "30 hari", "7 hari", "sebulan")
 
@@ -632,7 +632,15 @@ export const HookScene: React.FC<HookSceneProps> = ({
 
   const { fps } = useVideoConfig();
 
-  const rawH = rawHeadline || rightTitle || leftTitle || 'APA JADINYA KALAU KAMU MINUM KOPI SAAT PERUT KOSONG?';
+  let rawH = rawHeadline || rightTitle || leftTitle || 'APA JADINYA KALAU KAMU MENAHAN KENCING TERLALU LAMA?';
+  // Strip any accidental UI inspection critique instructions that leaked into headline
+  if (/subtitle|zona.*aman|naikkan|turunkan|geser|pixel|padding/i.test(rawH)) {
+    if (/kencing|pipis|kemih|bladder/i.test(storyId || '')) {
+      rawH = 'APA JADINYA KALAU KAMU MENAHAN KENCING TERLALU LAMA?';
+    } else {
+      rawH = 'APA YANG SEBENARNYA TERJADI PADA TUBUHMU?';
+    }
+  }
 
   const headlineInput = rawH.trim().endsWith('?') ? rawH.trim() : `${rawH.trim()}?`;
 

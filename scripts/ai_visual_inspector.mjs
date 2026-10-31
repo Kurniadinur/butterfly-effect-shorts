@@ -167,20 +167,13 @@ export function autoHealStoryboard(storyData, repairs, sceneLabel, nodeIndex = -
     if (!txt || typeof txt !== 'string') return false;
     const t = txt.trim();
     if (t.length < 3 || t.length > maxLen) return false;
-    if (/geser|px|ui|player|margin|padding|font|warna|kontras|teks bawah|eksperimen|target utama/i.test(t)) return false;
+    // Strict blacklist to prevent UI critique instructions from leaking into on-screen storyboard text!
+    if (/geser|px|ui|player|margin|padding|font|warna|kontras|teks bawah|eksperimen|target utama|subtitle|zona|aman|naikkan|turunkan|pindahkan|bawah|atas|posisi|frame|layar|safe|zone/i.test(t)) return false;
     return true;
   };
 
   if (nodeIndex === -1) {
-    // Hook scene
-    if (
-      isCleanContentText(repairs.shorten_headline, 68) &&
-      repairs.shorten_headline.length < (storyData.hook.headline || '').length
-    ) {
-      console.log(`      🛠️ [AI Editor Auto-Polish] Memperpendek judul Hook: "${storyData.hook.headline}" -> "${repairs.shorten_headline}"`);
-      storyData.hook.headline = repairs.shorten_headline;
-      healed = true;
-    }
+    // Hook scene: Never overwrite the hook headline! It defines the video topic identity.
     const isValidStamp = repairs.polish_stamp && typeof repairs.polish_stamp === 'string' && repairs.polish_stamp.length <= 18 && !repairs.polish_stamp.includes(' ') && !/[.,?!]/.test(repairs.polish_stamp);
     if (isValidStamp && repairs.polish_stamp !== storyData.hook.leftStampText) {
       console.log(`      🛠️ [AI Editor Auto-Polish] Memperbaiki stempel Hook: "${repairs.polish_stamp}"`);

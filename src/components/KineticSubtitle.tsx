@@ -120,7 +120,7 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
           flexWrap: 'wrap',
           justifyContent: 'center',
           alignItems: 'center',
-          gap: '12px 20px',
+          gap: '16px 28px',
           maxWidth: '820px',
         }}
       >
@@ -139,7 +139,8 @@ export const KineticSubtitle: React.FC<KineticSubtitleProps> = ({ wordTimestamps
                 fontWeight: 900,
                 color: isActive ? '#FFE600' : '#FFFFFF',
                 textTransform: 'uppercase',
-                letterSpacing: '-0.5px',
+                letterSpacing: '0.8px',
+                margin: '0 8px',
                 lineHeight: 1.15,
                 // Bold multi-directional stroke & shadow for effortless legibility on any background
                 textShadow: isActive

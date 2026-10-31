@@ -325,7 +325,8 @@ async function generateStoryboard(topic) {
     .join('\n');
   const blacklistedStr = (learningDb.blacklisted_patterns || []).join(', ');
 
-  const dynamicPrompt = `${DIRECTOR_PROMPT}\n\n` +
+  const topicGuidance = getTopicPhysiologicalGuidance(topic);
+  const dynamicPrompt = `${DIRECTOR_PROMPT}\n\n${topicGuidance}\n\n` +
     `================================================================\n` +
     `MEMORI PEMBELAJARAN OTONOM DARI FEEDBACK SEBELUMNYA:\n` +
     `CONTOH NASKAH TERBAIK YANG DISUKAI PENONTON:\n${benchmarkExamples || 'Gunakan format dokumenter orisinil.'}\n\n` +
@@ -1160,23 +1161,13 @@ export async function runAIScriptTimelineGuardian(storyData, topic) {
   console.log('   🛡️ [AI SCRIPT & TIMELINE GUARDIAN] Menjamin Standar Shorts 90%+ Retensi...');
   console.log('================================================================');
 
-  // 1. Hook Retention Rule: Strictly 1 punchy question (8-14 words, ~2.5 - 3.2s)
-  let hookNarration = (storyData.hook?.narration || '').replace(/\s+/g, ' ').trim();
-  const sentenceMatch = hookNarration.match(/^([^.!?]+[.!?])/);
-  if (sentenceMatch) {
-    const firstSentence = sentenceMatch[1].trim();
-    const excess = hookNarration.slice(firstSentence.length).trim();
-    storyData.hook.narration = firstSentence;
-    if (excess && storyData.nodes && storyData.nodes.length > 0) {
-      storyData.nodes[0].narration = `${excess} ${storyData.nodes[0].narration || ''}`.trim();
-    }
-  }
-  const hookWords = (storyData.hook.narration || '').split(/\s+/);
-  if (hookWords.length > 15) {
-    const cleanTopic = topic.replace(/^(apa yang terjadi pada tubuhmu jika|apa efek|apa jadinya kalau)\s*/i, '').replace(/\?+$/, '').trim();
-    storyData.hook.narration = `Apa yang sebenarnya terjadi pada tubuhmu jika kamu ${cleanTopic.toLowerCase()}?`;
-  }
-  console.log(`      ✓ Hook Narration : "${storyData.hook.narration}" (~2.8s)`);
+  // 1. Hook Retention Rule: Strictly 1 punchy question that ALWAYS states the topic!
+  const cleanTopicCore = topic
+    .replace(/^(apa yang terjadi pada tubuhmu jika|apa efek|apa jadinya kalau|efek)\s*/i, '')
+    .replace(/\?+$/, '')
+    .trim();
+  storyData.hook.narration = `Apa yang sebenarnya terjadi pada tubuhmu jika kamu ${cleanTopicCore.toLowerCase()}?`;
+  console.log(`      ✓ Hook Narration Enforced : "${storyData.hook.narration}" (~2.8s)`);
 
   // 2. Shorts Viral Node Count Rule (7 to 9 nodes max for 50-65s total duration)
   if (Array.isArray(storyData.nodes) && storyData.nodes.length > 9) {

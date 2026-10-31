@@ -155,6 +155,7 @@ export const ButterflyEffect: React.FC<ButterflyEffectProps> = ({ data = CURRENT
             outroDurationFrames={data.outro.durationFrames}
             totalDurationFrames={data.totalDurationFrames}
             baseBodyMediaUrl="butterfly/media/medical_body_xray.jpg"
+            characterActionPng={data.hook.characterActionPng}
           />
         </Sequence>
 

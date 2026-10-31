@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useCurrentFrame, useVideoConfig, staticFile, interpolate } from 'remotion';
+import { Img, useCurrentFrame, useVideoConfig, staticFile, interpolate } from 'remotion';
 import { ButterflyNode, OrganTarget, WordTimestamp } from '../data/types';
 import { detectOrganFromText } from '../utils/anatomyUtils';
 import { resolveEditorialTheme, humanizeOnScreenText, inferHumanFeelingForNode } from '../utils/editorialThemes';
@@ -13,6 +13,7 @@ export interface ContinuousBodyJourneyProps {
   outroDurationFrames: number;
   totalDurationFrames: number;
   baseBodyMediaUrl?: string;
+  characterActionPng?: string | null;
 }
 
 interface OrganCameraAnchor {
@@ -233,6 +234,7 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
   hookDurationFrames,
   outroDurationFrames,
   totalDurationFrames,
+  characterActionPng,
 }) => {
   const relFrame = useCurrentFrame();
   const frame = relFrame + hookDurationFrames; // Absolute timeline frame
@@ -1155,6 +1157,72 @@ export const ContinuousBodyJourney: React.FC<ContinuousBodyJourneyProps> = ({
           </span>
         </div>
       </div>
+
+      {/* 5. GAYA A: FLOATING 3D HUMAN REACTION PiP (Top-Right, Connecting Organ Scan to Human Agony) */}
+      {characterActionPng && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '125px',
+            right: '48px',
+            zIndex: 30,
+            opacity: hudOpacity,
+            pointerEvents: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '135px',
+            height: '190px',
+            padding: '8px',
+            backgroundColor: 'rgba(9, 13, 22, 0.78)',
+            backdropFilter: 'blur(20px)',
+            borderRadius: '16px',
+            border: `1.5px solid ${activeWp.chaosLevel >= 60 ? '#ef4444' : activeWp.anchor.color}88`,
+            boxShadow: `0 12px 32px rgba(0, 0, 0, 0.8), 0 0 16px ${activeWp.chaosLevel >= 60 ? '#ef4444' : activeWp.anchor.color}35`,
+            transform: `scale(${1 + Math.sin(frame * 0.08) * 0.02 + (activeWp.chaosLevel >= 70 ? Math.sin(frame * 0.5) * 0.03 : 0)})`,
+          }}
+        >
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              borderRadius: '10px',
+            }}
+          >
+            <Img
+              src={staticFile(characterActionPng)}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                filter: activeWp.chaosLevel >= 60 ? 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.7))' : 'drop-shadow(0 0 6px rgba(56, 189, 248, 0.4))',
+              }}
+            />
+          </div>
+          <div
+            style={{
+              marginTop: '4px',
+              padding: '2px 8px',
+              borderRadius: '6px',
+              backgroundColor: activeWp.chaosLevel >= 60 ? 'rgba(239, 68, 68, 0.25)' : 'rgba(255, 255, 255, 0.1)',
+              border: `1px solid ${activeWp.chaosLevel >= 60 ? '#ef4444' : 'rgba(255, 255, 255, 0.2)'}`,
+              fontFamily: "'Space Grotesk', monospace",
+              fontSize: '9px',
+              fontWeight: 800,
+              color: activeWp.chaosLevel >= 60 ? '#fca5a5' : '#e2e8f0',
+              letterSpacing: '0.8px',
+              textTransform: 'uppercase',
+            }}
+          >
+            {activeWp.chaosLevel >= 70 ? 'KRITIS' : 'SITUASI TUBUH'}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
